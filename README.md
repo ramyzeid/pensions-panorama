@@ -1,8 +1,11 @@
-# Pensions Panorama
+# Pensions Database
 
 A production-quality, reproducible Python project that generates
 **Pensions-at-a-Glance**-style comparative datasets and country briefs
 for a user-specified set of countries.
+
+**Live at: https://pensions.ramyzeid.com**
+**GitHub: https://github.com/ramyzeid/pensions-panorama**
 
 ---
 
@@ -132,12 +135,15 @@ pp build-deep-profiles --countries CRI --offline
 ### Current Status (Feb 26, 2026)
 
 Work completed:
+- **Live at https://pensions.ramyzeid.com**: deployed on Streamlit Community Cloud,
+  domain hosted on Cloudflare, auto-deploys on every `git push` to `main`.
+- **Renamed to Pensions Database**: all UI text updated (app title, sidebar, tab labels,
+  methodology text, report footer).
 - **Country YAML params**: All 189 World Bank member countries have YAML pension
   parameter files under `data/params/`.
 - **All 189 deep profile JSONs built**: `reports/deep_profiles/<ISO3>.json` exists
   for every country; run `pp build-deep-profiles` to refresh with latest WDI data.
-- **Country Deep Profile tab**: Streamlit dashboard tab is live at
-  `http://localhost:8501` (run `pp serve` or `streamlit run pensions_panorama/web/app.py`).
+- **Country Deep Profile tab**: Streamlit dashboard tab live at https://pensions.ramyzeid.com.
 - **Deep profile schema + builder + CLI**: `pp build-deep-profiles` generates
   `reports/deep_profiles/<ISO3>.json` for every country.
 - **Auto-enrichment from params**: Countries without a hand-written mapping file
@@ -149,7 +155,7 @@ Work completed:
   selected in the Country Profile tab.
 - **Tab persistence**: All 10 dashboard tabs are decorated with `@st.fragment` so that
   selecting a country (or changing any widget) within a tab no longer resets the active
-  tab back to Panorama. Only the affected tab's fragment re-runs; the tab bar is
+  tab back to the first tab. Only the affected tab's fragment re-runs; the tab bar is
   untouched.
 - **Offline mode**: `--offline` skips all network calls; useful for CI or air-gapped builds.
 - **Enriched mapping files**: `CRI`, `JOR`, `MAR` have hand-curated narratives and
@@ -158,7 +164,7 @@ Work completed:
 - **Tests**: 80 tests passing (ordering, auto-enrichment, structure, not-available,
   fallback narrative, scheme type group detection).
 
-### Running the dashboard
+### Running the dashboard locally
 
 ```bash
 pp serve                         # default port 8501
