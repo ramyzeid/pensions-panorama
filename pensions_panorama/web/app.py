@@ -2124,13 +2124,21 @@ def tab_country(data: dict) -> None:
                 label = source.get("source_name") or "source"
                 cols[idx].caption(f"[{label}]({source['source_url']})")
 
+    # ── Scheme parameter detail ───────────────────────────────────────────────
     st.divider()
-    st.subheader(t("deep_profile_schemes_header"))
-    html_table = _scheme_table_html(profile.get("schemes") or [])
-    if html_table:
-        st.markdown(html_table, unsafe_allow_html=True)
-    else:
-        st.info(t("not_available"))
+    n_schemes = len(params.schemes)
+    schemes_header = (
+        t("scheme_details_header", n=n_schemes)
+        if n_schemes == 1
+        else t("scheme_details_header_plural", n=n_schemes)
+    )
+    st.subheader(schemes_header)
+    for i, s in enumerate(params.schemes):
+        with st.expander(
+            f"**{_expand_scheme_name(s.name)}** — {_scheme_type_label(s.type)} ({_tier_label(s.tier)})",
+            expanded=(i == 0),
+        ):
+            _render_scheme_card(s, m.currency_code)
 
     # ── Modeling results ──────────────────────────────────────────────────────
     st.divider()
@@ -2208,21 +2216,14 @@ def tab_country(data: dict) -> None:
         st.markdown("**💰 Retirement Cost**")
         _inline_retirement_cost(iso3, params, ks="_cp")
 
-    # ── Scheme parameter detail ───────────────────────────────────────────────
+    # ── Main pension schemes ──────────────────────────────────────────────────
     st.divider()
-    n_schemes = len(params.schemes)
-    schemes_header = (
-        t("scheme_details_header", n=n_schemes)
-        if n_schemes == 1
-        else t("scheme_details_header_plural", n=n_schemes)
-    )
-    st.subheader(schemes_header)
-    for i, s in enumerate(params.schemes):
-        with st.expander(
-            f"**{_expand_scheme_name(s.name)}** — {_scheme_type_label(s.type)} ({_tier_label(s.tier)})",
-            expanded=(i == 0),
-        ):
-            _render_scheme_card(s, m.currency_code)
+    st.subheader(t("deep_profile_schemes_header"))
+    html_table = _scheme_table_html(profile.get("schemes") or [])
+    if html_table:
+        st.markdown(html_table, unsafe_allow_html=True)
+    else:
+        st.info(t("not_available"))
 
 
 # ---------------------------------------------------------------------------
