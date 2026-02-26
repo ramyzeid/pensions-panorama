@@ -35,7 +35,7 @@ pensions_panorama/          Python package
 ├── schema/
 │   └── params_schema.py    Pydantic v2 models for country YAML files
 ├── sources/
-│   ├── worldbank.py        World Bank Indicators API client
+│   ├── worldbank.py        World Bank Indicators API client (WDI + ASPIRE + GFDD)
 │   ├── un_dataportal.py    UN WPP Data Portal API client (life tables)
 │   └── ilostat_sdmx.py     ILOSTAT SDMX API client (average earnings)
 ├── model/
@@ -56,11 +56,13 @@ data/
 │   ├── _template.yaml      Blank country template (start here)
 │   ├── JOR.yaml            Jordan (sample)
 │   └── MAR.yaml            Morocco (sample)
+├── deep_profiles/          Per-country mapping YAMLs (narrative, scheme overrides)
 ├── raw/cache/              Disk-cached API responses (timestamped)
 └── processed/              Cleaned datasets in Parquet
 
 reports/
 ├── country/<ISO3>/         One folder per country (CSV, Excel, charts, .md)
+├── deep_profiles/<ISO3>.json  Pre-built country deep profile data (committed)
 └── panorama_summary/       Cross-country Excel + summary report
 
 tests/                      pytest test suite
@@ -74,13 +76,15 @@ tests/                      pytest test suite
 pp --help
 
 Commands:
-  pp all               End-to-end pipeline (fetch → validate → run → report)
-  pp fetch-data        Pull and cache API data
-  pp validate-params   Validate country YAML parameter files
-  pp run               Run calculations; write CSV + Excel tables
-  pp build-reports     Generate charts and Markdown reports
-  pp list-countries    List countries with available parameter files
-  pp wb-filter-region  List ISO3 codes for a World Bank region (e.g. MEA)
+  pp all                   End-to-end pipeline (fetch → validate → run → report)
+  pp fetch-data            Pull and cache API data
+  pp validate-params       Validate country YAML parameter files
+  pp run                   Run calculations; write CSV + Excel tables
+  pp build-reports         Generate charts and Markdown reports
+  pp build-deep-profiles   Build deep profile JSONs for dashboard
+  pp list-countries        List countries with available parameter files
+  pp wb-filter-region      List ISO3 codes for a World Bank region (e.g. MEA)
+  pp serve                 Launch the Streamlit dashboard locally
 ```
 
 Common options accepted by most commands:
@@ -111,60 +115,10 @@ Cross-country outputs in `reports/panorama_summary/`:
 
 ---
 
-## Deep Profile (Dashboard)
+## Dashboard
 
-The Streamlit dashboard includes a **Country Deep Profile** tab powered by
-build-time JSON outputs under:
-
-```
-reports/deep_profiles/<ISO3>.json
-```
-
-Build them with:
-
-```bash
-pp build-deep-profiles --countries CRI
-```
-
-If you are offline or the World Bank API is unreachable, use:
-
-```bash
-pp build-deep-profiles --countries CRI --offline
-```
-
-### Current Status (Feb 26, 2026)
-
-Work completed:
-- **Live at https://pensions.ramyzeid.com**: deployed on Streamlit Community Cloud,
-  domain hosted on Cloudflare, auto-deploys on every `git push` to `main`.
-- **Renamed to Pensions Database**: all UI text updated (app title, sidebar, tab labels,
-  methodology text, report footer).
-- **Country YAML params**: All 189 World Bank member countries have YAML pension
-  parameter files under `data/params/`.
-- **All 189 deep profile JSONs built**: `reports/deep_profiles/<ISO3>.json` exists
-  for every country; run `pp build-deep-profiles` to refresh with latest WDI data.
-- **Country Deep Profile tab**: Streamlit dashboard tab live at https://pensions.ramyzeid.com.
-- **Deep profile schema + builder + CLI**: `pp build-deep-profiles` generates
-  `reports/deep_profiles/<ISO3>.json` for every country.
-- **Auto-enrichment from params**: Countries without a hand-written mapping file
-  auto-populate scheme attributes (contribution rates, retirement ages, benefit type,
-  financing mechanism) directly from their `data/params/<ISO3>.yaml`.
-- **Live WDI data**: GDP per capita (LCU/USD), population 65+, and ASPIRE coverage
-  KPIs are fetched from the World Bank WDI API and cached locally.
-- **Country selection sync**: The Deep Profile tab defaults to whichever country is
-  selected in the Country Profile tab.
-- **Tab persistence**: All 10 dashboard tabs are decorated with `@st.fragment` so that
-  selecting a country (or changing any widget) within a tab no longer resets the active
-  tab back to the first tab. Only the affected tab's fragment re-runs; the tab bar is
-  untouched.
-- **Offline mode**: `--offline` skips all network calls; useful for CI or air-gapped builds.
-- **Enriched mapping files**: `CRI`, `JOR`, `MAR` have hand-curated narratives and
-  scheme data sourced from OECD Pensions at a Glance and ILO.
-- **Compact number formatting**: Large LCU values displayed as `M`/`B` suffixes.
-- **Tests**: 80 tests passing (ordering, auto-enrichment, structure, not-available,
-  fallback narrative, scheme type group detection).
-
-### Running the dashboard locally
+The Streamlit dashboard is live at **https://pensions.ramyzeid.com** and runs
+locally with:
 
 ```bash
 pp serve                         # default port 8501
@@ -172,12 +126,50 @@ pp serve --port 8502             # custom port
 streamlit run pensions_panorama/web/app.py
 ```
 
-Open **http://localhost:8501** in your browser.
+### Dashboard Tabs (9 tabs)
 
-### Building / refreshing deep profiles
+| Tab | Contents |
+|---|---|
+| 🏠 Database | Cross-country overview table with sortable indicators |
+| 🌍 Country Profile | Full single-country page (see layout below) |
+| 📊 Compare | Side-by-side multi-country comparison charts |
+| 📖 Methodology | OECD pension model methodology notes |
+| 📋 PAG Tables | Pensions-at-a-Glance style comparative tables |
+| 🧮 Pension Calculator | Interactive pension calculator |
+| 💰 Retirement Cost | Retirement cost estimator with HALE-based health split |
+| 📖 Glossary | Definitions for all indicators and terms (EN / FR / AR) |
+| 🔗 WB Primer Notes | World Bank Pension Reform Primer reference notes |
+
+### Country Profile Layout
+
+The Country Profile tab is a single scrollable page:
+
+1. **Country selector** — flag + name + key metrics (NRA, Gross RR, Avg Wage)
+2. **Narrative overview** — auto-generated or hand-curated country text
+3. **Country Level Information** — macro + social protection indicators (WDI/ASPIRE/GFDD)
+4. **System KPIs** — pension coverage, fund assets, expenditure (auto-filled from ASPIRE/GFDD)
+5. **Pension Scheme Details** — expandable parameter cards from country YAML
+6. **Modeling Results** — OECD-style replacement rate / pension level / wealth table
+7. **Detailed Results** — full earnings-multiple breakdown (expandable)
+8. **Charts** — 6 Plotly charts (replacement rates, pension levels, wealth, etc.)
+9. **Calculators** — inline pension calculator + retirement cost estimator
+10. **Main Pension Schemes** — scheme overview table from deep profile JSON
+
+### Languages
+
+The dashboard supports **English**, **Français**, and **العربية** (RTL).
+All tabs, country names, and glossary content are fully translated.
+
+---
+
+## Deep Profile JSONs
+
+Pre-built JSON files power the Country Profile's narrative, KPI, and scheme
+overview sections. They are committed to the repo under `reports/deep_profiles/`
+and rebuilt with:
 
 ```bash
-# All 189 countries (live WDI data)
+# All 189 countries (live API data)
 pp build-deep-profiles
 
 # Specific countries
@@ -187,40 +179,56 @@ pp build-deep-profiles --countries "CRI JOR MAR"
 pp build-deep-profiles --offline
 ```
 
-### Next Steps
+### What Each JSON Contains
 
-1. **Expand hand-curated mappings**: Add richer scheme-level statistics (members,
-   contributors, beneficiaries, revenues as % of GDP) for more countries by creating
-   or extending `data/deep_profiles/<ISO3>.yaml` from the template.
-2. **ASPIRE KPIs**: Wire up ASPIRE social protection indicators for coverage KPIs
-   where WDI does not carry them (many LIC/LMIC countries).
-3. **Narrative quality**: Replace the auto-generated fallback narrative with
-   hand-written text for high-priority countries (add `narrative.text` in the
-   mapping YAML).
+- **Narrative** — auto-generated from YAML params or hand-written in the mapping file
+- **Country Level Information** — 7 indicators fetched live:
+  - GDP per capita (LCU and USD) — World Bank WDI
+  - Population age 65+ (count and %) — World Bank WDI
+  - Contributory pension coverage (% of population) — **ASPIRE**
+  - Social insurance coverage (% of population) — **ASPIRE**
+  - Pension fund assets (% of GDP) — **GFDD**
+- **System KPIs** — 5 KPIs auto-filled from ASPIRE/GFDD where available:
+  - Social insurance coverage — `per_si_allsi.cov_pop_tot`
+  - Contributory pension coverage — `per_si_cp.cov_pop_tot`
+  - Pension fund assets/GDP — `GFDD.DI.13`
+  - Population 65+ coverage and pension expenditure/GDP (manual mapping)
+- **Schemes** — auto-generated from YAML params or hand-curated in mapping file
+
+> **Data availability note**: ASPIRE indicators are derived from household surveys
+> and are strongest for LMICs (~100 countries). Most high-income/OECD countries
+> return "Not available" — this is expected and displays cleanly in the dashboard.
 
 ### Scheme Mapping Files
 
-Per-country scheme mappings live in:
+Per-country overrides live in `data/deep_profiles/<ISO3>.yaml`. Each file can define:
+- `narrative` — hand-written text + sources
+- `system_kpis` — manual values that override ASPIRE/GFDD auto-fill
+- `country_indicators` — overrides for Country Level Information
+- `schemes` — hand-curated scheme attributes (members, contributors, revenues, etc.)
 
-```
-data/deep_profiles/<ISO3>.yaml
-```
+Start from `data/deep_profiles/_template.yaml`. Missing values display as
+**Not available** but the rows remain visible.
 
-Each file defines:
-- `narrative` text and sources
-- `system_kpis` (coverage, spending, etc.)
-- `country_indicators` overrides for Country Level Information (optional)
-- `schemes` with `scheme_type_group` ordering (`noncontrib`, `dc`, `db`)
-- per-scheme attributes and sources
+Hand-curated mappings exist for: `CRI`, `JOR`, `MAR`.
 
-Start from:
+---
 
-```
-data/deep_profiles/_template.yaml
-```
+## Current Status (Feb 26, 2026)
 
-If values are missing, the UI will display **Not available** but keep the rows
-visible.
+- **Live at https://pensions.ramyzeid.com** — deployed on Streamlit Community Cloud,
+  domain on Cloudflare, auto-deploys on every `git push` to `main`.
+- **9-tab dashboard** — Country Deep Profile merged into Country Profile as a unified
+  scrollable page; tab count reduced from 10 to 9.
+- **3 languages** — English, French, Arabic (RTL) across all tabs including Glossary.
+- **189 countries** — YAML pension parameter files and deep profile JSONs for all
+  World Bank member countries.
+- **ASPIRE + GFDD data live** — Contributory pension coverage, social insurance
+  coverage, and pension fund assets/GDP auto-fetched and displayed per country.
+- **Tab persistence** — `@st.fragment` on all tab functions; selecting a country or
+  changing a widget does not reset the active tab.
+- **Offline mode** — `--offline` skips all network calls; useful for CI builds.
+- **Tests** — 80 tests passing.
 
 ---
 
@@ -242,6 +250,39 @@ where available; falls back to a simplified annuity formula otherwise.
 
 ---
 
+## Data Sources and Provenance
+
+| Source | Purpose | Indicators |
+|---|---|---|
+| **Human-curated YAML** | Pension rules, benefit formulas, contribution rates | `data/params/<ISO3>.yaml` |
+| **ILOSTAT SDMX API** | Average earnings (preferred source) | `EAR_4MTH_SEX_ECO_CUR_NB_A` |
+| **World Bank WDI API** | GDP per capita, population 65+, macro context | `NY.GDP.PCAP.*`, `SP.POP.*` |
+| **World Bank ASPIRE** | Pension and social insurance coverage | `per_si_cp.cov_pop_tot`, `per_si_allsi.cov_pop_tot` |
+| **World Bank GFDD** | Pension fund assets as % of GDP | `GFDD.DI.13` |
+| **UN WPP Data Portal** | Life tables for pension-wealth calculation | Indicators 28 (lx), 75 (ex) |
+
+All sources share the same `WorldBankClient` (WDI v2 REST API). Responses are
+cached on disk under `data/raw/cache/` with configurable TTL (default 7 days;
+UN data 30 days). Delete the cache directory to force a fresh pull.
+
+---
+
+## Modeling Assumptions
+
+Global assumptions are in `data/params/assumptions.yaml`. Key defaults:
+
+| Parameter | Default | OECD benchmark |
+|---|---|---|
+| Entry age | 20 | 20 |
+| Career length | 40 years | 40 years |
+| Contribution density | 100% | 100% |
+| Real wage growth | 2%/yr | 2%/yr |
+| Discount rate | 2% real | 2% real |
+| DC net real return | 3%/yr | 3%/yr |
+| WPP life table year | 2020 | varies |
+
+---
+
 ## How to Add a New Country
 
 1. **Copy the template**
@@ -249,7 +290,7 @@ where available; falls back to a simplified annuity formula otherwise.
    cp data/params/_template.yaml data/params/EGY.yaml
    ```
 
-2. **Fill in all fields** – every `value` field must have a `source_citation`.
+2. **Fill in all fields** — every `value` field must have a `source_citation`.
    Key fields to research:
    - `eligibility.normal_retirement_age_male/female`
    - `contributions.employee_rate` and `employer_rate`
@@ -268,41 +309,12 @@ where available; falls back to a simplified annuity formula otherwise.
    pp all --countries EGY --ref-year 2022
    ```
 
-5. **Commit** the YAML file with the citation history in `sources`.
+5. **Build deep profile**
+   ```bash
+   pp build-deep-profiles --countries EGY
+   ```
 
----
-
-## Data Sources and Provenance
-
-| Source | Purpose | Client |
-|---|---|---|
-| **Human-curated YAML** | Pension rules, benefit formulas, contribution rates | `schema/params_schema.py` |
-| **ILOSTAT SDMX API** | Average earnings (preferred) | `sources/ilostat_sdmx.py` |
-| **World Bank Indicators API** | Macro context: CPI, GDP, population | `sources/worldbank.py` |
-| **UN WPP Data Portal API** | Life tables for pension-wealth calculation | `sources/un_dataportal.py` |
-
-**Caching**: All API responses are cached on disk under `data/raw/cache/`
-with configurable TTL (default 7 days; UN data 30 days).  Set `cache_ttl_days`
-in `run_config.yaml` to control.  Delete the cache directory to force a fresh pull.
-
-**Reproducibility**: Given the same `run_config.yaml`, the same `data/params/`
-YAML files, and the same cached API responses, every run produces bit-identical outputs.
-
----
-
-## Modeling Assumptions
-
-Global assumptions are in `data/params/assumptions.yaml`.  Key defaults:
-
-| Parameter | Default | OECD benchmark |
-|---|---|---|
-| Entry age | 20 | 20 |
-| Career length | 40 years | 40 years |
-| Contribution density | 100% | 100% |
-| Real wage growth | 2%/yr | 2%/yr |
-| Discount rate | 2% real | 2% real |
-| DC net real return | 3%/yr | 3%/yr |
-| WPP life table year | 2020 | varies |
+6. **Commit** the YAML and JSON files with citation history in `sources`.
 
 ---
 
@@ -313,12 +325,12 @@ pytest tests/ -v
 ```
 
 The test suite includes:
-- **Schema validation** – valid YAMLs load; invalid ones are rejected
-- **Pension engine unit tests** – DB formula, basic, minimum guarantee, NDC, DC
-- **Tax engine tests** – flat rate and progressive bracket engine
-- **Pension wealth math** – annuity factor formulas and edge cases
-- **World Bank client** – mocked HTTP responses with `responses` library
-- **End-to-end** – Jordan and Morocco with fixed assumptions
+- **Schema validation** — valid YAMLs load; invalid ones are rejected
+- **Pension engine unit tests** — DB formula, basic, minimum guarantee, NDC, DC
+- **Tax engine tests** — flat rate and progressive bracket engine
+- **Pension wealth math** — annuity factor formulas and edge cases
+- **World Bank client** — mocked HTTP responses with `responses` library
+- **End-to-end** — Jordan and Morocco with fixed assumptions
 
 ---
 
@@ -360,15 +372,30 @@ The engine dispatches automatically.
 
 ---
 
+## Next Steps
+
+1. **Expand hand-curated mappings** — Add richer scheme-level statistics (members,
+   contributors, beneficiaries, revenues as % of GDP) for more countries by creating
+   or extending `data/deep_profiles/<ISO3>.yaml` from the template.
+2. **Narrative quality** — Replace auto-generated fallback narratives with
+   hand-written text for high-priority countries (add `narrative.text` in the
+   mapping YAML).
+3. **Additional ASPIRE indicators** — Benefit adequacy (`per_si_allsi.adq_pop_tot`),
+   quintile coverage, and poverty reduction impact are available in the same API.
+
+---
+
 ## Dependencies
 
-Pinned in `pyproject.toml`.  Key libraries:
+Pinned in `pyproject.toml`. Key libraries:
 
-- `pydantic>=2.5` – YAML schema validation
-- `typer` – CLI
-- `requests` + `tenacity` – API calls with retries
-- `diskcache` – disk-based caching
-- `pandas` + `pyarrow` – data processing
-- `matplotlib` – charts
-- `jinja2` – report templates
-- `openpyxl` – Excel export
+- `pydantic>=2.5` — YAML schema validation
+- `typer` — CLI
+- `streamlit` — dashboard
+- `plotly` — interactive charts
+- `requests` + `tenacity` — API calls with retries
+- `diskcache` — disk-based caching
+- `pandas` + `pyarrow` — data processing
+- `matplotlib` — static charts
+- `jinja2` — report templates
+- `openpyxl` — Excel export
