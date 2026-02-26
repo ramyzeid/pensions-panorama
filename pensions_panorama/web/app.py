@@ -2082,151 +2082,147 @@ def tab_country(data: dict) -> None:
 
     st.divider()
 
-    subtab_modeling, subtab_overview = st.tabs([
-        t("subtab_modeling"), t("subtab_system_overview"),
-    ])
+    # ── Narrative & country context ───────────────────────────────────────────
+    profiles = load_deep_profiles()
+    profile = profiles.get(iso3) or _empty_deep_profile(iso3, params.metadata.country_name)
 
-    # ── Sub-tab 1: Modeling Results ───────────────────────────────────────────
-    with subtab_modeling:
-        n_schemes = len(params.schemes)
-        schemes_header = (
-            t("scheme_details_header", n=n_schemes)
-            if n_schemes == 1
-            else t("scheme_details_header_plural", n=n_schemes)
-        )
-        st.subheader(schemes_header)
-        for i, s in enumerate(params.schemes):
-            with st.expander(
-                f"**{_expand_scheme_name(s.name)}** — {_scheme_type_label(s.type)} ({_tier_label(s.tier)})",
-                expanded=(i == 0),
-            ):
-                _render_scheme_card(s, m.currency_code)
+    last_updated = _format_last_updated(profile.get("last_updated"))
+    if last_updated:
+        st.caption(t("deep_profile_last_updated", date=last_updated))
 
-        st.divider()
+    narrative = profile.get("narrative") or {}
+    st.subheader(t("deep_profile_narrative_header"))
+    st.markdown(narrative.get("text") or t("not_available"))
+    if narrative.get("sources"):
+        st.markdown("**Sources**")
+        for src in narrative.get("sources", []):
+            name = src.get("source_name") or "source"
+            url = src.get("source_url")
+            if url:
+                st.markdown(f"- [{name}]({url})")
+            else:
+                st.markdown(f"- {name}")
 
-        st.subheader(t("results_header"))
-        st.markdown(t("results_intro"))
-        df_oecd = _build_country_results(results, m.currency_code)
-        st.dataframe(df_oecd, use_container_width=True, hide_index=True)
-        csv_oecd = df_oecd.to_csv(index=False).encode()
-        st.download_button(
-            t("download_results_csv"),
-            csv_oecd,
-            f"{iso3}_pension_modeling_results.csv",
-            "text/csv",
-            key="country_results_dl",
-        )
+    st.divider()
+    st.subheader(t("deep_profile_country_info_header"))
+    _render_indicator_table(profile.get("country_indicators") or [])
 
-        st.divider()
+    st.divider()
+    st.subheader(t("deep_profile_kpi_header", country=params.metadata.country_name))
+    kpis = profile.get("system_kpis") or []
+    if not kpis:
+        st.info(t("not_available"))
+    else:
+        cols = st.columns(3)
+        for idx, kpi in enumerate(kpis[:3]):
+            value, year_str, source = _cell_display(kpi.get("cell") or {})
+            cols[idx].markdown(f"**{kpi.get('label')}**")
+            cols[idx].markdown(value)
+            if year_str:
+                cols[idx].caption(f"{t('deep_profile_indicator_year')}: {year_str}")
+            if source and source.get("source_url"):
+                label = source.get("source_name") or "source"
+                cols[idx].caption(f"[{label}]({source['source_url']})")
 
-        with st.expander(t("detailed_results_expander")):
-            st.markdown(t("detailed_results_note", currency=m.currency_code))
-            result_rows = []
-            for r in results:
-                result_rows.append({
-                    t("col_earnings_aw"): f"{r.earnings_multiple:.2f}",
-                    t("col_individual_wage"): f"{m.currency_code} {r.individual_wage:,.0f}",
-                    t("col_gross_pension"): f"{m.currency_code} {r.gross_benefit:,.0f}",
-                    t("col_net_pension"): f"{m.currency_code} {r.net_benefit:,.0f}",
-                    t("col_gross_rr"): f"{r.gross_replacement_rate * 100:.1f}%",
-                    t("col_net_rr"): f"{r.net_replacement_rate * 100:.1f}%",
-                    t("col_gross_pl"): f"{r.gross_pension_level * 100:.1f}%",
-                    t("col_net_pl"): f"{r.net_pension_level * 100:.1f}%",
-                    t("col_gross_pw"): f"{r.gross_pension_wealth:.2f}×",
-                    t("col_net_pw"): f"{r.net_pension_wealth:.2f}×",
-                })
-            st.dataframe(pd.DataFrame(result_rows), use_container_width=True, hide_index=True)
+    st.divider()
+    st.subheader(t("deep_profile_schemes_header"))
+    html_table = _scheme_table_html(profile.get("schemes") or [])
+    if html_table:
+        st.markdown(html_table, unsafe_allow_html=True)
+    else:
+        st.info(t("not_available"))
 
-        st.divider()
+    # ── Modeling results ──────────────────────────────────────────────────────
+    st.divider()
+    st.subheader(t("results_header"))
+    st.markdown(t("results_intro"))
+    df_oecd = _build_country_results(results, m.currency_code)
+    st.dataframe(df_oecd, use_container_width=True, hide_index=True)
+    csv_oecd = df_oecd.to_csv(index=False).encode()
+    st.download_button(
+        t("download_results_csv"),
+        csv_oecd,
+        f"{iso3}_pension_modeling_results.csv",
+        "text/csv",
+        key="country_results_dl",
+    )
 
-        st.subheader(t("charts_header"))
-        st.markdown(t("charts_intro"))
-        fig_a, fig_b, fig_c, fig_d, fig_e, fig_f = _pag_charts(results, params, m.country_name)
+    st.divider()
 
-        row1_l, row1_r = st.columns(2)
-        with row1_l:
-            st.plotly_chart(fig_a, use_container_width=True)
-            st.caption(t("chart_a_caption"))
-        with row1_r:
-            st.plotly_chart(fig_b, use_container_width=True)
-            st.caption(t("chart_b_caption"))
+    with st.expander(t("detailed_results_expander")):
+        st.markdown(t("detailed_results_note", currency=m.currency_code))
+        result_rows = []
+        for r in results:
+            result_rows.append({
+                t("col_earnings_aw"): f"{r.earnings_multiple:.2f}",
+                t("col_individual_wage"): f"{m.currency_code} {r.individual_wage:,.0f}",
+                t("col_gross_pension"): f"{m.currency_code} {r.gross_benefit:,.0f}",
+                t("col_net_pension"): f"{m.currency_code} {r.net_benefit:,.0f}",
+                t("col_gross_rr"): f"{r.gross_replacement_rate * 100:.1f}%",
+                t("col_net_rr"): f"{r.net_replacement_rate * 100:.1f}%",
+                t("col_gross_pl"): f"{r.gross_pension_level * 100:.1f}%",
+                t("col_net_pl"): f"{r.net_pension_level * 100:.1f}%",
+                t("col_gross_pw"): f"{r.gross_pension_wealth:.2f}×",
+                t("col_net_pw"): f"{r.net_pension_wealth:.2f}×",
+            })
+        st.dataframe(pd.DataFrame(result_rows), use_container_width=True, hide_index=True)
 
-        row2_l, row2_r = st.columns(2)
-        with row2_l:
-            st.plotly_chart(fig_c, use_container_width=True)
-            st.caption(t("chart_c_caption"))
-        with row2_r:
-            st.plotly_chart(fig_d, use_container_width=True)
-            st.caption(t("chart_d_caption"))
+    st.divider()
 
-        row3_l, row3_r = st.columns(2)
-        with row3_l:
-            st.plotly_chart(fig_e, use_container_width=True)
-            st.caption(t("chart_e_caption"))
-        with row3_r:
-            st.plotly_chart(fig_f, use_container_width=True)
-            st.caption(t("chart_f_caption"))
+    st.subheader(t("charts_header"))
+    st.markdown(t("charts_intro"))
+    fig_a, fig_b, fig_c, fig_d, fig_e, fig_f = _pag_charts(results, params, m.country_name)
 
-        st.divider()
-        st.subheader("🧮 Calculators")
-        col_pc, col_rc = st.columns(2, gap="large")
-        with col_pc:
-            st.markdown("**🧮 Pension Calculator**")
-            _inline_pension_calc(iso3, params, avg_wage, d, ks="_cp")
-        with col_rc:
-            st.markdown("**💰 Retirement Cost**")
-            _inline_retirement_cost(iso3, params, ks="_cp")
+    row1_l, row1_r = st.columns(2)
+    with row1_l:
+        st.plotly_chart(fig_a, use_container_width=True)
+        st.caption(t("chart_a_caption"))
+    with row1_r:
+        st.plotly_chart(fig_b, use_container_width=True)
+        st.caption(t("chart_b_caption"))
 
-    # ── Sub-tab 2: System Overview ────────────────────────────────────────────
-    with subtab_overview:
-        profiles = load_deep_profiles()
-        profile = profiles.get(iso3) or _empty_deep_profile(iso3, params.metadata.country_name)
+    row2_l, row2_r = st.columns(2)
+    with row2_l:
+        st.plotly_chart(fig_c, use_container_width=True)
+        st.caption(t("chart_c_caption"))
+    with row2_r:
+        st.plotly_chart(fig_d, use_container_width=True)
+        st.caption(t("chart_d_caption"))
 
-        last_updated = _format_last_updated(profile.get("last_updated"))
-        if last_updated:
-            st.caption(t("deep_profile_last_updated", date=last_updated))
+    row3_l, row3_r = st.columns(2)
+    with row3_l:
+        st.plotly_chart(fig_e, use_container_width=True)
+        st.caption(t("chart_e_caption"))
+    with row3_r:
+        st.plotly_chart(fig_f, use_container_width=True)
+        st.caption(t("chart_f_caption"))
 
-        narrative = profile.get("narrative") or {}
-        st.subheader(t("deep_profile_narrative_header"))
-        st.markdown(narrative.get("text") or t("not_available"))
-        if narrative.get("sources"):
-            st.markdown("**Sources**")
-            for src in narrative.get("sources", []):
-                name = src.get("source_name") or "source"
-                url = src.get("source_url")
-                if url:
-                    st.markdown(f"- [{name}]({url})")
-                else:
-                    st.markdown(f"- {name}")
+    # ── Calculators ───────────────────────────────────────────────────────────
+    st.divider()
+    st.subheader("🧮 Calculators")
+    col_pc, col_rc = st.columns(2, gap="large")
+    with col_pc:
+        st.markdown("**🧮 Pension Calculator**")
+        _inline_pension_calc(iso3, params, avg_wage, d, ks="_cp")
+    with col_rc:
+        st.markdown("**💰 Retirement Cost**")
+        _inline_retirement_cost(iso3, params, ks="_cp")
 
-        st.divider()
-        st.subheader(t("deep_profile_country_info_header"))
-        _render_indicator_table(profile.get("country_indicators") or [])
-
-        st.divider()
-        st.subheader(t("deep_profile_kpi_header", country=params.metadata.country_name))
-        kpis = profile.get("system_kpis") or []
-        if not kpis:
-            st.info(t("not_available"))
-        else:
-            cols = st.columns(3)
-            for idx, kpi in enumerate(kpis[:3]):
-                value, year_str, source = _cell_display(kpi.get("cell") or {})
-                cols[idx].markdown(f"**{kpi.get('label')}**")
-                cols[idx].markdown(value)
-                if year_str:
-                    cols[idx].caption(f"{t('deep_profile_indicator_year')}: {year_str}")
-                if source and source.get("source_url"):
-                    label = source.get("source_name") or "source"
-                    cols[idx].caption(f"[{label}]({source['source_url']})")
-
-        st.divider()
-        st.subheader(t("deep_profile_schemes_header"))
-        html_table = _scheme_table_html(profile.get("schemes") or [])
-        if html_table:
-            st.markdown(html_table, unsafe_allow_html=True)
-        else:
-            st.info(t("not_available"))
+    # ── Scheme parameter detail ───────────────────────────────────────────────
+    st.divider()
+    n_schemes = len(params.schemes)
+    schemes_header = (
+        t("scheme_details_header", n=n_schemes)
+        if n_schemes == 1
+        else t("scheme_details_header_plural", n=n_schemes)
+    )
+    st.subheader(schemes_header)
+    for i, s in enumerate(params.schemes):
+        with st.expander(
+            f"**{_expand_scheme_name(s.name)}** — {_scheme_type_label(s.type)} ({_tier_label(s.tier)})",
+            expanded=(i == 0),
+        ):
+            _render_scheme_card(s, m.currency_code)
 
 
 # ---------------------------------------------------------------------------
