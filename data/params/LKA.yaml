@@ -1,0 +1,231 @@
+# =============================================================================
+# Sri Lanka (LKA) – Pension System Parameters
+# =============================================================================
+# Primary scheme: EPF – Employees' Provident Fund (DC lump sum)
+# Secondary: ETF – Employees' Trust Fund
+# Governing law: EPF Act No. 15 of 1958; ETF Act No. 46 of 1980
+#
+# Sources:
+#   [1] Central Bank of Sri Lanka – EPF Annual Report 2022
+#   [2] Employees' Provident Fund Act No. 15 of 1958 (as amended)
+#   [3] Employees' Trust Fund Act No. 46 of 1980
+#   [4] World Bank Sri Lanka Pension Adequacy Assessment 2019
+# =============================================================================
+
+metadata:
+  country_name: "Sri Lanka"
+  iso3: "LKA"
+  iso2: "LK"
+  currency: "Sri Lankan Rupee"
+  currency_code: "LKR"
+  reference_year: 2022
+  wb_region: "SAS"
+  wb_income_level: "LMC"
+  un_location_id: 144
+  sources:
+    - "Employees' Provident Fund Act No. 15 of 1958 (as amended) – Sri Lanka"
+    - "Central Bank of Sri Lanka EPF Annual Report 2022"
+    - "Employees' Trust Fund Act No. 46 of 1980 – Sri Lanka"
+    - "World Bank Sri Lanka Pension Adequacy Assessment 2019"
+  last_reviewed: "2024-03-01"
+
+schemes:
+  - scheme_id: "EPF_DC"
+    name: "Employees' Provident Fund (EPF)"
+    tier: "second"
+    type: "DC"
+    coverage: >
+      Mandatory for all private sector employees and some public corporations. Covers
+      approximately 35% of workforce in formal employment. Government employees covered
+      by separate non-contributory pension scheme.
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 55
+        source_citation: >
+          EPF Act – EPF benefits withdrawable at age 55 (or on reaching 50 with employer
+          consent). No statutory national retirement age; EPF is the de facto retirement age
+          for private sector. Central Bank of Sri Lanka EPF 2022.
+        source_url: "https://www.cbsl.gov.lk"
+        year: 2022
+      normal_retirement_age_female:
+        value: 50
+        source_citation: >
+          EPF Act – Women may withdraw EPF benefits at age 50 (or on marriage in certain
+          circumstances). Central Bank of Sri Lanka EPF 2022.
+        year: 2022
+      vesting_years:
+        value: 0
+        source_citation: "EPF – no minimum vesting period; full member account balance withdrawable."
+        year: 2022
+      minimum_contribution_years:
+        value: 0
+        source_citation: "EPF – lump sum accumulation, no minimum contribution period required."
+        year: 2022
+
+    contributions:
+      employee_rate:
+        value: 0.08
+        source_citation: >
+          EPF Act No. 15 of 1958 (as amended) – employee contribution 8% of gross wage.
+          Central Bank of Sri Lanka EPF Report 2022.
+        source_url: "https://www.cbsl.gov.lk"
+        year: 2022
+      employer_rate:
+        value: 0.12
+        source_citation: >
+          EPF Act – employer contribution 12% of gross wage. Total EPF rate: 20%.
+          Central Bank of Sri Lanka EPF Report 2022.
+        year: 2022
+      total_rate:
+        value: 0.20
+        source_citation: "Employee 8% + Employer 12% = 20% of gross wage. EPF Act 1958."
+        year: 2022
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "No contribution ceiling in EPF; all wage income is subject to contributions."
+        year: 2022
+      contribution_base: "gross wage"
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: >
+          DC scheme – benefit is the accumulated account balance (contributions + investment returns).
+          EPF historically credits ~8-12% nominal return (Central Bank administered rate).
+          No defined accrual rate.
+        year: 2022
+      reference_wage: "career_average"
+      valorization: "market"
+      indexation: "market"
+      minimum_benefit_aw_multiple:
+        value: null
+        source_citation: "No minimum benefit guarantee in EPF. Central Bank of Sri Lanka 2022."
+        year: 2022
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "DC scheme – no maximum cap. Benefit depends on accumulated savings."
+        year: 2022
+
+    payout:
+      type: "lump_sum"
+
+  - scheme_id: "ETF_DC"
+    name: "Employees' Trust Fund (ETF)"
+    tier: "second"
+    type: "DC"
+    coverage: "all EPF members; employer-only contributions"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 55
+        source_citation: "ETF Act – same withdrawal age as EPF (55 for males). ETF Board 2022."
+        year: 2022
+      normal_retirement_age_female:
+        value: 50
+        source_citation: "ETF Act – same withdrawal age as EPF (50 for females). ETF Board 2022."
+        year: 2022
+
+    contributions:
+      employee_rate:
+        value: 0.0
+        source_citation: "ETF Act No. 46 of 1980 – employee contribution is 0%; employer-funded only."
+        year: 2022
+      employer_rate:
+        value: 0.03
+        source_citation: >
+          ETF Act No. 46 of 1980 – employer contribution 3% of gross wage to ETF.
+          ETF Board Sri Lanka Annual Report 2022.
+        source_url: "https://www.etf.lk"
+        year: 2022
+      total_rate:
+        value: 0.03
+        source_citation: "ETF employer contribution 3% of gross wage. ETF Act 1980."
+        year: 2022
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "No contribution ceiling in ETF."
+        year: 2022
+      contribution_base: "gross wage"
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: "DC scheme – benefit is accumulated employer contributions plus interest."
+        year: 2022
+      reference_wage: "career_average"
+      valorization: "market"
+      indexation: "market"
+      minimum_benefit_aw_multiple:
+        value: null
+        source_citation: "No minimum benefit guarantee in ETF."
+        year: 2022
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "DC scheme – no maximum cap."
+        year: 2022
+
+    payout:
+      type: "lump_sum"
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: >
+    EPF/ETF lump sum withdrawals at retirement are exempt from income tax in Sri Lanka
+    under the Inland Revenue Act No. 24 of 2017 (Section 13). Annuity income from
+    private pension schemes is taxable at 5% withholding. Government pension fully exempt.
+  simplified_net_rate:
+    value: 0.0
+    source_citation: >
+      EPF/ETF lump sum withdrawals are tax-exempt at retirement age. Inland Revenue Act
+      No. 24 of 2017, Section 13. Sri Lanka.
+    year: 2022
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "LKA"
+  ilostat_transformation: "x * 12"
+  manual_value: 480000.0
+  currency: "Sri Lankan Rupee"
+  year: 2022
+  source_citation: >
+    Department of Census and Statistics Sri Lanka – Labour Force Survey 2022.
+    Average monthly earnings of paid employees ~LKR 40,000-45,000/month pre-crisis;
+    nominal wages rose during 2022 economic crisis. Using LKR 40,000/month × 12 = LKR 480,000/year.
+    Note: Sri Lanka experienced severe economic crisis in 2022 with ~54% inflation.
+  source_url: "https://www.cbsl.gov.lk"
+  notes: >
+    Sri Lanka experienced a severe economic crisis in 2022 with GDP contraction ~7.8%
+    and inflation exceeding 54%. Real wages fell sharply. EPF real returns were negative
+    in 2022. LKR manual_value is nominal 2022 estimate; purchasing power declined significantly.
+
+
+# =============================================================================
+# Worker types
+# =============================================================================
+
+worker_types:
+
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: [EPF_DC]
+    source_citation: "Default: same as main scheme definition."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: unknown
+    scheme_ids: []
+    source_citation: "Coverage status not yet researched; placeholder."
+    notes: "TODO: verify self-employed coverage under national law."
+
+notes: >
+  Sri Lanka's EPF/ETF system is a pure defined-contribution provident fund paying lump sums,
+  not annuities. This limits comparability with DB pension systems. The government has considered
+  converting EPF into an annuity-paying scheme but no reform was enacted as of 2022.
+  Government/public sector employees have a separate, non-contributory defined benefit pension
+  (pensions paid from current government budget). Only ~35% of the workforce is covered by EPF.
+  The 2022 economic crisis caused significant erosion of EPF real values.

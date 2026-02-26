@@ -1,0 +1,176 @@
+# =============================================================================
+# Syria (SYR) – Pension System Parameters
+# =============================================================================
+# Primary scheme: GOSI – General Organization for Social Insurance
+#                 (المؤسسة العامة للتأمينات الاجتماعية)
+# Governing law: Social Insurance Law No. 92 of 1959 (as amended to 2019)
+#
+# IMPORTANT: Syria's pension system has been severely disrupted since 2011.
+# Data below reflects the legal framework, not current operational reality.
+# System operates in government-controlled areas only.
+#
+# Sources:
+#   [1] Social Insurance Law No. 92 of 1959 (as amended) – Syria
+#   [2] ILO Syria Social Security Country Profile 2015 (last reliable)
+#   [3] World Bank Syria Economic Monitor 2022
+# =============================================================================
+
+metadata:
+  country_name: "Syria"
+  iso3: "SYR"
+  iso2: "SY"
+  currency: "Syrian Pound"
+  currency_code: "SYP"
+  reference_year: 2022
+  wb_region: "MEA"
+  wb_income_level: "LIC"
+  un_location_id: 760
+  sources:
+    - "Social Insurance Law No. 92 of 1959 (as amended to 2019) – Syria"
+    - "ILO Syria Social Security Country Profile 2015"
+    - "World Bank Syria Economic Monitor 2022"
+  last_reviewed: "2024-03-01"
+
+schemes:
+  - scheme_id: "GOSI_DB"
+    name: "GOSI Old-Age Pension"
+    tier: "first"
+    type: "DB"
+    coverage: >
+      Formal private sector employees in government-controlled areas only.
+      Coverage severely reduced since 2011 conflict; large displaced population
+      and destroyed economic activity. Pre-conflict coverage was ~30% of workforce.
+      Current effective coverage unknown but substantially lower.
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 60
+        source_citation: >
+          Social Insurance Law No. 92 of 1959 Art. 32 – NRA 60 for males with
+          180 months (15 years) minimum contributions. GOSI Syria.
+        year: 2022
+      normal_retirement_age_female:
+        value: 55
+        source_citation: >
+          Social Insurance Law No. 92 of 1959 Art. 32 – NRA 55 for females with
+          180 months minimum contributions. GOSI Syria.
+        year: 2022
+      vesting_years:
+        value: 15
+        source_citation: >
+          Social Insurance Law No. 92/1959 – minimum 180 months (15 years) of
+          contributions for old-age pension. GOSI Syria.
+        year: 2022
+      minimum_contribution_years:
+        value: 15
+        source_citation: "GOSI Syria – 180 months (15 years) minimum. Social Insurance Law 92/1959."
+        year: 2022
+
+    contributions:
+      employee_rate:
+        value: 0.07
+        source_citation: >
+          Social Insurance Law No. 92 of 1959 (as amended) – employee contribution
+          7% of insured wage. GOSI Syria.
+        year: 2022
+      employer_rate:
+        value: 0.14
+        source_citation: >
+          Social Insurance Law No. 92/1959 – employer contribution 14% of insured wage.
+          Total: 21%. GOSI Syria.
+        year: 2022
+      total_rate:
+        value: 0.21
+        source_citation: "Employee 7% + Employer 14% = 21% of insured wage. GOSI Law 92/1959."
+        year: 2022
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "No contribution ceiling in Syrian social insurance law."
+        year: 2022
+      contribution_base: "insured wage"
+
+    benefits:
+      accrual_rate_per_year:
+        value: 0.025
+        source_citation: >
+          Social Insurance Law No. 92/1959 Art. 33 – pension = 2.5% × years of service ×
+          average of last 5 years earnings. Maximum 75% at 30 years.
+          GOSI Syria (pre-conflict parameters, still technically in force).
+        year: 2022
+      reference_wage: "final_salary"
+      valorization: "wages"
+      indexation: "wages"
+      minimum_benefit_aw_multiple:
+        value: 0.15
+        source_citation: >
+          GOSI minimum pension (2022 nominal estimate, government-controlled areas).
+          ~SYP 900,000/year. With AW ~SYP 7,200,000/year → ~13%. Very uncertain.
+          GOSI Syria 2022.
+        year: 2022
+      maximum_benefit_aw_multiple:
+        value: 0.75
+        source_citation: >
+          GOSI maximum pension 75% of reference wage at 30 years (2.5% × 30 = 75%).
+          Social Insurance Law No. 92/1959.
+        year: 2022
+
+    payout:
+      type: "annuity"
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: >
+    GOSI pension income is exempt from income tax in Syria under the Income Tax Act.
+    Syrian Income Tax Decree 1949 (as amended) exempts social insurance pensions.
+  simplified_net_rate:
+    value: 0.0
+    source_citation: "GOSI pensions are tax-exempt. Syrian Income Tax legislation."
+    year: 2022
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "SYR"
+  ilostat_transformation: "x * 12"
+  manual_value: 7200000.0
+  currency: "Syrian Pound"
+  year: 2022
+  source_citation: >
+    World Bank Syria Economic Monitor 2022 – very rough estimate.
+    Average formal sector wage in government-controlled areas ~SYP 600,000/month × 12
+    = SYP 7,200,000/year nominal (2022). SYP has lost >95% of pre-conflict value.
+    At unofficial rate ~SYP 4,000-5,000/USD in 2022: ~$1,440/year purchasing power
+    equivalent – reflecting severe impoverishment. ILOSTAT data unavailable.
+  notes: >
+    EXTREME UNCERTAINTY. Syria is in a prolonged civil war since 2011. GDP contracted
+    ~60% from pre-war levels. SYP hyperinflation (black market rate ~SYP 4,500/USD in 2022
+    vs official SYP 3,015/USD). All economic statistics are unreliable.
+
+
+# =============================================================================
+# Worker types
+# =============================================================================
+
+worker_types:
+
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: [GOSI_DB]
+    source_citation: "Default: same as main scheme definition."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: unknown
+    scheme_ids: []
+    source_citation: "Coverage status not yet researched; placeholder."
+    notes: "TODO: verify self-employed coverage under national law."
+
+notes: >
+  Syria's pension system nominally follows the pre-2011 GOSI framework, but in practice
+  is heavily disrupted. Large parts of the population (IDPs, refugees – estimated 13 million
+  displaced) have no access to GOSI. The government continues paying public sector pensions
+  in regime-controlled areas from state budget resources.
+  All figures carry extreme uncertainty. This entry documents the legal framework
+  and should not be used for policy analysis without significant caveats.

@@ -1,0 +1,208 @@
+# =============================================================================
+# Maldives (MDV) – Pension System Parameters
+# =============================================================================
+# Primary schemes:
+#   1. MRPS – Maldives Retirement Pension Scheme (contributory DC)
+#   2. Basic Pension – Universal Old Age Basic Pension (non-contributory)
+# Governing law: Pension Act No. 8 of 2009
+#
+# Sources:
+#   [1] MPAO – Maldives Pension Administration Office – www.pension.gov.mv – AR 2022
+#   [2] Pension Act No. 8 of 2009 (as amended)
+#   [3] ILO Maldives Social Protection Country Profile 2022
+#   [4] World Bank Maldives Public Expenditure Review 2019
+# =============================================================================
+
+metadata:
+  country_name: "Maldives"
+  iso3: "MDV"
+  iso2: "MV"
+  currency: "Maldivian Rufiyaa"
+  currency_code: "MVR"
+  reference_year: 2022
+  wb_region: "SAS"
+  wb_income_level: "UMC"
+  un_location_id: 462
+  sources:
+    - "Pension Act No. 8 of 2009 (as amended) – Maldives"
+    - "MPAO Annual Report 2022 – www.pension.gov.mv"
+    - "ILO Maldives Social Protection Country Profile 2022"
+    - "World Bank Maldives Public Expenditure Review 2019"
+  last_reviewed: "2024-03-01"
+
+schemes:
+  - scheme_id: "MRPS_DC"
+    name: "Maldives Retirement Pension Scheme (MRPS)"
+    tier: "second"
+    type: "DC"
+    coverage: >
+      Mandatory for all employed Maldivians aged 16-65 in both public and private sector.
+      Self-employed may enroll voluntarily. Coverage among employed population is high
+      (~70-80% of formal workforce). Expatriate workers may enroll voluntarily.
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 65
+        source_citation: >
+          Pension Act No. 8 of 2009 Art. 22 – MRPS retirement age is 65 for both sexes.
+          MPAO Maldives 2022.
+        source_url: "https://www.pension.gov.mv"
+        year: 2022
+      normal_retirement_age_female:
+        value: 65
+        source_citation: "Pension Act No. 8/2009 – NRA 65 for both male and female members."
+        year: 2022
+      vesting_years:
+        value: 15
+        source_citation: >
+          Pension Act No. 8/2009 Art. 22 – minimum 15 years of contributions for MRPS
+          annuity at retirement. Early partial withdrawal allowed under certain conditions.
+          MPAO Maldives 2022.
+        year: 2022
+      minimum_contribution_years:
+        value: 15
+        source_citation: "MPAO – 15 years minimum for annuity; otherwise lump sum refund."
+        year: 2022
+
+    contributions:
+      employee_rate:
+        value: 0.07
+        source_citation: >
+          Pension Act No. 8 of 2009 Art. 17 – employee contribution 7% of pensionable wage.
+          MPAO Maldives 2022.
+        source_url: "https://www.pension.gov.mv"
+        year: 2022
+      employer_rate:
+        value: 0.07
+        source_citation: >
+          Pension Act No. 8/2009 Art. 17 – employer contribution 7% of pensionable wage.
+          Total contribution rate: 14%. MPAO Maldives 2022.
+        year: 2022
+      total_rate:
+        value: 0.14
+        source_citation: "Employee 7% + Employer 7% = 14% of pensionable wage. Pension Act 8/2009."
+        year: 2022
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "No contribution ceiling in Pension Act 8/2009."
+        year: 2022
+      contribution_base: "pensionable wage (gross employment income)"
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: >
+          DC scheme – benefit is accumulated account balance invested in MPAO-managed
+          funds. MPAO invests in government securities and approved instruments.
+          Historical returns approximately 6-8% nominal. Pension Act No. 8/2009.
+        year: 2022
+      reference_wage: "career_average"
+      valorization: "market"
+      indexation: "market"
+      minimum_benefit_aw_multiple:
+        value: null
+        source_citation: "No minimum MRPS benefit guarantee."
+        year: 2022
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "DC scheme – no maximum cap."
+        year: 2022
+
+    payout:
+      type: "annuity"
+
+  - scheme_id: "BASIC_PENSION"
+    name: "Old Age Basic Pension (OABP)"
+    tier: "first"
+    type: "basic"
+    coverage: >
+      Universal: all Maldivian citizens aged 65+. Non-contributory, funded from
+      government budget. Approximately 3,500-4,000 beneficiaries as of 2022 given
+      small population.
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 65
+        source_citation: >
+          Pension Act No. 8 of 2009 Art. 30 – Basic Pension payable to all Maldivians
+          aged 65+. Universal entitlement. MPAO Maldives 2022.
+        year: 2022
+      normal_retirement_age_female:
+        value: 65
+        source_citation: "Pension Act No. 8/2009 – Basic Pension from age 65 for all citizens."
+        year: 2022
+
+    benefits:
+      minimum_benefit_aw_multiple:
+        value: 0.25
+        source_citation: >
+          OABP amount: MVR 5,000/month (2022 rate, last increased from MVR 2,000 in 2019).
+          With AW ~MVR 20,000/month: OABP = 25% AW. MPAO Maldives 2022.
+        source_url: "https://www.pension.gov.mv"
+        year: 2022
+      indexation: "CPI"
+
+    payout:
+      type: "annuity"
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: >
+    The Maldives does not levy personal income tax. Business Profit Tax (BPT) and
+    General Goods and Services Tax (GGST) apply, but there is no individual income tax.
+    MRPS withdrawals and Basic Pension payments are therefore effectively tax-free.
+    Maldives Inland Revenue Authority (MIRA).
+  simplified_net_rate:
+    value: 0.0
+    source_citation: "No personal income tax in Maldives. MIRA – Maldives Inland Revenue Authority."
+    year: 2022
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "MDV"
+  ilostat_transformation: "x * 12"
+  manual_value: 240000.0
+  currency: "Maldivian Rufiyaa"
+  year: 2022
+  source_citation: >
+    Maldives Bureau of Statistics (MBS) Household Income Survey 2019 and wage updates.
+    Average monthly earnings of employed persons ~MVR 20,000/month × 12 = MVR 240,000/year.
+    Tourism sector (dominant industry) wages are higher; outer-island wages lower.
+    ILOSTAT data for MDV limited; manual estimate used.
+  source_url: "https://www.pension.gov.mv"
+  notes: >
+    Maldives has a high per-capita income (upper-middle income) driven by tourism.
+    The pension system is relatively comprehensive for such a small island nation (~540,000 people).
+    Foreign workers constitute a significant share of the labour force.
+
+
+# =============================================================================
+# Worker types
+# =============================================================================
+
+worker_types:
+
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: [MRPS_DC]
+    source_citation: "Default: same as main scheme definition."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: unknown
+    scheme_ids: []
+    source_citation: "Coverage status not yet researched; placeholder."
+    notes: "TODO: verify self-employed coverage under national law."
+
+notes: >
+  The Maldives pension system is notable for its combination of a universal non-contributory
+  basic pension (OABP: MVR 5,000/month) and a mandatory contributory DC scheme (MRPS).
+  The OABP is generous relative to AW for a low-income retiree, providing 25% of formal AW.
+  The MPAO is an independent body established under the Pension Act 2009 and has received
+  international praise for good governance in the South Asian context.
+  With only ~540,000 citizens (and ~200,000 foreign workers), Maldives has a small but
+  well-structured system for the region.

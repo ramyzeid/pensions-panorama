@@ -1,0 +1,139 @@
+# =============================================================================
+# Guatemala (GTM) – Pension System Parameters
+# =============================================================================
+# Primary scheme: IGSS (Instituto Guatemalteco de Seguridad Social) – DB
+# Sources:
+#   [1] ILO Social Security Inquiry – Guatemala
+#   [2] Instituto Guatemalteco de Seguridad Social (IGSS) – Annual Report 2022
+# =============================================================================
+
+metadata:
+  country_name: "Guatemala"
+  iso3: "GTM"
+  iso2: "GT"
+  currency: "Guatemalan Quetzal"
+  currency_code: "GTQ"
+  reference_year: 2023
+  wb_region: "LCN"
+  wb_income_level: "UMC"
+  un_location_id: 320
+  sources:
+    - "ILO Social Security Inquiry – Guatemala"
+    - "Instituto Guatemalteco de Seguridad Social (IGSS) Annual Report 2022"
+    - "Ley Orgánica del IGSS (Guatemala, Decree 295, 1946, as amended)"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "GTM_IGSS"
+    name: "IGSS IVS (Invalidez, Vejez y Sobrevivencia) – DB Earnings-Related"
+    tier: "first"
+    type: "DB"
+    coverage: "Formally employed workers in covered sectors; mandatory IGSS"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 62
+        source_citation: "ILO Social Security Inquiry Guatemala: NRA 62 for males."
+        year: 2023
+      normal_retirement_age_female:
+        value: 62
+        source_citation: "ILO Social Security Inquiry Guatemala: NRA 62 for females."
+        year: 2023
+      vesting_years:
+        value: 15
+        source_citation: "ILO Social Security Inquiry Guatemala: minimum 180 monthly contributions (15 years) for IGSS IVS pension."
+        year: 2023
+      minimum_contribution_years:
+        value: 15
+        source_citation: "IGSS Regulations Guatemala: minimum 180 months of contributions for old-age pension."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.0183
+        source_citation: "ILO Social Security Inquiry Guatemala: employee IGSS IVS contribution 1.83% of wages."
+        year: 2023
+      employer_rate:
+        value: 0.0367
+        source_citation: "ILO Social Security Inquiry Guatemala: employer IGSS IVS contribution 3.67% of wages."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: approximately 5.5% total IGSS IVS contribution plus state 0.5%; total IGSS contributions higher including health."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Guatemala: contributions based on insurable wages; no explicit AW multiple ceiling."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: "IGSS coverage limited to approximately 30% of workforce; large informal sector excluded."
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: "ILO Social Security Inquiry Guatemala: IGSS pension based on average salary and years of contribution; replacement rate approximately 50% after full career."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "prices"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "prices"
+      minimum_benefit_aw_multiple:
+        value: 0.25
+        source_citation: "ILO Social Security Inquiry Guatemala: minimum IGSS pension approximately 25% of average insurable wage."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Guatemala: maximum pension constrained by benefit formula."
+        year: 2023
+      notes: "Adulto Mayor non-contributory programme provides small cash transfers to rural elderly."
+
+    payout:
+      type: "annuity"
+      notes: null
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "Pension income subject to ISR (income tax) in Guatemala; exemptions for amounts below threshold."
+  simplified_net_rate:
+    value: 0.05
+    source_citation: "ILO Social Security Inquiry Guatemala: estimated effective income tax rate on average pension approximately 5%."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "GTM"
+  ilostat_transformation: "x * 12"
+  manual_value: 55000
+  currency: "Guatemalan Quetzal"
+  year: 2022
+  source_citation: "Instituto Nacional de Estadística (INE) Guatemala: average annual formal sector earnings 2022 approximately GTQ 55,000."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["GTM_IGSS"]
+    source_citation: "Ley Orgánica del IGSS: mandatory IGSS for all formally employed private sector workers."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["GTM_IGSS"]
+    source_citation: "ILO Social Security Inquiry Guatemala: civil servants covered by IGSS; civil service pension supplements."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: voluntary
+    scheme_ids: ["GTM_IGSS"]
+    source_citation: "ILO Social Security Inquiry Guatemala: self-employed not mandatorily covered; may voluntarily join IGSS."
+    notes: null
+
+notes: null

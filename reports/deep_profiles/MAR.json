@@ -1,0 +1,321 @@
+{
+  "iso3": "MAR",
+  "country_name": "Morocco",
+  "last_updated": "2026-02-26T08:28:38.456489Z",
+  "narrative": {
+    "text": "Morocco's pension landscape is fragmented, with the CNSS scheme covering private-sector employees and separate schemes for civil servants and other groups. The CNSS old-age insurance is the main mandatory defined-benefit program for the private sector.\n",
+    "sources": [
+      {
+        "source_name": "CNSS Morocco",
+        "source_url": "https://www.cnss.ma",
+        "indicator_id": null,
+        "year": null,
+        "notes": null
+      }
+    ]
+  },
+  "country_indicators": [
+    {
+      "key": "year",
+      "label": "Year",
+      "cell": {
+        "value": 2023,
+        "unit": "year",
+        "year": 2023,
+        "source": {
+          "source_name": "World Development Indicators (World Bank)",
+          "source_url": "https://data.worldbank.org",
+          "indicator_id": null,
+          "year": null,
+          "notes": null
+        },
+        "notes": null
+      }
+    },
+    {
+      "key": "gdp_pc_lcu",
+      "label": "GDP per capita (LCU)",
+      "cell": {
+        "value": 38643.9453125,
+        "unit": "LCU",
+        "year": 2023,
+        "source": {
+          "source_name": "World Development Indicators (World Bank)",
+          "source_url": "https://data.worldbank.org/indicator/NY.GDP.PCAP.CN?locations=MAR",
+          "indicator_id": "NY.GDP.PCAP.CN",
+          "year": 2023,
+          "notes": null
+        },
+        "notes": null
+      }
+    },
+    {
+      "key": "gdp_pc_usd",
+      "label": "GDP per capita (USD)",
+      "cell": {
+        "value": 3813.72607421875,
+        "unit": "USD",
+        "year": 2023,
+        "source": {
+          "source_name": "World Development Indicators (World Bank)",
+          "source_url": "https://data.worldbank.org/indicator/NY.GDP.PCAP.CD?locations=MAR",
+          "indicator_id": "NY.GDP.PCAP.CD",
+          "year": 2023,
+          "notes": null
+        },
+        "notes": null
+      }
+    },
+    {
+      "key": "pop_65_total",
+      "label": "Population age 65+ (total)",
+      "cell": {
+        "value": 2951283.0,
+        "unit": "persons",
+        "year": 2023,
+        "source": {
+          "source_name": "World Development Indicators (World Bank)",
+          "source_url": "https://data.worldbank.org/indicator/SP.POP.65UP.TO?locations=MAR",
+          "indicator_id": "SP.POP.65UP.TO",
+          "year": 2023,
+          "notes": null
+        },
+        "notes": null
+      }
+    },
+    {
+      "key": "pop_65_pct",
+      "label": "Population age 65+ (% of total population)",
+      "cell": {
+        "value": 7.82574109038898,
+        "unit": "%",
+        "year": 2023,
+        "source": {
+          "source_name": "World Development Indicators (World Bank)",
+          "source_url": "https://data.worldbank.org/indicator/SP.POP.65UP.TO.ZS?locations=MAR",
+          "indicator_id": "SP.POP.65UP.TO.ZS",
+          "year": 2023,
+          "notes": null
+        },
+        "notes": null
+      }
+    }
+  ],
+  "system_kpis": [
+    {
+      "key": "coverage_total",
+      "label": "Covers % of the population",
+      "cell": {
+        "value": null,
+        "unit": null,
+        "year": null,
+        "source": null,
+        "notes": null
+      }
+    },
+    {
+      "key": "coverage_65plus",
+      "label": "Covers % of the population age 65+",
+      "cell": {
+        "value": null,
+        "unit": null,
+        "year": null,
+        "source": null,
+        "notes": null
+      }
+    },
+    {
+      "key": "pension_spending_gdp",
+      "label": "Accounts for % of GDP",
+      "cell": {
+        "value": null,
+        "unit": null,
+        "year": null,
+        "source": null,
+        "notes": null
+      }
+    }
+  ],
+  "schemes": [
+    {
+      "scheme_id": "CNSS_OAI",
+      "scheme_name": "CNSS Old-Age Insurance (Assurance Vieillesse)",
+      "scheme_type_group": "db",
+      "attributes": {
+        "implementing_agency": {
+          "value": "CNSS",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "target_population": {
+          "value": null,
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "benefit_plan_type": {
+          "value": "Defined Benefit (DB)",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "financing_mechanism": {
+          "value": "Pay As You Go (PAYG)",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "contrib_employee": {
+          "value": null,
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "contrib_employer": {
+          "value": null,
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "contrib_total": {
+          "value": null,
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "ret_age_male": {
+          "value": 60,
+          "unit": null,
+          "year": null,
+          "source": {
+            "source_name": "CNSS Law (Dahir No. 1-72-184)",
+            "source_url": "https://www.cnss.ma",
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        },
+        "ret_age_female": {
+          "value": 60,
+          "unit": null,
+          "year": null,
+          "source": {
+            "source_name": "CNSS Law (Dahir No. 1-72-184)",
+            "source_url": "https://www.cnss.ma",
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        },
+        "members_total": {
+          "value": null,
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "members_pct_adult": {
+          "value": null,
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "contributors_total": {
+          "value": null,
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "contributors_pct_lf": {
+          "value": null,
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "beneficiaries_total": {
+          "value": null,
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "beneficiaries_pct_lf": {
+          "value": null,
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "beneficiaries_pct_total": {
+          "value": null,
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "beneficiaries_pct_65plus": {
+          "value": null,
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "rev_contrib_gdp": {
+          "value": null,
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "rev_govt_gdp": {
+          "value": null,
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "rev_other_gdp": {
+          "value": null,
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "expenditure_total_gdp": {
+          "value": null,
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "benefit_payments_gdp": {
+          "value": null,
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "benefit_payments_lcu": {
+          "value": null,
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,141 @@
+# =============================================================================
+# Brunei Darussalam (BRN) – Pension System Parameters
+# =============================================================================
+# Primary scheme: TAP (Tabung Amanah Pekerja) – DC Provident Fund
+# Sources:
+#   [1] ILO Social Security Inquiry – Brunei Darussalam
+#   [2] Tabung Amanah Pekerja (TAP) Brunei – Annual Report 2022
+#   [3] TAP Order (Brunei, 2000)
+# =============================================================================
+
+metadata:
+  country_name: "Brunei Darussalam"
+  iso3: "BRN"
+  iso2: "BN"
+  currency: "Brunei Dollar"
+  currency_code: "BND"
+  reference_year: 2023
+  wb_region: "EAP"
+  wb_income_level: "HIC"
+  un_location_id: 96
+  sources:
+    - "ILO Social Security Inquiry – Brunei Darussalam"
+    - "Tabung Amanah Pekerja (TAP) Brunei Annual Report 2022"
+    - "TAP Order (Brunei Darussalam, 2000)"
+    - "Supplemental Contributory Pension (SCP) Scheme Brunei"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "BRN_TAP"
+    name: "TAP (Tabung Amanah Pekerja) – DC Provident Fund"
+    tier: "first"
+    type: "DC"
+    coverage: "Citizens and permanent residents in formal employment; mandatory provident fund"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 55
+        source_citation: "ILO Social Security Inquiry Brunei: TAP withdrawal age 55 for males."
+        year: 2023
+      normal_retirement_age_female:
+        value: 55
+        source_citation: "ILO Social Security Inquiry Brunei: TAP withdrawal age 55 for females."
+        year: 2023
+      vesting_years:
+        value: 0
+        source_citation: "ILO Social Security Inquiry Brunei: DC provident fund – accumulated balance accessible at age 55."
+        year: 2023
+      minimum_contribution_years:
+        value: 0
+        source_citation: "TAP Order Brunei: DC balance accessible at age 55 without minimum years."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.05
+        source_citation: "ILO Social Security Inquiry Brunei: TAP employee contribution 5% of wages."
+        year: 2023
+      employer_rate:
+        value: 0.05
+        source_citation: "ILO Social Security Inquiry Brunei: TAP employer contribution 5% of wages."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: 10% total TAP contribution (5% employee + 5% employer)."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Brunei: contributions on all wages; no explicit AW ceiling."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: "SCP (Supplemental Contributory Pension) scheme introduced 2010 adds 3.5%+3.5% for additional retirement savings. No income tax in Brunei."
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: "ILO Social Security Inquiry Brunei: TAP DC scheme – pension based on accumulated contributions and investment returns."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "interest"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "none"
+      minimum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Brunei: no statutory minimum TAP pension."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Brunei: no explicit maximum; balance depends on contributions."
+        year: 2023
+      notes: "Government employees receive separate government pension scheme. Brunei has no personal income tax."
+
+    payout:
+      type: "lump_sum"
+      notes: "TAP accumulated balance paid as lump sum at age 55; annuity option available."
+
+taxes:
+  worker_income_tax_treatment: "EEE"
+  income_tax_on_pension: "No personal income tax in Brunei; pension withdrawals tax-free."
+  simplified_net_rate:
+    value: 0.00
+    source_citation: "Brunei has no personal income tax; effective tax rate on pension income is zero."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "BRN"
+  ilostat_transformation: "x * 12"
+  manual_value: 30000
+  currency: "Brunei Dollar"
+  year: 2022
+  source_citation: "Brunei Department of Statistics: estimated average annual formal earnings 2022 approximately BND 30,000."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["BRN_TAP"]
+    source_citation: "TAP Order Brunei: mandatory TAP for citizens and permanent residents in formal employment."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["BRN_TAP"]
+    source_citation: "ILO Social Security Inquiry Brunei: government employees covered by government pension scheme."
+    notes: "Government employees covered by separate non-contributory government pension in addition to TAP."
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: voluntary
+    scheme_ids: ["BRN_TAP"]
+    source_citation: "ILO Social Security Inquiry Brunei: self-employed may voluntarily contribute to TAP."
+    notes: null
+
+notes: null

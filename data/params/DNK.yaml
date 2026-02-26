@@ -1,0 +1,142 @@
+# =============================================================================
+# Denmark (DNK) – Pension System Parameters
+# =============================================================================
+# Primary scheme: Folkepension (tax-financed flat-rate) + ATP (quasi-DC)
+# Sources:
+#   [1] OECD Pensions at a Glance 2023 – Denmark
+#   [2] Statistics Denmark – Statistical Yearbook 2023
+# =============================================================================
+
+metadata:
+  country_name: "Denmark"
+  iso3: "DNK"
+  iso2: "DK"
+  currency: "Danish Krone"
+  currency_code: "DKK"
+  reference_year: 2023
+  wb_region: "ECS"
+  wb_income_level: "HIC"
+  un_location_id: 208
+  sources:
+    - "OECD Pensions at a Glance 2023 – Denmark"
+    - "Statistics Denmark Statistical Yearbook 2023"
+    - "Pension Act (Pensionsloven) Denmark"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "DNK_FOLK"
+    name: "Folkepension (Universal State Pension)"
+    tier: "first"
+    type: "basic"
+    coverage: "All Danish residents aged 67+ with qualifying residence period"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 67
+        source_citation: "OECD Pensions at a Glance 2023 Denmark: Folkepension age 67, rising to 68 by 2030."
+        year: 2023
+      normal_retirement_age_female:
+        value: 67
+        source_citation: "OECD Pensions at a Glance 2023 Denmark: Folkepension age equalised at 67 for both sexes."
+        year: 2023
+      vesting_years:
+        value: 3
+        source_citation: "OECD Pensions at a Glance 2023 Denmark: minimum 3 years of residence for partial pension; 40 years for full pension."
+        year: 2023
+      minimum_contribution_years:
+        value: 40
+        source_citation: "OECD Pensions at a Glance 2023 Denmark: 40 years of residence for full Folkepension."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.0
+        source_citation: "OECD Pensions at a Glance 2023 Denmark: Folkepension is tax-financed; no specific employee pension contribution (funded through general income taxes)."
+        year: 2023
+      employer_rate:
+        value: 0.0
+        source_citation: "OECD Pensions at a Glance 2023 Denmark: Folkepension tax-financed; no employer pension contribution (separate ATP contributions exist)."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "OECD Pensions at a Glance 2023 Denmark: Folkepension financed from general taxation; ATP contributions DKK 3,510/year employee (2/3) + employer (1/3)."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "OECD Pensions at a Glance 2023 Denmark: no contribution ceiling for tax-financed Folkepension."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: "ATP (Arbejdsmarkedets Tillægspension) provides quasi-DC supplement; mandatory flat contributions."
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: "OECD Pensions at a Glance 2023 Denmark: Folkepension is a flat-rate benefit; no accrual rate."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "wages"
+      flat_rate_aw_multiple:
+        value: 0.17
+        source_citation: "OECD Pensions at a Glance 2023 – Denmark"
+        year: 2023
+      flat_rate_absolute: null
+      indexation: "wages"
+      minimum_benefit_aw_multiple:
+        value: 0.17
+        source_citation: "OECD Pensions at a Glance 2023 Denmark: full Folkepension for singles approximately DKK 82,000/year (2023), ~17% of average wage; means-tested supplements add more."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: 0.17
+        source_citation: "OECD Pensions at a Glance 2023 Denmark: flat Folkepension capped at basic rate; supplements are means-tested."
+        year: 2023
+      notes: "Total pension income also includes mandatory occupational pensions (ATP + workplace DC), typically adding 15–30% of final salary."
+
+    payout:
+      type: "annuity"
+      notes: null
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "Pension income (Folkepension + occupational) fully subject to Danish progressive income tax; combined marginal rates can reach 55%."
+  simplified_net_rate:
+    value: 0.30
+    source_citation: "OECD Pensions at a Glance 2023 Denmark: estimated effective income tax rate on average pension approximately 30% (including local taxes)."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "DNK"
+  ilostat_transformation: "x * 12"
+  manual_value: 370000
+  currency: "Danish Krone"
+  year: 2022
+  source_citation: "Statistics Denmark: average annual earnings 2022 approximately DKK 494,000 gross; using DKK 370,000 as net-of-taxes/contributions estimate."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["DNK_FOLK"]
+    source_citation: "Pension Act Denmark: Folkepension universal for residents; mandatory occupational pension through collective agreements for employees."
+    source_url: null
+    notes: "Private sector employees also covered by mandatory occupational DC pension (typically 12–17% of salary through collective agreements)."
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["DNK_FOLK"]
+    source_citation: "OECD Pensions at a Glance 2023 Denmark: civil servants entitled to Folkepension plus government occupational pension."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: mandatory
+    scheme_ids: ["DNK_FOLK"]
+    source_citation: "Pension Act Denmark: self-employed entitled to Folkepension on basis of residence; may contribute voluntarily to private pension."
+    notes: null
+
+notes: null

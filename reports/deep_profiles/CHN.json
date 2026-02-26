@@ -1,0 +1,336 @@
+{
+  "iso3": "CHN",
+  "country_name": "China",
+  "last_updated": "2026-02-26T08:35:31.120784Z",
+  "narrative": {
+    "text": "China is a East Asia and Pacific country with a DB-type pension system centred on the Urban Employee Basic Pension \u2013 Social Pool (DB Component). The system includes 2 schemes: Urban Employee Basic Pension \u2013 Social Pool (DB Component), Urban Employee Basic Pension \u2013 Individual Account (DC Component). The normal retirement age is 60 for men and 55 for women. Contributions total 24.0% of insurable earnings (8.0% employee, 16.0% employer).",
+    "sources": [
+      {
+        "source_name": "SSA Social Security Programs Throughout the World \u2013 Asia and the Pacific 2022",
+        "source_url": null,
+        "indicator_id": null,
+        "year": null,
+        "notes": null
+      },
+      {
+        "source_name": "China Social Insurance Law 2011 \u2013 MOHRSS",
+        "source_url": null,
+        "indicator_id": null,
+        "year": null,
+        "notes": null
+      }
+    ]
+  },
+  "country_indicators": [
+    {
+      "key": "year",
+      "label": "Year",
+      "cell": {
+        "value": 2023,
+        "unit": "year",
+        "year": 2023,
+        "source": {
+          "source_name": "World Development Indicators (World Bank)",
+          "source_url": "https://data.worldbank.org",
+          "indicator_id": null,
+          "year": null,
+          "notes": null
+        },
+        "notes": null
+      }
+    },
+    {
+      "key": "gdp_pc_lcu",
+      "label": "GDP per capita (LCU)",
+      "cell": {
+        "value": 91746.1207477086,
+        "unit": "LCU",
+        "year": 2023,
+        "source": {
+          "source_name": "World Development Indicators (World Bank)",
+          "source_url": "https://data.worldbank.org/indicator/NY.GDP.PCAP.CN?locations=CHN",
+          "indicator_id": "NY.GDP.PCAP.CN",
+          "year": 2023,
+          "notes": null
+        },
+        "notes": null
+      }
+    },
+    {
+      "key": "gdp_pc_usd",
+      "label": "GDP per capita (USD)",
+      "cell": {
+        "value": 12951.1782397043,
+        "unit": "USD",
+        "year": 2023,
+        "source": {
+          "source_name": "World Development Indicators (World Bank)",
+          "source_url": "https://data.worldbank.org/indicator/NY.GDP.PCAP.CD?locations=CHN",
+          "indicator_id": "NY.GDP.PCAP.CD",
+          "year": 2023,
+          "notes": null
+        },
+        "notes": null
+      }
+    },
+    {
+      "key": "pop_65_total",
+      "label": "Population age 65+ (total)",
+      "cell": {
+        "value": 201958336.0,
+        "unit": "persons",
+        "year": 2023,
+        "source": {
+          "source_name": "World Development Indicators (World Bank)",
+          "source_url": "https://data.worldbank.org/indicator/SP.POP.65UP.TO?locations=CHN",
+          "indicator_id": "SP.POP.65UP.TO",
+          "year": 2023,
+          "notes": null
+        },
+        "notes": null
+      }
+    },
+    {
+      "key": "pop_65_pct",
+      "label": "Population age 65+ (% of total population)",
+      "cell": {
+        "value": 14.3160774690688,
+        "unit": "%",
+        "year": 2023,
+        "source": {
+          "source_name": "World Development Indicators (World Bank)",
+          "source_url": "https://data.worldbank.org/indicator/SP.POP.65UP.TO.ZS?locations=CHN",
+          "indicator_id": "SP.POP.65UP.TO.ZS",
+          "year": 2023,
+          "notes": null
+        },
+        "notes": null
+      }
+    }
+  ],
+  "system_kpis": [
+    {
+      "key": "coverage_total",
+      "label": "Covers % of the population",
+      "cell": {
+        "value": null,
+        "unit": null,
+        "year": null,
+        "source": null,
+        "notes": null
+      }
+    },
+    {
+      "key": "coverage_65plus",
+      "label": "Covers % of the population age 65+",
+      "cell": {
+        "value": null,
+        "unit": null,
+        "year": null,
+        "source": null,
+        "notes": null
+      }
+    },
+    {
+      "key": "pension_spending_gdp",
+      "label": "Accounts for % of GDP",
+      "cell": {
+        "value": null,
+        "unit": null,
+        "year": null,
+        "source": null,
+        "notes": null
+      }
+    }
+  ],
+  "schemes": [
+    {
+      "scheme_id": "UEBP_DC",
+      "scheme_name": "Urban Employee Basic Pension \u2013 Individual Account (DC Component)",
+      "scheme_type_group": "dc",
+      "attributes": {
+        "implementing_agency": {
+          "value": "Urban Employee Basic Pension \u2013 Individual Account (DC Component)",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "target_population": {
+          "value": "Individual account component of UEBP, mandatory for all UEBP members. Funded by employee contributions only (8% of wages). Account balances are notionally credited but actual funding varies by province.\n",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "benefit_plan_type": {
+          "value": "DC",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "financing_mechanism": {
+          "value": "Fully funded",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "contrib_employee": {
+          "value": 8.0,
+          "unit": "%",
+          "year": null,
+          "source": {
+            "source_name": "SSA SSPW Asia-Pacific 2022 \u2013 China: employee contributes 8% of wages entirely credited to individual account. Employer 16% goes to social pool, not account.",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        },
+        "contrib_employer": {
+          "value": 0.0,
+          "unit": "%",
+          "year": null,
+          "source": {
+            "source_name": "SSA SSPW Asia-Pacific 2022 \u2013 China: employee contributes 8% of wages entirely credited to individual account. Employer 16% goes to social pool, not account.",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        },
+        "contrib_total": {
+          "value": 8.0,
+          "unit": "%",
+          "year": null,
+          "source": null,
+          "notes": "Derived: employee + employer"
+        },
+        "ret_age_male": {
+          "value": 60,
+          "unit": null,
+          "year": null,
+          "source": {
+            "source_name": "SSA SSPW Asia-Pacific 2022 \u2013 China: individual account annuitised at same NRA as social pool component, age 60 for males.",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        },
+        "ret_age_female": {
+          "value": 55,
+          "unit": null,
+          "year": null,
+          "source": {
+            "source_name": "SSA SSPW Asia-Pacific 2022 \u2013 China: individual account annuitised at same NRA as social pool component, age 60 for males.",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        }
+      }
+    },
+    {
+      "scheme_id": "UEBP_DB",
+      "scheme_name": "Urban Employee Basic Pension \u2013 Social Pool (DB Component)",
+      "scheme_type_group": "db",
+      "attributes": {
+        "implementing_agency": {
+          "value": "Urban Employee Basic Pension \u2013 Social Pool (DB Component)",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "target_population": {
+          "value": "Mandatory for urban formal sector employees (state-owned, private, and foreign enterprises). Rural residents and informal workers covered separately under Urban and Rural Resident Pension (URRP), not modelled here.\n",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "benefit_plan_type": {
+          "value": "DB",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "financing_mechanism": {
+          "value": "Pay As You Go (PAYG)",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "contrib_employee": {
+          "value": 8.0,
+          "unit": "%",
+          "year": null,
+          "source": {
+            "source_name": "SSA SSPW Asia-Pacific 2022 \u2013 China: employee contributes 8% of wages; this entire 8% is credited to the individual account. MOHRSS 2022.",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        },
+        "contrib_employer": {
+          "value": 16.0,
+          "unit": "%",
+          "year": null,
+          "source": {
+            "source_name": "SSA SSPW Asia-Pacific 2022 \u2013 China: employee contributes 8% of wages; this entire 8% is credited to the individual account. MOHRSS 2022.",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        },
+        "contrib_total": {
+          "value": 24.0,
+          "unit": "%",
+          "year": null,
+          "source": null,
+          "notes": "Derived: employee + employer"
+        },
+        "ret_age_male": {
+          "value": 60,
+          "unit": null,
+          "year": null,
+          "source": {
+            "source_name": "SSA SSPW Asia-Pacific 2022 \u2013 China: NRA 60 for male workers (enterprise employees). 2025 reform phases NRA to 63 for males by 2039; current statutory age 60 as of 2023.",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        },
+        "ret_age_female": {
+          "value": 55,
+          "unit": null,
+          "year": null,
+          "source": {
+            "source_name": "SSA SSPW Asia-Pacific 2022 \u2013 China: NRA 60 for male workers (enterprise employees). 2025 reform phases NRA to 63 for males by 2039; current statutory age 60 as of 2023.",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        }
+      }
+    }
+  ]
+}

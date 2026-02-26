@@ -1,0 +1,336 @@
+{
+  "iso3": "LKA",
+  "country_name": "Sri Lanka",
+  "last_updated": "2026-02-26T08:35:33.724267Z",
+  "narrative": {
+    "text": "Sri Lanka is a South Asia country with a DC-type pension system centred on the Employees' Provident Fund (EPF). The system includes 2 schemes: Employees' Provident Fund (EPF), Employees' Trust Fund (ETF). The normal retirement age is 55 for men and 50 for women. Contributions total 20.0% of insurable earnings (8.0% employee, 12.0% employer).",
+    "sources": [
+      {
+        "source_name": "Employees' Provident Fund Act No. 15 of 1958 (as amended) \u2013 Sri Lanka",
+        "source_url": null,
+        "indicator_id": null,
+        "year": null,
+        "notes": null
+      },
+      {
+        "source_name": "Central Bank of Sri Lanka EPF Annual Report 2022",
+        "source_url": null,
+        "indicator_id": null,
+        "year": null,
+        "notes": null
+      }
+    ]
+  },
+  "country_indicators": [
+    {
+      "key": "year",
+      "label": "Year",
+      "cell": {
+        "value": 2023,
+        "unit": "year",
+        "year": 2023,
+        "source": {
+          "source_name": "World Development Indicators (World Bank)",
+          "source_url": "https://data.worldbank.org",
+          "indicator_id": null,
+          "year": null,
+          "notes": null
+        },
+        "notes": null
+      }
+    },
+    {
+      "key": "gdp_pc_lcu",
+      "label": "GDP per capita (LCU)",
+      "cell": {
+        "value": 1244262.10771333,
+        "unit": "LCU",
+        "year": 2023,
+        "source": {
+          "source_name": "World Development Indicators (World Bank)",
+          "source_url": "https://data.worldbank.org/indicator/NY.GDP.PCAP.CN?locations=LKA",
+          "indicator_id": "NY.GDP.PCAP.CN",
+          "year": 2023,
+          "notes": null
+        },
+        "notes": null
+      }
+    },
+    {
+      "key": "gdp_pc_usd",
+      "label": "GDP per capita (USD)",
+      "cell": {
+        "value": 3798.89016573011,
+        "unit": "USD",
+        "year": 2023,
+        "source": {
+          "source_name": "World Development Indicators (World Bank)",
+          "source_url": "https://data.worldbank.org/indicator/NY.GDP.PCAP.CD?locations=LKA",
+          "indicator_id": "NY.GDP.PCAP.CD",
+          "year": 2023,
+          "notes": null
+        },
+        "notes": null
+      }
+    },
+    {
+      "key": "pop_65_total",
+      "label": "Population age 65+ (total)",
+      "cell": {
+        "value": 2586860.0,
+        "unit": "persons",
+        "year": 2023,
+        "source": {
+          "source_name": "World Development Indicators (World Bank)",
+          "source_url": "https://data.worldbank.org/indicator/SP.POP.65UP.TO?locations=LKA",
+          "indicator_id": "SP.POP.65UP.TO",
+          "year": 2023,
+          "notes": null
+        },
+        "notes": null
+      }
+    },
+    {
+      "key": "pop_65_pct",
+      "label": "Population age 65+ (% of total population)",
+      "cell": {
+        "value": 11.7387099915518,
+        "unit": "%",
+        "year": 2023,
+        "source": {
+          "source_name": "World Development Indicators (World Bank)",
+          "source_url": "https://data.worldbank.org/indicator/SP.POP.65UP.TO.ZS?locations=LKA",
+          "indicator_id": "SP.POP.65UP.TO.ZS",
+          "year": 2023,
+          "notes": null
+        },
+        "notes": null
+      }
+    }
+  ],
+  "system_kpis": [
+    {
+      "key": "coverage_total",
+      "label": "Covers % of the population",
+      "cell": {
+        "value": null,
+        "unit": null,
+        "year": null,
+        "source": null,
+        "notes": null
+      }
+    },
+    {
+      "key": "coverage_65plus",
+      "label": "Covers % of the population age 65+",
+      "cell": {
+        "value": null,
+        "unit": null,
+        "year": null,
+        "source": null,
+        "notes": null
+      }
+    },
+    {
+      "key": "pension_spending_gdp",
+      "label": "Accounts for % of GDP",
+      "cell": {
+        "value": null,
+        "unit": null,
+        "year": null,
+        "source": null,
+        "notes": null
+      }
+    }
+  ],
+  "schemes": [
+    {
+      "scheme_id": "EPF_DC",
+      "scheme_name": "Employees' Provident Fund (EPF)",
+      "scheme_type_group": "dc",
+      "attributes": {
+        "implementing_agency": {
+          "value": "Employees' Provident Fund (EPF)",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "target_population": {
+          "value": "Mandatory for all private sector employees and some public corporations. Covers approximately 35% of workforce in formal employment. Government employees covered by separate non-contributory pension scheme.\n",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "benefit_plan_type": {
+          "value": "DC",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "financing_mechanism": {
+          "value": "Fully funded",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "contrib_employee": {
+          "value": 8.0,
+          "unit": "%",
+          "year": null,
+          "source": {
+            "source_name": "EPF Act No. 15 of 1958 (as amended) \u2013 employee contribution 8% of gross wage. Central Bank of Sri Lanka EPF Report 2022.",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        },
+        "contrib_employer": {
+          "value": 12.0,
+          "unit": "%",
+          "year": null,
+          "source": {
+            "source_name": "EPF Act No. 15 of 1958 (as amended) \u2013 employee contribution 8% of gross wage. Central Bank of Sri Lanka EPF Report 2022.",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        },
+        "contrib_total": {
+          "value": 20.0,
+          "unit": "%",
+          "year": null,
+          "source": null,
+          "notes": "Derived: employee + employer"
+        },
+        "ret_age_male": {
+          "value": 55,
+          "unit": null,
+          "year": null,
+          "source": {
+            "source_name": "EPF Act \u2013 EPF benefits withdrawable at age 55 (or on reaching 50 with employer consent). No statutory national retirement age; EPF is the de facto retirement age for private sector. Central Bank of Sri Lanka EPF 2022.",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        },
+        "ret_age_female": {
+          "value": 50,
+          "unit": null,
+          "year": null,
+          "source": {
+            "source_name": "EPF Act \u2013 EPF benefits withdrawable at age 55 (or on reaching 50 with employer consent). No statutory national retirement age; EPF is the de facto retirement age for private sector. Central Bank of Sri Lanka EPF 2022.",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        }
+      }
+    },
+    {
+      "scheme_id": "ETF_DC",
+      "scheme_name": "Employees' Trust Fund (ETF)",
+      "scheme_type_group": "dc",
+      "attributes": {
+        "implementing_agency": {
+          "value": "Employees' Trust Fund (ETF)",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "target_population": {
+          "value": "all EPF members; employer-only contributions",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "benefit_plan_type": {
+          "value": "DC",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "financing_mechanism": {
+          "value": "Fully funded",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "contrib_employee": {
+          "value": 0.0,
+          "unit": "%",
+          "year": null,
+          "source": {
+            "source_name": "ETF Act No. 46 of 1980 \u2013 employee contribution is 0%; employer-funded only.",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        },
+        "contrib_employer": {
+          "value": 3.0,
+          "unit": "%",
+          "year": null,
+          "source": {
+            "source_name": "ETF Act No. 46 of 1980 \u2013 employee contribution is 0%; employer-funded only.",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        },
+        "contrib_total": {
+          "value": 3.0,
+          "unit": "%",
+          "year": null,
+          "source": null,
+          "notes": "Derived: employee + employer"
+        },
+        "ret_age_male": {
+          "value": 55,
+          "unit": null,
+          "year": null,
+          "source": {
+            "source_name": "ETF Act \u2013 same withdrawal age as EPF (55 for males). ETF Board 2022.",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        },
+        "ret_age_female": {
+          "value": 50,
+          "unit": null,
+          "year": null,
+          "source": {
+            "source_name": "ETF Act \u2013 same withdrawal age as EPF (55 for males). ETF Board 2022.",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        }
+      }
+    }
+  ]
+}

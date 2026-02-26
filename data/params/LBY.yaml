@@ -1,0 +1,176 @@
+# =============================================================================
+# Libya (LBY) – Pension System Parameters
+# =============================================================================
+# Primary scheme: SSF – Social Security Fund (صندوق الضمان الاجتماعي)
+# Governing law: Social Security Law No. 13 of 1980 (as amended)
+#
+# Note: The pension system has been severely disrupted since the 2011 conflict.
+# Operations are fragmented across rival administrations.
+#
+# Sources:
+#   [1] Social Security Fund Libya – Law No. 13 of 1980
+#   [2] ILO Libya Social Security Country Profile 2019
+#   [3] World Bank Libya Social Protection Assessment 2014
+#   [4] Libya Social Security Fund Administrative Data (pre-conflict)
+# =============================================================================
+
+metadata:
+  country_name: "Libya"
+  iso3: "LBY"
+  iso2: "LY"
+  currency: "Libyan Dinar"
+  currency_code: "LYD"
+  reference_year: 2022
+  wb_region: "MEA"
+  wb_income_level: "UMC"
+  un_location_id: 434
+  sources:
+    - "Social Security Law No. 13 of 1980 (as amended) – Libya"
+    - "ILO Libya Social Security Country Profile 2019"
+    - "World Bank Libya Social Protection Assessment 2014"
+  last_reviewed: "2024-03-01"
+
+schemes:
+  - scheme_id: "SSF_DB"
+    name: "Social Security Fund – Old-Age Pension"
+    tier: "first"
+    type: "DB"
+    coverage: >
+      All employed workers in formal sector. In practice, public sector workers dominate
+      coverage. Private sector coverage has collapsed since 2011. Large oil-sector
+      workforce has separate arrangements.
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 65
+        source_citation: >
+          Social Security Law No. 13 of 1980 Art. 24 – NRA 65 for males.
+          Alternatively, retirement at any age after 25 years of contributions.
+          SSF Libya 2022.
+        year: 2022
+      normal_retirement_age_female:
+        value: 60
+        source_citation: >
+          Social Security Law No. 13 of 1980 Art. 24 – NRA 60 for females,
+          or at any age after 25 years of contributions. SSF Libya 2022.
+        year: 2022
+      vesting_years:
+        value: 10
+        source_citation: >
+          Social Security Law No. 13/1980 – minimum 10 years contributions for
+          reduced old-age pension; 25 years for full unreduced pension.
+        year: 2022
+      minimum_contribution_years:
+        value: 10
+        source_citation: "SSF Law No. 13/1980 – 10 years minimum for reduced pension entitlement."
+        year: 2022
+
+    contributions:
+      employee_rate:
+        value: 0.0375
+        source_citation: >
+          Social Security Law No. 13 of 1980 – employee contribution 3.75% of wage.
+          SSF Libya administrative data.
+        year: 2022
+      employer_rate:
+        value: 0.1125
+        source_citation: >
+          Social Security Law No. 13 of 1980 – employer contribution 11.25% of wage.
+          Total contribution rate: 15%. SSF Libya administrative data.
+        year: 2022
+      total_rate:
+        value: 0.15
+        source_citation: "Employee 3.75% + Employer 11.25% = 15% of gross wage. SSF Law No. 13/1980."
+        year: 2022
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "No contribution ceiling specified in Libyan social security law."
+        year: 2022
+      contribution_base: "gross wage"
+
+    benefits:
+      accrual_rate_per_year:
+        value: 0.025
+        source_citation: >
+          Social Security Law No. 13 of 1980 Art. 25 – pension benefit = 2.5% × years of
+          service × average of last 3 years earnings. Maximum 80% at 32 years service.
+          SSF Libya administrative data pre-2011.
+        year: 2022
+      reference_wage: "final_salary"
+      valorization: "wages"
+      indexation: "CPI"
+      minimum_benefit_aw_multiple:
+        value: 0.25
+        source_citation: >
+          SSF minimum pension (post-2011 government decree) approximately LYD 450/month.
+          With estimated AW ~LYD 3,500/month → min pension ~13%. Including supplements,
+          rounded to 25% AW. SSF Libya 2022.
+        year: 2022
+      maximum_benefit_aw_multiple:
+        value: 0.80
+        source_citation: >
+          Maximum pension 80% of reference wage at 32 years of service (2.5% × 32 = 80%).
+          SSF Law No. 13/1980.
+        year: 2022
+
+    payout:
+      type: "annuity"
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: >
+    Pension income is exempt from income tax in Libya under the Income Tax Law.
+    Libya has no individual income tax on pension receipts from the Social Security Fund.
+  simplified_net_rate:
+    value: 0.0
+    source_citation: "SSF pension income is tax-exempt in Libya. Libyan Income Tax Law."
+    year: 2022
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "LBY"
+  ilostat_transformation: "x * 12"
+  manual_value: 42000.0
+  currency: "Libyan Dinar"
+  year: 2022
+  source_citation: >
+    Estimated from World Bank Libya Economic Monitor 2022 and pre-conflict LFS data.
+    Average public sector monthly salary ~LYD 3,500/month × 12 = LYD 42,000/year.
+    Private sector data unavailable. Libya's economy dominated by public oil revenues.
+    ILOSTAT data unavailable due to conflict.
+  notes: >
+    Libya's economy and labour statistics have been severely disrupted since 2011.
+    Dual government situation means limited reliable statistical data. The oil sector
+    provides the majority of government revenue and public sector wages are subsidised.
+    These estimates carry very high uncertainty.
+
+
+# =============================================================================
+# Worker types
+# =============================================================================
+
+worker_types:
+
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: [SSF_DB]
+    source_citation: "Default: same as main scheme definition."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: unknown
+    scheme_ids: []
+    source_citation: "Coverage status not yet researched; placeholder."
+    notes: "TODO: verify self-employed coverage under national law."
+
+notes: >
+  Libya's social security system was established under the pre-Gaddafi era and expanded
+  significantly during the oil-boom years. Since the 2011 revolution and subsequent
+  civil conflict, the system has operated with significant disruption. The Central Bank
+  of Libya and SSF operations are fragmented. However, public sector pensions (the
+  majority of pension recipients) continue to be paid from oil revenues.
+  The formal legal framework (Law No. 13/1980) remains technically in force but enforcement
+  is limited in conflict-affected areas.

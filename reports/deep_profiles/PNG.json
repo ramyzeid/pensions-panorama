@@ -1,0 +1,242 @@
+{
+  "iso3": "PNG",
+  "country_name": "Papua New Guinea",
+  "last_updated": "2026-02-26T08:41:41.710588Z",
+  "narrative": {
+    "text": "Papua New Guinea is a East Asia and Pacific country with a DC-type pension system centred on the Nasfund (National Superannuation Fund) \u2013 DC. The normal retirement age is 55 for both men and women. Contributions total 14.4% of insurable earnings (6.0% employee, 8.4% employer).",
+    "sources": [
+      {
+        "source_name": "ILO Social Security Inquiry \u2013 Papua New Guinea",
+        "source_url": null,
+        "indicator_id": null,
+        "year": null,
+        "notes": null
+      },
+      {
+        "source_name": "Nasfund Papua New Guinea Annual Report 2022",
+        "source_url": null,
+        "indicator_id": null,
+        "year": null,
+        "notes": null
+      }
+    ]
+  },
+  "country_indicators": [
+    {
+      "key": "year",
+      "label": "Year",
+      "cell": {
+        "value": 2023,
+        "unit": "year",
+        "year": 2023,
+        "source": {
+          "source_name": "World Development Indicators (World Bank)",
+          "source_url": "https://data.worldbank.org",
+          "indicator_id": null,
+          "year": null,
+          "notes": null
+        },
+        "notes": null
+      }
+    },
+    {
+      "key": "gdp_pc_lcu",
+      "label": "GDP per capita (LCU)",
+      "cell": {
+        "value": 10647.06700476,
+        "unit": "LCU",
+        "year": 2023,
+        "source": {
+          "source_name": "World Development Indicators (World Bank)",
+          "source_url": "https://data.worldbank.org/indicator/NY.GDP.PCAP.CN?locations=PNG",
+          "indicator_id": "NY.GDP.PCAP.CN",
+          "year": 2023,
+          "notes": null
+        },
+        "notes": null
+      }
+    },
+    {
+      "key": "gdp_pc_usd",
+      "label": "GDP per capita (USD)",
+      "cell": {
+        "value": 2966.06830432055,
+        "unit": "USD",
+        "year": 2023,
+        "source": {
+          "source_name": "World Development Indicators (World Bank)",
+          "source_url": "https://data.worldbank.org/indicator/NY.GDP.PCAP.CD?locations=PNG",
+          "indicator_id": "NY.GDP.PCAP.CD",
+          "year": 2023,
+          "notes": null
+        },
+        "notes": null
+      }
+    },
+    {
+      "key": "pop_65_total",
+      "label": "Population age 65+ (total)",
+      "cell": {
+        "value": 347877.0,
+        "unit": "persons",
+        "year": 2023,
+        "source": {
+          "source_name": "World Development Indicators (World Bank)",
+          "source_url": "https://data.worldbank.org/indicator/SP.POP.65UP.TO?locations=PNG",
+          "indicator_id": "SP.POP.65UP.TO",
+          "year": 2023,
+          "notes": null
+        },
+        "notes": null
+      }
+    },
+    {
+      "key": "pop_65_pct",
+      "label": "Population age 65+ (% of total population)",
+      "cell": {
+        "value": 3.34830819369497,
+        "unit": "%",
+        "year": 2023,
+        "source": {
+          "source_name": "World Development Indicators (World Bank)",
+          "source_url": "https://data.worldbank.org/indicator/SP.POP.65UP.TO.ZS?locations=PNG",
+          "indicator_id": "SP.POP.65UP.TO.ZS",
+          "year": 2023,
+          "notes": null
+        },
+        "notes": null
+      }
+    }
+  ],
+  "system_kpis": [
+    {
+      "key": "coverage_total",
+      "label": "Covers % of the population",
+      "cell": {
+        "value": null,
+        "unit": null,
+        "year": null,
+        "source": null,
+        "notes": null
+      }
+    },
+    {
+      "key": "coverage_65plus",
+      "label": "Covers % of the population age 65+",
+      "cell": {
+        "value": null,
+        "unit": null,
+        "year": null,
+        "source": null,
+        "notes": null
+      }
+    },
+    {
+      "key": "pension_spending_gdp",
+      "label": "Accounts for % of GDP",
+      "cell": {
+        "value": null,
+        "unit": null,
+        "year": null,
+        "source": null,
+        "notes": null
+      }
+    }
+  ],
+  "schemes": [
+    {
+      "scheme_id": "PNG_NASFUND",
+      "scheme_name": "Nasfund (National Superannuation Fund) \u2013 DC",
+      "scheme_type_group": "dc",
+      "attributes": {
+        "implementing_agency": {
+          "value": "Nasfund (National Superannuation Fund) \u2013 DC",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "target_population": {
+          "value": "Formally employed workers; mandatory superannuation",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "benefit_plan_type": {
+          "value": "DC",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "financing_mechanism": {
+          "value": "Fully funded",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "contrib_employee": {
+          "value": 6.0,
+          "unit": "%",
+          "year": null,
+          "source": {
+            "source_name": "ILO Social Security Inquiry PNG: Nasfund employee contribution 6% of wages.",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        },
+        "contrib_employer": {
+          "value": 8.4,
+          "unit": "%",
+          "year": null,
+          "source": {
+            "source_name": "ILO Social Security Inquiry PNG: Nasfund employee contribution 6% of wages.",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        },
+        "contrib_total": {
+          "value": 14.4,
+          "unit": "%",
+          "year": null,
+          "source": null,
+          "notes": "Derived: employee + employer"
+        },
+        "ret_age_male": {
+          "value": 55,
+          "unit": null,
+          "year": null,
+          "source": {
+            "source_name": "ILO Social Security Inquiry PNG: Nasfund withdrawal age 55 for males.",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        },
+        "ret_age_female": {
+          "value": 55,
+          "unit": null,
+          "year": null,
+          "source": {
+            "source_name": "ILO Social Security Inquiry PNG: Nasfund withdrawal age 55 for males.",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        }
+      }
+    }
+  ]
+}

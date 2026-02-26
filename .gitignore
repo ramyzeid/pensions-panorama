@@ -1,0 +1,26 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+dist/
+build/
+.eggs/
+
+# Cached API responses (large, regeneratable)
+data/raw/cache/
+
+# Processed parquet files (regeneratable)
+data/processed/
+
+# Reports (regeneratable) — keep deep_profiles JSONs
+reports/country/
+reports/panorama_summary/
+
+# Test/IDE artifacts
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.DS_Store
+*.swp

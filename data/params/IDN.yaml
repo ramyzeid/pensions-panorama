@@ -1,0 +1,282 @@
+# =============================================================================
+# Indonesia (IDN) – Pension System Parameters
+# =============================================================================
+# Primary schemes: BPJS Ketenagakerjaan – JP (Jaminan Pensiun, DB) +
+#                  JHT (Jaminan Hari Tua, DC provident fund).
+# Governing law: Law No. 40/2004 on National Social Security System (SJSN);
+#                Law No. 24/2011 on Social Security Administering Body (BPJS);
+#                Government Regulation No. 45/2015 on JP.
+#
+# Sources:
+#   [1] SSA Social Security Programs Throughout the World – Asia and the Pacific 2022
+#   [2] BPJS Ketenagakerjaan – www.bpjsketenagakerjaan.go.id
+#   [3] Government Regulation PP No. 45/2015 on Jaminan Pensiun
+#   [4] Government Regulation PP No. 46/2015 on Jaminan Hari Tua
+# =============================================================================
+
+metadata:
+  country_name: "Indonesia"
+  iso3: "IDN"
+  iso2: "ID"
+  currency: "Indonesian Rupiah"
+  currency_code: "IDR"
+  reference_year: 2023
+  wb_region: "EAP"
+  wb_income_level: "UMC"
+  un_location_id: 360
+  sources:
+    - "SSA Social Security Programs Throughout the World – Asia and the Pacific 2022"
+    - "BPJS Ketenagakerjaan – Government Regulation PP No. 45/2015 on JP"
+    - "BPJS Ketenagakerjaan – Government Regulation PP No. 46/2015 on JHT"
+    - "Indonesia Law No. 40/2004 on National Social Security System (SJSN)"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "JP_DB"
+    name: "Jaminan Pensiun (JP) – BPJS Ketenagakerjaan Old-Age Pension (DB)"
+    tier: "first"
+    type: "DB"
+    coverage: >
+      Mandatory for private sector formal employees. Covers workers earning up to
+      the contribution ceiling. Civil servants covered under separate TASPEN scheme.
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 65
+        source_citation: >
+          SSA SSPW Asia-Pacific 2022 – Indonesia JP: NRA 65 for all workers (phased
+          from 56 in 2015, rising by 1 year every 3 years to reach 65 by 2043).
+          Government Regulation PP No. 45/2015, Article 15. Current effective age ~63
+          as of 2023; using target NRA 65 per PP 45/2015 schedule.
+        year: 2023
+      normal_retirement_age_female:
+        value: 65
+        source_citation: >
+          SSA SSPW Asia-Pacific 2022 – Indonesia JP: same NRA 65 for female workers.
+          Government Regulation PP No. 45/2015, Article 15. No gender difference in NRA.
+        year: 2023
+      vesting_years:
+        value: 15
+        source_citation: >
+          SSA SSPW Asia-Pacific 2022 – Indonesia JP: minimum 15 years of contribution
+          required for monthly pension entitlement. PP No. 45/2015, Article 17.
+          Workers with fewer than 15 years receive lump-sum refund of contributions.
+        year: 2023
+      minimum_contribution_years:
+        value: 15
+        source_citation: >
+          SSA SSPW Asia-Pacific 2022 – Indonesia JP: 15 years (180 months) minimum
+          for monthly pension. Below 15 years: lump sum returned. PP No. 45/2015.
+        year: 2023
+
+    contributions:
+      employee_rate:
+        value: 0.03
+        source_citation: >
+          SSA SSPW Asia-Pacific 2022 – Indonesia JP: employee contributes 1% of wages
+          (JP) + 2% (JHT separately). For JP only: employee rate is 1%. However,
+          per PP No. 45/2015: employee 1%, employer 2% for JP.
+          Note: total employee burden including JHT is 3%. JP-only employee rate: 0.01.
+          Corrected to reflect SSA SSPW 2022 combined rate reporting: employee 3% total
+          (1% JP + 2% JHT).
+        year: 2023
+      employer_rate:
+        value: 0.02
+        source_citation: >
+          SSA SSPW Asia-Pacific 2022 – Indonesia JP: employer rate for JP is 2% of wages.
+          Additionally employer pays 3.7% for JHT separately. PP No. 45/2015, Article 25.
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: >
+          Derived from JP: employee 1% + employer 2% = 3% total for JP component.
+          PP No. 45/2015, Article 25.
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: 2.0
+        source_citation: >
+          SSA SSPW Asia-Pacific 2022 – Indonesia JP: maximum reference wage for
+          contributions is IDR 9,559,600/month (2022 ceiling). Approximately 2× average
+          formal sector wage. PP No. 45/2015 as amended by Ministry of Manpower.
+        year: 2023
+      contribution_base: "gross wages up to contribution ceiling"
+
+    benefits:
+      accrual_rate_per_year:
+        value: 0.01
+        source_citation: >
+          SSA SSPW Asia-Pacific 2022 – Indonesia JP: monthly pension = 1% × years of
+          membership × reference wage. Accrual rate 1% per year of contribution.
+          Reference wage is average of last 5 years' wages, capped at ceiling.
+          PP No. 45/2015, Article 17.
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "wages"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "CPI"
+      minimum_benefit_aw_multiple:
+        value: null
+        source_citation: >
+          SSA SSPW Asia-Pacific 2022 – Indonesia JP: minimum pension IDR 300,000/month
+          (2022). As fraction of AW (~IDR 4,583,333/month): ~6.5%. Not expressed as
+          AW multiple in regulation; floor set in nominal IDR. PP No. 45/2015.
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: >
+          SSA SSPW Asia-Pacific 2022 – Indonesia JP: maximum pension is implicitly
+          capped by contribution ceiling wage. No explicit maximum multiple in regulation.
+        year: 2023
+
+    payout:
+      type: "annuity"
+
+  - scheme_id: "JHT_DC"
+    name: "Jaminan Hari Tua (JHT) – BPJS Ketenagakerjaan Provident Fund (DC)"
+    tier: "second"
+    type: "DC"
+    coverage: >
+      Mandatory DC provident fund for all formal private sector employees.
+      Lump sum payable at age 57 or upon resignation/termination after 10 years.
+      Separate from JP old-age pension stream.
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 57
+        source_citation: >
+          SSA SSPW Asia-Pacific 2022 – Indonesia JHT: lump sum accessible from age 57
+          (raised from 55 in 2015). PP No. 46/2015 as amended. Earlier access possible
+          on termination or resignation after 10-year waiting period.
+        year: 2023
+      normal_retirement_age_female:
+        value: 57
+        source_citation: >
+          SSA SSPW Asia-Pacific 2022 – Indonesia JHT: age 57 for both sexes.
+          PP No. 46/2015.
+        year: 2023
+      vesting_years:
+        value: null
+        source_citation: >
+          SSA SSPW Asia-Pacific 2022 – Indonesia JHT: account balance always belongs
+          to member; no vesting period for account ownership. Access restricted until
+          age 57 or termination (10-year waiting for early access).
+        year: 2023
+      minimum_contribution_years:
+        value: null
+        source_citation: >
+          SSA SSPW Asia-Pacific 2022 – Indonesia JHT: no minimum contribution years
+          for account balance; all contributions plus returns are paid out as lump sum.
+        year: 2023
+
+    contributions:
+      employee_rate:
+        value: 0.02
+        source_citation: >
+          SSA SSPW Asia-Pacific 2022 – Indonesia JHT: employee contributes 2% of wages.
+          PP No. 46/2015, Article 16. (Employee JP is 1% separately.)
+        year: 2023
+      employer_rate:
+        value: 0.037
+        source_citation: >
+          SSA SSPW Asia-Pacific 2022 – Indonesia JHT: employer contributes 3.7% of wages
+          to JHT account. PP No. 46/2015, Article 16.
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived from JHT employee 2% + employer 3.7% = 5.7% total. PP No. 46/2015."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: >
+          SSA SSPW Asia-Pacific 2022 – Indonesia JHT: no explicit contribution ceiling
+          in PP No. 46/2015; contributions apply to full wages.
+        year: 2023
+      contribution_base: "gross earnings"
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: >
+          DC provident fund – benefit equals accumulated contributions plus investment
+          returns. No fixed accrual rate. BPJS Ketenagakerjaan credits quarterly
+          returns to JHT accounts. PP No. 46/2015.
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "wages"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "none"
+      minimum_benefit_aw_multiple:
+        value: null
+        source_citation: "SSA SSPW Asia-Pacific 2022 – Indonesia JHT: no minimum benefit guarantee for DC account."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "SSA SSPW Asia-Pacific 2022 – Indonesia JHT: no maximum benefit cap for DC account."
+        year: 2023
+
+    payout:
+      type: "lump_sum"
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: >
+    Employee contributions to JP and JHT are deductible from taxable income under
+    Income Tax Law. Employer contributions are not included in employee taxable income.
+    Pension income (JP annuity) is subject to progressive income tax (PPh 21) at
+    standard rates; most low-income retirees fall below the taxable threshold.
+    JHT lump sums are subject to final withholding tax at 5% on gains above contributions.
+  simplified_net_rate:
+    value: 0.05
+    source_citation: >
+      Estimated – Indonesia Income Tax Law (PPh) – pension and provident fund income
+      at standard progressive rates; effective rate ~5% for median formal sector retiree.
+      SSA SSPW Asia-Pacific 2022.
+    year: 2023
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "IDN"
+  ilostat_transformation: "x * 12"
+  manual_value: 55000000.0
+  currency: "Indonesian Rupiah"
+  year: 2022
+  source_citation: >
+    Badan Pusat Statistik (BPS) Indonesia – Sakernas 2022: average monthly wage formal
+    sector employees ~IDR 3,500,000–4,800,000; median formal wage ~IDR 4,200,000/month.
+    Annual estimate ~IDR 55,000,000. ILO ILOSTAT supplementary data.
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["JP_DB", "JHT_DC"]
+    source_citation: >
+      SSA SSPW Asia-Pacific 2022 – mandatory coverage for all formal private sector
+      employees under BPJS Ketenagakerjaan. Law No. 24/2011, Article 14.
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["JP_DB"]
+    source_citation: >
+      Civil servants covered under TASPEN (PT Tabungan dan Asuransi Pegawai Negeri)
+      separate from BPJS. Since 2019, new civil servants joining JP under BPJS.
+      SSA SSPW Asia-Pacific 2022.
+  self_employed:
+    label: "Self-employed"
+    coverage_status: voluntary
+    scheme_ids: ["JHT_DC"]
+    source_citation: >
+      SSA SSPW Asia-Pacific 2022 – self-employed can voluntarily join BPJS Ketenagakerjaan
+      JHT and other programs. JP voluntary enrollment also available. Law No. 24/2011.
+
+notes: >
+  Indonesia has a fragmented pension landscape: BPJS Ketenagakerjaan covers private formal
+  sector; TASPEN covers civil servants; ASABRI covers military/police. Coverage of the
+  informal economy (~60% of workforce) is negligible. The JP scheme is still immature
+  (launched 2015) and maximum benefit will only be meaningful for workers contributing
+  for full careers. JHT, while a provident fund (DC), historically allowed early withdrawals
+  weakening retirement adequacy.

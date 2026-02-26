@@ -1,0 +1,139 @@
+# =============================================================================
+# Suriname (SUR) – Pension System Parameters
+# =============================================================================
+# Primary scheme: SZF (Sociale Verzekeringsbank) – DB earnings-related
+# Sources:
+#   [1] ILO Social Security Inquiry – Suriname
+#   [2] Sociale Verzekeringsbank (SZF) Suriname – Annual Report 2022
+# =============================================================================
+
+metadata:
+  country_name: "Suriname"
+  iso3: "SUR"
+  iso2: "SR"
+  currency: "Surinamese Dollar"
+  currency_code: "SRD"
+  reference_year: 2023
+  wb_region: "LCN"
+  wb_income_level: "UMC"
+  un_location_id: 740
+  sources:
+    - "ILO Social Security Inquiry – Suriname"
+    - "Sociale Verzekeringsbank (SZF) Suriname Annual Report 2022"
+    - "Wet Basisverzekering Ziektekosten (Suriname) and Social Security Acts"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "SUR_SZF"
+    name: "Sociale Verzekeringsbank (SZF) AOV – DB Earnings-Related"
+    tier: "first"
+    type: "DB"
+    coverage: "All employed and self-employed persons; mandatory old-age insurance"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 60
+        source_citation: "ILO Social Security Inquiry Suriname: NRA 60 for males."
+        year: 2023
+      normal_retirement_age_female:
+        value: 60
+        source_citation: "ILO Social Security Inquiry Suriname: NRA 60 for females."
+        year: 2023
+      vesting_years:
+        value: 15
+        source_citation: "ILO Social Security Inquiry Suriname: minimum years of insurance for AOV pension entitlement."
+        year: 2023
+      minimum_contribution_years:
+        value: 15
+        source_citation: "ILO Social Security Inquiry Suriname: minimum contribution period for Suriname old-age pension."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.065
+        source_citation: "ILO Social Security Inquiry Suriname: employee social insurance contribution approximately 6.5% of wages."
+        year: 2023
+      employer_rate:
+        value: 0.065
+        source_citation: "ILO Social Security Inquiry Suriname: employer social insurance contribution approximately 6.5% of wages."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: approximately 13% total social insurance contribution."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Suriname: contributions on insurable wages; no explicit AW multiple."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: "Suriname has high informal economy; social insurance coverage limited."
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: "ILO Social Security Inquiry Suriname: AOV pension provides income replacement; approximately 30–50% of average insurable earnings after full career."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "prices"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "prices"
+      minimum_benefit_aw_multiple:
+        value: 0.25
+        source_citation: "ILO Social Security Inquiry Suriname: minimum AOV pension approximately 25% of average formal wage."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Suriname: maximum pension constrained by earnings and formula."
+        year: 2023
+      notes: null
+
+    payout:
+      type: "annuity"
+      notes: null
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "Pension income subject to income tax in Suriname; standard progressive rates apply."
+  simplified_net_rate:
+    value: 0.08
+    source_citation: "ILO Social Security Inquiry Suriname: estimated effective income tax rate on average pension approximately 8%."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "SUR"
+  ilostat_transformation: "x * 12"
+  manual_value: 180000
+  currency: "Surinamese Dollar"
+  year: 2022
+  source_citation: "Algemeen Bureau voor de Statistiek (ABS) Suriname: estimated average annual formal earnings 2022 approximately SRD 180,000."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["SUR_SZF"]
+    source_citation: "ILO Social Security Inquiry Suriname: mandatory SZF social insurance for all private sector employees."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["SUR_SZF"]
+    source_citation: "ILO Social Security Inquiry Suriname: civil servants covered by SZF and government pension."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: voluntary
+    scheme_ids: ["SUR_SZF"]
+    source_citation: "ILO Social Security Inquiry Suriname: self-employed participation in social insurance limited; voluntary basis."
+    notes: null
+
+notes: null

@@ -1,0 +1,139 @@
+# =============================================================================
+# Nicaragua (NIC) – Pension System Parameters
+# =============================================================================
+# Primary scheme: INSS (Instituto Nicaragüense de Seguridad Social) – DB
+# Sources:
+#   [1] ILO Social Security Inquiry – Nicaragua
+#   [2] Instituto Nicaragüense de Seguridad Social (INSS) – Annual Report 2022
+# =============================================================================
+
+metadata:
+  country_name: "Nicaragua"
+  iso3: "NIC"
+  iso2: "NI"
+  currency: "Nicaraguan Córdoba"
+  currency_code: "NIO"
+  reference_year: 2023
+  wb_region: "LCN"
+  wb_income_level: "LMC"
+  un_location_id: 558
+  sources:
+    - "ILO Social Security Inquiry – Nicaragua"
+    - "Instituto Nicaragüense de Seguridad Social (INSS) Annual Report 2022"
+    - "Ley de Seguridad Social (Nicaragua, 1982, as amended)"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "NIC_INSS"
+    name: "INSS IVM (Invalidez, Vejez y Muerte) – DB Earnings-Related"
+    tier: "first"
+    type: "DB"
+    coverage: "Formally employed workers; mandatory INSS insurance"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 60
+        source_citation: "ILO Social Security Inquiry Nicaragua: NRA 60 for males with 750 weekly contributions."
+        year: 2023
+      normal_retirement_age_female:
+        value: 55
+        source_citation: "ILO Social Security Inquiry Nicaragua: NRA 55 for females with 750 weekly contributions."
+        year: 2023
+      vesting_years:
+        value: 15
+        source_citation: "ILO Social Security Inquiry Nicaragua: minimum 750 weekly contributions (approximately 15 years) for retirement pension."
+        year: 2023
+      minimum_contribution_years:
+        value: 15
+        source_citation: "Ley de Seguridad Social Nicaragua: minimum 750 weeks of contributions for old-age pension."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.0675
+        source_citation: "ILO Social Security Inquiry Nicaragua: employee INSS contribution 6.75% of wages."
+        year: 2023
+      employer_rate:
+        value: 0.19
+        source_citation: "ILO Social Security Inquiry Nicaragua: employer INSS contribution 19% of wages (all branches combined)."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: approximately 25.75% total INSS contribution including state contribution."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Nicaragua: contributions on all insurable wages; no explicit AW multiple ceiling."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: null
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: "ILO Social Security Inquiry Nicaragua: INSS pension based on average salary and years; approximately 45–60% replacement rate after full career."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "prices"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "prices"
+      minimum_benefit_aw_multiple:
+        value: 0.30
+        source_citation: "ILO Social Security Inquiry Nicaragua: minimum INSS pension approximately 30% of average insurable wage."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Nicaragua: maximum pension constrained by earnings ceiling and formula."
+        year: 2023
+      notes: null
+
+    payout:
+      type: "annuity"
+      notes: null
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "Pension income subject to IR (income tax) in Nicaragua; exemptions for amounts below threshold."
+  simplified_net_rate:
+    value: 0.05
+    source_citation: "ILO Social Security Inquiry Nicaragua: estimated effective income tax rate on average pension approximately 5%."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "NIC"
+  ilostat_transformation: "x * 12"
+  manual_value: 150000
+  currency: "Nicaraguan Córdoba"
+  year: 2022
+  source_citation: "Instituto Nacional de Información de Desarrollo (INIDE) Nicaragua: average annual formal sector earnings 2022 approximately NIO 150,000."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["NIC_INSS"]
+    source_citation: "Ley de Seguridad Social Nicaragua: mandatory INSS for all formally employed private sector workers."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["NIC_INSS"]
+    source_citation: "ILO Social Security Inquiry Nicaragua: civil servants covered by INSS general scheme."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: voluntary
+    scheme_ids: ["NIC_INSS"]
+    source_citation: "ILO Social Security Inquiry Nicaragua: self-employed not mandatorily covered; may voluntarily join INSS."
+    notes: null
+
+notes: null

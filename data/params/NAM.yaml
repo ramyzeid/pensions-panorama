@@ -1,0 +1,142 @@
+# =============================================================================
+# Namibia (NAM) – Pension System Parameters
+# =============================================================================
+# Primary scheme: Social Security Commission (SSC) + Old Age Grant (universal)
+# Sources:
+#   [1] ILO Social Security Inquiry – Namibia
+#   [2] Social Security Commission Namibia – Annual Report 2022
+# =============================================================================
+
+metadata:
+  country_name: "Namibia"
+  iso3: "NAM"
+  iso2: "NA"
+  currency: "Namibian Dollar"
+  currency_code: "NAD"
+  reference_year: 2023
+  wb_region: "SSA"
+  wb_income_level: "UMC"
+  un_location_id: 516
+  sources:
+    - "ILO Social Security Inquiry – Namibia"
+    - "Social Security Commission Namibia Annual Report 2022"
+    - "Social Security Act (Namibia, Act 34, 1994)"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "NAM_SSC"
+    name: "Social Security Commission (SSC) + Old Age Grant – Multi-pillar"
+    tier: "first"
+    type: "DC"
+    coverage: "Formal employees via SSC; universal Old Age Grant (OAG) for all residents 60+"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 60
+        source_citation: "ILO Social Security Inquiry Namibia: SSC retirement age 60; Old Age Grant universal at 60."
+        year: 2023
+      normal_retirement_age_female:
+        value: 60
+        source_citation: "ILO Social Security Inquiry Namibia: retirement age 60 for females."
+        year: 2023
+      vesting_years:
+        value: 0
+        source_citation: "ILO Social Security Inquiry Namibia: OAG universal for all residents at 60; SSC DC balance accessible at 60."
+        year: 2023
+      minimum_contribution_years:
+        value: 0
+        source_citation: "Social Security Act Namibia: Old Age Grant requires no contribution; SSC DC balance determined by contributions made."
+        year: 2023
+      notes: "Universal Old Age Grant (OAG) NAD 1,600/month (2023) for all residents 60+."
+
+    contributions:
+      employee_rate:
+        value: 0.009
+        source_citation: "ILO Social Security Inquiry Namibia: employee SSC pension contribution 0.9% of wages (maternity/sick/death benefits branch)."
+        year: 2023
+      employer_rate:
+        value: 0.009
+        source_citation: "ILO Social Security Inquiry Namibia: employer SSC contribution 0.9% of wages (matching employee)."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: SSC contribution 1.8% total; OAG funded from general revenues; occupational pensions via private funds."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Namibia: SSC contributions on wages up to ceiling; occupational pension ceilings vary."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: "Mandatory occupational pension funds for private sector employees; NAM has developed financial sector."
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: "ILO Social Security Inquiry Namibia: OAG flat universal; occupational pensions depend on fund rules."
+        year: 2023
+      reference_wage: null
+      valorization: "wages"
+      flat_rate_aw_multiple:
+        value: 0.15
+        source_citation: "ILO Social Security Inquiry – Namibia"
+        year: 2023
+      flat_rate_absolute: null
+      indexation: "CPI"
+      minimum_benefit_aw_multiple:
+        value: 0.15
+        source_citation: "ILO Social Security Inquiry Namibia: OAG approximately NAD 1,600/month (2023) ≈ 15% of average wage for universal coverage."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Namibia: no explicit maximum; occupational pension depends on fund."
+        year: 2023
+      notes: "Universal OAG provides floor; mandatory occupational pension funds provide earnings-related supplement."
+
+    payout:
+      type: "annuity"
+      notes: "OAG monthly; occupational pension may be lump sum or annuity."
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "Pension income subject to income tax in Namibia; OAG exempt; occupational pension income taxable."
+  simplified_net_rate:
+    value: 0.10
+    source_citation: "ILO Social Security Inquiry Namibia: estimated effective income tax rate on average pension approximately 10%."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "NAM"
+  ilostat_transformation: "x * 12"
+  manual_value: 130000
+  currency: "Namibian Dollar"
+  year: 2022
+  source_citation: "Namibia Statistics Agency: average annual earnings 2022 approximately NAD 130,000."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["NAM_SSC"]
+    source_citation: "Social Security Act Namibia: mandatory SSC for all formal employees; occupational pension mandatory for most employers."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["NAM_SSC"]
+    source_citation: "ILO Social Security Inquiry Namibia: civil servants covered by Government Institutions Pension Fund (GIPF)."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: voluntary
+    scheme_ids: ["NAM_SSC"]
+    source_citation: "ILO Social Security Inquiry Namibia: self-employed eligible for OAG at 60; voluntary occupational pension participation."
+    notes: null
+
+notes: null

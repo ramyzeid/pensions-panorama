@@ -1,0 +1,242 @@
+{
+  "iso3": "CUB",
+  "country_name": "Cuba",
+  "last_updated": "2026-02-26T08:37:54.148008Z",
+  "narrative": {
+    "text": "Cuba is a Latin America and the Caribbean country with a DB-type pension system centred on the Sistema de Seguridad Social (MTSS) \u2013 DB Earnings-Related. The normal retirement age is 65 for men and 60 for women. Contributions total 19.0% of insurable earnings (5.0% employee, 14.0% employer).",
+    "sources": [
+      {
+        "source_name": "ILO Social Security Inquiry \u2013 Cuba",
+        "source_url": null,
+        "indicator_id": null,
+        "year": null,
+        "notes": null
+      },
+      {
+        "source_name": "Ministerio de Trabajo y Seguridad Social Cuba Anuario 2022",
+        "source_url": null,
+        "indicator_id": null,
+        "year": null,
+        "notes": null
+      }
+    ]
+  },
+  "country_indicators": [
+    {
+      "key": "year",
+      "label": "Year",
+      "cell": {
+        "value": 2023,
+        "unit": "year",
+        "year": 2023,
+        "source": {
+          "source_name": "World Development Indicators (World Bank)",
+          "source_url": "https://data.worldbank.org",
+          "indicator_id": null,
+          "year": null,
+          "notes": null
+        },
+        "notes": null
+      }
+    },
+    {
+      "key": "gdp_pc_lcu",
+      "label": "GDP per capita (LCU)",
+      "cell": {
+        "value": 75246.8413822192,
+        "unit": "LCU",
+        "year": 2023,
+        "source": {
+          "source_name": "World Development Indicators (World Bank)",
+          "source_url": "https://data.worldbank.org/indicator/NY.GDP.PCAP.CN?locations=CUB",
+          "indicator_id": "NY.GDP.PCAP.CN",
+          "year": 2023,
+          "notes": null
+        },
+        "notes": null
+      }
+    },
+    {
+      "key": "gdp_pc_usd",
+      "label": "GDP per capita (USD)",
+      "cell": {
+        "value": 9605.27914559614,
+        "unit": "USD",
+        "year": 2020,
+        "source": {
+          "source_name": "World Development Indicators (World Bank)",
+          "source_url": "https://data.worldbank.org/indicator/NY.GDP.PCAP.CD?locations=CUB",
+          "indicator_id": "NY.GDP.PCAP.CD",
+          "year": 2020,
+          "notes": null
+        },
+        "notes": null
+      }
+    },
+    {
+      "key": "pop_65_total",
+      "label": "Population age 65+ (total)",
+      "cell": {
+        "value": 1784736.0,
+        "unit": "persons",
+        "year": 2023,
+        "source": {
+          "source_name": "World Development Indicators (World Bank)",
+          "source_url": "https://data.worldbank.org/indicator/SP.POP.65UP.TO?locations=CUB",
+          "indicator_id": "SP.POP.65UP.TO",
+          "year": 2023,
+          "notes": null
+        },
+        "notes": null
+      }
+    },
+    {
+      "key": "pop_65_pct",
+      "label": "Population age 65+ (% of total population)",
+      "cell": {
+        "value": 16.1955286378621,
+        "unit": "%",
+        "year": 2023,
+        "source": {
+          "source_name": "World Development Indicators (World Bank)",
+          "source_url": "https://data.worldbank.org/indicator/SP.POP.65UP.TO.ZS?locations=CUB",
+          "indicator_id": "SP.POP.65UP.TO.ZS",
+          "year": 2023,
+          "notes": null
+        },
+        "notes": null
+      }
+    }
+  ],
+  "system_kpis": [
+    {
+      "key": "coverage_total",
+      "label": "Covers % of the population",
+      "cell": {
+        "value": null,
+        "unit": null,
+        "year": null,
+        "source": null,
+        "notes": null
+      }
+    },
+    {
+      "key": "coverage_65plus",
+      "label": "Covers % of the population age 65+",
+      "cell": {
+        "value": null,
+        "unit": null,
+        "year": null,
+        "source": null,
+        "notes": null
+      }
+    },
+    {
+      "key": "pension_spending_gdp",
+      "label": "Accounts for % of GDP",
+      "cell": {
+        "value": null,
+        "unit": null,
+        "year": null,
+        "source": null,
+        "notes": null
+      }
+    }
+  ],
+  "schemes": [
+    {
+      "scheme_id": "CUB_MTSS",
+      "scheme_name": "Sistema de Seguridad Social (MTSS) \u2013 DB Earnings-Related",
+      "scheme_type_group": "db",
+      "attributes": {
+        "implementing_agency": {
+          "value": "Sistema de Seguridad Social (MTSS) \u2013 DB Earnings-Related",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "target_population": {
+          "value": "All employed workers; state-funded; mandatory",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "benefit_plan_type": {
+          "value": "DB",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "financing_mechanism": {
+          "value": "Pay As You Go (PAYG)",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "contrib_employee": {
+          "value": 5.0,
+          "unit": "%",
+          "year": null,
+          "source": {
+            "source_name": "ILO Social Security Inquiry Cuba: employee social security contribution approximately 5% of wages.",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        },
+        "contrib_employer": {
+          "value": 14.0,
+          "unit": "%",
+          "year": null,
+          "source": {
+            "source_name": "ILO Social Security Inquiry Cuba: employee social security contribution approximately 5% of wages.",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        },
+        "contrib_total": {
+          "value": 19.0,
+          "unit": "%",
+          "year": null,
+          "source": null,
+          "notes": "Derived: employee + employer"
+        },
+        "ret_age_male": {
+          "value": 65,
+          "unit": null,
+          "year": null,
+          "source": {
+            "source_name": "ILO Social Security Inquiry Cuba: NRA raised to 65 for males (from 60) under 2021 reform.",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        },
+        "ret_age_female": {
+          "value": 60,
+          "unit": null,
+          "year": null,
+          "source": {
+            "source_name": "ILO Social Security Inquiry Cuba: NRA raised to 65 for males (from 60) under 2021 reform.",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        }
+      }
+    }
+  ]
+}

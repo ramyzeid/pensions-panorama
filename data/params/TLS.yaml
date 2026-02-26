@@ -1,0 +1,140 @@
+# =============================================================================
+# Timor-Leste (TLS) – Pension System Parameters
+# =============================================================================
+# Primary scheme: INSS (Instituto Nacional da Segurança Social) – DB
+# Sources:
+#   [1] ILO Social Security Inquiry – Timor-Leste
+#   [2] Instituto Nacional da Segurança Social (INSS) Timor-Leste
+#   [3] Social Security Decree-Law No. 19/2004 (Timor-Leste)
+# =============================================================================
+
+metadata:
+  country_name: "Timor-Leste"
+  iso3: "TLS"
+  iso2: "TL"
+  currency: "United States Dollar"
+  currency_code: "USD"
+  reference_year: 2023
+  wb_region: "EAP"
+  wb_income_level: "LMC"
+  un_location_id: 626
+  sources:
+    - "ILO Social Security Inquiry – Timor-Leste"
+    - "Instituto Nacional da Segurança Social (INSS) Timor-Leste"
+    - "Social Security Decree-Law No. 19/2004 (Timor-Leste)"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "TLS_INSS"
+    name: "INSS (Instituto Nacional da Segurança Social) – DB"
+    tier: "first"
+    type: "DB"
+    coverage: "Formally employed workers in private sector; mandatory social security"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 60
+        source_citation: "ILO Social Security Inquiry Timor-Leste: INSS NRA 60 for males."
+        year: 2023
+      normal_retirement_age_female:
+        value: 57
+        source_citation: "ILO Social Security Inquiry Timor-Leste: NRA 57 for females."
+        year: 2023
+      vesting_years:
+        value: 15
+        source_citation: "ILO Social Security Inquiry Timor-Leste: minimum 15 years of INSS contributions for pension."
+        year: 2023
+      minimum_contribution_years:
+        value: 15
+        source_citation: "Timor-Leste Social Security Decree: minimum 180 months for old-age pension."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.04
+        source_citation: "ILO Social Security Inquiry Timor-Leste: employee INSS contribution 4% of wages."
+        year: 2023
+      employer_rate:
+        value: 0.06
+        source_citation: "ILO Social Security Inquiry Timor-Leste: employer INSS contribution 6% of wages."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: 10% total INSS contribution (4% employee + 6% employer)."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Timor-Leste: contributions on all wages; no explicit AW ceiling."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: "Timor-Leste uses USD. Civil servants covered by separate Veterans Pension and government scheme. Very young system established post-independence."
+
+    benefits:
+      accrual_rate_per_year:
+        value: 0.02
+        source_citation: "ILO Social Security Inquiry Timor-Leste: INSS pension approximately 2% per year of career average insurable earnings."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "prices"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "CPI"
+      minimum_benefit_aw_multiple:
+        value: 0.25
+        source_citation: "ILO Social Security Inquiry Timor-Leste: minimum INSS pension approximately 25% of average formal wage."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Timor-Leste: maximum pension not explicitly documented."
+        year: 2023
+      notes: "Bolsa da Mãe programme provides non-contributory social assistance. System still developing."
+
+    payout:
+      type: "annuity"
+      notes: null
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "Pension income subject to income tax in Timor-Leste; rates relatively low."
+  simplified_net_rate:
+    value: 0.05
+    source_citation: "ILO Social Security Inquiry Timor-Leste: estimated effective income tax rate on average pension approximately 5%."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "TLS"
+  ilostat_transformation: "x * 12"
+  manual_value: 5000
+  currency: "United States Dollar"
+  year: 2022
+  source_citation: "Timor-Leste General Directorate of Statistics: estimated average annual formal earnings 2022 approximately USD 5,000."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["TLS_INSS"]
+    source_citation: "Timor-Leste Social Security Decree: mandatory INSS for formally employed private sector workers."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["TLS_INSS"]
+    source_citation: "ILO Social Security Inquiry Timor-Leste: civil servants covered by separate government pension arrangements."
+    notes: "Civil servants covered under government pension provisions."
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: voluntary
+    scheme_ids: ["TLS_INSS"]
+    source_citation: "ILO Social Security Inquiry Timor-Leste: self-employed may voluntarily contribute to INSS."
+    notes: null
+
+notes: null

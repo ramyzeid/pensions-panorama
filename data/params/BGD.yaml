@@ -1,0 +1,260 @@
+# =============================================================================
+# Bangladesh (BGD) – Pension System Parameters
+# =============================================================================
+# Primary scheme: GPF – General Provident Fund (government employees only)
+# Private sector: Labour law gratuity + new Universal Pension Scheme (2023)
+# Governing law: Provident Fund Act 1925; Bangladesh Labour Act 2006
+#
+# Note: Bangladesh has extremely limited formal pension coverage for private sector.
+# The Universal Pension Scheme (UPS) launched August 2023 is beyond reference year 2022.
+#
+# Sources:
+#   [1] General Provident Fund (GPF) Rules 1979 – Bangladesh
+#   [2] Bangladesh Labour Act 2006 (gratuity provisions)
+#   [3] ILO Bangladesh Social Protection Country Profile 2021
+#   [4] World Bank Bangladesh Social Protection Diagnostic 2020
+# =============================================================================
+
+metadata:
+  country_name: "Bangladesh"
+  iso3: "BGD"
+  iso2: "BD"
+  currency: "Bangladeshi Taka"
+  currency_code: "BDT"
+  reference_year: 2022
+  wb_region: "SAS"
+  wb_income_level: "LMC"
+  un_location_id: 50
+  sources:
+    - "General Provident Fund (GPF) Rules 1979 – Bangladesh"
+    - "Bangladesh Labour Act 2006 – gratuity and retirement benefit provisions"
+    - "ILO Bangladesh Social Protection Country Profile 2021"
+    - "World Bank Bangladesh Social Protection Diagnostic 2020"
+  last_reviewed: "2024-03-01"
+
+schemes:
+  - scheme_id: "GPF_DC"
+    name: "General Provident Fund (GPF) – Civil Servants"
+    tier: "second"
+    type: "DC"
+    coverage: >
+      Central government civil servants only. Approximately 1.5 million civil servants
+      covered as of 2022. Does NOT cover private sector employees (formally the vast
+      majority of workers). Non-contributory pension for civil servants pre-2015
+      cohorts; contributory GPF for accumulation.
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 59
+        source_citation: >
+          Bangladesh Service Rules – mandatory retirement age for civil servants is 59
+          (raised from 57 in 2012). GPF withdrawable upon retirement.
+          Finance Division, Bangladesh 2022.
+        year: 2022
+      normal_retirement_age_female:
+        value: 59
+        source_citation: "Bangladesh Service Rules – NRA 59 for civil servants of both sexes."
+        year: 2022
+      vesting_years:
+        value: 5
+        source_citation: >
+          GPF Rules 1979 – GPF balance fully withdrawable after 5 years of service
+          (upon retirement or resignation). Finance Division Bangladesh 2022.
+        year: 2022
+      minimum_contribution_years:
+        value: 5
+        source_citation: "GPF Rules 1979 – 5 years minimum for full GPF entitlement."
+        year: 2022
+
+    contributions:
+      employee_rate:
+        value: 0.10
+        source_citation: >
+          GPF Rules 1979 – civil servants must contribute a minimum of 10% of basic pay
+          to GPF (can contribute up to 25%). Standard rate: 10%. Finance Division Bangladesh.
+        year: 2022
+      employer_rate:
+        value: 0.25
+        source_citation: >
+          Government (employer) guarantee: pays 25% annual return on GPF balances
+          (guaranteed interest rate set by Finance Division, varies annually).
+          Note: This is modeled as an employer contribution equivalent; actual mechanism
+          is an interest rate guarantee, not an explicit employer contribution.
+          Finance Division Bangladesh 2022.
+        year: 2022
+      total_rate:
+        value: 0.10
+        source_citation: >
+          Actual employee cash contribution: 10% of basic pay. Government provides
+          a guaranteed return (effectively an employer subsidy). GPF Rules 1979.
+        year: 2022
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "No contribution ceiling; based on basic pay of civil servant."
+        year: 2022
+      contribution_base: "basic pay (government employees)"
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: >
+          DC scheme – benefit is accumulated GPF balance (contributions plus guaranteed interest).
+          The government also pays a separate pension (DB, non-contributory) to civil servants
+          with 25+ years of service: pension = (basic pay / 2) × years/25.
+          Finance Division Bangladesh 2022.
+        year: 2022
+      reference_wage: "career_average"
+      valorization: "wages"
+      indexation: "CPI"
+      minimum_benefit_aw_multiple:
+        value: null
+        source_citation: "No minimum GPF benefit; depends on accumulated balance."
+        year: 2022
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "DC scheme – no maximum cap."
+        year: 2022
+
+    payout:
+      type: "lump_sum"
+
+  - scheme_id: "CSPS_DB"
+    name: "Civil Service Pension Scheme (Non-Contributory DB)"
+    tier: "first"
+    type: "DB"
+    coverage: >
+      Pre-2015 government civil servants on non-contributory pension. Provides a
+      monthly pension upon retirement from civil service. New entrants from 2015
+      onward are on GPF-only scheme (being transitioned to contributory).
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 59
+        source_citation: "Bangladesh Service Rules – mandatory retirement 59. Finance Division 2022."
+        year: 2022
+      normal_retirement_age_female:
+        value: 59
+        source_citation: "Bangladesh Service Rules – NRA 59 for all civil servants."
+        year: 2022
+      vesting_years:
+        value: 25
+        source_citation: >
+          Civil service pension rules – full pension requires 25 years of service.
+          Pension of 50% basic pay after 25 years; proportionally less below.
+          Finance Division Bangladesh 2022.
+        year: 2022
+      minimum_contribution_years:
+        value: 10
+        source_citation: "Minimum 10 years service for any civil service pension entitlement."
+        year: 2022
+
+    contributions:
+      employee_rate:
+        value: 0.0
+        source_citation: >
+          Non-contributory – civil servant pays nothing for DB pension (0% employee
+          contribution). Funded entirely from government budget. Finance Division 2022.
+        year: 2022
+      employer_rate:
+        value: 0.0
+        source_citation: >
+          Non-contributory pension – no explicit employer contribution rate; funded from
+          general government revenue. Finance Division Bangladesh 2022.
+        year: 2022
+      total_rate:
+        value: 0.0
+        source_citation: "Non-contributory scheme; unfunded government promise."
+        year: 2022
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "Non-contributory; no ceiling applicable."
+        year: 2022
+      contribution_base: "n/a"
+
+    benefits:
+      accrual_rate_per_year:
+        value: 0.02
+        source_citation: >
+          Civil service pension formula: 50% of last basic pay at 25 years service,
+          effectively 2%/year on final basic salary. Maximum typically 80% at 40 years.
+          Finance Division Bangladesh Pension Rules 2022.
+        year: 2022
+      reference_wage: "final_salary"
+      valorization: "wages"
+      indexation: "CPI"
+      minimum_benefit_aw_multiple:
+        value: 0.15
+        source_citation: >
+          Government minimum pension ~BDT 3,000/month (2022) for retired civil servants.
+          With formal AW ~BDT 20,000/month → ~15% AW. Finance Division Bangladesh 2022.
+        year: 2022
+      maximum_benefit_aw_multiple:
+        value: 0.80
+        source_citation: "Maximum 80% final basic salary. Bangladesh Civil Service Pension Rules."
+        year: 2022
+
+    payout:
+      type: "annuity"
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: >
+    GPF withdrawals are exempt from income tax in Bangladesh under the Income Tax Act.
+    Civil service pension income is exempt from income tax under Finance Act provisions.
+    Income Tax Ordinance 1984 (as amended), Bangladesh.
+  simplified_net_rate:
+    value: 0.0
+    source_citation: >
+      GPF and civil service pensions are tax-exempt in Bangladesh.
+      Income Tax Ordinance 1984, Bangladesh.
+    year: 2022
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "BGD"
+  ilostat_transformation: "x * 12"
+  manual_value: 240000.0
+  currency: "Bangladeshi Taka"
+  year: 2022
+  source_citation: >
+    Bangladesh Bureau of Statistics (BBS) – Labour Force Survey 2022.
+    Average formal sector monthly earnings ~BDT 20,000/month × 12 = BDT 240,000/year.
+    Note: RMG (Ready-Made Garment) sector minimum wage ~BDT 8,000/month; formal
+    sector AW skewed by public sector wages. ILOSTAT data available but limited.
+  source_url: "https://www.bbs.gov.bd"
+  notes: >
+    Bangladesh's economy is dominated by the RMG sector (garment exports) with very low wages.
+    Formal AW here reflects non-RMG formal sector workers more likely to have pension coverage.
+
+
+# =============================================================================
+# Worker types
+# =============================================================================
+
+worker_types:
+
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: [GPF_DC]
+    source_citation: "Default: same as main scheme definition."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: unknown
+    scheme_ids: []
+    source_citation: "Coverage status not yet researched; placeholder."
+    notes: "TODO: verify self-employed coverage under national law."
+
+notes: >
+  Bangladesh has one of the lowest formal pension coverage rates in South Asia.
+  Over 85% of workers are in the informal economy with NO pension coverage.
+  The civil service pension covers ~1.5 million workers. There is no mandatory pension for
+  private sector workers.
+  The Universal Pension Scheme (UPS) launched in August 2023 is a voluntary contributory
+  scheme (outside this 2022 reference year). The Labour Act 2006 requires employers to pay
+  a gratuity (30 days wage per year) for workers with 10+ years of service, but this is an
+  end-of-service lump sum, not a recurring pension.

@@ -1,0 +1,139 @@
+# =============================================================================
+# Belarus (BLR) – Pension System Parameters
+# =============================================================================
+# Primary scheme: Social Protection Fund (FSZN) – DB PAYG
+# Sources:
+#   [1] ILO Social Security Inquiry – Belarus
+#   [2] Belstat – Statistical Yearbook 2023
+# =============================================================================
+
+metadata:
+  country_name: "Belarus"
+  iso3: "BLR"
+  iso2: "BY"
+  currency: "Belarusian Ruble"
+  currency_code: "BYN"
+  reference_year: 2023
+  wb_region: "ECS"
+  wb_income_level: "UMC"
+  un_location_id: 112
+  sources:
+    - "ILO Social Security Inquiry – Belarus"
+    - "Belstat Statistical Yearbook 2023"
+    - "Law on Pension Provision of the Republic of Belarus (1992, as amended)"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "BLR_FSZN"
+    name: "Social Protection Fund (FSZN) – State Pension"
+    tier: "first"
+    type: "DB"
+    coverage: "All employed workers in the formal sector"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 63
+        source_citation: "ILO Social Security Inquiry Belarus: NRA for males 63 (raised from 60 by 2022)."
+        year: 2023
+      normal_retirement_age_female:
+        value: 58
+        source_citation: "ILO Social Security Inquiry Belarus: NRA for females 58 (raised from 55 by 2022)."
+        year: 2023
+      vesting_years:
+        value: 20
+        source_citation: "Law on Pension Provision Belarus: minimum 20 years of insurance record for males, 15 for females, for old-age pension."
+        year: 2023
+      minimum_contribution_years:
+        value: 20
+        source_citation: "Law on Pension Provision Belarus: minimum service years required for full pension."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.01
+        source_citation: "ILO Social Security Inquiry Belarus: employee contribution 1% of gross wages to FSZN."
+        year: 2023
+      employer_rate:
+        value: 0.28
+        source_citation: "ILO Social Security Inquiry Belarus: employer contribution 28% of gross wages to FSZN (covers pension, disability, survivor)."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: 29% total social insurance contribution rate."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Belarus: no contribution ceiling as multiple of average wage."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: null
+
+    benefits:
+      accrual_rate_per_year:
+        value: 0.01
+        source_citation: "ILO Social Security Inquiry Belarus: pension formula accrues approximately 1% of average wage per year of service, with supplements."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "wages"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "wages"
+      minimum_benefit_aw_multiple:
+        value: 0.10
+        source_citation: "ILO Social Security Inquiry Belarus: minimum pension set at approximately 10% of average wage."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Belarus: no statutory maximum benefit."
+        year: 2023
+      notes: null
+
+    payout:
+      type: "annuity"
+      notes: null
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "Pension income is generally exempt from income tax in Belarus."
+  simplified_net_rate:
+    value: 0.0
+    source_citation: "ILO Social Security Inquiry Belarus: state pension benefits are exempt from personal income tax."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "BLR"
+  ilostat_transformation: "x * 12"
+  manual_value: 20000
+  currency: "Belarusian Ruble"
+  year: 2022
+  source_citation: "Belstat Statistical Yearbook 2023: average monthly nominal wage 2022 approximately BYN 1,650, BYN 19,800 annually."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["BLR_FSZN"]
+    source_citation: "Law on Pension Provision Belarus 1992 (as amended): mandatory FSZN coverage for all formal sector employees."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["BLR_FSZN"]
+    source_citation: "ILO Social Security Inquiry Belarus: civil servants covered under the same FSZN scheme."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: mandatory
+    scheme_ids: ["BLR_FSZN"]
+    source_citation: "ILO Social Security Inquiry Belarus: self-employed are required to contribute to FSZN."
+    notes: null
+
+notes: null

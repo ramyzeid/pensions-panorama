@@ -1,0 +1,242 @@
+{
+  "iso3": "FIN",
+  "country_name": "Finland",
+  "last_updated": "2026-02-26T08:50:07.613311Z",
+  "narrative": {
+    "text": "Finland is a Europe and Central Asia country with a DB-type pension system centred on the Employees Pensions Act (TyEL) \u2013 Earnings-Related Pension. The normal retirement age is 65 for both men and women. Contributions total 24.5% of insurable earnings (7.1% employee, 17.3% employer).",
+    "sources": [
+      {
+        "source_name": "OECD Pensions at a Glance 2023 \u2013 Finland",
+        "source_url": null,
+        "indicator_id": null,
+        "year": null,
+        "notes": null
+      },
+      {
+        "source_name": "Statistics Finland Statistical Yearbook 2023",
+        "source_url": null,
+        "indicator_id": null,
+        "year": null,
+        "notes": null
+      }
+    ]
+  },
+  "country_indicators": [
+    {
+      "key": "year",
+      "label": "Year",
+      "cell": {
+        "value": 2023,
+        "unit": "year",
+        "year": 2023,
+        "source": {
+          "source_name": "World Development Indicators (World Bank)",
+          "source_url": "https://data.worldbank.org",
+          "indicator_id": null,
+          "year": null,
+          "notes": null
+        },
+        "notes": null
+      }
+    },
+    {
+      "key": "gdp_pc_lcu",
+      "label": "GDP per capita (LCU)",
+      "cell": {
+        "value": 48863.2429850691,
+        "unit": "LCU",
+        "year": 2023,
+        "source": {
+          "source_name": "World Development Indicators (World Bank)",
+          "source_url": "https://data.worldbank.org/indicator/NY.GDP.PCAP.CN?locations=FIN",
+          "indicator_id": "NY.GDP.PCAP.CN",
+          "year": 2023,
+          "notes": null
+        },
+        "notes": null
+      }
+    },
+    {
+      "key": "gdp_pc_usd",
+      "label": "GDP per capita (USD)",
+      "cell": {
+        "value": 52834.2916752703,
+        "unit": "USD",
+        "year": 2023,
+        "source": {
+          "source_name": "World Development Indicators (World Bank)",
+          "source_url": "https://data.worldbank.org/indicator/NY.GDP.PCAP.CD?locations=FIN",
+          "indicator_id": "NY.GDP.PCAP.CD",
+          "year": 2023,
+          "notes": null
+        },
+        "notes": null
+      }
+    },
+    {
+      "key": "pop_65_total",
+      "label": "Population age 65+ (total)",
+      "cell": {
+        "value": 1316568.0,
+        "unit": "persons",
+        "year": 2023,
+        "source": {
+          "source_name": "World Development Indicators (World Bank)",
+          "source_url": "https://data.worldbank.org/indicator/SP.POP.65UP.TO?locations=FIN",
+          "indicator_id": "SP.POP.65UP.TO",
+          "year": 2023,
+          "notes": null
+        },
+        "notes": null
+      }
+    },
+    {
+      "key": "pop_65_pct",
+      "label": "Population age 65+ (% of total population)",
+      "cell": {
+        "value": 23.5778747195571,
+        "unit": "%",
+        "year": 2023,
+        "source": {
+          "source_name": "World Development Indicators (World Bank)",
+          "source_url": "https://data.worldbank.org/indicator/SP.POP.65UP.TO.ZS?locations=FIN",
+          "indicator_id": "SP.POP.65UP.TO.ZS",
+          "year": 2023,
+          "notes": null
+        },
+        "notes": null
+      }
+    }
+  ],
+  "system_kpis": [
+    {
+      "key": "coverage_total",
+      "label": "Covers % of the population",
+      "cell": {
+        "value": null,
+        "unit": null,
+        "year": null,
+        "source": null,
+        "notes": null
+      }
+    },
+    {
+      "key": "coverage_65plus",
+      "label": "Covers % of the population age 65+",
+      "cell": {
+        "value": null,
+        "unit": null,
+        "year": null,
+        "source": null,
+        "notes": null
+      }
+    },
+    {
+      "key": "pension_spending_gdp",
+      "label": "Accounts for % of GDP",
+      "cell": {
+        "value": null,
+        "unit": null,
+        "year": null,
+        "source": null,
+        "notes": null
+      }
+    }
+  ],
+  "schemes": [
+    {
+      "scheme_id": "FIN_TYEL",
+      "scheme_name": "Employees Pensions Act (TyEL) \u2013 Earnings-Related Pension",
+      "scheme_type_group": "db",
+      "attributes": {
+        "implementing_agency": {
+          "value": "Employees Pensions Act (TyEL) \u2013 Earnings-Related Pension",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "target_population": {
+          "value": "All private sector employees; public sector has equivalent YEL/KVTEL schemes",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "benefit_plan_type": {
+          "value": "DB",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "financing_mechanism": {
+          "value": "Pay As You Go (PAYG)",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "contrib_employee": {
+          "value": 7.15,
+          "unit": "%",
+          "year": null,
+          "source": {
+            "source_name": "OECD Pensions at a Glance 2023 Finland: employee TyEL contribution 7.15% (age 17\u201352 and 63+) or 8.65% (age 53\u201362) in 2023.",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        },
+        "contrib_employer": {
+          "value": 17.34,
+          "unit": "%",
+          "year": null,
+          "source": {
+            "source_name": "OECD Pensions at a Glance 2023 Finland: employee TyEL contribution 7.15% (age 17\u201352 and 63+) or 8.65% (age 53\u201362) in 2023.",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        },
+        "contrib_total": {
+          "value": 24.49,
+          "unit": "%",
+          "year": null,
+          "source": null,
+          "notes": "Derived: employee + employer"
+        },
+        "ret_age_male": {
+          "value": 65,
+          "unit": null,
+          "year": null,
+          "source": {
+            "source_name": "OECD Pensions at a Glance 2023 Finland: flexible retirement window 63\u201368; target retirement age approximately 65 for 2023 cohort.",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        },
+        "ret_age_female": {
+          "value": 65,
+          "unit": null,
+          "year": null,
+          "source": {
+            "source_name": "OECD Pensions at a Glance 2023 Finland: flexible retirement window 63\u201368; target retirement age approximately 65 for 2023 cohort.",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        }
+      }
+    }
+  ]
+}

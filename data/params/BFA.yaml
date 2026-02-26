@@ -1,0 +1,139 @@
+# =============================================================================
+# Burkina Faso (BFA) – Pension System Parameters
+# =============================================================================
+# Primary scheme: CNSS (Caisse Nationale de Sécurité Sociale) – DB
+# Sources:
+#   [1] ILO Social Security Inquiry – Burkina Faso
+#   [2] Caisse Nationale de Sécurité Sociale Burkina Faso – Annual Report 2022
+# =============================================================================
+
+metadata:
+  country_name: "Burkina Faso"
+  iso3: "BFA"
+  iso2: "BF"
+  currency: "West African CFA Franc"
+  currency_code: "XOF"
+  reference_year: 2023
+  wb_region: "SSA"
+  wb_income_level: "LIC"
+  un_location_id: 854
+  sources:
+    - "ILO Social Security Inquiry – Burkina Faso"
+    - "Caisse Nationale de Sécurité Sociale Burkina Faso Annual Report 2022"
+    - "Code de Sécurité Sociale (Burkina Faso, 2016)"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "BFA_CNSS"
+    name: "CNSS (Caisse Nationale de Sécurité Sociale) – DB Earnings-Related"
+    tier: "first"
+    type: "DB"
+    coverage: "Formally employed workers; mandatory social insurance"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 58
+        source_citation: "ILO Social Security Inquiry Burkina Faso: NRA 58 for males (56 for arduous work)."
+        year: 2023
+      normal_retirement_age_female:
+        value: 58
+        source_citation: "ILO Social Security Inquiry Burkina Faso: NRA 58 for females."
+        year: 2023
+      vesting_years:
+        value: 15
+        source_citation: "ILO Social Security Inquiry Burkina Faso: minimum 180 months (15 years) of contributions for pension."
+        year: 2023
+      minimum_contribution_years:
+        value: 15
+        source_citation: "Code de Sécurité Sociale Burkina Faso: minimum 180 months for old-age pension."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.055
+        source_citation: "ILO Social Security Inquiry Burkina Faso: employee CNSS contribution 5.5% of wages."
+        year: 2023
+      employer_rate:
+        value: 0.16
+        source_citation: "ILO Social Security Inquiry Burkina Faso: employer CNSS contribution 16% of wages (all branches)."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: approximately 21.5% total CNSS contribution."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Burkina Faso: contributions on insurable wages up to ceiling."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: "CARFO (Caisse Autonome de Retraites des Fonctionnaires) covers civil servants separately."
+
+    benefits:
+      accrual_rate_per_year:
+        value: 0.02
+        source_citation: "ILO Social Security Inquiry Burkina Faso: CNSS pension accrual approximately 2% per year of career average insurable earnings."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "prices"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "prices"
+      minimum_benefit_aw_multiple:
+        value: 0.30
+        source_citation: "ILO Social Security Inquiry Burkina Faso: minimum CNSS pension approximately 30% of minimum wage reference."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: 0.80
+        source_citation: "ILO Social Security Inquiry Burkina Faso: maximum CNSS pension approximately 80% of reference earnings."
+        year: 2023
+      notes: null
+
+    payout:
+      type: "annuity"
+      notes: null
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "Pension income subject to income tax in Burkina Faso; modest exemptions apply."
+  simplified_net_rate:
+    value: 0.05
+    source_citation: "ILO Social Security Inquiry Burkina Faso: estimated effective income tax rate on average pension approximately 5%."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "BFA"
+  ilostat_transformation: "x * 12"
+  manual_value: 1000000
+  currency: "West African CFA Franc"
+  year: 2022
+  source_citation: "Institut National de la Statistique et de la Démographie (INSD) Burkina Faso: estimated average annual formal earnings 2022 approximately XOF 1,000,000."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["BFA_CNSS"]
+    source_citation: "Code de Sécurité Sociale Burkina Faso: mandatory CNSS for all formally employed private sector workers."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["BFA_CNSS"]
+    source_citation: "ILO Social Security Inquiry Burkina Faso: civil servants covered by CARFO (separate civil service fund)."
+    notes: "Civil servants covered by CARFO, not CNSS."
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: voluntary
+    scheme_ids: ["BFA_CNSS"]
+    source_citation: "ILO Social Security Inquiry Burkina Faso: self-employed may voluntarily contribute to CNSS; limited participation."
+    notes: null
+
+notes: null

@@ -1,0 +1,139 @@
+# =============================================================================
+# Haiti (HTI) – Pension System Parameters
+# =============================================================================
+# Primary scheme: ONA (Office National d'Assurance-Vieillesse) – DB
+# Sources:
+#   [1] ILO Social Security Inquiry – Haiti
+#   [2] Office National d'Assurance-Vieillesse (ONA) Haiti – 2022
+# =============================================================================
+
+metadata:
+  country_name: "Haiti"
+  iso3: "HTI"
+  iso2: "HT"
+  currency: "Haitian Gourde"
+  currency_code: "HTG"
+  reference_year: 2023
+  wb_region: "LCN"
+  wb_income_level: "LIC"
+  un_location_id: 332
+  sources:
+    - "ILO Social Security Inquiry – Haiti"
+    - "Office National d'Assurance-Vieillesse (ONA) Haiti 2022"
+    - "Décret sur les Assurances Sociales (Haiti, 1967, as amended)"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "HTI_ONA"
+    name: "ONA (Office National d'Assurance-Vieillesse) – DB Earnings-Related"
+    tier: "first"
+    type: "DB"
+    coverage: "Formally employed workers; limited coverage due to large informal sector"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 55
+        source_citation: "ILO Social Security Inquiry Haiti: NRA 55 for males; very low effective retirement age."
+        year: 2023
+      normal_retirement_age_female:
+        value: 55
+        source_citation: "ILO Social Security Inquiry Haiti: NRA 55 for females."
+        year: 2023
+      vesting_years:
+        value: 10
+        source_citation: "ILO Social Security Inquiry Haiti: minimum 10 years of contributions for retirement benefit."
+        year: 2023
+      minimum_contribution_years:
+        value: 10
+        source_citation: "ILO Social Security Inquiry Haiti: minimum 120 monthly contributions for ONA pension."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.06
+        source_citation: "ILO Social Security Inquiry Haiti: employee ONA contribution 6% of wages."
+        year: 2023
+      employer_rate:
+        value: 0.06
+        source_citation: "ILO Social Security Inquiry Haiti: employer ONA contribution 6% of wages."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: 12% total ONA contribution (6% employee + 6% employer)."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Haiti: contributions on insurable wages; ceiling set by regulation."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: "ONA coverage extremely limited; most population in informal economy without any pension coverage."
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: "ILO Social Security Inquiry Haiti: ONA pension very modest; approximately 30–40% of insurable wages after full career."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "prices"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "prices"
+      minimum_benefit_aw_multiple:
+        value: 0.15
+        source_citation: "ILO Social Security Inquiry Haiti: minimum ONA pension very low; approximately 15% of average formal wage."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Haiti: maximum pension constrained by earnings and contribution record."
+        year: 2023
+      notes: "Haiti has extremely limited social protection coverage; most elderly have no pension income."
+
+    payout:
+      type: "annuity"
+      notes: null
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "Pension income may be subject to income tax in Haiti; most pensions below tax threshold."
+  simplified_net_rate:
+    value: 0.0
+    source_citation: "ILO Social Security Inquiry Haiti: most ONA pensions below income tax threshold; effective rate approximately 0%."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "HTI"
+  ilostat_transformation: "x * 12"
+  manual_value: 100000
+  currency: "Haitian Gourde"
+  year: 2022
+  source_citation: "Institut Haïtien de Statistique et d'Informatique (IHSI): estimated average formal sector annual earnings 2022 approximately HTG 100,000."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["HTI_ONA"]
+    source_citation: "ILO Social Security Inquiry Haiti: formally employed private sector workers mandatorily covered by ONA."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["HTI_ONA"]
+    source_citation: "ILO Social Security Inquiry Haiti: civil servants covered by ONA; government pension supplements for some."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: voluntary
+    scheme_ids: ["HTI_ONA"]
+    source_citation: "ILO Social Security Inquiry Haiti: self-employed not mandatorily covered; very limited voluntary participation."
+    notes: null
+
+notes: null

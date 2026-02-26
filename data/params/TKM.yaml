@@ -1,0 +1,139 @@
+# =============================================================================
+# Turkmenistan (TKM) – Pension System Parameters
+# =============================================================================
+# Primary scheme: State Social Security Fund – DB PAYG
+# Sources:
+#   [1] ILO Social Security Inquiry – Turkmenistan
+#   [2] State Statistics Committee Turkmenistan / World Bank Central Asia Review
+# =============================================================================
+
+metadata:
+  country_name: "Turkmenistan"
+  iso3: "TKM"
+  iso2: "TM"
+  currency: "Turkmenistani Manat"
+  currency_code: "TMT"
+  reference_year: 2023
+  wb_region: "ECS"
+  wb_income_level: "UMC"
+  un_location_id: 795
+  sources:
+    - "ILO Social Security Inquiry – Turkmenistan"
+    - "World Bank Central Asia Social Protection Review 2021"
+    - "Law of Turkmenistan on State Pension Insurance (1998, as amended)"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "TKM_SSF"
+    name: "State Social Security Fund – DB Pension"
+    tier: "first"
+    type: "DB"
+    coverage: "All formal sector employees"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 62
+        source_citation: "ILO Social Security Inquiry Turkmenistan: NRA for males 62."
+        year: 2023
+      normal_retirement_age_female:
+        value: 57
+        source_citation: "ILO Social Security Inquiry Turkmenistan: NRA for females 57."
+        year: 2023
+      vesting_years:
+        value: 25
+        source_citation: "Law of Turkmenistan on State Pension Insurance: minimum 25 years of work service required."
+        year: 2023
+      minimum_contribution_years:
+        value: 25
+        source_citation: "ILO Social Security Inquiry Turkmenistan: 25 years required for full pension."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.01
+        source_citation: "ILO Social Security Inquiry Turkmenistan: employee social insurance contribution 1% of gross wages."
+        year: 2023
+      employer_rate:
+        value: 0.20
+        source_citation: "ILO Social Security Inquiry Turkmenistan: employer social insurance contribution 20% of gross wages."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: 21% total social insurance contribution."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Turkmenistan: no contribution ceiling as multiple of average wage."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: null
+
+    benefits:
+      accrual_rate_per_year:
+        value: 0.01
+        source_citation: "ILO Social Security Inquiry Turkmenistan: DB formula accrues approximately 1% of reference wage per year of service."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "wages"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "CPI"
+      minimum_benefit_aw_multiple:
+        value: 0.10
+        source_citation: "ILO Social Security Inquiry Turkmenistan: minimum pension approximately 10% of average wage."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Turkmenistan: no statutory maximum pension."
+        year: 2023
+      notes: null
+
+    payout:
+      type: "annuity"
+      notes: null
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "Pension income is exempt from income tax in Turkmenistan."
+  simplified_net_rate:
+    value: 0.0
+    source_citation: "ILO Social Security Inquiry Turkmenistan: pension benefits exempt from personal income tax."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "TKM"
+  ilostat_transformation: "x * 12"
+  manual_value: 18000
+  currency: "Turkmenistani Manat"
+  year: 2022
+  source_citation: "State Statistics Committee Turkmenistan / ILO: average monthly wage 2022 approximately TMT 1,500, TMT 18,000 annually (estimate)."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["TKM_SSF"]
+    source_citation: "Law of Turkmenistan on State Pension Insurance: mandatory coverage for all formal sector employees."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["TKM_SSF"]
+    source_citation: "ILO Social Security Inquiry Turkmenistan: civil servants covered under the same state pension scheme."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: voluntary
+    scheme_ids: ["TKM_SSF"]
+    source_citation: "ILO Social Security Inquiry Turkmenistan: self-employed may contribute voluntarily."
+    notes: null
+
+notes: null

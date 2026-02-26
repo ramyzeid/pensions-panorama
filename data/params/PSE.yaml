@@ -1,0 +1,255 @@
+# =============================================================================
+# Palestine (PSE) – Pension System Parameters
+# =============================================================================
+# Primary scheme: PAWS – Palestinian Authority Workers' Social Insurance
+#                 (التأمينات الاجتماعية للعمال الفلسطينيين)
+# Civil servants: Authority for Retirement and Social Security (ARSS)
+# Governing law: Social Security Law No. 6 of 2016; Civil Service Retirement Law No. 8 of 2005
+#
+# Note: The formal social security system is still being implemented as of 2022.
+# Gaza Strip operates under different (Hamas) administration with separate arrangements.
+#
+# Sources:
+#   [1] Social Security Law No. 6 of 2016 – Palestinian Authority
+#   [2] Civil Service Retirement Law No. 8 of 2005 – Palestinian Authority
+#   [3] World Bank Palestine Social Insurance Assessment 2021
+#   [4] ILO Palestine Social Protection Country Profile 2022
+# =============================================================================
+
+metadata:
+  country_name: "Palestine"
+  iso3: "PSE"
+  iso2: "PS"
+  currency: "Israeli New Shekel"
+  currency_code: "ILS"
+  reference_year: 2022
+  wb_region: "MEA"
+  wb_income_level: "LMC"
+  un_location_id: 275
+  sources:
+    - "Social Security Law No. 6 of 2016 – Palestinian Authority"
+    - "Civil Service Retirement Law No. 8 of 2005 – Palestinian Authority"
+    - "World Bank Palestine Social Insurance Assessment 2021"
+    - "ILO Palestine Social Protection Country Profile 2022"
+  last_reviewed: "2024-03-01"
+
+schemes:
+  - scheme_id: "ARSS_DB"
+    name: "Civil Service Retirement Pension (ARSS)"
+    tier: "first"
+    type: "DB"
+    coverage: >
+      Palestinian Authority civil servants and public sector employees (West Bank).
+      Approximately 160,000 PA employees covered. The most established pension scheme
+      in Palestine; private sector scheme still being phased in as of 2022.
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 60
+        source_citation: >
+          Civil Service Retirement Law No. 8 of 2005 – NRA 60 for civil servants
+          (males). Compulsory retirement at 65. ARSS Palestine 2022.
+        source_url: "https://www.pma.ps"
+        year: 2022
+      normal_retirement_age_female:
+        value: 60
+        source_citation: >
+          Civil Service Retirement Law No. 8/2005 – NRA 60 for female civil servants.
+          Optional early retirement at 55 with reduced benefit. ARSS Palestine 2022.
+        year: 2022
+      vesting_years:
+        value: 25
+        source_citation: >
+          Civil Service Retirement Law No. 8/2005 – minimum 25 years of service for full
+          pension; reduced pension available with fewer years. ARSS Palestine 2022.
+        year: 2022
+      minimum_contribution_years:
+        value: 10
+        source_citation: "Civil Service Retirement Law No. 8/2005 – 10 years minimum for any pension."
+        year: 2022
+
+    contributions:
+      employee_rate:
+        value: 0.07
+        source_citation: >
+          Civil Service Retirement Law No. 8 of 2005 – civil servant contribution 7% of
+          basic salary. ARSS Palestine 2022.
+        year: 2022
+      employer_rate:
+        value: 0.14
+        source_citation: >
+          PA government (employer) contribution 14% of basic salary to ARSS.
+          Civil Service Retirement Law No. 8/2005.
+        year: 2022
+      total_rate:
+        value: 0.21
+        source_citation: "Employee 7% + Employer 14% = 21%. Civil Service Retirement Law 8/2005."
+        year: 2022
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "No contribution ceiling; full basic salary is the contribution base."
+        year: 2022
+      contribution_base: "basic salary"
+
+    benefits:
+      accrual_rate_per_year:
+        value: 0.02
+        source_citation: >
+          Civil Service Retirement Law No. 8/2005 – pension = 2% × years of service ×
+          average last 3 years' basic salary. Maximum 80% at 40 years. ARSS Palestine 2022.
+        year: 2022
+      reference_wage: "final_salary"
+      valorization: "wages"
+      indexation: "CPI"
+      minimum_benefit_aw_multiple:
+        value: 0.20
+        source_citation: >
+          ARSS minimum pension ~ILS 1,500/month (2022). With AW ~ILS 7,500/month → 20% AW.
+          ARSS Palestine 2022.
+        year: 2022
+      maximum_benefit_aw_multiple:
+        value: 0.80
+        source_citation: >
+          Maximum pension 80% of reference wage at 40 years (2% × 40 = 80%).
+          Civil Service Retirement Law No. 8/2005.
+        year: 2022
+
+    payout:
+      type: "annuity"
+
+  - scheme_id: "SSI_DB"
+    name: "Social Security Insurance – Private Sector (SSI)"
+    tier: "first"
+    type: "DB"
+    coverage: >
+      Private sector workers in West Bank under Social Security Law No. 6 of 2016.
+      Implementation began in September 2021; as of 2022, registration ongoing.
+      Gaza Strip excluded. New scheme with limited data.
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 60
+        source_citation: >
+          Social Security Law No. 6 of 2016 – NRA 60. Implementation Regulations 2021.
+          Palestinian Social Security Commission 2022.
+        year: 2022
+      normal_retirement_age_female:
+        value: 60
+        source_citation: >
+          Social Security Law No. 6/2016 – NRA 60 for females.
+          Palestinian Social Security Commission 2022.
+        year: 2022
+      vesting_years:
+        value: 15
+        source_citation: "Social Security Law No. 6/2016 – minimum 15 years for old-age pension."
+        year: 2022
+      minimum_contribution_years:
+        value: 15
+        source_citation: "Social Security Law 6/2016 – 15 years minimum."
+        year: 2022
+
+    contributions:
+      employee_rate:
+        value: 0.07
+        source_citation: >
+          Social Security Law No. 6 of 2016 – employee contribution 7% of wage.
+          Palestinian Social Security Commission 2022.
+        year: 2022
+      employer_rate:
+        value: 0.07
+        source_citation: >
+          Social Security Law No. 6/2016 – employer contribution 7% of wage.
+          Total: 14%. Palestinian Social Security Commission 2022.
+        year: 2022
+      total_rate:
+        value: 0.14
+        source_citation: "Employee 7% + Employer 7% = 14% of wage. Social Security Law 6/2016."
+        year: 2022
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "No contribution ceiling in Social Security Law No. 6/2016."
+        year: 2022
+      contribution_base: "gross wage"
+
+    benefits:
+      accrual_rate_per_year:
+        value: 0.02
+        source_citation: >
+          Social Security Law No. 6/2016 – pension = 2% × years × average last 3 years.
+          Maximum 80% at 40 years. Palestinian Social Security Commission 2022.
+        year: 2022
+      reference_wage: "career_average"
+      valorization: "wages"
+      indexation: "CPI"
+      minimum_benefit_aw_multiple:
+        value: 0.20
+        source_citation: "Minimum pension same as ARSS floor, ~20% AW. SSI Palestine 2022."
+        year: 2022
+      maximum_benefit_aw_multiple:
+        value: 0.80
+        source_citation: "Maximum 80% reference wage at 40 years. SSI Law 6/2016."
+        year: 2022
+
+    payout:
+      type: "annuity"
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: >
+    Pension income from ARSS and SSI is exempt from income tax in Palestine under the
+    Income Tax Law No. 17 of 2004 (as amended). Civil servant pensions are fully exempt.
+  simplified_net_rate:
+    value: 0.0
+    source_citation: "Pension income exempt from income tax. Palestinian Income Tax Law 17/2004."
+    year: 2022
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "PSE"
+  ilostat_transformation: "x * 12"
+  manual_value: 90000.0
+  currency: "Israeli New Shekel"
+  year: 2022
+  source_citation: >
+    Palestinian Central Bureau of Statistics (PCBS) Labour Force Survey 2022.
+    Average monthly wage of employees in West Bank ~ILS 7,000-8,000/month.
+    Using ILS 7,500/month × 12 = ILS 90,000/year. ILS used as primary currency
+    given USD/ILS peg and Palestinian use of ILS, USD, and JOD in practice.
+    Gaza excluded from AW estimate due to different economic conditions.
+  source_url: "https://www.pcbs.gov.ps"
+  notes: >
+    Palestine uses the Israeli New Shekel (ILS) as the primary currency (West Bank),
+    alongside Jordanian Dinar (JOD) and USD. No separate Palestinian currency.
+    Gaza Strip has significantly lower wages and different employment structure.
+    Statistics exclude Gaza unless specified.
+
+
+# =============================================================================
+# Worker types
+# =============================================================================
+
+worker_types:
+
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: [ARSS_DB]
+    source_citation: "Default: same as main scheme definition."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: unknown
+    scheme_ids: []
+    source_citation: "Coverage status not yet researched; placeholder."
+    notes: "TODO: verify self-employed coverage under national law."
+
+notes: >
+  Palestine's pension situation is complex: civil servants (ARSS) have a functioning system;
+  private sector workers have a newly implemented system (SSI, from 2021); Gaza workers
+  are largely excluded or covered by Hamas-run arrangements.
+  The Israeli occupation restricts labour market access and affects social security
+  portability for Palestinians working in Israel or settlements.
+  UN agencies (UNRWA) provide separate social services for Palestinian refugees.

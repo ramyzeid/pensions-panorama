@@ -1,0 +1,261 @@
+---
+title: "{{ country_name }} – Pension System Profile"
+subtitle: "Pensions Panorama Country Brief"
+date: "{{ generated_date }}"
+iso3: "{{ iso3 }}"
+reference_year: {{ reference_year }}
+---
+
+# {{ country_name }} ({{ iso3 }}) – Pension System Profile
+
+_Generated: {{ generated_date }} | Reference year: {{ reference_year }}_
+
+---
+
+## 1. Country Overview
+
+| Attribute | Value |
+|---|---|
+| Country | {{ country_name }} |
+| ISO3 code | {{ iso3 }} |
+| Currency | {{ currency }} ({{ currency_code }}) |
+| WB Region | {{ wb_region }} |
+| Reference year | {{ reference_year }} |
+| Average annual wage | {{ currency_code }} {{ average_wage }} |
+| Last human review | {{ last_reviewed }} |
+
+{% if sources %}
+**Primary sources:**
+{% for s in sources %}
+- {{ s }}
+{% endfor %}
+{% endif %}
+
+---
+
+## 2. Pension System Structure
+
+{% if schemes %}
+| Scheme ID | Name | Type | Tier | Coverage | NRA (M) | NRA (F) | Accrual/Flat | Contributions | Indexation |
+|---|---|---|---|---|---|---|---|---|---|
+{% for s in schemes -%}
+| `{{ s.scheme_id }}` | {{ s.name }} | {{ s.type }} | {{ s.tier }} | {{ s.coverage }} | {{ s.nra_m }} | {{ s.nra_f }} | {{ s.accrual_or_flat }} | {{ s.contributions }} | {{ s.indexation }} |
+{% endfor %}
+{% else %}
+_No scheme data available._
+{% endif %}
+
+---
+
+## 3. Coverage Map by Worker Type
+
+{% if has_worker_types and coverage_map %}
+The table below shows how each worker category is covered under the national pension system.
+
+| Worker Type | Label | Coverage Status | Applicable Schemes |
+|---|---|---|---|
+{% for wt in coverage_map -%}
+| `{{ wt.wt_id }}` | {{ wt.label }} | **{{ wt.coverage_status }}** | {{ wt.scheme_ids }} |
+{% endfor %}
+
+{% else %}
+_Worker type coverage data not yet available for this country._
+{% endif %}
+
+---
+
+## 4. Worker Type Profiles
+
+{% if has_worker_types and worker_type_details %}
+{% for wt in worker_type_details %}
+### 4.{{ loop.index }}. {{ wt.label }} (`{{ wt.wt_id }}`)
+
+**Coverage status:** {{ wt.coverage_status }}
+{% if wt.scheme_ids %}
+**Applicable schemes:** {{ wt.scheme_ids | join(", ") }}
+{% endif %}
+
+{% if wt.eligibility_rows %}
+**Eligibility:**
+
+| Parameter | Value |
+|---|---|
+{% for row in wt.eligibility_rows -%}
+| {{ row.param }} | {{ row.value }} |
+{% endfor %}
+{% endif %}
+
+{% if wt.contribution_rows %}
+**Contributions (override):**
+
+| Parameter | Value |
+|---|---|
+{% for row in wt.contribution_rows -%}
+| {{ row.param }} | {{ row.value }} |
+{% endfor %}
+{% endif %}
+
+{% if wt.special_provisions %}
+**Special provisions:**
+
+{% for sp in wt.special_provisions -%}
+- **{{ sp.label }}:** {{ sp.value }}
+{% endfor %}
+{% endif %}
+
+{% if wt.diffs_vs_private %}
+**Differences vs. private employees:**
+
+{% for d in wt.diffs_vs_private -%}
+- {{ d }}
+{% endfor %}
+{% endif %}
+
+{% if wt.notes %}
+> _{{ wt.notes }}_
+{% endif %}
+
+_Source: {{ wt.source_citation }}{% if wt.source_url %} ([link]({{ wt.source_url }})){% endif %}_
+
+---
+{% endfor %}
+{% else %}
+_Worker type profiles not yet available for this country._
+
+---
+{% endif %}
+
+## 5. Parameters Normalised to Average Wage
+
+The table below shows key parameters expressed as multiples of the national average wage (AW = {{ currency_code }} {{ average_wage }}).
+
+{% if params_normalized %}
+| Scheme | Parameter | Raw value | × AW |
+|---|---|---|---|
+{% for p in params_normalized -%}
+| `{{ p.scheme_id }}` | {{ p.parameter }} | {{ p.value_raw }} | {{ p.value_aw }} |
+{% endfor %}
+{% else %}
+_Parameter normalisation not available._
+{% endif %}
+
+---
+
+## 6. Results by Earnings Level
+
+Individual wages expressed as multiples of the national average wage.
+Replacement rates are relative to individual pre-retirement earnings.
+Pension levels are relative to the average wage.
+Pension wealth is the expected present value of the benefit stream, expressed
+as a multiple of the average wage.
+
+| Earnings (×AW) | Gross PL (% AW) | Net PL (% AW) | Gross RR | Net RR | Gross PW (×AW) | Net PW (×AW) |
+|---|---|---|---|---|---|---|
+{% for r in results_table -%}
+| **{{ r.multiple }}** | {{ r.gross_pl }} | {{ r.net_pl }} | {{ r.gross_rr }} | {{ r.net_rr }} | {{ r.gross_pw }} | {{ r.net_pw }} |
+{% endfor %}
+
+_PL = Pension Level, RR = Replacement Rate, PW = Pension Wealth_
+
+---
+
+## 7. Charts
+
+{% if charts.replacement_rates %}
+### Replacement Rates
+
+![Gross and Net Replacement Rates]({{ charts.replacement_rates }})
+{% endif %}
+
+{% if charts.pension_levels %}
+### Pension Levels
+
+![Gross and Net Pension Levels]({{ charts.pension_levels }})
+{% endif %}
+
+{% if charts.component_breakdown %}
+### Component Breakdown
+
+![Gross Pension by Component]({{ charts.component_breakdown }})
+{% endif %}
+
+{% if charts.pension_wealth %}
+### Pension Wealth
+
+![Pension Wealth]({{ charts.pension_wealth }})
+{% endif %}
+
+---
+
+## 8. Tax and Social-Contribution Treatment
+
+{{ tax_notes }}
+
+---
+
+{% if unknown_worker_types %}
+> **⚠ Data Gap Warning:** The following worker types have `coverage_status: unknown` –
+> research is needed to determine their actual pension coverage:
+> {% for wt_id in unknown_worker_types %}`{{ wt_id }}`{% if not loop.last %}, {% endif %}{% endfor %}.
+> Results for these categories should not be used for policy analysis until verified.
+
+---
+
+{% endif %}
+
+## 9. Modeling Assumptions
+
+These results were computed using the following global assumptions:
+
+| Parameter | Value |
+|---|---|
+| Entry age | {{ assumptions.entry_age }} |
+| Career length | {{ assumptions.career_length }} years |
+| Contribution density | {{ assumptions.contribution_density }} |
+| Real wage growth | {{ assumptions.real_wage_growth }} |
+| Discount rate | {{ assumptions.discount_rate }} |
+| Post-retirement indexation | {{ assumptions.indexation_type }} |
+| WPP reference year | {{ assumptions.wpp_year }} |
+| Modeled sex | {{ assumptions.sex }} |
+
+---
+
+## 10. Macroeconomic Context
+
+{% if macro_table %}
+| Indicator | Year | Value |
+|---|---|---|
+{% for m in macro_table -%}
+| {{ m.indicator }} | {{ m.year }} | {{ m.value }} |
+{% endfor %}
+{% else %}
+_Macroeconomic data not available for this run._
+{% endif %}
+
+---
+
+## 11. Notes
+
+{{ pension_notes }}
+
+---
+
+## 12. Sources & Citations Appendix
+
+{% if citations_appendix %}
+The following citations correspond to worker-type definitions used in this report:
+
+| Section | Parameter | Citation | URL |
+|---|---|---|---|
+{% for c in citations_appendix -%}
+| {{ c.section }} | {{ c.parameter }} | {{ c.citation[:80] }}{% if c.citation | length > 80 %}…{% endif %} | {% if c.url %}[link]({{ c.url }}){% else %}—{% endif %} |
+{% endfor %}
+{% else %}
+_No worker-type citations available for this country._
+{% endif %}
+
+---
+
+_Pensions Panorama v0.1 | Data sources: pension system parameters are human-curated;
+macroeconomic data from World Bank Indicators API; life-table data from UN WPP Data Portal;
+earnings data from ILOSTAT SDMX API where available._

@@ -1,0 +1,142 @@
+# =============================================================================
+# Georgia (GEO) – Pension System Parameters
+# =============================================================================
+# Primary scheme: Universal State Pension (flat-rate) + Mandatory Funded Pension (since 2019)
+# Sources:
+#   [1] ILO Social Security Inquiry – Georgia
+#   [2] World Bank Georgia Pension Reform 2022
+# =============================================================================
+
+metadata:
+  country_name: "Georgia"
+  iso3: "GEO"
+  iso2: "GE"
+  currency: "Georgian Lari"
+  currency_code: "GEL"
+  reference_year: 2023
+  wb_region: "ECS"
+  wb_income_level: "UMC"
+  un_location_id: 268
+  sources:
+    - "ILO Social Security Inquiry – Georgia"
+    - "World Bank Georgia Pension Reform 2022"
+    - "Law of Georgia on Funded Pensions (2018)"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "GEO_SSPF"
+    name: "Universal State Pension (Basic) + Mandatory Funded Pension"
+    tier: "first"
+    type: "basic"
+    coverage: "Universal state pension for all residents aged 65+; mandatory funded pillar for employed workers since 2019"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 65
+        source_citation: "ILO Social Security Inquiry Georgia: universal state pension at age 65 for males."
+        year: 2023
+      normal_retirement_age_female:
+        value: 60
+        source_citation: "ILO Social Security Inquiry Georgia: universal state pension at age 60 for females."
+        year: 2023
+      vesting_years:
+        value: 0
+        source_citation: "Law of Georgia on Funded Pensions: universal state pension requires no contribution years; only age-based."
+        year: 2023
+      minimum_contribution_years:
+        value: 0
+        source_citation: "ILO Social Security Inquiry Georgia: universal state pension is non-contributory, based on residence."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.02
+        source_citation: "Law of Georgia on Funded Pensions 2018: employee contributes 2% of salary to mandatory funded pension."
+        year: 2023
+      employer_rate:
+        value: 0.02
+        source_citation: "Law of Georgia on Funded Pensions 2018: employer contributes 2% of salary; state matches with additional 2% for eligible workers."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: total 6% (2% employee + 2% employer + 2% state) for mandatory funded pillar; state pension is tax-financed."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "Law of Georgia on Funded Pensions: no contribution ceiling specified as multiple of average wage."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: "Universal state pension is non-contributory, financed from general taxation. Mandatory funded pension (3 parties: employee, employer, state) launched in 2019."
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: "ILO Social Security Inquiry Georgia: universal state pension is flat-rate, not accrual-based."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "CPI"
+      flat_rate_aw_multiple:
+        value: 0.20
+        source_citation: "ILO Social Security Inquiry – Georgia"
+        year: 2023
+      flat_rate_absolute: null
+      indexation: "CPI"
+      minimum_benefit_aw_multiple:
+        value: 0.20
+        source_citation: "World Bank Georgia Pension Reform 2022: universal state pension approximately GEL 300/month (2022), ~20% of average wage."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: 0.20
+        source_citation: "ILO Social Security Inquiry Georgia: universal state pension is a flat amount, same for all eligible recipients."
+        year: 2023
+      notes: "Flat universal pension supplemented by mandatory funded pillar. Funded pillar balance converted to annuity at retirement."
+
+    payout:
+      type: "annuity"
+      notes: null
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "State pension income is exempt from income tax in Georgia. Funded pension withdrawals may be subject to tax."
+  simplified_net_rate:
+    value: 0.0
+    source_citation: "ILO Social Security Inquiry Georgia: universal state pension exempt from income tax."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "GEO"
+  ilostat_transformation: "x * 12"
+  manual_value: 18000
+  currency: "Georgian Lari"
+  year: 2022
+  source_citation: "Geostat: average monthly earnings 2022 approximately GEL 1,450, GEL 17,400 annually."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["GEO_SSPF"]
+    source_citation: "Law of Georgia on Funded Pensions 2018: mandatory funded pension for all employed workers; universal state pension for all residents."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["GEO_SSPF"]
+    source_citation: "ILO Social Security Inquiry Georgia: civil servants covered under mandatory funded pension and universal state pension."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: voluntary
+    scheme_ids: ["GEO_SSPF"]
+    source_citation: "Law of Georgia on Funded Pensions: self-employed may opt into the mandatory funded pension system."
+    notes: null
+
+notes: null

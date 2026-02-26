@@ -1,0 +1,139 @@
+# =============================================================================
+# Canada (CAN) – Pension System Parameters
+# =============================================================================
+# Primary scheme: Canada Pension Plan (CPP) – DB earnings-related
+# Sources:
+#   [1] OECD Pensions at a Glance 2023 – Canada
+#   [2] Statistics Canada – Average Annual Wages 2022
+# =============================================================================
+
+metadata:
+  country_name: "Canada"
+  iso3: "CAN"
+  iso2: "CA"
+  currency: "Canadian Dollar"
+  currency_code: "CAD"
+  reference_year: 2023
+  wb_region: "NAC"
+  wb_income_level: "HIC"
+  un_location_id: 124
+  sources:
+    - "OECD Pensions at a Glance 2023 – Canada"
+    - "Statistics Canada Survey of Employment, Payrolls and Hours 2022"
+    - "Canada Pension Plan Act (R.S.C., 1985)"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "CAN_CPP"
+    name: "Canada Pension Plan (CPP)"
+    tier: "first"
+    type: "DB"
+    coverage: "All employed workers in Canada (except Quebec, covered by QPP)"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 65
+        source_citation: "OECD Pensions at a Glance 2023 Canada: standard CPP retirement pension at age 65; flexible take-up from 60 (reduced) to 70 (enhanced)."
+        year: 2023
+      normal_retirement_age_female:
+        value: 65
+        source_citation: "OECD Pensions at a Glance 2023 Canada: CPP standard retirement age 65 for both sexes."
+        year: 2023
+      vesting_years:
+        value: 1
+        source_citation: "OECD Pensions at a Glance 2023 Canada: minimum 1 valid contribution to CPP for any benefit entitlement."
+        year: 2023
+      minimum_contribution_years:
+        value: 39
+        source_citation: "OECD Pensions at a Glance 2023 Canada: maximum contributory period 39 years (age 18–70 less low-earnings drop-outs); full pension based on 40 years."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.0595
+        source_citation: "OECD Pensions at a Glance 2023 Canada: employee CPP contribution rate 5.95% of pensionable earnings (2023); enhanced CPP2 additional 4% on earnings above YMPE."
+        year: 2023
+      employer_rate:
+        value: 0.0595
+        source_citation: "OECD Pensions at a Glance 2023 Canada: employer CPP contribution rate 5.95% of pensionable earnings (matched with employee)."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: 11.9% total CPP contribution; additional CPP2 contributions apply above the Year's Maximum Pensionable Earnings."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: 1.23
+        source_citation: "OECD Pensions at a Glance 2023 Canada: YMPE CAD 66,600 in 2023, approximately 1.23× average wage."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: "Year's Basic Exemption CAD 3,500 (below this, no contributions). Enhanced CPP contributions apply above YMPE up to Year's Additional Maximum Pensionable Earnings."
+
+    benefits:
+      accrual_rate_per_year:
+        value: 0.0208
+        source_citation: "OECD Pensions at a Glance 2023 Canada: CPP replacement rate 25% of covered earnings over 40 years, equivalent to approximately 2.08% per year (enhanced CPP will raise to 33.33% for covered earnings)."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "wages"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "CPI"
+      minimum_benefit_aw_multiple:
+        value: null
+        source_citation: "OECD Pensions at a Glance 2023 Canada: no minimum CPP benefit; Guaranteed Income Supplement (GIS) provides means-tested top-up for low-income seniors."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "OECD Pensions at a Glance 2023 Canada: maximum CPP pension approximately CAD 1,306/month (2023) for those with maximum contributions."
+        year: 2023
+      notes: "Old Age Security (OAS, ~14% of AW) is a universal flat-rate pension financed from general revenue, supplementing CPP."
+
+    payout:
+      type: "annuity"
+      notes: null
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "CPP and OAS pension income subject to progressive federal and provincial income tax; age credit reduces effective rate."
+  simplified_net_rate:
+    value: 0.15
+    source_citation: "OECD Pensions at a Glance 2023 Canada: estimated effective income tax rate on average pension approximately 15% (federal + provincial) after age credit and basic personal amount."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "CAN"
+  ilostat_transformation: "x * 12"
+  manual_value: 59300
+  currency: "Canadian Dollar"
+  year: 2022
+  source_citation: "Statistics Canada Survey of Employment Payrolls and Hours 2022: average annual earnings approximately CAD 59,300."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["CAN_CPP"]
+    source_citation: "Canada Pension Plan Act: mandatory CPP coverage for all employed workers aged 18–70 in participating provinces."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["CAN_CPP"]
+    source_citation: "OECD Pensions at a Glance 2023 Canada: federal and most provincial public servants participate in CPP plus supplementary public service occupational pension plans."
+    notes: "Public servants also have occupational defined benefit pension plans (e.g., Public Service Pension Plan) on top of CPP."
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: mandatory
+    scheme_ids: ["CAN_CPP"]
+    source_citation: "Canada Pension Plan Act: self-employed pay both employee and employer portions of CPP contributions (11.9% total)."
+    notes: null
+
+notes: null

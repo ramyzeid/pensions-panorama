@@ -1,0 +1,139 @@
+# =============================================================================
+# Mozambique (MOZ) – Pension System Parameters
+# =============================================================================
+# Primary scheme: INSS (Instituto Nacional de Segurança Social) – DC
+# Sources:
+#   [1] ILO Social Security Inquiry – Mozambique
+#   [2] Instituto Nacional de Segurança Social (INSS) Mozambique – Annual Report 2022
+# =============================================================================
+
+metadata:
+  country_name: "Mozambique"
+  iso3: "MOZ"
+  iso2: "MZ"
+  currency: "Mozambican Metical"
+  currency_code: "MZN"
+  reference_year: 2023
+  wb_region: "SSA"
+  wb_income_level: "LIC"
+  un_location_id: 508
+  sources:
+    - "ILO Social Security Inquiry – Mozambique"
+    - "Instituto Nacional de Segurança Social (INSS) Mozambique Annual Report 2022"
+    - "Lei n.o 4/2007 de Segurança Social Básica (Mozambique)"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "MOZ_INSS"
+    name: "INSS (Instituto Nacional de Segurança Social) – Mandatory DC/DB"
+    tier: "first"
+    type: "DC"
+    coverage: "Formally employed workers; mandatory social insurance"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 60
+        source_citation: "ILO Social Security Inquiry Mozambique: NRA 60 for males."
+        year: 2023
+      normal_retirement_age_female:
+        value: 55
+        source_citation: "ILO Social Security Inquiry Mozambique: NRA 55 for females."
+        year: 2023
+      vesting_years:
+        value: 20
+        source_citation: "ILO Social Security Inquiry Mozambique: minimum 240 monthly contributions for INSS pension."
+        year: 2023
+      minimum_contribution_years:
+        value: 20
+        source_citation: "Lei da Segurança Social Mozambique: minimum 240 months of contributions for old-age pension."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.03
+        source_citation: "ILO Social Security Inquiry Mozambique: employee INSS contribution 3% of wages."
+        year: 2023
+      employer_rate:
+        value: 0.04
+        source_citation: "ILO Social Security Inquiry Mozambique: employer INSS contribution 4% of wages."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: 7% total INSS contribution (3% employee + 4% employer)."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Mozambique: contributions on all insurable wages."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: "INSS covers approximately 10% of workforce; most are in informal or subsistence agriculture."
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: "ILO Social Security Inquiry Mozambique: INSS pension modest; contribution record-based formula."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "prices"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "prices"
+      minimum_benefit_aw_multiple:
+        value: 0.20
+        source_citation: "ILO Social Security Inquiry Mozambique: minimum INSS pension approximately 20% of minimum wage reference."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Mozambique: maximum pension constrained by formula."
+        year: 2023
+      notes: "Programa de Subsídio de Alimentos (PSA) provides non-contributory transfers for poor elderly."
+
+    payout:
+      type: "annuity"
+      notes: null
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "Pension income subject to IRPS (income tax) in Mozambique; most pensions below threshold."
+  simplified_net_rate:
+    value: 0.0
+    source_citation: "ILO Social Security Inquiry Mozambique: most INSS pensions below income tax threshold; effective rate approximately 0%."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "MOZ"
+  ilostat_transformation: "x * 12"
+  manual_value: 80000
+  currency: "Mozambican Metical"
+  year: 2022
+  source_citation: "Instituto Nacional de Estatística (INE) Mozambique: estimated average annual formal earnings 2022 approximately MZN 80,000."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["MOZ_INSS"]
+    source_citation: "Lei da Segurança Social Mozambique: mandatory INSS for formally employed workers."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["MOZ_INSS"]
+    source_citation: "ILO Social Security Inquiry Mozambique: civil servants covered by INSS and government pension."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: voluntary
+    scheme_ids: ["MOZ_INSS"]
+    source_citation: "ILO Social Security Inquiry Mozambique: self-employed may voluntarily contribute to INSS."
+    notes: null
+
+notes: null

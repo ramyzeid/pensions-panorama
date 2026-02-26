@@ -1,0 +1,142 @@
+# =============================================================================
+# Ireland (IRL) – Pension System Parameters
+# =============================================================================
+# Primary scheme: State Pension (Contributory) – basic flat-rate
+# Sources:
+#   [1] OECD Pensions at a Glance 2023 – Ireland
+#   [2] Central Statistics Office Ireland – Statistical Yearbook 2023
+# =============================================================================
+
+metadata:
+  country_name: "Ireland"
+  iso3: "IRL"
+  iso2: "IE"
+  currency: "Euro"
+  currency_code: "EUR"
+  reference_year: 2023
+  wb_region: "ECS"
+  wb_income_level: "HIC"
+  un_location_id: 372
+  sources:
+    - "OECD Pensions at a Glance 2023 – Ireland"
+    - "Central Statistics Office Ireland Statistical Yearbook 2023"
+    - "Social Welfare Consolidation Act 2005 (as amended)"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "IRL_SPC"
+    name: "State Pension (Contributory) – Flat-Rate PRSI-Based Pension"
+    tier: "first"
+    type: "basic"
+    coverage: "All workers paying PRSI (Pay Related Social Insurance) contributions"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 66
+        source_citation: "OECD Pensions at a Glance 2023 Ireland: State Pension age 66 for both sexes; scheduled to rise to 67 in 2024 and 68 in 2028."
+        year: 2023
+      normal_retirement_age_female:
+        value: 66
+        source_citation: "OECD Pensions at a Glance 2023 Ireland: State Pension age equalised at 66 for females."
+        year: 2023
+      vesting_years:
+        value: 10
+        source_citation: "OECD Pensions at a Glance 2023 Ireland: minimum 520 paid contributions (10 years) for any State Pension (Contributory)."
+        year: 2023
+      minimum_contribution_years:
+        value: 40
+        source_citation: "OECD Pensions at a Glance 2023 Ireland: 2,080 contributions (40 years) for maximum State Pension under Total Contributions Approach (TCA)."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.04
+        source_citation: "OECD Pensions at a Glance 2023 Ireland: employee PRSI rate 4% of gross earnings."
+        year: 2023
+      employer_rate:
+        value: 0.11
+        source_citation: "OECD Pensions at a Glance 2023 Ireland: employer PRSI rate 11.05% of gross earnings (Class A1, most employees)."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: total PRSI approximately 15% for most employees; funds State Pension plus other social benefits."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "OECD Pensions at a Glance 2023 Ireland: no contribution ceiling for PRSI."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: "PRSI contributions fund State Pension (Contributory) plus illness, jobseekers, and other social benefits."
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: "OECD Pensions at a Glance 2023 Ireland: flat-rate pension – no accrual rate; full rate EUR 265.30/week (2023) for maximum contribution record."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "wages"
+      flat_rate_aw_multiple:
+        value: 0.34
+        source_citation: "OECD Pensions at a Glance 2023 – Ireland"
+        year: 2023
+      flat_rate_absolute: null
+      indexation: "wages"
+      minimum_benefit_aw_multiple:
+        value: null
+        source_citation: "OECD Pensions at a Glance 2023 Ireland: no means-tested minimum for contributory pension; State Pension (Non-Contributory) provides non-means-tested safety net."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: 0.34
+        source_citation: "OECD Pensions at a Glance 2023 Ireland: maximum State Pension EUR 265.30/week (2023) ≈ 34% of average weekly earnings."
+        year: 2023
+      notes: "Total Contributions Approach (TCA) allows home-carer credits. Pension proportional to contribution record if below 2,080 contributions."
+
+    payout:
+      type: "annuity"
+      notes: null
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "State Pension income subject to income tax in Ireland if total income exceeds personal credit; USC and PRSI may also apply."
+  simplified_net_rate:
+    value: 0.15
+    source_citation: "OECD Pensions at a Glance 2023 Ireland: estimated effective income tax rate on average pension approximately 15% (income tax + USC)."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "IRL"
+  ilostat_transformation: "x * 12"
+  manual_value: 45000
+  currency: "Euro"
+  year: 2022
+  source_citation: "CSO Ireland: average annual earnings 2022 approximately EUR 45,000–50,000."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["IRL_SPC"]
+    source_citation: "Social Welfare Consolidation Act Ireland: mandatory PRSI for all employees earning above minimum threshold."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["IRL_SPC"]
+    source_citation: "OECD Pensions at a Glance 2023 Ireland: civil servants pay PRSI and also have occupational defined benefit pension (Single Public Service Pension Scheme)."
+    notes: "Civil servants have both State Pension (Contributory) entitlement and occupational DB pension under Single Public Service Pension Scheme."
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: mandatory
+    scheme_ids: ["IRL_SPC"]
+    source_citation: "OECD Pensions at a Glance 2023 Ireland: self-employed pay Class S PRSI (4%) and qualify for State Pension (Contributory)."
+    notes: null
+
+notes: null

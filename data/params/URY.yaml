@@ -1,0 +1,139 @@
+# =============================================================================
+# Uruguay (URY) – Pension System Parameters
+# =============================================================================
+# Primary scheme: Mixed PAYG DB + Mandatory DC (BPS + AFAPs)
+# Sources:
+#   [1] OECD Pensions at a Glance 2023 – Latin America: Uruguay
+#   [2] Banco de Previsión Social (BPS) Uruguay – Annual Report 2022
+# =============================================================================
+
+metadata:
+  country_name: "Uruguay"
+  iso3: "URY"
+  iso2: "UY"
+  currency: "Uruguayan Peso"
+  currency_code: "UYU"
+  reference_year: 2023
+  wb_region: "LCN"
+  wb_income_level: "HIC"
+  un_location_id: 858
+  sources:
+    - "OECD Pensions at a Glance 2023 – Latin America: Uruguay"
+    - "Banco de Previsión Social (BPS) Uruguay Annual Report 2022"
+    - "Social Security Act Uruguay (Law No. 16,713, 1995)"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "URY_BPS"
+    name: "Banco de Previsión Social (BPS) – Mixed DB+DC System"
+    tier: "first"
+    type: "DB"
+    coverage: "All employed workers and self-employed; mandatory two-pillar system"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 60
+        source_citation: "OECD Pensions at a Glance 2023 Uruguay: NRA 60 for both sexes with 30 years of contributions."
+        year: 2023
+      normal_retirement_age_female:
+        value: 60
+        source_citation: "OECD Pensions at a Glance 2023 Uruguay: NRA 60 for females with 30 years; or 65 with fewer contributions."
+        year: 2023
+      vesting_years:
+        value: 15
+        source_citation: "OECD Pensions at a Glance 2023 Uruguay: minimum 15 qualifying years for pension entitlement."
+        year: 2023
+      minimum_contribution_years:
+        value: 30
+        source_citation: "Social Security Act Uruguay: 30 years of contributions for NRA pension at age 60."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.15
+        source_citation: "OECD Pensions at a Glance 2023 Uruguay: employee total pension contribution 15% of gross wages (7.5% to BPS PAYG + 7.5% to AFAP DC mandatory)."
+        year: 2023
+      employer_rate:
+        value: 0.075
+        source_citation: "OECD Pensions at a Glance 2023 Uruguay: employer contribution 7.5% to BPS."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: 22.5% total pension contribution (15% employee + 7.5% employer)."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "OECD Pensions at a Glance 2023 Uruguay: contributions on all earnings; AFAP mandatory up to earnings threshold, voluntary above."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: "Mixed system: BPS PAYG DB pillar + AFAP individual DC accounts (mandatory). Higher earners split between both; lower earners may choose BPS only."
+
+    benefits:
+      accrual_rate_per_year:
+        value: 0.015
+        source_citation: "OECD Pensions at a Glance 2023 Uruguay: BPS DB component approximately 1.5% per year of career average earnings; total pension combines BPS DB + AFAP DC annuity."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "wages"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "wages"
+      minimum_benefit_aw_multiple:
+        value: 0.40
+        source_citation: "OECD Pensions at a Glance 2023 Uruguay: minimum pension approximately 40% of average wage."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "OECD Pensions at a Glance 2023 Uruguay: no explicit maximum pension benefit."
+        year: 2023
+      notes: "Solidarity pillar provides top-up for those with low pensions; Asistencia a la Vejez for elderly without pension."
+
+    payout:
+      type: "annuity"
+      notes: "AFAP DC component converted to annuity at retirement; BPS DB component paid as lifetime annuity."
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "Pension income subject to IRPF (income tax) in Uruguay; basic deduction reduces effective rate for lower pensions."
+  simplified_net_rate:
+    value: 0.10
+    source_citation: "OECD Pensions at a Glance 2023 Uruguay: estimated effective income tax rate on average pension approximately 10%."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "URY"
+  ilostat_transformation: "x * 12"
+  manual_value: 600000
+  currency: "Uruguayan Peso"
+  year: 2022
+  source_citation: "Instituto Nacional de Estadística (INE) Uruguay: average annual formal sector earnings 2022 approximately UYU 600,000."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["URY_BPS"]
+    source_citation: "Social Security Act Uruguay: mandatory BPS+AFAP for all private sector employees."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["URY_BPS"]
+    source_citation: "OECD Pensions at a Glance 2023 Uruguay: civil servants covered by BPS general scheme."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: mandatory
+    scheme_ids: ["URY_BPS"]
+    source_citation: "Social Security Act Uruguay: self-employed required to contribute to BPS on declared income."
+    notes: null
+
+notes: null

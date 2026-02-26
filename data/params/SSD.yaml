@@ -1,0 +1,139 @@
+# =============================================================================
+# South Sudan (SSD) – Pension System Parameters
+# =============================================================================
+# Primary scheme: National Social Insurance Fund (embryonic) – DB
+# Sources:
+#   [1] ILO Social Security Inquiry – South Sudan
+#   [2] World Bank Social Protection Review South Sudan 2022
+# =============================================================================
+
+metadata:
+  country_name: "South Sudan"
+  iso3: "SSD"
+  iso2: "SS"
+  currency: "South Sudanese Pound"
+  currency_code: "SSP"
+  reference_year: 2023
+  wb_region: "SSA"
+  wb_income_level: "LIC"
+  un_location_id: 728
+  sources:
+    - "ILO Social Security Inquiry – South Sudan"
+    - "World Bank Social Protection Review South Sudan 2022"
+    - "Labour Act (South Sudan, 2017)"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "SSD_NSIF"
+    name: "National Social Insurance Fund (NSIF) – DB (nascent)"
+    tier: "first"
+    type: "DB"
+    coverage: "Very limited formal sector coverage; system nascent and largely non-functional"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 60
+        source_citation: "ILO Social Security Inquiry South Sudan: nominal NRA 60 under Labour Act."
+        year: 2023
+      normal_retirement_age_female:
+        value: 60
+        source_citation: "ILO Social Security Inquiry South Sudan: NRA 60 for females."
+        year: 2023
+      vesting_years:
+        value: 10
+        source_citation: "ILO Social Security Inquiry South Sudan: nominal minimum contribution years; system has very limited capacity."
+        year: 2023
+      minimum_contribution_years:
+        value: 10
+        source_citation: "ILO Social Security Inquiry South Sudan: minimum 10 years nominal; formal system nascent."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.08
+        source_citation: "ILO Social Security Inquiry South Sudan: employee social insurance contribution approximately 8% under nascent NSIF."
+        year: 2023
+      employer_rate:
+        value: 0.17
+        source_citation: "ILO Social Security Inquiry South Sudan: employer contribution approximately 17% of wages."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: approximately 25% total NSIF contribution; enforcement extremely limited."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry South Sudan: contributions nominal; system non-functional."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: "South Sudan gained independence in 2011; pension system is nascent and largely non-functional due to conflict."
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: "ILO Social Security Inquiry South Sudan: formal pension benefits not reliably paid; system in development."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "prices"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "prices"
+      minimum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry South Sudan: no functional minimum pension; system nascent."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry South Sudan: no functional maximum; system in development."
+        year: 2023
+      notes: "South Sudan has one of the world's lowest pension coverage rates; most elderly without any pension."
+
+    payout:
+      type: "annuity"
+      notes: "Formal pension system nascent; payouts extremely limited."
+
+taxes:
+  worker_income_tax_treatment: "unknown"
+  income_tax_on_pension: "South Sudan has limited income tax infrastructure; pension tax treatment uncertain."
+  simplified_net_rate:
+    value: 0.0
+    source_citation: "ILO Social Security Inquiry South Sudan: no functional pension tax system; effective rate 0%."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "SSD"
+  ilostat_transformation: "x * 12"
+  manual_value: 80000
+  currency: "South Sudanese Pound"
+  year: 2022
+  source_citation: "World Bank South Sudan data: estimated average annual earnings 2022 approximately SSP 80,000 (highly uncertain due to hyperinflation)."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: unknown
+    scheme_ids: []
+    source_citation: "ILO Social Security Inquiry South Sudan: formal pension system nascent; most workers have no pension coverage."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: unknown
+    scheme_ids: []
+    source_citation: "ILO Social Security Inquiry South Sudan: civil service pension system not reliably functional."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: unknown
+    scheme_ids: []
+    source_citation: "ILO Social Security Inquiry South Sudan: no mandatory pension for self-employed."
+    notes: null
+
+notes: null

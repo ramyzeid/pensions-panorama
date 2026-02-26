@@ -1,0 +1,147 @@
+# =============================================================================
+# Qatar (QAT) – Pension System Parameters
+# =============================================================================
+# Primary scheme: GRSIA (General Retirement and Social Insurance Authority)
+# Covers: Qatari national employees (public and private sector)
+# Governing law: Law No. 24 of 2002 and amendments (Law No. 5 of 2012)
+#
+# Sources:
+#   [1] GRSIA Qatar – www.grsia.com.qa – Annual Report 2022
+#   [2] Law No. 24 of 2002 (Retirement and Social Insurance) as amended
+#   [3] IMF Qatar Article IV 2022
+#   [4] World Bank Qatar Social Protection Note 2020
+# =============================================================================
+
+metadata:
+  country_name: "Qatar"
+  iso3: "QAT"
+  iso2: "QA"
+  currency: "Qatari Riyal"
+  currency_code: "QAR"
+  reference_year: 2022
+  wb_region: "MEA"
+  wb_income_level: "HIC"
+  un_location_id: 634
+  sources:
+    - "Law No. 24 of 2002 (Qatar Retirement and Social Insurance) and Law No. 5 of 2012 amendments"
+    - "GRSIA Qatar Annual Report 2022 – www.grsia.com.qa"
+    - "IMF Qatar Article IV 2022"
+  last_reviewed: "2024-03-01"
+
+schemes:
+  - scheme_id: "GRSIA_DB"
+    name: "GRSIA Old-Age Pension (Qatari Nationals)"
+    tier: "first"
+    type: "DB"
+    coverage: "Qatari national employees (public and private sector); expatriates receive only EOSB"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 60
+        source_citation: "Law No. 24/2002 Art. 20 – NRA 60 for Qatari males; can retire at 55 with 25 years."
+        source_url: "https://www.grsia.com.qa"
+        year: 2022
+      normal_retirement_age_female:
+        value: 55
+        source_citation: "Law No. 24/2002 Art. 20 – NRA 55 for Qatari females; or earlier with 20 years of service."
+        year: 2022
+      early_retirement_age_male:
+        value: 55
+        source_citation: "GRSIA – early retirement at 55 with 25+ years."
+        year: 2022
+      early_retirement_age_female:
+        value: 50
+        source_citation: "GRSIA – early retirement at 50 with 20+ years."
+        year: 2022
+      vesting_years:
+        value: 3
+        source_citation: "GRSIA – minimum 3 years contributions for any pension entitlement."
+        year: 2022
+      minimum_contribution_years:
+        value: 15
+        source_citation: "GRSIA – 15 years minimum for standard old-age pension. Law No. 24/2002 Art. 20."
+        year: 2022
+
+    contributions:
+      employee_rate:
+        value: 0.05
+        source_citation: "Law No. 24/2002 Art. 8 – 5% employee contribution on basic wage."
+        source_url: "https://www.grsia.com.qa"
+        year: 2022
+      employer_rate:
+        value: 0.10
+        source_citation: "Law No. 24/2002 Art. 8 – 10% employer contribution on basic wage."
+        year: 2022
+      total_rate:
+        value: null
+        source_citation: "Derived: 5% + 10% = 15% (plus 3% government contribution not modeled)."
+        year: 2022
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "GRSIA – no statutory ceiling on insurable wage."
+        year: 2022
+      contribution_base: "basic monthly wage (excluding allowances)"
+
+    benefits:
+      accrual_rate_per_year:
+        value: 0.02
+        source_citation: "Law No. 24/2002 Art. 22 – 2%/year on career-average basic wage."
+        source_url: "https://www.grsia.com.qa"
+        year: 2022
+      reference_wage: "career_average"
+      valorization: "wages"
+      indexation: "CPI"
+      minimum_benefit_aw_multiple:
+        value: 0.12
+        source_citation: "GRSIA minimum pension QAR 3,000/month (2022); Qatari national AW ~QAR 25,000/month → 12%. GRSIA 2022."
+        year: 2022
+      maximum_benefit_aw_multiple:
+        value: 1.00
+        source_citation: "GRSIA – pension can reach 100% of reference wage at 50 years. Law No. 24/2002 Art. 22."
+        year: 2022
+
+    payout:
+      type: "annuity"
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "No personal income tax in Qatar. GRSIA pensions received gross."
+  simplified_net_rate:
+    value: 0.0
+    source_citation: "No personal income tax in Qatar. Ministry of Finance, Qatar."
+    year: 2022
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "QAT"
+  ilostat_transformation: "x * 12"
+  manual_value: 300000.0
+  currency: "Qatari Riyal"
+  year: 2022
+  source_citation: >
+    GRSIA Annual Report 2022 – average insurable monthly basic wage for Qatari nationals in
+    government and private sector ~QAR 25,000/month × 12. PSA (Planning and Statistics Authority) 2022.
+  source_url: "https://www.grsia.com.qa"
+  notes: "Qatari national wages are very high relative to general workforce; expats not modeled."
+
+# =============================================================================
+# Worker types
+# =============================================================================
+
+worker_types:
+
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: [GRSIA_DB]
+    source_citation: "Default: same as main scheme definition."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: unknown
+    scheme_ids: []
+    source_citation: "Coverage status not yet researched; placeholder."
+    notes: "TODO: verify self-employed coverage under national law."
+

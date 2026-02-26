@@ -1,0 +1,139 @@
+# =============================================================================
+# Cyprus (CYP) – Pension System Parameters
+# =============================================================================
+# Primary scheme: General Social Insurance Scheme (GSIS) – DB
+# Sources:
+#   [1] OECD Pensions at a Glance 2023 – Cyprus
+#   [2] Social Insurance Services Cyprus – Annual Report 2022
+# =============================================================================
+
+metadata:
+  country_name: "Cyprus"
+  iso3: "CYP"
+  iso2: "CY"
+  currency: "Euro"
+  currency_code: "EUR"
+  reference_year: 2023
+  wb_region: "ECS"
+  wb_income_level: "HIC"
+  un_location_id: 196
+  sources:
+    - "OECD Pensions at a Glance 2023 – Cyprus"
+    - "Social Insurance Services Cyprus Annual Report 2022"
+    - "Social Insurance Law (Cyprus, 2010, as amended)"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "CYP_GSIS"
+    name: "General Social Insurance Scheme (GSIS) – DB Pension"
+    tier: "first"
+    type: "DB"
+    coverage: "All employed workers including self-employed"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 65
+        source_citation: "OECD Pensions at a Glance 2023 Cyprus: NRA 65 for both sexes."
+        year: 2023
+      normal_retirement_age_female:
+        value: 65
+        source_citation: "OECD Pensions at a Glance 2023 Cyprus: NRA equalised at 65 for females."
+        year: 2023
+      vesting_years:
+        value: 3
+        source_citation: "OECD Pensions at a Glance 2023 Cyprus: minimum 3 years of insurance for pension entitlement."
+        year: 2023
+      minimum_contribution_years:
+        value: 10
+        source_citation: "OECD Pensions at a Glance 2023 Cyprus: 10 years for reduced pension; full pension requires longer contribution record."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.083
+        source_citation: "OECD Pensions at a Glance 2023 Cyprus: employee GSIS contribution 8.3% of earnings (2023)."
+        year: 2023
+      employer_rate:
+        value: 0.083
+        source_citation: "OECD Pensions at a Glance 2023 Cyprus: employer GSIS contribution 8.3% of earnings (2023)."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: 16.6% total GSIS contribution; state contributes additional 4.7% for most employees."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "OECD Pensions at a Glance 2023 Cyprus: insurable earnings ceiling set annually."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: null
+
+    benefits:
+      accrual_rate_per_year:
+        value: 0.015
+        source_citation: "OECD Pensions at a Glance 2023 Cyprus: pension accrues approximately 1.5% of pensionable earnings per year of insurance."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "wages"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "CPI"
+      minimum_benefit_aw_multiple:
+        value: 0.15
+        source_citation: "OECD Pensions at a Glance 2023 Cyprus: minimum pension (Social Pension) approximately 15% of average wage for those with insufficient contributions."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "OECD Pensions at a Glance 2023 Cyprus: no explicit maximum pension multiple."
+        year: 2023
+      notes: null
+
+    payout:
+      type: "annuity"
+      notes: null
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "Pension income exempt from income tax in Cyprus up to EUR 3,420/year; amounts above subject to progressive tax at reduced rates."
+  simplified_net_rate:
+    value: 0.0
+    source_citation: "OECD Pensions at a Glance 2023 Cyprus: most pension income falls below the tax-exempt threshold; effective rate approximately 0% for average retirees."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "CYP"
+  ilostat_transformation: "x * 12"
+  manual_value: 26000
+  currency: "Euro"
+  year: 2022
+  source_citation: "Eurostat/OECD: average annual earnings Cyprus 2022 approximately EUR 26,000."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["CYP_GSIS"]
+    source_citation: "Social Insurance Law Cyprus: mandatory GSIS coverage for all employees."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["CYP_GSIS"]
+    source_citation: "OECD Pensions at a Glance 2023 Cyprus: civil servants covered under the Government Employees Pension Fund (GEPF) in addition to GSIS."
+    notes: "Civil servants have both GSIS and a separate government pension fund top-up."
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: mandatory
+    scheme_ids: ["CYP_GSIS"]
+    source_citation: "Social Insurance Law Cyprus: self-employed required to contribute to GSIS at combined employee+employer rate."
+    notes: null
+
+notes: null

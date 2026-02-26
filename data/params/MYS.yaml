@@ -1,0 +1,140 @@
+# =============================================================================
+# Malaysia (MYS) – Pension System Parameters
+# =============================================================================
+# Primary scheme: EPF (Employees Provident Fund) – DC Provident Fund
+# Sources:
+#   [1] ILO Social Security Inquiry – Malaysia
+#   [2] Employees Provident Fund (EPF/KWSP) Malaysia – Annual Report 2022
+#   [3] Employees Provident Fund Act 1991 (Malaysia)
+# =============================================================================
+
+metadata:
+  country_name: "Malaysia"
+  iso3: "MYS"
+  iso2: "MY"
+  currency: "Malaysian Ringgit"
+  currency_code: "MYR"
+  reference_year: 2023
+  wb_region: "EAP"
+  wb_income_level: "UMC"
+  un_location_id: 458
+  sources:
+    - "ILO Social Security Inquiry – Malaysia"
+    - "Employees Provident Fund (EPF/KWSP) Malaysia Annual Report 2022"
+    - "Employees Provident Fund Act 1991 (Malaysia)"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "MYS_EPF"
+    name: "EPF/KWSP (Employees Provident Fund) – DC Provident Fund"
+    tier: "first"
+    type: "DC"
+    coverage: "All formally employed workers; mandatory provident fund"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 55
+        source_citation: "ILO Social Security Inquiry Malaysia: EPF full withdrawal age 55; employment age 60 from 2013."
+        year: 2023
+      normal_retirement_age_female:
+        value: 55
+        source_citation: "ILO Social Security Inquiry Malaysia: EPF withdrawal age 55 for females."
+        year: 2023
+      vesting_years:
+        value: 0
+        source_citation: "ILO Social Security Inquiry Malaysia: DC provident fund – full balance accessible at age 55."
+        year: 2023
+      minimum_contribution_years:
+        value: 0
+        source_citation: "EPF Act Malaysia: accumulated balance accessible at age 55 without minimum years."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.11
+        source_citation: "ILO Social Security Inquiry Malaysia: EPF employee contribution 11% of wages (standard rate for under age 60)."
+        year: 2023
+      employer_rate:
+        value: 0.13
+        source_citation: "ILO Social Security Inquiry Malaysia: EPF employer contribution 13% of wages for employees earning ≤ MYR 5,000/month."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: 24% total EPF contribution (11% employee + 13% employer for standard earners)."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Malaysia: contributions on all wages; differential employer rate above MYR 5,000/month threshold."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: "Civil servants covered by PERKESO/SOCSO for work injury; KWAP manages pension for government employees. EPF is primary retirement vehicle for private sector."
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: "ILO Social Security Inquiry Malaysia: EPF DC scheme – pension based on accumulated contributions and EPF declared dividend."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "interest"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "none"
+      minimum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Malaysia: no statutory minimum EPF pension; member's own accumulated balance."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Malaysia: no explicit maximum; depends on contribution history."
+        year: 2023
+      notes: "EPF pays annual dividend on accumulated balance (historically 5–7%). Account split: Account 1 (70%) for retirement, Account 2 (30%) for housing/education/health."
+
+    payout:
+      type: "lump_sum"
+      notes: "EPF full balance accessible at age 55; monthly drawdown option (Account Emas) available."
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "EPF withdrawals at age 55+ are tax-exempt in Malaysia."
+  simplified_net_rate:
+    value: 0.00
+    source_citation: "EPF Act Malaysia: EPF lump-sum withdrawal at age 55+ is fully tax-exempt."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "MYS"
+  ilostat_transformation: "x * 12"
+  manual_value: 60000
+  currency: "Malaysian Ringgit"
+  year: 2022
+  source_citation: "Department of Statistics Malaysia: average annual formal earnings 2022 approximately MYR 60,000."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["MYS_EPF"]
+    source_citation: "EPF Act Malaysia: mandatory EPF for all formally employed workers."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["MYS_EPF"]
+    source_citation: "ILO Social Security Inquiry Malaysia: civil servants covered by separate KWAP (Kumpulan Wang Persaraan) DB pension."
+    notes: "Civil servants covered by KWAP DB pension, not EPF."
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: voluntary
+    scheme_ids: ["MYS_EPF"]
+    source_citation: "ILO Social Security Inquiry Malaysia: self-employed may voluntarily contribute to EPF (i-Saraan voluntary scheme)."
+    notes: null
+
+notes: null

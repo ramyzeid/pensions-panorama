@@ -1,0 +1,332 @@
+# =============================================================================
+# Jordan (JOR) – Pension System Parameters
+# =============================================================================
+# Curated reference year: 2023
+#
+# Primary scheme: Social Security Corporation (SSC) – Old-Age, Invalidity
+#   and Survivors (OAIS) defined-benefit scheme.
+# Civil servants have a separate scheme (Civil Service Retirement; CSR) –
+#   modeled here as a separate component for completeness; the default
+#   model population is private-sector employees covered by SSC.
+#
+# Sources:
+#   [1] Social Security Law No. 1 of 2014 (as amended 2019, 2022)
+#       https://www.ssc.gov.jo
+#   [2] SSC Annual Report 2022
+#   [3] OECD/World Bank Pension System Assessment (Jordan) 2018
+#   [4] ILO Country Profile – Jordan, ILOSTAT 2023
+#   [5] World Bank Jordan Economic Monitor 2023
+# =============================================================================
+
+metadata:
+  country_name: "Jordan"
+  iso3: "JOR"
+  iso2: "JO"
+  currency: "Jordanian Dinar"
+  currency_code: "JOD"
+  reference_year: 2023
+  wb_region: "MEA"
+  wb_income_level: "UMC"
+  un_location_id: 400       # UN Population Division location ID for Jordan
+  sources:
+    - "Social Security Law No. 1 of 2014 (amended 2019, 2022), SSC Jordan"
+    - "SSC Annual Report 2022"
+    - "ILO/OECD Jordan Pension Assessment 2018"
+    - "ILOSTAT – Mean monthly earnings, Jordan, 2023"
+  last_reviewed: "2024-01-15"
+
+# =============================================================================
+# Schemes
+# =============================================================================
+
+schemes:
+
+  # ---------------------------------------------------------------------------
+  # 1. SSC Old-Age Insurance – Defined Benefit (main scheme)
+  # ---------------------------------------------------------------------------
+  - scheme_id: "SSC_OAI"
+    name: "SSC Old-Age Insurance (Defined Benefit)"
+    tier: "first"
+    type: "DB"
+    coverage: "private sector employees and most self-employed"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 60
+        source_citation: "SSC Law No. 1/2014 Art. 47 – NRA for males."
+        source_url: "https://www.ssc.gov.jo"
+        year: 2023
+      normal_retirement_age_female:
+        value: 55
+        source_citation: "SSC Law No. 1/2014 Art. 47 – NRA for females (gradual increase to 60 by 2040)."
+        source_url: "https://www.ssc.gov.jo"
+        year: 2023
+      early_retirement_age_male:
+        value: 55
+        source_citation: "SSC Law No. 1/2014 – early retirement with 22+ years of contributions."
+        year: 2023
+      early_retirement_age_female:
+        value: 50
+        source_citation: "SSC Law No. 1/2014 – early retirement with 20+ years of contributions."
+        year: 2023
+      vesting_years:
+        value: 2
+        source_citation: "SSC Law No. 1/2014 Art. 44 – minimum vesting for invalidity benefit."
+        year: 2023
+      minimum_contribution_years:
+        value: 15
+        source_citation: "SSC Law No. 1/2014 Art. 47 – minimum 180 months (15 years) for old-age pension."
+        year: 2023
+      notes: "Early retirement possible at age 50 (F) / 55 (M) with 240/264 months respectively."
+
+    contributions:
+      employee_rate:
+        value: 0.075
+        source_citation: "SSC Law No. 1/2014 (amended 2019) Art. 30 – employee contribution 7.5% of wage."
+        source_url: "https://www.ssc.gov.jo"
+        year: 2023
+      employer_rate:
+        value: 0.1425
+        source_citation: "SSC Law No. 1/2014 (amended 2022) Art. 30 – employer contribution 14.25% of wage."
+        source_url: "https://www.ssc.gov.jo"
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: 7.5% + 14.25% = 21.75%."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null   # No statutory ceiling; SSC subject to national minimum wage floor
+        source_citation: "SSC regulations 2023 – no upper ceiling on insurable wage."
+        year: 2023
+      contribution_base: "gross monthly wage"
+      notes: "An additional 1% solidarity contribution applies; excluded here."
+
+    benefits:
+      accrual_rate_per_year:
+        value: 0.02
+        source_citation: "SSC Law No. 1/2014 Art. 48 – 2% of reference wage per year of contributions for first 30 years."
+        source_url: "https://www.ssc.gov.jo"
+        year: 2023
+      reference_wage: "career_average"
+      averaging_window_years:
+        value: null
+        source_citation: "SSC Law No. 1/2014 – reference wage is highest 2-year average insurable wage."
+        year: 2023
+      valorization: "wages"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "CPI"
+      minimum_benefit_aw_multiple:
+        value: 0.35
+        source_citation: "SSC minimum pension approx. JOD 260/month (2023); avg monthly wage ~JOD 740 → ~35% AW. SSC Circular 2023."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: 0.80
+        source_citation: "SSC cap: benefit cannot exceed 80% of reference wage. SSC Law No. 1/2014 Art. 48."
+        source_url: "https://www.ssc.gov.jo"
+        year: 2023
+      notes: >
+        Accrual rate increases to 3% per year for years 31+ (rarely reached in practice).
+        Formula: Pension = 2% × N × W, bounded by min and max.
+        Early retirement penalty: 0.5% per month before NRA.
+
+    payout:
+      type: "annuity"
+      notes: "Life annuity; spousal survivor benefit = 75% of insured's pension."
+
+  # ---------------------------------------------------------------------------
+  # 2. SSC Minimum Pension Guarantee (top-up)
+  # ---------------------------------------------------------------------------
+  - scheme_id: "SSC_MIN"
+    name: "SSC Minimum Pension Guarantee"
+    tier: "first"
+    type: "minimum"
+    coverage: "all SSC pensioners whose earned pension falls below the minimum"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 60
+        source_citation: "Same eligibility as SSC_OAI."
+        year: 2023
+      normal_retirement_age_female:
+        value: 55
+        source_citation: "Same eligibility as SSC_OAI."
+        year: 2023
+      notes: "Applies automatically as a top-up to the DB formula."
+
+    benefits:
+      minimum_benefit_aw_multiple:
+        value: 0.35
+        source_citation: "SSC minimum monthly pension JOD 260 (2023); AW JOD 740/month → 35.1%. SSC Circular 2023."
+        source_url: "https://www.ssc.gov.jo"
+        year: 2023
+      indexation: "CPI"
+      notes: "Minimum pension indexed annually by government decision; historically near CPI."
+
+    payout:
+      type: "annuity"
+      notes: null
+
+# =============================================================================
+# Tax and social-contribution treatment
+# =============================================================================
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  worker_social_contrib_rate:
+    value: 0.075
+    source_citation: "SSC Law No. 1/2014 – 7.5% employee contribution on wages."
+    year: 2023
+  income_tax_on_pension: >
+    Pension income received from SSC is exempt from personal income tax
+    under the Income Tax Law No. 34 of 2014 (Jordan). Private pensions
+    from employer funds may be subject to tax; social security pensions
+    are fully exempt.
+  pensioner_social_contrib_rate:
+    value: 0.0
+    source_citation: "No social security contributions withheld from SSC pensions. SSC Law No. 1/2014."
+    year: 2023
+  simplified_net_rate:
+    value: 0.0   # SSC pensions fully exempt from income tax and social contributions
+    source_citation: "Income Tax Law No. 34/2014 (Jordan) – social security pensions exempt."
+    year: 2023
+  notes: >
+    Under the EET regime: contributions are deductible, fund growth is exempt,
+    and benefits are tax-exempt (special treatment for social security pensions).
+    Private occupational pensions are taxable; not modeled here.
+
+# =============================================================================
+# Average earnings
+# =============================================================================
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "JOR"
+  ilostat_transformation: "x * 12"   # monthly → annual
+  manual_value: 8880.0   # JOD 740/month × 12 (ILOSTAT/SSC 2022 estimate)
+  currency: "Jordanian Dinar"
+  year: 2022
+  source_citation: >
+    SSC Statistical Annual Report 2022, Table 4.1 – Average insurable monthly wage JOD 740.
+    Cross-checked with ILOSTAT EAR_4MTH_SEX_ECO_CUR_NB (Jordan, 2022).
+  source_url: "https://www.ssc.gov.jo"
+  notes: "Manual fallback value used when ILOSTAT data unavailable for Jordan."
+
+# =============================================================================
+# Worker types
+# =============================================================================
+
+worker_types:
+
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: [SSC_OAI, SSC_MIN]
+    source_citation: "SSC Law No. 1/2014 – all private-sector employees are mandatorily enrolled."
+    source_url: "https://www.ssc.gov.jo"
+    notes: >
+      The main insured population. Coverage is compulsory for workers in establishments
+      with one or more employees. Self-employed workers may opt in.
+
+  civil_servant:
+    label: "Civil servant (government employee)"
+    coverage_status: excluded
+    scheme_ids: []
+    source_citation: >
+      Civil servants hired before 2014 are covered by the legacy Civil Service Retirement
+      (CSR) scheme administered by the Civil Service Bureau. That scheme is not modeled
+      in this file. Post-2014 civil servants were folded into SSC by Law No. 1/2014.
+    source_url: "https://www.csb.gov.jo"
+    notes: >
+      CSR (pre-2014 civil servants): a separate DB scheme with NRA 60 (M/F), accrual 2%/year.
+      Not modeled here. Post-2014 civil servants: enrolled in SSC_OAI (same as private workers).
+
+  military:
+    label: "Military and security personnel"
+    coverage_status: excluded
+    scheme_ids: []
+    source_citation: >
+      Military and security personnel (Jordan Armed Forces, Public Security Directorate,
+      Gendarmerie) are covered by separate occupational retirement schemes under their
+      respective service laws – not modeled here.
+    notes: >
+      Military pension: typically 2.5%/year accrual, NRA 50 (after 20–25 years service).
+      Source: Jordan Armed Forces Retirement Law (Law No. 21/1960, as amended).
+
+  self_employed:
+    label: "Self-employed worker"
+    coverage_status: voluntary
+    scheme_ids: [SSC_OAI, SSC_MIN]
+    eligibility_override:
+      notes: "Self-employed may voluntarily enrol in SSC_OAI since the 2014 reform."
+    contributions_override:
+      employee_rate:
+        value: 0.2175
+        source_citation: >
+          Self-employed who voluntarily enrol pay both employee and employer shares:
+          7.5% + 14.25% = 21.75% of declared insurable income.
+          SSC Law No. 1/2014 Art. 3 (voluntary enrolment provisions).
+        source_url: "https://www.ssc.gov.jo"
+        year: 2023
+      employer_rate:
+        value: 0.0
+        source_citation: "No separate employer contribution for self-employed; full rate borne by worker."
+        year: 2023
+    source_citation: >
+      SSC Law No. 1/2014, Art. 3 – optional enrolment for self-employed and
+      non-regular workers. Uptake historically low; SSC campaigns since 2019 increased
+      voluntary coverage. ILO Jordan Labour Market Assessment 2022.
+    source_url: "https://www.ssc.gov.jo"
+    notes: >
+      Self-employed pay the full combined rate (21.75%) on declared insurable income.
+      They must register with SSC and declare their earnings annually.
+      Benefits are identical to private-sector employees once enrolled.
+
+  domestic_worker:
+    label: "Domestic worker"
+    coverage_status: excluded
+    scheme_ids: []
+    source_citation: >
+      Domestic workers (household employees) are legally excluded from SSC coverage
+      under Jordanian Labour Law Art. 3 and SSC Law No. 1/2014.
+      ILO Jordan Report on Domestic Workers 2021.
+    notes: >
+      An estimated 50,000–70,000 domestic workers in Jordan (mostly foreign nationals)
+      have no mandatory pension coverage. Excluded from SSC_OAI.
+
+  agricultural_worker:
+    label: "Agricultural worker"
+    coverage_status: excluded
+    scheme_ids: []
+    source_citation: >
+      Agricultural workers in the informal sector are not subject to mandatory SSC coverage.
+      Formal agri-business employees may be covered, but smallholder and seasonal
+      agricultural workers are de facto excluded. ILO/World Bank Jordan Labour Survey 2022.
+    notes: "Informal sector agricultural workers: no mandatory pension coverage."
+
+  unemployed_previously_covered:
+    label: "Previously covered unemployed worker"
+    coverage_status: excluded
+    scheme_ids: []
+    special_provisions:
+      partial_pension: >
+        Vested workers who become unemployed preserve accrued rights. Upon reaching NRA
+        and provided minimum 15 years of contributions were made, the DB pension is payable
+        based on contributions made. No top-up contributions while unemployed.
+      notes: "Entitlement preserved but contributions suspended during unemployment."
+    source_citation: >
+      SSC Law No. 1/2014 Art. 47 – accrued rights preserved on cessation of insurable work.
+      Pension payable at NRA provided minimum contribution years met.
+    notes: >
+      Workers who leave covered employment retain vested rights. The scheme does not
+      allow voluntary contribution top-ups during unemployment.
+
+notes: >
+  Jordan's SSC scheme is a funded defined-benefit scheme administered by the
+  Social Security Corporation (SSC), a public autonomous institution.
+  The reform of 2014 (Law No. 1/2014) unified previously separate private and
+  government worker schemes and introduced parametric changes including a higher
+  NRA trajectory.  Civil servants hired before 2014 may be covered by the legacy
+  Civil Service Retirement (CSR) scheme, which is not modeled here.

@@ -1,0 +1,142 @@
+# =============================================================================
+# Oman (OMN) – Pension System Parameters
+# =============================================================================
+# Primary scheme: PASI (Public Authority for Social Insurance)
+# Covers: Omani national private-sector employees
+# Governing law: Royal Decree 72/1991 and amendments (RD 49/2010)
+#
+# Sources:
+#   [1] PASI Oman – www.pasi.gov.om – Annual Report 2022
+#   [2] Royal Decree 72/1991 (Social Insurance) and RD 49/2010 (amendments)
+#   [3] IMF Oman Selected Issues 2022
+#   [4] World Bank Oman Pension Diagnostic Note 2019
+# =============================================================================
+
+metadata:
+  country_name: "Oman"
+  iso3: "OMN"
+  iso2: "OM"
+  currency: "Omani Rial"
+  currency_code: "OMR"
+  reference_year: 2022
+  wb_region: "MEA"
+  wb_income_level: "HIC"
+  un_location_id: 512
+  sources:
+    - "Royal Decree 72/1991 (Social Insurance Oman) and amendments RD 49/2010"
+    - "PASI Oman Annual Report 2022 – www.pasi.gov.om"
+    - "IMF Oman Article IV 2022"
+  last_reviewed: "2024-03-01"
+
+schemes:
+  - scheme_id: "PASI_DB"
+    name: "PASI Old-Age Pension (Omani Nationals – Private Sector)"
+    tier: "first"
+    type: "DB"
+    coverage: "Omani national private-sector employees (mandatory; expatriates not covered)"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 60
+        source_citation: "RD 72/1991 Art. 11 as amended – NRA 60 for Omani male employees."
+        source_url: "https://www.pasi.gov.om"
+        year: 2022
+      normal_retirement_age_female:
+        value: 55
+        source_citation: "RD 72/1991 Art. 11 – NRA 55 for Omani female employees."
+        year: 2022
+      early_retirement_age_male:
+        value: 55
+        source_citation: "PASI – early retirement at 55 with 20+ years contributions."
+        year: 2022
+      vesting_years:
+        value: 5
+        source_citation: "PASI – minimum 5 years (60 months) contributions for pension eligibility."
+        year: 2022
+      minimum_contribution_years:
+        value: 15
+        source_citation: "PASI – 15 years minimum for standard old-age pension. RD 72/1991 Art. 14."
+        year: 2022
+
+    contributions:
+      employee_rate:
+        value: 0.07
+        source_citation: "RD 72/1991 as amended by RD 49/2010 – 7% employee contribution on basic wage."
+        source_url: "https://www.pasi.gov.om"
+        year: 2022
+      employer_rate:
+        value: 0.105
+        source_citation: "RD 49/2010 – 10.5% employer contribution (raised from 8.5%). Plus 2% government subsidy."
+        year: 2022
+      total_rate:
+        value: null
+        source_citation: "Derived: 7% + 10.5% = 17.5% (excluding government subsidy)."
+        year: 2022
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "PASI – no formal ceiling as of 2022."
+        year: 2022
+      contribution_base: "basic monthly wage"
+
+    benefits:
+      accrual_rate_per_year:
+        value: 0.0333
+        source_citation: "RD 72/1991 Art. 14 – pension = 1/30 of career-average wage per year ≈ 3.33%/year."
+        source_url: "https://www.pasi.gov.om"
+        year: 2022
+      reference_wage: "career_average"
+      valorization: "wages"
+      indexation: "CPI"
+      minimum_benefit_aw_multiple:
+        value: 0.33
+        source_citation: "PASI minimum pension OMR 200/month (2022); AW for Omanis ~OMR 600/month → 33% AW. PASI Circular 2022."
+        year: 2022
+      maximum_benefit_aw_multiple:
+        value: 0.80
+        source_citation: "PASI – pension capped at 80% of reference wage. RD 72/1991 Art. 14."
+        year: 2022
+
+    payout:
+      type: "annuity"
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "No personal income tax in Oman. PASI pensions received gross."
+  simplified_net_rate:
+    value: 0.0
+    source_citation: "No personal income tax in Oman. Ministry of Finance, Oman."
+    year: 2022
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "OMN"
+  ilostat_transformation: "x * 12"
+  manual_value: 7200.0
+  currency: "Omani Rial"
+  year: 2022
+  source_citation: >
+    PASI Annual Report 2022 – average insurable monthly basic wage for Omani nationals in private
+    sector ~OMR 600/month × 12. NCSI (National Centre for Statistics and Information) 2022.
+  source_url: "https://www.pasi.gov.om"
+
+# =============================================================================
+# Worker types
+# =============================================================================
+
+worker_types:
+
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: [PASI_DB]
+    source_citation: "Default: same as main scheme definition."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: unknown
+    scheme_ids: []
+    source_citation: "Coverage status not yet researched; placeholder."
+    notes: "TODO: verify self-employed coverage under national law."
+

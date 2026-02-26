@@ -1,0 +1,139 @@
+# =============================================================================
+# Cuba (CUB) – Pension System Parameters
+# =============================================================================
+# Primary scheme: General Social Security System – DB earnings-related
+# Sources:
+#   [1] ILO Social Security Inquiry – Cuba
+#   [2] Ministerio de Trabajo y Seguridad Social Cuba – Anuario 2022
+# =============================================================================
+
+metadata:
+  country_name: "Cuba"
+  iso3: "CUB"
+  iso2: "CU"
+  currency: "Cuban Peso"
+  currency_code: "CUP"
+  reference_year: 2023
+  wb_region: "LCN"
+  wb_income_level: "UMC"
+  un_location_id: 192
+  sources:
+    - "ILO Social Security Inquiry – Cuba"
+    - "Ministerio de Trabajo y Seguridad Social Cuba Anuario 2022"
+    - "Ley de Seguridad Social (Cuba, Law No. 105, 2009)"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "CUB_MTSS"
+    name: "Sistema de Seguridad Social (MTSS) – DB Earnings-Related"
+    tier: "first"
+    type: "DB"
+    coverage: "All employed workers; state-funded; mandatory"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 65
+        source_citation: "ILO Social Security Inquiry Cuba: NRA raised to 65 for males (from 60) under 2021 reform."
+        year: 2023
+      normal_retirement_age_female:
+        value: 60
+        source_citation: "ILO Social Security Inquiry Cuba: NRA 60 for females (raised from earlier age under 2021 reform)."
+        year: 2023
+      vesting_years:
+        value: 30
+        source_citation: "ILO Social Security Inquiry Cuba: minimum 30 years of service for full pension entitlement."
+        year: 2023
+      minimum_contribution_years:
+        value: 30
+        source_citation: "Ley de Seguridad Social Cuba: minimum 30 years of social security coverage for retirement pension."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.05
+        source_citation: "ILO Social Security Inquiry Cuba: employee social security contribution approximately 5% of wages."
+        year: 2023
+      employer_rate:
+        value: 0.14
+        source_citation: "ILO Social Security Inquiry Cuba: employer/state social security contribution approximately 14% of wages."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: approximately 19% total social security contribution; state heavily subsidises."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Cuba: no contribution ceiling; contributions on all wages."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: "State-dominant pension system; most enterprises state-owned. Self-employed growing sector under reforms."
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: "ILO Social Security Inquiry Cuba: pension based on years of service and average wage; approximately 60–80% replacement rate after 30+ years."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "prices"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "prices"
+      minimum_benefit_aw_multiple:
+        value: 0.30
+        source_citation: "ILO Social Security Inquiry Cuba: minimum social security pension approximately 30% of average state wage."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Cuba: maximum pension constrained by benefit formula."
+        year: 2023
+      notes: "Social assistance (asistencia social) supplements for elderly without sufficient pension entitlement."
+
+    payout:
+      type: "annuity"
+      notes: null
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "Cuba has limited personal income tax applicability to state sector workers; pension income generally not subject to income tax."
+  simplified_net_rate:
+    value: 0.0
+    source_citation: "ILO Social Security Inquiry Cuba: pension income not typically subject to income tax in Cuba's state-based system."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "CUB"
+  ilostat_transformation: "x * 12"
+  manual_value: 6000
+  currency: "Cuban Peso"
+  year: 2022
+  source_citation: "Oficina Nacional de Estadística e Información (ONEI) Cuba: average annual state sector wages 2022 approximately CUP 6,000 (official; purchasing power significantly different)."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["CUB_MTSS"]
+    source_citation: "Ley de Seguridad Social Cuba: mandatory coverage for all formal workers including growing non-state sector."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["CUB_MTSS"]
+    source_citation: "ILO Social Security Inquiry Cuba: all state employees covered by social security system."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: mandatory
+    scheme_ids: ["CUB_MTSS"]
+    source_citation: "ILO Social Security Inquiry Cuba: self-employed (TCP workers) required to contribute to social security since 2010 reforms."
+    notes: null
+
+notes: null

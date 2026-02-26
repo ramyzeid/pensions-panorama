@@ -1,0 +1,139 @@
+# =============================================================================
+# Armenia (ARM) – Pension System Parameters
+# =============================================================================
+# Primary scheme: State Social Security + Mandatory Funded Pension (since 2014)
+# Sources:
+#   [1] ILO Social Security Inquiry – Armenia
+#   [2] World Bank Armenia Pension Reform Assessment 2022
+# =============================================================================
+
+metadata:
+  country_name: "Armenia"
+  iso3: "ARM"
+  iso2: "AM"
+  currency: "Armenian Dram"
+  currency_code: "AMD"
+  reference_year: 2023
+  wb_region: "ECS"
+  wb_income_level: "UMC"
+  un_location_id: 51
+  sources:
+    - "ILO Social Security Inquiry – Armenia"
+    - "World Bank Armenia Pension Reform Assessment 2022"
+    - "Law on State Pensions of the Republic of Armenia (2010, as amended)"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "ARM_SSC"
+    name: "State Social Security Pension (PAYG DB)"
+    tier: "first"
+    type: "DB"
+    coverage: "All formal sector employees; mandatory funded pillar added for born after 1974"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 63
+        source_citation: "ILO Social Security Inquiry Armenia: NRA 63 for both sexes, rising to 65 by 2030."
+        year: 2023
+      normal_retirement_age_female:
+        value: 63
+        source_citation: "ILO Social Security Inquiry Armenia: NRA equalised at 63, rising to 65 by 2030."
+        year: 2023
+      vesting_years:
+        value: 25
+        source_citation: "Law on State Pensions Armenia 2010: minimum 25 years of service required for full old-age pension."
+        year: 2023
+      minimum_contribution_years:
+        value: 25
+        source_citation: "Law on State Pensions Armenia 2010: 25 years of insurance record required."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.025
+        source_citation: "ILO Social Security Inquiry Armenia: employee contribution 2.5% to PAYG pillar; additional 5% to funded pillar (for those born after 1974, matched by state)."
+        year: 2023
+      employer_rate:
+        value: 0.0
+        source_citation: "ILO Social Security Inquiry Armenia: employer does not pay separate pension contribution; funded pillar matched by state for eligible workers."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: PAYG 2.5% employee; funded 5% employee + 5% state match for those born after 1974."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Armenia: no contribution ceiling as multiple of average wage reported."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: "Workers born after 1974 must contribute 5% to the mandatory funded pillar, matched by the state up to a ceiling."
+
+    benefits:
+      accrual_rate_per_year:
+        value: 0.015
+        source_citation: "World Bank Armenia Pension Reform Assessment 2022: DB PAYG component accrues approximately 1.5% of average wage per year of service."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "wages"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "mixed"
+      minimum_benefit_aw_multiple:
+        value: 0.12
+        source_citation: "ILO Social Security Inquiry Armenia: minimum pension approximately 12% of average wage."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Armenia: no statutory maximum benefit."
+        year: 2023
+      notes: null
+
+    payout:
+      type: "annuity"
+      notes: null
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "Pension income is generally exempt from income tax in Armenia."
+  simplified_net_rate:
+    value: 0.0
+    source_citation: "ILO Social Security Inquiry Armenia: pension benefits exempt from income tax."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "ARM"
+  ilostat_transformation: "x * 12"
+  manual_value: 1500000
+  currency: "Armenian Dram"
+  year: 2022
+  source_citation: "Statistical Committee of Armenia: average monthly wage 2022 approximately AMD 125,000, AMD 1,500,000 annually."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["ARM_SSC"]
+    source_citation: "Law on State Pensions Armenia 2010: mandatory coverage for all formal employees."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["ARM_SSC"]
+    source_citation: "ILO Social Security Inquiry Armenia: civil servants covered by the same state pension scheme."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: voluntary
+    scheme_ids: ["ARM_SSC"]
+    source_citation: "ILO Social Security Inquiry Armenia: self-employed may voluntarily contribute to the social security scheme."
+    notes: null
+
+notes: null

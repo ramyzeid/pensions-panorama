@@ -1,0 +1,139 @@
+# =============================================================================
+# Singapore (SGP) – Pension System Parameters
+# =============================================================================
+# Primary scheme: Central Provident Fund (CPF) – mandatory DC
+# Sources:
+#   [1] OECD Pensions at a Glance 2023 – Singapore (observer)
+#   [2] Central Provident Fund Board Singapore – Annual Report 2022
+# =============================================================================
+
+metadata:
+  country_name: "Singapore"
+  iso3: "SGP"
+  iso2: "SG"
+  currency: "Singapore Dollar"
+  currency_code: "SGD"
+  reference_year: 2023
+  wb_region: "EAP"
+  wb_income_level: "HIC"
+  un_location_id: 702
+  sources:
+    - "OECD Pensions at a Glance 2023 – Singapore (observer)"
+    - "Central Provident Fund Board Singapore Annual Report 2022"
+    - "Central Provident Fund Act (Singapore, Cap. 36)"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "SGP_CPF"
+    name: "Central Provident Fund (CPF) – Mandatory DC"
+    tier: "first"
+    type: "DC"
+    coverage: "All Singapore citizens and permanent residents; mandatory for employees and self-employed"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 63
+        source_citation: "OECD Pensions at a Glance 2023 Singapore: CPF Life payout eligibility age 65; statutory retirement age 63 in 2023 (rising to 65 by 2030)."
+        year: 2023
+      normal_retirement_age_female:
+        value: 63
+        source_citation: "OECD Pensions at a Glance 2023 Singapore: same retirement age for females."
+        year: 2023
+      vesting_years:
+        value: 0
+        source_citation: "OECD Pensions at a Glance 2023 Singapore: CPF DC – immediate vesting of contributions; no minimum years."
+        year: 2023
+      minimum_contribution_years:
+        value: 0
+        source_citation: "CPF Act Singapore: no minimum contribution years; accumulated balance determines pension."
+        year: 2023
+      notes: "CPF Life annuity begins at age 65; Retirement Account (RA) set aside at age 55."
+
+    contributions:
+      employee_rate:
+        value: 0.20
+        source_citation: "OECD Pensions at a Glance 2023 Singapore: employee CPF contribution 20% of wages (for workers under 55; rate tapers with age)."
+        year: 2023
+      employer_rate:
+        value: 0.17
+        source_citation: "OECD Pensions at a Glance 2023 Singapore: employer CPF contribution 17% of wages (for workers under 55; rate tapers with age)."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: 37% total CPF contribution for workers under 55 (20% employee + 17% employer)."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: 1.0
+        source_citation: "OECD Pensions at a Glance 2023 Singapore: CPF contribution ceiling SGD 6,000/month ordinary wages (2023); approximately 1× average monthly wage."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: "CPF allocates across Ordinary Account (OA), Special Account (SA), MediSave Account (MA); Retirement Account at 55; CPF Life annuity."
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: "OECD Pensions at a Glance 2023 Singapore: DC system – no fixed accrual rate; CPF Life annuity based on Retirement Account balance at 65."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "interest"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "CPI"
+      minimum_benefit_aw_multiple:
+        value: null
+        source_citation: "OECD Pensions at a Glance 2023 Singapore: Silver Support Scheme (SSS) provides quarterly cash supplements for lowest-income elderly; no statutory minimum pension."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "OECD Pensions at a Glance 2023 Singapore: no explicit maximum CPF Life pension."
+        year: 2023
+      notes: "CPF Life provides lifelong monthly payouts from age 65; Basic Retirement Sum ~SGD 96,000 (2023); Full ~SGD 192,000."
+
+    payout:
+      type: "annuity"
+      notes: "CPF Life is a national longevity insurance annuity; lump-sum withdrawal option for amounts above Basic Retirement Sum."
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "CPF contributions exempt from income tax; CPF Life payouts not subject to income tax in Singapore."
+  simplified_net_rate:
+    value: 0.0
+    source_citation: "OECD Pensions at a Glance 2023 Singapore: CPF Life payouts are tax-exempt; effective tax rate on CPF pension = 0%."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "SGP"
+  ilostat_transformation: "x * 12"
+  manual_value: 72000
+  currency: "Singapore Dollar"
+  year: 2022
+  source_citation: "Ministry of Manpower Singapore: median annual gross wage 2022 approximately SGD 60,000; mean approximately SGD 72,000."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["SGP_CPF"]
+    source_citation: "CPF Act Singapore: mandatory CPF for all Singapore citizens and PRs in private sector employment."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["SGP_CPF"]
+    source_citation: "OECD Pensions at a Glance 2023 Singapore: civil servants covered by CPF; no separate civil service pension for new entrants."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: mandatory
+    scheme_ids: ["SGP_CPF"]
+    source_citation: "CPF Act Singapore: self-employed persons must contribute to MediSave; encouraged to contribute to retirement accounts voluntarily."
+    notes: "Self-employed must contribute to MediSave only; retirement CPF contributions voluntary."
+
+notes: null

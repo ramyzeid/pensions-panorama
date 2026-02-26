@@ -1,0 +1,143 @@
+# =============================================================================
+# Kuwait (KWT) – Pension System Parameters
+# =============================================================================
+# Primary scheme: PIFSS (Public Institution for Social Security)
+# Covers: Kuwaiti national private-sector employees
+# Governing law: Law No. 61 of 1976 and amendments (Law No. 97 of 2010)
+#
+# Sources:
+#   [1] PIFSS Kuwait – www.pifss.gov.kw – Annual Report 2022
+#   [2] Law No. 61 of 1976 (Social Security) and Law No. 97 of 2010 amendment
+#   [3] IMF Kuwait Selected Issues 2022
+#   [4] World Bank Kuwait Pension Note 2019
+# =============================================================================
+
+metadata:
+  country_name: "Kuwait"
+  iso3: "KWT"
+  iso2: "KW"
+  currency: "Kuwaiti Dinar"
+  currency_code: "KWD"
+  reference_year: 2022
+  wb_region: "MEA"
+  wb_income_level: "HIC"
+  un_location_id: 414
+  sources:
+    - "Law No. 61 of 1976 (Social Security Kuwait) and Law No. 97 of 2010"
+    - "PIFSS Kuwait Annual Report 2022 – www.pifss.gov.kw"
+    - "IMF Kuwait Article IV 2022"
+  last_reviewed: "2024-03-01"
+
+schemes:
+  - scheme_id: "PIFSS_DB"
+    name: "PIFSS Old-Age Pension (Kuwaiti Nationals)"
+    tier: "first"
+    type: "DB"
+    coverage: "Kuwaiti national private-sector employees (non-Kuwaitis not covered)"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 55
+        source_citation: "Law No. 61/1976 Art. 25 as amended – NRA 55 for males with 15+ years service; 50 with 25+ years."
+        source_url: "https://www.pifss.gov.kw"
+        year: 2022
+      normal_retirement_age_female:
+        value: 50
+        source_citation: "Law No. 61/1976 Art. 25 – NRA 50 for females with 15+ years (can retire earlier)."
+        year: 2022
+      early_retirement_age_male:
+        value: 50
+        source_citation: "Early retirement at 50 with 25+ years service."
+        year: 2022
+      vesting_years:
+        value: 15
+        source_citation: "PIFSS – minimum 15 years for old-age pension."
+        year: 2022
+      minimum_contribution_years:
+        value: 15
+        source_citation: "PIFSS Law – 15 years minimum contributions."
+        year: 2022
+
+    contributions:
+      employee_rate:
+        value: 0.075
+        source_citation: "Law No. 61/1976 as amended by Law No. 97/2010 – 7.5% employee contribution."
+        source_url: "https://www.pifss.gov.kw"
+        year: 2022
+      employer_rate:
+        value: 0.11
+        source_citation: "Law No. 61/1976 – 11% employer contribution (private sector). Government adds 2.5% subsidy."
+        year: 2022
+      total_rate:
+        value: null
+        source_citation: "Derived: 7.5% + 11% = 18.5% (excluding government subsidy)."
+        year: 2022
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "PIFSS – no statutory ceiling on insurable wage."
+        year: 2022
+      contribution_base: "gross monthly salary"
+
+    benefits:
+      accrual_rate_per_year:
+        value: 0.025
+        source_citation: "Law No. 61/1976 Art. 29 – 2.5%/year accrual; max pension 95% of reference wage at 38 years."
+        source_url: "https://www.pifss.gov.kw"
+        year: 2022
+      reference_wage: "career_average"
+      valorization: "wages"
+      indexation: "CPI"
+      minimum_benefit_aw_multiple:
+        value: 0.40
+        source_citation: "PIFSS minimum pension KWD 600/month (2022); Kuwaiti national AW ~KWD 1,500/month → 40%. PIFSS Circular 2022."
+        year: 2022
+      maximum_benefit_aw_multiple:
+        value: 0.95
+        source_citation: "Law No. 61/1976 – maximum 95% of career-average at 38 years service."
+        year: 2022
+
+    payout:
+      type: "annuity"
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "No personal income tax in Kuwait. PIFSS pensions received gross."
+  simplified_net_rate:
+    value: 0.0
+    source_citation: "No personal income tax in Kuwait. Ministry of Finance, Kuwait."
+    year: 2022
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "KWT"
+  ilostat_transformation: "x * 12"
+  manual_value: 18000.0
+  currency: "Kuwaiti Dinar"
+  year: 2022
+  source_citation: >
+    PIFSS Annual Report 2022 – average insurable monthly salary for Kuwaiti national
+    private-sector workers ~KWD 1,500/month × 12. CSB (Central Statistical Bureau) 2022.
+  source_url: "https://www.pifss.gov.kw"
+  notes: "Represents Kuwaiti national formal-sector wage only; overall workforce average is much lower."
+
+# =============================================================================
+# Worker types
+# =============================================================================
+
+worker_types:
+
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: [PIFSS_DB]
+    source_citation: "Default: same as main scheme definition."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: unknown
+    scheme_ids: []
+    source_citation: "Coverage status not yet researched; placeholder."
+    notes: "TODO: verify self-employed coverage under national law."
+

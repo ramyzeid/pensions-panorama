@@ -1,0 +1,140 @@
+# =============================================================================
+# Kosovo (XKX) – Pension System Parameters
+# =============================================================================
+# Primary scheme: KPST (Kosovo Pension Savings Trust) – DC
+# Sources:
+#   [1] ILO Social Security Inquiry – Kosovo
+#   [2] Kosovo Pension Savings Trust (KPST) – Annual Report 2022
+#   [3] Law on Pension Savings (Kosovo, 2011)
+# =============================================================================
+
+metadata:
+  country_name: "Kosovo"
+  iso3: "XKX"
+  iso2: "XK"
+  currency: "Euro"
+  currency_code: "EUR"
+  reference_year: 2023
+  wb_region: "ECS"
+  wb_income_level: "UMC"
+  un_location_id: 412
+  sources:
+    - "ILO Social Security Inquiry – Kosovo"
+    - "Kosovo Pension Savings Trust (KPST) Annual Report 2022"
+    - "Law on Pension Savings (Kosovo, No. 04/L-101, 2011)"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "XKX_KPST"
+    name: "KPST (Kosovo Pension Savings Trust) – DC Mandatory"
+    tier: "first"
+    type: "DC"
+    coverage: "All formally employed workers; mandatory pension savings"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 65
+        source_citation: "ILO Social Security Inquiry Kosovo: KPST NRA 65 for males."
+        year: 2023
+      normal_retirement_age_female:
+        value: 65
+        source_citation: "ILO Social Security Inquiry Kosovo: NRA 65 for females."
+        year: 2023
+      vesting_years:
+        value: 0
+        source_citation: "ILO Social Security Inquiry Kosovo: DC scheme – accumulated balance accessible at NRA."
+        year: 2023
+      minimum_contribution_years:
+        value: 0
+        source_citation: "Law on Pension Savings Kosovo: DC balance accessible at age 65 without minimum years."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.05
+        source_citation: "ILO Social Security Inquiry Kosovo: KPST employee contribution 5% of gross wages."
+        year: 2023
+      employer_rate:
+        value: 0.05
+        source_citation: "ILO Social Security Inquiry Kosovo: KPST employer contribution 5% of gross wages."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: 10% total KPST contribution (5% employee + 5% employer)."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Kosovo: contributions on all wages; no explicit AW ceiling."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: "Kosovo uses Euro. KPST is a defined contribution mandatory savings scheme; no pay-as-you-go pension. Basic pension (social pension) of EUR 75/month provided by government."
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: "ILO Social Security Inquiry Kosovo: KPST DC scheme – pension based on accumulated savings and investment returns."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "interest"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "none"
+      minimum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Kosovo: no statutory minimum KPST pension; government basic pension of EUR 75/month."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Kosovo: no explicit maximum; depends on accumulated savings."
+        year: 2023
+      notes: "Kosovo basic pension (contribution-financed): EUR 75/month for all persons 65+. KPST DC savings supplement this."
+
+    payout:
+      type: "lump_sum"
+      notes: "KPST accumulated balance accessible at age 65; annuity or phased withdrawal options available."
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "KPST pension withdrawals subject to personal income tax in Kosovo; 10% flat rate."
+  simplified_net_rate:
+    value: 0.10
+    source_citation: "Kosovo Tax Administration: 10% flat income tax rate applies to pension income."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "XKX"
+  ilostat_transformation: "x * 12"
+  manual_value: 8000
+  currency: "Euro"
+  year: 2022
+  source_citation: "Kosovo Agency of Statistics: average annual formal earnings 2022 approximately EUR 8,000."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["XKX_KPST"]
+    source_citation: "Law on Pension Savings Kosovo: mandatory KPST for all formally employed workers."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["XKX_KPST"]
+    source_citation: "ILO Social Security Inquiry Kosovo: civil servants mandatorily covered by KPST."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: voluntary
+    scheme_ids: ["XKX_KPST"]
+    source_citation: "ILO Social Security Inquiry Kosovo: self-employed may voluntarily contribute to KPST."
+    notes: null
+
+notes: null

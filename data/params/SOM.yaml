@@ -1,0 +1,139 @@
+# =============================================================================
+# Somalia (SOM) – Pension System Parameters
+# =============================================================================
+# Primary scheme: National Social Insurance Fund (limited / non-functional)
+# Sources:
+#   [1] ILO Social Security Inquiry – Somalia
+#   [2] World Bank Social Protection Review Somalia 2022
+# =============================================================================
+
+metadata:
+  country_name: "Somalia"
+  iso3: "SOM"
+  iso2: "SO"
+  currency: "Somali Shilling"
+  currency_code: "SOS"
+  reference_year: 2023
+  wb_region: "SSA"
+  wb_income_level: "LIC"
+  un_location_id: 706
+  sources:
+    - "ILO Social Security Inquiry – Somalia"
+    - "World Bank Social Protection Review Somalia 2022"
+    - "Ministry of Labour and Social Affairs Somalia"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "SOM_NSI"
+    name: "National Social Insurance (extremely limited) – DB"
+    tier: "first"
+    type: "DB"
+    coverage: "Extremely limited; formal pension system largely non-functional due to state collapse"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 60
+        source_citation: "ILO Social Security Inquiry Somalia: nominal NRA 60; pension system largely non-functional."
+        year: 2023
+      normal_retirement_age_female:
+        value: 60
+        source_citation: "ILO Social Security Inquiry Somalia: nominal NRA 60 for females."
+        year: 2023
+      vesting_years:
+        value: 15
+        source_citation: "ILO Social Security Inquiry Somalia: minimum contribution period nominal; system largely non-functional."
+        year: 2023
+      minimum_contribution_years:
+        value: 15
+        source_citation: "ILO Social Security Inquiry Somalia: nominal 15 years; formal system has very limited capacity."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: null
+        source_citation: "ILO Social Security Inquiry Somalia: formal social insurance system largely non-functional; contribution rates nominal."
+        year: 2023
+      employer_rate:
+        value: null
+        source_citation: "ILO Social Security Inquiry Somalia: employer contribution rates exist in law but enforcement very limited."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "ILO Social Security Inquiry Somalia: formal pension system non-functional; contribution rates not reliably enforced."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Somalia: no functional ceiling; system non-operational."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: "Somalia's formal pension system collapsed with the state in 1991; most elderly have no pension coverage."
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: "ILO Social Security Inquiry Somalia: formal pension benefits rarely paid; system non-functional."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "prices"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "prices"
+      minimum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Somalia: no effective minimum pension; system non-functional."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Somalia: no effective maximum; system non-operational."
+        year: 2023
+      notes: "Somalia has no functioning national pension system; humanitarian assistance is the primary support for elderly."
+
+    payout:
+      type: "annuity"
+      notes: "Formal pension payments extremely rare; system largely non-functional."
+
+taxes:
+  worker_income_tax_treatment: "unknown"
+  income_tax_on_pension: "No functional income tax system in Somalia applicable to pension income."
+  simplified_net_rate:
+    value: 0.0
+    source_citation: "ILO Social Security Inquiry Somalia: no functional pension tax system; effective rate 0%."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "SOM"
+  ilostat_transformation: "x * 12"
+  manual_value: 3000000
+  currency: "Somali Shilling"
+  year: 2022
+  source_citation: "World Bank Somalia economic data: estimated average annual earnings 2022 extremely uncertain; approximately SOS 3,000,000 for formal sector."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: unknown
+    scheme_ids: []
+    source_citation: "ILO Social Security Inquiry Somalia: formal pension system non-functional; most workers have no pension coverage."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: unknown
+    scheme_ids: []
+    source_citation: "ILO Social Security Inquiry Somalia: civil service pension system collapsed; some civil servants receive salary payments but no functioning pension."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: unknown
+    scheme_ids: []
+    source_citation: "ILO Social Security Inquiry Somalia: no mandatory pension for self-employed."
+    notes: null
+
+notes: null

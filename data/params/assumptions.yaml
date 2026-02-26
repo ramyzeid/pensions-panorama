@@ -1,0 +1,54 @@
+# Global modeling assumptions for Pensions Panorama
+# -------------------------------------------------------
+# These settings apply to all countries unless overridden
+# at the country level.  They follow the OECD Pensions at a
+# Glance methodology where noted.
+#
+# To override for a specific run, pass --config run_config.yaml
+# with an `assumptions_file` key pointing to an alternate file,
+# or supply overrides in run_config.yaml under `assumptions`.
+
+# --- Career profile ---
+entry_age: 20              # Age entering the labour market
+career_length: 40          # Years of contributions (OECD baseline: 40)
+contribution_density: 1.0  # Fraction of career with contributions
+
+# --- Default retirement ages (overridden by country params) ---
+default_retirement_age_male: 65
+default_retirement_age_female: 65
+
+# --- Wage trajectory ---
+real_wage_growth: 0.02     # 2% real annual wage growth
+inflation: 0.02            # 2% annual price inflation
+wage_growth: null          # If null, computed as real_wage_growth + inflation
+
+# --- Discounting ---
+discount_rate: 0.02        # Real discount rate for pension wealth (OECD: 2%)
+
+# --- Post-retirement indexation ---
+pension_indexation_type: "CPI"   # CPI | wages | mixed | none
+pension_indexation_rate: 0.0     # Real indexation above inflation
+                                  # 0.0 = constant real value (CPI-indexed)
+
+# --- DC / funded schemes ---
+dc_real_return_net_of_fees: 0.03  # 3% real net return (OECD: 3%)
+
+# --- Life expectancy fallbacks (used if UN data unavailable) ---
+life_expectancy_at_retirement_male: 20.0
+life_expectancy_at_retirement_female: 25.0
+max_age_for_wealth: 110
+
+# --- UN WPP reference ---
+wpp_year: 2020   # WPP quinquennial period start year
+
+# --- Earnings multiples ---
+earnings_multiples:
+  - 0.5
+  - 0.75
+  - 1.0
+  - 1.5
+  - 2.0
+  - 2.5
+
+# --- Default sex for modeling ---
+sex: "male"

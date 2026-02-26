@@ -1,0 +1,129 @@
+# =============================================================================
+# Hungary (HUN) – Pension System Parameters
+# =============================================================================
+# Primary scheme: Mandatory PAYG DB career-average pension administered by the
+#   Government Pension Payment Directorate (NYUFIG / ONYF).
+# Sources:
+#   [1] SSA Social Security Programs Throughout the World – Europe 2022
+#   [2] OECD Pensions at a Glance 2023 – Hungary country note
+#   [3] Act LXXXI of 1997 on Social Security Pension Benefits (as amended)
+# =============================================================================
+
+metadata:
+  country_name: "Hungary"
+  iso3: "HUN"
+  iso2: "HU"
+  currency: "Hungarian Forint"
+  currency_code: "HUF"
+  reference_year: 2023
+  wb_region: "ECS"
+  wb_income_level: "HIC"
+  un_location_id: 348
+  sources:
+    - "SSA Social Security Programs Throughout the World – Europe 2022"
+    - "OECD Pensions at a Glance 2023"
+    - "Act LXXXI of 1997 on Social Security Pension Benefits (as amended)"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "HUN_NYUFIG"
+    name: "Mandatory PAYG DB Old-Age Pension (Öregségi nyugdíj)"
+    tier: "first"
+    type: "DB"
+    coverage: "employees and self-employed"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 65
+        source_citation: "OECD Pensions at a Glance 2023 – Hungary: NRA 65 for men (fully phased in by 2022)."
+        year: 2023
+      normal_retirement_age_female:
+        value: 65
+        source_citation: "OECD Pensions at a Glance 2023 – Hungary: NRA 65 for women (equalised with men; fully phased in)."
+        year: 2023
+      vesting_years:
+        value: 15
+        source_citation: "SSA SSPW Europe 2022 – Hungary: minimum 15 years of insured service required for old-age pension."
+        year: 2023
+      minimum_contribution_years:
+        value: 20
+        source_citation: "SSA SSPW Europe 2022 – Hungary: 20 years of service required for full proportional pension calculation."
+        year: 2023
+
+    contributions:
+      employee_rate:
+        value: 0.10
+        source_citation: "SSA SSPW Europe 2022 – Hungary: employee social contribution to pension fund 10% of gross earnings."
+        year: 2023
+      employer_rate:
+        value: 0.13
+        source_citation: "SSA SSPW Europe 2022 – Hungary: employer social contribution (szociális hozzájárulási adó) allocated to pension 13% of gross payroll."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived from employee + employer rates (10% + 13% = 23% total)."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "SSA SSPW Europe 2022 – Hungary: no contribution ceiling; contributions apply to all gross earnings."
+        year: 2023
+      contribution_base: "gross earnings"
+
+    benefits:
+      accrual_rate_per_year:
+        value: 0.0133
+        source_citation: "OECD Pensions at a Glance 2023 – Hungary: accrual rate approximately 1.33% per year of service for first 10 years rising to higher rates; effective average approximately 1.65% over full career; 1.33% used for standard rate."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "wages"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "mixed"
+      minimum_benefit_aw_multiple:
+        value: null
+        source_citation: "SSA SSPW Europe 2022 – Hungary: minimum pension (öregségi teljes nyugdíj minimum) set in absolute HUF; not expressed as AW multiple."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "SSA SSPW Europe 2022 – Hungary: no statutory maximum pension benefit expressed as AW multiple."
+        year: 2023
+
+    payout:
+      type: "annuity"
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "Pension income is exempt from personal income tax in Hungary under the Personal Income Tax Act (Act CXVII of 1995)."
+  simplified_net_rate:
+    value: 0.0
+    source_citation: "Act CXVII of 1995 on Personal Income Tax – pension payments exempt from PIT; SSA SSPW Europe 2022."
+    year: 2023
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "HUN"
+  ilostat_transformation: "x * 12"
+  manual_value: 5500000
+  currency: "Hungarian Forint"
+  year: 2022
+  source_citation: "Hungarian Central Statistical Office (KSH) 2022 – average monthly gross wage approximately 457,000 HUF; annualised to ~5,484,000 HUF. OECD Pensions at a Glance 2023 AW estimate."
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["HUN_NYUFIG"]
+    source_citation: "Mandatory pension insurance for all employees – Act LXXXI of 1997 on Social Security Pension Benefits."
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["HUN_NYUFIG"]
+    source_citation: "Civil servants covered under general pension scheme since 2012 re-nationalisation of private pillar – SSA SSPW Europe 2022."
+  self_employed:
+    label: "Self-employed"
+    coverage_status: mandatory
+    scheme_ids: ["HUN_NYUFIG"]
+    source_citation: "Self-employed obligatorily insured under Hungarian social security pension system – SSA SSPW Europe 2022."
+
+notes: "Hungary re-nationalised its mandatory private second pillar (OPF) in 2011; the system now operates as a purely PAYG DB scheme."

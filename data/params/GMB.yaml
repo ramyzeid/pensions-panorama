@@ -1,0 +1,139 @@
+# =============================================================================
+# Gambia (GMB) – Pension System Parameters
+# =============================================================================
+# Primary scheme: Social Security and Housing Finance Corporation (SSHFC) – DC
+# Sources:
+#   [1] ILO Social Security Inquiry – Gambia
+#   [2] Social Security and Housing Finance Corporation Gambia – Annual Report 2022
+# =============================================================================
+
+metadata:
+  country_name: "Gambia, The"
+  iso3: "GMB"
+  iso2: "GM"
+  currency: "Gambian Dalasi"
+  currency_code: "GMD"
+  reference_year: 2023
+  wb_region: "SSA"
+  wb_income_level: "LIC"
+  un_location_id: 270
+  sources:
+    - "ILO Social Security Inquiry – Gambia"
+    - "Social Security and Housing Finance Corporation Gambia Annual Report 2022"
+    - "Social Security Act (Gambia, 1981, as amended)"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "GMB_SSHFC"
+    name: "SSHFC (Social Security and Housing Finance Corporation) – DC Provident Fund"
+    tier: "first"
+    type: "DC"
+    coverage: "Formally employed workers; mandatory provident fund"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 55
+        source_citation: "ILO Social Security Inquiry Gambia: SSHFC provident fund withdrawal at age 55."
+        year: 2023
+      normal_retirement_age_female:
+        value: 55
+        source_citation: "ILO Social Security Inquiry Gambia: withdrawal at age 55 for females."
+        year: 2023
+      vesting_years:
+        value: 0
+        source_citation: "ILO Social Security Inquiry Gambia: DC provident fund – balance accessible at 55; no minimum vesting."
+        year: 2023
+      minimum_contribution_years:
+        value: 0
+        source_citation: "Social Security Act Gambia: accumulated balance accessible at NRA without minimum years."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.05
+        source_citation: "ILO Social Security Inquiry Gambia: employee SSHFC contribution 5% of wages."
+        year: 2023
+      employer_rate:
+        value: 0.10
+        source_citation: "ILO Social Security Inquiry Gambia: employer SSHFC contribution 10% of wages."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: 15% total SSHFC contribution (5% employee + 10% employer)."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Gambia: contributions on all wages; no explicit AW multiple ceiling."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: null
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: "ILO Social Security Inquiry Gambia: DC provident fund – pension depends on accumulated balance; typically paid as lump sum."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "interest"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "CPI"
+      minimum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Gambia: no statutory minimum pension; lump-sum balance at 55."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Gambia: no explicit maximum; balance depends on contribution history."
+        year: 2023
+      notes: "SSHFC benefit is typically paid as lump sum; limited annuity conversion."
+
+    payout:
+      type: "lump_sum"
+      notes: "Provident fund accumulated balance paid as lump sum at 55."
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "SSHFC lump-sum withdrawals may be subject to income tax in Gambia; exemptions typically apply."
+  simplified_net_rate:
+    value: 0.0
+    source_citation: "ILO Social Security Inquiry Gambia: SSHFC withdrawals typically tax-exempt; effective rate approximately 0%."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "GMB"
+  ilostat_transformation: "x * 12"
+  manual_value: 70000
+  currency: "Gambian Dalasi"
+  year: 2022
+  source_citation: "Gambia Bureau of Statistics: estimated average annual formal earnings 2022 approximately GMD 70,000."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["GMB_SSHFC"]
+    source_citation: "Social Security Act Gambia: mandatory SSHFC for all formally employed workers."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["GMB_SSHFC"]
+    source_citation: "ILO Social Security Inquiry Gambia: civil servants covered by SSHFC; government pension supplements."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: voluntary
+    scheme_ids: ["GMB_SSHFC"]
+    source_citation: "ILO Social Security Inquiry Gambia: self-employed may voluntarily join SSHFC."
+    notes: null
+
+notes: null

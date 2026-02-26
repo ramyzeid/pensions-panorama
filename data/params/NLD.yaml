@@ -1,0 +1,213 @@
+# =============================================================================
+# Netherlands (NLD) – Pension System Parameters
+# =============================================================================
+# Primary scheme: AOW (Algemene Ouderdomswet) – Basic flat-rate state pension
+# Sources:
+#   [1] OECD Pensions at a Glance 2023 – Netherlands country note
+#   [2] Sociale Verzekeringsbank (SVB) – AOW
+# =============================================================================
+
+metadata:
+  country_name: "Netherlands"
+  iso3: "NLD"
+  iso2: "NL"
+  currency: "Euro"
+  currency_code: "EUR"
+  reference_year: 2023
+  wb_region: "ECS"
+  wb_income_level: "HIC"
+  un_location_id: 528
+  sources:
+    - "OECD Pensions at a Glance 2023"
+    - "Sociale Verzekeringsbank (SVB) – AOW"
+    - "Wet toekomst pensioenen (WTP) 2023"
+    - "Pensioenfederatie – Dutch pension funds 2023"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "NLD_AOW"
+    name: "Algemene Ouderdomswet (AOW) – General Old Age Pensions Act"
+    tier: "first"
+    type: "basic"
+    coverage: "All residents of the Netherlands (universal basic pension)"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 67
+        source_citation: "OECD Pensions at a Glance 2023 – Netherlands: AOW pension age 67 years (2023); linked to life expectancy from 2025."
+        year: 2023
+      normal_retirement_age_female:
+        value: 67
+        source_citation: "OECD Pensions at a Glance 2023 – Netherlands: AOW pension age 67 for females, same as males."
+        year: 2023
+      vesting_years:
+        value: 1
+        source_citation: "OECD Pensions at a Glance 2023 – Netherlands: AOW builds up 2% per year of residence between ages 15–67; each year of residence = one year of entitlement."
+        year: 2023
+      minimum_contribution_years:
+        value: 50
+        source_citation: "OECD Pensions at a Glance 2023 – Netherlands: 50 years of residence (ages 15–67) gives full AOW benefit; each year of residence earns 2% of full benefit."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.1765
+        source_citation: "OECD Pensions at a Glance 2023 – Netherlands: AOW premium 17.65% paid by workers (employees and self-employed) up to first tax bracket ceiling."
+        year: 2023
+      employer_rate:
+        value: 0.0
+        source_citation: "OECD Pensions at a Glance 2023 – Netherlands: AOW has no employer contribution; funded by worker premiums and government subsidy."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: AOW premium 17.65% paid entirely by worker/resident; employer does not contribute separately."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: 0.85
+        source_citation: "OECD Pensions at a Glance 2023 – Netherlands: AOW premium applies up to first-bracket income ceiling (EUR 37,149 in 2023), approximately 0.85× average wage."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: "AOW is residence-based, not contribution-based; premium is a flat rate on income up to ceiling."
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: "OECD Pensions at a Glance 2023 – Netherlands: AOW is a flat-rate basic pension (100% for single person, 70% each for couple); accrual rate per year of earnings is not applicable."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "wages"
+      flat_rate_aw_multiple:
+        value: 0.28
+        source_citation: "OECD Pensions at a Glance 2023 – Netherlands"
+        year: 2023
+      flat_rate_absolute: null
+      indexation: "wages"
+      minimum_benefit_aw_multiple:
+        value: null
+        source_citation: "OECD Pensions at a Glance 2023 – Netherlands: AOW itself is the minimum; Aanvullende Inkomensvoorziening Ouderen (AIO) provides top-up for those with incomplete AOW."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: 0.28
+        source_citation: "OECD Pensions at a Glance 2023 – Netherlands: full AOW for single person approximately 28% of average wage in 2023."
+        year: 2023
+      notes: "AOW = EUR 1,274/month (net) for singles, EUR 870/month each for couples (2023). Indexed to net minimum wage."
+
+    payout:
+      type: "annuity"
+      notes: null
+
+  - scheme_id: "NLD_OCC_DC"
+    name: "Occupational Pension (Tweede Pijler – Collective DC / DB)"
+    tier: "second"
+    type: "DC"
+    coverage: "Employees covered by sector or company pension funds (quasi-mandatory via collective labour agreements)"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 67
+        source_citation: "OECD Pensions at a Glance 2023 – Netherlands: occupational pension funds typically target NRA of 67 aligned with AOW."
+        year: 2023
+      normal_retirement_age_female:
+        value: 67
+        source_citation: "OECD Pensions at a Glance 2023 – Netherlands: occupational NRA 67 for females, same as males."
+        year: 2023
+      vesting_years:
+        value: 0
+        source_citation: "OECD Pensions at a Glance 2023 – Netherlands: immediate vesting in occupational schemes under Pensioenwet."
+        year: 2023
+      minimum_contribution_years:
+        value: null
+        source_citation: "OECD Pensions at a Glance 2023 – Netherlands: no minimum contribution years for occupational pension benefit; immediate vesting."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.045
+        source_citation: "OECD Pensions at a Glance 2023 – Netherlands: typical employee occupational pension contribution approximately 4–5% of pension wage; varies by fund."
+        year: 2023
+      employer_rate:
+        value: 0.145
+        source_citation: "OECD Pensions at a Glance 2023 – Netherlands: typical employer occupational pension contribution approximately 14–15% of pension wage; varies by fund."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived from typical employee + employer occupational pension contribution rates (approximately 19% total)."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "OECD Pensions at a Glance 2023 – Netherlands: occupational scheme ceilings vary by fund; fiscal limits apply under Wet toekomst pensioenen."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: "Under Wet toekomst pensioenen (2023), DB schemes converting to individual DC (Flexibele premieregeling). Contributions vary widely by sector."
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: "OECD Pensions at a Glance 2023 – Netherlands: occupational pension moving to DC model; benefit depends on investment returns and contributions, not fixed accrual rate."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "mixed"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "mixed"
+      minimum_benefit_aw_multiple:
+        value: null
+        source_citation: "OECD Pensions at a Glance 2023 – Netherlands: no statutory minimum for occupational pension."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "OECD Pensions at a Glance 2023 – Netherlands: fiscal maximum applies to tax-advantaged occupational pension accrual."
+        year: 2023
+      notes: "Historically DB with career-average formula; transitioning to collective DC under 2023 reform."
+
+    payout:
+      type: "annuity"
+      notes: null
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "Pension income subject to income tax (Box 1) at standard rates. AOW and occupational pension are both taxable; lower rates apply above state pension age (no AOW premium due)."
+  simplified_net_rate:
+    value: 0.20
+    source_citation: "Estimated effective income tax rate on combined AOW + occupational pension for average Dutch retiree, based on OECD Taxing Wages 2023."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "NLD"
+  ilostat_transformation: "x * 12"
+  manual_value: 59346
+  currency: "Euro"
+  year: 2022
+  source_citation: "OECD Average Annual Wages database 2022 – Netherlands: EUR 59,346 average gross annual wage."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["NLD_AOW", "NLD_OCC_DC"]
+    source_citation: "Mandatory AOW coverage for all residents; quasi-mandatory occupational pension via sector collective agreements (CAO) covering ~90% of employees – OECD Pensions at a Glance 2023 Netherlands."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant (Ambtenaar)"
+    coverage_status: mandatory
+    scheme_ids: ["NLD_AOW", "NLD_OCC_DC"]
+    source_citation: "Civil servants covered by ABP (Algemeen Burgerlijk Pensioenfonds) occupational pension + AOW – OECD Pensions at a Glance 2023 Netherlands."
+    notes: "ABP is the largest pension fund in the Netherlands, covering government and education sector."
+
+  self_employed:
+    label: "Self-employed (ZZP / ondernemer)"
+    coverage_status: mandatory
+    scheme_ids: ["NLD_AOW"]
+    source_citation: "Self-employed pay AOW premium and receive basic pension; occupational pension access is voluntary – OECD Pensions at a Glance 2023 Netherlands."
+    notes: "Self-employed generally have no mandatory occupational pension; new legislation being developed to extend coverage."
+
+notes: null

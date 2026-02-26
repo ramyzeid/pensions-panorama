@@ -1,0 +1,139 @@
+# =============================================================================
+# Barbados (BRB) – Pension System Parameters
+# =============================================================================
+# Primary scheme: National Insurance Scheme (NIS) – DB earnings-related
+# Sources:
+#   [1] ILO Social Security Inquiry – Barbados
+#   [2] National Insurance Department Barbados – Annual Report 2022
+# =============================================================================
+
+metadata:
+  country_name: "Barbados"
+  iso3: "BRB"
+  iso2: "BB"
+  currency: "Barbadian Dollar"
+  currency_code: "BBD"
+  reference_year: 2023
+  wb_region: "LCN"
+  wb_income_level: "HIC"
+  un_location_id: 52
+  sources:
+    - "ILO Social Security Inquiry – Barbados"
+    - "National Insurance Department Barbados Annual Report 2022"
+    - "National Insurance and Social Security Act (Barbados, Cap. 47)"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "BRB_NIS"
+    name: "National Insurance Scheme (NIS) – DB Earnings-Related"
+    tier: "first"
+    type: "DB"
+    coverage: "All employed persons; mandatory national insurance"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 67
+        source_citation: "ILO Social Security Inquiry Barbados: NRA 67 for males (raised from 65 in 2018 reforms)."
+        year: 2023
+      normal_retirement_age_female:
+        value: 67
+        source_citation: "ILO Social Security Inquiry Barbados: NRA 67 for females."
+        year: 2023
+      vesting_years:
+        value: 10
+        source_citation: "ILO Social Security Inquiry Barbados: minimum 500 weekly contributions (approximately 10 years) for retirement benefit."
+        year: 2023
+      minimum_contribution_years:
+        value: 10
+        source_citation: "National Insurance Act Barbados: minimum 500 weeks for entitlement to retirement pension."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.1100
+        source_citation: "ILO Social Security Inquiry Barbados: employee NIS contribution 11% of insurable wages (for all NIS branches)."
+        year: 2023
+      employer_rate:
+        value: 0.1175
+        source_citation: "ILO Social Security Inquiry Barbados: employer NIS contribution 11.75% of insurable wages."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: 22.75% total NIS contribution (11% employee + 11.75% employer)."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Barbados: insurable earnings ceiling set by regulation; no explicit AW multiple."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: null
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: "ILO Social Security Inquiry Barbados: NIS benefit based on number of contributions and average insurable earnings; pension approximately 40% of average insurable earnings after full career."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "prices"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "prices"
+      minimum_benefit_aw_multiple:
+        value: 0.25
+        source_citation: "ILO Social Security Inquiry Barbados: minimum NIS retirement pension approximately 25% of average insurable earnings."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Barbados: maximum pension constrained by insurable earnings ceiling."
+        year: 2023
+      notes: null
+
+    payout:
+      type: "annuity"
+      notes: null
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "Pension income subject to income tax in Barbados; pension exemptions reduce effective rate for most pensioners."
+  simplified_net_rate:
+    value: 0.05
+    source_citation: "ILO Social Security Inquiry Barbados: estimated effective income tax rate on average pension approximately 5% after exemptions."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "BRB"
+  ilostat_transformation: "x * 12"
+  manual_value: 50000
+  currency: "Barbadian Dollar"
+  year: 2022
+  source_citation: "Barbados Statistical Service: average annual earnings 2022 approximately BBD 50,000."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["BRB_NIS"]
+    source_citation: "National Insurance Act Barbados: mandatory NIS for all private sector employees."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["BRB_NIS"]
+    source_citation: "ILO Social Security Inquiry Barbados: civil servants covered by NIS; public service pension supplements."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: mandatory
+    scheme_ids: ["BRB_NIS"]
+    source_citation: "National Insurance Act Barbados: self-employed required to contribute to NIS."
+    notes: null
+
+notes: null

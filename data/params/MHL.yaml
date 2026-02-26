@@ -1,0 +1,140 @@
+# =============================================================================
+# Marshall Islands (MHL) – Pension System Parameters
+# =============================================================================
+# Primary scheme: MISSA (Marshall Islands Social Security Administration) – DB
+# Sources:
+#   [1] ILO Social Security Inquiry – Marshall Islands
+#   [2] Marshall Islands Social Security Administration (MISSA)
+#   [3] Marshall Islands Social Security Act (1990)
+# =============================================================================
+
+metadata:
+  country_name: "Marshall Islands"
+  iso3: "MHL"
+  iso2: "MH"
+  currency: "United States Dollar"
+  currency_code: "USD"
+  reference_year: 2023
+  wb_region: "EAP"
+  wb_income_level: "UMC"
+  un_location_id: 584
+  sources:
+    - "ILO Social Security Inquiry – Marshall Islands"
+    - "Marshall Islands Social Security Administration (MISSA)"
+    - "Marshall Islands Social Security Act 1990"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "MHL_MISSA"
+    name: "MISSA (Marshall Islands Social Security Administration) – DB"
+    tier: "first"
+    type: "DB"
+    coverage: "Formally employed workers; mandatory social security"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 60
+        source_citation: "ILO Social Security Inquiry Marshall Islands: MISSA NRA 60 for males."
+        year: 2023
+      normal_retirement_age_female:
+        value: 60
+        source_citation: "ILO Social Security Inquiry Marshall Islands: NRA 60 for females."
+        year: 2023
+      vesting_years:
+        value: 10
+        source_citation: "ILO Social Security Inquiry Marshall Islands: minimum 10 years of contributions for pension."
+        year: 2023
+      minimum_contribution_years:
+        value: 10
+        source_citation: "Marshall Islands Social Security Act: minimum contribution period for pension entitlement."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.07
+        source_citation: "ILO Social Security Inquiry Marshall Islands: MISSA employee contribution 7% of wages."
+        year: 2023
+      employer_rate:
+        value: 0.07
+        source_citation: "ILO Social Security Inquiry Marshall Islands: MISSA employer contribution 7% of wages."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: 14% total MISSA contribution (7% each)."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Marshall Islands: contributions on all wages; no explicit AW ceiling."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: "Marshall Islands uses USD. Very small island nation with Compact of Free Association with the United States."
+
+    benefits:
+      accrual_rate_per_year:
+        value: 0.025
+        source_citation: "ILO Social Security Inquiry Marshall Islands: MISSA pension approximately 2.5% per year of average insurable earnings."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "prices"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "CPI"
+      minimum_benefit_aw_multiple:
+        value: 0.20
+        source_citation: "ILO Social Security Inquiry Marshall Islands: minimum MISSA pension approximately 20% of average formal wage."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Marshall Islands: maximum pension constrained by formula."
+        year: 2023
+      notes: null
+
+    payout:
+      type: "annuity"
+      notes: null
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "Pension income subject to income tax in Marshall Islands."
+  simplified_net_rate:
+    value: 0.05
+    source_citation: "ILO Social Security Inquiry Marshall Islands: estimated effective income tax rate on average pension approximately 5%."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "MHL"
+  ilostat_transformation: "x * 12"
+  manual_value: 15000
+  currency: "United States Dollar"
+  year: 2022
+  source_citation: "Republic of Marshall Islands Economic Policy, Planning and Statistics Office: estimated average annual formal earnings 2022 approximately USD 15,000."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["MHL_MISSA"]
+    source_citation: "Marshall Islands Social Security Act: mandatory MISSA for formally employed workers."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["MHL_MISSA"]
+    source_citation: "ILO Social Security Inquiry Marshall Islands: civil servants covered by MISSA."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: voluntary
+    scheme_ids: ["MHL_MISSA"]
+    source_citation: "ILO Social Security Inquiry Marshall Islands: self-employed may voluntarily contribute to MISSA."
+    notes: null
+
+notes: null

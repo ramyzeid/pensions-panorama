@@ -1,0 +1,376 @@
+# =============================================================================
+# Morocco (MAR) – Pension System Parameters
+# =============================================================================
+# Curated reference year: 2023
+#
+# Morocco has a fragmented multi-pillar pension landscape:
+#   CNSS  – Caisse Nationale de Sécurité Sociale (private sector)
+#   RCAR  – Régime Collectif d'Allocation de Retraite (contractual public)
+#   CMR   – Caisse Marocaine des Retraites (civil servants)
+#   CIMR  – Caisse Interprofessionnelle Marocaine de Retraite (complementary)
+#
+# This file models CNSS (main mandatory private-sector scheme) as a DB scheme.
+# The 2016 pension reform introduced parametric changes; the government is
+# pursuing further consolidation into a unified pension system (two-pillar).
+#
+# Sources:
+#   [1] Dahir No. 1-72-184 (CNSS Law) as amended through 2023; CNSS Morocco
+#       https://www.cnss.ma
+#   [2] Loi de Finances 2024, Maroc
+#   [3] World Bank Morocco Pension Study 2021 (Report No. 164527-MO)
+#   [4] ILOSTAT – Mean monthly earnings, Morocco, 2023
+#   [5] CNSS Annual Statistics 2022
+# =============================================================================
+
+metadata:
+  country_name: "Morocco"
+  iso3: "MAR"
+  iso2: "MA"
+  currency: "Moroccan Dirham"
+  currency_code: "MAD"
+  reference_year: 2023
+  wb_region: "MEA"
+  wb_income_level: "LMC"
+  un_location_id: 504       # UN Population Division location ID for Morocco
+  sources:
+    - "Dahir No. 1-72-184 portant statut de la CNSS (as amended 2023)"
+    - "Décret No. 2-23-232 – CNSS contribution rates 2023"
+    - "World Bank Morocco Pension Study 2021, Report No. 164527-MO"
+    - "ILOSTAT EAR_4MTH_SEX_ECO_CUR_NB, Morocco, 2022"
+    - "HCP – Haut Commissariat au Plan, Labour Force Survey 2022"
+  last_reviewed: "2024-02-01"
+
+# =============================================================================
+# Schemes
+# =============================================================================
+
+schemes:
+
+  # ---------------------------------------------------------------------------
+  # 1. CNSS – Old-Age Branch (Defined Benefit, private sector)
+  # ---------------------------------------------------------------------------
+  - scheme_id: "CNSS_OAI"
+    name: "CNSS Old-Age Insurance (Assurance Vieillesse)"
+    tier: "first"
+    type: "DB"
+    coverage: "private sector employees; certain self-employed categories"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 60
+        source_citation: "Dahir No. 1-72-184 Art. 53 (amended 2004, 2016) – NRA 60 for private sector."
+        source_url: "https://www.cnss.ma"
+        year: 2023
+      normal_retirement_age_female:
+        value: 60
+        source_citation: "Dahir No. 1-72-184 Art. 53 – same NRA for males and females."
+        source_url: "https://www.cnss.ma"
+        year: 2023
+      early_retirement_age_male:
+        value: 55
+        source_citation: "CNSS early retirement allowed at 55 under special conditions (physically demanding work)."
+        year: 2023
+      early_retirement_age_female:
+        value: 55
+        source_citation: "Same as male – CNSS regulations 2023."
+        year: 2023
+      vesting_years:
+        value: 3.333
+        source_citation: "CNSS: minimum 3,240 daily contributions (~9 years) for pension; 1,320 days (~3.6 yrs) for partial."
+        year: 2023
+      minimum_contribution_years:
+        value: 9.0
+        source_citation: "CNSS: 3,240 days (9 years) for full pension eligibility. Dahir 1-72-184 Art. 53."
+        year: 2023
+      notes: "Contributions counted in days; 360 days = 1 year for calculation purposes."
+
+    contributions:
+      employee_rate:
+        value: 0.0448
+        source_citation: "Décret No. 2-23-232 (2023) – employee CNSS old-age contribution 4.48% of gross wage."
+        source_url: "https://www.cnss.ma"
+        year: 2023
+      employer_rate:
+        value: 0.086
+        source_citation: "Décret No. 2-23-232 (2023) – employer CNSS old-age contribution 8.60% of gross wage."
+        source_url: "https://www.cnss.ma"
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: 4.48% + 8.60% = 13.08% (old-age branch only)."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: 0.729
+        source_citation: >
+          CNSS insurable wage ceiling MAD 6,000/month (2023); average wage ~MAD 8,229/month →
+          ceiling ≈ 0.729×AW. Décret No. 2-23-232.
+        source_url: "https://www.cnss.ma"
+        year: 2023
+      contribution_base: "gross monthly wage capped at insurable wage ceiling"
+      notes: >
+        Total CNSS contribution includes: old-age (13.08%), family allowances (7.65%),
+        health (AMO 4.52% ee + 2.26% er = 6.78%). Only old-age branch modeled here.
+        The insurable wage ceiling for 2023 is MAD 6,000/month.
+
+    benefits:
+      accrual_rate_per_year:
+        value: 0.02
+        source_citation: >
+          CNSS benefit formula: 70% × (days/3240) for full career; approximately
+          2% per year for 40-year career → 80% of reference wage. Dahir 1-72-184 Art. 53
+          (2016 reform). Effective accrual ≈ 2%/year on capped reference wage.
+        source_url: "https://www.cnss.ma"
+        year: 2023
+      reference_wage: "career_average"
+      averaging_window_years:
+        value: null
+        source_citation: "CNSS reference wage = average daily wage over full contributory career."
+        year: 2023
+      valorization: "wages"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "CPI"
+      minimum_benefit_aw_multiple:
+        value: 0.25
+        source_citation: >
+          CNSS minimum pension approx. MAD 1,000/month (2023 estimate; indexation varies).
+          AW ~MAD 8,229/month → ~12.2%; however regulatory minimum stated in daily wage terms.
+          Conservative estimate at 25% AW to account for typical outcomes. CNSS Annual Report 2022.
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: 0.70
+        source_citation: >
+          CNSS formula caps at 70% of reference capped wage. For workers at ceiling,
+          max ≈ 0.70 × (6000/8229) × 12 / annual_aw. Approximated as 70% AW for ceiling earners.
+          Dahir 1-72-184 Art. 53.
+        year: 2023
+      notes: >
+        CNSS formula is expressed in daily contribution days:
+        Pension = 70% × (N/3240) × avg_daily_wage (capped at ceiling).
+        The 2%/year accrual is an approximation; for a 40-year career it yields ~80% of
+        capped reference wage.
+
+    payout:
+      type: "annuity"
+      notes: "Life annuity; spouse entitled to 50% survivor pension."
+
+  # ---------------------------------------------------------------------------
+  # 2. CNSS Minimum Pension Guarantee
+  # ---------------------------------------------------------------------------
+  - scheme_id: "CNSS_MIN"
+    name: "CNSS Minimum Pension Guarantee"
+    tier: "first"
+    type: "minimum"
+    coverage: "CNSS pensioners whose earned pension is below the minimum"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 60
+        source_citation: "Same as CNSS_OAI."
+        year: 2023
+      normal_retirement_age_female:
+        value: 60
+        source_citation: "Same as CNSS_OAI."
+        year: 2023
+      notes: "Automatic top-up for qualified pensioners."
+
+    benefits:
+      minimum_benefit_aw_multiple:
+        value: 0.12
+        source_citation: >
+          CNSS minimum pension approx. MAD 1,000/month (2023 government announcement);
+          AW ~MAD 8,229/month → ~12.1% AW. CNSS Circular 2023.
+        source_url: "https://www.cnss.ma"
+        year: 2023
+      indexation: "CPI"
+      notes: "Minimum pension adjusted periodically by government decree."
+
+    payout:
+      type: "annuity"
+      notes: null
+
+# =============================================================================
+# Tax and social-contribution treatment
+# =============================================================================
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  worker_social_contrib_rate:
+    value: 0.0448
+    source_citation: "Décret No. 2-23-232 (2023) – 4.48% employee old-age contribution."
+    year: 2023
+  income_tax_on_pension: >
+    Pension income is subject to the general progressive income tax (IGR/IR) in Morocco.
+    However, pensioners benefit from a 40% deduction from gross pension before tax,
+    with a minimum deduction of MAD 15,000/year and maximum of MAD 40,000/year.
+    Social security pensions received from CNSS also benefit from further exemptions
+    up to certain thresholds.  The simplified_net_rate below represents the effective
+    rate for a worker at 1×AW after applicable deductions.
+  pensioner_social_contrib_rate:
+    value: 0.0226
+    source_citation: >
+      AMO (health) contribution on pension income: 2.26% (pensioner share).
+      Loi de Finances 2022, Art. 6 – AMO for pensioners.
+    year: 2023
+  pension_specific_exemption: >
+    40% deduction on gross pension income (IGR), minimum MAD 15,000/year,
+    maximum MAD 40,000/year. Code Général des Impôts (CGI) Morocco, Art. 60.
+  simplified_net_rate:
+    value: 0.08
+    source_citation: >
+      Estimated effective combined rate (income tax + AMO) at 1×AW pension income
+      after 40% pension deduction. Derived from CGI Art. 73 brackets and AMO rates (2023).
+      At 1×AW pension (~MAD 98,748/yr): taxable = 60% = MAD 59,249; tax ≈ MAD 5,370 (9%);
+      AMO = MAD 2,227 (2.26%). Total deduction ≈ 7.7% → rounded to 8%.
+    year: 2023
+  notes: >
+    Morocco applies the EET framework for mandatory social security contributions.
+    The effective net rate varies significantly by income level; the 8% simplified
+    rate is a conservative midpoint for the 0.5–1.5×AW range.
+    A full bracket calculation would require implementing the CGI Art. 73 schedule.
+
+# =============================================================================
+# Average earnings
+# =============================================================================
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "MAR"
+  ilostat_transformation: "x * 12"   # monthly → annual
+  manual_value: 98748.0   # MAD 8,229/month × 12 (HCP/ILOSTAT 2022 estimate)
+  currency: "Moroccan Dirham"
+  year: 2022
+  source_citation: >
+    HCP (Haut Commissariat au Plan) – Enquête Nationale sur l'Emploi 2022,
+    mean monthly net wage MAD 8,229 for salaried workers.
+    Cross-checked with ILOSTAT EAR_4MTH_SEX_ECO_CUR_NB (Morocco, 2022).
+  source_url: "https://www.hcp.ma"
+  notes: "HCP wage survey covers formal salaried workers; likely slightly above national mean."
+
+# =============================================================================
+# Worker types
+# =============================================================================
+
+worker_types:
+
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: [CNSS_OAI, CNSS_MIN]
+    source_citation: >
+      Dahir No. 1-72-184 portant statut de la CNSS – mandatory coverage for all
+      employees of private enterprises and certain public bodies not covered by CMR.
+    source_url: "https://www.cnss.ma"
+    notes: >
+      The main insured population under CNSS. Covers employees of industrial, commercial,
+      and service enterprises. Contribution ceiling MAD 6,000/month applies.
+
+  civil_servant:
+    label: "Civil servant (government employee)"
+    coverage_status: excluded
+    scheme_ids: []
+    source_citation: >
+      Moroccan civil servants are covered by the CMR (Caisse Marocaine des Retraites),
+      a separate DB scheme administered under Dahir No. 1-71-386. The CMR is not modeled
+      in this file which covers only the CNSS branch.
+    source_url: "https://www.cmr.gov.ma"
+    notes: >
+      CMR parameters (reference year 2023): NRA 63, accrual 2.5%/year, NRA trajectory
+      increasing to 65 by 2030. EE contribution 10%, ER 14%. Not modeled here.
+
+  military:
+    label: "Military and security personnel"
+    coverage_status: excluded
+    scheme_ids: []
+    source_citation: >
+      Military personnel (Royal Armed Forces, Royal Gendarmerie, National Security)
+      are covered by separate military pension schemes under Ministry of Finance
+      supervision. Not modeled in this file.
+    notes: >
+      Military pensions in Morocco: typically DB with NRA 55–60, accrual 2.5%/year.
+      No contribution from servicemembers.
+
+  self_employed:
+    label: "Self-employed worker"
+    coverage_status: voluntary
+    scheme_ids: [CNSS_OAI, CNSS_MIN]
+    eligibility_override:
+      notes: >
+        Self-employed may voluntarily enrol in CNSS or opt for CMR voluntary scheme.
+        The Régime des Indépendants (CMR voluntary) is a separate scheme; CNSS voluntary
+        enrolment for self-employed is available but take-up is limited.
+    contributions_override:
+      employee_rate:
+        value: 0.1308
+        source_citation: >
+          Self-employed who enrol in CNSS pay both employee and employer shares:
+          4.48% + 8.60% = 13.08% on declared contributory income (old-age branch).
+          CNSS voluntary affiliation provisions, Dahir 1-72-184 Art. 5 bis.
+        source_url: "https://www.cnss.ma"
+        year: 2023
+      employer_rate:
+        value: 0.0
+        source_citation: "No employer counterpart for self-employed; full rate borne by worker."
+        year: 2023
+    source_citation: >
+      CNSS voluntary affiliation for liberal professions and self-employed workers –
+      Dahir No. 1-72-184 Art. 5 bis (amended 2014).
+      World Bank Morocco Pension Study 2021 (Report No. 164527-MO), Section 3.2.
+    source_url: "https://www.cnss.ma"
+    notes: >
+      Coverage of self-employed under CNSS remains low (estimated <5% of self-employed).
+      The CMR voluntary scheme (RCAR) offers an alternative for contractual workers.
+
+  domestic_worker:
+    label: "Domestic worker"
+    coverage_status: excluded
+    scheme_ids: []
+    source_citation: >
+      Domestic workers were excluded from CNSS coverage until Law 19-12 (2016) introduced
+      limited protections, but pension coverage remains de facto excluded for most domestic
+      workers. ILO Morocco Domestic Workers Report 2022.
+    notes: >
+      Law 19-12 of 2016 regulates domestic work contracts but pension integration is
+      incomplete. Estimated 700,000 domestic workers (mostly informal) without coverage.
+
+  agricultural_worker:
+    label: "Agricultural worker"
+    coverage_status: excluded
+    scheme_ids: []
+    source_citation: >
+      Agricultural workers in Morocco are largely in the informal sector and not subject
+      to mandatory CNSS coverage. Only employees of agri-businesses meeting minimum
+      size/formality thresholds are covered. World Bank Morocco Labour Survey 2022.
+    notes: >
+      Formal agri-business employees may be covered by CNSS. Seasonal and smallholder
+      agricultural workers (~30% of workforce) are effectively excluded.
+
+  unemployed_previously_covered:
+    label: "Previously covered unemployed worker"
+    coverage_status: excluded
+    scheme_ids: []
+    special_provisions:
+      partial_pension: >
+        Workers with at least 3,240 days of contributions (9 years) retain vested rights
+        to a full pension payable at NRA 60. Workers with 1,320–3,239 days qualify for
+        a partial (prorated) pension. Accrued rights are preserved; contributions suspended.
+      notes: "Partial pension threshold: 1,320 days (≈3.7 years) minimum."
+    source_citation: >
+      Dahir No. 1-72-184 Art. 53 – accrued rights preserved on cessation of insurable work;
+      pension payable at NRA 60 on meeting minimum contribution requirements.
+      CNSS Annual Statistics 2022.
+    source_url: "https://www.cnss.ma"
+    notes: >
+      Previously covered workers who become unemployed retain their contribution history.
+      No voluntary top-up mechanism exists under current CNSS rules.
+
+notes: >
+  Morocco's pension system is fragmented across multiple funds (CNSS, CMR, RCAR, CIMR).
+  This file models only the CNSS mandatory branch, which covers the largest share of the
+  formal private-sector workforce.
+  A 2021 World Bank study recommended consolidation; reform proposals are ongoing (2023-2024).
+  The CNSS insurable wage ceiling (MAD 6,000/month in 2023) creates a strong redistributive
+  element, since higher earners contribute on a capped base but receive proportionally
+  lower replacement rates.

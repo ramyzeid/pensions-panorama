@@ -1,0 +1,139 @@
+# =============================================================================
+# Afghanistan (AFG) – Pension System Parameters
+# =============================================================================
+# Primary scheme: Civil Service Pension – DB (government employees)
+# Sources:
+#   [1] ILO Social Security Inquiry – Afghanistan
+#   [2] World Bank Social Protection Review – Afghanistan
+# =============================================================================
+
+metadata:
+  country_name: "Afghanistan"
+  iso3: "AFG"
+  iso2: "AF"
+  currency: "Afghan Afghani"
+  currency_code: "AFN"
+  reference_year: 2023
+  wb_region: "SAS"
+  wb_income_level: "LIC"
+  un_location_id: 4
+  sources:
+    - "ILO Social Security Inquiry – Afghanistan"
+    - "World Bank Social Protection Review – Afghanistan"
+    - "Afghan Civil Service Pension Law"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "AFG_CSPS"
+    name: "Civil Service Pension Scheme – DB"
+    tier: "first"
+    type: "DB"
+    coverage: "Government/civil service employees only; no formal pension for private sector"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 65
+        source_citation: "ILO Social Security Inquiry Afghanistan: civil service NRA 65 for males."
+        year: 2023
+      normal_retirement_age_female:
+        value: 65
+        source_citation: "ILO Social Security Inquiry Afghanistan: NRA 65 for females."
+        year: 2023
+      vesting_years:
+        value: 20
+        source_citation: "ILO Social Security Inquiry Afghanistan: minimum 20 years of service for civil service pension."
+        year: 2023
+      minimum_contribution_years:
+        value: 20
+        source_citation: "Afghan Civil Service Pension Law: minimum 20 years of service required."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.08
+        source_citation: "ILO Social Security Inquiry Afghanistan: civil service employee pension contribution approximately 8% of salary."
+        year: 2023
+      employer_rate:
+        value: 0.00
+        source_citation: "ILO Social Security Inquiry Afghanistan: government pension largely unfunded; employer contribution from general budget."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Afghan Civil Service Pension: primarily government-budget financed."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Afghanistan: no explicit AW ceiling."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: "Afghanistan has no formal social security system for private sector workers. System significantly disrupted since 2021 political change."
+
+    benefits:
+      accrual_rate_per_year:
+        value: 0.02
+        source_citation: "ILO Social Security Inquiry Afghanistan: civil service pension approximately 2% per year of final salary."
+        year: 2023
+      reference_wage: "final_salary"
+      valorization: "prices"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "ad_hoc"
+      minimum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Afghanistan: minimum pension not well documented."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Afghanistan: maximum pension not explicitly documented."
+        year: 2023
+      notes: "Pension system severely disrupted since Taliban takeover in 2021; payment capacity very limited."
+
+    payout:
+      type: "annuity"
+      notes: null
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "Pension income treatment under Afghan tax law uncertain post-2021."
+  simplified_net_rate:
+    value: 0.00
+    source_citation: "ILO Social Security Inquiry Afghanistan: estimated effective income tax on pension near zero given system disruption."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "AFG"
+  ilostat_transformation: "x * 12"
+  manual_value: 120000
+  currency: "Afghan Afghani"
+  year: 2022
+  source_citation: "World Bank Afghanistan data: estimated average annual formal earnings 2022 approximately AFN 120,000."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: excluded
+    scheme_ids: []
+    source_citation: "ILO Social Security Inquiry Afghanistan: no formal pension scheme for private sector workers."
+    source_url: null
+    notes: "No formal social security scheme for private sector."
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["AFG_CSPS"]
+    source_citation: "Afghan Civil Service Pension Law: civil servants covered by government pension."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: excluded
+    scheme_ids: []
+    source_citation: "ILO Social Security Inquiry Afghanistan: self-employed not covered by any formal pension scheme."
+    notes: null
+
+notes: null

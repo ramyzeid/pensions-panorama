@@ -1,0 +1,139 @@
+# =============================================================================
+# Antigua and Barbuda (ATG) – Pension System Parameters
+# =============================================================================
+# Primary scheme: Social Security Scheme – DB earnings-related
+# Sources:
+#   [1] ILO Social Security Inquiry – Antigua and Barbuda
+#   [2] Antigua and Barbuda Social Security Board – Annual Report 2022
+# =============================================================================
+
+metadata:
+  country_name: "Antigua and Barbuda"
+  iso3: "ATG"
+  iso2: "AG"
+  currency: "East Caribbean Dollar"
+  currency_code: "XCD"
+  reference_year: 2023
+  wb_region: "LCN"
+  wb_income_level: "UMC"
+  un_location_id: 28
+  sources:
+    - "ILO Social Security Inquiry – Antigua and Barbuda"
+    - "Antigua and Barbuda Social Security Board Annual Report 2022"
+    - "Social Security Act (Antigua and Barbuda, 1972, as amended)"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "ATG_SSB"
+    name: "Social Security Board (SSB) – DB Earnings-Related"
+    tier: "first"
+    type: "DB"
+    coverage: "All employed persons; mandatory social insurance"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 65
+        source_citation: "ILO Social Security Inquiry Antigua and Barbuda: NRA 65 for males."
+        year: 2023
+      normal_retirement_age_female:
+        value: 65
+        source_citation: "ILO Social Security Inquiry Antigua and Barbuda: NRA 65 for females."
+        year: 2023
+      vesting_years:
+        value: 10
+        source_citation: "ILO Social Security Inquiry Antigua and Barbuda: minimum 500 weekly contributions (10 years) for retirement benefit."
+        year: 2023
+      minimum_contribution_years:
+        value: 10
+        source_citation: "Social Security Act ATG: minimum 500 weeks of contributions for old-age pension."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.04
+        source_citation: "ILO Social Security Inquiry Antigua and Barbuda: employee social security contribution 4% of insurable wages."
+        year: 2023
+      employer_rate:
+        value: 0.09
+        source_citation: "ILO Social Security Inquiry Antigua and Barbuda: employer social security contribution 9% of insurable wages."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: 13% total social security contribution (4% employee + 9% employer)."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Antigua and Barbuda: insurable earnings ceiling set by regulation; no explicit AW multiple."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: null
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: "ILO Social Security Inquiry Antigua and Barbuda: benefit based on average insurable earnings and number of contributions; no simple annual accrual rate."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "prices"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "prices"
+      minimum_benefit_aw_multiple:
+        value: 0.25
+        source_citation: "ILO Social Security Inquiry Antigua and Barbuda: minimum pension approximately 25% of average wage."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Antigua and Barbuda: maximum pension constrained by insurable earnings ceiling."
+        year: 2023
+      notes: null
+
+    payout:
+      type: "annuity"
+      notes: null
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "Pension income may be subject to income tax in Antigua and Barbuda; specific pension exemptions apply."
+  simplified_net_rate:
+    value: 0.05
+    source_citation: "ILO Social Security Inquiry Antigua and Barbuda: estimated effective tax rate on average pension approximately 5%."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "ATG"
+  ilostat_transformation: "x * 12"
+  manual_value: 40000
+  currency: "East Caribbean Dollar"
+  year: 2022
+  source_citation: "ILO ILOSTAT: estimated average annual earnings Antigua and Barbuda 2022 approximately XCD 40,000."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["ATG_SSB"]
+    source_citation: "Social Security Act ATG: mandatory SSB for all private sector employees."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["ATG_SSB"]
+    source_citation: "ILO Social Security Inquiry Antigua and Barbuda: civil servants covered by SSB."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: voluntary
+    scheme_ids: ["ATG_SSB"]
+    source_citation: "Social Security Act ATG: self-employed may voluntarily contribute to SSB."
+    notes: null
+
+notes: null

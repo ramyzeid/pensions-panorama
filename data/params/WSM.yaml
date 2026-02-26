@@ -1,0 +1,139 @@
+# =============================================================================
+# Samoa (WSM) – Pension System Parameters
+# =============================================================================
+# Primary scheme: National Provident Fund (NPF) – mandatory DC
+# Sources:
+#   [1] ILO Social Security Inquiry – Samoa
+#   [2] Samoa National Provident Fund – Annual Report 2022
+# =============================================================================
+
+metadata:
+  country_name: "Samoa"
+  iso3: "WSM"
+  iso2: "WS"
+  currency: "Samoan Tālā"
+  currency_code: "WST"
+  reference_year: 2023
+  wb_region: "EAP"
+  wb_income_level: "LMC"
+  un_location_id: 882
+  sources:
+    - "ILO Social Security Inquiry – Samoa"
+    - "Samoa National Provident Fund Annual Report 2022"
+    - "National Provident Fund Act (Samoa, 1972, as amended)"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "WSM_NPF"
+    name: "National Provident Fund (NPF) – Mandatory DC"
+    tier: "first"
+    type: "DC"
+    coverage: "All employed persons; mandatory provident fund savings"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 55
+        source_citation: "ILO Social Security Inquiry Samoa: NPF withdrawal permitted at age 55."
+        year: 2023
+      normal_retirement_age_female:
+        value: 55
+        source_citation: "ILO Social Security Inquiry Samoa: NPF withdrawal permitted at age 55 for females."
+        year: 2023
+      vesting_years:
+        value: 0
+        source_citation: "ILO Social Security Inquiry Samoa: DC provident fund – balance accessible at 55; no minimum vesting period."
+        year: 2023
+      minimum_contribution_years:
+        value: 0
+        source_citation: "NPF Act Samoa: accumulated balance accessible at age 55 without minimum years."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.05
+        source_citation: "ILO Social Security Inquiry Samoa: employee NPF contribution 5% of wages."
+        year: 2023
+      employer_rate:
+        value: 0.05
+        source_citation: "ILO Social Security Inquiry Samoa: employer NPF contribution 5% of wages."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: 10% total NPF contribution (5% employee + 5% employer)."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Samoa: contributions on all wages; no explicit ceiling as AW multiple."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: null
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: "ILO Social Security Inquiry Samoa: DC system – pension depends on accumulated balance plus interest; typically lump sum."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "interest"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "CPI"
+      minimum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Samoa: no statutory minimum NPF pension; lump-sum accumulated balance at 55."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Samoa: no explicit maximum; balance depends on contribution history."
+        year: 2023
+      notes: "NPF benefit typically paid as lump sum; limited annuity options. SENOA non-contributory scheme for elderly poor."
+
+    payout:
+      type: "lump_sum"
+      notes: "NPF typically pays lump-sum accumulated balance at age 55 or later; no mandatory annuity."
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "NPF lump-sum withdrawals subject to income tax in Samoa; exemptions may apply."
+  simplified_net_rate:
+    value: 0.05
+    source_citation: "ILO Social Security Inquiry Samoa: estimated effective tax rate on NPF withdrawal approximately 5%."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "WSM"
+  ilostat_transformation: "x * 12"
+  manual_value: 22000
+  currency: "Samoan Tālā"
+  year: 2022
+  source_citation: "Samoa Bureau of Statistics: estimated average annual earnings 2022 approximately WST 22,000."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["WSM_NPF"]
+    source_citation: "NPF Act Samoa: mandatory NPF for all private sector employees."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["WSM_NPF"]
+    source_citation: "ILO Social Security Inquiry Samoa: civil servants covered by NPF; government pension scheme supplements."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: voluntary
+    scheme_ids: ["WSM_NPF"]
+    source_citation: "NPF Act Samoa: self-employed may voluntarily contribute to NPF."
+    notes: null
+
+notes: null

@@ -1,0 +1,140 @@
+# =============================================================================
+# Thailand (THA) – Pension System Parameters
+# =============================================================================
+# Primary scheme: SSF (Social Security Fund) – DB
+# Sources:
+#   [1] ILO Social Security Inquiry – Thailand
+#   [2] Social Security Office (SSO) Thailand – Annual Report 2022
+#   [3] Social Security Act B.E. 2533 (Thailand, 1990)
+# =============================================================================
+
+metadata:
+  country_name: "Thailand"
+  iso3: "THA"
+  iso2: "TH"
+  currency: "Thai Baht"
+  currency_code: "THB"
+  reference_year: 2023
+  wb_region: "EAP"
+  wb_income_level: "UMC"
+  un_location_id: 764
+  sources:
+    - "ILO Social Security Inquiry – Thailand"
+    - "Social Security Office (SSO) Thailand Annual Report 2022"
+    - "Social Security Act B.E. 2533 (Thailand, 1990)"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "THA_SSF"
+    name: "SSF (Social Security Fund) – DB"
+    tier: "first"
+    type: "DB"
+    coverage: "Formally employed private sector workers; mandatory social security"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 55
+        source_citation: "ILO Social Security Inquiry Thailand: SSF NRA 55 for males."
+        year: 2023
+      normal_retirement_age_female:
+        value: 55
+        source_citation: "ILO Social Security Inquiry Thailand: NRA 55 for females."
+        year: 2023
+      vesting_years:
+        value: 15
+        source_citation: "ILO Social Security Inquiry Thailand: minimum 180 months of SSF contributions for pension."
+        year: 2023
+      minimum_contribution_years:
+        value: 15
+        source_citation: "Social Security Act Thailand: minimum 180 months for old-age pension."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.05
+        source_citation: "ILO Social Security Inquiry Thailand: SSF employee contribution 5% of wages."
+        year: 2023
+      employer_rate:
+        value: 0.05
+        source_citation: "ILO Social Security Inquiry Thailand: SSF employer contribution 5% of wages."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: 10% total SSF contribution (5% employee + 5% employer); government contributes additional 2.75%."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Thailand: contributions on wages up to THB 15,000/month ceiling."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: "Government employees covered by Government Pension Fund (GPF). Provident Fund (PVD) voluntary occupational schemes supplement SSF."
+
+    benefits:
+      accrual_rate_per_year:
+        value: 0.01
+        source_citation: "ILO Social Security Inquiry Thailand: SSF pension approximately 1% per year for first 15 years, then 1.5% for additional years."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "wages"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "CPI"
+      minimum_benefit_aw_multiple:
+        value: 0.20
+        source_citation: "ILO Social Security Inquiry Thailand: minimum SSF pension approximately 20% of average formal wage."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Thailand: maximum pension constrained by contribution ceiling."
+        year: 2023
+      notes: "National Savings Fund (NSF) provides voluntary savings scheme for informal workers."
+
+    payout:
+      type: "annuity"
+      notes: null
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "SSF pension income subject to personal income tax in Thailand; exemptions for modest pensions."
+  simplified_net_rate:
+    value: 0.05
+    source_citation: "ILO Social Security Inquiry Thailand: estimated effective income tax rate on average SSF pension approximately 5%."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "THA"
+  ilostat_transformation: "x * 12"
+  manual_value: 300000
+  currency: "Thai Baht"
+  year: 2022
+  source_citation: "National Statistical Office Thailand: average annual formal earnings 2022 approximately THB 300,000."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["THA_SSF"]
+    source_citation: "Social Security Act Thailand: mandatory SSF for formally employed private sector workers."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["THA_SSF"]
+    source_citation: "ILO Social Security Inquiry Thailand: civil servants covered by Government Pension Fund (GPF)."
+    notes: "Civil servants covered by GPF (Government Pension Fund), not SSF."
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: voluntary
+    scheme_ids: ["THA_SSF"]
+    source_citation: "ILO Social Security Inquiry Thailand: self-employed may voluntarily join SSF (Section 40 voluntary members)."
+    notes: null
+
+notes: null

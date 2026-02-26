@@ -1,0 +1,139 @@
+# =============================================================================
+# Finland (FIN) – Pension System Parameters
+# =============================================================================
+# Primary scheme: TyEL (Earnings-Related Pension) – DB/NDC hybrid
+# Sources:
+#   [1] OECD Pensions at a Glance 2023 – Finland
+#   [2] Statistics Finland – Statistical Yearbook 2023
+# =============================================================================
+
+metadata:
+  country_name: "Finland"
+  iso3: "FIN"
+  iso2: "FI"
+  currency: "Euro"
+  currency_code: "EUR"
+  reference_year: 2023
+  wb_region: "ECS"
+  wb_income_level: "HIC"
+  un_location_id: 246
+  sources:
+    - "OECD Pensions at a Glance 2023 – Finland"
+    - "Statistics Finland Statistical Yearbook 2023"
+    - "Employees Pensions Act (TyEL) Finland 2006"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "FIN_TYEL"
+    name: "Employees Pensions Act (TyEL) – Earnings-Related Pension"
+    tier: "first"
+    type: "DB"
+    coverage: "All private sector employees; public sector has equivalent YEL/KVTEL schemes"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 65
+        source_citation: "OECD Pensions at a Glance 2023 Finland: flexible retirement window 63–68; target retirement age approximately 65 for 2023 cohort."
+        year: 2023
+      normal_retirement_age_female:
+        value: 65
+        source_citation: "OECD Pensions at a Glance 2023 Finland: same retirement window for both sexes."
+        year: 2023
+      vesting_years:
+        value: 1
+        source_citation: "OECD Pensions at a Glance 2023 Finland: pension accrues from first year of employment; no minimum vesting period."
+        year: 2023
+      minimum_contribution_years:
+        value: 1
+        source_citation: "Employees Pensions Act Finland: pension rights accrue from the first year of work."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.0715
+        source_citation: "OECD Pensions at a Glance 2023 Finland: employee TyEL contribution 7.15% (age 17–52 and 63+) or 8.65% (age 53–62) in 2023."
+        year: 2023
+      employer_rate:
+        value: 0.1734
+        source_citation: "OECD Pensions at a Glance 2023 Finland: average employer TyEL contribution approximately 17.34% of wages (varies by employer's age/disability claims history)."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: total TyEL contribution approximately 24.5% of gross wages (employee + employer)."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "OECD Pensions at a Glance 2023 Finland: no contribution ceiling; all earnings pensionable."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: "Part-time funded, part PAYG. Accrual rates: 1.5%/yr (17–52), 1.9%/yr (53–62), 1.5%/yr (63–68)."
+
+    benefits:
+      accrual_rate_per_year:
+        value: 0.015
+        source_citation: "OECD Pensions at a Glance 2023 Finland: primary accrual rate 1.5% of gross earnings per year for ages 17–52 and 63+."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "wages"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "mixed"
+      minimum_benefit_aw_multiple:
+        value: 0.17
+        source_citation: "OECD Pensions at a Glance 2023 Finland: National Pension (Kansaneläke) safety net approximately 17% of average wage for those with low/no TyEL pension."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "OECD Pensions at a Glance 2023 Finland: no explicit maximum pension."
+        year: 2023
+      notes: "National Pension (Kansaneläke) provides means-tested safety net; phased out as TyEL pension rises above threshold."
+
+    payout:
+      type: "annuity"
+      notes: null
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "Pension income subject to progressive income tax in Finland; pensioners have slightly lower tax rates than workers."
+  simplified_net_rate:
+    value: 0.20
+    source_citation: "OECD Pensions at a Glance 2023 Finland: estimated effective income tax rate on average pension approximately 20%."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "FIN"
+  ilostat_transformation: "x * 12"
+  manual_value: 45000
+  currency: "Euro"
+  year: 2022
+  source_citation: "OECD Average Annual Wages 2022 – Finland: approximately EUR 46,274 gross annual."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["FIN_TYEL"]
+    source_citation: "Employees Pensions Act (TyEL) Finland: mandatory coverage for all private sector employees."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["FIN_TYEL"]
+    source_citation: "OECD Pensions at a Glance 2023 Finland: civil servants covered under equivalent public sector pension acts (KVTEL/JuEL) with same benefit formula."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: mandatory
+    scheme_ids: ["FIN_TYEL"]
+    source_citation: "Self-Employed Persons Pensions Act (YEL) Finland: self-employed required to take out YEL insurance with equivalent accrual rates."
+    notes: null
+
+notes: null

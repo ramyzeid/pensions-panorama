@@ -1,0 +1,140 @@
+# =============================================================================
+# Vanuatu (VUT) – Pension System Parameters
+# =============================================================================
+# Primary scheme: VNPF (Vanuatu National Provident Fund) – DC
+# Sources:
+#   [1] ILO Social Security Inquiry – Vanuatu
+#   [2] Vanuatu National Provident Fund (VNPF) – Annual Report 2022
+#   [3] Vanuatu National Provident Fund Act 1986
+# =============================================================================
+
+metadata:
+  country_name: "Vanuatu"
+  iso3: "VUT"
+  iso2: "VU"
+  currency: "Vanuatu Vatu"
+  currency_code: "VUV"
+  reference_year: 2023
+  wb_region: "EAP"
+  wb_income_level: "LMC"
+  un_location_id: 548
+  sources:
+    - "ILO Social Security Inquiry – Vanuatu"
+    - "Vanuatu National Provident Fund (VNPF) Annual Report 2022"
+    - "Vanuatu National Provident Fund Act 1986"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "VUT_VNPF"
+    name: "VNPF (Vanuatu National Provident Fund) – DC Provident Fund"
+    tier: "first"
+    type: "DC"
+    coverage: "Formally employed workers; mandatory provident fund"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 55
+        source_citation: "ILO Social Security Inquiry Vanuatu: VNPF withdrawal age 55 for males."
+        year: 2023
+      normal_retirement_age_female:
+        value: 55
+        source_citation: "ILO Social Security Inquiry Vanuatu: withdrawal age 55 for females."
+        year: 2023
+      vesting_years:
+        value: 0
+        source_citation: "ILO Social Security Inquiry Vanuatu: DC provident fund – balance accessible at age 55."
+        year: 2023
+      minimum_contribution_years:
+        value: 0
+        source_citation: "VNPF Act Vanuatu: accumulated balance available at age 55 without minimum years."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.04
+        source_citation: "ILO Social Security Inquiry Vanuatu: VNPF employee contribution 4% of wages."
+        year: 2023
+      employer_rate:
+        value: 0.04
+        source_citation: "ILO Social Security Inquiry Vanuatu: VNPF employer contribution 4% of wages."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: 8% total VNPF contribution (4% each)."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Vanuatu: contributions on all wages; no explicit AW ceiling."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: "Vanuatu has no income tax. Very small island economy with large subsistence sector."
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: "ILO Social Security Inquiry Vanuatu: VNPF DC provident fund – balance paid at retirement."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "interest"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "none"
+      minimum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Vanuatu: no statutory minimum VNPF pension."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Vanuatu: no explicit maximum; depends on contributions."
+        year: 2023
+      notes: "VNPF balance paid as lump sum at retirement. Vanuatu has no personal income tax."
+
+    payout:
+      type: "lump_sum"
+      notes: "VNPF accumulated balance paid as lump sum at age 55."
+
+taxes:
+  worker_income_tax_treatment: "EEE"
+  income_tax_on_pension: "No personal income tax in Vanuatu; VNPF withdrawals tax-free."
+  simplified_net_rate:
+    value: 0.00
+    source_citation: "Vanuatu has no personal income tax; effective tax rate on pension income is zero."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "VUT"
+  ilostat_transformation: "x * 12"
+  manual_value: 1000000
+  currency: "Vanuatu Vatu"
+  year: 2022
+  source_citation: "Vanuatu National Statistics Office: estimated average annual formal earnings 2022 approximately VUV 1,000,000."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["VUT_VNPF"]
+    source_citation: "VNPF Act Vanuatu: mandatory VNPF for formally employed workers."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["VUT_VNPF"]
+    source_citation: "ILO Social Security Inquiry Vanuatu: civil servants covered by VNPF."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: voluntary
+    scheme_ids: ["VUT_VNPF"]
+    source_citation: "ILO Social Security Inquiry Vanuatu: self-employed may voluntarily contribute to VNPF."
+    notes: null
+
+notes: null

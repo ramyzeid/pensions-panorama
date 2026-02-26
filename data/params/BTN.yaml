@@ -1,0 +1,140 @@
+# =============================================================================
+# Bhutan (BTN) – Pension System Parameters
+# =============================================================================
+# Primary scheme: NPPF (National Pension and Provident Fund) – DC/DB
+# Sources:
+#   [1] ILO Social Security Inquiry – Bhutan
+#   [2] National Pension and Provident Fund (NPPF) Bhutan – Annual Report 2022
+#   [3] NPPF Act (Bhutan, 2000)
+# =============================================================================
+
+metadata:
+  country_name: "Bhutan"
+  iso3: "BTN"
+  iso2: "BT"
+  currency: "Bhutanese Ngultrum"
+  currency_code: "BTN"
+  reference_year: 2023
+  wb_region: "SAS"
+  wb_income_level: "LMC"
+  un_location_id: 64
+  sources:
+    - "ILO Social Security Inquiry – Bhutan"
+    - "National Pension and Provident Fund (NPPF) Bhutan Annual Report 2022"
+    - "NPPF Act (Bhutan, 2000)"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "BTN_NPPF"
+    name: "NPPF (National Pension and Provident Fund) – DC"
+    tier: "first"
+    type: "DC"
+    coverage: "Civil servants and formally employed workers; mandatory provident fund"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 58
+        source_citation: "ILO Social Security Inquiry Bhutan: NPPF NRA 58 for males (civil service retirement age)."
+        year: 2023
+      normal_retirement_age_female:
+        value: 58
+        source_citation: "ILO Social Security Inquiry Bhutan: NRA 58 for females."
+        year: 2023
+      vesting_years:
+        value: 10
+        source_citation: "ILO Social Security Inquiry Bhutan: minimum 10 years of service for pension benefit."
+        year: 2023
+      minimum_contribution_years:
+        value: 10
+        source_citation: "NPPF Act Bhutan: minimum 10 years for pension entitlement."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.10
+        source_citation: "ILO Social Security Inquiry Bhutan: NPPF employee contribution 10% of salary."
+        year: 2023
+      employer_rate:
+        value: 0.10
+        source_citation: "ILO Social Security Inquiry Bhutan: NPPF employer/government contribution 10% of salary."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: 20% total NPPF contribution (10% employee + 10% employer)."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Bhutan: contributions on full salary; no explicit AW ceiling."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: "NPPF covers civil servants and some formal private sector workers; large informal sector not covered."
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: "ILO Social Security Inquiry Bhutan: NPPF DC scheme – pension based on accumulated contributions and returns."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "interest"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "CPI"
+      minimum_benefit_aw_multiple:
+        value: 0.30
+        source_citation: "ILO Social Security Inquiry Bhutan: minimum NPPF pension approximately 30% of average formal wage."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Bhutan: no explicit maximum DC pension."
+        year: 2023
+      notes: "Old Age Allowance provides non-contributory assistance of BTN 3,000/month for those 80+."
+
+    payout:
+      type: "annuity"
+      notes: "NPPF pension paid as monthly annuity; lump sum option available."
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "Pension income subject to Personal Income Tax (PIT) in Bhutan; exemptions for modest pensions."
+  simplified_net_rate:
+    value: 0.05
+    source_citation: "ILO Social Security Inquiry Bhutan: estimated effective income tax rate on average pension approximately 5%."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "BTN"
+  ilostat_transformation: "x * 12"
+  manual_value: 200000
+  currency: "Bhutanese Ngultrum"
+  year: 2022
+  source_citation: "Bhutan National Statistics Bureau: estimated average annual formal earnings 2022 approximately BTN 200,000."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["BTN_NPPF"]
+    source_citation: "NPPF Act Bhutan: mandatory NPPF for formally employed workers."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["BTN_NPPF"]
+    source_citation: "ILO Social Security Inquiry Bhutan: civil servants mandatorily covered by NPPF."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: voluntary
+    scheme_ids: ["BTN_NPPF"]
+    source_citation: "ILO Social Security Inquiry Bhutan: self-employed may voluntarily contribute to NPPF."
+    notes: null
+
+notes: null

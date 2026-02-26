@@ -1,0 +1,142 @@
+# =============================================================================
+# Algeria (DZA) – Pension System Parameters
+# =============================================================================
+# Primary scheme: CNR (Caisse Nationale des Retraites) under CNAS/CASNOS
+# Governing law: Loi No. 83-12 du 2 juillet 1983 and amendments
+#
+# Sources:
+#   [1] Loi No. 83-12 du 2 juillet 1983 portant retraite (Algeria)
+#   [2] CNR Algeria – Rapport Annuel 2021
+#   [3] IMF Algeria Article IV 2022
+#   [4] World Bank Algeria Social Protection Note 2021
+# =============================================================================
+
+metadata:
+  country_name: "Algeria"
+  iso3: "DZA"
+  iso2: "DZ"
+  currency: "Algerian Dinar"
+  currency_code: "DZD"
+  reference_year: 2022
+  wb_region: "MEA"
+  wb_income_level: "LMC"
+  un_location_id: 12
+  sources:
+    - "Loi No. 83-12 du 2 juillet 1983 portant retraite (Algeria) and amendments"
+    - "CNR Algeria – Caisse Nationale des Retraites Annual Report 2021"
+    - "IMF Algeria Article IV Consultation 2022"
+  last_reviewed: "2024-03-01"
+
+schemes:
+  - scheme_id: "CNR_DB"
+    name: "CNR Old-Age Pension (Retraite Vieillesse)"
+    tier: "first"
+    type: "DB"
+    coverage: "all formal-sector employees (private and public) through CNAS/CNR"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 60
+        source_citation: "Loi No. 83-12/1983 Art. 6 as amended – NRA raised to 60 (from 55) for males."
+        year: 2022
+      normal_retirement_age_female:
+        value: 55
+        source_citation: "Loi No. 83-12/1983 Art. 6 – NRA 55 for females."
+        year: 2022
+      early_retirement_age_male:
+        value: 55
+        source_citation: "Retraite proportionnelle at 55 with 20 years of contributions."
+        year: 2022
+      vesting_years:
+        value: 15
+        source_citation: "CNR – minimum 15 years (180 months) contributions for old-age pension. Loi 83-12 Art. 6."
+        year: 2022
+      minimum_contribution_years:
+        value: 15
+        source_citation: "CNR – minimum 15 years required. Full benefit at 32 years. Loi 83-12."
+        year: 2022
+
+    contributions:
+      employee_rate:
+        value: 0.0675
+        source_citation: "Décret exécutif No. 18-231 – employee contribution 6.75% of wage (retraite branch)."
+        year: 2022
+      employer_rate:
+        value: 0.105
+        source_citation: "Décret exécutif No. 18-231 – employer contribution 10.5% of wage (retraite branch)."
+        year: 2022
+      total_rate:
+        value: null
+        source_citation: "Derived: 6.75% + 10.5% = 17.25% (retraite branch)."
+        year: 2022
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "CNR – no statutory ceiling on insurable wage."
+        year: 2022
+      contribution_base: "gross monthly wage"
+
+    benefits:
+      accrual_rate_per_year:
+        value: 0.025
+        source_citation: "Loi No. 83-12/1983 Art. 10 – 2.5%/year accrual on career-average wage. Maximum 80% at 32 years."
+        year: 2022
+      reference_wage: "career_average"
+      valorization: "wages"
+      indexation: "CPI"
+      minimum_benefit_aw_multiple:
+        value: 0.25
+        source_citation: "CNR minimum pension DZD 15,000/month (2022); AW ~DZD 52,000/month → ~29%. Conservative at 25%. CNR Circular 2022."
+        year: 2022
+      maximum_benefit_aw_multiple:
+        value: 0.80
+        source_citation: "Loi No. 83-12/1983 Art. 10 – maximum 80% of reference wage (at 32+ years service)."
+        year: 2022
+
+    payout:
+      type: "annuity"
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: >
+    Pension income is subject to IRG (Impôt sur le Revenu Global) in Algeria.
+    Pensions benefit from a 40% rebate on the gross amount before applying tax brackets.
+    Progressive tax rates: 0% to DZD 120,000/year; up to 35% above DZD 480,000/year.
+    Effective rate for average pensioner is modest due to the 40% rebate.
+  simplified_net_rate:
+    value: 0.08
+    source_citation: "Estimated effective combined rate (IRG + social charges on pension) at 1×AW. Code des Impôts Directs, Algeria 2022."
+    year: 2022
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "DZA"
+  ilostat_transformation: "x * 12"
+  manual_value: 624000.0
+  currency: "Algerian Dinar"
+  year: 2022
+  source_citation: >
+    ONS (Office National des Statistiques) Algeria – Enquête Emploi 2022,
+    estimated average monthly wage ~DZD 52,000 for formal sector workers × 12.
+  source_url: "https://www.ons.dz"
+
+# =============================================================================
+# Worker types
+# =============================================================================
+
+worker_types:
+
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: [CNR_DB]
+    source_citation: "Default: same as main scheme definition."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: unknown
+    scheme_ids: []
+    source_citation: "Coverage status not yet researched; placeholder."
+    notes: "TODO: verify self-employed coverage under national law."
+

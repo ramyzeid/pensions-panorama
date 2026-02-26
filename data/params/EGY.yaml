@@ -1,0 +1,169 @@
+# =============================================================================
+# Egypt (EGY) – Pension System Parameters
+# =============================================================================
+# Primary scheme: National Social Insurance Fund (NSIF)
+# Governing law: Social Insurance Law No. 148 of 2019 (replaced Law 79/1975)
+#
+# Sources:
+#   [1] Social Insurance Law No. 148 of 2019 and Executive Regulations
+#   [2] NSIF Annual Report 2021/2022
+#   [3] World Bank Egypt Social Protection Assessment 2022 (Report No. 173568-EG)
+#   [4] ILO/IMF Egypt Pension Reform Note 2020
+# =============================================================================
+
+metadata:
+  country_name: "Egypt"
+  iso3: "EGY"
+  iso2: "EG"
+  currency: "Egyptian Pound"
+  currency_code: "EGP"
+  reference_year: 2022
+  wb_region: "MEA"
+  wb_income_level: "LMC"
+  un_location_id: 818
+  sources:
+    - "Social Insurance and Pensions Law No. 148 of 2019, Egypt"
+    - "NSIF (National Social Insurance Fund) – Egypt"
+    - "World Bank Egypt Social Protection Assessment 2022"
+  last_reviewed: "2024-03-01"
+
+schemes:
+  - scheme_id: "NSIF_DB"
+    name: "NSIF Old-Age Pension (Defined Benefit)"
+    tier: "first"
+    type: "DB"
+    coverage: "private sector employees and government contractors"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 60
+        source_citation: "Law No. 148/2019 Art. 27 – NRA 60 for males."
+        year: 2022
+      normal_retirement_age_female:
+        value: 60
+        source_citation: "Law No. 148/2019 Art. 27 – NRA 60 for females (unified with Law 79/1975 reform)."
+        year: 2022
+      vesting_years:
+        value: 10
+        source_citation: "Law No. 148/2019 – minimum 120 months contributions for old-age pension."
+        year: 2022
+      minimum_contribution_years:
+        value: 10
+        source_citation: "Law No. 148/2019 Art. 27."
+        year: 2022
+
+    contributions:
+      employee_rate:
+        value: 0.11
+        source_citation: "Law No. 148/2019 Art. 19 – 11% employee contribution on basic wage."
+        year: 2022
+      employer_rate:
+        value: 0.15
+        source_citation: "Law No. 148/2019 Art. 19 – 15% employer contribution on basic wage (+ separate variable component)."
+        year: 2022
+      total_rate:
+        value: null
+        source_citation: "Derived: 11% + 15% = 26% on basic wage (excluding variable component contributions)."
+        year: 2022
+      contribution_ceiling_aw_multiple:
+        value: 2.0
+        source_citation: "Law No. 148/2019 – insurable wage ceiling indexed annually; approx 2× AW in 2022."
+        year: 2022
+      contribution_base: "basic monthly wage capped at indexed ceiling"
+
+    benefits:
+      accrual_rate_per_year:
+        value: 0.0222
+        source_citation: "Law No. 148/2019 Art. 28 – 1/45 per year (≈2.22%) of career-average wage."
+        year: 2022
+      reference_wage: "career_average"
+      valorization: "wages"
+      indexation: "CPI"
+      minimum_benefit_aw_multiple:
+        value: 0.15
+        source_citation: "NSIF minimum pension EGP 900/month (2022); AW ~EGP 6,000/month → ~15% AW. NSIF Circular 2022."
+        year: 2022
+      maximum_benefit_aw_multiple:
+        value: 0.80
+        source_citation: "Law No. 148/2019 Art. 28 – maximum pension 80% of reference wage."
+        year: 2022
+
+    payout:
+      type: "annuity"
+
+  - scheme_id: "NSIF_MIN"
+    name: "NSIF Minimum Pension Guarantee"
+    tier: "first"
+    type: "minimum"
+    coverage: "all NSIF pensioners"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 60
+        source_citation: "Same as NSIF_DB."
+        year: 2022
+      normal_retirement_age_female:
+        value: 60
+        source_citation: "Same as NSIF_DB."
+        year: 2022
+
+    benefits:
+      minimum_benefit_aw_multiple:
+        value: 0.15
+        source_citation: "NSIF minimum EGP 900/month (2022 level); AW ~EGP 6,000/month → 15% AW. Indexed annually."
+        year: 2022
+      indexation: "CPI"
+
+    payout:
+      type: "annuity"
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: >
+    Pension income from NSIF is generally exempt from income tax up to EGP 15,000/year.
+    Above this threshold, regular personal income tax brackets apply (0–25%).
+    Effective rate for average-wage pensioners is low due to generous exemption thresholds.
+  simplified_net_rate:
+    value: 0.05
+    source_citation: "Estimated effective rate at 1×AW pension level. Egyptian Income Tax Law No. 91/2005 and NSIF exemptions."
+    year: 2022
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "EGY"
+  ilostat_transformation: "x * 12"
+  manual_value: 72000.0
+  currency: "Egyptian Pound"
+  year: 2022
+  source_citation: >
+    CAPMAS (Central Agency for Public Mobilization and Statistics) – Labour Force Survey 2022,
+    estimated average monthly wage ~EGP 6,000 for formal workers × 12.
+  source_url: "https://www.capmas.gov.eg"
+
+
+# =============================================================================
+# Worker types
+# =============================================================================
+
+worker_types:
+
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: [NSIF_DB]
+    source_citation: "Default: same as main scheme definition."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: unknown
+    scheme_ids: []
+    source_citation: "Coverage status not yet researched; placeholder."
+    notes: "TODO: verify self-employed coverage under national law."
+
+notes: >
+  Egypt's pension system covers formal-sector workers through NSIF.
+  Coverage of informal workers (estimated >50% of labour force) is minimal.
+  The 2019 reform unified several funds and introduced career-average valorisation.

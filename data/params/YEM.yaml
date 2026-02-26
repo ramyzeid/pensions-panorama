@@ -1,0 +1,176 @@
+# =============================================================================
+# Yemen (YEM) – Pension System Parameters
+# =============================================================================
+# Primary scheme: PSIC – Public Social Insurance Corporation
+#                 (المؤسسة العامة للتأمين والمعاشات)
+# Governing law: Social Insurance Law No. 26 of 1991 (as amended)
+#
+# IMPORTANT: Yemen has been in civil war since 2015. The pension system has
+# almost completely collapsed. Data below reflects the legal framework only.
+# Two rival governments exist (Sanaa/Houthi and Aden/internationally-recognised).
+#
+# Sources:
+#   [1] Social Insurance Law No. 26 of 1991 – Yemen
+#   [2] ILO Yemen Social Security Country Profile 2014 (last reliable)
+#   [3] World Bank Yemen Economic Update 2022
+# =============================================================================
+
+metadata:
+  country_name: "Yemen"
+  iso3: "YEM"
+  iso2: "YE"
+  currency: "Yemeni Rial"
+  currency_code: "YER"
+  reference_year: 2022
+  wb_region: "MEA"
+  wb_income_level: "LIC"
+  un_location_id: 887
+  sources:
+    - "Social Insurance Law No. 26 of 1991 (as amended) – Yemen"
+    - "ILO Yemen Social Security Country Profile 2014"
+    - "World Bank Yemen Economic Update 2022"
+  last_reviewed: "2024-03-01"
+
+schemes:
+  - scheme_id: "PSIC_DB"
+    name: "PSIC Old-Age Pension"
+    tier: "first"
+    type: "DB"
+    coverage: >
+      Formal sector employees and government workers. System severely disrupted by
+      civil war since 2015; rival administrations in Sanaa and Aden each claim authority
+      over PSIC. Effective coverage near zero for private sector workers; limited
+      government pension payments continue in some areas from donor support.
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 60
+        source_citation: >
+          Social Insurance Law No. 26 of 1991 Art. 20 – NRA 60 for males with minimum
+          15 years (180 months) contributions. PSIC Yemen.
+        year: 2022
+      normal_retirement_age_female:
+        value: 55
+        source_citation: >
+          Social Insurance Law No. 26/1991 – NRA 55 for females with minimum 15 years.
+          PSIC Yemen.
+        year: 2022
+      vesting_years:
+        value: 15
+        source_citation: >
+          Social Insurance Law No. 26/1991 – minimum 180 months (15 years) for
+          old-age pension. PSIC Yemen.
+        year: 2022
+      minimum_contribution_years:
+        value: 15
+        source_citation: "PSIC – 15 years (180 months) minimum. Social Insurance Law 26/1991."
+        year: 2022
+
+    contributions:
+      employee_rate:
+        value: 0.06
+        source_citation: >
+          Social Insurance Law No. 26/1991 – employee contribution 6% of wage.
+          PSIC Yemen.
+        year: 2022
+      employer_rate:
+        value: 0.09
+        source_citation: >
+          Social Insurance Law No. 26/1991 – employer contribution 9% of wage.
+          Total: 15%. PSIC Yemen.
+        year: 2022
+      total_rate:
+        value: 0.15
+        source_citation: "Employee 6% + Employer 9% = 15% of gross wage. Social Insurance Law 26/1991."
+        year: 2022
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "No contribution ceiling in Yemeni social insurance law."
+        year: 2022
+      contribution_base: "gross wage"
+
+    benefits:
+      accrual_rate_per_year:
+        value: 0.025
+        source_citation: >
+          Social Insurance Law No. 26/1991 Art. 21 – pension = 2.5% × years of service ×
+          average of last 5 years earnings. Maximum 100% at 40 years.
+          PSIC Yemen (legal framework, not current operational reality).
+        year: 2022
+      reference_wage: "final_salary"
+      valorization: "wages"
+      indexation: "none"
+      minimum_benefit_aw_multiple:
+        value: 0.10
+        source_citation: >
+          Pre-war minimum pension ~YER 12,000/month. With 2022 estimated AW ~YER 100,000/month
+          → ~12%. Extremely uncertain due to conflict and dual-currency situation.
+          PSIC Yemen (pre-war estimates).
+        year: 2022
+      maximum_benefit_aw_multiple:
+        value: 1.00
+        source_citation: >
+          Maximum pension 100% of reference wage at 40 years (2.5% × 40 = 100%).
+          Social Insurance Law No. 26/1991.
+        year: 2022
+
+    payout:
+      type: "annuity"
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: >
+    PSIC pension income is exempt from income tax in Yemen under the Tax on Income
+    Law. Social insurance pensions are fully exempt. Yemeni Tax on Income Law.
+  simplified_net_rate:
+    value: 0.0
+    source_citation: "PSIC pensions are tax-exempt. Yemeni Tax legislation."
+    year: 2022
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "YEM"
+  ilostat_transformation: "x * 12"
+  manual_value: 1200000.0
+  currency: "Yemeni Rial"
+  year: 2022
+  source_citation: >
+    World Bank Yemen Economic Update 2022 – rough estimate.
+    Formal sector (where functioning) monthly wage ~YER 100,000/month × 12 = YER 1,200,000/year.
+    YER split: Sanaa-issued YER (Houthi) and Aden-issued YER have different exchange rates.
+    Average at Aden rate ~YER 1,250/USD: $80/month purchasing power – one of the lowest
+    globally. ILOSTAT data unavailable.
+  notes: >
+    EXTREME UNCERTAINTY. Yemen is experiencing one of the world's worst humanitarian crises.
+    The YER has split: Sanaa (Houthi) and Aden (government) notes trade at different rates.
+    Economic data is extremely unreliable. All figures are rough estimates.
+
+
+# =============================================================================
+# Worker types
+# =============================================================================
+
+worker_types:
+
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: [PSIC_DB]
+    source_citation: "Default: same as main scheme definition."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: unknown
+    scheme_ids: []
+    source_citation: "Coverage status not yet researched; placeholder."
+    notes: "TODO: verify self-employed coverage under national law."
+
+notes: >
+  Yemen's pension system has virtually collapsed since the civil war began in 2015.
+  PSIC operations are minimal. Government employees in Aden have received partial
+  salary/pension payments through international support. Sanaa-based (Houthi)
+  government controls PSIC headquarters but has limited financial resources.
+  This entry documents the legal framework only. Any pension analysis for Yemen
+  should be treated as theoretical given the humanitarian emergency context.

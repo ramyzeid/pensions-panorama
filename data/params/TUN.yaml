@@ -1,0 +1,143 @@
+# =============================================================================
+# Tunisia (TUN) – Pension System Parameters
+# =============================================================================
+# Primary scheme: CNSS (Caisse Nationale de Sécurité Sociale) – private sector
+# Governing law: Loi No. 60-30 du 14 décembre 1960 and amendments
+#
+# Sources:
+#   [1] CNSS Tunisia – Décret No. 2023-xxx (contribution rates 2023)
+#   [2] World Bank Tunisia Pension Reform Note 2020
+#   [3] ILO Country Profile Tunisia, ILOSTAT 2022
+#   [4] IMF Tunisia Article IV 2022
+# =============================================================================
+
+metadata:
+  country_name: "Tunisia"
+  iso3: "TUN"
+  iso2: "TN"
+  currency: "Tunisian Dinar"
+  currency_code: "TND"
+  reference_year: 2022
+  wb_region: "MEA"
+  wb_income_level: "LMC"
+  un_location_id: 788
+  sources:
+    - "Loi No. 60-30 du 14 décembre 1960 portant organisation de la sécurité sociale (as amended)"
+    - "Décret gouvernemental No. 2018-1131 – CNSS contribution rates"
+    - "World Bank Tunisia Pension Reform Note 2020"
+    - "CNSS Tunisia – Rapport Annuel 2021"
+  last_reviewed: "2024-03-01"
+
+schemes:
+  - scheme_id: "CNSS_DB"
+    name: "CNSS Old-Age Pension (Retraite Vieillesse)"
+    tier: "first"
+    type: "DB"
+    coverage: "private sector employees (régime général)"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 60
+        source_citation: "CNSS Tunisia – NRA 60 for both sexes under régime général. Loi No. 60-30 as amended."
+        year: 2022
+      normal_retirement_age_female:
+        value: 60
+        source_citation: "CNSS Tunisia – same NRA for males and females."
+        year: 2022
+      early_retirement_age_male:
+        value: 55
+        source_citation: "Early retirement allowed at 55 with 30+ contribution years under arduous conditions."
+        year: 2022
+      vesting_years:
+        value: 10
+        source_citation: "CNSS Tunisia – minimum 10 years (120 months) contributions for pension eligibility."
+        year: 2022
+      minimum_contribution_years:
+        value: 20
+        source_citation: "CNSS – 20 years (240 months) for full accrual entitlement."
+        year: 2022
+
+    contributions:
+      employee_rate:
+        value: 0.0918
+        source_citation: "Décret No. 2018-1131 – employee contribution 9.18% (pension branch of CNSS)."
+        year: 2022
+      employer_rate:
+        value: 0.1632
+        source_citation: "Décret No. 2018-1131 – employer contribution 16.32% total CNSS; pension branch ≈9.47% + family 2% + accidents 0.85%."
+        year: 2022
+      total_rate:
+        value: null
+        source_citation: "Pension branch: ~9.18% ee + 9.47% er = 18.65%."
+        year: 2022
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "CNSS Tunisia – no statutory ceiling on insurable wage."
+        year: 2022
+      contribution_base: "gross monthly wage"
+
+    benefits:
+      accrual_rate_per_year:
+        value: 0.02
+        source_citation: "CNSS – 2%/year accrual on career-average wage for each year of contributions. Loi No. 60-30 as amended."
+        year: 2022
+      reference_wage: "career_average"
+      valorization: "wages"
+      indexation: "CPI"
+      minimum_benefit_aw_multiple:
+        value: 0.30
+        source_citation: "CNSS minimum pension approx. TND 250/month (2022); AW ~TND 900/month → ~28%. Rounded to 30%. CNSS Circular 2022."
+        year: 2022
+      maximum_benefit_aw_multiple:
+        value: 0.80
+        source_citation: "CNSS – statutory cap at 80% of reference wage. Loi No. 60-30 Art. 39."
+        year: 2022
+
+    payout:
+      type: "annuity"
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: >
+    Pension income is subject to personal income tax (IRPP) in Tunisia.
+    A 25% deduction is granted on pension income before applying tax brackets.
+    Progressive tax rates: 0% up to TND 5,000; 15% to TND 20,000; 25% to TND 30,000;
+    35% to TND 50,000; max 35%.
+  simplified_net_rate:
+    value: 0.07
+    source_citation: "Estimated effective rate at 1×AW pension level after 25% pension deduction. IRPP Code Fiscal Tunisie 2022."
+    year: 2022
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "TUN"
+  ilostat_transformation: "x * 12"
+  manual_value: 10800.0
+  currency: "Tunisian Dinar"
+  year: 2022
+  source_citation: >
+    INS (Institut National de la Statistique) Tunisia – Enquête Nationale sur l'Emploi 2022,
+    average monthly wage ~TND 900 for formal salaried workers × 12.
+  source_url: "https://www.ins.tn"
+
+# =============================================================================
+# Worker types
+# =============================================================================
+
+worker_types:
+
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: [CNSS_DB]
+    source_citation: "Default: same as main scheme definition."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: unknown
+    scheme_ids: []
+    source_citation: "Coverage status not yet researched; placeholder."
+    notes: "TODO: verify self-employed coverage under national law."
+

@@ -1,0 +1,247 @@
+# =============================================================================
+# Iraq (IRQ) – Pension System Parameters
+# =============================================================================
+# Primary scheme: Retirement Authority (هيئة التقاعد الوطنية) – civil servants
+# Secondary: Social Security Commission – private sector (Law 39/1971)
+# Governing law: Retirement Law No. 27 of 2006; Social Security Law No. 39 of 1971
+#
+# Sources:
+#   [1] National Retirement Authority Iraq – www.mof.gov.iq/retirement
+#   [2] Retirement Law No. 27 of 2006 – Iraq
+#   [3] Social Security Law No. 39 of 1971 (as amended) – Iraq
+#   [4] World Bank Iraq Social Protection Review 2020
+# =============================================================================
+
+metadata:
+  country_name: "Iraq"
+  iso3: "IRQ"
+  iso2: "IQ"
+  currency: "Iraqi Dinar"
+  currency_code: "IQD"
+  reference_year: 2022
+  wb_region: "MEA"
+  wb_income_level: "UMC"
+  un_location_id: 368
+  sources:
+    - "Retirement Law No. 27 of 2006 – Iraq (National Retirement Authority)"
+    - "Social Security Law No. 39 of 1971 (as amended) – Iraq"
+    - "World Bank Iraq Social Protection Review 2020"
+    - "ILO Iraq Social Security Country Profile 2021"
+  last_reviewed: "2024-03-01"
+
+schemes:
+  - scheme_id: "IRA_DB"
+    name: "National Retirement Authority – Civil Servants Pension"
+    tier: "first"
+    type: "DB"
+    coverage: >
+      Government and public sector employees. Covers approximately 25-30% of
+      total workforce. Major scheme in Iraq given large public sector.
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 63
+        source_citation: >
+          Retirement Law No. 27 of 2006 Art. 9 – Normal retirement age 63 for male
+          civil servants. Early retirement possible after 25 years service.
+          National Retirement Authority Iraq 2022.
+        source_url: "https://www.mof.gov.iq"
+        year: 2022
+      normal_retirement_age_female:
+        value: 55
+        source_citation: >
+          Retirement Law No. 27 of 2006 – NRA 55 for female civil servants
+          (or 25 years service). National Retirement Authority Iraq 2022.
+        year: 2022
+      vesting_years:
+        value: 15
+        source_citation: >
+          Retirement Law No. 27 of 2006 – minimum 15 years of service for pension
+          entitlement (reduced pension). Full pension requires 25+ years.
+          National Retirement Authority Iraq 2022.
+        year: 2022
+      minimum_contribution_years:
+        value: 15
+        source_citation: "Retirement Law No. 27/2006 – 15 years minimum for reduced pension."
+        year: 2022
+
+    contributions:
+      employee_rate:
+        value: 0.05
+        source_citation: >
+          Retirement Law No. 27 of 2006 – employee contribution 5% of basic salary.
+          National Retirement Authority Iraq 2022.
+        source_url: "https://www.mof.gov.iq"
+        year: 2022
+      employer_rate:
+        value: 0.15
+        source_citation: >
+          Government (employer) contribution 15% of basic salary to the retirement fund.
+          Retirement Law No. 27 of 2006. National Retirement Authority Iraq 2022.
+        year: 2022
+      total_rate:
+        value: 0.20
+        source_citation: "Employee 5% + Government 15% = 20% of basic salary. Retirement Law 2006."
+        year: 2022
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "No contribution ceiling; full basic salary used as contribution base."
+        year: 2022
+      contribution_base: "basic salary (excluding allowances)"
+
+    benefits:
+      accrual_rate_per_year:
+        value: 0.025
+        source_citation: >
+          Retirement Law No. 27 of 2006 Art. 12 – pension = 2.5% × years of service ×
+          final basic salary. At 30 years: 75% of final basic salary.
+          Maximum pension typically 80% at 32+ years. National Retirement Authority 2022.
+        source_url: "https://www.mof.gov.iq"
+        year: 2022
+      reference_wage: "final_salary"
+      valorization: "wages"
+      indexation: "wages"
+      minimum_benefit_aw_multiple:
+        value: 0.20
+        source_citation: >
+          Minimum pension approximately IQD 150,000/month (2022) for civil servants.
+          With AW ~IQD 750,000/month: min pension ≈ 20% AW.
+          National Retirement Authority Iraq 2022.
+        year: 2022
+      maximum_benefit_aw_multiple:
+        value: 0.80
+        source_citation: >
+          Maximum pension ~80% of final basic salary (32 years × 2.5%). Since basic salary
+          is a fraction of total remuneration (allowances excluded), effective replacement
+          on total remuneration may be lower. Retirement Law No. 27/2006.
+        year: 2022
+
+    payout:
+      type: "annuity"
+
+  - scheme_id: "SSC_DB"
+    name: "Social Security Commission – Private Sector Pension"
+    tier: "first"
+    type: "DB"
+    coverage: >
+      Private sector and non-government employees. Coverage very limited in practice;
+      large informal economy. Estimated 5-10% of private sector workers covered.
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 60
+        source_citation: >
+          Social Security Law No. 39 of 1971 (as amended) – NRA 60 for male private
+          sector workers. Social Security Commission Iraq 2022.
+        year: 2022
+      normal_retirement_age_female:
+        value: 55
+        source_citation: "Social Security Law No. 39/1971 – NRA 55 for female workers. SSC Iraq 2022."
+        year: 2022
+      vesting_years:
+        value: 20
+        source_citation: "Social Security Law No. 39/1971 – 20 years minimum for full pension."
+        year: 2022
+      minimum_contribution_years:
+        value: 20
+        source_citation: "Social Security Law No. 39/1971 – 20 years minimum contribution period."
+        year: 2022
+
+    contributions:
+      employee_rate:
+        value: 0.05
+        source_citation: "Social Security Law No. 39/1971 – employee contribution 5% of wage."
+        year: 2022
+      employer_rate:
+        value: 0.12
+        source_citation: "Social Security Law No. 39/1971 – employer contribution 12% of wage."
+        year: 2022
+      total_rate:
+        value: 0.17
+        source_citation: "Employee 5% + Employer 12% = 17%. Social Security Law No. 39/1971."
+        year: 2022
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "No contribution ceiling under SSC private sector law."
+        year: 2022
+      contribution_base: "gross wage"
+
+    benefits:
+      accrual_rate_per_year:
+        value: 0.02
+        source_citation: >
+          Social Security Law No. 39/1971 – pension benefit approximately 2%/year of
+          career-average insured wage. Social Security Commission Iraq 2022.
+        year: 2022
+      reference_wage: "career_average"
+      valorization: "wages"
+      indexation: "wages"
+      minimum_benefit_aw_multiple:
+        value: 0.20
+        source_citation: "Social Security Commission – minimum pension ~IQD 150,000/month ≈ 20% AW."
+        year: 2022
+      maximum_benefit_aw_multiple:
+        value: 0.80
+        source_citation: "SSC maximum pension: 2% × 40 years = 80% career average. SSC Iraq 2022."
+        year: 2022
+
+    payout:
+      type: "annuity"
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: >
+    Pension income is exempt from income tax in Iraq under the Income Tax Law No. 113 of 1982
+    (as amended). Government pensions and SSC pensions are fully exempt.
+  simplified_net_rate:
+    value: 0.0
+    source_citation: "Pension income exempt from income tax. Iraqi Income Tax Law No. 113/1982."
+    year: 2022
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "IRQ"
+  ilostat_transformation: "x * 12"
+  manual_value: 9000000.0
+  currency: "Iraqi Dinar"
+  year: 2022
+  source_citation: >
+    World Bank Iraq Economic Monitor 2022 and ILO ILOSTAT Iraq data.
+    Average public/formal sector monthly wage ~IQD 750,000/month × 12 = IQD 9,000,000/year.
+    Public sector wages dominate due to oil-revenue funded government employment.
+    Cross-checked with Central Statistical Organization of Iraq (CSO) LFS 2021.
+  source_url: "https://www.mof.gov.iq"
+  notes: >
+    Iraq's economy is heavily oil-dependent. ~40% of formal employment is public sector.
+    Private formal sector wage data is limited due to large informal economy (~60%+ informality).
+
+
+# =============================================================================
+# Worker types
+# =============================================================================
+
+worker_types:
+
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: [IRA_DB]
+    source_citation: "Default: same as main scheme definition."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: unknown
+    scheme_ids: []
+    source_citation: "Coverage status not yet researched; placeholder."
+    notes: "TODO: verify self-employed coverage under national law."
+
+notes: >
+  Iraq has two parallel pension systems: the National Retirement Authority (NRA) covering
+  government employees and the Social Security Commission (SSC) covering the private sector.
+  In practice, the NRA is far more important given Iraq's large public sector.
+  The private sector social security system has very limited coverage and enforcement.
+  The pension system was disrupted during 2003-2010; many older retirees' records were lost.
+  Oil revenues fund government pensions directly, reducing fiscal pressure on the NRA fund.

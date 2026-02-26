@@ -1,0 +1,42 @@
+# Pensions Panorama run configuration
+# ----------------------------------------
+# Edit this file to control a specific run.
+# Pass with: pp all --config run_config.yaml
+# All values here override the hard-coded defaults in config.py.
+
+# Countries to process (ISO3 codes)
+countries:
+  - JOR
+  - MAR
+
+# Reference year for benefit calculations
+ref_year: 2022
+
+# Year range for API data pulls
+start_year: 2010
+end_year: 2022
+
+# Earnings multiples at which to evaluate pensions (× national average wage)
+earnings_multiples:
+  - 0.5
+  - 0.75
+  - 1.0
+  - 1.5
+  - 2.0
+  - 2.5
+
+# Modeled sex: male | female | total
+sex: "male"
+
+# Cache time-to-live in days (API responses are cached on disk)
+cache_ttl_days: 30
+
+# Logging verbosity: DEBUG | INFO | WARNING | ERROR
+log_level: "INFO"
+
+# Name of global assumptions file within data/params/
+assumptions_file: "assumptions.yaml"
+
+# Optional output directory overrides (null = use defaults under reports/)
+# params_dir: null
+# reports_dir: null

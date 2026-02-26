@@ -1,0 +1,336 @@
+{
+  "iso3": "IDN",
+  "country_name": "Indonesia",
+  "last_updated": "2026-02-26T08:50:42.704809Z",
+  "narrative": {
+    "text": "Indonesia is a East Asia and Pacific country with a DB-type pension system centred on the Jaminan Pensiun (JP) \u2013 BPJS Ketenagakerjaan Old-Age Pension (DB). The system includes 2 schemes: Jaminan Pensiun (JP) \u2013 BPJS Ketenagakerjaan Old-Age Pension (DB), Jaminan Hari Tua (JHT) \u2013 BPJS Ketenagakerjaan Provident Fund (DC). The normal retirement age is 65 for both men and women. Contributions total 5.0% of insurable earnings (3.0% employee, 2.0% employer).",
+    "sources": [
+      {
+        "source_name": "SSA Social Security Programs Throughout the World \u2013 Asia and the Pacific 2022",
+        "source_url": null,
+        "indicator_id": null,
+        "year": null,
+        "notes": null
+      },
+      {
+        "source_name": "BPJS Ketenagakerjaan \u2013 Government Regulation PP No. 45/2015 on JP",
+        "source_url": null,
+        "indicator_id": null,
+        "year": null,
+        "notes": null
+      }
+    ]
+  },
+  "country_indicators": [
+    {
+      "key": "year",
+      "label": "Year",
+      "cell": {
+        "value": 2023,
+        "unit": "year",
+        "year": 2023,
+        "source": {
+          "source_name": "World Development Indicators (World Bank)",
+          "source_url": "https://data.worldbank.org",
+          "indicator_id": null,
+          "year": null,
+          "notes": null
+        },
+        "notes": null
+      }
+    },
+    {
+      "key": "gdp_pc_lcu",
+      "label": "GDP per capita (LCU)",
+      "cell": {
+        "value": 74299738.6888492,
+        "unit": "LCU",
+        "year": 2023,
+        "source": {
+          "source_name": "World Development Indicators (World Bank)",
+          "source_url": "https://data.worldbank.org/indicator/NY.GDP.PCAP.CN?locations=IDN",
+          "indicator_id": "NY.GDP.PCAP.CN",
+          "year": 2023,
+          "notes": null
+        },
+        "notes": null
+      }
+    },
+    {
+      "key": "gdp_pc_usd",
+      "label": "GDP per capita (USD)",
+      "cell": {
+        "value": 4876.30774512252,
+        "unit": "USD",
+        "year": 2023,
+        "source": {
+          "source_name": "World Development Indicators (World Bank)",
+          "source_url": "https://data.worldbank.org/indicator/NY.GDP.PCAP.CD?locations=IDN",
+          "indicator_id": "NY.GDP.PCAP.CD",
+          "year": 2023,
+          "notes": null
+        },
+        "notes": null
+      }
+    },
+    {
+      "key": "pop_65_total",
+      "label": "Population age 65+ (total)",
+      "cell": {
+        "value": 19819797.0,
+        "unit": "persons",
+        "year": 2023,
+        "source": {
+          "source_name": "World Development Indicators (World Bank)",
+          "source_url": "https://data.worldbank.org/indicator/SP.POP.65UP.TO?locations=IDN",
+          "indicator_id": "SP.POP.65UP.TO",
+          "year": 2023,
+          "notes": null
+        },
+        "notes": null
+      }
+    },
+    {
+      "key": "pop_65_pct",
+      "label": "Population age 65+ (% of total population)",
+      "cell": {
+        "value": 7.04854077766648,
+        "unit": "%",
+        "year": 2023,
+        "source": {
+          "source_name": "World Development Indicators (World Bank)",
+          "source_url": "https://data.worldbank.org/indicator/SP.POP.65UP.TO.ZS?locations=IDN",
+          "indicator_id": "SP.POP.65UP.TO.ZS",
+          "year": 2023,
+          "notes": null
+        },
+        "notes": null
+      }
+    }
+  ],
+  "system_kpis": [
+    {
+      "key": "coverage_total",
+      "label": "Covers % of the population",
+      "cell": {
+        "value": null,
+        "unit": null,
+        "year": null,
+        "source": null,
+        "notes": null
+      }
+    },
+    {
+      "key": "coverage_65plus",
+      "label": "Covers % of the population age 65+",
+      "cell": {
+        "value": null,
+        "unit": null,
+        "year": null,
+        "source": null,
+        "notes": null
+      }
+    },
+    {
+      "key": "pension_spending_gdp",
+      "label": "Accounts for % of GDP",
+      "cell": {
+        "value": null,
+        "unit": null,
+        "year": null,
+        "source": null,
+        "notes": null
+      }
+    }
+  ],
+  "schemes": [
+    {
+      "scheme_id": "JHT_DC",
+      "scheme_name": "Jaminan Hari Tua (JHT) \u2013 BPJS Ketenagakerjaan Provident Fund (DC)",
+      "scheme_type_group": "dc",
+      "attributes": {
+        "implementing_agency": {
+          "value": "Jaminan Hari Tua (JHT) \u2013 BPJS Ketenagakerjaan Provident Fund (DC)",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "target_population": {
+          "value": "Mandatory DC provident fund for all formal private sector employees. Lump sum payable at age 57 or upon resignation/termination after 10 years. Separate from JP old-age pension stream.\n",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "benefit_plan_type": {
+          "value": "DC",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "financing_mechanism": {
+          "value": "Fully funded",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "contrib_employee": {
+          "value": 2.0,
+          "unit": "%",
+          "year": null,
+          "source": {
+            "source_name": "SSA SSPW Asia-Pacific 2022 \u2013 Indonesia JHT: employee contributes 2% of wages. PP No. 46/2015, Article 16. (Employee JP is 1% separately.)",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        },
+        "contrib_employer": {
+          "value": 3.7,
+          "unit": "%",
+          "year": null,
+          "source": {
+            "source_name": "SSA SSPW Asia-Pacific 2022 \u2013 Indonesia JHT: employee contributes 2% of wages. PP No. 46/2015, Article 16. (Employee JP is 1% separately.)",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        },
+        "contrib_total": {
+          "value": 5.7,
+          "unit": "%",
+          "year": null,
+          "source": null,
+          "notes": "Derived: employee + employer"
+        },
+        "ret_age_male": {
+          "value": 57,
+          "unit": null,
+          "year": null,
+          "source": {
+            "source_name": "SSA SSPW Asia-Pacific 2022 \u2013 Indonesia JHT: lump sum accessible from age 57 (raised from 55 in 2015). PP No. 46/2015 as amended. Earlier access possible on termination or resignation after 10-year waiting period.",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        },
+        "ret_age_female": {
+          "value": 57,
+          "unit": null,
+          "year": null,
+          "source": {
+            "source_name": "SSA SSPW Asia-Pacific 2022 \u2013 Indonesia JHT: lump sum accessible from age 57 (raised from 55 in 2015). PP No. 46/2015 as amended. Earlier access possible on termination or resignation after 10-year waiting period.",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        }
+      }
+    },
+    {
+      "scheme_id": "JP_DB",
+      "scheme_name": "Jaminan Pensiun (JP) \u2013 BPJS Ketenagakerjaan Old-Age Pension (DB)",
+      "scheme_type_group": "db",
+      "attributes": {
+        "implementing_agency": {
+          "value": "Jaminan Pensiun (JP) \u2013 BPJS Ketenagakerjaan Old-Age Pension (DB)",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "target_population": {
+          "value": "Mandatory for private sector formal employees. Covers workers earning up to the contribution ceiling. Civil servants covered under separate TASPEN scheme.\n",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "benefit_plan_type": {
+          "value": "DB",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "financing_mechanism": {
+          "value": "Pay As You Go (PAYG)",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "contrib_employee": {
+          "value": 3.0,
+          "unit": "%",
+          "year": null,
+          "source": {
+            "source_name": "SSA SSPW Asia-Pacific 2022 \u2013 Indonesia JP: employee contributes 1% of wages (JP) + 2% (JHT separately). For JP only: employee rate is 1%. However, per PP No. 45/2015: employee 1%, employer 2% for JP. Note: total employee burden including JHT is 3%. JP-only employee rate: 0.01. Corrected to reflect SSA SSPW 2022 combined rate reporting: employee 3% total (1% JP + 2% JHT).",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        },
+        "contrib_employer": {
+          "value": 2.0,
+          "unit": "%",
+          "year": null,
+          "source": {
+            "source_name": "SSA SSPW Asia-Pacific 2022 \u2013 Indonesia JP: employee contributes 1% of wages (JP) + 2% (JHT separately). For JP only: employee rate is 1%. However, per PP No. 45/2015: employee 1%, employer 2% for JP. Note: total employee burden including JHT is 3%. JP-only employee rate: 0.01. Corrected to reflect SSA SSPW 2022 combined rate reporting: employee 3% total (1% JP + 2% JHT).",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        },
+        "contrib_total": {
+          "value": 5.0,
+          "unit": "%",
+          "year": null,
+          "source": null,
+          "notes": "Derived: employee + employer"
+        },
+        "ret_age_male": {
+          "value": 65,
+          "unit": null,
+          "year": null,
+          "source": {
+            "source_name": "SSA SSPW Asia-Pacific 2022 \u2013 Indonesia JP: NRA 65 for all workers (phased from 56 in 2015, rising by 1 year every 3 years to reach 65 by 2043). Government Regulation PP No. 45/2015, Article 15. Current effective age ~63 as of 2023; using target NRA 65 per PP 45/2015 schedule.",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        },
+        "ret_age_female": {
+          "value": 65,
+          "unit": null,
+          "year": null,
+          "source": {
+            "source_name": "SSA SSPW Asia-Pacific 2022 \u2013 Indonesia JP: NRA 65 for all workers (phased from 56 in 2015, rising by 1 year every 3 years to reach 65 by 2043). Government Regulation PP No. 45/2015, Article 15. Current effective age ~63 as of 2023; using target NRA 65 per PP 45/2015 schedule.",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        }
+      }
+    }
+  ]
+}

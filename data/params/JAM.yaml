@@ -1,0 +1,139 @@
+# =============================================================================
+# Jamaica (JAM) – Pension System Parameters
+# =============================================================================
+# Primary scheme: National Insurance Scheme (NIS) – DB earnings-related
+# Sources:
+#   [1] ILO Social Security Inquiry – Jamaica
+#   [2] Ministry of Labour and Social Security Jamaica – NIS Annual Report 2022
+# =============================================================================
+
+metadata:
+  country_name: "Jamaica"
+  iso3: "JAM"
+  iso2: "JM"
+  currency: "Jamaican Dollar"
+  currency_code: "JMD"
+  reference_year: 2023
+  wb_region: "LCN"
+  wb_income_level: "UMC"
+  un_location_id: 388
+  sources:
+    - "ILO Social Security Inquiry – Jamaica"
+    - "Ministry of Labour and Social Security Jamaica NIS Annual Report 2022"
+    - "National Insurance Act (Jamaica, 1965, as amended)"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "JAM_NIS"
+    name: "National Insurance Scheme (NIS) – DB Earnings-Related"
+    tier: "first"
+    type: "DB"
+    coverage: "All employed persons aged 18–70; mandatory national insurance"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 65
+        source_citation: "ILO Social Security Inquiry Jamaica: NRA 65 for males."
+        year: 2023
+      normal_retirement_age_female:
+        value: 65
+        source_citation: "ILO Social Security Inquiry Jamaica: NRA 65 for females."
+        year: 2023
+      vesting_years:
+        value: 10
+        source_citation: "ILO Social Security Inquiry Jamaica: minimum 52 weekly contributions for any NIS pension; meaningful pension requires much longer."
+        year: 2023
+      minimum_contribution_years:
+        value: 10
+        source_citation: "National Insurance Act Jamaica: minimum contribution record for retirement pension entitlement."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.03
+        source_citation: "ILO Social Security Inquiry Jamaica: employee NIS contribution 3% of insurable wages."
+        year: 2023
+      employer_rate:
+        value: 0.03
+        source_citation: "ILO Social Security Inquiry Jamaica: employer NIS contribution 3% of insurable wages."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: 6% total NIS contribution (3% employee + 3% employer)."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Jamaica: insurable earnings ceiling set by regulation; no explicit AW multiple."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: "NIS pension supplements private occupational pensions; public sector has separate pension scheme."
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: "ILO Social Security Inquiry Jamaica: NIS pension modest; approximately 25–35% of average insurable earnings after full career."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "prices"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "prices"
+      minimum_benefit_aw_multiple:
+        value: 0.20
+        source_citation: "ILO Social Security Inquiry Jamaica: minimum NIS retirement pension approximately 20% of average insurable earnings."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Jamaica: maximum pension constrained by insurable earnings ceiling."
+        year: 2023
+      notes: "PATH (Programme of Advancement Through Health and Education) provides social assistance; no universal basic pension."
+
+    payout:
+      type: "annuity"
+      notes: null
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "Pension income subject to income tax in Jamaica; personal income tax threshold and pension exemptions reduce effective rate."
+  simplified_net_rate:
+    value: 0.05
+    source_citation: "ILO Social Security Inquiry Jamaica: estimated effective income tax rate on average pension approximately 5%."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "JAM"
+  ilostat_transformation: "x * 12"
+  manual_value: 1800000
+  currency: "Jamaican Dollar"
+  year: 2022
+  source_citation: "Statistical Institute of Jamaica (STATIN): average annual earnings 2022 approximately JMD 1,800,000."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["JAM_NIS"]
+    source_citation: "National Insurance Act Jamaica: mandatory NIS for all private sector employees."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["JAM_NIS"]
+    source_citation: "ILO Social Security Inquiry Jamaica: civil servants covered by NIS plus Public Service Pension Scheme."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: mandatory
+    scheme_ids: ["JAM_NIS"]
+    source_citation: "National Insurance Act Jamaica: self-employed required to contribute to NIS."
+    notes: null
+
+notes: null

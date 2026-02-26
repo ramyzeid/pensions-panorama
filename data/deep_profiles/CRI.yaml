@@ -1,0 +1,101 @@
+country_name: Costa Rica
+narrative:
+  text: 'Costa Rica''s pension system is multi-tiered, with a contributory earnings-related
+    public pension (IVM) complemented by a mandatory funded defined-contribution pillar
+    (ROP) and a means-tested non-contributory basic pension (RNC) for older people
+    without contributory entitlements.
+
+    '
+  sources:
+  - source_name: "OECD Pensions at a Glance 2023 \u2013 Costa Rica Country Profile"
+    source_url: https://www.oecd.org/content/dam/oecd/en/publications/reports/2024/10/pensions-at-a-glance-2023-country-notes_2e11a061/costa-rica_a095b39b/c64a65eb-en.pdf
+system_kpis:
+- key: coverage_total
+  indicator_id: PER_ALLSP.COV_POP_TOT
+  source_name: World Development Indicators (World Bank)
+  source_url: https://data.worldbank.org/indicator/PER_ALLSP.COV_POP_TOT?locations=CR
+  unit: '%'
+- key: coverage_65plus
+  indicator_id: PER_ALLSP.COV_POP_65UP
+  source_name: World Development Indicators (World Bank)
+  source_url: https://data.worldbank.org/indicator/PER_ALLSP.COV_POP_65UP?locations=CR
+  unit: '%'
+- key: pension_spending_gdp
+  value: 5.1
+  unit: '%'
+  year: 2022
+  source_name: "OECD Pensions at a Glance 2023 \u2013 Costa Rica Country Profile"
+  source_url: https://www.oecd.org/content/dam/oecd/en/publications/reports/2024/10/pensions-at-a-glance-2023-country-notes_2e11a061/costa-rica_a095b39b/c64a65eb-en.pdf
+schemes:
+- scheme_id: CRI_RNC
+  scheme_name: Non-contributory pension (RNC)
+  scheme_type_group: noncontrib
+  attributes:
+    implementing_agency:
+      value: CCSS
+    target_population:
+      value: Older people without contributory entitlements
+    benefit_plan_type:
+      value: Non contributory
+    financing_mechanism:
+      value: General revenue
+    benefit_payments_lcu:
+      value: 82000
+      unit: CRC per month
+      source_name: "OECD Pensions at a Glance 2023 \u2013 Costa Rica Country Profile"
+      source_url: https://www.oecd.org/content/dam/oecd/en/publications/reports/2024/10/pensions-at-a-glance-2023-country-notes_2e11a061/costa-rica_a095b39b/c64a65eb-en.pdf
+      notes: Monthly benefit level reported for RNC.
+- scheme_id: CRI_ROP
+  scheme_name: Mandatory Individual Accounts (ROP)
+  scheme_type_group: dc
+  attributes:
+    implementing_agency:
+      value: Pension Operators
+    target_population:
+      value: Formal employees
+    benefit_plan_type:
+      value: Defined Contribution (DC)
+    financing_mechanism:
+      value: Fully funded
+    contrib_employee:
+      value: 1.0
+      unit: '%'
+      source_name: "OECD Pensions at a Glance 2023 \u2013 Costa Rica Country Profile"
+      source_url: https://www.oecd.org/content/dam/oecd/en/publications/reports/2024/10/pensions-at-a-glance-2023-country-notes_2e11a061/costa-rica_a095b39b/c64a65eb-en.pdf
+    contrib_employer:
+      value: 3.25
+      unit: '%'
+      source_name: "OECD Pensions at a Glance 2023 \u2013 Costa Rica Country Profile"
+      source_url: https://www.oecd.org/content/dam/oecd/en/publications/reports/2024/10/pensions-at-a-glance-2023-country-notes_2e11a061/costa-rica_a095b39b/c64a65eb-en.pdf
+    contrib_total:
+      value: 4.25
+      unit: '%'
+      notes: 'Derived: 1.0 + 3.25'
+    ret_age_male:
+      value: 65
+      source_name: "OECD Pensions at a Glance 2023 \u2013 Costa Rica Country Profile"
+      source_url: https://www.oecd.org/content/dam/oecd/en/publications/reports/2024/10/pensions-at-a-glance-2023-country-notes_2e11a061/costa-rica_a095b39b/c64a65eb-en.pdf
+    ret_age_female:
+      value: 65
+      source_name: "OECD Pensions at a Glance 2023 \u2013 Costa Rica Country Profile"
+      source_url: https://www.oecd.org/content/dam/oecd/en/publications/reports/2024/10/pensions-at-a-glance-2023-country-notes_2e11a061/costa-rica_a095b39b/c64a65eb-en.pdf
+- scheme_id: CRI_IVM
+  scheme_name: Disability, Old Age, and Survivors (IVM)
+  scheme_type_group: db
+  attributes:
+    implementing_agency:
+      value: Caja Costarricense de Seguro Social (CCSS)
+    target_population:
+      value: Employees and self-employed
+    benefit_plan_type:
+      value: Defined Benefit (DB)
+    financing_mechanism:
+      value: Pay As You Go (PAYG)
+    ret_age_male:
+      value: 65
+      source_name: "OECD Pensions at a Glance 2023 \u2013 Costa Rica Country Profile"
+      source_url: https://www.oecd.org/content/dam/oecd/en/publications/reports/2024/10/pensions-at-a-glance-2023-country-notes_2e11a061/costa-rica_a095b39b/c64a65eb-en.pdf
+    ret_age_female:
+      value: 65
+      source_name: "OECD Pensions at a Glance 2023 \u2013 Costa Rica Country Profile"
+      source_url: https://www.oecd.org/content/dam/oecd/en/publications/reports/2024/10/pensions-at-a-glance-2023-country-notes_2e11a061/costa-rica_a095b39b/c64a65eb-en.pdf

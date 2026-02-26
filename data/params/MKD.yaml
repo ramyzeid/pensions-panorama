@@ -1,0 +1,139 @@
+# =============================================================================
+# North Macedonia (MKD) – Pension System Parameters
+# =============================================================================
+# Primary scheme: PIOM (DB PAYG) + mandatory funded DC (2nd pillar)
+# Sources:
+#   [1] ILO Social Security Inquiry – North Macedonia
+#   [2] State Statistical Office North Macedonia – Statistical Yearbook 2023
+# =============================================================================
+
+metadata:
+  country_name: "North Macedonia"
+  iso3: "MKD"
+  iso2: "MK"
+  currency: "Macedonian Denar"
+  currency_code: "MKD"
+  reference_year: 2023
+  wb_region: "ECS"
+  wb_income_level: "UMC"
+  un_location_id: 807
+  sources:
+    - "ILO Social Security Inquiry – North Macedonia"
+    - "State Statistical Office North Macedonia Statistical Yearbook 2023"
+    - "Law on Pension and Disability Insurance (North Macedonia, as amended)"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "MKD_PIOM"
+    name: "Pension and Disability Insurance Fund (PIOM) – DB + mandatory DC"
+    tier: "first"
+    type: "DB"
+    coverage: "All formal sector employees; mandatory II pillar for those born after 1 January 1974"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 64
+        source_citation: "ILO Social Security Inquiry North Macedonia: NRA for males 64, rising to 65."
+        year: 2023
+      normal_retirement_age_female:
+        value: 62
+        source_citation: "ILO Social Security Inquiry North Macedonia: NRA for females 62, rising to 64 by 2031."
+        year: 2023
+      vesting_years:
+        value: 15
+        source_citation: "Law on Pension and Disability Insurance North Macedonia: minimum 15 years of insurance required."
+        year: 2023
+      minimum_contribution_years:
+        value: 15
+        source_citation: "ILO Social Security Inquiry North Macedonia: 15 qualifying years for pension entitlement."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.18
+        source_citation: "ILO Social Security Inquiry North Macedonia: employee total contribution 18% of gross wages (covers pension, health, unemployment)."
+        year: 2023
+      employer_rate:
+        value: 0.0
+        source_citation: "ILO Social Security Inquiry North Macedonia: employer does not separately contribute to pension; all social contributions paid by employee."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: 18% employee (pension portion approximately 12% PAYG + 6% funded for II pillar participants)."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry North Macedonia: no explicit contribution ceiling."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: "For II pillar participants (born after 1973), portion of contribution redirected to mandatory funded accounts."
+
+    benefits:
+      accrual_rate_per_year:
+        value: 0.02
+        source_citation: "ILO Social Security Inquiry North Macedonia: DB formula accrues approximately 2% of average wage per year on a points basis."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "wages"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "mixed"
+      minimum_benefit_aw_multiple:
+        value: 0.15
+        source_citation: "ILO Social Security Inquiry North Macedonia: minimum pension approximately 15% of average wage."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry North Macedonia: no statutory maximum pension."
+        year: 2023
+      notes: null
+
+    payout:
+      type: "annuity"
+      notes: null
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "Pension income is generally exempt from income tax in North Macedonia."
+  simplified_net_rate:
+    value: 0.0
+    source_citation: "ILO Social Security Inquiry North Macedonia: state pension benefits exempt from personal income tax."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "MKD"
+  ilostat_transformation: "x * 12"
+  manual_value: 400000
+  currency: "Macedonian Denar"
+  year: 2022
+  source_citation: "State Statistical Office North Macedonia: average monthly gross wage 2022 approximately MKD 34,000, MKD 408,000 annually."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["MKD_PIOM"]
+    source_citation: "Law on Pension and Disability Insurance North Macedonia: mandatory PIOM coverage for all formal employees."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["MKD_PIOM"]
+    source_citation: "ILO Social Security Inquiry North Macedonia: civil servants covered under the same PIOM scheme."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: mandatory
+    scheme_ids: ["MKD_PIOM"]
+    source_citation: "ILO Social Security Inquiry North Macedonia: self-employed required to contribute to PIOM."
+    notes: null
+
+notes: null

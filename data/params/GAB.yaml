@@ -1,0 +1,139 @@
+# =============================================================================
+# Gabon (GAB) – Pension System Parameters
+# =============================================================================
+# Primary scheme: CNSS (Caisse Nationale de Sécurité Sociale) – DB
+# Sources:
+#   [1] ILO Social Security Inquiry – Gabon
+#   [2] Caisse Nationale de Sécurité Sociale (CNSS) Gabon – Annual Report 2022
+# =============================================================================
+
+metadata:
+  country_name: "Gabon"
+  iso3: "GAB"
+  iso2: "GA"
+  currency: "Central African CFA Franc"
+  currency_code: "XAF"
+  reference_year: 2023
+  wb_region: "SSA"
+  wb_income_level: "UMC"
+  un_location_id: 266
+  sources:
+    - "ILO Social Security Inquiry – Gabon"
+    - "Caisse Nationale de Sécurité Sociale (CNSS) Gabon Annual Report 2022"
+    - "Code de Sécurité Sociale (Gabon, 1975, as amended)"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "GAB_CNSS"
+    name: "CNSS (Caisse Nationale de Sécurité Sociale) – DB Earnings-Related"
+    tier: "first"
+    type: "DB"
+    coverage: "Formally employed private sector workers; mandatory social insurance"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 60
+        source_citation: "ILO Social Security Inquiry Gabon: NRA 60 for males."
+        year: 2023
+      normal_retirement_age_female:
+        value: 60
+        source_citation: "ILO Social Security Inquiry Gabon: NRA 60 for females."
+        year: 2023
+      vesting_years:
+        value: 20
+        source_citation: "ILO Social Security Inquiry Gabon: minimum 240 months (20 years) for pension entitlement."
+        year: 2023
+      minimum_contribution_years:
+        value: 20
+        source_citation: "Code de Sécurité Sociale Gabon: minimum 240 months for old-age pension."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.025
+        source_citation: "ILO Social Security Inquiry Gabon: employee CNSS pension contribution 2.5% of wages."
+        year: 2023
+      employer_rate:
+        value: 0.05
+        source_citation: "ILO Social Security Inquiry Gabon: employer CNSS pension contribution 5% of wages."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: 7.5% total CNSS pension contribution (2.5% employee + 5% employer)."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Gabon: contributions on insurable wages; ceiling by regulation."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: "Caisse de Retraite des Fonctionnaires (CRF) covers civil servants separately."
+
+    benefits:
+      accrual_rate_per_year:
+        value: 0.02
+        source_citation: "ILO Social Security Inquiry Gabon: CNSS pension approximately 2% per year of career average insurable earnings."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "prices"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "prices"
+      minimum_benefit_aw_multiple:
+        value: 0.30
+        source_citation: "ILO Social Security Inquiry Gabon: minimum CNSS pension approximately 30% of average insurable earnings."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: 0.80
+        source_citation: "ILO Social Security Inquiry Gabon: maximum CNSS pension approximately 80% of reference earnings after 40 years."
+        year: 2023
+      notes: null
+
+    payout:
+      type: "annuity"
+      notes: null
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "Pension income subject to IRPP (income tax) in Gabon; exemptions for modest pensions."
+  simplified_net_rate:
+    value: 0.08
+    source_citation: "ILO Social Security Inquiry Gabon: estimated effective income tax rate on average pension approximately 8%."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "GAB"
+  ilostat_transformation: "x * 12"
+  manual_value: 4000000
+  currency: "Central African CFA Franc"
+  year: 2022
+  source_citation: "Direction Générale de la Statistique (DGS) Gabon: estimated average annual formal earnings 2022 approximately XAF 4,000,000."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["GAB_CNSS"]
+    source_citation: "Code de Sécurité Sociale Gabon: mandatory CNSS for all formally employed private sector workers."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["GAB_CNSS"]
+    source_citation: "ILO Social Security Inquiry Gabon: civil servants covered by CRF (Caisse de Retraite des Fonctionnaires)."
+    notes: "Civil servants covered by CRF, not CNSS."
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: voluntary
+    scheme_ids: ["GAB_CNSS"]
+    source_citation: "ILO Social Security Inquiry Gabon: self-employed may voluntarily contribute to CNSS."
+    notes: null
+
+notes: null

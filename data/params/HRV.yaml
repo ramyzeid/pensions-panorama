@@ -1,0 +1,139 @@
+# =============================================================================
+# Croatia (HRV) – Pension System Parameters
+# =============================================================================
+# Primary scheme: HZMO (NDC PAYG) + mandatory funded DC (2nd pillar)
+# Sources:
+#   [1] OECD Pensions at a Glance 2023 – Croatia
+#   [2] Croatian Bureau of Statistics – Statistical Yearbook 2023
+# =============================================================================
+
+metadata:
+  country_name: "Croatia"
+  iso3: "HRV"
+  iso2: "HR"
+  currency: "Euro"
+  currency_code: "EUR"
+  reference_year: 2023
+  wb_region: "ECS"
+  wb_income_level: "HIC"
+  un_location_id: 191
+  sources:
+    - "OECD Pensions at a Glance 2023 – Croatia"
+    - "Croatian Pension Insurance Institute (HZMO) Annual Report 2022"
+    - "Pension Insurance Act (Croatia, as amended)"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "HRV_HZMO"
+    name: "Croatian Pension Insurance Institute (HZMO) – NDC + Funded II Pillar"
+    tier: "first"
+    type: "NDC"
+    coverage: "All employed workers; II pillar mandatory for those born after 1 January 1968"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 65
+        source_citation: "OECD Pensions at a Glance 2023 Croatia: NRA 65 for both sexes."
+        year: 2023
+      normal_retirement_age_female:
+        value: 65
+        source_citation: "OECD Pensions at a Glance 2023 Croatia: NRA equalised at 65 for females."
+        year: 2023
+      vesting_years:
+        value: 15
+        source_citation: "OECD Pensions at a Glance 2023 Croatia: minimum 15 years of qualifying insurance required."
+        year: 2023
+      minimum_contribution_years:
+        value: 15
+        source_citation: "Pension Insurance Act Croatia: 15 qualifying years for pension entitlement."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.15
+        source_citation: "OECD Pensions at a Glance 2023 Croatia: employee contribution 15% of gross wage (10% to PAYG I pillar + 5% to funded II pillar for post-1968 cohort)."
+        year: 2023
+      employer_rate:
+        value: 0.0165
+        source_citation: "OECD Pensions at a Glance 2023 Croatia: employer contributes 1.65% of gross wage for occupational health insurance; pension contributions paid solely by employee."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: 15% employee + 1.65% employer (not pension-specific)."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "OECD Pensions at a Glance 2023 Croatia: no contribution ceiling as multiple of average wage."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: "15% employee contribution split: 10% to PAYG NDC (1st pillar) + 5% to mandatory funded (2nd pillar) for those born after 1967."
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: "OECD Pensions at a Glance 2023 Croatia: NDC system – pension based on notional account balance (contributions × notional interest rate) converted to annuity at retirement."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "wages"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "mixed"
+      minimum_benefit_aw_multiple:
+        value: 0.20
+        source_citation: "OECD Pensions at a Glance 2023 Croatia: minimum pension approximately 20% of average wage."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "OECD Pensions at a Glance 2023 Croatia: no explicit maximum pension."
+        year: 2023
+      notes: null
+
+    payout:
+      type: "annuity"
+      notes: null
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "Pension income subject to progressive income tax; basic personal allowance and pension deduction reduce effective rate."
+  simplified_net_rate:
+    value: 0.0
+    source_citation: "OECD Pensions at a Glance 2023 Croatia: effective income tax rate on average pension income close to 0% after personal allowances."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "HRV"
+  ilostat_transformation: "x * 12"
+  manual_value: 12000
+  currency: "Euro"
+  year: 2022
+  source_citation: "Croatian Bureau of Statistics: average gross monthly wage 2022 approximately EUR 1,270 (converted from HRK at 7.53), EUR 15,240 annually. Using EUR 12,000 as conservative estimate."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["HRV_HZMO"]
+    source_citation: "Pension Insurance Act Croatia: mandatory HZMO coverage for all employed workers."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["HRV_HZMO"]
+    source_citation: "OECD Pensions at a Glance 2023 Croatia: civil servants covered under the same HZMO scheme."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: mandatory
+    scheme_ids: ["HRV_HZMO"]
+    source_citation: "Pension Insurance Act Croatia: self-employed required to contribute to HZMO."
+    notes: null
+
+notes: null

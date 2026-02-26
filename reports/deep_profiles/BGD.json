@@ -1,0 +1,336 @@
+{
+  "iso3": "BGD",
+  "country_name": "Bangladesh",
+  "last_updated": "2026-02-26T08:45:08.397732Z",
+  "narrative": {
+    "text": "Bangladesh is a South Asia country with a DC-type pension system centred on the General Provident Fund (GPF) \u2013 Civil Servants. The system includes 2 schemes: General Provident Fund (GPF) \u2013 Civil Servants, Civil Service Pension Scheme (Non-Contributory DB). The normal retirement age is 59 for both men and women. Contributions total 35.0% of insurable earnings (10.0% employee, 25.0% employer).",
+    "sources": [
+      {
+        "source_name": "General Provident Fund (GPF) Rules 1979 \u2013 Bangladesh",
+        "source_url": null,
+        "indicator_id": null,
+        "year": null,
+        "notes": null
+      },
+      {
+        "source_name": "Bangladesh Labour Act 2006 \u2013 gratuity and retirement benefit provisions",
+        "source_url": null,
+        "indicator_id": null,
+        "year": null,
+        "notes": null
+      }
+    ]
+  },
+  "country_indicators": [
+    {
+      "key": "year",
+      "label": "Year",
+      "cell": {
+        "value": 2023,
+        "unit": "year",
+        "year": 2023,
+        "source": {
+          "source_name": "World Development Indicators (World Bank)",
+          "source_url": "https://data.worldbank.org",
+          "indicator_id": null,
+          "year": null,
+          "notes": null
+        },
+        "notes": null
+      }
+    },
+    {
+      "key": "gdp_pc_lcu",
+      "label": "GDP per capita (LCU)",
+      "cell": {
+        "value": 261907.070276325,
+        "unit": "LCU",
+        "year": 2023,
+        "source": {
+          "source_name": "World Development Indicators (World Bank)",
+          "source_url": "https://data.worldbank.org/indicator/NY.GDP.PCAP.CN?locations=BGD",
+          "indicator_id": "NY.GDP.PCAP.CN",
+          "year": 2023,
+          "notes": null
+        },
+        "notes": null
+      }
+    },
+    {
+      "key": "gdp_pc_usd",
+      "label": "GDP per capita (USD)",
+      "cell": {
+        "value": 2551.01773827307,
+        "unit": "USD",
+        "year": 2023,
+        "source": {
+          "source_name": "World Development Indicators (World Bank)",
+          "source_url": "https://data.worldbank.org/indicator/NY.GDP.PCAP.CD?locations=BGD",
+          "indicator_id": "NY.GDP.PCAP.CD",
+          "year": 2023,
+          "notes": null
+        },
+        "notes": null
+      }
+    },
+    {
+      "key": "pop_65_total",
+      "label": "Population age 65+ (total)",
+      "cell": {
+        "value": 10837653.0,
+        "unit": "persons",
+        "year": 2023,
+        "source": {
+          "source_name": "World Development Indicators (World Bank)",
+          "source_url": "https://data.worldbank.org/indicator/SP.POP.65UP.TO?locations=BGD",
+          "indicator_id": "SP.POP.65UP.TO",
+          "year": 2023,
+          "notes": null
+        },
+        "notes": null
+      }
+    },
+    {
+      "key": "pop_65_pct",
+      "label": "Population age 65+ (% of total population)",
+      "cell": {
+        "value": 6.32054805417649,
+        "unit": "%",
+        "year": 2023,
+        "source": {
+          "source_name": "World Development Indicators (World Bank)",
+          "source_url": "https://data.worldbank.org/indicator/SP.POP.65UP.TO.ZS?locations=BGD",
+          "indicator_id": "SP.POP.65UP.TO.ZS",
+          "year": 2023,
+          "notes": null
+        },
+        "notes": null
+      }
+    }
+  ],
+  "system_kpis": [
+    {
+      "key": "coverage_total",
+      "label": "Covers % of the population",
+      "cell": {
+        "value": null,
+        "unit": null,
+        "year": null,
+        "source": null,
+        "notes": null
+      }
+    },
+    {
+      "key": "coverage_65plus",
+      "label": "Covers % of the population age 65+",
+      "cell": {
+        "value": null,
+        "unit": null,
+        "year": null,
+        "source": null,
+        "notes": null
+      }
+    },
+    {
+      "key": "pension_spending_gdp",
+      "label": "Accounts for % of GDP",
+      "cell": {
+        "value": null,
+        "unit": null,
+        "year": null,
+        "source": null,
+        "notes": null
+      }
+    }
+  ],
+  "schemes": [
+    {
+      "scheme_id": "GPF_DC",
+      "scheme_name": "General Provident Fund (GPF) \u2013 Civil Servants",
+      "scheme_type_group": "dc",
+      "attributes": {
+        "implementing_agency": {
+          "value": "General Provident Fund (GPF) \u2013 Civil Servants",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "target_population": {
+          "value": "Central government civil servants only. Approximately 1.5 million civil servants covered as of 2022. Does NOT cover private sector employees (formally the vast majority of workers). Non-contributory pension for civil servants pre-2015 cohorts; contributory GPF for accumulation.\n",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "benefit_plan_type": {
+          "value": "DC",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "financing_mechanism": {
+          "value": "Fully funded",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "contrib_employee": {
+          "value": 10.0,
+          "unit": "%",
+          "year": null,
+          "source": {
+            "source_name": "GPF Rules 1979 \u2013 civil servants must contribute a minimum of 10% of basic pay to GPF (can contribute up to 25%). Standard rate: 10%. Finance Division Bangladesh.",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        },
+        "contrib_employer": {
+          "value": 25.0,
+          "unit": "%",
+          "year": null,
+          "source": {
+            "source_name": "GPF Rules 1979 \u2013 civil servants must contribute a minimum of 10% of basic pay to GPF (can contribute up to 25%). Standard rate: 10%. Finance Division Bangladesh.",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        },
+        "contrib_total": {
+          "value": 35.0,
+          "unit": "%",
+          "year": null,
+          "source": null,
+          "notes": "Derived: employee + employer"
+        },
+        "ret_age_male": {
+          "value": 59,
+          "unit": null,
+          "year": null,
+          "source": {
+            "source_name": "Bangladesh Service Rules \u2013 mandatory retirement age for civil servants is 59 (raised from 57 in 2012). GPF withdrawable upon retirement. Finance Division, Bangladesh 2022.",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        },
+        "ret_age_female": {
+          "value": 59,
+          "unit": null,
+          "year": null,
+          "source": {
+            "source_name": "Bangladesh Service Rules \u2013 mandatory retirement age for civil servants is 59 (raised from 57 in 2012). GPF withdrawable upon retirement. Finance Division, Bangladesh 2022.",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        }
+      }
+    },
+    {
+      "scheme_id": "CSPS_DB",
+      "scheme_name": "Civil Service Pension Scheme (Non-Contributory DB)",
+      "scheme_type_group": "db",
+      "attributes": {
+        "implementing_agency": {
+          "value": "Civil Service Pension Scheme (Non-Contributory DB)",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "target_population": {
+          "value": "Pre-2015 government civil servants on non-contributory pension. Provides a monthly pension upon retirement from civil service. New entrants from 2015 onward are on GPF-only scheme (being transitioned to contributory).\n",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "benefit_plan_type": {
+          "value": "DB",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "financing_mechanism": {
+          "value": "Pay As You Go (PAYG)",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "contrib_employee": {
+          "value": 0.0,
+          "unit": "%",
+          "year": null,
+          "source": {
+            "source_name": "Non-contributory \u2013 civil servant pays nothing for DB pension (0% employee contribution). Funded entirely from government budget. Finance Division 2022.",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        },
+        "contrib_employer": {
+          "value": 0.0,
+          "unit": "%",
+          "year": null,
+          "source": {
+            "source_name": "Non-contributory \u2013 civil servant pays nothing for DB pension (0% employee contribution). Funded entirely from government budget. Finance Division 2022.",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        },
+        "contrib_total": {
+          "value": 0.0,
+          "unit": "%",
+          "year": null,
+          "source": null,
+          "notes": "Derived: employee + employer"
+        },
+        "ret_age_male": {
+          "value": 59,
+          "unit": null,
+          "year": null,
+          "source": {
+            "source_name": "Bangladesh Service Rules \u2013 mandatory retirement 59. Finance Division 2022.",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        },
+        "ret_age_female": {
+          "value": 59,
+          "unit": null,
+          "year": null,
+          "source": {
+            "source_name": "Bangladesh Service Rules \u2013 mandatory retirement 59. Finance Division 2022.",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        }
+      }
+    }
+  ]
+}

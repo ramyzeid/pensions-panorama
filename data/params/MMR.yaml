@@ -1,0 +1,140 @@
+# =============================================================================
+# Myanmar (MMR) – Pension System Parameters
+# =============================================================================
+# Primary scheme: SSB (Social Security Board) – DB
+# Sources:
+#   [1] ILO Social Security Inquiry – Myanmar
+#   [2] Social Security Board Myanmar
+#   [3] Social Security Law (Myanmar, 2012)
+# =============================================================================
+
+metadata:
+  country_name: "Myanmar"
+  iso3: "MMR"
+  iso2: "MM"
+  currency: "Myanmar Kyat"
+  currency_code: "MMK"
+  reference_year: 2023
+  wb_region: "EAP"
+  wb_income_level: "LMC"
+  un_location_id: 104
+  sources:
+    - "ILO Social Security Inquiry – Myanmar"
+    - "Social Security Board Myanmar"
+    - "Social Security Law (Myanmar, 2012)"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "MMR_SSB"
+    name: "SSB (Social Security Board) Pension – DB"
+    tier: "first"
+    type: "DB"
+    coverage: "Formally employed workers in enterprises with 5+ employees; mandatory social security"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 60
+        source_citation: "ILO Social Security Inquiry Myanmar: SSB NRA 60 for males."
+        year: 2023
+      normal_retirement_age_female:
+        value: 55
+        source_citation: "ILO Social Security Inquiry Myanmar: NRA 55 for females."
+        year: 2023
+      vesting_years:
+        value: 10
+        source_citation: "ILO Social Security Inquiry Myanmar: minimum 10 years of SSB contributions for pension."
+        year: 2023
+      minimum_contribution_years:
+        value: 10
+        source_citation: "Social Security Law Myanmar: minimum 120 months for old-age pension."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.02
+        source_citation: "ILO Social Security Inquiry Myanmar: employee SSB contribution 2% of wages."
+        year: 2023
+      employer_rate:
+        value: 0.03
+        source_citation: "ILO Social Security Inquiry Myanmar: employer SSB contribution 3% of wages."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: 5% total SSB contribution (2% employee + 3% employer)."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Myanmar: contributions on wages up to contribution ceiling."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: "Government employees covered by separate civil service pension. System significantly disrupted since 2021 military coup."
+
+    benefits:
+      accrual_rate_per_year:
+        value: 0.015
+        source_citation: "ILO Social Security Inquiry Myanmar: SSB pension approximately 1.5% per year of average insurable earnings."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "prices"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "ad_hoc"
+      minimum_benefit_aw_multiple:
+        value: 0.20
+        source_citation: "ILO Social Security Inquiry Myanmar: minimum SSB pension approximately 20% of average formal wage."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Myanmar: maximum pension constrained by formula."
+        year: 2023
+      notes: "System disrupted since 2021 coup; pension payment capacity uncertain."
+
+    payout:
+      type: "annuity"
+      notes: null
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "Pension income subject to income tax in Myanmar; progressive rates apply."
+  simplified_net_rate:
+    value: 0.05
+    source_citation: "ILO Social Security Inquiry Myanmar: estimated effective income tax rate on average pension approximately 5%."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "MMR"
+  ilostat_transformation: "x * 12"
+  manual_value: 3000000
+  currency: "Myanmar Kyat"
+  year: 2022
+  source_citation: "Myanmar Central Statistical Organization: estimated average annual formal earnings 2022 approximately MMK 3,000,000."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["MMR_SSB"]
+    source_citation: "Social Security Law Myanmar: mandatory SSB for formally employed workers in enterprises with 5+ employees."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["MMR_SSB"]
+    source_citation: "ILO Social Security Inquiry Myanmar: civil servants covered by government pension scheme."
+    notes: "Civil servants covered by separate government civil service pension."
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: voluntary
+    scheme_ids: ["MMR_SSB"]
+    source_citation: "ILO Social Security Inquiry Myanmar: self-employed not mandatorily covered by SSB."
+    notes: null
+
+notes: null

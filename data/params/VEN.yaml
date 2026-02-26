@@ -1,0 +1,139 @@
+# =============================================================================
+# Venezuela (VEN) – Pension System Parameters
+# =============================================================================
+# Primary scheme: IVSS (Instituto Venezolano de los Seguros Sociales) – DB
+# Sources:
+#   [1] ILO Social Security Inquiry – Venezuela
+#   [2] Instituto Venezolano de los Seguros Sociales (IVSS) – 2022
+# =============================================================================
+
+metadata:
+  country_name: "Venezuela, RB"
+  iso3: "VEN"
+  iso2: "VE"
+  currency: "Venezuelan Bolivar"
+  currency_code: "VES"
+  reference_year: 2023
+  wb_region: "LCN"
+  wb_income_level: "UMC"
+  un_location_id: 862
+  sources:
+    - "ILO Social Security Inquiry – Venezuela"
+    - "Instituto Venezolano de los Seguros Sociales (IVSS) 2022"
+    - "Ley del Seguro Social (Venezuela, 2012)"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "VEN_IVSS"
+    name: "IVSS (Instituto Venezolano de los Seguros Sociales) – DB Earnings-Related"
+    tier: "first"
+    type: "DB"
+    coverage: "Formally employed workers; mandatory social security; severely degraded by economic crisis"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 60
+        source_citation: "ILO Social Security Inquiry Venezuela: NRA 60 for males with 750 weeks of contributions."
+        year: 2023
+      normal_retirement_age_female:
+        value: 55
+        source_citation: "ILO Social Security Inquiry Venezuela: NRA 55 for females with 750 weeks of contributions."
+        year: 2023
+      vesting_years:
+        value: 15
+        source_citation: "ILO Social Security Inquiry Venezuela: minimum 750 weekly contributions (15 years) for IVSS pension."
+        year: 2023
+      minimum_contribution_years:
+        value: 15
+        source_citation: "Ley del Seguro Social Venezuela: minimum 750 weeks for old-age pension."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.04
+        source_citation: "ILO Social Security Inquiry Venezuela: employee IVSS contribution approximately 4% of wages."
+        year: 2023
+      employer_rate:
+        value: 0.09
+        source_citation: "ILO Social Security Inquiry Venezuela: employer IVSS contribution approximately 9% of wages (varies by risk class)."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: approximately 13% total IVSS contribution plus state."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Venezuela: contributions based on insurable wages; economic crisis has severely eroded real values."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: "Venezuela's economic hyperinflation and crisis have severely degraded pension purchasing power; IVSS pensions are extremely low in real terms."
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: "ILO Social Security Inquiry Venezuela: IVSS pension legally defined but hyperinflation has made real value negligible; pension approximately 1 minimum wage by law."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "prices"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "prices"
+      minimum_benefit_aw_multiple:
+        value: 0.10
+        source_citation: "ILO Social Security Inquiry Venezuela: minimum IVSS pension legally minimum wage but purchasing power severely eroded; approximately 10% of formal average wage in real terms."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Venezuela: maximum pension severely constrained by economic crisis and hyperinflation."
+        year: 2023
+      notes: "Venezuela's pension system is severely degraded by hyperinflation; pensions provide minimal real income."
+
+    payout:
+      type: "annuity"
+      notes: null
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "Pension income subject to ISLR in Venezuela; exemptions typically protect most pensions."
+  simplified_net_rate:
+    value: 0.0
+    source_citation: "ILO Social Security Inquiry Venezuela: most IVSS pensions below income tax threshold; effective rate approximately 0%."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "VEN"
+  ilostat_transformation: "x * 12"
+  manual_value: 3000
+  currency: "Venezuelan Bolivar"
+  year: 2022
+  source_citation: "Instituto Nacional de Estadística (INE) Venezuela: average annual earnings 2022 highly uncertain due to hyperinflation; approximately VES 3,000 (constant value uncertain)."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["VEN_IVSS"]
+    source_citation: "Ley del Seguro Social Venezuela: mandatory IVSS for all formally employed private sector workers."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["VEN_IVSS"]
+    source_citation: "ILO Social Security Inquiry Venezuela: civil servants covered by IVSS."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: voluntary
+    scheme_ids: ["VEN_IVSS"]
+    source_citation: "ILO Social Security Inquiry Venezuela: self-employed may voluntarily contribute to IVSS."
+    notes: null
+
+notes: null

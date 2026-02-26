@@ -1,0 +1,36 @@
+country_name: "Morocco"
+
+narrative:
+  text: >
+    Morocco's pension landscape is fragmented, with the CNSS scheme covering
+    private-sector employees and separate schemes for civil servants and other
+    groups. The CNSS old-age insurance is the main mandatory defined-benefit
+    program for the private sector.
+  sources:
+    - source_name: "CNSS Morocco"
+      source_url: "https://www.cnss.ma"
+
+system_kpis:
+  - key: "coverage_total"
+  - key: "coverage_65plus"
+  - key: "pension_spending_gdp"
+
+schemes:
+  - scheme_id: "CNSS_OAI"
+    scheme_name: "CNSS Old-Age Insurance (Assurance Vieillesse)"
+    scheme_type_group: "db"
+    attributes:
+      implementing_agency:
+        value: "CNSS"
+      benefit_plan_type:
+        value: "Defined Benefit (DB)"
+      financing_mechanism:
+        value: "Pay As You Go (PAYG)"
+      ret_age_male:
+        value: 60
+        source_name: "CNSS Law (Dahir No. 1-72-184)"
+        source_url: "https://www.cnss.ma"
+      ret_age_female:
+        value: 60
+        source_name: "CNSS Law (Dahir No. 1-72-184)"
+        source_url: "https://www.cnss.ma"

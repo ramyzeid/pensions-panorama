@@ -1,0 +1,140 @@
+# =============================================================================
+# Tonga (TON) – Pension System Parameters
+# =============================================================================
+# Primary scheme: TNPF (Tonga National Provident Fund) – DC
+# Sources:
+#   [1] ILO Social Security Inquiry – Tonga
+#   [2] Tonga National Provident Fund (TNPF) – Annual Report 2022
+#   [3] Tonga National Provident Fund Act 1978
+# =============================================================================
+
+metadata:
+  country_name: "Tonga"
+  iso3: "TON"
+  iso2: "TO"
+  currency: "Tongan Paʻanga"
+  currency_code: "TOP"
+  reference_year: 2023
+  wb_region: "EAP"
+  wb_income_level: "LMC"
+  un_location_id: 776
+  sources:
+    - "ILO Social Security Inquiry – Tonga"
+    - "Tonga National Provident Fund (TNPF) Annual Report 2022"
+    - "Tonga National Provident Fund Act 1978 (as amended)"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "TON_TNPF"
+    name: "TNPF (Tonga National Provident Fund) – DC Provident Fund"
+    tier: "first"
+    type: "DC"
+    coverage: "Formally employed workers; mandatory provident fund"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 55
+        source_citation: "ILO Social Security Inquiry Tonga: TNPF withdrawal age 55 for males."
+        year: 2023
+      normal_retirement_age_female:
+        value: 55
+        source_citation: "ILO Social Security Inquiry Tonga: withdrawal age 55 for females."
+        year: 2023
+      vesting_years:
+        value: 0
+        source_citation: "ILO Social Security Inquiry Tonga: DC provident fund – balance accessible at age 55."
+        year: 2023
+      minimum_contribution_years:
+        value: 0
+        source_citation: "TNPF Act Tonga: accumulated balance available at age 55 without minimum years."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.05
+        source_citation: "ILO Social Security Inquiry Tonga: TNPF employee contribution 5% of wages."
+        year: 2023
+      employer_rate:
+        value: 0.05
+        source_citation: "ILO Social Security Inquiry Tonga: TNPF employer contribution 5% of wages."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: 10% total TNPF contribution (5% each)."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Tonga: contributions on all wages; no explicit AW ceiling."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: "Very small island economy. Large remittance inflows supplement retirement income."
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: "ILO Social Security Inquiry Tonga: TNPF DC provident fund – balance paid at retirement."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "interest"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "none"
+      minimum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Tonga: no statutory minimum TNPF pension."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Tonga: no explicit maximum; depends on contributions."
+        year: 2023
+      notes: "TNPF balance paid as lump sum at retirement. Social protection top-up for elderly."
+
+    payout:
+      type: "lump_sum"
+      notes: "TNPF accumulated balance paid as lump sum at age 55."
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "TNPF withdrawals subject to income tax in Tonga; limited documentation."
+  simplified_net_rate:
+    value: 0.05
+    source_citation: "ILO Social Security Inquiry Tonga: estimated effective income tax rate on average pension approximately 5%."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "TON"
+  ilostat_transformation: "x * 12"
+  manual_value: 20000
+  currency: "Tongan Paʻanga"
+  year: 2022
+  source_citation: "Tonga Statistics Department: estimated average annual formal earnings 2022 approximately TOP 20,000."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["TON_TNPF"]
+    source_citation: "TNPF Act Tonga: mandatory TNPF for formally employed workers."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["TON_TNPF"]
+    source_citation: "ILO Social Security Inquiry Tonga: civil servants covered by TNPF."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: voluntary
+    scheme_ids: ["TON_TNPF"]
+    source_citation: "ILO Social Security Inquiry Tonga: self-employed may voluntarily contribute to TNPF."
+    notes: null
+
+notes: null

@@ -1,0 +1,142 @@
+# =============================================================================
+# Mauritius (MUS) – Pension System Parameters
+# =============================================================================
+# Primary scheme: Universal Basic Retirement Pension + NPF (DC) + NSF (DB)
+# Sources:
+#   [1] ILO Social Security Inquiry – Mauritius
+#   [2] Ministry of Social Integration Mauritius – Annual Report 2022
+# =============================================================================
+
+metadata:
+  country_name: "Mauritius"
+  iso3: "MUS"
+  iso2: "MU"
+  currency: "Mauritian Rupee"
+  currency_code: "MUR"
+  reference_year: 2023
+  wb_region: "SSA"
+  wb_income_level: "UMC"
+  un_location_id: 480
+  sources:
+    - "ILO Social Security Inquiry – Mauritius"
+    - "Ministry of Social Integration Mauritius Annual Report 2022"
+    - "National Pensions Act (Mauritius, 1976, as amended) and NPF Act"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "MUS_BRP"
+    name: "Basic Retirement Pension (BRP) + NPF/NSF – Multi-pillar"
+    tier: "first"
+    type: "basic"
+    coverage: "All residents aged 60+ receive universal BRP; NPF/NSF for formal employees"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 60
+        source_citation: "ILO Social Security Inquiry Mauritius: NRA 60 for all; Basic Retirement Pension at 60."
+        year: 2023
+      normal_retirement_age_female:
+        value: 60
+        source_citation: "ILO Social Security Inquiry Mauritius: NRA 60 for females."
+        year: 2023
+      vesting_years:
+        value: 0
+        source_citation: "ILO Social Security Inquiry Mauritius: Basic Retirement Pension (BRP) is universal for all residents at 60; no contribution requirement."
+        year: 2023
+      minimum_contribution_years:
+        value: 0
+        source_citation: "National Pensions Act Mauritius: BRP is non-contributory universal pension; NPF/NSF DC contributions accumulated."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.03
+        source_citation: "ILO Social Security Inquiry Mauritius: employee NPF contribution 3% of wages; NSF contributions additional."
+        year: 2023
+      employer_rate:
+        value: 0.06
+        source_citation: "ILO Social Security Inquiry Mauritius: employer NPF contribution 6% of wages; NSF employer contribution additional."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: approximately 9% NPF contribution; BRP financed from general revenues."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Mauritius: NPF on all earnings; no explicit AW multiple ceiling."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: "BRP is universal non-contributory; NPF (DC) and NSF (DB) provide earnings-related supplements for formal employees."
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: "ILO Social Security Inquiry Mauritius: BRP flat-rate universal; NPF DC balance; NSF DB based on earnings."
+        year: 2023
+      reference_wage: null
+      valorization: "wages"
+      flat_rate_aw_multiple:
+        value: 0.25
+        source_citation: "ILO Social Security Inquiry – Mauritius"
+        year: 2023
+      flat_rate_absolute: null
+      indexation: "wages"
+      minimum_benefit_aw_multiple:
+        value: 0.25
+        source_citation: "ILO Social Security Inquiry Mauritius: BRP approximately MUR 9,000/month (2023) ≈ 25% of average wage for universal coverage."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Mauritius: no explicit maximum; NPF DC pension depends on balance."
+        year: 2023
+      notes: "Universal BRP provides flat pension to all residents 60+; NPF DC and NSF DB add earnings-related components."
+
+    payout:
+      type: "annuity"
+      notes: "BRP paid monthly; NPF may be lump sum or annuity."
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "Pension income subject to income tax in Mauritius; BRP exempt; NPF/NSF pension income may be taxable."
+  simplified_net_rate:
+    value: 0.05
+    source_citation: "ILO Social Security Inquiry Mauritius: estimated effective income tax rate on average pension approximately 5%."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "MUS"
+  ilostat_transformation: "x * 12"
+  manual_value: 440000
+  currency: "Mauritian Rupee"
+  year: 2022
+  source_citation: "Statistics Mauritius: average annual earnings 2022 approximately MUR 440,000."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["MUS_BRP"]
+    source_citation: "National Pensions Act Mauritius: mandatory NPF/NSF for all formally employed workers; BRP universal at 60."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["MUS_BRP"]
+    source_citation: "ILO Social Security Inquiry Mauritius: civil servants covered by Government Service Pension Fund; also eligible for BRP."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: voluntary
+    scheme_ids: ["MUS_BRP"]
+    source_citation: "ILO Social Security Inquiry Mauritius: self-employed eligible for BRP at 60; voluntary NPF contributions."
+    notes: null
+
+notes: null

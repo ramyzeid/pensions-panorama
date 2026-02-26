@@ -1,0 +1,150 @@
+# =============================================================================
+# United Arab Emirates (ARE) – Pension System Parameters
+# =============================================================================
+# Primary scheme: GPSSA (General Pension and Social Security Authority) for UAE nationals
+# Note: Expatriates (~88% of workforce) receive only End-of-Service Gratuity (EOSB)
+#       and are NOT covered by GPSSA pension.
+# Governing law: Federal Law No. 7 of 1999 (as amended by Law No. 21 of 2020)
+#
+# Sources:
+#   [1] GPSSA UAE – www.gpssa.gov.ae – Annual Report 2022
+#   [2] Federal Law No. 7 of 1999 and Federal Law No. 21 of 2020 (amendments)
+#   [3] IMF UAE Article IV 2022
+#   [4] World Bank UAE Social Protection Note 2020
+# =============================================================================
+
+metadata:
+  country_name: "United Arab Emirates"
+  iso3: "ARE"
+  iso2: "AE"
+  currency: "UAE Dirham"
+  currency_code: "AED"
+  reference_year: 2022
+  wb_region: "MEA"
+  wb_income_level: "HIC"
+  un_location_id: 784
+  sources:
+    - "Federal Law No. 7 of 1999 (GPSSA) and Federal Law No. 21 of 2020 (amendments)"
+    - "GPSSA UAE Annual Report 2022 – www.gpssa.gov.ae"
+    - "IMF UAE Article IV 2022"
+  last_reviewed: "2024-03-01"
+
+schemes:
+  - scheme_id: "GPSSA_DB"
+    name: "GPSSA Old-Age Pension (UAE Nationals)"
+    tier: "first"
+    type: "DB"
+    coverage: "UAE national employees in private and public sector (GPSSA). Expatriates excluded."
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 60
+        source_citation: "Federal Law No. 7/1999 Art. 16 as amended – NRA 60 for UAE male nationals."
+        source_url: "https://www.gpssa.gov.ae"
+        year: 2022
+      normal_retirement_age_female:
+        value: 55
+        source_citation: "Federal Law No. 7/1999 Art. 16 – NRA 55 for UAE female nationals; can retire at 50 with 20+ years."
+        year: 2022
+      early_retirement_age_male:
+        value: 55
+        source_citation: "GPSSA – early retirement at 55 with 20+ years service."
+        year: 2022
+      early_retirement_age_female:
+        value: 50
+        source_citation: "GPSSA – early retirement at 50 with 20+ years service."
+        year: 2022
+      vesting_years:
+        value: 5
+        source_citation: "GPSSA – 5 years minimum contributions for any entitlement."
+        year: 2022
+      minimum_contribution_years:
+        value: 15
+        source_citation: "GPSSA – 15 years minimum for old-age pension. Federal Law No. 7/1999 Art. 16."
+        year: 2022
+
+    contributions:
+      employee_rate:
+        value: 0.05
+        source_citation: "Federal Law No. 7/1999 Art. 10 – 5% employee contribution on total salary."
+        source_url: "https://www.gpssa.gov.ae"
+        year: 2022
+      employer_rate:
+        value: 0.15
+        source_citation: "Federal Law No. 7/1999 Art. 10 – 12.5% employer contribution; plus 2.5% government contribution. Effective employer: 12.5% + 2.5% = 15%."
+        year: 2022
+      total_rate:
+        value: null
+        source_citation: "Derived: 5% ee + 12.5% er + 2.5% government = 20% total."
+        year: 2022
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "GPSSA – no statutory ceiling on insurable total salary."
+        year: 2022
+      contribution_base: "total monthly salary (basic + all allowances)"
+
+    benefits:
+      accrual_rate_per_year:
+        value: 0.0267
+        source_citation: "Federal Law No. 7/1999 Art. 17 – 80% of reference salary at 30 years = 2.67%/year."
+        source_url: "https://www.gpssa.gov.ae"
+        year: 2022
+      reference_wage: "career_average"
+      valorization: "wages"
+      indexation: "CPI"
+      minimum_benefit_aw_multiple:
+        value: 0.40
+        source_citation: "GPSSA minimum pension AED 10,000/month for nationals (2022); UAE national AW ~AED 25,000/month → 40%. GPSSA Circular 2022."
+        year: 2022
+      maximum_benefit_aw_multiple:
+        value: 1.00
+        source_citation: "GPSSA – pension can reach 100% at 35+ years service. Federal Law No. 7/1999."
+        year: 2022
+
+    payout:
+      type: "annuity"
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "No personal income tax in UAE. GPSSA pensions received gross."
+  simplified_net_rate:
+    value: 0.0
+    source_citation: "No personal income tax in UAE. Ministry of Finance UAE."
+    year: 2022
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "ARE"
+  ilostat_transformation: "x * 12"
+  manual_value: 300000.0
+  currency: "UAE Dirham"
+  year: 2022
+  source_citation: >
+    GPSSA Annual Report 2022 – average insurable monthly salary for UAE national employees
+    ~AED 25,000/month × 12. FCSC (Federal Competitiveness and Statistics Centre) 2022.
+  source_url: "https://www.gpssa.gov.ae"
+  notes: >
+    UAE national wages reflect predominantly public-sector employment with generous allowances.
+    The all-workforce average (including expats) is much lower (~AED 8,000/month).
+
+# =============================================================================
+# Worker types
+# =============================================================================
+
+worker_types:
+
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: [GPSSA_DB]
+    source_citation: "Default: same as main scheme definition."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: unknown
+    scheme_ids: []
+    source_citation: "Coverage status not yet researched; placeholder."
+    notes: "TODO: verify self-employed coverage under national law."
+

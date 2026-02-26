@@ -1,0 +1,140 @@
+# =============================================================================
+# Vietnam (VNM) – Pension System Parameters
+# =============================================================================
+# Primary scheme: VSS (Vietnam Social Security) – DB/NDC hybrid
+# Sources:
+#   [1] ILO Social Security Inquiry – Vietnam
+#   [2] Vietnam Social Security (VSS) – Annual Report 2022
+#   [3] Law on Social Insurance (Vietnam, 2014, amended 2019)
+# =============================================================================
+
+metadata:
+  country_name: "Vietnam"
+  iso3: "VNM"
+  iso2: "VN"
+  currency: "Vietnamese Dong"
+  currency_code: "VND"
+  reference_year: 2023
+  wb_region: "EAP"
+  wb_income_level: "LMC"
+  un_location_id: 704
+  sources:
+    - "ILO Social Security Inquiry – Vietnam"
+    - "Vietnam Social Security (VSS) Annual Report 2022"
+    - "Law on Social Insurance (Vietnam, 2014, as amended 2019)"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "VNM_VSS"
+    name: "VSS (Vietnam Social Security) – DB Earnings-Related"
+    tier: "first"
+    type: "DB"
+    coverage: "Formally employed workers; mandatory social insurance"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 62
+        source_citation: "ILO Social Security Inquiry Vietnam: VSS NRA gradually increasing to 62 for males by 2028."
+        year: 2023
+      normal_retirement_age_female:
+        value: 60
+        source_citation: "ILO Social Security Inquiry Vietnam: NRA gradually increasing to 60 for females by 2035."
+        year: 2023
+      vesting_years:
+        value: 20
+        source_citation: "ILO Social Security Inquiry Vietnam: minimum 20 years of VSS contributions for full pension."
+        year: 2023
+      minimum_contribution_years:
+        value: 15
+        source_citation: "Law on Social Insurance Vietnam: minimum 15 years for reduced pension; 20 years for full pension."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.08
+        source_citation: "ILO Social Security Inquiry Vietnam: employee VSS pension contribution 8% of monthly salary."
+        year: 2023
+      employer_rate:
+        value: 0.14
+        source_citation: "ILO Social Security Inquiry Vietnam: employer VSS pension contribution 14% of monthly salary."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: 22% total VSS pension contribution (8% employee + 14% employer)."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Vietnam: contributions on monthly salary up to 20 times base salary ceiling."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: "VSS covers both private and public sector workers. Additional contributions for health insurance (BHYT) and occupational accident."
+
+    benefits:
+      accrual_rate_per_year:
+        value: 0.02
+        source_citation: "ILO Social Security Inquiry Vietnam: VSS pension accrues at 2% per year for first 20 years, 1% per additional year."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "wages"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "wages"
+      minimum_benefit_aw_multiple:
+        value: 0.45
+        source_citation: "ILO Social Security Inquiry Vietnam: minimum VSS pension approximately 45% of average formal wage."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: 0.75
+        source_citation: "ILO Social Security Inquiry Vietnam: maximum VSS pension 75% of average monthly salary."
+        year: 2023
+      notes: "VSS pension = 45% of average monthly salary after 20 years + 2% per additional year, max 75%. Social pension for poor elderly."
+
+    payout:
+      type: "annuity"
+      notes: null
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "VSS pension income subject to personal income tax in Vietnam; progressive rates apply."
+  simplified_net_rate:
+    value: 0.05
+    source_citation: "ILO Social Security Inquiry Vietnam: estimated effective income tax rate on average pension approximately 5%."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "VNM"
+  ilostat_transformation: "x * 12"
+  manual_value: 90000000
+  currency: "Vietnamese Dong"
+  year: 2022
+  source_citation: "General Statistics Office of Vietnam: average annual formal earnings 2022 approximately VND 90,000,000."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["VNM_VSS"]
+    source_citation: "Law on Social Insurance Vietnam: mandatory VSS for all formally employed workers."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["VNM_VSS"]
+    source_citation: "ILO Social Security Inquiry Vietnam: civil servants mandatorily covered by VSS."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: voluntary
+    scheme_ids: ["VNM_VSS"]
+    source_citation: "Law on Social Insurance Vietnam: self-employed may voluntarily join VSS."
+    notes: null
+
+notes: null

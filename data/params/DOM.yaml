@@ -1,0 +1,139 @@
+# =============================================================================
+# Dominican Republic (DOM) – Pension System Parameters
+# =============================================================================
+# Primary scheme: CNSS/AFP – Individual DC accounts (reformed 2003)
+# Sources:
+#   [1] OECD Pensions at a Glance 2023 – Latin America: Dominican Republic
+#   [2] Superintendencia de Pensiones (SIPEN) Dominican Republic – Annual Report 2022
+# =============================================================================
+
+metadata:
+  country_name: "Dominican Republic"
+  iso3: "DOM"
+  iso2: "DO"
+  currency: "Dominican Peso"
+  currency_code: "DOP"
+  reference_year: 2023
+  wb_region: "LCN"
+  wb_income_level: "UMC"
+  un_location_id: 214
+  sources:
+    - "OECD Pensions at a Glance 2023 – Latin America: Dominican Republic"
+    - "Superintendencia de Pensiones (SIPEN) Dominican Republic Annual Report 2022"
+    - "Ley de Seguridad Social (Dominican Republic, Law No. 87-01, 2001)"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "DOM_AFP"
+    name: "AFP Individual Accounts (CNSS) – Mandatory DC"
+    tier: "first"
+    type: "DC"
+    coverage: "All formally employed workers; AFP individual account system"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 60
+        source_citation: "OECD Pensions at a Glance 2023 Dominican Republic: NRA 60 for males with minimum 30 years of contributions."
+        year: 2023
+      normal_retirement_age_female:
+        value: 55
+        source_citation: "OECD Pensions at a Glance 2023 Dominican Republic: NRA 55 for females with minimum 30 years of contributions."
+        year: 2023
+      vesting_years:
+        value: 0
+        source_citation: "OECD Pensions at a Glance 2023 Dominican Republic: DC system – balance available at NRA; no minimum vesting period."
+        year: 2023
+      minimum_contribution_years:
+        value: 0
+        source_citation: "Ley 87-01 Dominican Republic: DC accounts – balance accessible at NRA without minimum years; low balances may trigger solidarity fund."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.0287
+        source_citation: "OECD Pensions at a Glance 2023 Dominican Republic: employee AFP contribution 2.87% of wages (of total 9.97% including disability and life insurance)."
+        year: 2023
+      employer_rate:
+        value: 0.0710
+        source_citation: "OECD Pensions at a Glance 2023 Dominican Republic: employer AFP contribution 7.10% of wages (total employer social security contribution)."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: total pension contribution approximately 9.97% (2.87% employee + 7.10% employer) credited to individual accounts."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "OECD Pensions at a Glance 2023 Dominican Republic: contributions on all earnings up to a ceiling; no explicit AW multiple published."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: "Solidarity Fund (Fondo de Solidaridad) provides minimum guarantee pension for those with insufficient accumulated capital."
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: "OECD Pensions at a Glance 2023 Dominican Republic: DC system – pension depends on accumulated balance; no fixed accrual rate."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "interest"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "CPI"
+      minimum_benefit_aw_multiple:
+        value: 0.30
+        source_citation: "OECD Pensions at a Glance 2023 Dominican Republic: solidarity minimum pension guarantee approximately 30% of average salary for qualifying contributors."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "OECD Pensions at a Glance 2023 Dominican Republic: no explicit maximum DC pension."
+        year: 2023
+      notes: "Contributive Subsidised Regime (CSS) for informal sector workers provides partial subsidised coverage."
+
+    payout:
+      type: "annuity"
+      notes: "DC account balance converted to programmed withdrawal or annuity at retirement."
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "Pension income from AFP subject to income tax in Dominican Republic; exemptions apply to minimum pensions."
+  simplified_net_rate:
+    value: 0.05
+    source_citation: "OECD Pensions at a Glance 2023 Dominican Republic: estimated effective income tax rate on average pension approximately 5%."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "DOM"
+  ilostat_transformation: "x * 12"
+  manual_value: 420000
+  currency: "Dominican Peso"
+  year: 2022
+  source_citation: "Banco Central de la República Dominicana: average annual formal sector earnings 2022 approximately DOP 420,000."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["DOM_AFP"]
+    source_citation: "Ley 87-01 Dominican Republic: mandatory AFP for all formally employed private sector workers."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["DOM_AFP"]
+    source_citation: "OECD Pensions at a Glance 2023 Dominican Republic: civil servants covered by AFP system."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: voluntary
+    scheme_ids: ["DOM_AFP"]
+    source_citation: "Ley 87-01 Dominican Republic: self-employed may voluntarily join AFP system."
+    notes: null
+
+notes: null

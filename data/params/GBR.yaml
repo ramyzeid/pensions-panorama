@@ -1,0 +1,142 @@
+# =============================================================================
+# United Kingdom (GBR) – Pension System Parameters
+# =============================================================================
+# Primary scheme: New State Pension (nSP) – Pensions Act 2014
+# Sources:
+#   [1] OECD Pensions at a Glance 2023 – United Kingdom country note
+#   [2] UK Department for Work and Pensions (DWP)
+# =============================================================================
+
+metadata:
+  country_name: "United Kingdom"
+  iso3: "GBR"
+  iso2: "GB"
+  currency: "Pound Sterling"
+  currency_code: "GBP"
+  reference_year: 2023
+  wb_region: "ECS"
+  wb_income_level: "HIC"
+  un_location_id: 826
+  sources:
+    - "OECD Pensions at a Glance 2023"
+    - "UK Department for Work and Pensions – State Pension 2023"
+    - "Pensions Act 2014 (c.19)"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "GBR_NSP"
+    name: "New State Pension (nSP)"
+    tier: "first"
+    type: "basic"
+    coverage: "All working-age residents with qualifying National Insurance contributions"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 66
+        source_citation: "OECD Pensions at a Glance 2023 – United Kingdom: State Pension age 66 for both sexes since October 2020; rising to 67 by 2028."
+        year: 2023
+      normal_retirement_age_female:
+        value: 66
+        source_citation: "OECD Pensions at a Glance 2023 – United Kingdom: State Pension age equalised at 66 for males and females."
+        year: 2023
+      vesting_years:
+        value: 10
+        source_citation: "OECD Pensions at a Glance 2023 – United Kingdom: minimum 10 qualifying NI years required for any new State Pension."
+        year: 2023
+      minimum_contribution_years:
+        value: 35
+        source_citation: "OECD Pensions at a Glance 2023 – United Kingdom: 35 qualifying NI years required for full new State Pension."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.12
+        source_citation: "OECD Pensions at a Glance 2023 – United Kingdom: Class 1 employee NI contribution rate 12% on earnings between Lower and Upper Earnings Limits (2023/24)."
+        year: 2023
+      employer_rate:
+        value: 0.138
+        source_citation: "OECD Pensions at a Glance 2023 – United Kingdom: Class 1 employer NI contribution rate 13.8% on earnings above Secondary Threshold (2023/24)."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived from employee + employer NI rates; NI funds multiple benefits not only pensions."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: 1.43
+        source_citation: "OECD Pensions at a Glance 2023 – United Kingdom: Upper Earnings Limit approximately GBP 50,270 (2023/24), ~1.43× average wage; 2% rate applies above ceiling."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: "National Insurance contributions fund state pension plus other social benefits (NHS, unemployment, etc.)."
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: "OECD Pensions at a Glance 2023 – United Kingdom: new State Pension is flat-rate (basic type); full amount GBP 203.85/week in 2023/24; no earnings-related accrual."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "wages"
+      flat_rate_aw_multiple:
+        value: 0.29
+        source_citation: "OECD Pensions at a Glance 2023 – United Kingdom"
+        year: 2023
+      flat_rate_absolute: null
+      indexation: "mixed"
+      minimum_benefit_aw_multiple:
+        value: null
+        source_citation: "OECD Pensions at a Glance 2023 – United Kingdom: Pension Credit provides means-tested minimum income guarantee for pensioners."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: 0.29
+        source_citation: "OECD Pensions at a Glance 2023 – United Kingdom: full new State Pension GBP 203.85/week (2023/24) ≈ 29% of average earnings."
+        year: 2023
+      notes: "Triple lock: pension uprated by higher of CPI inflation, earnings growth, or 2.5%. flat_rate_aw_multiple updated annually."
+
+    payout:
+      type: "annuity"
+      notes: null
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "State pension income is subject to income tax if total income exceeds personal allowance (GBP 12,570 in 2023/24). Pension income taxed at standard progressive rates (20%, 40%, 45%)."
+  simplified_net_rate:
+    value: 0.12
+    source_citation: "Estimated effective income tax rate on pension income for average UK retiree, based on OECD Taxing Wages 2023 and UK HMRC tax data."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "GBR"
+  ilostat_transformation: "x * 12"
+  manual_value: 34963
+  currency: "Pound Sterling"
+  year: 2022
+  source_citation: "OECD Average Annual Wages database 2022 – United Kingdom: GBP 34,963 average gross annual wage."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["GBR_NSP"]
+    source_citation: "Mandatory National Insurance contributions for all employees; State Pension entitlement accrued automatically – National Insurance Contributions Act 2014."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["GBR_NSP"]
+    source_citation: "Civil servants entitled to new State Pension via NI contributions; most also covered by Civil Service Pension Scheme (Alpha, DB) – Cabinet Office 2023."
+    notes: "Civil servants have both State Pension entitlement and Civil Service Pension Scheme (CSPS) as occupational scheme."
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: mandatory
+    scheme_ids: ["GBR_NSP"]
+    source_citation: "Self-employed pay Class 2/4 NI contributions and accrue State Pension entitlement – OECD Pensions at a Glance 2023 United Kingdom."
+    notes: null
+
+notes: null

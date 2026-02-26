@@ -1,0 +1,140 @@
+# =============================================================================
+# Tuvalu (TUV) – Pension System Parameters
+# =============================================================================
+# Primary scheme: TNPF (Tuvalu National Provident Fund) – DC
+# Sources:
+#   [1] ILO Social Security Inquiry – Tuvalu
+#   [2] Tuvalu National Provident Fund
+#   [3] Tuvalu National Provident Fund Act 1990
+# =============================================================================
+
+metadata:
+  country_name: "Tuvalu"
+  iso3: "TUV"
+  iso2: "TV"
+  currency: "Australian Dollar"
+  currency_code: "AUD"
+  reference_year: 2023
+  wb_region: "EAP"
+  wb_income_level: "LMC"
+  un_location_id: 798
+  sources:
+    - "ILO Social Security Inquiry – Tuvalu"
+    - "Tuvalu National Provident Fund"
+    - "Tuvalu National Provident Fund Act 1990"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "TUV_TNPF"
+    name: "TNPF (Tuvalu National Provident Fund) – DC Provident Fund"
+    tier: "first"
+    type: "DC"
+    coverage: "Formally employed workers; mandatory provident fund"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 55
+        source_citation: "ILO Social Security Inquiry Tuvalu: TNPF withdrawal age 55 for males."
+        year: 2023
+      normal_retirement_age_female:
+        value: 55
+        source_citation: "ILO Social Security Inquiry Tuvalu: withdrawal age 55 for females."
+        year: 2023
+      vesting_years:
+        value: 0
+        source_citation: "ILO Social Security Inquiry Tuvalu: DC provident fund – balance accessible at age 55."
+        year: 2023
+      minimum_contribution_years:
+        value: 0
+        source_citation: "TNPF Act Tuvalu: accumulated balance available at age 55 without minimum years."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.075
+        source_citation: "ILO Social Security Inquiry Tuvalu: TNPF employee contribution 7.5% of wages."
+        year: 2023
+      employer_rate:
+        value: 0.075
+        source_citation: "ILO Social Security Inquiry Tuvalu: TNPF employer contribution 7.5% of wages."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: 15% total TNPF contribution (7.5% each)."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Tuvalu: contributions on all wages; no explicit AW ceiling."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: "Tuvalu uses Australian Dollar. Very small island state; extremely limited formal economy. Climate change existential threat."
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: "ILO Social Security Inquiry Tuvalu: TNPF DC provident fund – balance paid at retirement."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "interest"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "none"
+      minimum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Tuvalu: no statutory minimum TNPF pension."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Tuvalu: no explicit maximum; depends on contributions."
+        year: 2023
+      notes: "TNPF balance paid as lump sum. Tuvalu Trust Fund provides national income supplement."
+
+    payout:
+      type: "lump_sum"
+      notes: "TNPF accumulated balance paid as lump sum at age 55."
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "TNPF withdrawals subject to income tax in Tuvalu; limited formal tax system."
+  simplified_net_rate:
+    value: 0.05
+    source_citation: "ILO Social Security Inquiry Tuvalu: estimated effective income tax rate approximately 5%."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "TUV"
+  ilostat_transformation: "x * 12"
+  manual_value: 12000
+  currency: "Australian Dollar"
+  year: 2022
+  source_citation: "Tuvalu Central Statistics Division: estimated average annual formal earnings 2022 approximately AUD 12,000."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["TUV_TNPF"]
+    source_citation: "TNPF Act Tuvalu: mandatory TNPF for formally employed workers."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["TUV_TNPF"]
+    source_citation: "ILO Social Security Inquiry Tuvalu: civil servants covered by TNPF."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: voluntary
+    scheme_ids: ["TUV_TNPF"]
+    source_citation: "ILO Social Security Inquiry Tuvalu: self-employed may voluntarily contribute to TNPF."
+    notes: null
+
+notes: null

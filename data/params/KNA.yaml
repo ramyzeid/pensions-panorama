@@ -1,0 +1,139 @@
+# =============================================================================
+# Saint Kitts and Nevis (KNA) – Pension System Parameters
+# =============================================================================
+# Primary scheme: Social Security Scheme – DB earnings-related
+# Sources:
+#   [1] ILO Social Security Inquiry – Saint Kitts and Nevis
+#   [2] Social Security Fund Saint Kitts and Nevis – Annual Report 2022
+# =============================================================================
+
+metadata:
+  country_name: "Saint Kitts and Nevis"
+  iso3: "KNA"
+  iso2: "KN"
+  currency: "East Caribbean Dollar"
+  currency_code: "XCD"
+  reference_year: 2023
+  wb_region: "LCN"
+  wb_income_level: "HIC"
+  un_location_id: 659
+  sources:
+    - "ILO Social Security Inquiry – Saint Kitts and Nevis"
+    - "Social Security Fund Saint Kitts and Nevis Annual Report 2022"
+    - "Social Security Act (Saint Kitts and Nevis, 1977, as amended)"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "KNA_SSF"
+    name: "Social Security Fund (SSF) – DB Earnings-Related"
+    tier: "first"
+    type: "DB"
+    coverage: "All employed persons; mandatory social security"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 62
+        source_citation: "ILO Social Security Inquiry Saint Kitts and Nevis: NRA 62 for males."
+        year: 2023
+      normal_retirement_age_female:
+        value: 62
+        source_citation: "ILO Social Security Inquiry Saint Kitts and Nevis: NRA 62 for females."
+        year: 2023
+      vesting_years:
+        value: 10
+        source_citation: "ILO Social Security Inquiry Saint Kitts and Nevis: minimum 500 weekly contributions (approximately 10 years) for retirement benefit."
+        year: 2023
+      minimum_contribution_years:
+        value: 10
+        source_citation: "Social Security Act KNA: minimum 500 weeks for retirement pension."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.05
+        source_citation: "ILO Social Security Inquiry Saint Kitts and Nevis: employee SSF contribution 5% of insurable wages."
+        year: 2023
+      employer_rate:
+        value: 0.09
+        source_citation: "ILO Social Security Inquiry Saint Kitts and Nevis: employer SSF contribution 9% of insurable wages."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: 14% total SSF contribution (5% employee + 9% employer)."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Saint Kitts and Nevis: insurable earnings ceiling by regulation; no explicit AW multiple."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: null
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: "ILO Social Security Inquiry Saint Kitts and Nevis: SSF pension based on average insurable earnings and contribution record."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "prices"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "prices"
+      minimum_benefit_aw_multiple:
+        value: 0.25
+        source_citation: "ILO Social Security Inquiry Saint Kitts and Nevis: minimum retirement pension approximately 25% of average insurable earnings."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Saint Kitts and Nevis: maximum pension constrained by insurable earnings ceiling."
+        year: 2023
+      notes: null
+
+    payout:
+      type: "annuity"
+      notes: null
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "Saint Kitts and Nevis has no personal income tax on most income; pension income generally tax-free."
+  simplified_net_rate:
+    value: 0.0
+    source_citation: "ILO Social Security Inquiry Saint Kitts and Nevis: no personal income tax; pension income tax-free."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "KNA"
+  ilostat_transformation: "x * 12"
+  manual_value: 45000
+  currency: "East Caribbean Dollar"
+  year: 2022
+  source_citation: "ILO ILOSTAT: estimated average annual earnings Saint Kitts and Nevis 2022 approximately XCD 45,000."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["KNA_SSF"]
+    source_citation: "Social Security Act KNA: mandatory SSF for all private sector employees."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["KNA_SSF"]
+    source_citation: "ILO Social Security Inquiry Saint Kitts and Nevis: civil servants covered by SSF."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: voluntary
+    scheme_ids: ["KNA_SSF"]
+    source_citation: "Social Security Act KNA: self-employed may voluntarily contribute to SSF."
+    notes: null
+
+notes: null

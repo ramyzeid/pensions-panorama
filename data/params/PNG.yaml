@@ -1,0 +1,140 @@
+# =============================================================================
+# Papua New Guinea (PNG) – Pension System Parameters
+# =============================================================================
+# Primary scheme: Nasfund (National Superannuation Fund) – DC
+# Sources:
+#   [1] ILO Social Security Inquiry – Papua New Guinea
+#   [2] Nasfund Papua New Guinea – Annual Report 2022
+#   [3] Superannuation (General Provisions) Act 2000 (Papua New Guinea)
+# =============================================================================
+
+metadata:
+  country_name: "Papua New Guinea"
+  iso3: "PNG"
+  iso2: "PG"
+  currency: "Papua New Guinea Kina"
+  currency_code: "PGK"
+  reference_year: 2023
+  wb_region: "EAP"
+  wb_income_level: "LMC"
+  un_location_id: 598
+  sources:
+    - "ILO Social Security Inquiry – Papua New Guinea"
+    - "Nasfund Papua New Guinea Annual Report 2022"
+    - "Superannuation (General Provisions) Act 2000 (Papua New Guinea)"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "PNG_NASFUND"
+    name: "Nasfund (National Superannuation Fund) – DC"
+    tier: "first"
+    type: "DC"
+    coverage: "Formally employed workers; mandatory superannuation"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 55
+        source_citation: "ILO Social Security Inquiry PNG: Nasfund withdrawal age 55 for males."
+        year: 2023
+      normal_retirement_age_female:
+        value: 55
+        source_citation: "ILO Social Security Inquiry PNG: withdrawal age 55 for females."
+        year: 2023
+      vesting_years:
+        value: 0
+        source_citation: "ILO Social Security Inquiry PNG: DC superannuation – accumulated balance accessible at age 55."
+        year: 2023
+      minimum_contribution_years:
+        value: 0
+        source_citation: "Superannuation Act PNG: DC balance accessible at retirement age without minimum years."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.06
+        source_citation: "ILO Social Security Inquiry PNG: Nasfund employee contribution 6% of wages."
+        year: 2023
+      employer_rate:
+        value: 0.084
+        source_citation: "ILO Social Security Inquiry PNG: Nasfund employer contribution 8.4% of wages."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: 14.4% total Nasfund contribution (6% employee + 8.4% employer)."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry PNG: contributions on all wages; no explicit AW ceiling."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: "Nasfund is the largest of several approved superannuation funds. Public employees covered by Nambawan Super."
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: "ILO Social Security Inquiry PNG: Nasfund DC scheme – pension based on accumulated contributions and investment returns."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "interest"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "none"
+      minimum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry PNG: no statutory minimum Nasfund pension."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry PNG: no explicit maximum; depends on accumulated balance."
+        year: 2023
+      notes: "Nasfund balance typically paid as lump sum at retirement. Very large informal economy."
+
+    payout:
+      type: "lump_sum"
+      notes: "Nasfund accumulated balance paid as lump sum at retirement."
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "Nasfund lump-sum withdrawal subject to income tax in PNG; exemptions apply."
+  simplified_net_rate:
+    value: 0.05
+    source_citation: "ILO Social Security Inquiry PNG: estimated effective income tax rate on average Nasfund withdrawal approximately 5%."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "PNG"
+  ilostat_transformation: "x * 12"
+  manual_value: 30000
+  currency: "Papua New Guinea Kina"
+  year: 2022
+  source_citation: "National Statistical Office PNG: estimated average annual formal earnings 2022 approximately PGK 30,000."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["PNG_NASFUND"]
+    source_citation: "Superannuation Act PNG: mandatory superannuation for formally employed workers."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["PNG_NASFUND"]
+    source_citation: "ILO Social Security Inquiry PNG: public sector employees covered by Nambawan Super."
+    notes: "Public sector employees covered by Nambawan Super, not Nasfund."
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: voluntary
+    scheme_ids: ["PNG_NASFUND"]
+    source_citation: "ILO Social Security Inquiry PNG: self-employed not mandatorily covered by superannuation."
+    notes: null
+
+notes: null

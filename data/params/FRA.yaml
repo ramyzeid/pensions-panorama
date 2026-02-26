@@ -1,0 +1,211 @@
+# =============================================================================
+# France (FRA) – Pension System Parameters
+# =============================================================================
+# Primary scheme: Assurance Vieillesse (CNAV) + AGIRC-ARRCO points (2nd pillar)
+# Sources:
+#   [1] OECD Pensions at a Glance 2023 – France country note
+#   [2] Caisse Nationale d'Assurance Vieillesse (CNAV)
+#   [3] AGIRC-ARRCO
+# =============================================================================
+
+metadata:
+  country_name: "France"
+  iso3: "FRA"
+  iso2: "FR"
+  currency: "Euro"
+  currency_code: "EUR"
+  reference_year: 2023
+  wb_region: "ECS"
+  wb_income_level: "HIC"
+  un_location_id: 250
+  sources:
+    - "OECD Pensions at a Glance 2023"
+    - "Caisse Nationale d'Assurance Vieillesse (CNAV)"
+    - "AGIRC-ARRCO convention collective nationale"
+    - "Loi de réforme des retraites 2023 (Loi n° 2023-270)"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "FRA_CNAV"
+    name: "Assurance Vieillesse – Régime Général (CNAV)"
+    tier: "first"
+    type: "DB"
+    coverage: "Private sector employees and assimilated workers in the general regime"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 64
+        source_citation: "OECD Pensions at a Glance 2023 – France: NRA raised to 64 under 2023 pension reform (Loi n° 2023-270), phased in from 62."
+        year: 2023
+      normal_retirement_age_female:
+        value: 64
+        source_citation: "OECD Pensions at a Glance 2023 – France: NRA raised to 64 for both sexes under 2023 pension reform."
+        year: 2023
+      vesting_years:
+        value: 1
+        source_citation: "OECD Pensions at a Glance 2023 – France country note: minimal vesting period for partial pension entitlement."
+        year: 2023
+      minimum_contribution_years:
+        value: 43
+        source_citation: "OECD Pensions at a Glance 2023 – France: 43 years (172 quarters) required for full rate pension under 2023 reform, phased in by 2027."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.0690
+        source_citation: "OECD Pensions at a Glance 2023 – France: employee contribution rate 6.90% on earnings up to the ceiling (plafond de la Sécurité sociale)."
+        year: 2023
+      employer_rate:
+        value: 0.0855
+        source_citation: "OECD Pensions at a Glance 2023 – France: employer contribution rate 8.55% on earnings up to the ceiling."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived from employee + employer rates for CNAV first pillar."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: 1.0
+        source_citation: "OECD Pensions at a Glance 2023 – France: CNAV contributions apply up to 1× Plafond de la Sécurité Sociale (EUR 43,992 in 2023)."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: "Additional reduced-rate contributions apply on earnings above the ceiling. AGIRC-ARRCO contributions are additional."
+
+    benefits:
+      accrual_rate_per_year:
+        value: 0.0163
+        source_citation: "OECD Pensions at a Glance 2023 – France: CNAV accrual rate 1/150 ≈ 0.0167 per quarter of full-rate career, equivalent to ~1.63% per year based on 50% replacement at full career."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "CPI"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "CPI"
+      minimum_benefit_aw_multiple:
+        value: 0.37
+        source_citation: "OECD Pensions at a Glance 2023 – France: minimum contributive pension (minimum contributif) approximately 37% of average wage for full career."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: 0.50
+        source_citation: "OECD Pensions at a Glance 2023 – France: CNAV maximum replacement rate 50% of reference salary (best 25 years, indexed to CPI)."
+        year: 2023
+      notes: "Reference salary = average of best 25 years, revalued by CPI. Maximum replacement 50% from CNAV alone; full replacement includes AGIRC-ARRCO points."
+
+    payout:
+      type: "annuity"
+      notes: null
+
+  - scheme_id: "FRA_AGIRC_ARRCO"
+    name: "AGIRC-ARRCO Complementary Points Pension"
+    tier: "second"
+    type: "points"
+    coverage: "All private sector employees (mandatory complementary scheme)"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 64
+        source_citation: "OECD Pensions at a Glance 2023 – France: AGIRC-ARRCO aligned with CNAV NRA at 64; bonus/malus system incentivises deferral."
+        year: 2023
+      normal_retirement_age_female:
+        value: 64
+        source_citation: "OECD Pensions at a Glance 2023 – France: AGIRC-ARRCO NRA 64 aligned with general regime."
+        year: 2023
+      vesting_years:
+        value: 1
+        source_citation: "OECD Pensions at a Glance 2023 – France country note: AGIRC-ARRCO points vest after minimal period."
+        year: 2023
+      minimum_contribution_years:
+        value: null
+        source_citation: "OECD Pensions at a Glance 2023 – France: AGIRC-ARRCO is points-based; no specific minimum years for partial benefit."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.0387
+        source_citation: "OECD Pensions at a Glance 2023 – France: AGIRC-ARRCO employee rate approximately 3.87% on tranche 1 earnings (up to PSS ceiling)."
+        year: 2023
+      employer_rate:
+        value: 0.0588
+        source_citation: "OECD Pensions at a Glance 2023 – France: AGIRC-ARRCO employer rate approximately 5.88% on tranche 1 earnings."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived from AGIRC-ARRCO employee + employer rates; higher rates apply on tranche 2 earnings."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: 8.0
+        source_citation: "OECD Pensions at a Glance 2023 – France: AGIRC-ARRCO contributions apply up to 8× Plafond de la Sécurité Sociale."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: null
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: "OECD Pensions at a Glance 2023 – France: AGIRC-ARRCO is a points scheme; benefit = accumulated points × point value; no fixed accrual rate per year."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "mixed"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "CPI"
+      minimum_benefit_aw_multiple:
+        value: null
+        source_citation: "OECD Pensions at a Glance 2023 – France: AGIRC-ARRCO has no statutory minimum benefit."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "OECD Pensions at a Glance 2023 – France: no explicit maximum for AGIRC-ARRCO points pension."
+        year: 2023
+      notes: null
+
+    payout:
+      type: "annuity"
+      notes: null
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "Pension income subject to income tax at standard progressive rates (barème de l'impôt). CSG at 8.3% and CRDS at 0.5% apply on pension income above a threshold."
+  simplified_net_rate:
+    value: 0.17
+    source_citation: "Estimated effective pension tax rate including income tax and CSG/CRDS levies for average French retiree, based on OECD Taxing Wages 2023."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "FRA"
+  ilostat_transformation: "x * 12"
+  manual_value: 40090
+  currency: "Euro"
+  year: 2022
+  source_citation: "OECD Average Annual Wages database 2022 – France: EUR 40,090 average gross annual wage."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["FRA_CNAV", "FRA_AGIRC_ARRCO"]
+    source_citation: "Mandatory coverage under Régime Général (CNAV) and AGIRC-ARRCO for all private sector employees – Code de la Sécurité Sociale."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant (Fonctionnaire)"
+    coverage_status: mandatory
+    scheme_ids: ["FRA_CNAV"]
+    source_citation: "Civil servants covered under separate Régime des fonctionnaires (CNRACL for territorial/hospital; Pension civile for state) – OECD Pensions at a Glance 2023 France."
+    notes: "Civil servants have their own pension scheme (Pension civile / CNRACL), not CNAV; mapped to first pillar for modeling purposes."
+
+  self_employed:
+    label: "Self-employed (Travailleur indépendant)"
+    coverage_status: mandatory
+    scheme_ids: ["FRA_CNAV"]
+    source_citation: "Self-employed covered under Sécurité Sociale des Indépendants (SSI), integrated into régime général since 2018 – OECD Pensions at a Glance 2023 France."
+    notes: null
+
+notes: null

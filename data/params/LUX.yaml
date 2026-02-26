@@ -1,0 +1,139 @@
+# =============================================================================
+# Luxembourg (LUX) – Pension System Parameters
+# =============================================================================
+# Primary scheme: CNAP (DB earnings-related)
+# Sources:
+#   [1] OECD Pensions at a Glance 2023 – Luxembourg
+#   [2] STATEC – Statistical Yearbook Luxembourg 2023
+# =============================================================================
+
+metadata:
+  country_name: "Luxembourg"
+  iso3: "LUX"
+  iso2: "LU"
+  currency: "Euro"
+  currency_code: "EUR"
+  reference_year: 2023
+  wb_region: "ECS"
+  wb_income_level: "HIC"
+  un_location_id: 442
+  sources:
+    - "OECD Pensions at a Glance 2023 – Luxembourg"
+    - "STATEC Statistical Yearbook Luxembourg 2023"
+    - "Social Security Code (Code de la sécurité sociale) Luxembourg"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "LUX_CNAP"
+    name: "National Pension Insurance Fund (CNAP) – DB Pension"
+    tier: "first"
+    type: "DB"
+    coverage: "All employed workers and self-employed"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 65
+        source_citation: "OECD Pensions at a Glance 2023 Luxembourg: NRA 65 for both sexes."
+        year: 2023
+      normal_retirement_age_female:
+        value: 65
+        source_citation: "OECD Pensions at a Glance 2023 Luxembourg: NRA equalised at 65 for females."
+        year: 2023
+      vesting_years:
+        value: 1
+        source_citation: "OECD Pensions at a Glance 2023 Luxembourg: minimum 1 year of qualifying insurance for partial pension."
+        year: 2023
+      minimum_contribution_years:
+        value: 40
+        source_citation: "OECD Pensions at a Glance 2023 Luxembourg: 40 years for full pension; early retirement possible at 57 with 40 years."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.08
+        source_citation: "OECD Pensions at a Glance 2023 Luxembourg: employee pension contribution 8% of gross wages."
+        year: 2023
+      employer_rate:
+        value: 0.08
+        source_citation: "OECD Pensions at a Glance 2023 Luxembourg: employer pension contribution 8% of gross wages (matched with employee; state adds additional 8%)."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: 24% total pension contribution (8% employee + 8% employer + 8% state)."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "OECD Pensions at a Glance 2023 Luxembourg: no explicit contribution ceiling as multiple of average wage."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: "State contributes 8% on top of employee and employer contributions."
+
+    benefits:
+      accrual_rate_per_year:
+        value: 0.01875
+        source_citation: "OECD Pensions at a Glance 2023 Luxembourg: pension accrual rate 1.875% per qualifying year of career-average earnings."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "wages"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "wages"
+      minimum_benefit_aw_multiple:
+        value: 0.35
+        source_citation: "OECD Pensions at a Glance 2023 Luxembourg: minimum pension approximately 35% of average wage for those with minimum contribution record."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "OECD Pensions at a Glance 2023 Luxembourg: pension capped at approximately 5/6 (83.3%) of reference wage."
+        year: 2023
+      notes: "Pension includes flat-rate base (forfait de base) + earnings-related proportional component. Indexed to real wage growth."
+
+    payout:
+      type: "annuity"
+      notes: null
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "Pension income subject to progressive income tax in Luxembourg; special pension tax credit reduces effective rate."
+  simplified_net_rate:
+    value: 0.15
+    source_citation: "OECD Pensions at a Glance 2023 Luxembourg: estimated effective income tax rate on average pension approximately 15%."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "LUX"
+  ilostat_transformation: "x * 12"
+  manual_value: 70000
+  currency: "Euro"
+  year: 2022
+  source_citation: "OECD Average Annual Wages 2022 – Luxembourg: approximately EUR 73,948 gross annual."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["LUX_CNAP"]
+    source_citation: "Social Security Code Luxembourg: mandatory CNAP coverage for all private sector employees."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["LUX_CNAP"]
+    source_citation: "OECD Pensions at a Glance 2023 Luxembourg: civil servants covered under the same general CNAP scheme."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: mandatory
+    scheme_ids: ["LUX_CNAP"]
+    source_citation: "Social Security Code Luxembourg: self-employed required to contribute to CNAP."
+    notes: null
+
+notes: null

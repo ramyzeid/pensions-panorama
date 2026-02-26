@@ -1,0 +1,183 @@
+# =============================================================================
+# Mauritania (MRT) – Pension System Parameters
+# =============================================================================
+# Primary scheme: CNSS – Caisse Nationale de Sécurité Sociale
+# Governing law: Social Security Code (Ordonnance No. 67-039 of 1967 as amended)
+#
+# Sources:
+#   [1] CNSS Mauritania – www.cnss.mr – Annual Report 2021
+#   [2] Code de Sécurité Sociale de Mauritanie 1967 (as amended)
+#   [3] World Bank Mauritania Social Protection Assessment 2017
+#   [4] ILO Mauritania Social Security Country Profile 2020
+# =============================================================================
+
+metadata:
+  country_name: "Mauritania"
+  iso3: "MRT"
+  iso2: "MR"
+  currency: "Mauritanian Ouguiya"
+  currency_code: "MRU"
+  reference_year: 2022
+  wb_region: "SSA"
+  wb_income_level: "LMC"
+  un_location_id: 478
+  sources:
+    - "Code de Sécurité Sociale Mauritanie (Ordonnance No. 67-039 of 1967 as amended)"
+    - "CNSS Mauritanie Annual Report 2021 – www.cnss.mr"
+    - "World Bank Mauritania Social Protection Assessment 2017"
+    - "ILO Mauritania Social Security Country Profile 2020"
+  last_reviewed: "2024-03-01"
+
+schemes:
+  - scheme_id: "CNSS_DB"
+    name: "CNSS Old-Age Pension"
+    tier: "first"
+    type: "DB"
+    coverage: >
+      Formal private sector employees and some public entity workers. Civil servants
+      covered by a separate government pension regime. Coverage estimated at 10-15%
+      of total workforce; large informal sector (~75%).
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 60
+        source_citation: >
+          Social Security Code Mauritania – NRA 60 for males.
+          CNSS Mauritanie 2022.
+        source_url: "https://www.cnss.mr"
+        year: 2022
+      normal_retirement_age_female:
+        value: 60
+        source_citation: >
+          Social Security Code Mauritania – NRA 60 for females.
+          CNSS Mauritanie 2022.
+        year: 2022
+      vesting_years:
+        value: 15
+        source_citation: >
+          Social Security Code – minimum 15 years (60 quarterly periods) of contributions
+          for pension entitlement. CNSS Mauritanie 2022.
+        year: 2022
+      minimum_contribution_years:
+        value: 15
+        source_citation: "CNSS – 15 years (60 trimestres) minimum for old-age pension."
+        year: 2022
+
+    contributions:
+      employee_rate:
+        value: 0.01
+        source_citation: >
+          Social Security Code Mauritania – employee contribution 1% of wage (for old-age
+          pension branch). CNSS Mauritanie 2022.
+        source_url: "https://www.cnss.mr"
+        year: 2022
+      employer_rate:
+        value: 0.08
+        source_citation: >
+          Social Security Code – employer contribution 8% of wage (old-age pension branch).
+          Total CNSS burden (pension + family + work injury) is higher. CNSS Mauritanie 2022.
+        year: 2022
+      total_rate:
+        value: 0.09
+        source_citation: "Employee 1% + Employer 8% = 9% for pension branch. CNSS Mauritanie."
+        year: 2022
+      contribution_ceiling_aw_multiple:
+        value: 2.0
+        source_citation: >
+          Social Security Code – contribution ceiling is 2× the guaranteed minimum wage (SMIG).
+          SMIG 2022 ~MRU 30,000/year; ceiling ~MRU 60,000/year. With AW ~MRU 600,000/year
+          → ceiling ≈ 0.1× AW; however official ceiling expressed as 2× SMIG.
+          Using 2.0 as ceiling multiple of SMIG. CNSS Mauritanie 2022.
+        year: 2022
+      contribution_base: "gross wage up to ceiling"
+
+    benefits:
+      accrual_rate_per_year:
+        value: 0.015
+        source_citation: >
+          CNSS Mauritanie – pension benefit: base rate 30% at 15 years, plus approximately
+          1-1.5% per additional year, calculated on average of last 3-5 years earnings.
+          Effective accrual approximated at 1.5%/year career average.
+          Maximum benefit ~60-70% at 40 years. CNSS Mauritanie 2022.
+        source_url: "https://www.cnss.mr"
+        year: 2022
+      reference_wage: "final_salary"
+      valorization: "wages"
+      indexation: "CPI"
+      minimum_benefit_aw_multiple:
+        value: 0.10
+        source_citation: >
+          CNSS minimum pension ~MRU 60,000/year (2022 estimate).
+          With AW ~MRU 600,000/year → ~10% AW. CNSS Mauritanie 2022.
+        year: 2022
+      maximum_benefit_aw_multiple:
+        value: 0.60
+        source_citation: >
+          CNSS maximum pension approximately 60-65% of reference wage after 40+ years.
+          Based on accrual formula: 1.5% × 40 = 60%. CNSS Mauritanie 2022.
+        year: 2022
+
+    payout:
+      type: "annuity"
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: >
+    CNSS pension income is subject to the General Income Tax (IGR – Impôt Général sur
+    le Revenu) in Mauritania at progressive rates. However, pension income below
+    a threshold is exempt. Effective rate for average pensioner is very low given
+    low pension levels. General Tax Code Mauritania.
+  simplified_net_rate:
+    value: 0.05
+    source_citation: >
+      Estimated effective IGR rate on CNSS pension income ~5% for average pensioner.
+      Progressive rates 0-40%; most pensions fall in lower brackets or below exemption threshold.
+      General Tax Code Mauritania (CGI).
+    year: 2022
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "MRT"
+  ilostat_transformation: "x * 12"
+  manual_value: 600000.0
+  currency: "Mauritanian Ouguiya"
+  year: 2022
+  source_citation: >
+    Office National de la Statistique (ONS) Mauritanie – Enquête sur l'Emploi 2020.
+    Average formal sector monthly wage ~MRU 50,000/month × 12 = MRU 600,000/year.
+    The new Mauritanian Ouguiya (MRU) replaced the old Ouguiya (MRO) in 2018 at 1:10.
+    ILOSTAT data for MRT is limited; manual estimate used.
+  source_url: "https://www.cnss.mr"
+  notes: >
+    The new MRU (Mauritanian Ouguiya) was introduced in 2018. Wage data in MRU.
+    Large informal sector means formal-sector AW significantly exceeds economy-wide average.
+
+
+# =============================================================================
+# Worker types
+# =============================================================================
+
+worker_types:
+
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: [CNSS_DB]
+    source_citation: "Default: same as main scheme definition."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: unknown
+    scheme_ids: []
+    source_citation: "Coverage status not yet researched; placeholder."
+    notes: "TODO: verify self-employed coverage under national law."
+
+notes: >
+  Mauritania's CNSS covers only a small fraction of the labour force due to the large
+  informal economy (estimated 75%+ of workers). Civil servants are covered separately
+  by the Caisse de Retraite des Fonctionnaires et Assimilés (CRFA). The contribution
+  ceiling (2× SMIG) is very low relative to actual wages, severely limiting replacement rates.
+  The note about contribution ceiling expressed as multiple of SMIG rather than AW is important
+  for interpreting results.

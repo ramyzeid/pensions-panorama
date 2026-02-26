@@ -1,0 +1,139 @@
+# =============================================================================
+# Bahamas (BHS) – Pension System Parameters
+# =============================================================================
+# Primary scheme: National Insurance Board (NIB) – DB earnings-related
+# Sources:
+#   [1] ILO Social Security Inquiry – Bahamas
+#   [2] National Insurance Board Bahamas – Annual Report 2022
+# =============================================================================
+
+metadata:
+  country_name: "Bahamas"
+  iso3: "BHS"
+  iso2: "BS"
+  currency: "Bahamian Dollar"
+  currency_code: "BSD"
+  reference_year: 2023
+  wb_region: "LCN"
+  wb_income_level: "HIC"
+  un_location_id: 44
+  sources:
+    - "ILO Social Security Inquiry – Bahamas"
+    - "National Insurance Board Bahamas Annual Report 2022"
+    - "National Insurance Act (Bahamas, 1972, as amended)"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "BHS_NIB"
+    name: "National Insurance Board (NIB) – DB Earnings-Related"
+    tier: "first"
+    type: "DB"
+    coverage: "All employed persons; mandatory national insurance"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 65
+        source_citation: "ILO Social Security Inquiry Bahamas: NRA 65 for males."
+        year: 2023
+      normal_retirement_age_female:
+        value: 65
+        source_citation: "ILO Social Security Inquiry Bahamas: NRA 65 for females."
+        year: 2023
+      vesting_years:
+        value: 10
+        source_citation: "ILO Social Security Inquiry Bahamas: minimum 150 weekly contributions for retirement benefit (approximately 3 years); full pension requires more."
+        year: 2023
+      minimum_contribution_years:
+        value: 10
+        source_citation: "National Insurance Act Bahamas: approximately 10 years of contributions for meaningful retirement pension."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.039
+        source_citation: "ILO Social Security Inquiry Bahamas: employee NIB contribution 3.9% of insurable wages."
+        year: 2023
+      employer_rate:
+        value: 0.054
+        source_citation: "ILO Social Security Inquiry Bahamas: employer NIB contribution 5.4% of insurable wages."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: 9.3% total NIB contribution (3.9% employee + 5.4% employer)."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Bahamas: insurable earnings ceiling BSD 710/week; no explicit AW multiple."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: null
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: "ILO Social Security Inquiry Bahamas: NIB retirement benefit based on average insurable earnings and contribution record; no simple accrual rate."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "prices"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "prices"
+      minimum_benefit_aw_multiple:
+        value: 0.30
+        source_citation: "ILO Social Security Inquiry Bahamas: minimum NIB retirement pension approximately 30% of average insurable earnings."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Bahamas: maximum pension constrained by insurable earnings ceiling."
+        year: 2023
+      notes: null
+
+    payout:
+      type: "annuity"
+      notes: null
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "Bahamas has no personal income tax; NIB pension income is tax-free."
+  simplified_net_rate:
+    value: 0.0
+    source_citation: "ILO Social Security Inquiry Bahamas: Bahamas has no personal income tax; pension income is fully tax-free."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "BHS"
+  ilostat_transformation: "x * 12"
+  manual_value: 32000
+  currency: "Bahamian Dollar"
+  year: 2022
+  source_citation: "Bahamas Department of Statistics: average annual earnings 2022 approximately BSD 32,000."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["BHS_NIB"]
+    source_citation: "National Insurance Act Bahamas: mandatory NIB for all private sector employees."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["BHS_NIB"]
+    source_citation: "ILO Social Security Inquiry Bahamas: civil servants covered by NIB; government employees pension scheme supplements."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: mandatory
+    scheme_ids: ["BHS_NIB"]
+    source_citation: "National Insurance Act Bahamas: self-employed required to contribute to NIB."
+    notes: null
+
+notes: null

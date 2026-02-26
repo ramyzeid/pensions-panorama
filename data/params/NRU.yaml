@@ -1,0 +1,138 @@
+# =============================================================================
+# Nauru (NRU) – Pension System Parameters
+# =============================================================================
+# Primary scheme: NRF (Nauru Phosphate Royalties Trust) / Limited formal pension
+# Sources:
+#   [1] ILO Social Security Inquiry – Nauru
+#   [2] World Bank Pacific Islands Social Protection Review
+# =============================================================================
+
+metadata:
+  country_name: "Nauru"
+  iso3: "NRU"
+  iso2: "NR"
+  currency: "Australian Dollar"
+  currency_code: "AUD"
+  reference_year: 2023
+  wb_region: "EAP"
+  wb_income_level: "HIC"
+  un_location_id: 520
+  sources:
+    - "ILO Social Security Inquiry – Nauru"
+    - "World Bank Pacific Islands Social Protection Review"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "NRU_GOV"
+    name: "Government Employee Pension – DB"
+    tier: "first"
+    type: "DB"
+    coverage: "Government employees; limited formal pension for small island state"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 60
+        source_citation: "ILO Social Security Inquiry Nauru: government pension retirement age approximately 60."
+        year: 2023
+      normal_retirement_age_female:
+        value: 60
+        source_citation: "ILO Social Security Inquiry Nauru: retirement age approximately 60 for females."
+        year: 2023
+      vesting_years:
+        value: 10
+        source_citation: "ILO Social Security Inquiry Nauru: minimum service period for government pension."
+        year: 2023
+      minimum_contribution_years:
+        value: 10
+        source_citation: "ILO Social Security Inquiry Nauru: minimum 10 years of government service."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: null
+        source_citation: "ILO Social Security Inquiry Nauru: limited documentation on contribution rates; government-funded pension."
+        year: 2023
+      employer_rate:
+        value: null
+        source_citation: "ILO Social Security Inquiry Nauru: government pension funded from general budget."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "ILO Social Security Inquiry Nauru: pension primarily government-funded."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Nauru: no AW ceiling documented."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: "Nauru is a very small island state that historically relied on phosphate revenue. Uses Australian Dollar. Very limited formal private sector."
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: "ILO Social Security Inquiry Nauru: pension formula not well documented."
+        year: 2023
+      reference_wage: "final_salary"
+      valorization: "ad_hoc"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "ad_hoc"
+      minimum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Nauru: minimum pension not documented."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Nauru: maximum pension not documented."
+        year: 2023
+      notes: "Nauru relies heavily on Australian budget support. Old Age Pension (social assistance) provided for elderly."
+
+    payout:
+      type: "annuity"
+      notes: null
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "Limited income tax system in Nauru; pension tax treatment not well documented."
+  simplified_net_rate:
+    value: 0.00
+    source_citation: "ILO Social Security Inquiry Nauru: minimal income tax; effective rate near zero."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "NRU"
+  ilostat_transformation: "x * 12"
+  manual_value: 20000
+  currency: "Australian Dollar"
+  year: 2022
+  source_citation: "Nauru government data: estimated average annual formal earnings 2022 approximately AUD 20,000."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: unknown
+    scheme_ids: []
+    source_citation: "ILO Social Security Inquiry Nauru: very limited private sector; formal pension coverage not documented."
+    source_url: null
+    notes: "Very limited formal private sector in Nauru."
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["NRU_GOV"]
+    source_citation: "ILO Social Security Inquiry Nauru: government employees covered by government pension."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: excluded
+    scheme_ids: []
+    source_citation: "ILO Social Security Inquiry Nauru: no formal pension scheme for self-employed."
+    notes: null
+
+notes: null

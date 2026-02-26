@@ -1,0 +1,139 @@
+# =============================================================================
+# Kazakhstan (KAZ) – Pension System Parameters
+# =============================================================================
+# Primary scheme: Unified Accumulative Pension Fund (UAPF) – mandatory DC
+# Sources:
+#   [1] ILO Social Security Inquiry – Kazakhstan
+#   [2] World Bank Kazakhstan Pension System Review 2022
+# =============================================================================
+
+metadata:
+  country_name: "Kazakhstan"
+  iso3: "KAZ"
+  iso2: "KZ"
+  currency: "Kazakhstani Tenge"
+  currency_code: "KZT"
+  reference_year: 2023
+  wb_region: "ECS"
+  wb_income_level: "UMC"
+  un_location_id: 398
+  sources:
+    - "ILO Social Security Inquiry – Kazakhstan"
+    - "World Bank Kazakhstan Pension System Review 2022"
+    - "Law of the Republic of Kazakhstan on Pension Provision (2013, as amended)"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "KAZ_UAPF"
+    name: "Unified Accumulative Pension Fund (UAPF) – Mandatory DC"
+    tier: "first"
+    type: "DC"
+    coverage: "All formal sector employees; basic pension guarantee for all residents"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 63
+        source_citation: "ILO Social Security Inquiry Kazakhstan: NRA for males 63."
+        year: 2023
+      normal_retirement_age_female:
+        value: 61
+        source_citation: "ILO Social Security Inquiry Kazakhstan: NRA for females rising from 58 to 63 by 2027; approximately 61 in 2023."
+        year: 2023
+      vesting_years:
+        value: 0
+        source_citation: "Law of Kazakhstan on Pension Provision: DC scheme – no minimum contribution years for individual account access at NRA."
+        year: 2023
+      minimum_contribution_years:
+        value: 0
+        source_citation: "Law of Kazakhstan on Pension Provision: DC individual accounts have no minimum contribution requirement."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.10
+        source_citation: "ILO Social Security Inquiry Kazakhstan: employee mandatory contribution 10% of gross wages to UAPF."
+        year: 2023
+      employer_rate:
+        value: 0.0
+        source_citation: "ILO Social Security Inquiry Kazakhstan: employer does not contribute directly to individual UAPF accounts (employer pays social contributions for social risk insurance)."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: 10% employee contribution to DC account; additional basic pension guarantee financed from state budget."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Kazakhstan: no contribution ceiling as multiple of average wage."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: "Basic pension guarantee (minimum state pension) is financed from the state budget for all residents reaching NRA."
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: "ILO Social Security Inquiry Kazakhstan: DC scheme – no fixed accrual rate; benefit depends on accumulated account balance and chosen annuity terms."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "wages"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "CPI"
+      minimum_benefit_aw_multiple:
+        value: 0.15
+        source_citation: "World Bank Kazakhstan Pension System Review 2022: basic pension guarantee approximately 15% of average wage for those with insufficient DC accumulations."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Kazakhstan: no explicit maximum pension benefit."
+        year: 2023
+      notes: "Pension = DC account balance / annuity divisor at NRA. Basic pension guarantee tops up for those with insufficient accumulations."
+
+    payout:
+      type: "annuity"
+      notes: null
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "Pension income is generally exempt from income tax in Kazakhstan."
+  simplified_net_rate:
+    value: 0.0
+    source_citation: "ILO Social Security Inquiry Kazakhstan: pension benefits exempt from personal income tax."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "KAZ"
+  ilostat_transformation: "x * 12"
+  manual_value: 3000000
+  currency: "Kazakhstani Tenge"
+  year: 2022
+  source_citation: "Statistics Kazakhstan: average monthly wage 2022 approximately KZT 248,000, KZT 2,976,000 annually."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["KAZ_UAPF"]
+    source_citation: "Law of Kazakhstan on Pension Provision 2013: mandatory DC contributions to UAPF for all formal employees."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["KAZ_UAPF"]
+    source_citation: "ILO Social Security Inquiry Kazakhstan: civil servants covered under the same mandatory DC scheme."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: mandatory
+    scheme_ids: ["KAZ_UAPF"]
+    source_citation: "Law of Kazakhstan on Pension Provision: self-employed required to contribute 10% to UAPF."
+    notes: null
+
+notes: null

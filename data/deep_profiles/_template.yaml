@@ -1,0 +1,115 @@
+# Deep profile mapping template
+# Fill in what is available; leave missing values empty so the UI shows "Not available".
+
+country_name: ""
+
+narrative:
+  text: ""
+  sources:
+    - source_name: ""
+      source_url: ""
+
+country_indicators:
+  - key: "year"
+    value:
+    unit: "year"
+    year:
+    source_name: ""
+    source_url: ""
+  - key: "gdp_pc_lcu"
+    value:
+    unit: "LCU"
+    year:
+    source_name: ""
+    source_url: ""
+    indicator_id: "NY.GDP.PCAP.CN"
+  - key: "gdp_pc_usd"
+    value:
+    unit: "USD"
+    year:
+    source_name: ""
+    source_url: ""
+    indicator_id: "NY.GDP.PCAP.CD"
+  - key: "pop_65_total"
+    value:
+    unit: "persons"
+    year:
+    source_name: ""
+    source_url: ""
+    indicator_id: "SP.POP.65UP.TO"
+  - key: "pop_65_pct"
+    value:
+    unit: "%"
+    year:
+    source_name: ""
+    source_url: ""
+    indicator_id: "SP.POP.65UP.TO.ZS"
+
+system_kpis:
+  - key: "coverage_total"
+    value:
+    unit: "%"
+    year:
+    source_name: ""
+    source_url: ""
+    indicator_id:
+  - key: "coverage_65plus"
+  - key: "pension_spending_gdp"
+
+schemes:
+  - scheme_id: ""
+    scheme_name: ""
+    scheme_type_group: "noncontrib"  # noncontrib | dc | db
+    attributes:
+      implementing_agency:
+        value: ""
+        source_name: ""
+        source_url: ""
+      target_population:
+        value: ""
+      benefit_plan_type:
+        value: ""
+      financing_mechanism:
+        value: ""
+      contrib_employee:
+        value:
+        unit: "%"
+        year:
+        source_name: ""
+        source_url: ""
+      contrib_employer:
+        value:
+      contrib_total:
+        value:
+      ret_age_male:
+        value:
+      ret_age_female:
+        value:
+      members_total:
+        value:
+      members_pct_adult:
+        value:
+      contributors_total:
+        value:
+      contributors_pct_lf:
+        value:
+      beneficiaries_total:
+        value:
+      beneficiaries_pct_lf:
+        value:
+      beneficiaries_pct_total:
+        value:
+      beneficiaries_pct_65plus:
+        value:
+      rev_contrib_gdp:
+        value:
+      rev_govt_gdp:
+        value:
+      rev_other_gdp:
+        value:
+      expenditure_total_gdp:
+        value:
+      benefit_payments_gdp:
+        value:
+      benefit_payments_lcu:
+        value:

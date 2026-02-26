@@ -1,0 +1,139 @@
+# =============================================================================
+# Guyana (GUY) – Pension System Parameters
+# =============================================================================
+# Primary scheme: National Insurance Scheme (NIS) – DB earnings-related
+# Sources:
+#   [1] ILO Social Security Inquiry – Guyana
+#   [2] National Insurance Scheme Guyana – Annual Report 2022
+# =============================================================================
+
+metadata:
+  country_name: "Guyana"
+  iso3: "GUY"
+  iso2: "GY"
+  currency: "Guyanese Dollar"
+  currency_code: "GYD"
+  reference_year: 2023
+  wb_region: "LCN"
+  wb_income_level: "UMC"
+  un_location_id: 328
+  sources:
+    - "ILO Social Security Inquiry – Guyana"
+    - "National Insurance Scheme Guyana Annual Report 2022"
+    - "National Insurance and Social Security Act (Guyana, Cap. 36:01)"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "GUY_NIS"
+    name: "National Insurance Scheme (NIS) – DB Earnings-Related"
+    tier: "first"
+    type: "DB"
+    coverage: "All employed persons; mandatory national insurance"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 60
+        source_citation: "ILO Social Security Inquiry Guyana: NRA 60 for males."
+        year: 2023
+      normal_retirement_age_female:
+        value: 60
+        source_citation: "ILO Social Security Inquiry Guyana: NRA 60 for females."
+        year: 2023
+      vesting_years:
+        value: 15
+        source_citation: "ILO Social Security Inquiry Guyana: minimum 750 weekly contributions (approximately 15 years) for retirement benefit."
+        year: 2023
+      minimum_contribution_years:
+        value: 15
+        source_citation: "National Insurance Act Guyana: minimum 750 weeks of contributions for old-age pension."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.055
+        source_citation: "ILO Social Security Inquiry Guyana: employee NIS contribution 5.5% of insurable wages."
+        year: 2023
+      employer_rate:
+        value: 0.085
+        source_citation: "ILO Social Security Inquiry Guyana: employer NIS contribution 8.5% of insurable wages."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: 14% total NIS contribution (5.5% employee + 8.5% employer)."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Guyana: insurable earnings ceiling set by regulation; no explicit AW multiple."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: null
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: "ILO Social Security Inquiry Guyana: NIS pension based on average insurable earnings and contribution record; approximately 40% replacement after full career."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "prices"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "prices"
+      minimum_benefit_aw_multiple:
+        value: 0.25
+        source_citation: "ILO Social Security Inquiry Guyana: minimum NIS pension approximately 25% of average insurable earnings."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Guyana: maximum pension constrained by insurable earnings ceiling."
+        year: 2023
+      notes: "Old Age Pension (non-contributory) provides safety net for elderly without NIS coverage."
+
+    payout:
+      type: "annuity"
+      notes: null
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "Pension income may be subject to income tax in Guyana; senior citizen deductions reduce effective rate."
+  simplified_net_rate:
+    value: 0.05
+    source_citation: "ILO Social Security Inquiry Guyana: estimated effective income tax rate on average pension approximately 5%."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "GUY"
+  ilostat_transformation: "x * 12"
+  manual_value: 1500000
+  currency: "Guyanese Dollar"
+  year: 2022
+  source_citation: "Bureau of Statistics Guyana: average annual earnings 2022 approximately GYD 1,500,000."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["GUY_NIS"]
+    source_citation: "National Insurance Act Guyana: mandatory NIS for all private sector employees."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["GUY_NIS"]
+    source_citation: "ILO Social Security Inquiry Guyana: civil servants covered by NIS; public service pension supplements."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: voluntary
+    scheme_ids: ["GUY_NIS"]
+    source_citation: "National Insurance Act Guyana: self-employed may voluntarily contribute to NIS."
+    notes: null
+
+notes: null

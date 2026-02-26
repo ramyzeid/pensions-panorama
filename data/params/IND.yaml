@@ -1,0 +1,249 @@
+# =============================================================================
+# India (IND) – Pension System Parameters
+# =============================================================================
+# Primary schemes: EPS (Employees' Pension Scheme) + NPS (National Pension System)
+# Governing law: Employees' Provident Funds and Miscellaneous Provisions Act 1952;
+#                PFRDA Act 2013
+#
+# Sources:
+#   [1] EPFO – www.epfindia.gov.in – Annual Report 2021-22
+#   [2] PFRDA – www.pfrda.org.in – Annual Report 2021-22
+#   [3] Employees' Pension Scheme 1995 (EPS-95), as amended
+#   [4] OECD/World Bank Pensions Panorama 2005; World Bank India Social Protection 2020
+# =============================================================================
+
+metadata:
+  country_name: "India"
+  iso3: "IND"
+  iso2: "IN"
+  currency: "Indian Rupee"
+  currency_code: "INR"
+  reference_year: 2022
+  wb_region: "SAS"
+  wb_income_level: "LMC"
+  un_location_id: 356
+  sources:
+    - "Employees' Pension Scheme 1995 (EPS-95) – EPFO India"
+    - "EPFO Annual Report 2021-22 – www.epfindia.gov.in"
+    - "PFRDA Annual Report 2021-22 – www.pfrda.org.in"
+    - "World Bank India Social Protection and Labor Assessment 2020"
+  last_reviewed: "2024-03-01"
+
+schemes:
+  - scheme_id: "EPS95_DB"
+    name: "Employees' Pension Scheme 1995 (EPS-95)"
+    tier: "first"
+    type: "DB"
+    coverage: >
+      Formal private sector employees earning up to INR 15,000/month enrolled in EPFO.
+      Covers organised sector only (~12% of workforce). Very low wage ceiling severely
+      limits replacement rate relative to actual earnings.
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 58
+        source_citation: >
+          EPS-95 Para 10 – Normal retirement age is 58. Early pension possible at 50
+          with reduced benefit. EPFO EPS-95 (as amended to 2022).
+        source_url: "https://www.epfindia.gov.in"
+        year: 2022
+      normal_retirement_age_female:
+        value: 58
+        source_citation: "EPS-95 – NRA 58 for both sexes. EPFO 2022."
+        year: 2022
+      vesting_years:
+        value: 10
+        source_citation: "EPS-95 Para 10 – minimum 10 years of service for pension entitlement."
+        year: 2022
+      minimum_contribution_years:
+        value: 10
+        source_citation: "EPS-95 – 10 years (120 months) minimum pensionable service."
+        year: 2022
+
+    contributions:
+      employee_rate:
+        value: 0.0
+        source_citation: >
+          EPS-95 – Employee contributes 0% to EPS. Entire employee contribution (12% of wage)
+          goes to EPF provident fund account, not EPS. EPFO 2022.
+        year: 2022
+      employer_rate:
+        value: 0.0833
+        source_citation: >
+          EPS-95 – Employer contribution to EPS is 8.33% of wage, subject to ceiling of
+          INR 15,000/month (INR 1,250/month maximum). Government contributes 1.16% for
+          wages below ceiling. EPFO Notification 2022.
+        source_url: "https://www.epfindia.gov.in"
+        year: 2022
+      total_rate:
+        value: null
+        source_citation: >
+          EPS contributions: employer 8.33% capped at INR 1,250/month + government 1.16%
+          for below-threshold workers. At INR 15,000 ceiling: 8.33% + 1.16% = 9.49%.
+          EPFO 2022.
+        year: 2022
+      contribution_ceiling_aw_multiple:
+        value: 0.60
+        source_citation: >
+          EPS pensionable salary capped at INR 15,000/month (INR 180,000/year).
+          With AW ~INR 300,000/year: ceiling ≈ 0.60 × AW. EPFO Notification 2014 (current
+          ceiling since September 2014). EPFO 2022.
+        year: 2022
+      contribution_base: "wage capped at INR 15,000/month"
+
+    benefits:
+      accrual_rate_per_year:
+        value: 0.0143
+        source_citation: >
+          EPS-95 Para 12 – Monthly pension = (Pensionable Salary × Pensionable Service) / 70.
+          Accrual rate = 1/70 ≈ 1.43% per year of pensionable (capped) salary.
+          Maximum pensionable service: 35 years; maximum monthly pension: 15,000 × 35/70 =
+          INR 7,500/month. EPFO EPS-95 Amendment 2022.
+        source_url: "https://www.epfindia.gov.in"
+        year: 2022
+      reference_wage: "career_average"
+      valorization: "prices"
+      indexation: "none"
+      minimum_benefit_aw_multiple:
+        value: 0.04
+        source_citation: >
+          EPS-95 minimum pension INR 1,000/month (government assured since 2014) =
+          INR 12,000/year. With AW ~INR 300,000/year → 4% AW. EPFO Minimum Pension
+          Order 2014.
+        year: 2022
+      maximum_benefit_aw_multiple:
+        value: 0.30
+        source_citation: >
+          Maximum EPS pension: INR 7,500/month = INR 90,000/year (at ceiling wage 35 years).
+          As % of AW (INR 300,000): 30%. As % of ceiling wage (INR 180,000): 50%.
+          EPFO EPS-95 2022.
+        year: 2022
+
+    payout:
+      type: "annuity"
+
+  - scheme_id: "NPS_DC"
+    name: "National Pension System (NPS) – Tier I"
+    tier: "second"
+    type: "DC"
+    coverage: >
+      Mandatory for all Central Government employees joining after 1 January 2004.
+      Also covers most State Government employees and is voluntary for private sector.
+      Approximately 23 million subscribers as of 2022.
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 60
+        source_citation: "PFRDA Act 2013 – NPS superannuation at age 60 for government employees."
+        source_url: "https://www.pfrda.org.in"
+        year: 2022
+      normal_retirement_age_female:
+        value: 60
+        source_citation: "PFRDA Act 2013 – NPS superannuation at age 60 for government employees."
+        year: 2022
+
+    contributions:
+      employee_rate:
+        value: 0.10
+        source_citation: >
+          PFRDA Act – Employee contribution 10% of (basic pay + DA) for Central Government
+          employees. PFRDA Regulations 2022.
+        source_url: "https://www.pfrda.org.in"
+        year: 2022
+      employer_rate:
+        value: 0.14
+        source_citation: >
+          PFRDA Act – Employer (government) contribution increased to 14% of (basic + DA)
+          from April 2019 under 7th Pay Commission recommendations. PFRDA 2022.
+        year: 2022
+      total_rate:
+        value: 0.24
+        source_citation: "Employee 10% + Employer 14% = 24% total NPS contribution. PFRDA 2022."
+        year: 2022
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "No contribution ceiling in NPS; full salary is the contribution base."
+        year: 2022
+      contribution_base: "basic pay plus dearness allowance"
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: "DC scheme – benefit depends on accumulated corpus and annuity rates."
+        year: 2022
+      reference_wage: "career_average"
+      valorization: "market"
+      indexation: "market"
+      minimum_benefit_aw_multiple:
+        value: null
+        source_citation: "No minimum benefit guarantee in NPS. PFRDA Act 2013."
+        year: 2022
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "DC scheme – no maximum benefit cap. PFRDA 2022."
+        year: 2022
+
+    payout:
+      type: "annuity"
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: >
+    EPS pension is fully exempt from income tax under Section 10(10A) of the Income Tax Act 1961.
+    NPS annuity income is taxable at slab rates; lump sum withdrawal of 60% corpus at retirement
+    is tax-exempt (Finance Act 2017). Employee NPS contributions deductible under Section 80CCD.
+  simplified_net_rate:
+    value: 0.05
+    source_citation: >
+      EPS pension fully tax-exempt. NPS annuity taxable but most retirees fall in 0-5% slab
+      given modest annuity amounts. Blended effective rate ~5% for NPS. Income Tax Act 1961.
+    year: 2022
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "IND"
+  ilostat_transformation: "x * 12"
+  manual_value: 300000.0
+  currency: "Indian Rupee"
+  year: 2022
+  source_citation: >
+    PLFS (Periodic Labour Force Survey) 2021-22 – average regular/salaried wages for
+    formal sector employees ~INR 25,000/month × 12 = INR 300,000/year.
+    Informal workers earn considerably less (~INR 8,000-12,000/month).
+    Reference for formal sector as EPFO/NPS members.
+  source_url: "https://www.epfindia.gov.in"
+  notes: >
+    India's labour market is dominated by informality (~90% informal). EPS salary ceiling
+    of INR 15,000/month is far below formal-sector AW; most EPFO-covered workers earn above
+    the ceiling. AW here represents formal/organised sector workers covered by EPFO.
+
+
+# =============================================================================
+# Worker types
+# =============================================================================
+
+worker_types:
+
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: [EPS95_DB]
+    source_citation: "Default: same as main scheme definition."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: unknown
+    scheme_ids: []
+    source_citation: "Coverage status not yet researched; placeholder."
+    notes: "TODO: verify self-employed coverage under national law."
+
+notes: >
+  India's pension system covers a very small fraction of the total workforce (organised sector
+  ~12%). The Atal Pension Yojana (APY) provides a small guaranteed pension (INR 1,000-5,000/month)
+  for informal workers. Most Indians rely on family support and EPF lump sums in retirement.
+  EPS replacement rates are very low relative to actual wages due to the statutory wage ceiling
+  of INR 15,000/month (unchanged since 2014). The NPS provides meaningful retirement savings
+  only for government employees with the 14% employer contribution.

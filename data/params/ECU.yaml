@@ -1,0 +1,139 @@
+# =============================================================================
+# Ecuador (ECU) – Pension System Parameters
+# =============================================================================
+# Primary scheme: IESS (Instituto Ecuatoriano de Seguridad Social) – DB
+# Sources:
+#   [1] ILO Social Security Inquiry – Ecuador
+#   [2] Instituto Ecuatoriano de Seguridad Social (IESS) – Annual Report 2022
+# =============================================================================
+
+metadata:
+  country_name: "Ecuador"
+  iso3: "ECU"
+  iso2: "EC"
+  currency: "United States Dollar"
+  currency_code: "USD"
+  reference_year: 2023
+  wb_region: "LCN"
+  wb_income_level: "UMC"
+  un_location_id: 218
+  sources:
+    - "ILO Social Security Inquiry – Ecuador"
+    - "Instituto Ecuatoriano de Seguridad Social (IESS) Annual Report 2022"
+    - "Ley de Seguridad Social (Ecuador, 2001, as amended)"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "ECU_IESS"
+    name: "IESS Seguro General de Vejez – DB Earnings-Related"
+    tier: "first"
+    type: "DB"
+    coverage: "All employed workers; mandatory social security"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 60
+        source_citation: "ILO Social Security Inquiry Ecuador: NRA 60 for males with 30+ years of contributions; age 65 with 15 years."
+        year: 2023
+      normal_retirement_age_female:
+        value: 60
+        source_citation: "ILO Social Security Inquiry Ecuador: NRA 60 for females with 30+ years of contributions."
+        year: 2023
+      vesting_years:
+        value: 15
+        source_citation: "ILO Social Security Inquiry Ecuador: minimum 15 years (180 monthly contributions) for any pension."
+        year: 2023
+      minimum_contribution_years:
+        value: 15
+        source_citation: "Ley de Seguridad Social Ecuador: minimum 180 months of contributions for old-age pension."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.0963
+        source_citation: "ILO Social Security Inquiry Ecuador: employee IESS contribution 9.63% of gross wages (multiple branches including 6.64% for IVM pension)."
+        year: 2023
+      employer_rate:
+        value: 0.1115
+        source_citation: "ILO Social Security Inquiry Ecuador: employer IESS contribution 11.15% of gross wages."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: approximately 20.78% total IESS contribution plus state contribution."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Ecuador: no explicit contribution ceiling as AW multiple."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: null
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: "ILO Social Security Inquiry Ecuador: IESS pension formula based on average best 5 years of earnings and years of contribution; approximately 50–75% replacement rate."
+        year: 2023
+      reference_wage: "best_years"
+      valorization: "wages"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "prices"
+      minimum_benefit_aw_multiple:
+        value: 0.30
+        source_citation: "ILO Social Security Inquiry Ecuador: minimum IESS pension linked to minimum wage; approximately 30% of average wage."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Ecuador: maximum pension constrained by formula ceiling."
+        year: 2023
+      notes: "Non-contributory BDH (Bono de Desarrollo Humano) provides social assistance for low-income elderly."
+
+    payout:
+      type: "annuity"
+      notes: null
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "Pension income subject to Impuesto a la Renta in Ecuador; basic deduction protects modest pensions."
+  simplified_net_rate:
+    value: 0.05
+    source_citation: "ILO Social Security Inquiry Ecuador: estimated effective income tax rate on average pension approximately 5%."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "ECU"
+  ilostat_transformation: "x * 12"
+  manual_value: 9000
+  currency: "United States Dollar"
+  year: 2022
+  source_citation: "Instituto Nacional de Estadística y Censos (INEC) Ecuador: average annual formal sector earnings 2022 approximately USD 9,000."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["ECU_IESS"]
+    source_citation: "Ley de Seguridad Social Ecuador: mandatory IESS for all private sector employees."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["ECU_IESS"]
+    source_citation: "ILO Social Security Inquiry Ecuador: civil servants covered by IESS general system."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: mandatory
+    scheme_ids: ["ECU_IESS"]
+    source_citation: "Ley de Seguridad Social Ecuador: self-employed voluntarily covered; formal enrolment required for access to benefits."
+    notes: null
+
+notes: null

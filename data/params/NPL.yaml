@@ -1,0 +1,208 @@
+# =============================================================================
+# Nepal (NPL) – Pension System Parameters
+# =============================================================================
+# Primary scheme: SSF – Social Security Fund (सामाजिक सुरक्षा कोष)
+# Civil servants: CIT – Citizens Investment Trust (older scheme)
+# Governing law: Contribution Based Social Security Act 2017; Social Security Act 2018
+#
+# Sources:
+#   [1] Social Security Fund Nepal – www.ssf.gov.np – Annual Report 2021-22
+#   [2] Contribution Based Social Security Act 2017 – Nepal
+#   [3] ILO Nepal Social Security Country Profile 2021
+#   [4] World Bank Nepal Social Protection Public Expenditure Review 2020
+# =============================================================================
+
+metadata:
+  country_name: "Nepal"
+  iso3: "NPL"
+  iso2: "NP"
+  currency: "Nepalese Rupee"
+  currency_code: "NPR"
+  reference_year: 2022
+  wb_region: "SAS"
+  wb_income_level: "LIC"
+  un_location_id: 524
+  sources:
+    - "Contribution Based Social Security Act 2017 – Nepal"
+    - "Social Security Fund Nepal Annual Report 2021-22 – www.ssf.gov.np"
+    - "ILO Nepal Social Security Country Profile 2021"
+    - "World Bank Nepal Social Protection Review 2020"
+  last_reviewed: "2024-03-01"
+
+schemes:
+  - scheme_id: "SSF_DC"
+    name: "SSF Retirement Fund (Contributory Social Security)"
+    tier: "second"
+    type: "DC"
+    coverage: >
+      Formal sector employees mandated since 2020. Very new scheme (~5 years as of 2022);
+      coverage still expanding. Civil servants have separate CIT/government pension.
+      Estimated formal sector coverage: 10-15% of workforce as of 2022.
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 60
+        source_citation: >
+          Contribution Based Social Security Act 2017 Sec. 29 – retirement benefit payable
+          at age 60 (maturity age). SSF Nepal 2022.
+        source_url: "https://www.ssf.gov.np"
+        year: 2022
+      normal_retirement_age_female:
+        value: 60
+        source_citation: "Contribution Based Social Security Act 2017 – NRA 60 for both sexes."
+        year: 2022
+      vesting_years:
+        value: 15
+        source_citation: >
+          Contribution Based Social Security Act 2017 – minimum 15 years of contributions
+          for retirement pension; partial refund available with fewer years. SSF Nepal 2022.
+        year: 2022
+      minimum_contribution_years:
+        value: 15
+        source_citation: "SSF Act 2017 – 15 years minimum for retirement pension. SSF Nepal 2022."
+        year: 2022
+
+    contributions:
+      employee_rate:
+        value: 0.11
+        source_citation: >
+          Contribution Based Social Security Act 2017 – employee contribution 11% of basic
+          wage (or minimum wage if higher). Total employee SSF contribution includes all
+          branches. SSF Nepal 2022.
+        source_url: "https://www.ssf.gov.np"
+        year: 2022
+      employer_rate:
+        value: 0.20
+        source_citation: >
+          Contribution Based Social Security Act 2017 – employer contribution 20% of basic
+          wage (minimum wage floor). Total SSF contributions allocated across schemes:
+          retirement (~28%), health (1%), accident (1.4%), dependent family (0.27%), maternity.
+          Employer contribution: 20%. SSF Nepal 2022.
+        year: 2022
+      total_rate:
+        value: 0.31
+        source_citation: "Employee 11% + Employer 20% = 31% total SSF contribution. SSF Act 2017."
+        year: 2022
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "No contribution ceiling in SSF; full basic wage is the contribution base."
+        year: 2022
+      contribution_base: "basic wage (minimum wage floor applies)"
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: >
+          DC scheme – benefit is accumulated individual account balance at retirement.
+          ~28.33 percentage points of total 31% contribution goes to retirement sub-fund.
+          Benefit payable as annuity (at least 50%) or lump sum. SSF Act 2017.
+        year: 2022
+      reference_wage: "career_average"
+      valorization: "market"
+      indexation: "market"
+      minimum_benefit_aw_multiple:
+        value: null
+        source_citation: "No minimum benefit guarantee in SSF. SSF Act 2017."
+        year: 2022
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "DC scheme – no maximum cap on retirement benefit."
+        year: 2022
+
+    payout:
+      type: "annuity"
+
+  - scheme_id: "SSF_BASIC"
+    name: "Social Security Allowance (Old Age Grant)"
+    tier: "first"
+    type: "basic"
+    coverage: >
+      Universal: all Nepali citizens aged 70+ (Dalit community from age 60).
+      Funded from government budget. Not contributory.
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 70
+        source_citation: >
+          Social Security Act 2018 and Government of Nepal Social Security Programme –
+          Old Age Allowance (Bridhha Bhatta) payable to all citizens aged 70+.
+          Ministry of Finance Nepal 2022.
+        year: 2022
+      normal_retirement_age_female:
+        value: 70
+        source_citation: "Social Security Act 2018 – Old Age Allowance payable at age 70+ for all citizens."
+        year: 2022
+
+    benefits:
+      minimum_benefit_aw_multiple:
+        value: 0.05
+        source_citation: >
+          Old Age Allowance NPR 4,000/month (2022). With AW ~NPR 15,000/month:
+          allowance ≈ 27% of minimum wage, ~5% of formal AW. Ministry of Finance Nepal 2022.
+        year: 2022
+      indexation: "CPI"
+
+    payout:
+      type: "annuity"
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: >
+    SSF retirement benefits are not explicitly taxed on withdrawal under the Contribution
+    Based Social Security Act 2017. Government pension income is taxable under the
+    Income Tax Act 2058 (2002). Old Age Allowance is tax-exempt.
+  simplified_net_rate:
+    value: 0.05
+    source_citation: >
+      SSF retirement benefits: ~5% effective tax estimated for moderate-income retirees.
+      Income Tax Act 2058 (2002), Nepal. Exact treatment of SSF annuity income still evolving.
+    year: 2022
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "NPL"
+  ilostat_transformation: "x * 12"
+  manual_value: 180000.0
+  currency: "Nepalese Rupee"
+  year: 2022
+  source_citation: >
+    Central Bureau of Statistics Nepal – Labour Force Survey 2017-18 (latest available) and
+    wage updates. Formal sector average monthly wage ~NPR 15,000/month × 12 = NPR 180,000/year.
+    Minimum wage 2022: NPR 13,450/month. Many formal workers earn near-minimum wages.
+    ILOSTAT data for NPL is limited.
+  source_url: "https://www.ssf.gov.np"
+  notes: >
+    Nepal's formal sector is small (~20% of workforce). The SSF was only fully operational
+    from 2020; the AW used here reflects formal sector workers likely to be SSF members.
+
+
+# =============================================================================
+# Worker types
+# =============================================================================
+
+worker_types:
+
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: [SSF_DC]
+    source_citation: "Default: same as main scheme definition."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: unknown
+    scheme_ids: []
+    source_citation: "Coverage status not yet researched; placeholder."
+    notes: "TODO: verify self-employed coverage under national law."
+
+notes: >
+  Nepal's contributory social security system (SSF) is among the newest in the MENAAP
+  region, fully operational only since 2020. Coverage is expanding but remains limited.
+  The scheme provides comprehensive social insurance (health, accident, maternity, and
+  retirement). For most Nepali workers, remittances from abroad (Nepal has one of the
+  highest remittance/GDP ratios globally) supplement any retirement income.
+  The universal Old Age Allowance (NPR 4,000/month) provides a modest safety net for all
+  citizens aged 70+.

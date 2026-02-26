@@ -1,0 +1,17 @@
+[Unit]
+Description=Pensions Panorama Streamlit App
+After=network.target
+
+[Service]
+User=www-data
+Group=www-data
+WorkingDirectory=/opt/pensions_panorama
+Environment="PATH=/opt/pensions_panorama/.venv/bin"
+ExecStart=/opt/pensions_panorama/.venv/bin/streamlit run pensions_panorama/web/app.py
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

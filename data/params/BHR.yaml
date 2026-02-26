@@ -1,0 +1,137 @@
+# =============================================================================
+# Bahrain (BHR) – Pension System Parameters
+# =============================================================================
+# Primary scheme: SIO (Social Insurance Organization) – private sector nationals
+# Governing law: Decree Law No. 24 of 1976 (amended 2003, 2014)
+#
+# Sources:
+#   [1] SIO Bahrain – Annual Report 2022 – www.sio.gov.bh
+#   [2] Decree Law No. 24 of 1976 and Law No. 36 of 2014 amendments
+#   [3] IMF Bahrain Selected Issues 2022
+#   [4] World Bank Bahrain Pension Diagnostic 2020
+# =============================================================================
+
+metadata:
+  country_name: "Bahrain"
+  iso3: "BHR"
+  iso2: "BH"
+  currency: "Bahraini Dinar"
+  currency_code: "BHD"
+  reference_year: 2022
+  wb_region: "MEA"
+  wb_income_level: "HIC"
+  un_location_id: 48
+  sources:
+    - "Decree Law No. 24 of 1976 (Social Insurance) and Law No. 36 of 2014"
+    - "SIO Bahrain Annual Report 2022 – www.sio.gov.bh"
+    - "IMF Bahrain Selected Issues 2022"
+  last_reviewed: "2024-03-01"
+
+schemes:
+  - scheme_id: "SIO_DB"
+    name: "SIO Old-Age Pension (Bahraini Nationals – Private Sector)"
+    tier: "first"
+    type: "DB"
+    coverage: "Bahraini national private-sector employees"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 60
+        source_citation: "SIO Law – NRA 60 for male Bahraini nationals (private sector)."
+        source_url: "https://www.sio.gov.bh"
+        year: 2022
+      normal_retirement_age_female:
+        value: 55
+        source_citation: "SIO Law – NRA 55 for female Bahraini nationals (private sector). Reform trajectory to equalize at 60."
+        year: 2022
+      vesting_years:
+        value: 3
+        source_citation: "SIO – 36 months minimum contributions for pension eligibility."
+        year: 2022
+      minimum_contribution_years:
+        value: 15
+        source_citation: "SIO – 15 years (180 months) for normal old-age pension."
+        year: 2022
+
+    contributions:
+      employee_rate:
+        value: 0.07
+        source_citation: "SIO Law No. 36/2014 – 7% employee contribution on basic salary."
+        source_url: "https://www.sio.gov.bh"
+        year: 2022
+      employer_rate:
+        value: 0.12
+        source_citation: "SIO Law No. 36/2014 – 12% employer contribution on basic salary."
+        year: 2022
+      total_rate:
+        value: null
+        source_citation: "Derived: 7% + 12% = 19% total (private sector nationals)."
+        year: 2022
+      contribution_ceiling_aw_multiple:
+        value: 3.0
+        source_citation: "SIO – insurable wage ceiling BHD 4,000/month; AW ~BHD 700/month → ~5.7×; effective ceiling rarely binding. SIO Regulations 2022."
+        year: 2022
+      contribution_base: "basic monthly salary"
+
+    benefits:
+      accrual_rate_per_year:
+        value: 0.02
+        source_citation: "SIO Law – 2% accrual per year of service on career-average basic salary."
+        source_url: "https://www.sio.gov.bh"
+        year: 2022
+      reference_wage: "career_average"
+      valorization: "wages"
+      indexation: "CPI"
+      minimum_benefit_aw_multiple:
+        value: 0.36
+        source_citation: "SIO minimum pension BHD 250/month (2022); AW ~BHD 700/month → 35.7% AW. SIO Circular 2022."
+        year: 2022
+      maximum_benefit_aw_multiple:
+        value: 0.80
+        source_citation: "SIO – pension capped at 80% of average insurable salary. Law No. 24/1976 Art. 27."
+        year: 2022
+
+    payout:
+      type: "annuity"
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "No personal income tax in Bahrain. SIO pensions received gross."
+  simplified_net_rate:
+    value: 0.0
+    source_citation: "No personal income tax in Bahrain. Ministry of Finance and National Economy, Bahrain."
+    year: 2022
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "BHR"
+  ilostat_transformation: "x * 12"
+  manual_value: 8400.0
+  currency: "Bahraini Dinar"
+  year: 2022
+  source_citation: >
+    SIO Annual Report 2022 – average insurable monthly salary for Bahraini nationals ~BHD 700/month × 12.
+    LMRA (Labour Market Regulatory Authority) Labour Market Indicators 2022.
+  source_url: "https://www.sio.gov.bh"
+
+# =============================================================================
+# Worker types
+# =============================================================================
+
+worker_types:
+
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: [SIO_DB]
+    source_citation: "Default: same as main scheme definition."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: unknown
+    scheme_ids: []
+    source_citation: "Coverage status not yet researched; placeholder."
+    notes: "TODO: verify self-employed coverage under national law."
+

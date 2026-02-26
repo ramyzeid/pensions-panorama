@@ -1,0 +1,175 @@
+# =============================================================================
+# Pensions Panorama – Country Parameter File Template
+# =============================================================================
+# Instructions:
+#   1. Copy this file and rename it to <ISO3>.yaml (e.g. EGY.yaml).
+#   2. Fill in all fields marked with <FILL>.
+#   3. Every value field must be accompanied by a source_citation.
+#   4. Run `pp validate-params --countries <ISO3>` to check the file.
+#   5. Add the citation for each law / regulation in the `sources` list.
+#
+# Schema reference: pensions_panorama/schema/params_schema.py
+# =============================================================================
+
+metadata:
+  country_name: "<FILL: Full country name>"
+  iso3: "<FILL: ISO 3166-1 alpha-3 code>"
+  iso2: "<FILL: ISO 3166-1 alpha-2 code>"
+  currency: "<FILL: Currency name, e.g. 'Jordanian Dinar'>"
+  currency_code: "<FILL: ISO 4217, e.g. 'JOD'>"
+  reference_year: 2023
+  wb_region: "<FILL: World Bank region code, e.g. 'MEA'>"
+  wb_income_level: "<FILL: e.g. 'UMC', 'LMC', 'HIC'>"
+  un_location_id: null   # Fill with numeric UN location ID if known
+  sources:
+    - "<FILL: Primary legislation reference>"
+    - "<FILL: Secondary source>"
+  last_reviewed: "<FILL: YYYY-MM-DD>"
+
+# =============================================================================
+# Pension schemes
+# Each scheme is one component of the overall pension entitlement.
+# Multiple schemes (e.g. basic + earnings-related) can be listed.
+# =============================================================================
+
+schemes:
+  - scheme_id: "<FILL: short machine-readable ID, e.g. 'SSC_DB'>"
+    name: "<FILL: Full scheme name>"
+    tier: "first"   # first | second | third
+    type: "DB"      # basic | targeted | minimum | DB | points | NDC | DC
+    coverage: "<FILL: e.g. 'private sector employees'>"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: <FILL: numeric age, e.g. 60>
+        source_citation: "<FILL: law/article reference>"
+        source_url: null
+        year: <FILL: year of parameter>
+      normal_retirement_age_female:
+        value: <FILL>
+        source_citation: "<FILL>"
+        year: <FILL>
+      vesting_years:
+        value: <FILL: minimum contribution years for any benefit>
+        source_citation: "<FILL>"
+        year: <FILL>
+      minimum_contribution_years:
+        value: <FILL: years required for full benefit, if different from vesting>
+        source_citation: "<FILL>"
+        year: <FILL>
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: <FILL: decimal e.g. 0.075 for 7.5%>
+        source_citation: "<FILL>"
+        year: <FILL>
+      employer_rate:
+        value: <FILL>
+        source_citation: "<FILL>"
+        year: <FILL>
+      total_rate:
+        value: null   # Leave null if specifying employee + employer separately
+        source_citation: "<FILL>"
+        year: <FILL>
+      contribution_ceiling_aw_multiple:
+        value: null   # e.g. 3.0 means contributions capped at 3× average wage
+        source_citation: "<FILL>"
+        year: <FILL>
+      contribution_base: "gross earnings"
+      notes: null
+
+    benefits:
+      # --- DB / accrual ---
+      accrual_rate_per_year:
+        value: <FILL: decimal e.g. 0.02 for 2% per year>
+        source_citation: "<FILL>"
+        year: <FILL>
+      reference_wage: "career_average"   # career_average | final_salary | best_N_years
+      valorization: "wages"              # wages | CPI | fixed 0%
+      # --- Flat-rate schemes (leave null if DB) ---
+      flat_rate_aw_multiple: null        # e.g. 0.1 = 10% of average wage
+      flat_rate_absolute: null
+      # --- Indexation ---
+      indexation: "CPI"                  # wages | CPI | mixed | none
+      # --- Minimum / maximum ---
+      minimum_benefit_aw_multiple:
+        value: null
+        source_citation: "<FILL if applicable>"
+        year: <FILL>
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "<FILL if applicable>"
+        year: <FILL>
+      notes: null
+
+    payout:
+      type: "annuity"   # annuity | programmed_withdrawal | lump_sum
+      notes: null
+
+# --- Add additional scheme components below as needed ---
+# - scheme_id: "BASIC_PENSION"
+#   tier: "first"
+#   type: "basic"
+#   ...
+
+# =============================================================================
+# Tax and social-contribution treatment
+# =============================================================================
+
+taxes:
+  worker_income_tax_treatment: "EET"   # EET | TEE | TTE – typical MENA = EET
+  income_tax_on_pension: "<FILL: brief description, e.g. 'Pensions exempt from income tax'>"
+  simplified_net_rate:
+    value: 0.0   # Effective combined rate on pension income; 0.0 if fully exempt
+    source_citation: "<FILL>"
+    year: <FILL>
+  notes: "<FILL or null>"
+
+# =============================================================================
+# Average earnings
+# =============================================================================
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"   # ILOSTAT series (preferred)
+  ilostat_ref_area: "<FILL: ISO3 as used in ILOSTAT, usually same as iso3>"
+  ilostat_transformation: "x * 12"   # annualise monthly data
+  manual_value: null      # Set if ILOSTAT unavailable; annual figure in currency
+  currency: "<FILL>"
+  year: <FILL>
+  source_citation: "<FILL>"
+  source_url: null
+
+# =============================================================================
+# Worker types
+# =============================================================================
+# Define how each category of worker is treated under the national pension system.
+# At minimum, 'private_employee' and 'self_employed' keys are required.
+# Use coverage_status: unknown if data is not yet researched.
+
+worker_types:
+
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory           # mandatory | voluntary | excluded | unknown
+    scheme_ids: ["<FILL: first active scheme_id>"]
+    source_citation: "<FILL: law/regulation reference>"
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: unknown             # Fill after research
+    scheme_ids: []
+    source_citation: "TODO: verify civil servant coverage."
+    notes: "TODO: research whether civil servants use same scheme or separate fund."
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: unknown             # Fill after research
+    scheme_ids: []
+    source_citation: "Coverage status not yet researched; placeholder."
+    notes: "TODO: verify self-employed coverage under national law."
+
+notes: null

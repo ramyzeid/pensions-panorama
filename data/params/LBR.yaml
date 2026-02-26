@@ -1,0 +1,139 @@
+# =============================================================================
+# Liberia (LBR) – Pension System Parameters
+# =============================================================================
+# Primary scheme: National Social Security and Welfare Corporation (NASSCORP) – DC
+# Sources:
+#   [1] ILO Social Security Inquiry – Liberia
+#   [2] National Social Security and Welfare Corporation (NASSCORP) Liberia – 2022
+# =============================================================================
+
+metadata:
+  country_name: "Liberia"
+  iso3: "LBR"
+  iso2: "LR"
+  currency: "Liberian Dollar"
+  currency_code: "LRD"
+  reference_year: 2023
+  wb_region: "SSA"
+  wb_income_level: "LIC"
+  un_location_id: 430
+  sources:
+    - "ILO Social Security Inquiry – Liberia"
+    - "National Social Security and Welfare Corporation (NASSCORP) Liberia 2022"
+    - "Social Security Act (Liberia, 1976, as amended)"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "LBR_NASSCORP"
+    name: "NASSCORP (National Social Security and Welfare Corporation) – DC Provident Fund"
+    tier: "first"
+    type: "DC"
+    coverage: "Formally employed workers; mandatory provident fund"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 60
+        source_citation: "ILO Social Security Inquiry Liberia: NASSCORP retirement age 60."
+        year: 2023
+      normal_retirement_age_female:
+        value: 60
+        source_citation: "ILO Social Security Inquiry Liberia: retirement age 60 for females."
+        year: 2023
+      vesting_years:
+        value: 0
+        source_citation: "ILO Social Security Inquiry Liberia: DC provident fund – balance accessible at 60."
+        year: 2023
+      minimum_contribution_years:
+        value: 0
+        source_citation: "Social Security Act Liberia: accumulated balance available at retirement age."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.05
+        source_citation: "ILO Social Security Inquiry Liberia: employee NASSCORP contribution 5% of wages."
+        year: 2023
+      employer_rate:
+        value: 0.05
+        source_citation: "ILO Social Security Inquiry Liberia: employer NASSCORP contribution 5% of wages."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: 10% total NASSCORP contribution (5% employee + 5% employer)."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Liberia: contributions on all insurable wages."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: "Liberia has very limited formal sector coverage; NASSCORP covers small fraction of workforce."
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: "ILO Social Security Inquiry Liberia: DC provident fund – pension depends on accumulated balance; typically lump sum."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "interest"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "CPI"
+      minimum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Liberia: no statutory minimum pension; lump-sum balance at retirement."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Liberia: no explicit maximum pension."
+        year: 2023
+      notes: "NASSCORP benefit typically paid as lump sum; limited social protection reach."
+
+    payout:
+      type: "lump_sum"
+      notes: "Provident fund accumulated balance paid as lump sum."
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "NASSCORP lump-sum withdrawals may be subject to income tax in Liberia; exemptions typically apply."
+  simplified_net_rate:
+    value: 0.0
+    source_citation: "ILO Social Security Inquiry Liberia: NASSCORP withdrawals typically below income tax threshold; effective rate approximately 0%."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "LBR"
+  ilostat_transformation: "x * 12"
+  manual_value: 60000
+  currency: "Liberian Dollar"
+  year: 2022
+  source_citation: "Liberia Institute of Statistics and Geo-Information Services (LISGIS): estimated average annual formal earnings 2022 approximately LRD 60,000."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["LBR_NASSCORP"]
+    source_citation: "Social Security Act Liberia: mandatory NASSCORP for formally employed workers."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["LBR_NASSCORP"]
+    source_citation: "ILO Social Security Inquiry Liberia: civil servants covered by NASSCORP; government supplements."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: voluntary
+    scheme_ids: ["LBR_NASSCORP"]
+    source_citation: "ILO Social Security Inquiry Liberia: self-employed may voluntarily contribute to NASSCORP."
+    notes: null
+
+notes: null

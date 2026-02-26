@@ -1,0 +1,139 @@
+# =============================================================================
+# Eritrea (ERI) – Pension System Parameters
+# =============================================================================
+# Primary scheme: PFDJ/SSA – DB (civil service + limited formal sector)
+# Sources:
+#   [1] ILO Social Security Inquiry – Eritrea
+#   [2] World Bank Social Protection Review – Eritrea
+# =============================================================================
+
+metadata:
+  country_name: "Eritrea"
+  iso3: "ERI"
+  iso2: "ER"
+  currency: "Eritrean Nakfa"
+  currency_code: "ERN"
+  reference_year: 2023
+  wb_region: "SSA"
+  wb_income_level: "LIC"
+  un_location_id: 232
+  sources:
+    - "ILO Social Security Inquiry – Eritrea"
+    - "World Bank Social Protection and Jobs Review – Eritrea"
+    - "Eritrea Social Security Proclamation (1995)"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "ERI_SSA"
+    name: "Social Security Administration (SSA) – DB"
+    tier: "first"
+    type: "DB"
+    coverage: "Formally employed workers in public and private sector; very limited coverage"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 60
+        source_citation: "ILO Social Security Inquiry Eritrea: NRA 60 for males."
+        year: 2023
+      normal_retirement_age_female:
+        value: 55
+        source_citation: "ILO Social Security Inquiry Eritrea: NRA 55 for females."
+        year: 2023
+      vesting_years:
+        value: 10
+        source_citation: "ILO Social Security Inquiry Eritrea: minimum 10 years of contributions for old-age pension."
+        year: 2023
+      minimum_contribution_years:
+        value: 10
+        source_citation: "Eritrea Social Security Proclamation 1995: minimum 120 months for old-age pension."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.03
+        source_citation: "ILO Social Security Inquiry Eritrea: employee SSA contribution approximately 3% of wages."
+        year: 2023
+      employer_rate:
+        value: 0.10
+        source_citation: "ILO Social Security Inquiry Eritrea: employer SSA contribution approximately 10% of wages."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: approximately 13% total SSA contribution."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Eritrea: no explicit AW ceiling documented."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: "Eritrea has very limited formal economy; social security coverage extremely restricted. National service requirement affects formal employment."
+
+    benefits:
+      accrual_rate_per_year:
+        value: 0.015
+        source_citation: "ILO Social Security Inquiry Eritrea: estimated accrual approximately 1.5% per year of reference earnings."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "prices"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "ad_hoc"
+      minimum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Eritrea: minimum pension not well documented; system has limited operational capacity."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Eritrea: maximum pension not explicitly documented."
+        year: 2023
+      notes: "Eritrea's social security system has very limited operational capacity; government employees receive separate civil service pension."
+
+    payout:
+      type: "annuity"
+      notes: null
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "Pension income subject to income tax in Eritrea; limited documentation on effective rates."
+  simplified_net_rate:
+    value: 0.05
+    source_citation: "ILO Social Security Inquiry Eritrea: estimated effective income tax rate on average pension approximately 5%."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "ERI"
+  ilostat_transformation: "x * 12"
+  manual_value: 60000
+  currency: "Eritrean Nakfa"
+  year: 2022
+  source_citation: "World Bank Eritrea data: estimated average annual formal earnings 2022 approximately ERN 60,000."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["ERI_SSA"]
+    source_citation: "Eritrea Social Security Proclamation 1995: mandatory SSA for formally employed workers."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["ERI_SSA"]
+    source_citation: "ILO Social Security Inquiry Eritrea: government employees covered under civil service pension arrangements."
+    notes: "Government employees covered under separate civil service pension provisions."
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: voluntary
+    scheme_ids: ["ERI_SSA"]
+    source_citation: "ILO Social Security Inquiry Eritrea: self-employed not mandatorily covered."
+    notes: null
+
+notes: null

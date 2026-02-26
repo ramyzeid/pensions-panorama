@@ -1,0 +1,160 @@
+# =============================================================================
+# Saudi Arabia (SAU) – Pension System Parameters
+# =============================================================================
+# Primary scheme: GOSI (General Organization for Social Insurance)
+# Covers: Saudi national private-sector employees (mandatory)
+#         Non-Saudi workers: not covered by pension (EOSB only)
+# Governing law: Royal Decree M/33 of 2001 and amendments
+#
+# Sources:
+#   [1] GOSI – General Organization for Social Insurance annual report 2022
+#   [2] Royal Decree M/33 of 2001 (Social Insurance Law) and Royal Decree 28037/2021 (reform)
+#   [3] IMF Saudi Arabia Selected Issues 2022
+#   [4] World Bank Saudi Arabia Pension Assessment 2020
+# =============================================================================
+
+metadata:
+  country_name: "Saudi Arabia"
+  iso3: "SAU"
+  iso2: "SA"
+  currency: "Saudi Riyal"
+  currency_code: "SAR"
+  reference_year: 2022
+  wb_region: "MEA"
+  wb_income_level: "HIC"
+  un_location_id: 682
+  sources:
+    - "GOSI Social Insurance Law – Royal Decree M/33 of 2001 and amendments"
+    - "GOSI Annual Report 2022 – www.gosi.gov.sa"
+    - "Royal Decree 28037/2021 – GOSI parametric reform"
+    - "World Bank Saudi Arabia Pension Assessment 2020"
+  last_reviewed: "2024-03-01"
+
+schemes:
+  - scheme_id: "GOSI_DB"
+    name: "GOSI Old-Age Annuity (Saudi Nationals – Private Sector)"
+    tier: "first"
+    type: "DB"
+    coverage: "Saudi national private-sector employees (non-Saudis not covered by GOSI pension)"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 60
+        source_citation: "GOSI Social Insurance Law Art. 31 – NRA 60 for males. Reform trajectory to 65 by 2040."
+        source_url: "https://www.gosi.gov.sa"
+        year: 2022
+      normal_retirement_age_female:
+        value: 55
+        source_citation: "GOSI Social Insurance Law Art. 31 – NRA 55 for females. Reform trajectory to 60 by 2040."
+        year: 2022
+      early_retirement_age_male:
+        value: 55
+        source_citation: "GOSI – early retirement at 55 with 25+ years service."
+        year: 2022
+      early_retirement_age_female:
+        value: 50
+        source_citation: "GOSI – early retirement at 50 with 25+ years service."
+        year: 2022
+      vesting_years:
+        value: 2
+        source_citation: "GOSI – 24 months minimum for any pension entitlement."
+        year: 2022
+      minimum_contribution_years:
+        value: 10
+        source_citation: "GOSI – 120 months (10 years) for old-age annuity."
+        year: 2022
+
+    contributions:
+      employee_rate:
+        value: 0.09
+        source_citation: "GOSI Social Insurance Law – 9% employee contribution on basic + housing allowance."
+        source_url: "https://www.gosi.gov.sa"
+        year: 2022
+      employer_rate:
+        value: 0.09
+        source_citation: "GOSI Social Insurance Law – 9% employer contribution (annuity branch). Additional 2% for work injury."
+        year: 2022
+      total_rate:
+        value: null
+        source_citation: "Derived: 9% + 9% = 18% (annuity branch only; excluding occupational hazard)."
+        year: 2022
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "GOSI – no statutory upper ceiling on insurable wage as of 2022."
+        year: 2022
+      contribution_base: "basic wage plus housing allowance (not all allowances)"
+
+    benefits:
+      accrual_rate_per_year:
+        value: 0.02
+        source_citation: "GOSI Social Insurance Law Art. 36 – 2%/year on career-average wage for each year of contributions."
+        source_url: "https://www.gosi.gov.sa"
+        year: 2022
+      reference_wage: "career_average"
+      valorization: "wages"
+      indexation: "CPI"
+      minimum_benefit_aw_multiple:
+        value: 0.15
+        source_citation: "GOSI minimum pension SAR 1,800/month (2022); Saudi national AW in private sector ~SAR 10,000/month → 18%. Conservative at 15% for cross-country comparability. GOSI Circular 2022."
+        year: 2022
+      maximum_benefit_aw_multiple:
+        value: 1.00
+        source_citation: "GOSI Social Insurance Law Art. 36 – maximum pension 100% of reference wage (after ~50 years)."
+        year: 2022
+
+    payout:
+      type: "annuity"
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: >
+    Saudi Arabia has no personal income tax for Saudi nationals.
+    GOSI pensions are received gross of any deduction.
+    Note: Zakat applies to accumulated wealth, not pension income.
+  simplified_net_rate:
+    value: 0.0
+    source_citation: "No personal income tax in Saudi Arabia for nationals. GOSI pension income exempt. Ministry of Finance."
+    year: 2022
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "SAU"
+  ilostat_transformation: "x * 12"
+  manual_value: 120000.0
+  currency: "Saudi Riyal"
+  year: 2022
+  source_citation: >
+    GOSI Annual Report 2022 – average insurable monthly wage for Saudi nationals in private sector
+    approximately SAR 10,000/month × 12 = SAR 120,000. GASTAT Labour Market Survey 2022.
+  source_url: "https://www.gosi.gov.sa"
+  notes: >
+    This represents the average wage of Saudi national private-sector workers registered with GOSI.
+    It is substantially higher than the all-workforce average (which includes low-wage expat workers).
+
+
+# =============================================================================
+# Worker types
+# =============================================================================
+
+worker_types:
+
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: [GOSI_DB]
+    source_citation: "Default: same as main scheme definition."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: unknown
+    scheme_ids: []
+    source_citation: "Coverage status not yet researched; placeholder."
+    notes: "TODO: verify self-employed coverage under national law."
+
+notes: >
+  GOSI covers Saudi national private-sector employees only (mandatory).
+  Non-Saudi workers (~75% of private-sector workforce) receive only End-of-Service Benefit (EOSB),
+  a lump-sum gratuity of 1 month per year of service, not modeled as a pension here.
+  Civil servants are covered by the Public Pension Agency (PPA), which is a separate scheme.

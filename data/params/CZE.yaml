@@ -1,0 +1,129 @@
+# =============================================================================
+# Czech Republic (CZE) – Pension System Parameters
+# =============================================================================
+# Primary scheme: PAYG earnings-related pension (I. pillar) – DB points-like,
+#   administered by the Czech Social Security Administration (CSSZ).
+# Sources:
+#   [1] SSA Social Security Programs Throughout the World – Europe 2022
+#   [2] OECD Pensions at a Glance 2023 – Czech Republic country note
+#   [3] Act No. 155/1995 Coll. on Pension Insurance (as amended)
+# =============================================================================
+
+metadata:
+  country_name: "Czech Republic"
+  iso3: "CZE"
+  iso2: "CZ"
+  currency: "Czech Koruna"
+  currency_code: "CZK"
+  reference_year: 2023
+  wb_region: "ECS"
+  wb_income_level: "HIC"
+  un_location_id: 203
+  sources:
+    - "SSA Social Security Programs Throughout the World – Europe 2022"
+    - "OECD Pensions at a Glance 2023"
+    - "Act No. 155/1995 Coll. on Pension Insurance (as amended)"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "CZE_CSSZ"
+    name: "Mandatory PAYG Old-Age Pension – Czech Social Security Administration (CSSZ)"
+    tier: "first"
+    type: "DB"
+    coverage: "employees and self-employed"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 65
+        source_citation: "OECD Pensions at a Glance 2023 – Czech Republic: NRA 65 for men (scheduled to rise further; linked to life expectancy from 2030)."
+        year: 2023
+      normal_retirement_age_female:
+        value: 65
+        source_citation: "OECD Pensions at a Glance 2023 – Czech Republic: NRA 65 for women (equalised with men; rising incrementally)."
+        year: 2023
+      vesting_years:
+        value: 15
+        source_citation: "SSA SSPW Europe 2022 – Czech Republic: minimum 15 years of insurance required for old-age pension."
+        year: 2023
+      minimum_contribution_years:
+        value: 35
+        source_citation: "OECD Pensions at a Glance 2023 – Czech Republic: 35 years of insurance for full benefit calculation; early retirement possible with 40 years."
+        year: 2023
+
+    contributions:
+      employee_rate:
+        value: 0.065
+        source_citation: "SSA SSPW Europe 2022 – Czech Republic: employee pension contribution 6.5% of gross earnings."
+        year: 2023
+      employer_rate:
+        value: 0.248
+        source_citation: "SSA SSPW Europe 2022 – Czech Republic: employer pension contribution 24.8% of gross payroll."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived from employee + employer rates (6.5% + 24.8% = 31.3% total)."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: 4.0
+        source_citation: "OECD Pensions at a Glance 2023 – Czech Republic: contribution ceiling 4× average wage (assessment base capped at 48× average monthly wage)."
+        year: 2023
+      contribution_base: "gross earnings"
+
+    benefits:
+      accrual_rate_per_year:
+        value: 0.015
+        source_citation: "OECD Pensions at a Glance 2023 – Czech Republic: earnings-related component accrues at 1.5% of personal assessment base per year of insurance."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "wages"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "mixed"
+      minimum_benefit_aw_multiple:
+        value: null
+        source_citation: "SSA SSPW Europe 2022 – Czech Republic: minimum pension (základní výměra) is a flat basic component added to earnings-related part; set in absolute CZK terms."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "SSA SSPW Europe 2022 – Czech Republic: no explicit maximum benefit multiple; earnings-related benefit is constrained by the contribution ceiling."
+        year: 2023
+
+    payout:
+      type: "annuity"
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "Pension income subject to personal income tax at 15%; annual pension exempt up to CZK 36× minimum wage threshold under Act No. 586/1992 Coll."
+  simplified_net_rate:
+    value: 0.10
+    source_citation: "Estimated effective pension tax rate – OECD Taxing Wages 2023 Czech Republic; most pensions partially exempt via deductions."
+    year: 2023
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "CZE"
+  ilostat_transformation: "x * 12"
+  manual_value: 450000
+  currency: "Czech Koruna"
+  year: 2022
+  source_citation: "Czech Statistical Office (CZSO) 2022 – average monthly gross wage approximately 37,839 CZK; annualised to ~454,000 CZK. OECD Pensions at a Glance 2023 AW estimate used."
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["CZE_CSSZ"]
+    source_citation: "Mandatory pension insurance for all employees – Act No. 155/1995 Coll. on Pension Insurance; administered by CSSZ."
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["CZE_CSSZ"]
+    source_citation: "Civil servants covered under the general pension insurance system – SSA SSPW Europe 2022."
+  self_employed:
+    label: "Self-employed"
+    coverage_status: mandatory
+    scheme_ids: ["CZE_CSSZ"]
+    source_citation: "Self-employed obligatorily insured; contribute on declared income base – SSA SSPW Europe 2022."
+
+notes: null

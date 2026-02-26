@@ -1,0 +1,130 @@
+metadata:
+  country_name: "Bolivia"
+  iso3: "BOL"
+  iso2: "BO"
+  currency: "Boliviano"
+  currency_code: "BOB"
+  reference_year: 2023
+  wb_region: "LCN"
+  wb_income_level: "LMC"
+  un_location_id: null
+  sources:
+    - "SSA Social Security Programs Throughout the World – The Americas 2023"
+    - "APS – Autoridad de Fiscalizacion y Control de Pensiones y Seguros (Bolivia)"
+    - "Ley 065 de Pensiones (Bolivia, 2010)"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "BOL_AFP"
+    name: "Sistema Integral de Pensiones – Cuenta Individual (AFP)"
+    tier: "first"
+    type: "DC"
+    coverage: "formal sector employees"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 60
+        source_citation: "SSA SSPW Americas 2023 – Bolivia: normal retirement age 60 for males under Ley 065."
+        year: 2023
+      normal_retirement_age_female:
+        value: 55
+        source_citation: "SSA SSPW Americas 2023 – Bolivia: normal retirement age 55 for females; early retirement available at 58M/55F with sufficient balance."
+        year: 2023
+      vesting_years:
+        value: null
+        source_citation: "SSA SSPW Americas 2023 – Bolivia: DC scheme with no minimum vesting years; benefit based on accumulated balance."
+        year: 2023
+      minimum_contribution_years:
+        value: null
+        source_citation: "SSA SSPW Americas 2023 – Bolivia: no minimum contribution years; DC account balance determines benefit."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.10
+        source_citation: "SSA SSPW Americas 2023 – Bolivia: employee contributes 10% of salary to individual DC account."
+        year: 2023
+      employer_rate:
+        value: 0.00
+        source_citation: "SSA SSPW Americas 2023 – Bolivia: employer contributes 0% to individual DC account under Ley 065 (employer pays risk insurance separately)."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived from employee + employer rates; employee bears full DC contribution."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "SSA SSPW Americas 2023 – Bolivia: no explicit contribution ceiling on DC accounts."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: "Employer also pays 3% for Riesgo Profesional (occupational risk) and contributes to Solidary Fund. Government adds Renta Dignidad universal basic pension."
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: "SSA SSPW Americas 2023 – Bolivia: DC scheme; benefit depends on accumulated account balance."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "wages"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "CPI"
+      minimum_benefit_aw_multiple:
+        value: null
+        source_citation: "SSA SSPW Americas 2023 – Bolivia: minimum pension (Pension Minima) guaranteed under solidarity component."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "SSA SSPW Americas 2023 – Bolivia: no explicit maximum for DC-based pension."
+        year: 2023
+      notes: "Renta Dignidad provides universal non-contributory pension of BOB 3,900/year to all Bolivians aged 60+."
+
+    payout:
+      type: "annuity"
+      notes: "Retirement income may be taken as annuity or programmed withdrawal."
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "Pension income generally exempt from income tax in Bolivia; Renta Dignidad is non-taxable."
+  simplified_net_rate:
+    value: 0.00
+    source_citation: "SSA SSPW Americas 2023 – Bolivia: pension income broadly exempt from income tax."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "BOL"
+  ilostat_transformation: "x * 12"
+  manual_value: 48000
+  currency: "BOB"
+  year: 2022
+  source_citation: "ILO ILOSTAT / INE Bolivia estimate 2022: average monthly formal earnings ~BOB 4,000, annualised ~BOB 48,000."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["BOL_AFP"]
+    source_citation: "SSA SSPW Americas 2023 – mandatory affiliation to AFP system for formal private sector employees."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["BOL_AFP"]
+    source_citation: "SSA SSPW Americas 2023 – civil servants covered under the same Sistema Integral de Pensiones."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: voluntary
+    scheme_ids: ["BOL_AFP"]
+    source_citation: "SSA SSPW Americas 2023 – self-employed participation in AFP system is voluntary in Bolivia."
+    notes: null
+
+notes: null

@@ -1,0 +1,139 @@
+# =============================================================================
+# Lesotho (LSO) – Pension System Parameters
+# =============================================================================
+# Primary scheme: National Pension Scheme (NPS) – mandatory DC + universal OAP
+# Sources:
+#   [1] ILO Social Security Inquiry – Lesotho
+#   [2] Lesotho National Pension Fund – Annual Report 2022
+# =============================================================================
+
+metadata:
+  country_name: "Lesotho"
+  iso3: "LSO"
+  iso2: "LS"
+  currency: "Lesotho Loti"
+  currency_code: "LSL"
+  reference_year: 2023
+  wb_region: "SSA"
+  wb_income_level: "LMC"
+  un_location_id: 426
+  sources:
+    - "ILO Social Security Inquiry – Lesotho"
+    - "Lesotho National Pension Fund Annual Report 2022"
+    - "Pension Act (Lesotho, 2019)"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "LSO_NPS"
+    name: "National Pension Scheme (NPS) – Mandatory DC + Old Age Pension"
+    tier: "first"
+    type: "DC"
+    coverage: "All formal employees; universal Old Age Pension for residents aged 70+"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 60
+        source_citation: "ILO Social Security Inquiry Lesotho: NPS retirement age 60; universal Old Age Pension at 70."
+        year: 2023
+      normal_retirement_age_female:
+        value: 60
+        source_citation: "ILO Social Security Inquiry Lesotho: retirement age 60 for females."
+        year: 2023
+      vesting_years:
+        value: 0
+        source_citation: "ILO Social Security Inquiry Lesotho: DC scheme – accumulated balance available at 60; no minimum vesting."
+        year: 2023
+      minimum_contribution_years:
+        value: 0
+        source_citation: "Pension Act Lesotho: DC accounts accessible at retirement age without minimum years."
+        year: 2023
+      notes: "Universal Old Age Pension (OAP) LSL 750/month for all residents aged 70+; non-contributory."
+
+    contributions:
+      employee_rate:
+        value: 0.08
+        source_citation: "ILO Social Security Inquiry Lesotho: employee NPS contribution 8% of wages."
+        year: 2023
+      employer_rate:
+        value: 0.10
+        source_citation: "ILO Social Security Inquiry Lesotho: employer NPS contribution 10% of wages."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: 18% total NPS contribution (8% employee + 10% employer)."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Lesotho: contributions on all wages; no explicit ceiling."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: "OAP provides universal safety net for all aged 70+."
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: "ILO Social Security Inquiry Lesotho: DC system – pension depends on accumulated contributions; OAP provides flat universal benefit."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "interest"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "CPI"
+      minimum_benefit_aw_multiple:
+        value: 0.10
+        source_citation: "ILO Social Security Inquiry Lesotho: OAP approximately LSL 750/month (2023) ≈ 10% of average formal wage for universal coverage."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Lesotho: no explicit maximum NPS pension."
+        year: 2023
+      notes: "NPS DC balance at retirement; OAP universal for all residents 70+."
+
+    payout:
+      type: "lump_sum"
+      notes: "NPS benefit typically paid as lump sum at retirement."
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "Pension income subject to income tax in Lesotho; OAP exempt; DC pension withdrawals may be taxable."
+  simplified_net_rate:
+    value: 0.05
+    source_citation: "ILO Social Security Inquiry Lesotho: estimated effective income tax rate on average pension approximately 5%."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "LSO"
+  ilostat_transformation: "x * 12"
+  manual_value: 60000
+  currency: "Lesotho Loti"
+  year: 2022
+  source_citation: "Bureau of Statistics Lesotho: estimated average annual formal earnings 2022 approximately LSL 60,000."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["LSO_NPS"]
+    source_citation: "Pension Act Lesotho: mandatory NPS for all formally employed workers."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["LSO_NPS"]
+    source_citation: "ILO Social Security Inquiry Lesotho: civil servants covered by NPS; government pension supplements."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: voluntary
+    scheme_ids: ["LSO_NPS"]
+    source_citation: "ILO Social Security Inquiry Lesotho: self-employed not mandatorily covered; eligible for OAP at 70."
+    notes: null
+
+notes: null

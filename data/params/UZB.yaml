@@ -1,0 +1,139 @@
+# =============================================================================
+# Uzbekistan (UZB) – Pension System Parameters
+# =============================================================================
+# Primary scheme: MHBF (DB PAYG + mandatory funded component)
+# Sources:
+#   [1] ILO Social Security Inquiry – Uzbekistan
+#   [2] World Bank Uzbekistan Social Protection Review 2022
+# =============================================================================
+
+metadata:
+  country_name: "Uzbekistan"
+  iso3: "UZB"
+  iso2: "UZ"
+  currency: "Uzbekistani So'm"
+  currency_code: "UZS"
+  reference_year: 2023
+  wb_region: "ECS"
+  wb_income_level: "LMC"
+  un_location_id: 860
+  sources:
+    - "ILO Social Security Inquiry – Uzbekistan"
+    - "World Bank Uzbekistan Social Protection Review 2022"
+    - "Law of the Republic of Uzbekistan on State Pension Provision (1993, as amended)"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "UZB_MHBF"
+    name: "Pension Fund (MHBF) – DB PAYG + Individual Funded Accounts"
+    tier: "first"
+    type: "DB"
+    coverage: "All formal sector employees; individual funded accounts introduced for accumulation"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 60
+        source_citation: "ILO Social Security Inquiry Uzbekistan: NRA for males 60 (scheduled increases being phased in)."
+        year: 2023
+      normal_retirement_age_female:
+        value: 55
+        source_citation: "ILO Social Security Inquiry Uzbekistan: NRA for females 55 (scheduled increases being phased in)."
+        year: 2023
+      vesting_years:
+        value: 25
+        source_citation: "Law of Uzbekistan on State Pension Provision: minimum 25 years of work service required for full pension."
+        year: 2023
+      minimum_contribution_years:
+        value: 25
+        source_citation: "ILO Social Security Inquiry Uzbekistan: 25 years required for full pension entitlement."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.08
+        source_citation: "ILO Social Security Inquiry Uzbekistan: employee social insurance contribution 8% of gross wages (including funded account)."
+        year: 2023
+      employer_rate:
+        value: 0.12
+        source_citation: "ILO Social Security Inquiry Uzbekistan: employer social insurance contribution 12% of gross wages."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: 20% total social insurance contribution rate."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Uzbekistan: no contribution ceiling as multiple of average wage."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: "Individual funded accounts receive a portion of employee contributions and accumulate for retirement supplement."
+
+    benefits:
+      accrual_rate_per_year:
+        value: 0.01
+        source_citation: "ILO Social Security Inquiry Uzbekistan: DB PAYG component accrues approximately 1% of reference wage per year."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "wages"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "CPI"
+      minimum_benefit_aw_multiple:
+        value: 0.10
+        source_citation: "ILO Social Security Inquiry Uzbekistan: minimum pension approximately 10% of average wage."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Uzbekistan: no statutory maximum pension."
+        year: 2023
+      notes: null
+
+    payout:
+      type: "annuity"
+      notes: null
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "Pension income is exempt from income tax in Uzbekistan."
+  simplified_net_rate:
+    value: 0.0
+    source_citation: "ILO Social Security Inquiry Uzbekistan: pension benefits exempt from personal income tax."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "UZB"
+  ilostat_transformation: "x * 12"
+  manual_value: 50000000
+  currency: "Uzbekistani So'm"
+  year: 2022
+  source_citation: "State Statistics Committee Uzbekistan: average monthly wage 2022 approximately UZS 3,900,000, UZS 46,800,000 annually."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["UZB_MHBF"]
+    source_citation: "Law of Uzbekistan on State Pension Provision: mandatory pension fund coverage for all formal employees."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["UZB_MHBF"]
+    source_citation: "ILO Social Security Inquiry Uzbekistan: civil servants covered under the same pension fund scheme."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: voluntary
+    scheme_ids: ["UZB_MHBF"]
+    source_citation: "ILO Social Security Inquiry Uzbekistan: self-employed may contribute voluntarily."
+    notes: null
+
+notes: null

@@ -1,0 +1,140 @@
+# =============================================================================
+# Philippines (PHL) – Pension System Parameters
+# =============================================================================
+# Primary scheme: SSS (Social Security System) – DB
+# Sources:
+#   [1] ILO Social Security Inquiry – Philippines
+#   [2] Social Security System (SSS) Philippines – Annual Report 2022
+#   [3] Republic Act 11199 (Social Security Act of 2018, Philippines)
+# =============================================================================
+
+metadata:
+  country_name: "Philippines"
+  iso3: "PHL"
+  iso2: "PH"
+  currency: "Philippine Peso"
+  currency_code: "PHP"
+  reference_year: 2023
+  wb_region: "EAP"
+  wb_income_level: "LMC"
+  un_location_id: 608
+  sources:
+    - "ILO Social Security Inquiry – Philippines"
+    - "Social Security System (SSS) Philippines Annual Report 2022"
+    - "Republic Act 11199 (Social Security Act of 2018, Philippines)"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "PHL_SSS"
+    name: "SSS (Social Security System) – DB Earnings-Related"
+    tier: "first"
+    type: "DB"
+    coverage: "Private sector employees; mandatory social security"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 60
+        source_citation: "ILO Social Security Inquiry Philippines: SSS NRA 60 for males (optional retirement); 65 for compulsory retirement."
+        year: 2023
+      normal_retirement_age_female:
+        value: 60
+        source_citation: "ILO Social Security Inquiry Philippines: NRA 60 for females."
+        year: 2023
+      vesting_years:
+        value: 10
+        source_citation: "ILO Social Security Inquiry Philippines: minimum 120 monthly contributions for SSS pension."
+        year: 2023
+      minimum_contribution_years:
+        value: 10
+        source_citation: "RA 11199 Philippines: minimum 120 months of SSS contributions for monthly pension."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.045
+        source_citation: "ILO Social Security Inquiry Philippines: SSS employee contribution approximately 4.5% of monthly salary credit (as of 2023)."
+        year: 2023
+      employer_rate:
+        value: 0.085
+        source_citation: "ILO Social Security Inquiry Philippines: SSS employer contribution approximately 8.5% of monthly salary credit."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: approximately 13% total SSS contribution (4.5% employee + 8.5% employer)."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Philippines: contributions on monthly salary credit up to PHP 30,000 ceiling."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: "GSIS (Government Service Insurance System) covers government employees. PhilPen (PhilHealth) for health; Pag-IBIG for housing."
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: "ILO Social Security Inquiry Philippines: SSS pension formula: higher of average monthly salary credit-based formula or PHP 300 + 20% AMSC + 2% per year above 10."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "wages"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "ad_hoc"
+      minimum_benefit_aw_multiple:
+        value: 0.20
+        source_citation: "ILO Social Security Inquiry Philippines: minimum SSS pension approximately 20% of average formal wage."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Philippines: maximum pension constrained by salary credit ceiling."
+        year: 2023
+      notes: "Minimum monthly SSS pension is PHP 2,000 (from 2017). Pension adjusted ad hoc."
+
+    payout:
+      type: "annuity"
+      notes: null
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "SSS pension income is tax-exempt in the Philippines."
+  simplified_net_rate:
+    value: 0.00
+    source_citation: "Philippines Tax Code: SSS pension benefits are exempt from income tax."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "PHL"
+  ilostat_transformation: "x * 12"
+  manual_value: 300000
+  currency: "Philippine Peso"
+  year: 2022
+  source_citation: "Philippine Statistics Authority: average annual formal earnings 2022 approximately PHP 300,000."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["PHL_SSS"]
+    source_citation: "RA 11199 Philippines: mandatory SSS for all privately employed workers."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["PHL_SSS"]
+    source_citation: "ILO Social Security Inquiry Philippines: civil servants covered by GSIS (Government Service Insurance System)."
+    notes: "Civil servants covered by GSIS, not SSS."
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: mandatory
+    scheme_ids: ["PHL_SSS"]
+    source_citation: "RA 11199 Philippines: self-employed persons mandatorily covered by SSS."
+    notes: null
+
+notes: null

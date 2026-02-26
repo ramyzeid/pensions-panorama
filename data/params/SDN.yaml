@@ -1,0 +1,174 @@
+# =============================================================================
+# Sudan (SDN) – Pension System Parameters
+# =============================================================================
+# Primary scheme: NSIF – National Social Insurance Fund (الصندوق القومي للتأمين الاجتماعي)
+# Governing law: Social Insurance and Pensions Act 1990 (as amended)
+#
+# Note: Sudan experienced a severe economic and political crisis from 2019 onward,
+# including a military coup in October 2021 and hyperinflation. Statistical data
+# carries high uncertainty.
+#
+# Sources:
+#   [1] NSIF Sudan – Social Insurance and Pensions Act 1990
+#   [2] ILO Sudan Social Security Country Profile 2019
+#   [3] World Bank Sudan Social Protection Review 2018
+# =============================================================================
+
+metadata:
+  country_name: "Sudan"
+  iso3: "SDN"
+  iso2: "SD"
+  currency: "Sudanese Pound"
+  currency_code: "SDG"
+  reference_year: 2022
+  wb_region: "SSA"
+  wb_income_level: "LIC"
+  un_location_id: 729
+  sources:
+    - "Social Insurance and Pensions Act 1990 (as amended) – Sudan (NSIF)"
+    - "ILO Sudan Social Security Country Profile 2019"
+    - "World Bank Sudan Social Protection Review 2018"
+  last_reviewed: "2024-03-01"
+
+schemes:
+  - scheme_id: "NSIF_DB"
+    name: "NSIF Old-Age Pension"
+    tier: "first"
+    type: "DB"
+    coverage: >
+      Formal sector employees including private sector and public enterprises.
+      Civil servants covered by a separate government pension. Coverage estimated at
+      10-15% of total workforce; large informal sector (~80%).
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 60
+        source_citation: >
+          Social Insurance and Pensions Act 1990 – NRA 60 for males.
+          NSIF Sudan 2022.
+        year: 2022
+      normal_retirement_age_female:
+        value: 55
+        source_citation: >
+          Social Insurance and Pensions Act 1990 – NRA 55 for females.
+          NSIF Sudan 2022.
+        year: 2022
+      vesting_years:
+        value: 20
+        source_citation: >
+          Social Insurance and Pensions Act 1990 – minimum 20 years of contributions
+          for full old-age pension. NSIF Sudan 2022.
+        year: 2022
+      minimum_contribution_years:
+        value: 20
+        source_citation: "NSIF Act 1990 – 20 years minimum for full pension entitlement."
+        year: 2022
+
+    contributions:
+      employee_rate:
+        value: 0.08
+        source_citation: >
+          Social Insurance and Pensions Act 1990 – employee contribution 8% of wage.
+          NSIF Sudan 2022.
+        year: 2022
+      employer_rate:
+        value: 0.17
+        source_citation: >
+          Social Insurance and Pensions Act 1990 – employer contribution 17% of wage.
+          Total contribution rate: 25%. NSIF Sudan 2022.
+        year: 2022
+      total_rate:
+        value: 0.25
+        source_citation: "Employee 8% + Employer 17% = 25% of gross wage. NSIF Act 1990."
+        year: 2022
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "No contribution ceiling specified in NSIF legislation."
+        year: 2022
+      contribution_base: "gross wage"
+
+    benefits:
+      accrual_rate_per_year:
+        value: 0.02
+        source_citation: >
+          NSIF Act 1990 – pension benefit: 2% per year × average of last 3 years earnings.
+          Maximum 80% at 40 years. NSIF Sudan 2022.
+        year: 2022
+      reference_wage: "final_salary"
+      valorization: "wages"
+      indexation: "CPI"
+      minimum_benefit_aw_multiple:
+        value: 0.15
+        source_citation: >
+          NSIF minimum pension (2022 estimate) ~SDG 18,000/year.
+          With AW ~SDG 120,000/year → ~15% AW. Very uncertain due to hyperinflation.
+          NSIF Sudan 2022.
+        year: 2022
+      maximum_benefit_aw_multiple:
+        value: 0.80
+        source_citation: >
+          Maximum pension 80% of reference wage at 40 years (2% × 40 = 80%).
+          NSIF Act 1990.
+        year: 2022
+
+    payout:
+      type: "annuity"
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: >
+    NSIF pension income is exempt from personal income tax in Sudan under the Income Tax
+    Act. Government pensions are also tax-exempt. Personal Income Tax Act Sudan.
+  simplified_net_rate:
+    value: 0.0
+    source_citation: "NSIF pension income is tax-exempt. Personal Income Tax Act Sudan."
+    year: 2022
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "SDN"
+  ilostat_transformation: "x * 12"
+  manual_value: 1200000.0
+  currency: "Sudanese Pound"
+  year: 2022
+  source_citation: >
+    Estimated from World Bank Sudan Economic Monitor 2022 and ILO data.
+    Formal sector average monthly wage ~SDG 100,000/month × 12 = SDG 1,200,000/year.
+    EXTREME UNCERTAINTY: Sudan experienced ~200%+ inflation in 2022.
+    SDG lost ~80% of value; nominal wages rising rapidly in SDG terms.
+    ILOSTAT data unavailable; manual estimate only.
+  notes: >
+    Sudan experienced severe economic crisis: hyperinflation (~245% in 2022), currency
+    collapse, political instability (military coup October 2021), and armed conflict
+    (Darfur, civil war escalating in 2023). All statistics carry extreme uncertainty.
+
+
+# =============================================================================
+# Worker types
+# =============================================================================
+
+worker_types:
+
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: [NSIF_DB]
+    source_citation: "Default: same as main scheme definition."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: unknown
+    scheme_ids: []
+    source_citation: "Coverage status not yet researched; placeholder."
+    notes: "TODO: verify self-employed coverage under national law."
+
+notes: >
+  Sudan's social security system has been severely undermined by decades of economic
+  crises, sanctions (US sanctions lifted 2017), political instability, and the loss of
+  oil revenues following South Sudan's independence in 2011.
+  The NSIF covers a small fraction of workers; coverage is concentrated in Khartoum
+  and other major urban centres.
+  Civil servants are covered by a separate Public Pension Fund (PPF).
+  In practice, most Sudanese workers have no formal pension coverage.

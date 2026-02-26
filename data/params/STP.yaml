@@ -1,0 +1,139 @@
+# =============================================================================
+# São Tomé and Príncipe (STP) – Pension System Parameters
+# =============================================================================
+# Primary scheme: INSS (Instituto Nacional de Segurança Social) – DB
+# Sources:
+#   [1] ILO Social Security Inquiry – São Tomé and Príncipe
+#   [2] Instituto Nacional de Segurança Social STP – 2022
+# =============================================================================
+
+metadata:
+  country_name: "Sao Tome and Principe"
+  iso3: "STP"
+  iso2: "ST"
+  currency: "São Tomé and Príncipe Dobra"
+  currency_code: "STN"
+  reference_year: 2023
+  wb_region: "SSA"
+  wb_income_level: "LMC"
+  un_location_id: 678
+  sources:
+    - "ILO Social Security Inquiry – Sao Tome and Principe"
+    - "Instituto Nacional de Segurança Social STP 2022"
+    - "Lei da Segurança Social (Sao Tome and Principe)"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "STP_INSS"
+    name: "INSS (Instituto Nacional de Segurança Social) – DB Earnings-Related"
+    tier: "first"
+    type: "DB"
+    coverage: "All employed workers; mandatory social insurance"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 62
+        source_citation: "ILO Social Security Inquiry Sao Tome and Principe: NRA 62 for males."
+        year: 2023
+      normal_retirement_age_female:
+        value: 62
+        source_citation: "ILO Social Security Inquiry Sao Tome and Principe: NRA 62 for females."
+        year: 2023
+      vesting_years:
+        value: 15
+        source_citation: "ILO Social Security Inquiry Sao Tome and Principe: minimum 15 years of contributions for pension."
+        year: 2023
+      minimum_contribution_years:
+        value: 15
+        source_citation: "ILO Social Security Inquiry Sao Tome and Principe: minimum 15 years for old-age pension."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.05
+        source_citation: "ILO Social Security Inquiry Sao Tome and Principe: employee INSS contribution approximately 5% of wages."
+        year: 2023
+      employer_rate:
+        value: 0.10
+        source_citation: "ILO Social Security Inquiry Sao Tome and Principe: employer INSS contribution approximately 10% of wages."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: approximately 15% total INSS contribution."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Sao Tome and Principe: contributions on insurable wages."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: null
+
+    benefits:
+      accrual_rate_per_year:
+        value: 0.02
+        source_citation: "ILO Social Security Inquiry Sao Tome and Principe: INSS pension approximately 2% per year of career average earnings."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "prices"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "prices"
+      minimum_benefit_aw_multiple:
+        value: 0.25
+        source_citation: "ILO Social Security Inquiry Sao Tome and Principe: minimum INSS pension approximately 25% of average wage."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Sao Tome and Principe: maximum pension constrained by formula."
+        year: 2023
+      notes: null
+
+    payout:
+      type: "annuity"
+      notes: null
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "Pension income subject to income tax in Sao Tome and Principe; exemptions for modest pensions."
+  simplified_net_rate:
+    value: 0.05
+    source_citation: "ILO Social Security Inquiry Sao Tome and Principe: estimated effective tax rate on average pension approximately 5%."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "STP"
+  ilostat_transformation: "x * 12"
+  manual_value: 200000
+  currency: "São Tomé and Príncipe Dobra"
+  year: 2022
+  source_citation: "Instituto Nacional de Estatística STP: estimated average annual earnings 2022 approximately STN 200,000."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["STP_INSS"]
+    source_citation: "ILO Social Security Inquiry STP: mandatory INSS for all formally employed workers."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["STP_INSS"]
+    source_citation: "ILO Social Security Inquiry STP: civil servants covered by INSS."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: voluntary
+    scheme_ids: ["STP_INSS"]
+    source_citation: "ILO Social Security Inquiry STP: self-employed may voluntarily contribute to INSS."
+    notes: null
+
+notes: null

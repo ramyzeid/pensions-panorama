@@ -1,0 +1,189 @@
+# =============================================================================
+# Lebanon (LBN) – Pension System Parameters
+# =============================================================================
+# Primary scheme: NSSF EOSI – National Social Security Fund, End of Service Indemnity
+# Governing law: Labour Code Art. 51; NSSF Law (Decree-Law No. 13955 of 1963 as amended)
+#
+# Note: Lebanon's system is an end-of-service lump-sum indemnity, NOT a traditional
+# annuity pension. Modeled as DC-equivalent for cross-country comparability.
+#
+# Sources:
+#   [1] NSSF Lebanon – www.cnss.gov.lb – Annual Report 2021
+#   [2] Labour Code Decree-Law No. 136 of 1983, Art. 51 – End of Service Indemnity
+#   [3] World Bank Lebanon Social Protection Crisis Response 2022
+#   [4] ILO Lebanon Social Security Country Profile 2021
+# =============================================================================
+
+metadata:
+  country_name: "Lebanon"
+  iso3: "LBN"
+  iso2: "LB"
+  currency: "Lebanese Pound"
+  currency_code: "LBP"
+  reference_year: 2022
+  wb_region: "MEA"
+  wb_income_level: "LMC"
+  un_location_id: 422
+  sources:
+    - "NSSF Decree-Law No. 13955 of 1963 (as amended) – Lebanon"
+    - "Labour Code Decree-Law No. 136 of 1983 Art. 51 – Lebanon"
+    - "NSSF Lebanon Annual Report 2021 – www.cnss.gov.lb"
+    - "World Bank Lebanon Social Protection Crisis Response 2022"
+  last_reviewed: "2024-03-01"
+
+schemes:
+  - scheme_id: "NSSF_EOSI"
+    name: "NSSF End of Service Indemnity (EOSI)"
+    tier: "first"
+    type: "DC"
+    coverage: >
+      Private sector employees registered with NSSF. Covers approximately 30-40% of
+      formal labour force. Excludes public sector (covered by Civil Service Retirement),
+      agricultural workers, and domestic workers. System severely disrupted by financial
+      crisis and hyperinflation since 2019.
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 64
+        source_citation: >
+          NSSF Law – EOSI payable on cessation of employment at any age; for age-related
+          claim, typically upon reaching 64 years. Labour Code Art. 51.
+          NSSF Lebanon 2022.
+        source_url: "https://www.cnss.gov.lb"
+        year: 2022
+      normal_retirement_age_female:
+        value: 60
+        source_citation: >
+          NSSF Law and Labour Code – women may claim EOSI upon marriage or at age 60.
+          NSSF Lebanon 2022.
+        year: 2022
+      vesting_years:
+        value: 1
+        source_citation: >
+          Labour Code Art. 51 – EOSI accrues from the first year of employment.
+          One month's salary per year of service. NSSF Lebanon 2022.
+        year: 2022
+      minimum_contribution_years:
+        value: 1
+        source_citation: "NSSF – no minimum years required; each year of service adds one month entitlement."
+        year: 2022
+
+    contributions:
+      employee_rate:
+        value: 0.0
+        source_citation: >
+          NSSF Law – EOSI funded entirely by employer contribution. Employee pays 0% to
+          the end-of-service indemnity account. NSSF 2022.
+        year: 2022
+      employer_rate:
+        value: 0.085
+        source_citation: >
+          NSSF Law (as amended) – employer contribution to EOSI branch: 8.5% of wage.
+          (Separate employer contributions: 6% family allowances, 7% medical; total employer
+          NSSF burden = 21.5%). NSSF Lebanon 2022.
+        source_url: "https://www.cnss.gov.lb"
+        year: 2022
+      total_rate:
+        value: 0.085
+        source_citation: "EOSI contributions: employer 8.5% only. NSSF Law Lebanon."
+        year: 2022
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "No contribution ceiling specified for EOSI; full wage is the base."
+        year: 2022
+      contribution_base: "gross wage"
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: >
+          EOSI benefit = 1 month's last salary per year of service. Paid as lump sum.
+          Not an annuity; DC-equivalent modeled using 8.5% employer contribution.
+          Labour Code Art. 51; NSSF Lebanon 2022.
+        year: 2022
+      reference_wage: "final_salary"
+      valorization: "none"
+      indexation: "none"
+      minimum_benefit_aw_multiple:
+        value: null
+        source_citation: >
+          No minimum guarantee on EOSI. Lump sum = last salary × years of service / 12.
+          NSSF Lebanon 2022.
+        year: 2022
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "No maximum cap on EOSI; accumulates with each year of service."
+        year: 2022
+
+    payout:
+      type: "lump_sum"
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: >
+    NSSF EOSI lump sum is exempt from income tax up to a threshold (approximately
+    LBP 5 billion as of 2022 pre-crisis terms). Amounts above threshold subject to 10%
+    withholding tax. Public sector pension income is fully exempt. Income Tax Law Lebanon.
+    Note: Lebanon's financial crisis (since 2019) and hyperinflation have rendered these
+    thresholds effectively meaningless for most recipients.
+  simplified_net_rate:
+    value: 0.0
+    source_citation: >
+      EOSI lump sums below threshold are tax-exempt; given hyperinflation eroding nominal
+      values, effective rate ~0%. Income Tax Law Lebanon (Decree-Law No. 144 of 1959
+      as amended).
+    year: 2022
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "LBN"
+  ilostat_transformation: "x * 12"
+  manual_value: 168000000.0
+  currency: "Lebanese Pound"
+  year: 2022
+  source_citation: >
+    World Bank Lebanon Economic Monitor 2022 and ILO Lebanon Labour Market Update 2022.
+    Average formal sector monthly wage estimated at ~USD 400-500/month (purchasing power).
+    At market exchange rate ~LBP 35,000/USD in mid-2022: USD 400 × 35,000 × 12 =
+    LBP 168,000,000/year. EXTREME UNCERTAINTY: Lebanon experienced ~200%+ cumulative
+    inflation and the LBP lost >95% of value since 2019.
+  source_url: "https://www.cnss.gov.lb"
+  notes: >
+    Lebanon experienced a catastrophic financial collapse from 2019 onward. The LBP lost
+    over 95% of its value versus the USD. There is no reliable single exchange rate or average
+    wage figure for 2022. ILOSTAT data is unavailable/unreliable. The manual_value is a
+    rough estimate based on USD-converted purchasing power. Comparisons with other countries
+    using AW-relative metrics will be unreliable for Lebanon.
+
+
+# =============================================================================
+# Worker types
+# =============================================================================
+
+worker_types:
+
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: [NSSF_EOSI]
+    source_citation: "Default: same as main scheme definition."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: unknown
+    scheme_ids: []
+    source_citation: "Coverage status not yet researched; placeholder."
+    notes: "TODO: verify self-employed coverage under national law."
+
+notes: >
+  Lebanon's NSSF EOSI is one of the few remaining provident fund / end-of-service indemnity
+  systems in the region, modeled after older Arab social security frameworks. It is NOT a
+  traditional pension. There is no mandatory annuitization; workers receive a lump sum.
+  The government has repeatedly discussed converting to a real pension system (most recently
+  through the 2019 NSSF Reform discussions) but no reform was enacted.
+  The system is further undermined by: (1) the banking system collapse (NSSF funds were
+  deposited in Lebanese banks and lost significant value), (2) hyperinflation eroding real
+  payouts, (3) lack of indexation. Most Lebanese workers have effectively lost their retirement
+  savings as of 2022.

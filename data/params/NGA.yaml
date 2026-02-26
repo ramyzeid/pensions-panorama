@@ -1,0 +1,117 @@
+metadata:
+  country_name: "Nigeria"
+  iso3: "NGA"
+  iso2: "NG"
+  currency: "Nigerian Naira"
+  currency_code: "NGN"
+  reference_year: 2023
+  wb_region: "SSF"
+  wb_income_level: "LMC"
+  un_location_id: null
+  sources:
+    - "SSA Social Security Programs Throughout the World – Africa 2021"
+    - "Pension Reform Act 2014 (Nigeria) – Contributory Pension Scheme"
+    - "National Pension Commission (PenCom) Nigeria"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "NGA_CPS_DC"
+    name: "Contributory Pension Scheme (CPS) – Retirement Savings Account"
+    tier: "first"
+    type: "DC"
+    coverage: "formal sector employees (public and private); informal sector excluded"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 60
+        source_citation: "SSA SSPW Africa 2021 – Nigeria: NRA 60."
+        year: 2021
+      normal_retirement_age_female:
+        value: 60
+        source_citation: "SSA SSPW Africa 2021 – Nigeria: NRA 60 females."
+        year: 2021
+      vesting_years:
+        value: null
+        source_citation: "SSA SSPW Africa 2021 – Nigeria vesting period; DC scheme vests immediately upon contribution."
+        year: 2021
+      minimum_contribution_years:
+        value: null
+        source_citation: "SSA SSPW Africa 2021 – Nigeria minimum contribution period; DC account-based, no minimum years required."
+        year: 2021
+
+    contributions:
+      employee_rate:
+        value: 0.08
+        source_citation: "SSA SSPW Africa 2021 – Nigeria employee contribution rate 8% of monthly emoluments."
+        year: 2021
+      employer_rate:
+        value: 0.10
+        source_citation: "SSA SSPW Africa 2021 – Nigeria employer contribution rate 10% of monthly emoluments."
+        year: 2021
+      total_rate:
+        value: null
+        source_citation: "Derived from employee + employer rates."
+        year: 2021
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "SSA SSPW Africa 2021 – Nigeria contribution ceiling; no statutory ceiling reported."
+        year: 2021
+      contribution_base: "gross earnings"
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: "SSA SSPW Africa 2021 – Nigeria benefit formula; DC scheme, no accrual rate."
+        year: 2021
+      reference_wage: "career_average"
+      valorization: "wages"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "none"
+      minimum_benefit_aw_multiple:
+        value: null
+        source_citation: "SSA SSPW Africa 2021 – Nigeria minimum pension; no statutory minimum pension reported."
+        year: 2021
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "SSA SSPW Africa 2021 – Nigeria maximum pension; DC scheme, no maximum."
+        year: 2021
+
+    payout:
+      type: "programmed_withdrawal"
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "Pension income generally exempt from income tax in Nigeria."
+  simplified_net_rate:
+    value: 0.0
+    source_citation: "Pensions generally exempt from income tax in Nigeria – SSA SSPW Africa 2021."
+    year: 2021
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "NGA"
+  ilostat_transformation: "x * 12"
+  manual_value: 2500000
+  currency: "NGN"
+  year: 2022
+  source_citation: "ILO ILOSTAT / World Bank national accounts estimate – Nigeria annual average earnings ~2,500,000 NGN."
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["NGA_CPS_DC"]
+    source_citation: "SSA SSPW Africa 2021 – mandatory coverage for formal sector employees under Contributory Pension Scheme."
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["NGA_CPS_DC"]
+    source_citation: "Civil servants covered under CPS since Pension Reform Act 2004 – SSA SSPW Africa 2021."
+  self_employed:
+    label: "Self-employed / informal worker"
+    coverage_status: excluded
+    scheme_ids: []
+    source_citation: "Informal sector workers generally excluded from mandatory coverage in SSA – ILO 2022."
+    notes: "Informal sector constitutes majority of workforce; excluded from mandatory pension coverage."

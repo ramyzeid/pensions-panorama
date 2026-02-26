@@ -1,0 +1,139 @@
+# =============================================================================
+# Ghana (GHA) – Pension System Parameters
+# =============================================================================
+# Primary scheme: SSNIT (Social Security and National Insurance Trust) – DB+DC
+# Sources:
+#   [1] ILO Social Security Inquiry – Ghana
+#   [2] SSNIT Ghana – Annual Report 2022
+# =============================================================================
+
+metadata:
+  country_name: "Ghana"
+  iso3: "GHA"
+  iso2: "GH"
+  currency: "Ghanaian Cedi"
+  currency_code: "GHS"
+  reference_year: 2023
+  wb_region: "SSA"
+  wb_income_level: "LMC"
+  un_location_id: 288
+  sources:
+    - "ILO Social Security Inquiry – Ghana"
+    - "SSNIT Ghana Annual Report 2022"
+    - "National Pensions Act (Ghana, Act 766, 2008)"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "GHA_SSNIT"
+    name: "SSNIT Three-Tier Pension (DB+DC) – National Pensions Act 766"
+    tier: "first"
+    type: "DB"
+    coverage: "All employed workers; mandatory three-tier pension system"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 60
+        source_citation: "ILO Social Security Inquiry Ghana: NRA 60 for males; early retirement at 55 with reduced pension."
+        year: 2023
+      normal_retirement_age_female:
+        value: 60
+        source_citation: "ILO Social Security Inquiry Ghana: NRA 60 for females."
+        year: 2023
+      vesting_years:
+        value: 15
+        source_citation: "ILO Social Security Inquiry Ghana: minimum 180 months (15 years) of contributions for SSNIT pension."
+        year: 2023
+      minimum_contribution_years:
+        value: 15
+        source_citation: "National Pensions Act Ghana 766: minimum 180 months for Tier 1 SSNIT old-age pension."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.055
+        source_citation: "ILO Social Security Inquiry Ghana: employee pension contribution 5.5% of wages (Tier 1 SSNIT: 5.5% of total 13.5% salary)."
+        year: 2023
+      employer_rate:
+        value: 0.13
+        source_citation: "ILO Social Security Inquiry Ghana: employer total pension contribution 13% of wages (Tier 1 + Tier 2 combined; employer pays 13% total, employee 5.5%)."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: 18.5% total pension contribution (5.5% employee + 13% employer); split across Tier 1 SSNIT DB and Tier 2 mandatory DC."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Ghana: contributions on all earnings; no explicit AW multiple ceiling."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: "Three-tier: Tier 1 SSNIT mandatory DB (13.5% total), Tier 2 mandatory occupational DC (5%), Tier 3 voluntary."
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: "ILO Social Security Inquiry Ghana: SSNIT pension = 37.5% of average best 3 years earnings at 15 years; increases 1.125% per year thereafter; maximum 60% at 35 years."
+        year: 2023
+      reference_wage: "best_years"
+      valorization: "wages"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "CPI"
+      minimum_benefit_aw_multiple:
+        value: 0.25
+        source_citation: "ILO Social Security Inquiry Ghana: minimum SSNIT pension approximately 25% of average wage."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: 0.60
+        source_citation: "ILO Social Security Inquiry Ghana: maximum SSNIT Tier 1 pension 60% of reference earnings at 35 years."
+        year: 2023
+      notes: "Livelihood Empowerment Against Poverty (LEAP) provides non-contributory transfers to poor elderly."
+
+    payout:
+      type: "annuity"
+      notes: "Tier 1 SSNIT paid as monthly annuity; Tier 2 DC lump-sum or annuity."
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "Pension income subject to income tax in Ghana; exemptions for SSNIT pensions below threshold."
+  simplified_net_rate:
+    value: 0.05
+    source_citation: "ILO Social Security Inquiry Ghana: estimated effective income tax rate on average pension approximately 5%."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "GHA"
+  ilostat_transformation: "x * 12"
+  manual_value: 35000
+  currency: "Ghanaian Cedi"
+  year: 2022
+  source_citation: "Ghana Statistical Service: average annual formal sector earnings 2022 approximately GHS 35,000."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["GHA_SSNIT"]
+    source_citation: "National Pensions Act Ghana 766: mandatory SSNIT for all formally employed workers."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["GHA_SSNIT"]
+    source_citation: "ILO Social Security Inquiry Ghana: civil servants covered by SSNIT general scheme."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: voluntary
+    scheme_ids: ["GHA_SSNIT"]
+    source_citation: "National Pensions Act Ghana 766: self-employed may voluntarily contribute to SSNIT."
+    notes: null
+
+notes: null

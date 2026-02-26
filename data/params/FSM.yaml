@@ -1,0 +1,140 @@
+# =============================================================================
+# Micronesia, Fed. States (FSM) – Pension System Parameters
+# =============================================================================
+# Primary scheme: FSMSSA (FSM Social Security Administration) – DB
+# Sources:
+#   [1] ILO Social Security Inquiry – Micronesia
+#   [2] FSM Social Security Administration
+#   [3] FSM Social Security Act (Title 53)
+# =============================================================================
+
+metadata:
+  country_name: "Micronesia, Fed. States"
+  iso3: "FSM"
+  iso2: "FM"
+  currency: "United States Dollar"
+  currency_code: "USD"
+  reference_year: 2023
+  wb_region: "EAP"
+  wb_income_level: "LMC"
+  un_location_id: 583
+  sources:
+    - "ILO Social Security Inquiry – Micronesia (Federated States)"
+    - "FSM Social Security Administration"
+    - "FSM Social Security Act (Title 53 FSMC)"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "FSM_SSA"
+    name: "FSM Social Security Administration – DB"
+    tier: "first"
+    type: "DB"
+    coverage: "Formally employed workers; mandatory social security"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 60
+        source_citation: "ILO Social Security Inquiry Micronesia: FSM SSA NRA 60 for males."
+        year: 2023
+      normal_retirement_age_female:
+        value: 60
+        source_citation: "ILO Social Security Inquiry Micronesia: NRA 60 for females."
+        year: 2023
+      vesting_years:
+        value: 10
+        source_citation: "ILO Social Security Inquiry Micronesia: minimum 10 years of SSA contributions for pension."
+        year: 2023
+      minimum_contribution_years:
+        value: 10
+        source_citation: "FSM Social Security Act: minimum contribution period for pension entitlement."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.06
+        source_citation: "ILO Social Security Inquiry Micronesia: FSM SSA employee contribution 6% of wages."
+        year: 2023
+      employer_rate:
+        value: 0.06
+        source_citation: "ILO Social Security Inquiry Micronesia: FSM SSA employer contribution 6% of wages."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: 12% total FSM SSA contribution (6% each)."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Micronesia: contributions on wages up to annual maximum."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: "FSM uses USD. Compact of Free Association with United States. Four states: Chuuk, Pohnpei, Kosrae, Yap."
+
+    benefits:
+      accrual_rate_per_year:
+        value: 0.025
+        source_citation: "ILO Social Security Inquiry Micronesia: FSM SSA pension approximately 2.5% per year of average insurable earnings."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "prices"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "CPI"
+      minimum_benefit_aw_multiple:
+        value: 0.20
+        source_citation: "ILO Social Security Inquiry Micronesia: minimum FSM SSA pension approximately 20% of average formal wage."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Micronesia: maximum pension constrained by formula."
+        year: 2023
+      notes: null
+
+    payout:
+      type: "annuity"
+      notes: null
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "Pension income subject to income tax in FSM."
+  simplified_net_rate:
+    value: 0.05
+    source_citation: "ILO Social Security Inquiry Micronesia: estimated effective income tax rate on average pension approximately 5%."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "FSM"
+  ilostat_transformation: "x * 12"
+  manual_value: 12000
+  currency: "United States Dollar"
+  year: 2022
+  source_citation: "FSM Office of Statistics Budget and Economic Management: estimated average annual formal earnings 2022 approximately USD 12,000."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["FSM_SSA"]
+    source_citation: "FSM Social Security Act: mandatory SSA for formally employed workers."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["FSM_SSA"]
+    source_citation: "ILO Social Security Inquiry Micronesia: government employees covered by FSM SSA."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: voluntary
+    scheme_ids: ["FSM_SSA"]
+    source_citation: "ILO Social Security Inquiry Micronesia: self-employed may voluntarily contribute to FSM SSA."
+    notes: null
+
+notes: null

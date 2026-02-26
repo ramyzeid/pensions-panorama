@@ -1,0 +1,42 @@
+country_name: "Jordan"
+
+narrative:
+  text: >
+    Jordan's pension system is centered on the Social Security Corporation (SSC)
+    old-age, invalidity and survivors scheme, a defined-benefit social insurance
+    program covering private-sector employees and most self-employed workers.
+  sources:
+    - source_name: "Social Security Corporation (SSC) Jordan"
+      source_url: "https://www.ssc.gov.jo"
+
+system_kpis:
+  - key: "coverage_total"
+  - key: "coverage_65plus"
+  - key: "pension_spending_gdp"
+
+schemes:
+  - scheme_id: "SSC_MIN"
+    scheme_name: "SSC Minimum Pension Guarantee"
+    scheme_type_group: "noncontrib"
+    attributes:
+      benefit_plan_type:
+        value: "Minimum guarantee"
+
+  - scheme_id: "SSC_OAI"
+    scheme_name: "SSC Old-Age Insurance (Defined Benefit)"
+    scheme_type_group: "db"
+    attributes:
+      implementing_agency:
+        value: "Social Security Corporation (SSC)"
+      benefit_plan_type:
+        value: "Defined Benefit (DB)"
+      financing_mechanism:
+        value: "Pay As You Go (PAYG)"
+      ret_age_male:
+        value: 60
+        source_name: "SSC Law No. 1 of 2014"
+        source_url: "https://www.ssc.gov.jo"
+      ret_age_female:
+        value: 55
+        source_name: "SSC Law No. 1 of 2014"
+        source_url: "https://www.ssc.gov.jo"

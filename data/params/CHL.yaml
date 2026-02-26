@@ -1,0 +1,139 @@
+# =============================================================================
+# Chile (CHL) – Pension System Parameters
+# =============================================================================
+# Primary scheme: AFP (mandatory individual DC accounts)
+# Sources:
+#   [1] OECD Pensions at a Glance 2023 – Chile
+#   [2] Superintendencia de Pensiones Chile – Annual Statistical Report 2022
+# =============================================================================
+
+metadata:
+  country_name: "Chile"
+  iso3: "CHL"
+  iso2: "CL"
+  currency: "Chilean Peso"
+  currency_code: "CLP"
+  reference_year: 2023
+  wb_region: "LCN"
+  wb_income_level: "HIC"
+  un_location_id: 152
+  sources:
+    - "OECD Pensions at a Glance 2023 – Chile"
+    - "Superintendencia de Pensiones Chile Annual Statistical Report 2022"
+    - "Decree-Law No. 3,500 (1980, as amended) – AFP System"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "CHL_AFP"
+    name: "Administradoras de Fondos de Pensiones (AFP) – Mandatory DC"
+    tier: "first"
+    type: "DC"
+    coverage: "All formal sector employees; Solidarity Pillar provides non-contributory pension floor"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 65
+        source_citation: "OECD Pensions at a Glance 2023 Chile: NRA for males 65."
+        year: 2023
+      normal_retirement_age_female:
+        value: 60
+        source_citation: "OECD Pensions at a Glance 2023 Chile: NRA for females 60."
+        year: 2023
+      vesting_years:
+        value: 0
+        source_citation: "OECD Pensions at a Glance 2023 Chile: DC system – no minimum contribution years for individual account access at NRA."
+        year: 2023
+      minimum_contribution_years:
+        value: 0
+        source_citation: "Decree-Law 3,500: individual AFP account accessible at NRA regardless of contribution history; Solidarity Pillar requires residency."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.10
+        source_citation: "OECD Pensions at a Glance 2023 Chile: employee contribution 10% of gross wages to individual AFP account; additional ~2.5% for disability/survivor insurance."
+        year: 2023
+      employer_rate:
+        value: 0.0
+        source_citation: "OECD Pensions at a Glance 2023 Chile: employer does not contribute to AFP individual accounts (employee-only mandatory contribution)."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: 10% employee to DC account + ~2.5% disability/survivor insurance premium; total ~12.5% employee cost."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "OECD Pensions at a Glance 2023 Chile: no contribution ceiling for AFP system."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: "Solidarity Pension System (Sistema de Pensiones Solidarias) provides state-financed top-up (PBS/APS) for low-income retirees."
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: "OECD Pensions at a Glance 2023 Chile: DC system – no fixed accrual rate; pension depends on accumulated AFP balance and chosen annuity or programmed withdrawal."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "wages"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "CPI"
+      minimum_benefit_aw_multiple:
+        value: 0.20
+        source_citation: "OECD Pensions at a Glance 2023 Chile: Basic Solidarity Pension (PBS) approximately CLP 214,000/month (2023), ~20% of average wage for those without AFP entitlement."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "OECD Pensions at a Glance 2023 Chile: no explicit maximum AFP pension; constrained by account balance."
+        year: 2023
+      notes: "Pension = AFP account balance / annuity divisor at NRA (or programmed withdrawal). Solidarity top-up phases out as AFP pension increases."
+
+    payout:
+      type: "annuity"
+      notes: "Members may choose between life annuity, programmed withdrawal, or temporary income + deferred annuity."
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "AFP pension income subject to progressive income tax; pension-specific tax credit reduces effective rate for modest pensions."
+  simplified_net_rate:
+    value: 0.05
+    source_citation: "OECD Pensions at a Glance 2023 Chile: estimated effective income tax rate on average AFP pension approximately 5% after personal allowance and credits."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "CHL"
+  ilostat_transformation: "x * 12"
+  manual_value: 10500000
+  currency: "Chilean Peso"
+  year: 2022
+  source_citation: "Superintendencia de Pensiones Chile 2022 / INE Chile: average monthly wage approximately CLP 875,000, CLP 10,500,000 annually."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["CHL_AFP"]
+    source_citation: "Decree-Law 3,500: mandatory AFP affiliation for all dependent workers."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["CHL_AFP"]
+    source_citation: "OECD Pensions at a Glance 2023 Chile: civil servants entering after 1980 covered by AFP; older civil servants have a separate DB scheme."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: mandatory
+    scheme_ids: ["CHL_AFP"]
+    source_citation: "OECD Pensions at a Glance 2023 Chile: self-employed made mandatory AFP contributors from 2019 (phased implementation)."
+    notes: null
+
+notes: null

@@ -1,0 +1,130 @@
+metadata:
+  country_name: "Colombia"
+  iso3: "COL"
+  iso2: "CO"
+  currency: "Colombian Peso"
+  currency_code: "COP"
+  reference_year: 2023
+  wb_region: "LCN"
+  wb_income_level: "UMC"
+  un_location_id: null
+  sources:
+    - "SSA Social Security Programs Throughout the World – The Americas 2023"
+    - "Colpensiones – Administradora Colombiana de Pensiones (RPM)"
+    - "Ley 100 de 1993 – Sistema General de Pensiones Colombia"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "COL_RPM"
+    name: "Regimen de Prima Media con Prestacion Definida (Colpensiones/RPM)"
+    tier: "first"
+    type: "DB"
+    coverage: "formal sector employees (public and private, RPM pillar)"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 62
+        source_citation: "SSA SSPW Americas 2023 – Colombia: NRA 62 for males under RPM (Ley 100/1993, as amended)."
+        year: 2023
+      normal_retirement_age_female:
+        value: 57
+        source_citation: "SSA SSPW Americas 2023 – Colombia: NRA 57 for females under RPM."
+        year: 2023
+      vesting_years:
+        value: 25
+        source_citation: "SSA SSPW Americas 2023 – Colombia: 1,300 weeks (approximately 25 years) required for retirement pension under RPM."
+        year: 2023
+      minimum_contribution_years:
+        value: 25
+        source_citation: "SSA SSPW Americas 2023 – Colombia: 1,300 contribution weeks for full pension under RPM/Colpensiones."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.04
+        source_citation: "SSA SSPW Americas 2023 – Colombia: employee contributes 4% of salary (out of 16% total pension contribution)."
+        year: 2023
+      employer_rate:
+        value: 0.12
+        source_citation: "SSA SSPW Americas 2023 – Colombia: employer contributes 12% of payroll for pension (out of 16% total)."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived from employee + employer rates; total pension contribution is 16% of salary."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "SSA SSPW Americas 2023 – Colombia: contributions capped at 25 times the minimum monthly legal wage (SMLV)."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: "Total statutory pension contribution is 16% of salary, split employee 4% / employer 12%."
+
+    benefits:
+      accrual_rate_per_year:
+        value: 0.015
+        source_citation: "SSA SSPW Americas 2023 – Colombia: benefit accrues at approximately 1.5% per year of contributions on the reference wage base under RPM."
+        year: 2023
+      reference_wage: "best_N_years"
+      valorization: "wages"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "CPI"
+      minimum_benefit_aw_multiple:
+        value: null
+        source_citation: "SSA SSPW Americas 2023 – Colombia: minimum pension guaranteed at 1 SMLV (minimum wage)."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "SSA SSPW Americas 2023 – Colombia: maximum benefit capped at 25 times SMLV under RPM."
+        year: 2023
+      notes: "Replacement rate ranges 55%–80% of reference wage depending on contribution history under RPM formula."
+
+    payout:
+      type: "annuity"
+      notes: null
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "Pension income up to 1,000 UVT per month is exempt from income tax; excess subject to progressive rates."
+  simplified_net_rate:
+    value: 0.05
+    source_citation: "Estimated effective rate for average retiree – SSA SSPW Americas 2023 and Colombian DIAN income tax rules."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "COL"
+  ilostat_transformation: "x * 12"
+  manual_value: 25000000
+  currency: "COP"
+  year: 2022
+  source_citation: "ILO ILOSTAT / DANE GEIH estimate 2022: average monthly formal earnings ~COP 2,083,000, annualised ~COP 25,000,000."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["COL_RPM"]
+    source_citation: "SSA SSPW Americas 2023 – mandatory pension affiliation for formal private employees; worker selects RPM (Colpensiones) or RAIS (AFP)."
+    source_url: null
+    notes: "Worker chooses between DB pillar (RPM/Colpensiones) and DC pillar (RAIS/AFP); switching permitted every 5 years."
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["COL_RPM"]
+    source_citation: "SSA SSPW Americas 2023 – civil servants mandatorily covered; most in RPM/Colpensiones or legacy Cajanal scheme."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: voluntary
+    scheme_ids: ["COL_RPM"]
+    source_citation: "SSA SSPW Americas 2023 – self-employed coverage largely voluntary in practice; mandatory for those earning above 1 SMLV."
+    notes: null
+
+notes: null

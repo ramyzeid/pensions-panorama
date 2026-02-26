@@ -1,0 +1,139 @@
+# =============================================================================
+# Eswatini (SWZ) – Pension System Parameters
+# =============================================================================
+# Primary scheme: Swaziland National Provident Fund (SNPF) – DC
+# Sources:
+#   [1] ILO Social Security Inquiry – Eswatini
+#   [2] Swaziland National Provident Fund (SNPF) – Annual Report 2022
+# =============================================================================
+
+metadata:
+  country_name: "Eswatini"
+  iso3: "SWZ"
+  iso2: "SZ"
+  currency: "Swazi Lilangeni"
+  currency_code: "SZL"
+  reference_year: 2023
+  wb_region: "SSA"
+  wb_income_level: "LMC"
+  un_location_id: 748
+  sources:
+    - "ILO Social Security Inquiry – Eswatini"
+    - "Swaziland National Provident Fund (SNPF) Annual Report 2022"
+    - "Provident Fund Act (Eswatini, 1974, as amended)"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "SWZ_SNPF"
+    name: "Swaziland National Provident Fund (SNPF) – DC Provident Fund"
+    tier: "first"
+    type: "DC"
+    coverage: "Formally employed workers; mandatory provident fund"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 50
+        source_citation: "ILO Social Security Inquiry Eswatini: SNPF withdrawal from age 50."
+        year: 2023
+      normal_retirement_age_female:
+        value: 50
+        source_citation: "ILO Social Security Inquiry Eswatini: withdrawal from age 50 for females."
+        year: 2023
+      vesting_years:
+        value: 0
+        source_citation: "ILO Social Security Inquiry Eswatini: DC provident fund – balance available at age 50."
+        year: 2023
+      minimum_contribution_years:
+        value: 0
+        source_citation: "Provident Fund Act Eswatini: DC balance available at withdrawal age without minimum years."
+        year: 2023
+      notes: "Old Age Grant provides non-contributory SZL 400/month for elderly aged 60+."
+
+    contributions:
+      employee_rate:
+        value: 0.05
+        source_citation: "ILO Social Security Inquiry Eswatini: employee SNPF contribution 5% of wages."
+        year: 2023
+      employer_rate:
+        value: 0.05
+        source_citation: "ILO Social Security Inquiry Eswatini: employer SNPF contribution 5% of wages."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: 10% total SNPF contribution (5% employee + 5% employer)."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Eswatini: contributions on all wages; no explicit AW multiple ceiling."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: "Old Age Grant SZL 400/month (2023) for all residents 60+; non-contributory."
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: "ILO Social Security Inquiry Eswatini: DC provident fund – pension depends on accumulated balance; typically lump sum."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "interest"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "CPI"
+      minimum_benefit_aw_multiple:
+        value: 0.10
+        source_citation: "ILO Social Security Inquiry Eswatini: Old Age Grant approximately SZL 400/month ≈ 10% of average wage for universal coverage at 60+."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Eswatini: no explicit maximum SNPF pension."
+        year: 2023
+      notes: "SNPF typically lump-sum at 50; Old Age Grant provides monthly cash for elderly 60+."
+
+    payout:
+      type: "lump_sum"
+      notes: "SNPF typically paid as lump sum; Old Age Grant monthly payment."
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "Pension income subject to income tax in Eswatini; SNPF withdrawals may be taxable."
+  simplified_net_rate:
+    value: 0.05
+    source_citation: "ILO Social Security Inquiry Eswatini: estimated effective income tax rate on average pension approximately 5%."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "SWZ"
+  ilostat_transformation: "x * 12"
+  manual_value: 55000
+  currency: "Swazi Lilangeni"
+  year: 2022
+  source_citation: "Central Statistical Office Eswatini: average annual earnings 2022 approximately SZL 55,000."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["SWZ_SNPF"]
+    source_citation: "Provident Fund Act Eswatini: mandatory SNPF for all formally employed workers."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["SWZ_SNPF"]
+    source_citation: "ILO Social Security Inquiry Eswatini: civil servants covered by SNPF and government pension."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: voluntary
+    scheme_ids: ["SWZ_SNPF"]
+    source_citation: "ILO Social Security Inquiry Eswatini: self-employed may voluntarily contribute to SNPF."
+    notes: null
+
+notes: null

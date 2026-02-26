@@ -1,0 +1,139 @@
+# =============================================================================
+# Sierra Leone (SLE) – Pension System Parameters
+# =============================================================================
+# Primary scheme: National Social Security and Insurance Trust (NASSIT) – DC
+# Sources:
+#   [1] ILO Social Security Inquiry – Sierra Leone
+#   [2] National Social Security and Insurance Trust (NASSIT) Sierra Leone – Annual Report 2022
+# =============================================================================
+
+metadata:
+  country_name: "Sierra Leone"
+  iso3: "SLE"
+  iso2: "SL"
+  currency: "Sierra Leonean Leone"
+  currency_code: "SLL"
+  reference_year: 2023
+  wb_region: "SSA"
+  wb_income_level: "LIC"
+  un_location_id: 694
+  sources:
+    - "ILO Social Security Inquiry – Sierra Leone"
+    - "National Social Security and Insurance Trust (NASSIT) Sierra Leone Annual Report 2022"
+    - "National Social Security and Insurance Trust Act (Sierra Leone, 2001)"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "SLE_NASSIT"
+    name: "NASSIT (National Social Security and Insurance Trust) – DC"
+    tier: "first"
+    type: "DC"
+    coverage: "Formally employed workers; mandatory social security"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 60
+        source_citation: "ILO Social Security Inquiry Sierra Leone: NASSIT NRA 60 for males."
+        year: 2023
+      normal_retirement_age_female:
+        value: 60
+        source_citation: "ILO Social Security Inquiry Sierra Leone: NRA 60 for females."
+        year: 2023
+      vesting_years:
+        value: 15
+        source_citation: "ILO Social Security Inquiry Sierra Leone: minimum 180 months (15 years) of contributions for NASSIT pension."
+        year: 2023
+      minimum_contribution_years:
+        value: 15
+        source_citation: "NASSIT Act Sierra Leone: minimum 180 months for old-age pension."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.05
+        source_citation: "ILO Social Security Inquiry Sierra Leone: employee NASSIT contribution 5% of wages."
+        year: 2023
+      employer_rate:
+        value: 0.10
+        source_citation: "ILO Social Security Inquiry Sierra Leone: employer NASSIT contribution 10% of wages."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: 15% total NASSIT contribution (5% employee + 10% employer)."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Sierra Leone: contributions on all insurable wages."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: null
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: "ILO Social Security Inquiry Sierra Leone: NASSIT pension based on accumulated contributions; DC approach."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "interest"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "CPI"
+      minimum_benefit_aw_multiple:
+        value: 0.20
+        source_citation: "ILO Social Security Inquiry Sierra Leone: minimum NASSIT pension approximately 20% of average formal wage."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Sierra Leone: maximum pension constrained by contribution record."
+        year: 2023
+      notes: null
+
+    payout:
+      type: "annuity"
+      notes: null
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "Pension income subject to income tax in Sierra Leone; most pensions below threshold."
+  simplified_net_rate:
+    value: 0.0
+    source_citation: "ILO Social Security Inquiry Sierra Leone: most NASSIT pensions below income tax threshold; effective rate approximately 0%."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "SLE"
+  ilostat_transformation: "x * 12"
+  manual_value: 6000000
+  currency: "Sierra Leonean Leone"
+  year: 2022
+  source_citation: "Statistics Sierra Leone: estimated average annual formal earnings 2022 approximately SLL 6,000,000."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["SLE_NASSIT"]
+    source_citation: "NASSIT Act Sierra Leone: mandatory NASSIT for all formally employed workers."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["SLE_NASSIT"]
+    source_citation: "ILO Social Security Inquiry Sierra Leone: civil servants covered by NASSIT."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: voluntary
+    scheme_ids: ["SLE_NASSIT"]
+    source_citation: "ILO Social Security Inquiry Sierra Leone: self-employed may voluntarily contribute to NASSIT."
+    notes: null
+
+notes: null

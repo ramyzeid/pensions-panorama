@@ -1,0 +1,139 @@
+# =============================================================================
+# Paraguay (PRY) – Pension System Parameters
+# =============================================================================
+# Primary scheme: IPS (Instituto de Previsión Social) – DB earnings-related
+# Sources:
+#   [1] ILO Social Security Inquiry – Paraguay
+#   [2] Instituto de Previsión Social (IPS) Paraguay – Annual Report 2022
+# =============================================================================
+
+metadata:
+  country_name: "Paraguay"
+  iso3: "PRY"
+  iso2: "PY"
+  currency: "Paraguayan Guaraní"
+  currency_code: "PYG"
+  reference_year: 2023
+  wb_region: "LCN"
+  wb_income_level: "UMC"
+  un_location_id: 600
+  sources:
+    - "ILO Social Security Inquiry – Paraguay"
+    - "Instituto de Previsión Social (IPS) Paraguay Annual Report 2022"
+    - "Ley del Instituto de Previsión Social (Paraguay, Law No. 375, 1956, as amended)"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "PRY_IPS"
+    name: "IPS (Instituto de Previsión Social) – DB Earnings-Related"
+    tier: "first"
+    type: "DB"
+    coverage: "Private sector employees; mandatory social insurance"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 60
+        source_citation: "ILO Social Security Inquiry Paraguay: NRA 60 for males with 25 years of contributions."
+        year: 2023
+      normal_retirement_age_female:
+        value: 55
+        source_citation: "ILO Social Security Inquiry Paraguay: NRA 55 for females with 25 years of contributions."
+        year: 2023
+      vesting_years:
+        value: 25
+        source_citation: "ILO Social Security Inquiry Paraguay: minimum 25 years (300 months) of contributions for IPS retirement pension."
+        year: 2023
+      minimum_contribution_years:
+        value: 25
+        source_citation: "Ley IPS Paraguay: minimum 300 monthly contributions for old-age pension."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.09
+        source_citation: "ILO Social Security Inquiry Paraguay: employee IPS contribution 9% of wages."
+        year: 2023
+      employer_rate:
+        value: 0.145
+        source_citation: "ILO Social Security Inquiry Paraguay: employer IPS contribution 14.5% of wages."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: 23.5% total IPS contribution plus state contribution; IPS contributions cover health and pensions."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Paraguay: contributions on all wages; no explicit AW multiple ceiling."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: "Multiple separate funds for civil servants (Caja Fiscal), teachers, military; IPS covers private sector."
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: "ILO Social Security Inquiry Paraguay: IPS pension approximately 100% of last salary after 25 years; very generous formula historically."
+        year: 2023
+      reference_wage: "last_salary"
+      valorization: "wages"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "wages"
+      minimum_benefit_aw_multiple:
+        value: 0.35
+        source_citation: "ILO Social Security Inquiry Paraguay: minimum IPS pension approximately 35% of average wage."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Paraguay: maximum IPS pension constrained by formula (up to 100% of reference wage)."
+        year: 2023
+      notes: "Adultos Mayores programme provides non-contributory transfers for poor elderly."
+
+    payout:
+      type: "annuity"
+      notes: null
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "Paraguay introduced personal income tax (IRP) in 2013; pension income above threshold subject to tax."
+  simplified_net_rate:
+    value: 0.05
+    source_citation: "ILO Social Security Inquiry Paraguay: estimated effective income tax rate on average pension approximately 5%."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "PRY"
+  ilostat_transformation: "x * 12"
+  manual_value: 30000000
+  currency: "Paraguayan Guaraní"
+  year: 2022
+  source_citation: "Dirección General de Estadística, Encuestas y Censos (DGEEC) Paraguay: average annual formal sector earnings 2022 approximately PYG 30,000,000."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["PRY_IPS"]
+    source_citation: "Ley IPS Paraguay: mandatory IPS for all private sector employees."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["PRY_IPS"]
+    source_citation: "ILO Social Security Inquiry Paraguay: civil servants covered by Caja Fiscal (separate DB scheme)."
+    notes: "Civil servants are under the Caja Fiscal, not IPS; also covered by IPS general mandate for transitional cohorts."
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: voluntary
+    scheme_ids: ["PRY_IPS"]
+    source_citation: "ILO Social Security Inquiry Paraguay: self-employed may voluntarily join IPS."
+    notes: null
+
+notes: null

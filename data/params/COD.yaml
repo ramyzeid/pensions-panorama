@@ -1,0 +1,139 @@
+# =============================================================================
+# Congo, Dem. Rep. (COD) – Pension System Parameters
+# =============================================================================
+# Primary scheme: INSS (Institut National de Sécurité Sociale) – DB
+# Sources:
+#   [1] ILO Social Security Inquiry – Congo, Dem. Rep.
+#   [2] Institut National de Sécurité Sociale (INSS) DRC – 2022
+# =============================================================================
+
+metadata:
+  country_name: "Congo, Dem. Rep."
+  iso3: "COD"
+  iso2: "CD"
+  currency: "Congolese Franc"
+  currency_code: "CDF"
+  reference_year: 2023
+  wb_region: "SSA"
+  wb_income_level: "LIC"
+  un_location_id: 180
+  sources:
+    - "ILO Social Security Inquiry – Congo, Dem. Rep."
+    - "Institut National de Sécurité Sociale (INSS) DRC 2022"
+    - "Code du Travail (DRC) and Décret-loi sur la sécurité sociale"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "COD_INSS"
+    name: "INSS (Institut National de Sécurité Sociale) – DB Earnings-Related"
+    tier: "first"
+    type: "DB"
+    coverage: "Formally employed workers; very limited coverage"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 65
+        source_citation: "ILO Social Security Inquiry DRC: NRA 65 for males."
+        year: 2023
+      normal_retirement_age_female:
+        value: 60
+        source_citation: "ILO Social Security Inquiry DRC: NRA 60 for females."
+        year: 2023
+      vesting_years:
+        value: 15
+        source_citation: "ILO Social Security Inquiry DRC: minimum 180 months of contributions for pension."
+        year: 2023
+      minimum_contribution_years:
+        value: 15
+        source_citation: "ILO Social Security Inquiry DRC: minimum 15 years for old-age pension."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.035
+        source_citation: "ILO Social Security Inquiry DRC: employee INSS contribution 3.5% of wages."
+        year: 2023
+      employer_rate:
+        value: 0.055
+        source_citation: "ILO Social Security Inquiry DRC: employer INSS contribution 5.5% of wages."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: 9% total INSS contribution (3.5% employee + 5.5% employer)."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry DRC: contributions on insurable wages; ceiling by regulation."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: "DRC has extremely large informal sector; INSS covers only a fraction of workers."
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: "ILO Social Security Inquiry DRC: INSS pension formula results in very modest pension; hyperinflation has eroded real values historically."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "prices"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "prices"
+      minimum_benefit_aw_multiple:
+        value: 0.15
+        source_citation: "ILO Social Security Inquiry DRC: minimum INSS pension very modest; approximately 15% of average formal wage."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry DRC: maximum pension constrained by formula and economic instability."
+        year: 2023
+      notes: "DRC pension system has very limited reach; most elderly rely on family support."
+
+    payout:
+      type: "annuity"
+      notes: null
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "Pension income subject to IPR (income tax) in DRC; most pensions below threshold."
+  simplified_net_rate:
+    value: 0.0
+    source_citation: "ILO Social Security Inquiry DRC: most INSS pensions below income tax threshold; effective rate approximately 0%."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "COD"
+  ilostat_transformation: "x * 12"
+  manual_value: 3000000
+  currency: "Congolese Franc"
+  year: 2022
+  source_citation: "Institut National de la Statistique (INS) DRC: estimated average annual formal earnings 2022 approximately CDF 3,000,000."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["COD_INSS"]
+    source_citation: "Code du Travail DRC: mandatory INSS for formally employed private sector workers."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["COD_INSS"]
+    source_citation: "ILO Social Security Inquiry DRC: civil servants covered by government pension (Caisse de Retraite des Agents Publics)."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: voluntary
+    scheme_ids: ["COD_INSS"]
+    source_citation: "ILO Social Security Inquiry DRC: self-employed not mandatorily covered; minimal participation."
+    notes: null
+
+notes: null

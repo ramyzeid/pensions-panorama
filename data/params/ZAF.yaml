@@ -1,0 +1,119 @@
+metadata:
+  country_name: "South Africa"
+  iso3: "ZAF"
+  iso2: "ZA"
+  currency: "South African Rand"
+  currency_code: "ZAR"
+  reference_year: 2023
+  wb_region: "SSF"
+  wb_income_level: "UMC"
+  un_location_id: null
+  sources:
+    - "SSA Social Security Programs Throughout the World – Africa 2021"
+    - "South Africa Social Assistance Act 13 of 2004 – Old Age Grant"
+    - "South African Social Security Agency (SASSA)"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "ZAF_OAG"
+    name: "Old Age Grant (Social Pension) – means-tested"
+    tier: "first"
+    type: "targeted"
+    coverage: "South African residents aged 60+ who pass means test; no contribution required"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 60
+        source_citation: "SSA SSPW Africa 2021 – South Africa: Old Age Grant eligibility age 60."
+        year: 2021
+      normal_retirement_age_female:
+        value: 60
+        source_citation: "SSA SSPW Africa 2021 – South Africa: Old Age Grant eligibility age 60 females."
+        year: 2021
+      vesting_years:
+        value: null
+        source_citation: "SSA SSPW Africa 2021 – South Africa: non-contributory means-tested grant, no vesting period."
+        year: 2021
+      minimum_contribution_years:
+        value: null
+        source_citation: "SSA SSPW Africa 2021 – South Africa: non-contributory scheme, no minimum contribution years."
+        year: 2021
+
+    contributions:
+      employee_rate:
+        value: 0.0
+        source_citation: "SSA SSPW Africa 2021 – South Africa: non-contributory means-tested grant; no employee contribution."
+        year: 2021
+      employer_rate:
+        value: 0.0
+        source_citation: "SSA SSPW Africa 2021 – South Africa: non-contributory means-tested grant; no employer contribution."
+        year: 2021
+      total_rate:
+        value: null
+        source_citation: "Derived from employee + employer rates."
+        year: 2021
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "SSA SSPW Africa 2021 – South Africa: non-contributory scheme, no contribution ceiling."
+        year: 2021
+      contribution_base: "gross earnings"
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: "SSA SSPW Africa 2021 – South Africa: flat means-tested grant, no accrual rate."
+        year: 2021
+      reference_wage: "career_average"
+      valorization: "wages"
+      flat_rate_aw_multiple:
+        value: 0.12
+        source_citation: "South Africa Old Age Grant 2023 – R2,090/month; AW ~R17,000/month → ~12% AW."
+      flat_rate_absolute: null
+      indexation: "CPI"
+      minimum_benefit_aw_multiple:
+        value: null
+        source_citation: "SSA SSPW Africa 2021 – South Africa minimum pension; flat-rate grant sets its own floor."
+        year: 2021
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "SSA SSPW Africa 2021 – South Africa maximum pension; grant is flat rate subject to means test."
+        year: 2021
+
+    payout:
+      type: "annuity"
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "Old Age Grant exempt; private pension income taxed at marginal rate with exemptions."
+  simplified_net_rate:
+    value: 0.0
+    source_citation: "Old Age Grant exempt from income tax in South Africa – SSA SSPW Africa 2021."
+    year: 2021
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "ZAF"
+  ilostat_transformation: "x * 12"
+  manual_value: 200000
+  currency: "ZAR"
+  year: 2022
+  source_citation: "ILO ILOSTAT / World Bank national accounts estimate – South Africa annual average earnings ~200,000 ZAR."
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: voluntary
+    scheme_ids: ["ZAF_OAG"]
+    source_citation: "SSA SSPW Africa 2021 – Old Age Grant is non-contributory; private occupational pensions are voluntary."
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["ZAF_OAG"]
+    source_citation: "Civil servants covered under Government Employees Pension Fund (GEPF) – SSA SSPW Africa 2021."
+  self_employed:
+    label: "Self-employed / informal worker"
+    coverage_status: excluded
+    scheme_ids: []
+    source_citation: "Informal sector workers generally excluded from mandatory coverage in SSA – ILO 2022."
+    notes: "Informal sector constitutes majority of workforce; excluded from mandatory pension coverage."

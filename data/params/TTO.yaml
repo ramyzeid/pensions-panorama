@@ -1,0 +1,139 @@
+# =============================================================================
+# Trinidad and Tobago (TTO) – Pension System Parameters
+# =============================================================================
+# Primary scheme: National Insurance System (NIS) – DB earnings-related
+# Sources:
+#   [1] ILO Social Security Inquiry – Trinidad and Tobago
+#   [2] National Insurance Board Trinidad and Tobago – Annual Report 2022
+# =============================================================================
+
+metadata:
+  country_name: "Trinidad and Tobago"
+  iso3: "TTO"
+  iso2: "TT"
+  currency: "Trinidad and Tobago Dollar"
+  currency_code: "TTD"
+  reference_year: 2023
+  wb_region: "LCN"
+  wb_income_level: "HIC"
+  un_location_id: 780
+  sources:
+    - "ILO Social Security Inquiry – Trinidad and Tobago"
+    - "National Insurance Board Trinidad and Tobago Annual Report 2022"
+    - "National Insurance Act (Trinidad and Tobago, Chap. 32:01)"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "TTO_NIS"
+    name: "National Insurance System (NIS) – DB Earnings-Related"
+    tier: "first"
+    type: "DB"
+    coverage: "All employed persons aged 16–65; self-employed voluntary"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 65
+        source_citation: "ILO Social Security Inquiry Trinidad and Tobago: NRA 65 for males."
+        year: 2023
+      normal_retirement_age_female:
+        value: 65
+        source_citation: "ILO Social Security Inquiry Trinidad and Tobago: NRA 65 for females."
+        year: 2023
+      vesting_years:
+        value: 15
+        source_citation: "National Insurance Act TTO: minimum 750 weekly contributions (approximately 15 years) for retirement benefit entitlement."
+        year: 2023
+      minimum_contribution_years:
+        value: 15
+        source_citation: "ILO Social Security Inquiry Trinidad and Tobago: minimum 750 weeks (15 years) of contributions required."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.04
+        source_citation: "ILO Social Security Inquiry Trinidad and Tobago: employee NIS contribution rate 4% of insurable earnings."
+        year: 2023
+      employer_rate:
+        value: 0.08
+        source_citation: "ILO Social Security Inquiry Trinidad and Tobago: employer NIS contribution rate 8% of insurable earnings."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: 12% total NIS contribution (4% employee + 8% employer)."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Trinidad and Tobago: insurable earnings ceiling TTD 13,600/week (banded); no explicit AW multiple."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: "Old Age Grant available for those with fewer than 750 weeks of contributions."
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: "ILO Social Security Inquiry Trinidad and Tobago: NIS benefit based on number of weekly contributions and insurable earnings band; no simple annual accrual rate."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "prices"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "prices"
+      minimum_benefit_aw_multiple:
+        value: 0.20
+        source_citation: "ILO Social Security Inquiry Trinidad and Tobago: minimum retirement pension approximately TTD 3,000/month ≈ 20% of average wage."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "ILO Social Security Inquiry Trinidad and Tobago: maximum pension constrained by insurable earnings bands."
+        year: 2023
+      notes: "Senior Citizens' Grant (non-contributory, means-tested) supplements NIS for low-income elderly."
+
+    payout:
+      type: "annuity"
+      notes: null
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "Pension income may be subject to income tax in Trinidad and Tobago; senior citizen deductions reduce taxable income."
+  simplified_net_rate:
+    value: 0.05
+    source_citation: "ILO Social Security Inquiry Trinidad and Tobago: estimated effective income tax rate on average pension approximately 5% after deductions."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "TTO"
+  ilostat_transformation: "x * 12"
+  manual_value: 180000
+  currency: "Trinidad and Tobago Dollar"
+  year: 2022
+  source_citation: "Central Statistical Office Trinidad and Tobago: average annual earnings 2022 approximately TTD 180,000."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["TTO_NIS"]
+    source_citation: "National Insurance Act TTO: mandatory NIS for all private sector employees aged 16–65."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["TTO_NIS"]
+    source_citation: "ILO Social Security Inquiry Trinidad and Tobago: civil servants covered by NIS; may also have government pension."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: voluntary
+    scheme_ids: ["TTO_NIS"]
+    source_citation: "National Insurance Act TTO: self-employed may voluntarily join NIS."
+    notes: null
+
+notes: null

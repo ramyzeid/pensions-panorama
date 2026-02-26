@@ -1,0 +1,170 @@
+# =============================================================================
+# Djibouti (DJI) – Pension System Parameters
+# =============================================================================
+# Primary scheme: CNSS – Caisse Nationale de Sécurité Sociale (private sector)
+# Civil servants: OPS – Office de Protection Sociale (separate)
+# Governing law: Social Security Law (Loi No. 210/AN/07 of 2007)
+#
+# Sources:
+#   [1] CNSS Djibouti – Loi No. 210/AN/07 of 2007
+#   [2] ILO Djibouti Social Security Country Profile 2019
+#   [3] World Bank Djibouti Social Protection Review 2018
+#   [4] République de Djibouti – Code du Travail and Social Security Legislation
+# =============================================================================
+
+metadata:
+  country_name: "Djibouti"
+  iso3: "DJI"
+  iso2: "DJ"
+  currency: "Djiboutian Franc"
+  currency_code: "DJF"
+  reference_year: 2022
+  wb_region: "SSA"
+  wb_income_level: "LMC"
+  un_location_id: 262
+  sources:
+    - "Loi No. 210/AN/07 of 2007 – Social Security Law Djibouti (CNSS)"
+    - "ILO Djibouti Social Security Country Profile 2019"
+    - "World Bank Djibouti Social Protection Review 2018"
+  last_reviewed: "2024-03-01"
+
+schemes:
+  - scheme_id: "CNSS_DB"
+    name: "CNSS Old-Age Pension"
+    tier: "first"
+    type: "DB"
+    coverage: >
+      Formal private sector employees and some public enterprise workers. Civil servants
+      covered separately by OPS (Office de Protection Sociale). Coverage estimated at
+      20-25% of workforce; large informal sector and foreign military bases employment.
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 60
+        source_citation: >
+          Loi No. 210/AN/07 of 2007 – NRA 60 for both male and female workers.
+          CNSS Djibouti 2022.
+        year: 2022
+      normal_retirement_age_female:
+        value: 60
+        source_citation: "Loi No. 210/AN/07 of 2007 – NRA 60 for female workers. CNSS Djibouti 2022."
+        year: 2022
+      vesting_years:
+        value: 15
+        source_citation: >
+          CNSS Djibouti – minimum 15 years of contributions (180 months) for
+          old-age pension entitlement. Loi No. 210/AN/07 2007.
+        year: 2022
+      minimum_contribution_years:
+        value: 15
+        source_citation: "CNSS – 15 years minimum contribution period. Loi No. 210/AN/07."
+        year: 2022
+
+    contributions:
+      employee_rate:
+        value: 0.04
+        source_citation: >
+          CNSS Djibouti – employee contribution 4% of gross wage (for pension branch).
+          Loi No. 210/AN/07 of 2007.
+        year: 2022
+      employer_rate:
+        value: 0.08
+        source_citation: >
+          CNSS Djibouti – employer contribution 8% of gross wage (pension branch).
+          Total CNSS rates including family/health components are higher.
+          Loi No. 210/AN/07 of 2007.
+        year: 2022
+      total_rate:
+        value: 0.12
+        source_citation: "Employee 4% + Employer 8% = 12% for pension branch. CNSS Djibouti."
+        year: 2022
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "No contribution ceiling specified in CNSS Djibouti law."
+        year: 2022
+      contribution_base: "gross wage"
+
+    benefits:
+      accrual_rate_per_year:
+        value: 0.015
+        source_citation: >
+          CNSS Djibouti – pension benefit based on average of last 3 years earnings,
+          with approximately 1.5% per year of contributions (effective accrual approximation).
+          At 40 years: ~60% of reference wage. Loi No. 210/AN/07 2007.
+        year: 2022
+      reference_wage: "final_salary"
+      valorization: "wages"
+      indexation: "CPI"
+      minimum_benefit_aw_multiple:
+        value: 0.15
+        source_citation: >
+          CNSS minimum pension ~DJF 30,000/month in 2022. With AW ~DJF 200,000/month
+          → ~15% AW. CNSS Djibouti 2022.
+        year: 2022
+      maximum_benefit_aw_multiple:
+        value: 0.60
+        source_citation: >
+          Estimated maximum pension ~60% of reference wage at 40 years (1.5% × 40 = 60%).
+          CNSS Djibouti 2022.
+        year: 2022
+
+    payout:
+      type: "annuity"
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: >
+    Djibouti has a simplified tax regime. Pension income from CNSS is generally exempt
+    from income tax for amounts below a threshold. The income tax (IRTS – Impôt sur le
+    Revenu des Traitements et Salaires) applies to wages, with pensions partially exempt.
+  simplified_net_rate:
+    value: 0.05
+    source_citation: >
+      Estimated effective income tax rate on CNSS pension in Djibouti ~5%.
+      Tax Code Djibouti (Code Général des Impôts).
+    year: 2022
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "DJI"
+  ilostat_transformation: "x * 12"
+  manual_value: 2400000.0
+  currency: "Djiboutian Franc"
+  year: 2022
+  source_citation: >
+    Estimated from World Bank Djibouti Economic Update 2022 and ILO data.
+    Average formal sector monthly wage ~DJF 200,000/month × 12 = DJF 2,400,000/year.
+    Djibouti Franc is pegged to USD at 177.7 DJF/USD; USD equivalent ~$1,125/month.
+    ILOSTAT data for DJI is very limited; manual estimate used.
+  notes: "Djibouti Franc pegged to USD at 177.7 DJF/USD since 1977 (fixed peg)."
+
+
+# =============================================================================
+# Worker types
+# =============================================================================
+
+worker_types:
+
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: [CNSS_DB]
+    source_citation: "Default: same as main scheme definition."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: unknown
+    scheme_ids: []
+    source_citation: "Coverage status not yet researched; placeholder."
+    notes: "TODO: verify self-employed coverage under national law."
+
+notes: >
+  Djibouti's economy is strategically important as a port and logistics hub.
+  It hosts several foreign military bases (US, France, China, Japan, Italy) which
+  provide significant employment but not covered by CNSS.
+  The CNSS covers formal private sector workers; civil servants are covered by the
+  Office de Protection Sociale (OPS) with a separate DB pension.
+  Social security data is limited; figures are estimates based on available ILO and
+  World Bank reports.

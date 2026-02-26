@@ -1,0 +1,139 @@
+# =============================================================================
+# Malta (MLT) – Pension System Parameters
+# =============================================================================
+# Primary scheme: Two-thirds Pension (DB earnings-related)
+# Sources:
+#   [1] OECD Pensions at a Glance 2023 – Malta
+#   [2] Department of Social Security Malta – Annual Report 2022
+# =============================================================================
+
+metadata:
+  country_name: "Malta"
+  iso3: "MLT"
+  iso2: "MT"
+  currency: "Euro"
+  currency_code: "EUR"
+  reference_year: 2023
+  wb_region: "ECS"
+  wb_income_level: "HIC"
+  un_location_id: 470
+  sources:
+    - "OECD Pensions at a Glance 2023 – Malta"
+    - "Department of Social Security Malta Annual Report 2022"
+    - "Social Security Act (Malta, Cap. 318)"
+  last_reviewed: "2024-01-01"
+
+schemes:
+  - scheme_id: "MLT_TWO3"
+    name: "Two-Thirds Pension (Contributory Old-Age) – DB"
+    tier: "first"
+    type: "DB"
+    coverage: "All employed and self-employed persons; mandatory social insurance"
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 65
+        source_citation: "OECD Pensions at a Glance 2023 Malta: NRA 65 for both sexes."
+        year: 2023
+      normal_retirement_age_female:
+        value: 65
+        source_citation: "OECD Pensions at a Glance 2023 Malta: NRA equalised at 65 for females."
+        year: 2023
+      vesting_years:
+        value: 2
+        source_citation: "OECD Pensions at a Glance 2023 Malta: minimum 2 qualifying years for partial pension."
+        year: 2023
+      minimum_contribution_years:
+        value: 41
+        source_citation: "OECD Pensions at a Glance 2023 Malta: 41 years of contributions for full two-thirds pension."
+        year: 2023
+      notes: null
+
+    contributions:
+      employee_rate:
+        value: 0.10
+        source_citation: "OECD Pensions at a Glance 2023 Malta: employee social insurance contribution 10% of gross wages."
+        year: 2023
+      employer_rate:
+        value: 0.10
+        source_citation: "OECD Pensions at a Glance 2023 Malta: employer social insurance contribution 10% of gross wages (matched)."
+        year: 2023
+      total_rate:
+        value: null
+        source_citation: "Derived: 20% total social insurance contribution (10% employee + 10% employer)."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "OECD Pensions at a Glance 2023 Malta: contributions based on flat weekly amounts by employment class; no AW multiple ceiling."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: "Pension is two-thirds of the best 3 consecutive years of earnings in the last 10 years of working life."
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: "OECD Pensions at a Glance 2023 Malta: Two-Thirds Pension = 2/3 of best 3 consecutive pensionable income years in last 10; no simple annual accrual rate."
+        year: 2023
+      reference_wage: "best_years"
+      valorization: "wages"
+      flat_rate_aw_multiple: null
+      flat_rate_absolute: null
+      indexation: "mixed"
+      minimum_benefit_aw_multiple:
+        value: 0.22
+        source_citation: "OECD Pensions at a Glance 2023 Malta: minimum contributory pension approximately 22% of average wage."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: 0.67
+        source_citation: "OECD Pensions at a Glance 2023 Malta: maximum pension two-thirds (66.7%) of pensionable income."
+        year: 2023
+      notes: "Maximum pension is two-thirds of best consecutive earnings; effectively a 66.7% replacement rate cap."
+
+    payout:
+      type: "annuity"
+      notes: null
+
+taxes:
+  worker_income_tax_treatment: "EET"
+  income_tax_on_pension: "Pension income subject to progressive income tax in Malta; pension income is taxable but significant exemptions for low-income pensioners."
+  simplified_net_rate:
+    value: 0.10
+    source_citation: "OECD Pensions at a Glance 2023 Malta: estimated effective income tax rate on average pension approximately 10%."
+    year: 2023
+  notes: null
+
+average_earnings:
+  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
+  ilostat_ref_area: "MLT"
+  ilostat_transformation: "x * 12"
+  manual_value: 22000
+  currency: "Euro"
+  year: 2022
+  source_citation: "Eurostat: average annual gross earnings Malta 2022 approximately EUR 22,000."
+  source_url: null
+
+worker_types:
+  private_employee:
+    label: "Private sector employee"
+    coverage_status: mandatory
+    scheme_ids: ["MLT_TWO3"]
+    source_citation: "Social Security Act Malta: mandatory social insurance for all private sector employees."
+    source_url: null
+    notes: null
+
+  civil_servant:
+    label: "Civil servant"
+    coverage_status: mandatory
+    scheme_ids: ["MLT_TWO3"]
+    source_citation: "OECD Pensions at a Glance 2023 Malta: civil servants covered under the same contributory pension scheme."
+    notes: null
+
+  self_employed:
+    label: "Self-employed"
+    coverage_status: mandatory
+    scheme_ids: ["MLT_TWO3"]
+    source_citation: "Social Security Act Malta: self-employed required to pay social insurance contributions."
+    notes: null
+
+notes: null
