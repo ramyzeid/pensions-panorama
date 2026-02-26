@@ -198,6 +198,13 @@ def _country_display_name(country_name: str, iso3: str) -> str:
     return country_name
 
 
+def _flag_emoji(iso2: str) -> str:
+    """Convert a 2-letter ISO country code to its flag emoji."""
+    if not iso2 or len(iso2) != 2:
+        return ""
+    return "".join(chr(0x1F1E6 + ord(c) - ord("A")) for c in iso2.upper())
+
+
 # ---------------------------------------------------------------------------
 # Scheme abbreviation expansions (used to spell out the institution name)
 # ---------------------------------------------------------------------------
@@ -1370,36 +1377,6 @@ def tab_overview(data: dict, summary_df: pd.DataFrame, target_multiple: float) -
     st.divider()
 
     if not summary_df.empty:
-        map_options = [
-            t("opt_gross_rr"), t("opt_net_rr"),
-            t("opt_gross_pl"), t("opt_net_pl"), t("opt_gross_pw"),
-        ]
-        map_metric_label = st.selectbox(t("map_metric_label"), map_options, index=0, key="map_metric")
-        # Map display label back to internal column key
-        _label_to_col = {
-            t("opt_gross_rr"): "Gross RR",
-            t("opt_net_rr"): "Net RR",
-            t("opt_gross_pl"): "Gross PL",
-            t("opt_net_pl"): "Net PL",
-            t("opt_gross_pw"): "Gross PW",
-        }
-        map_metric = _label_to_col[map_metric_label]
-        pct_map = map_metric in ("Gross RR", "Net RR", "Gross PL", "Net PL")
-        label_map = {
-            "Gross RR": t("map_title_gross_rr", n=target_multiple),
-            "Net RR": t("map_title_net_rr", n=target_multiple),
-            "Gross PL": t("map_title_gross_pl", n=target_multiple),
-            "Net PL": t("map_title_net_pl", n=target_multiple),
-            "Gross PW": t("map_title_gross_pw", n=target_multiple),
-        }
-        st.plotly_chart(
-            _choropleth(summary_df, map_metric, label_map[map_metric], pct=pct_map),
-            use_container_width=True,
-        )
-
-    st.divider()
-
-    if not summary_df.empty:
         st.subheader(t("summary_table_header"))
         disp = summary_df[[
             "Country", "iso3", "Income level", "NRA (M)", "NRA (F)",
@@ -1690,7 +1667,7 @@ def tab_country(data: dict) -> None:
         return
 
     labels = {
-        iso3: f"{_country_display_name(d['params'].metadata.country_name, iso3)} ({iso3})"
+        iso3: f"{_flag_emoji(d['params'].metadata.iso2)} {_country_display_name(d['params'].metadata.country_name, iso3)} ({iso3})"
         for iso3, d in ok_countries.items()
     }
     iso3 = st.selectbox(
@@ -1710,7 +1687,7 @@ def tab_country(data: dict) -> None:
     nra_m = scheme.eligibility.normal_retirement_age_male.value
     nra_f = scheme.eligibility.normal_retirement_age_female.value
     ref_result = next((r for r in results if abs(r.earnings_multiple - 1.0) < 0.01), results[0])
-    col1.metric(t("metric_country"), _country_display_name(m.country_name, iso3))
+    col1.metric(t("metric_country"), f"{_flag_emoji(m.iso2)} {_country_display_name(m.country_name, iso3)}")
     col2.metric(t("metric_nra_mf"), f"{nra_m} / {nra_f}")
     col3.metric(t("metric_gross_rr_1aw"), f"{ref_result.gross_replacement_rate * 100:.1f}%")
     col4.metric(t("metric_avg_wage"), f"{m.currency_code} {avg_wage:,.0f}")
