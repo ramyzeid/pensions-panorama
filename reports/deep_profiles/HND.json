@@ -1,7 +1,7 @@
 {
   "iso3": "HND",
   "country_name": "Honduras",
-  "last_updated": "2026-02-26T08:50:45.630026Z",
+  "last_updated": "2026-02-26T17:25:26.407025Z",
   "narrative": {
     "text": "Honduras is a Latin America and the Caribbean country with a DB-type pension system centred on the IHSS Sistema de Jubilaciones y Pensiones \u2013 DB Earnings-Related. The normal retirement age is 65 for men and 60 for women. Contributions total 7.5% of insurable earnings (2.5% employee, 5.0% employer).",
     "sources": [
@@ -106,23 +106,114 @@
         },
         "notes": null
       }
+    },
+    {
+      "key": "pension_coverage_pct",
+      "label": "Contributory pension coverage (% of population)",
+      "cell": {
+        "value": 3.34402818250187,
+        "unit": "%",
+        "year": 2019,
+        "source": {
+          "source_name": "ASPIRE \u2013 World Bank",
+          "source_url": "https://www.worldbank.org/en/data/datatopics/aspire",
+          "indicator_id": "per_si_cp.cov_pop_tot",
+          "year": 2019,
+          "notes": null
+        },
+        "notes": null
+      }
+    },
+    {
+      "key": "social_insurance_coverage_pct",
+      "label": "Social insurance coverage (% of population)",
+      "cell": {
+        "value": 3.34402818250187,
+        "unit": "%",
+        "year": 2019,
+        "source": {
+          "source_name": "ASPIRE \u2013 World Bank",
+          "source_url": "https://www.worldbank.org/en/data/datatopics/aspire",
+          "indicator_id": "per_si_allsi.cov_pop_tot",
+          "year": 2019,
+          "notes": null
+        },
+        "notes": null
+      }
+    },
+    {
+      "key": "pension_fund_assets_gdp",
+      "label": "Pension fund assets (% of GDP)",
+      "cell": {
+        "value": 0.22640429,
+        "unit": "%",
+        "year": 2019,
+        "source": {
+          "source_name": "Global Financial Development Database \u2013 World Bank",
+          "source_url": "https://data.worldbank.org/indicator/GFDD.DI.13",
+          "indicator_id": "GFDD.DI.13",
+          "year": 2019,
+          "notes": null
+        },
+        "notes": null
+      }
     }
   ],
   "system_kpis": [
     {
       "key": "coverage_total",
-      "label": "Covers % of the population",
+      "label": "Social insurance coverage (% of population)",
       "cell": {
-        "value": null,
-        "unit": null,
-        "year": null,
-        "source": null,
+        "value": 3.34402818250187,
+        "unit": "%",
+        "year": 2019,
+        "source": {
+          "source_name": "ASPIRE \u2013 World Bank",
+          "source_url": "https://www.worldbank.org/en/data/datatopics/aspire",
+          "indicator_id": "per_si_allsi.cov_pop_tot",
+          "year": 2019,
+          "notes": null
+        },
+        "notes": null
+      }
+    },
+    {
+      "key": "pension_coverage",
+      "label": "Contributory pension coverage (% of population)",
+      "cell": {
+        "value": 3.34402818250187,
+        "unit": "%",
+        "year": 2019,
+        "source": {
+          "source_name": "ASPIRE \u2013 World Bank",
+          "source_url": "https://www.worldbank.org/en/data/datatopics/aspire",
+          "indicator_id": "per_si_cp.cov_pop_tot",
+          "year": 2019,
+          "notes": null
+        },
+        "notes": null
+      }
+    },
+    {
+      "key": "pension_fund_assets_gdp",
+      "label": "Pension fund assets (% of GDP)",
+      "cell": {
+        "value": 0.22640429,
+        "unit": "%",
+        "year": 2019,
+        "source": {
+          "source_name": "Global Financial Development Database \u2013 World Bank",
+          "source_url": "https://data.worldbank.org/indicator/GFDD.DI.13",
+          "indicator_id": "GFDD.DI.13",
+          "year": 2019,
+          "notes": null
+        },
         "notes": null
       }
     },
     {
       "key": "coverage_65plus",
-      "label": "Covers % of the population age 65+",
+      "label": "Pension coverage \u2013 population age 65+ (%)",
       "cell": {
         "value": null,
         "unit": null,
@@ -133,7 +224,7 @@
     },
     {
       "key": "pension_spending_gdp",
-      "label": "Accounts for % of GDP",
+      "label": "Pension expenditure (% of GDP)",
       "cell": {
         "value": null,
         "unit": null,

@@ -1,7 +1,7 @@
 {
   "iso3": "DEU",
   "country_name": "Germany",
-  "last_updated": "2026-02-26T08:49:41.408119Z",
+  "last_updated": "2026-02-26T17:23:49.409720Z",
   "narrative": {
     "text": "Germany is a Europe and Central Asia country with a points-type pension system centred on the Gesetzliche Rentenversicherung (Statutory Pension Insurance). The normal retirement age is 67 for both men and women. Contributions total 18.6% of insurable earnings (9.3% employee, 9.3% employer).",
     "sources": [
@@ -106,23 +106,114 @@
         },
         "notes": null
       }
+    },
+    {
+      "key": "pension_coverage_pct",
+      "label": "Contributory pension coverage (% of population)",
+      "cell": {
+        "value": null,
+        "unit": "%",
+        "year": null,
+        "source": {
+          "source_name": "ASPIRE \u2013 World Bank",
+          "source_url": "https://www.worldbank.org/en/data/datatopics/aspire",
+          "indicator_id": "per_si_cp.cov_pop_tot",
+          "year": null,
+          "notes": null
+        },
+        "notes": null
+      }
+    },
+    {
+      "key": "social_insurance_coverage_pct",
+      "label": "Social insurance coverage (% of population)",
+      "cell": {
+        "value": null,
+        "unit": "%",
+        "year": null,
+        "source": {
+          "source_name": "ASPIRE \u2013 World Bank",
+          "source_url": "https://www.worldbank.org/en/data/datatopics/aspire",
+          "indicator_id": "per_si_allsi.cov_pop_tot",
+          "year": null,
+          "notes": null
+        },
+        "notes": null
+      }
+    },
+    {
+      "key": "pension_fund_assets_gdp",
+      "label": "Pension fund assets (% of GDP)",
+      "cell": {
+        "value": 8.1907381,
+        "unit": "%",
+        "year": 2020,
+        "source": {
+          "source_name": "Global Financial Development Database \u2013 World Bank",
+          "source_url": "https://data.worldbank.org/indicator/GFDD.DI.13",
+          "indicator_id": "GFDD.DI.13",
+          "year": 2020,
+          "notes": null
+        },
+        "notes": null
+      }
     }
   ],
   "system_kpis": [
     {
       "key": "coverage_total",
-      "label": "Covers % of the population",
+      "label": "Social insurance coverage (% of population)",
       "cell": {
         "value": null,
-        "unit": null,
+        "unit": "%",
         "year": null,
-        "source": null,
+        "source": {
+          "source_name": "ASPIRE \u2013 World Bank",
+          "source_url": "https://www.worldbank.org/en/data/datatopics/aspire",
+          "indicator_id": "per_si_allsi.cov_pop_tot",
+          "year": null,
+          "notes": null
+        },
+        "notes": null
+      }
+    },
+    {
+      "key": "pension_coverage",
+      "label": "Contributory pension coverage (% of population)",
+      "cell": {
+        "value": null,
+        "unit": "%",
+        "year": null,
+        "source": {
+          "source_name": "ASPIRE \u2013 World Bank",
+          "source_url": "https://www.worldbank.org/en/data/datatopics/aspire",
+          "indicator_id": "per_si_cp.cov_pop_tot",
+          "year": null,
+          "notes": null
+        },
+        "notes": null
+      }
+    },
+    {
+      "key": "pension_fund_assets_gdp",
+      "label": "Pension fund assets (% of GDP)",
+      "cell": {
+        "value": 8.1907381,
+        "unit": "%",
+        "year": 2020,
+        "source": {
+          "source_name": "Global Financial Development Database \u2013 World Bank",
+          "source_url": "https://data.worldbank.org/indicator/GFDD.DI.13",
+          "indicator_id": "GFDD.DI.13",
+          "year": 2020,
+          "notes": null
+        },
         "notes": null
       }
     },
     {
       "key": "coverage_65plus",
-      "label": "Covers % of the population age 65+",
+      "label": "Pension coverage \u2013 population age 65+ (%)",
       "cell": {
         "value": null,
         "unit": null,
@@ -133,7 +224,7 @@
     },
     {
       "key": "pension_spending_gdp",
-      "label": "Accounts for % of GDP",
+      "label": "Pension expenditure (% of GDP)",
       "cell": {
         "value": null,
         "unit": null,

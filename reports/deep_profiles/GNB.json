@@ -1,7 +1,7 @@
 {
   "iso3": "GNB",
   "country_name": "Guinea-Bissau",
-  "last_updated": "2026-02-26T08:42:15.852352Z",
+  "last_updated": "2026-02-26T17:09:26.739524Z",
   "narrative": {
     "text": "Guinea-Bissau is a Sub-Saharan Africa country with a DB-type pension system centred on the INSS (Instituto Nacional de Seguran\u00e7a Social) \u2013 DB Earnings-Related. The normal retirement age is 60 for both men and women. Contributions total 12.0% of insurable earnings (5.0% employee, 7.0% employer).",
     "sources": [
@@ -106,23 +106,114 @@
         },
         "notes": null
       }
+    },
+    {
+      "key": "pension_coverage_pct",
+      "label": "Contributory pension coverage (% of population)",
+      "cell": {
+        "value": 2.78934519060643,
+        "unit": "%",
+        "year": 2021,
+        "source": {
+          "source_name": "ASPIRE \u2013 World Bank",
+          "source_url": "https://www.worldbank.org/en/data/datatopics/aspire",
+          "indicator_id": "per_si_cp.cov_pop_tot",
+          "year": 2021,
+          "notes": null
+        },
+        "notes": null
+      }
+    },
+    {
+      "key": "social_insurance_coverage_pct",
+      "label": "Social insurance coverage (% of population)",
+      "cell": {
+        "value": 2.78934519060643,
+        "unit": "%",
+        "year": 2021,
+        "source": {
+          "source_name": "ASPIRE \u2013 World Bank",
+          "source_url": "https://www.worldbank.org/en/data/datatopics/aspire",
+          "indicator_id": "per_si_allsi.cov_pop_tot",
+          "year": 2021,
+          "notes": null
+        },
+        "notes": null
+      }
+    },
+    {
+      "key": "pension_fund_assets_gdp",
+      "label": "Pension fund assets (% of GDP)",
+      "cell": {
+        "value": null,
+        "unit": "%",
+        "year": null,
+        "source": {
+          "source_name": "Global Financial Development Database \u2013 World Bank",
+          "source_url": "https://data.worldbank.org/indicator/GFDD.DI.13",
+          "indicator_id": "GFDD.DI.13",
+          "year": null,
+          "notes": null
+        },
+        "notes": null
+      }
     }
   ],
   "system_kpis": [
     {
       "key": "coverage_total",
-      "label": "Covers % of the population",
+      "label": "Social insurance coverage (% of population)",
+      "cell": {
+        "value": 2.78934519060643,
+        "unit": "%",
+        "year": 2021,
+        "source": {
+          "source_name": "ASPIRE \u2013 World Bank",
+          "source_url": "https://www.worldbank.org/en/data/datatopics/aspire",
+          "indicator_id": "per_si_allsi.cov_pop_tot",
+          "year": 2021,
+          "notes": null
+        },
+        "notes": null
+      }
+    },
+    {
+      "key": "pension_coverage",
+      "label": "Contributory pension coverage (% of population)",
+      "cell": {
+        "value": 2.78934519060643,
+        "unit": "%",
+        "year": 2021,
+        "source": {
+          "source_name": "ASPIRE \u2013 World Bank",
+          "source_url": "https://www.worldbank.org/en/data/datatopics/aspire",
+          "indicator_id": "per_si_cp.cov_pop_tot",
+          "year": 2021,
+          "notes": null
+        },
+        "notes": null
+      }
+    },
+    {
+      "key": "pension_fund_assets_gdp",
+      "label": "Pension fund assets (% of GDP)",
       "cell": {
         "value": null,
-        "unit": null,
+        "unit": "%",
         "year": null,
-        "source": null,
+        "source": {
+          "source_name": "Global Financial Development Database \u2013 World Bank",
+          "source_url": "https://data.worldbank.org/indicator/GFDD.DI.13",
+          "indicator_id": "GFDD.DI.13",
+          "year": null,
+          "notes": null
+        },
         "notes": null
       }
     },
     {
       "key": "coverage_65plus",
-      "label": "Covers % of the population age 65+",
+      "label": "Pension coverage \u2013 population age 65+ (%)",
       "cell": {
         "value": null,
         "unit": null,
@@ -133,7 +224,7 @@
     },
     {
       "key": "pension_spending_gdp",
-      "label": "Accounts for % of GDP",
+      "label": "Pension expenditure (% of GDP)",
       "cell": {
         "value": null,
         "unit": null,
