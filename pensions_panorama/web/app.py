@@ -3075,98 +3075,23 @@ def tab_glossary() -> None:
     st.header(t("tab_glossary"))
     st.caption(t("glossary_intro"))
 
-    with st.expander("📊 Pension Indicators", expanded=True):
-        st.markdown("""
-| Term | Abbreviation | Definition |
-|---|---|---|
-| **Gross Replacement Rate** | GRR | Gross annual pension ÷ individual gross pre-retirement earnings. Measures how much of working income the pension replaces before tax. |
-| **Net Replacement Rate** | NRR | Net annual pension ÷ individual net pre-retirement earnings (after worker social contributions and income tax). The more meaningful measure of living-standard maintenance. |
-| **Gross Pension Level** | GPL | Gross annual pension ÷ national average earnings. Shows the pension's value relative to economy-wide wages, enabling cross-country comparison independent of individual earnings. |
-| **Net Pension Level** | NPL | Net annual pension ÷ average net earnings. Net-of-tax version of GPL. |
-| **Gross Pension Wealth** | GPW | Present value of the entire gross benefit stream, discounted and survival-weighted, divided by the average wage. Measures the stock of pension wealth rather than annual flow. |
-| **Net Pension Wealth** | NPW | Same as GPW but using the net benefit stream. |
-| **Accrual Rate** | — | The share of reference earnings credited as pension per year of service in a DB scheme (e.g. 2% means 40 years × 2% = 80% replacement). |
-| **Normal Retirement Age** | NRA | The age at which a worker becomes entitled to a full pension benefit without reduction. May differ by sex. |
-| **Effective Retirement Age** | ERA | The actual average age at which workers exit the labour force, which often differs from the statutory NRA due to early retirement provisions. |
-| **Contribution Rate** | — | The percentage of wages paid into the pension system, typically split between employer and employee. |
-| **Replacement Wage** | — | The wage base used to calculate DB benefits — may be final salary, career-average earnings, or best N years. |
-| **Vesting Period** | — | Minimum service / contribution years required before a worker is entitled to any pension benefit. |
-""")
+    with st.expander(t("glossary_indicators_title"), expanded=True):
+        st.markdown(t("glossary_indicators_body"))
 
-    with st.expander("🏛️ Scheme Types", expanded=False):
-        st.markdown("""
-| Type | Full Name | How it works |
-|---|---|---|
-| **DB** | Defined Benefit | Pension = accrual rate × service years × reference wage. The sponsor bears investment and longevity risk. |
-| **DC** | Defined Contribution | Worker and/or employer accumulate a fund; at retirement the fund is converted to an annuity or drawn down. Worker bears investment risk. |
-| **NDC** | Non-Financial (Notional) Defined Contribution | Contributions earn a notional return (usually GDP or wage growth) in individual accounts, but the system remains pay-as-you-go funded. Combines DC-like benefit link with PAYG financing. |
-| **Points** | Points System | Each year a worker earns points = wage ÷ average wage. Total points × point value at retirement = pension. Used in France, Germany. |
-| **Basic / Flat-rate** | — | A uniform pension paid to all qualifying residents or contributors regardless of earnings history. Provides a basic floor. |
-| **Targeted / Means-tested** | — | Benefit phases out as income rises; directed at low-income retirees. |
-| **Minimum pension guarantee** | — | A floor applied as a top-up: if computed pension < minimum, the state pays the difference. |
-| **EOSB** | End-of-Service Benefit | A lump-sum gratuity paid by the employer at the end of employment, typically proportional to final salary × service years. Common for expatriate workers in GCC countries as a substitute for pension coverage. |
-| **PAYG** | Pay-As-You-Go | Financing mechanism: current contributions pay current retirees' benefits. No pre-funding of future liabilities. |
-| **Funded** | — | Assets are accumulated in advance in a fund (individual or collective) to pay future benefits. |
-""")
+    with st.expander(t("glossary_schemes_title"), expanded=False):
+        st.markdown(t("glossary_schemes_body"))
 
-    with st.expander("❤️ Life Expectancy & Health", expanded=False):
-        st.markdown("""
-| Term | Abbreviation | Definition |
-|---|---|---|
-| **Life Expectancy at birth** | LE₀ | Expected number of years a newborn would live under current mortality conditions. |
-| **Life Expectancy at age x** | LE(x) or e(x) | Expected additional years of life for a person who has already reached age x. Used to determine the retirement horizon. |
-| **Healthy Adjusted Life Expectancy** | HALE | Years of life expected to be lived in "full health" (free from significant disability or disease). Derived by subtracting years lived with disability from total LE. |
-| **HALE at 60** | — | WHO GHO indicator `WHOSIS_000007`. HALE remaining at age 60, used to split the retirement horizon into healthy and unhealthy years. |
-| **Age-specific LE** | — | UN WPP indicator 75. Remaining LE at an exact age group (60, 65, etc.), more precise than birth-based LE for retirement planning. |
-| **Longevity risk** | — | The risk that retirees outlive their savings. Managed through annuities, longevity bonds, or PAYG elements. |
-| **Survival-weighted PV** | — | Present value of a benefit stream where each future payment is discounted both for time (discount rate) and for the probability of still being alive (survival probability). Used in pension wealth calculations. |
-""")
+    with st.expander(t("glossary_health_title"), expanded=False):
+        st.markdown(t("glossary_health_body"))
 
-    with st.expander("💹 Economic & Data Indicators", expanded=False):
-        st.markdown("""
-| Term / Code | Full Name | Definition |
-|---|---|---|
-| **HFCE** · `NE.CON.PRVT.PC.KD` | Household Final Consumption Expenditure per capita | Total spending by households on goods and services, per person, in constant 2015 USD. Used as the Tier 3 consumption baseline. |
-| **CHE** · `SH.XPD.CHEX.PC.CD` | Current Health Expenditure per capita | Total health spending (public + private) per person in current USD. |
-| **OOP** · `SH.XPD.OOPC.CH.ZS` | Out-of-Pocket health spending as % of CHE | Share of total health spending paid directly by households, not covered by insurance. |
-| **PPP factor** · `PA.NUS.PPP` | Purchasing Power Parity conversion factor | Local currency units per international dollar. Converts local currency to a comparable real value across countries. |
-| **GDP per capita** · `NY.GDP.PCAP.CD` | Gross Domestic Product per capita | Total economic output per person in current USD. Used as a wage proxy and benchmark ratio denominator. |
-| **Average Wage** · AW | National Average Earnings | Economy-wide average annual gross wage; the denominator for pension levels, wealth, and replacement rates. Sourced from ILOSTAT or seeded manually. |
-| **WDI** | World Development Indicators | World Bank's flagship database of development data, covering 1,600+ indicators for 200+ countries. API: `api.worldbank.org/v2`. |
-| **ILO / ILOSTAT** | International Labour Organization statistics | Global labour statistics database. Used for average wage data via SDMX API at `sdmx.ilo.org/rest`. |
-| **WHO GHO** | WHO Global Health Observatory | WHO's open data repository for health-related statistics. OData API at `ghoapi.azureedge.net/api`. |
-| **UN WPP** | UN World Population Prospects | UN Population Division's biennial demographic estimates and projections. API at `population.un.org/dataportalapi`. |
-| **PIP** | World Bank Poverty and Inequality Platform | Harmonised household survey data for poverty and inequality. API returns empty for most countries in scope — not used in this dashboard. |
-""")
+    with st.expander(t("glossary_economic_title"), expanded=False):
+        st.markdown(t("glossary_economic_body"))
 
-    with st.expander("🔢 Retirement Cost Calculator Terms", expanded=False):
-        st.markdown("""
-| Term | Definition |
-|---|---|
-| **Retirement horizon** | Estimated number of years spent in retirement = remaining life expectancy at the retirement age. |
-| **Healthy years** | Portion of the retirement horizon expected to be spent in good health (from HALE split). |
-| **Unhealthy years** | Retirement years spent with significant disability or chronic illness; associated with higher health costs. |
-| **Consumption tier** | The data source used for the living cost baseline. Tier 1 = national poverty line; Tier 3 = HFCE per capita. Tier 2 (PIP) is not used. |
-| **Scenario multiplier** | Factor applied to the consumption baseline to reflect lifestyle: Basic (0.55×), Moderate (0.75×), Comfortable (1.0×) of HFCE/capita. |
-| **Age uplift factor** | Multiplier applied to baseline health OOP spending during unhealthy years (default 1.5×), reflecting higher healthcare utilisation. |
-| **Discount rate** | Rate used to reduce future costs to present-day value. A higher rate means future costs matter less today. |
-| **Inflation rate** | Rate at which costs grow each year, increasing the nominal amount needed in future years. |
-| **Lifetime present value (PV)** | Sum of all discounted annual retirement costs over the full horizon — the lump sum needed at retirement date. |
-| **Required monthly income** | Lifetime PV ÷ (horizon years × 12). The steady monthly draw needed to fund retirement, in today's money. |
-| **PPP-USD equivalent** | Annual cost converted to international dollars using the PPP factor, allowing comparison across countries. |
-| **Horizon method** | Label indicating the data source used for life expectancy: `UN_WPP_exact` (primary), `WHO_GHO_LE60_proxy` (fallback). |
-""")
+    with st.expander(t("glossary_rc_title"), expanded=False):
+        st.markdown(t("glossary_rc_body"))
 
-    with st.expander("🌍 Country Coverage & System Notes", expanded=False):
-        st.markdown("""
-| Topic | Note |
-|---|---|
-| **GCC dual-track systems** | Saudi Arabia, UAE, Kuwait, Qatar, Bahrain, and Oman operate parallel systems: mandatory pension funds for national citizens; End-of-Service Benefits (EOSB) for expatriates. This dashboard models the **national citizen scheme only**. |
-| **Pakistan EOBI** | The Employees' Old-Age Benefits Institution calculates contributions on the **minimum wage**, not the actual wage. This produces low effective replacement rates relative to average earnings for higher earners. |
-| **Expatriate coverage** | In most GCC countries, expatriate workers (often the majority of the workforce) are explicitly excluded from the mandatory pension system. Their worker type is marked `excluded` and their modelled benefit is zero. |
-| **Civil servant schemes** | Several countries maintain separate, more generous pension schemes for civil servants. Where data is available these are modelled as distinct worker types. |
-| **Multi-pillar systems** | Most modern systems combine a PAYG DB pillar (first pillar) with a funded DC pillar (second pillar) and voluntary savings (third pillar). All pillars present in the country YAML are modelled simultaneously. |
-""")
+    with st.expander(t("glossary_coverage_title"), expanded=False):
+        st.markdown(t("glossary_coverage_body"))
 
 
 @st.fragment

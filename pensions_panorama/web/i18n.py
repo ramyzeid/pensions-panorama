@@ -52,6 +52,93 @@ TRANSLATIONS: dict[str, dict[str, str]] = {
         "methodology_section_rc": "💰 Retirement Cost Calculator",
         "tab_glossary": "📖 Glossary",
         "glossary_intro": "Definitions for every indicator, scheme type, and term used across this dashboard.",
+        "glossary_indicators_title": "📊 Pension Indicators",
+        "glossary_indicators_body": (
+            "| Term | Abbreviation | Definition |\n"
+            "|---|---|---|\n"
+            "| **Gross Replacement Rate** | GRR | Gross annual pension ÷ individual gross pre-retirement earnings. Measures how much of working income the pension replaces before tax. |\n"
+            "| **Net Replacement Rate** | NRR | Net annual pension ÷ individual net pre-retirement earnings (after worker social contributions and income tax). The more meaningful measure of living-standard maintenance. |\n"
+            "| **Gross Pension Level** | GPL | Gross annual pension ÷ national average earnings. Shows the pension's value relative to economy-wide wages, enabling cross-country comparison independent of individual earnings. |\n"
+            "| **Net Pension Level** | NPL | Net annual pension ÷ average net earnings. Net-of-tax version of GPL. |\n"
+            "| **Gross Pension Wealth** | GPW | Present value of the entire gross benefit stream, discounted and survival-weighted, divided by the average wage. Measures the stock of pension wealth rather than annual flow. |\n"
+            "| **Net Pension Wealth** | NPW | Same as GPW but using the net benefit stream. |\n"
+            "| **Accrual Rate** | — | The share of reference earnings credited as pension per year of service in a DB scheme (e.g. 2% means 40 years × 2% = 80% replacement). |\n"
+            "| **Normal Retirement Age** | NRA | The age at which a worker becomes entitled to a full pension benefit without reduction. May differ by sex. |\n"
+            "| **Effective Retirement Age** | ERA | The actual average age at which workers exit the labour force, which often differs from the statutory NRA due to early retirement provisions. |\n"
+            "| **Contribution Rate** | — | The percentage of wages paid into the pension system, typically split between employer and employee. |\n"
+            "| **Replacement Wage** | — | The wage base used to calculate DB benefits — may be final salary, career-average earnings, or best N years. |\n"
+            "| **Vesting Period** | — | Minimum service / contribution years required before a worker is entitled to any pension benefit. |"
+        ),
+        "glossary_schemes_title": "🏛️ Scheme Types",
+        "glossary_schemes_body": (
+            "| Type | Full Name | How it works |\n"
+            "|---|---|---|\n"
+            "| **DB** | Defined Benefit | Pension = accrual rate × service years × reference wage. The sponsor bears investment and longevity risk. |\n"
+            "| **DC** | Defined Contribution | Worker and/or employer accumulate a fund; at retirement the fund is converted to an annuity or drawn down. Worker bears investment risk. |\n"
+            "| **NDC** | Non-Financial (Notional) Defined Contribution | Contributions earn a notional return (usually GDP or wage growth) in individual accounts, but the system remains pay-as-you-go funded. Combines DC-like benefit link with PAYG financing. |\n"
+            "| **Points** | Points System | Each year a worker earns points = wage ÷ average wage. Total points × point value at retirement = pension. Used in France, Germany. |\n"
+            "| **Basic / Flat-rate** | — | A uniform pension paid to all qualifying residents or contributors regardless of earnings history. Provides a basic floor. |\n"
+            "| **Targeted / Means-tested** | — | Benefit phases out as income rises; directed at low-income retirees. |\n"
+            "| **Minimum pension guarantee** | — | A floor applied as a top-up: if computed pension < minimum, the state pays the difference. |\n"
+            "| **EOSB** | End-of-Service Benefit | A lump-sum gratuity paid by the employer at the end of employment, typically proportional to final salary × service years. Common for expatriate workers in GCC countries as a substitute for pension coverage. |\n"
+            "| **PAYG** | Pay-As-You-Go | Financing mechanism: current contributions pay current retirees' benefits. No pre-funding of future liabilities. |\n"
+            "| **Funded** | — | Assets are accumulated in advance in a fund (individual or collective) to pay future benefits. |"
+        ),
+        "glossary_health_title": "❤️ Life Expectancy & Health",
+        "glossary_health_body": (
+            "| Term | Abbreviation | Definition |\n"
+            "|---|---|---|\n"
+            "| **Life Expectancy at birth** | LE₀ | Expected number of years a newborn would live under current mortality conditions. |\n"
+            "| **Life Expectancy at age x** | LE(x) or e(x) | Expected additional years of life for a person who has already reached age x. Used to determine the retirement horizon. |\n"
+            "| **Healthy Adjusted Life Expectancy** | HALE | Years of life expected to be lived in \"full health\" (free from significant disability or disease). Derived by subtracting years lived with disability from total LE. |\n"
+            "| **HALE at 60** | — | WHO GHO indicator `WHOSIS_000007`. HALE remaining at age 60, used to split the retirement horizon into healthy and unhealthy years. |\n"
+            "| **Age-specific LE** | — | UN WPP indicator 75. Remaining LE at an exact age group (60, 65, etc.), more precise than birth-based LE for retirement planning. |\n"
+            "| **Longevity risk** | — | The risk that retirees outlive their savings. Managed through annuities, longevity bonds, or PAYG elements. |\n"
+            "| **Survival-weighted PV** | — | Present value of a benefit stream where each future payment is discounted both for time (discount rate) and for the probability of still being alive (survival probability). Used in pension wealth calculations. |"
+        ),
+        "glossary_economic_title": "💹 Economic & Data Indicators",
+        "glossary_economic_body": (
+            "| Term / Code | Full Name | Definition |\n"
+            "|---|---|---|\n"
+            "| **HFCE** · `NE.CON.PRVT.PC.KD` | Household Final Consumption Expenditure per capita | Total spending by households on goods and services, per person, in constant 2015 USD. Used as the Tier 3 consumption baseline. |\n"
+            "| **CHE** · `SH.XPD.CHEX.PC.CD` | Current Health Expenditure per capita | Total health spending (public + private) per person in current USD. |\n"
+            "| **OOP** · `SH.XPD.OOPC.CH.ZS` | Out-of-Pocket health spending as % of CHE | Share of total health spending paid directly by households, not covered by insurance. |\n"
+            "| **PPP factor** · `PA.NUS.PPP` | Purchasing Power Parity conversion factor | Local currency units per international dollar. Converts local currency to a comparable real value across countries. |\n"
+            "| **GDP per capita** · `NY.GDP.PCAP.CD` | Gross Domestic Product per capita | Total economic output per person in current USD. Used as a wage proxy and benchmark ratio denominator. |\n"
+            "| **Average Wage** · AW | National Average Earnings | Economy-wide average annual gross wage; the denominator for pension levels, wealth, and replacement rates. Sourced from ILOSTAT or seeded manually. |\n"
+            "| **WDI** | World Development Indicators | World Bank's flagship database of development data, covering 1,600+ indicators for 200+ countries. API: `api.worldbank.org/v2`. |\n"
+            "| **ILO / ILOSTAT** | International Labour Organization statistics | Global labour statistics database. Used for average wage data via SDMX API at `sdmx.ilo.org/rest`. |\n"
+            "| **WHO GHO** | WHO Global Health Observatory | WHO's open data repository for health-related statistics. OData API at `ghoapi.azureedge.net/api`. |\n"
+            "| **UN WPP** | UN World Population Prospects | UN Population Division's biennial demographic estimates and projections. API at `population.un.org/dataportalapi`. |\n"
+            "| **PIP** | World Bank Poverty and Inequality Platform | Harmonised household survey data for poverty and inequality. API returns empty for most countries in scope — not used in this dashboard. |"
+        ),
+        "glossary_rc_title": "🔢 Retirement Cost Calculator Terms",
+        "glossary_rc_body": (
+            "| Term | Definition |\n"
+            "|---|---|\n"
+            "| **Retirement horizon** | Estimated number of years spent in retirement = remaining life expectancy at the retirement age. |\n"
+            "| **Healthy years** | Portion of the retirement horizon expected to be spent in good health (from HALE split). |\n"
+            "| **Unhealthy years** | Retirement years spent with significant disability or chronic illness; associated with higher health costs. |\n"
+            "| **Consumption tier** | The data source used for the living cost baseline. Tier 1 = national poverty line; Tier 3 = HFCE per capita. Tier 2 (PIP) is not used. |\n"
+            "| **Scenario multiplier** | Factor applied to the consumption baseline to reflect lifestyle: Basic (0.55×), Moderate (0.75×), Comfortable (1.0×) of HFCE/capita. |\n"
+            "| **Age uplift factor** | Multiplier applied to baseline health OOP spending during unhealthy years (default 1.5×), reflecting higher healthcare utilisation. |\n"
+            "| **Discount rate** | Rate used to reduce future costs to present-day value. A higher rate means future costs matter less today. |\n"
+            "| **Inflation rate** | Rate at which costs grow each year, increasing the nominal amount needed in future years. |\n"
+            "| **Lifetime present value (PV)** | Sum of all discounted annual retirement costs over the full horizon — the lump sum needed at retirement date. |\n"
+            "| **Required monthly income** | Lifetime PV ÷ (horizon years × 12). The steady monthly draw needed to fund retirement, in today's money. |\n"
+            "| **PPP-USD equivalent** | Annual cost converted to international dollars using the PPP factor, allowing comparison across countries. |\n"
+            "| **Horizon method** | Label indicating the data source used for life expectancy: `UN_WPP_exact` (primary), `WHO_GHO_LE60_proxy` (fallback). |"
+        ),
+        "glossary_coverage_title": "🌍 Country Coverage & System Notes",
+        "glossary_coverage_body": (
+            "| Topic | Note |\n"
+            "|---|---|\n"
+            "| **GCC dual-track systems** | Saudi Arabia, UAE, Kuwait, Qatar, Bahrain, and Oman operate parallel systems: mandatory pension funds for national citizens; End-of-Service Benefits (EOSB) for expatriates. This dashboard models the **national citizen scheme only**. |\n"
+            "| **Pakistan EOBI** | The Employees' Old-Age Benefits Institution calculates contributions on the **minimum wage**, not the actual wage. This produces low effective replacement rates relative to average earnings for higher earners. |\n"
+            "| **Expatriate coverage** | In most GCC countries, expatriate workers (often the majority of the workforce) are explicitly excluded from the mandatory pension system. Their worker type is marked `excluded` and their modelled benefit is zero. |\n"
+            "| **Civil servant schemes** | Several countries maintain separate, more generous pension schemes for civil servants. Where data is available these are modelled as distinct worker types. |\n"
+            "| **Multi-pillar systems** | Most modern systems combine a PAYG DB pillar (first pillar) with a funded DC pillar (second pillar) and voluntary savings (third pillar). All pillars present in the country YAML are modelled simultaneously. |"
+        ),
         "tab_primer": "🔗 WB Primer Notes",
         "primer_intro": "World Bank Pension Reform Primer — curated reference notes on pension system design, financing, and policy.",
         "deep_profile_header": "Country Deep Profile",
@@ -780,6 +867,89 @@ The **required monthly income** to fund retirement is `PV ÷ (H × 12)`.
         "methodology_section_rc": "💰 حاسبة تكلفة التقاعد",
         "tab_glossary": "📖 المصطلحات",
         "glossary_intro": "تعريفات لجميع المؤشرات وأنواع الأنظمة والمصطلحات المستخدمة في لوحة المعلومات.",
+        "glossary_indicators_title": "📊 مؤشرات التقاعد",
+        "glossary_indicators_body": (
+            "| المصطلح | الاختصار | التعريف |\n"
+            "|---|---|---|\n"
+            "| **معدل الإحلال الإجمالي** | GRR | المعاش السنوي الإجمالي ÷ الدخل الإجمالي للفرد قبل التقاعد. يقيس مقدار دخل العمل الذي يعوّضه المعاش قبل الضريبة. |\n"
+            "| **معدل الإحلال الصافي** | NRR | المعاش السنوي الصافي ÷ الدخل الصافي للفرد قبل التقاعد (بعد اشتراكات الضمان الاجتماعي وضريبة الدخل). المقياس الأكثر دلالةً على الحفاظ على مستوى المعيشة. |\n"
+            "| **مستوى المعاش الإجمالي** | GPL | المعاش السنوي الإجمالي ÷ متوسط الأجور الوطنية. يُظهر قيمة المعاش نسبةً إلى الأجور على مستوى الاقتصاد، مما يتيح المقارنة بين الدول. |\n"
+            "| **مستوى المعاش الصافي** | NPL | المعاش السنوي الصافي ÷ متوسط الأجور الصافية. نسخة GPL بعد خصم الضريبة. |\n"
+            "| **ثروة المعاش الإجمالية** | GPW | القيمة الحالية لمجمل تدفقات الاستحقاق الإجمالية، مخصومةً ومرجَّحةً بمعدلات البقاء على قيد الحياة، مقسومةً على متوسط الأجر. |\n"
+            "| **ثروة المعاش الصافية** | NPW | مماثلة لـ GPW لكن باستخدام تدفقات الاستحقاق الصافية. |\n"
+            "| **معدل الاستحقاق** | — | حصة الأجر المرجعي التي تُحتسب معاشاً عن كل سنة خدمة في نظام DB. |\n"
+            "| **سن التقاعد الاعتيادي** | NRA | السن التي يصبح عندها العامل مستحقاً لمعاش تقاعد كامل دون أي خفض. قد يختلف بحسب الجنس. |\n"
+            "| **سن التقاعد الفعلي** | ERA | متوسط السن الفعلي الذي يغادر عنده العمال سوق العمل. |\n"
+            "| **معدل الاشتراك** | — | نسبة الأجور المدفوعة في نظام التقاعد، مقسَّمةً بين صاحب العمل والموظف. |\n"
+            "| **الأجر الاستبدالي** | — | قاعدة الأجر المستخدمة لاحتساب مزايا DB — قد تكون الراتب الأخير أو متوسط المسار الوظيفي أو أفضل N سنة. |\n"
+            "| **فترة الاستحقاق** | — | الحد الأدنى من سنوات الخدمة المطلوبة قبل أن يصبح العامل مستحقاً لأي مزايا تقاعدية. |"
+        ),
+        "glossary_schemes_title": "🏛️ أنواع الأنظمة التقاعدية",
+        "glossary_schemes_body": (
+            "| النوع | الاسم الكامل | آلية العمل |\n"
+            "|---|---|---|\n"
+            "| **DB** | المزايا المحددة | المعاش = معدل الاستحقاق × سنوات الخدمة × الأجر المرجعي. يتحمل الجهة الراعية مخاطر الاستثمار والعمر. |\n"
+            "| **DC** | الاشتراكات المحددة | يتراكم العامل و/أو صاحب العمل صندوقاً؛ عند التقاعد يُحوَّل الصندوق إلى راتب سنوي أو يُسحب تدريجياً. يتحمل العامل مخاطر الاستثمار. |\n"
+            "| **NDC** | الاشتراكات المحددة الافتراضية (غير المالية) | تكسب الاشتراكات عائداً افتراضياً في حسابات فردية، غير أن النظام يظل ممولاً بأسلوب PAYG. |\n"
+            "| **النقاط** | نظام النقاط | يكسب العامل سنوياً نقاطاً = الأجر ÷ متوسط الأجر. إجمالي النقاط × قيمة النقطة عند التقاعد = المعاش. |\n"
+            "| **الأساسي / الموحد** | — | معاش موحد يُدفع لجميع المقيمين أو المشتركين المستوفين للشروط بصرف النظر عن تاريخ الأجر. |\n"
+            "| **المستهدف / الخاضع لاختبار الدخل** | — | تتناقص المزايا مع ارتفاع الدخل؛ موجَّه للمتقاعدين من ذوي الدخل المنخفض. |\n"
+            "| **ضمان الحد الأدنى للمعاش** | — | حد أدنى يُطبَّق كمكمّل: إذا كان المعاش المحتسب أقل من الحد الأدنى، تدفع الدولة الفرق. |\n"
+            "| **EOSB** | مكافأة نهاية الخدمة | مبلغ إجمالي يدفعه صاحب العمل عند انتهاء الخدمة. شائعة للعمال الوافدين في دول GCC. |\n"
+            "| **PAYG** | الدفع الجاري | تموّل الاشتراكات الحالية مزايا المتقاعدين الحاليين. لا يوجد تمويل مسبق للالتزامات المستقبلية. |\n"
+            "| **ممول** | — | تُجمَّع الأصول مسبقاً في صندوق لدفع المزايا المستقبلية. |"
+        ),
+        "glossary_health_title": "❤️ العمر المتوقع والصحة",
+        "glossary_health_body": (
+            "| المصطلح | الاختصار | التعريف |\n"
+            "|---|---|---|\n"
+            "| **العمر المتوقع عند الولادة** | LE₀ | عدد السنوات المتوقعة التي سيعيشها المولود في ظل ظروف الوفيات الحالية. |\n"
+            "| **العمر المتوقع عند السن x** | LE(x) | السنوات الإضافية المتوقعة في الحياة لمن بلغ بالفعل السن x. يُستخدم لتحديد أفق التقاعد. |\n"
+            "| **العمر المتوقع المعدَّل بالصحة** | HALE | سنوات الحياة المتوقع قضاؤها بصحة كاملة. يُحتسب بطرح سنوات العيش مع الإعاقة من إجمالي العمر المتوقع. |\n"
+            "| **HALE عند سن 60** | — | مؤشر WHO GHO ذو الرمز `WHOSIS_000007`. العمر المتوقع الصحي المتبقي عند سن 60، يُستخدم لتقسيم أفق التقاعد إلى سنوات صحية وأخرى غير صحية. |\n"
+            "| **العمر المتوقع حسب الفئة العمرية** | — | مؤشر UN WPP رقم 75. العمر المتوقع المتبقي عند فئة عمرية محددة (60، 65، وما إلى ذلك). |\n"
+            "| **مخاطر طول العمر** | — | مخاطر أن يعيش المتقاعدون أطول من مدخراتهم. تُدار من خلال الدخل السنوي المضمون أو عناصر PAYG. |\n"
+            "| **القيمة الحالية المرجَّحة بالبقاء** | — | القيمة الحالية التي يُخصم فيها كل دفع مستقبلي بحسب الزمن واحتمالية البقاء على قيد الحياة. تُستخدم في احتساب ثروة المعاش. |"
+        ),
+        "glossary_economic_title": "💹 المؤشرات الاقتصادية ومصادر البيانات",
+        "glossary_economic_body": (
+            "| المصطلح / الرمز | الاسم الكامل | التعريف |\n"
+            "|---|---|---|\n"
+            "| **HFCE** · `NE.CON.PRVT.PC.KD` | الإنفاق الاستهلاكي النهائي للأسر المعيشية للفرد | إجمالي إنفاق الأسر على السلع والخدمات، للفرد، بالدولار الأمريكي الثابت لعام 2015. |\n"
+            "| **CHE** · `SH.XPD.CHEX.PC.CD` | الإنفاق الصحي الجاري للفرد | إجمالي الإنفاق الصحي للفرد بالدولار الأمريكي الجاري. |\n"
+            "| **OOP** · `SH.XPD.OOPC.CH.ZS` | الإنفاق الصحي من الجيب كنسبة من CHE | حصة إجمالي الإنفاق الصحي التي تدفعها الأسر مباشرةً. |\n"
+            "| **معامل PPP** · `PA.NUS.PPP` | معامل تحويل تعادل القوة الشرائية | وحدات العملة المحلية مقابل الدولار الدولي. |\n"
+            "| **الناتج المحلي الإجمالي للفرد** · `NY.GDP.PCAP.CD` | الناتج المحلي الإجمالي للفرد | إجمالي الناتج الاقتصادي للفرد بالدولار الأمريكي الجاري. |\n"
+            "| **متوسط الأجر** · AW | متوسط الأجر الوطني | متوسط الأجر السنوي الإجمالي على مستوى الاقتصاد؛ المقام المستخدم في مستويات المعاش ومعدلات الإحلال. |\n"
+            "| **WDI** | مؤشرات التنمية العالمية | قاعدة البيانات الرئيسية للبنك الدولي. الواجهة البرمجية: `api.worldbank.org/v2`. |\n"
+            "| **ILO / ILOSTAT** | إحصاءات منظمة العمل الدولية | إحصاءات العمل العالمية. الواجهة البرمجية: `sdmx.ilo.org/rest`. |\n"
+            "| **WHO GHO** | المرصد الصحي العالمي لمنظمة الصحة العالمية | البيانات المفتوحة لمنظمة الصحة العالمية للإحصاءات الصحية. الواجهة البرمجية: `ghoapi.azureedge.net/api`. |\n"
+            "| **UN WPP** | توقعات الأمم المتحدة للسكان في العالم | التقديرات الديموغرافية والإسقاطات الأممية. الواجهة البرمجية: `population.un.org/dataportalapi`. |"
+        ),
+        "glossary_rc_title": "🔢 مصطلحات حاسبة تكلفة التقاعد",
+        "glossary_rc_body": (
+            "| المصطلح | التعريف |\n"
+            "|---|---|\n"
+            "| **أفق التقاعد** | السنوات التقديرية التي تُقضى في التقاعد = العمر المتوقع المتبقي عند سن التقاعد. |\n"
+            "| **السنوات الصحية** | الجزء من أفق التقاعد المتوقع قضاؤه بصحة جيدة (مستمَد من تقسيم HALE). |\n"
+            "| **السنوات غير الصحية** | سنوات التقاعد المصحوبة بإعاقة كبيرة أو مرض مزمن؛ تكاليف صحية أعلى. |\n"
+            "| **مستوى الاستهلاك** | مصدر البيانات لخط الأساس لتكلفة المعيشة. المستوى الأول = خط الفقر؛ المستوى الثالث = HFCE للفرد. |\n"
+            "| **مضاعف السيناريو** | المعامل المطبَّق على خط أساس الاستهلاك: أساسي (0.55×)، معتدل (0.75×)، مريح (1.0×) من HFCE/للفرد. |\n"
+            "| **معامل الرفع العمري** | المضاعف لتكاليف OOP الصحية خلال السنوات غير الصحية (الافتراضي 1.5×). |\n"
+            "| **معدل الخصم** | المعدل المستخدم لاختزال التكاليف المستقبلية إلى قيمتها الحالية. |\n"
+            "| **معدل التضخم** | المعدل الذي ترتفع به التكاليف سنوياً. |\n"
+            "| **القيمة الحالية الإجمالية مدى الحياة (PV)** | مجموع جميع تكاليف التقاعد السنوية المخصومة — المبلغ الإجمالي المطلوب في تاريخ التقاعد. |"
+        ),
+        "glossary_coverage_title": "🌍 ملاحظات التغطية والأنظمة",
+        "glossary_coverage_body": (
+            "| الموضوع | ملاحظة |\n"
+            "|---|---|\n"
+            "| **أنظمة دول الخليج المزدوجة** | تعمل السعودية والإمارات والكويت وقطر والبحرين وعُمان بأنظمة موازية: صناديق معاشات إلزامية للمواطنين؛ ومكافأة نهاية الخدمة للعمالة الوافدة. تُنمذج لوحة المعلومات **نظام المواطنين فقط**. |\n"
+            "| **مؤسسة EOBI الباكستانية** | تحتسب مؤسسة مزايا الشيخوخة للموظفين الاشتراكات على أساس **الحد الأدنى للأجور**، لا الأجر الفعلي. مما ينتج عنه معدلات إحلال فعلية منخفضة بالنسبة لمتوسط الأجر لأصحاب الدخل المرتفع. |\n"
+            "| **تغطية العمالة الوافدة** | في معظم دول الخليج، يُستثنى العمال الوافدون (الغالبية في أغلب الأحيان) صراحةً من نظام المعاشات الإلزامي. يُصنَّف نوع عملهم بـ `excluded` وتكون مزاياهم المنمذجة صفراً. |\n"
+            "| **أنظمة موظفي الحكومة** | تحتفظ عدة دول بأنظمة معاشات أكثر سخاءً لموظفي الحكومة. تُنمذَج كأنواع عمال مستقلة حيثما توفرت البيانات. |\n"
+            "| **أنظمة متعددة الأعمدة** | تجمع معظم الأنظمة الحديثة بين عمود PAYG-DB (الأول) وعمود DC ممول (الثاني) ومدخرات طوعية (الثالث). تُنمذَج جميع الأعمدة الواردة في YAML المعني في آنٍ واحد. |"
+        ),
         "tab_primer": "🔗 ملاحظات البنك الدولي",
         "primer_intro": "ملاحظات البنك الدولي حول إصلاح المعاشات — مراجع منتقاة حول تصميم أنظمة التقاعد وتمويلها وسياساتها.",
         "deep_profile_header": "الملف المتعمق للدولة",
@@ -1452,6 +1622,89 @@ PV = Σ_{t=1}^{H}  [التكلفة_السنوية × (1 + g)^(t−1)] / (1 + r)^
         "methodology_section_rc": "💰 Calculateur du coût de la retraite",
         "tab_glossary": "📖 Glossaire",
         "glossary_intro": "Définitions de chaque indicateur, type de régime et terme utilisé dans ce tableau de bord.",
+        "glossary_indicators_title": "📊 Indicateurs de retraite",
+        "glossary_indicators_body": (
+            "| Terme | Abrév. | Définition |\n"
+            "|---|---|---|\n"
+            "| **Taux de remplacement brut** | GRR | Pension annuelle brute ÷ revenus bruts individuels avant la retraite. Mesure dans quelle proportion la pension remplace les revenus d'activité avant impôt. |\n"
+            "| **Taux de remplacement net** | NRR | Pension annuelle nette ÷ revenus nets individuels avant la retraite (après cotisations sociales et impôt sur le revenu). La mesure la plus pertinente pour évaluer le maintien du niveau de vie. |\n"
+            "| **Niveau de pension brut** | GPL | Pension annuelle brute ÷ salaire moyen national. Montre la valeur de la pension par rapport aux salaires de l'ensemble de l'économie, permettant des comparaisons entre pays. |\n"
+            "| **Niveau de pension net** | NPL | Pension annuelle nette ÷ salaire net moyen. Version après impôt du GPL. |\n"
+            "| **Patrimoine retraite brut** | GPW | Valeur actuelle de l'ensemble des flux de prestations brutes, actualisée et pondérée par les probabilités de survie, divisée par le salaire moyen. |\n"
+            "| **Patrimoine retraite net** | NPW | Identique au GPW mais en utilisant les flux de prestations nettes. |\n"
+            "| **Taux d'accumulation** | — | Part du salaire de référence créditée comme pension pour chaque année de service dans un régime DB. |\n"
+            "| **Âge normal de la retraite** | NRA | Âge auquel un travailleur devient éligible à une pension complète sans réduction. Peut varier selon le sexe. |\n"
+            "| **Âge effectif de la retraite** | ERA | Âge moyen réel auquel les travailleurs quittent le marché du travail. |\n"
+            "| **Taux de cotisation** | — | Pourcentage des salaires versé au régime de retraite, généralement partagé entre employeur et employé. |\n"
+            "| **Salaire de référence** | — | Base salariale utilisée pour calculer les prestations DB — peut être le dernier salaire, la moyenne de carrière ou les meilleures N années. |\n"
+            "| **Période d'acquisition** | — | Nombre minimal d'années de service ou de cotisation requises avant qu'un travailleur soit éligible à toute prestation de retraite. |"
+        ),
+        "glossary_schemes_title": "🏛️ Types de régimes",
+        "glossary_schemes_body": (
+            "| Type | Nom complet | Fonctionnement |\n"
+            "|---|---|---|\n"
+            "| **DB** | Prestations définies | Pension = taux d'accumulation × années de service × salaire de référence. Le promoteur supporte les risques d'investissement et de longévité. |\n"
+            "| **DC** | Cotisations définies | Le travailleur et/ou l'employeur accumulent un capital ; à la retraite, le capital est converti en rente ou retiré progressivement. Le travailleur supporte le risque d'investissement. |\n"
+            "| **NDC** | Cotisations définies notionnelles (non financières) | Les cotisations génèrent un rendement notionnel (généralement lié à la croissance du PIB ou des salaires) sur des comptes individuels, mais le régime reste financé en répartition. |\n"
+            "| **Points** | Régime par points | Chaque année, le travailleur accumule des points = salaire ÷ salaire moyen. Total des points × valeur du point à la retraite = pension. Utilisé en France et en Allemagne. |\n"
+            "| **De base / Forfaitaire** | — | Pension uniforme versée à tous les résidents ou cotisants qualifiés, indépendamment des revenus antérieurs. |\n"
+            "| **Ciblée / Sous condition de ressources** | — | Les prestations diminuent à mesure que les revenus augmentent ; destinée aux retraités à faibles revenus. |\n"
+            "| **Garantie de pension minimale** | — | Un plancher appliqué en complément : si la pension calculée est inférieure au minimum, l'État verse la différence. |\n"
+            "| **EOSB** | Indemnité de fin de service | Somme forfaitaire versée par l'employeur à la fin du contrat de travail. Courante pour les travailleurs expatriés dans les pays du CCG. |\n"
+            "| **PAYG** | Répartition | Les cotisations actuelles financent les prestations des retraités actuels. Aucune capitalisation préalable des engagements futurs. |\n"
+            "| **Capitalisé** | — | Les actifs sont accumulés à l'avance dans un fonds (individuel ou collectif) pour payer les prestations futures. |"
+        ),
+        "glossary_health_title": "❤️ Espérance de vie et santé",
+        "glossary_health_body": (
+            "| Terme | Abrév. | Définition |\n"
+            "|---|---|---|\n"
+            "| **Espérance de vie à la naissance** | LE₀ | Nombre d'années qu'un nouveau-né est censé vivre dans les conditions de mortalité actuelles. |\n"
+            "| **Espérance de vie à l'âge x** | LE(x) ou e(x) | Années de vie supplémentaires attendues pour une personne ayant déjà atteint l'âge x. Utilisée pour estimer l'horizon de retraite. |\n"
+            "| **Espérance de vie en bonne santé** | HALE | Années de vie en « pleine santé » (sans handicap ni maladie significative). Calculée en soustrayant les années vécues avec incapacité de l'espérance de vie totale. |\n"
+            "| **HALE à 60 ans** | — | Indicateur WHO GHO `WHOSIS_000007`. HALE résiduelle à 60 ans, utilisée pour répartir l'horizon de retraite entre années en bonne santé et années en mauvaise santé. |\n"
+            "| **Espérance de vie par groupe d'âge** | — | Indicateur UN WPP 75. Espérance de vie résiduelle à un groupe d'âge précis (60, 65, etc.). |\n"
+            "| **Risque de longévité** | — | Risque que les retraités vivent plus longtemps que leurs économies. Géré via des rentes garanties, des obligations de longévité ou des éléments PAYG. |\n"
+            "| **Valeur actuelle pondérée par la survie** | — | Valeur actuelle d'un flux de prestations où chaque paiement futur est actualisé à la fois pour le temps et la probabilité d'être encore en vie. Utilisée dans le calcul du patrimoine retraite. |"
+        ),
+        "glossary_economic_title": "💹 Indicateurs économiques et sources de données",
+        "glossary_economic_body": (
+            "| Terme / Code | Nom complet | Définition |\n"
+            "|---|---|---|\n"
+            "| **HFCE** · `NE.CON.PRVT.PC.KD` | Dépenses de consommation finale des ménages par habitant | Dépenses totales des ménages en biens et services, par personne, en USD constants 2015. |\n"
+            "| **CHE** · `SH.XPD.CHEX.PC.CD` | Dépenses de santé courantes par habitant | Dépenses de santé totales (publiques + privées) par personne en USD courants. |\n"
+            "| **OOP** · `SH.XPD.OOPC.CH.ZS` | Dépenses de santé à la charge des patients en % du CHE | Part des dépenses totales de santé payée directement par les ménages. |\n"
+            "| **Facteur PPP** · `PA.NUS.PPP` | Facteur de conversion à parité de pouvoir d'achat | Unités de monnaie locale par dollar international. |\n"
+            "| **PIB par habitant** · `NY.GDP.PCAP.CD` | Produit intérieur brut par habitant | Production économique totale par personne en USD courants. |\n"
+            "| **Salaire moyen** · AW | Salaire moyen national | Salaire annuel brut moyen à l'échelle de l'économie ; dénominateur utilisé pour les niveaux de pension et les taux de remplacement. |\n"
+            "| **WDI** | Indicateurs du développement mondial | Base de données phare de la Banque mondiale. API : `api.worldbank.org/v2`. |\n"
+            "| **ILO / ILOSTAT** | Statistiques de l'Organisation internationale du travail | Base de données mondiale sur les statistiques du travail. API : `sdmx.ilo.org/rest`. |\n"
+            "| **WHO GHO** | Observatoire mondial de la santé de l'OMS | Dépôt de données ouvertes de l'OMS pour les statistiques de santé. API : `ghoapi.azureedge.net/api`. |\n"
+            "| **UN WPP** | Perspectives de la population mondiale des Nations Unies | Estimations démographiques et projections des Nations Unies. API : `population.un.org/dataportalapi`. |"
+        ),
+        "glossary_rc_title": "🔢 Termes du calculateur de coût de retraite",
+        "glossary_rc_body": (
+            "| Terme | Définition |\n"
+            "|---|---|\n"
+            "| **Horizon de retraite** | Nombre estimé d'années passées à la retraite = espérance de vie résiduelle à l'âge de la retraite. |\n"
+            "| **Années en bonne santé** | Part de l'horizon de retraite attendue en bonne santé (d'après la décomposition HALE). |\n"
+            "| **Années en mauvaise santé** | Années de retraite avec un handicap significatif ou une maladie chronique ; coûts de santé plus élevés. |\n"
+            "| **Niveau de consommation** | Source de données pour la base de coût de vie. Niveau 1 = seuil de pauvreté national ; Niveau 3 = HFCE par habitant. |\n"
+            "| **Multiplicateur de scénario** | Coefficient appliqué à la base de consommation : basique (0,55×), modéré (0,75×), confortable (1,0×) du HFCE/habitant. |\n"
+            "| **Facteur de majoration par âge** | Multiplicateur appliqué aux dépenses OOP de santé de référence pendant les années en mauvaise santé (défaut 1,5×). |\n"
+            "| **Taux d'actualisation** | Taux utilisé pour ramener les coûts futurs à leur valeur actuelle. |\n"
+            "| **Taux d'inflation** | Taux auquel les coûts augmentent chaque année. |\n"
+            "| **Valeur actuelle totale sur la durée de vie (VA)** | Somme de tous les coûts annuels de retraite actualisés — le capital nécessaire à la date de départ en retraite. |"
+        ),
+        "glossary_coverage_title": "🌍 Couverture par pays et notes sur les systèmes",
+        "glossary_coverage_body": (
+            "| Sujet | Note |\n"
+            "|---|---|\n"
+            "| **Systèmes à deux voies dans le CCG** | L'Arabie saoudite, les Émirats arabes unis, le Koweït, le Qatar, Bahreïn et Oman ont des systèmes parallèles : fonds de pension obligatoires pour les citoyens nationaux ; indemnités de fin de service (EOSB) pour les expatriés. Ce tableau de bord modélise **uniquement le régime national**. |\n"
+            "| **EOBI Pakistan** | L'institution des prestations de vieillesse des employés calcule les cotisations sur le **salaire minimum**, et non sur le salaire réel. Cela produit de faibles taux de remplacement effectifs par rapport au salaire moyen pour les travailleurs mieux rémunérés. |\n"
+            "| **Couverture des expatriés** | Dans la plupart des pays du CCG, les travailleurs expatriés (souvent la majorité de la main-d'œuvre) sont explicitement exclus du régime de retraite obligatoire. Leur type de travailleur est marqué `excluded` et leur prestation modélisée est nulle. |\n"
+            "| **Régimes de la fonction publique** | Plusieurs pays maintiennent des régimes de retraite distincts et plus généreux pour les fonctionnaires. Lorsque les données sont disponibles, ils sont modélisés comme des types de travailleurs distincts. |\n"
+            "| **Systèmes multi-piliers** | La plupart des systèmes modernes combinent un pilier PAYG DB (premier pilier), un pilier DC capitalisé (deuxième pilier) et une épargne volontaire (troisième pilier). Tous les piliers présents dans le YAML du pays sont modélisés simultanément. |"
+        ),
         "tab_primer": "🔗 Notes WB Primer",
         "primer_intro": "Notes de référence sélectionnées du World Bank Pension Reform Primer sur la conception, le financement et la politique des systèmes de retraite.",
         "deep_profile_header": "Profil pays approfondi",
