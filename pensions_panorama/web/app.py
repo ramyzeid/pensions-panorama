@@ -83,6 +83,14 @@ button[data-testid="stExpanderToggleIcon"] ~ div {
 [data-testid="stDownloadButton"] {
     direction: rtl;
 }
+/* Keep radio buttons LTR so option order never visually reverses */
+[data-testid="stRadio"] {
+    direction: ltr !important;
+}
+[data-testid="stRadio"] label {
+    direction: rtl !important;
+    text-align: right !important;
+}
 </style>
         """,
         unsafe_allow_html=True,

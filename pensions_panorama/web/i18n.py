@@ -753,7 +753,7 @@ The **required monthly income** to fund retirement is `PV ÷ (H × 12)`.
     "ar": {
 
         # ── Sidebar ──────────────────────────────────────────────────────────
-        "app_title": "بانوراما المعاشات التقاعدية",
+        "app_title": "قاعدة بيانات المعاشات التقاعدية",
         "app_subtitle": "بيانات مقارنة لأنظمة التقاعد",
         "reference_year": "السنة المرجعية",
         "modeled_sex": "الجنس المُحاكى",
