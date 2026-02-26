@@ -2113,16 +2113,18 @@ def tab_country(data: dict) -> None:
     if not kpis:
         st.info(t("not_available"))
     else:
-        cols = st.columns(3)
-        for idx, kpi in enumerate(kpis[:3]):
-            value, year_str, source = _cell_display(kpi.get("cell") or {})
-            cols[idx].markdown(f"**{kpi.get('label')}**")
-            cols[idx].markdown(value)
-            if year_str:
-                cols[idx].caption(f"{t('deep_profile_indicator_year')}: {year_str}")
-            if source and source.get("source_url"):
-                label = source.get("source_name") or "source"
-                cols[idx].caption(f"[{label}]({source['source_url']})")
+        for row_start in range(0, len(kpis), 3):
+            row_kpis = kpis[row_start:row_start + 3]
+            cols = st.columns(3)
+            for idx, kpi in enumerate(row_kpis):
+                value, year_str, source = _cell_display(kpi.get("cell") or {})
+                cols[idx].markdown(f"**{kpi.get('label')}**")
+                cols[idx].markdown(value)
+                if year_str:
+                    cols[idx].caption(f"{t('deep_profile_indicator_year')}: {year_str}")
+                if source and source.get("source_url"):
+                    label = source.get("source_name") or "source"
+                    cols[idx].caption(f"[{label}]({source['source_url']})")
 
     # ── Scheme parameter detail ───────────────────────────────────────────────
     st.divider()

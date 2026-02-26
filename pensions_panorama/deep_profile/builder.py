@@ -46,12 +46,72 @@ WDI_INDICATORS = {
         "indicator_id": "SP.POP.65UP.TO.ZS",
         "unit": "%",
     },
+    # ASPIRE – Atlas of Social Protection Indicators (World Bank)
+    # Coverage data comes from household surveys; sparse for high-income countries.
+    "pension_coverage_pct": {
+        "label": "Contributory pension coverage (% of population)",
+        "indicator_id": "per_si_cp.cov_pop_tot",
+        "unit": "%",
+        "source_name": "ASPIRE – World Bank",
+        "source_url": "https://www.worldbank.org/en/data/datatopics/aspire",
+    },
+    "social_insurance_coverage_pct": {
+        "label": "Social insurance coverage (% of population)",
+        "indicator_id": "per_si_allsi.cov_pop_tot",
+        "unit": "%",
+        "source_name": "ASPIRE – World Bank",
+        "source_url": "https://www.worldbank.org/en/data/datatopics/aspire",
+    },
+    # GFDD – Global Financial Development Database (World Bank / OECD GPS)
+    # Pension fund assets as % of GDP; strongest for funded DC systems.
+    "pension_fund_assets_gdp": {
+        "label": "Pension fund assets (% of GDP)",
+        "indicator_id": "GFDD.DI.13",
+        "unit": "%",
+        "source_name": "Global Financial Development Database – World Bank",
+        "source_url": "https://data.worldbank.org/indicator/GFDD.DI.13",
+    },
 }
 
 SYSTEM_KPI_DEFAULTS = [
-    {"key": "coverage_total", "label": "Covers % of the population"},
-    {"key": "coverage_65plus", "label": "Covers % of the population age 65+"},
-    {"key": "pension_spending_gdp", "label": "Accounts for % of GDP"},
+    {
+        "key": "coverage_total",
+        "label": "Social insurance coverage (% of population)",
+        "default_indicator_id": "per_si_allsi.cov_pop_tot",
+        "default_unit": "%",
+        "default_source_name": "ASPIRE – World Bank",
+        "default_source_url": "https://www.worldbank.org/en/data/datatopics/aspire",
+    },
+    {
+        "key": "pension_coverage",
+        "label": "Contributory pension coverage (% of population)",
+        "default_indicator_id": "per_si_cp.cov_pop_tot",
+        "default_unit": "%",
+        "default_source_name": "ASPIRE – World Bank",
+        "default_source_url": "https://www.worldbank.org/en/data/datatopics/aspire",
+    },
+    {
+        "key": "pension_fund_assets_gdp",
+        "label": "Pension fund assets (% of GDP)",
+        "default_indicator_id": "GFDD.DI.13",
+        "default_unit": "%",
+        "default_source_name": "Global Financial Development Database – World Bank",
+        "default_source_url": "https://data.worldbank.org/indicator/GFDD.DI.13",
+    },
+    {
+        "key": "coverage_65plus",
+        "label": "Pension coverage – population age 65+ (%)",
+        "default_indicator_id": None,
+        "default_unit": "%",
+        "default_source_name": None,
+    },
+    {
+        "key": "pension_spending_gdp",
+        "label": "Pension expenditure (% of GDP)",
+        "default_indicator_id": None,
+        "default_unit": "%",
+        "default_source_name": None,
+    },
 ]
 
 SCHEME_ATTR_ORDER = [
@@ -171,13 +231,17 @@ def _build_country_indicators(
             cell = _cell_from_mapping(override)
         else:
             val, yr = values[key]
-            src_url = f"https://data.worldbank.org/indicator/{meta['indicator_id']}?locations={iso3}"
+            src_name = meta.get("source_name", "World Development Indicators (World Bank)")
+            src_url = meta.get(
+                "source_url",
+                f"https://data.worldbank.org/indicator/{meta['indicator_id']}?locations={iso3}",
+            )
             cell = CellValue(
                 value=val,
                 unit=meta["unit"],
                 year=yr,
                 source=SourceRef(
-                    source_name="World Development Indicators (World Bank)",
+                    source_name=src_name,
                     source_url=src_url,
                     indicator_id=meta["indicator_id"],
                     year=yr,
@@ -202,14 +266,14 @@ def _build_system_kpis(
         raw = mapping_kpis.get(key) or {}
         cell = _cell_from_mapping(raw) if raw else CellValue()
 
-        # Auto-fill from WDI indicator if provided and value missing
+        # 1. Auto-fill from indicator_id specified in the mapping YAML
         if cell.value is None and raw.get("indicator_id") and not offline:
-            ind = raw.get("indicator_id")
+            ind = raw["indicator_id"]
             val, yr = _latest_value_and_year(wb, iso3, ind, cfg.start_year, cfg.end_year)
             cell.value = val
             cell.year = yr
             if cell.unit is None and raw.get("unit"):
-                cell.unit = raw.get("unit")
+                cell.unit = raw["unit"]
             if cell.source is None:
                 cell.source = SourceRef(
                     source_name=raw.get("source_name") or "World Development Indicators (World Bank)",
@@ -218,6 +282,22 @@ def _build_system_kpis(
                     indicator_id=ind,
                     year=yr,
                 )
+
+        # 2. Fall back to hardcoded default indicator (ASPIRE / GFDD)
+        default_ind = kpi.get("default_indicator_id")
+        if cell.value is None and default_ind and not offline:
+            val, yr = _latest_value_and_year(wb, iso3, default_ind, cfg.start_year, cfg.end_year)
+            cell.value = val
+            cell.year = yr
+            cell.unit = cell.unit or kpi.get("default_unit")
+            cell.source = SourceRef(
+                source_name=kpi.get("default_source_name") or "World Bank",
+                source_url=kpi.get("default_source_url")
+                or f"https://data.worldbank.org/indicator/{default_ind}?locations={iso3}",
+                indicator_id=default_ind,
+                year=yr,
+            )
+
         items.append(IndicatorItem(key=key, label=kpi["label"], cell=cell))
     return items
 
