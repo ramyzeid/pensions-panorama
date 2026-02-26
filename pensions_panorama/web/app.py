@@ -89,6 +89,25 @@ button[data-testid="stExpanderToggleIcon"] ~ div {
     )
 
 
+def _apply_emoji_font_css() -> None:
+    """Inject Noto Color Emoji so flag emojis render on Windows Chrome."""
+    st.markdown(
+        """
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&display=swap">
+<style>
+html, body, [class*="css"], .stSelectbox, [data-baseweb="select"],
+[data-baseweb="menu"], .stMetric, .stMetricValue {
+    font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont,
+                 "Segoe UI", Roboto, "Helvetica Neue", sans-serif,
+                 "Noto Color Emoji" !important;
+}
+</style>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
 def _apply_deep_profile_css() -> None:
     st.markdown(
         """
@@ -3078,6 +3097,7 @@ def tab_calculator(data: dict) -> None:
 def main() -> None:
     ref_year, sex, overview_multiple, multiples = _sidebar()
     _apply_rtl_css()
+    _apply_emoji_font_css()
     _apply_deep_profile_css()
 
     with st.spinner(t("loading_spinner")):
