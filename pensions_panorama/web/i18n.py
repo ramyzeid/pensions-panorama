@@ -25,7 +25,7 @@ TRANSLATIONS: dict[str, dict[str, str]] = {
     "en": {
 
         # ── Sidebar ──────────────────────────────────────────────────────────
-        "app_title": "Pensions Panorama",
+        "app_title": "Pensions Database",
         "app_subtitle": "Comparative pension dataset",
         "reference_year": "Reference year",
         "modeled_sex": "Modeled sex",
@@ -39,7 +39,7 @@ TRANSLATIONS: dict[str, dict[str, str]] = {
         "loading_spinner": "Loading pension data for all countries…",
 
         # ── Main tabs ─────────────────────────────────────────────────────────
-        "tab_panorama": "🏠 Panorama",
+        "tab_panorama": "🏠 Database",
         "tab_country": "🌍 Country Profile",
         "tab_deep_profile": "📘 Country Deep Profile",
         "tab_compare": "📊 Compare",
@@ -112,7 +112,7 @@ TRANSLATIONS: dict[str, dict[str, str]] = {
         "rc_method_none": "Insufficient data",
 
         # ── Overview tab ──────────────────────────────────────────────────────
-        "overview_header": "🏠 Panorama Overview",
+        "overview_header": "🏠 Database Overview",
         "kpi_countries": "Countries modeled",
         "kpi_avg_grr": "Avg gross RR @ {n}×AW",
         "kpi_avg_nrr": "Avg net RR @ {n}×AW",
@@ -467,7 +467,7 @@ TRANSLATIONS: dict[str, dict[str, str]] = {
         "methodology_body": """
 ### Modeling approach
 
-The Pensions Panorama follows the **OECD Pensions at a Glance** methodology:
+The Pensions Database follows the **OECD Pensions at a Glance** methodology:
 
 | Element | Description |
 |---|---|
@@ -548,7 +548,7 @@ to low effective replacement rates relative to average earnings.
 ### Purpose
 
 The **Pension Calculator** estimates the pension benefit for a specific real individual, using the
-same scheme rules as the OECD panorama model but with user-supplied personal inputs instead of
+same scheme rules as the OECD database model but with user-supplied personal inputs instead of
 stylized career profiles.
 
 ---

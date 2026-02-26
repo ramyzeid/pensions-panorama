@@ -133,7 +133,7 @@ setup_logging("WARNING")  # keep dashboard output clean
 # Page config
 # ---------------------------------------------------------------------------
 st.set_page_config(
-    page_title="Pensions Panorama",
+    page_title="Pensions Database",
     page_icon="🏦",
     layout="wide",
     initial_sidebar_state="expanded",
