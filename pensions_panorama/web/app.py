@@ -1701,15 +1701,17 @@ def tab_country(data: dict) -> None:
     avg_wage: float = d["avg_wage"]
     m = params.metadata
 
-    col1, col2, col3, col4 = st.columns(4)
     scheme = params.schemes[0]
     nra_m = scheme.eligibility.normal_retirement_age_male.value
     nra_f = scheme.eligibility.normal_retirement_age_female.value
     ref_result = next((r for r in results if abs(r.earnings_multiple - 1.0) < 0.01), results[0])
-    col1.metric(t("metric_country"), f"{_flag_emoji(m.iso2)} {_country_display_name(m.country_name, iso3)}")
-    col2.metric(t("metric_nra_mf"), f"{nra_m} / {nra_f}")
-    col3.metric(t("metric_gross_rr_1aw"), f"{ref_result.gross_replacement_rate * 100:.1f}%")
-    col4.metric(t("metric_avg_wage"), f"{m.currency_code} {avg_wage:,.0f}")
+
+    st.subheader(f"{_flag_emoji(m.iso2)} {_country_display_name(m.country_name, iso3)}")
+
+    col1, col2, col3 = st.columns(3)
+    col1.metric(t("metric_nra_mf"), f"{nra_m} / {nra_f}")
+    col2.metric(t("metric_gross_rr_1aw"), f"{ref_result.gross_replacement_rate * 100:.1f}%")
+    col3.metric(t("metric_avg_wage"), f"{m.currency_code} {avg_wage:,.0f}")
 
     st.divider()
 
