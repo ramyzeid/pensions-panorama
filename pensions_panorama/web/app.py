@@ -98,17 +98,23 @@ button[data-testid="stExpanderToggleIcon"] ~ div {
 
 
 def _apply_emoji_font_css() -> None:
-    """Inject Noto Color Emoji so flag emojis render on Windows Chrome."""
+    """Inject editorial fonts (Playfair Display, Inter) and Noto Color Emoji."""
     st.markdown(
         """
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&display=swap">
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&family=Noto+Color+Emoji&display=swap">
 <style>
 html, body, [class*="css"], .stSelectbox, [data-baseweb="select"],
 [data-baseweb="menu"], .stMetric, .stMetricValue {
-    font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont,
+    font-family: "Inter", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
                  "Segoe UI", Roboto, "Helvetica Neue", sans-serif,
                  "Noto Color Emoji" !important;
+}
+h1, h2, h3, .stApp h1, .stApp h2, .stApp h3 {
+    font-family: "Playfair Display", Georgia, "Times New Roman", serif !important;
+    letter-spacing: -0.02em;
 }
 </style>
         """,
@@ -116,38 +122,239 @@ html, body, [class*="css"], .stSelectbox, [data-baseweb="select"],
     )
 
 
+def _is_dark() -> bool:
+    """Return True when dark mode is enabled."""
+    return bool(st.session_state.get("dark_mode", False))
+
+
+def _plotly_template() -> str:
+    """Return the Plotly template matching the current theme."""
+    return "plotly_dark" if _is_dark() else "plotly_white"
+
+
 def _apply_deep_profile_css() -> None:
+    if _is_dark():
+        border_col = "#3a3a4a"
+        head_bg = "#2a2a38"
+        row_bg = "#222230"
+        year_col = "#9090a8"
+    else:
+        border_col = "#e2e2e2"
+        head_bg = "#f7f7f7"
+        row_bg = "#fafafa"
+        year_col = "#666"
+
     st.markdown(
-        """
+        f"""
 <style>
-.deep-profile-table {
+.deep-profile-table {{
     overflow-x: auto;
-}
-.deep-profile-table table {
+}}
+.deep-profile-table table {{
     border-collapse: collapse;
     width: 100%;
     min-width: 900px;
-}
-.deep-profile-table th, .deep-profile-table td {
-    border: 1px solid #e2e2e2;
+}}
+.deep-profile-table th, .deep-profile-table td {{
+    border: 1px solid {border_col};
     padding: 6px 8px;
     vertical-align: top;
     text-align: left;
     font-size: 0.9rem;
-}
-.deep-profile-table th {
-    background: #f7f7f7;
+}}
+.deep-profile-table th {{
+    background: {head_bg};
     font-weight: 600;
-}
-.deep-profile-table .dp-rowhead {
-    background: #fafafa;
+}}
+.deep-profile-table .dp-rowhead {{
+    background: {row_bg};
     width: 240px;
-}
-.deep-profile-table .dp-year {
-    color: #666;
+}}
+.deep-profile-table .dp-year {{
+    color: {year_col};
     font-size: 0.85em;
     margin-left: 4px;
-}
+}}
+</style>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
+def _apply_theme_css() -> None:
+    """Inject comprehensive light/dark theme CSS inspired by editorial design."""
+    dark = _is_dark()
+
+    if dark:
+        bg_main = "#0d0d12"
+        bg_sidebar = "#16161e"
+        bg_card = "#1a1a24"
+        bg_hover = "#22222e"
+        text_primary = "#e8e6e3"
+        text_secondary = "#a09ea0"
+        text_muted = "#6a6880"
+        border_col = "#2e2e3e"
+        accent = "#7b8cde"
+        tab_active_bg = "#22222e"
+        tab_active_border = "#7b8cde"
+        tab_inactive = "#a09ea0"
+        input_bg = "#1e1e2a"
+        divider = "#2e2e3e"
+        metric_bg = "#1a1a24"
+        expander_bg = "#1a1a24"
+    else:
+        bg_main = "#f8f7f4"
+        bg_sidebar = "#ffffff"
+        bg_card = "#ffffff"
+        bg_hover = "#f2f0ed"
+        text_primary = "#1a1a2e"
+        text_secondary = "#4a4a6a"
+        text_muted = "#888888"
+        border_col = "#e0ddd8"
+        accent = "#3a4fa0"
+        tab_active_bg = "#ffffff"
+        tab_active_border = "#3a4fa0"
+        tab_inactive = "#6a6a8a"
+        input_bg = "#ffffff"
+        divider = "#e8e5e0"
+        metric_bg = "#ffffff"
+        expander_bg = "#fafaf8"
+
+    st.markdown(
+        f"""
+<style>
+/* ── App background ── */
+.stApp {{
+    background-color: {bg_main} !important;
+    color: {text_primary} !important;
+}}
+
+/* ── Sidebar ── */
+section[data-testid="stSidebar"] {{
+    background-color: {bg_sidebar} !important;
+    border-right: 1px solid {border_col} !important;
+}}
+section[data-testid="stSidebar"] * {{
+    color: {text_primary} !important;
+}}
+
+/* ── Body text ── */
+p, li, span, label, .stMarkdown {{
+    color: {text_primary} !important;
+}}
+.stCaption, .stCaption p, small {{
+    color: {text_muted} !important;
+}}
+
+/* ── Headings (editorial serif) ── */
+h1, h2, h3, h4 {{
+    color: {text_primary} !important;
+}}
+h4, .stSubheader {{
+    color: {text_secondary} !important;
+    font-family: "Inter", sans-serif !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.06em !important;
+    font-size: 0.78rem !important;
+}}
+
+/* ── Tabs ── */
+.stTabs [data-baseweb="tab-list"] {{
+    background-color: transparent !important;
+    border-bottom: 2px solid {border_col} !important;
+    gap: 0 !important;
+}}
+.stTabs [data-baseweb="tab"] {{
+    background-color: transparent !important;
+    color: {tab_inactive} !important;
+    border: none !important;
+    padding: 8px 18px !important;
+    font-size: 0.82rem !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.03em !important;
+}}
+.stTabs [aria-selected="true"] {{
+    background-color: {tab_active_bg} !important;
+    color: {text_primary} !important;
+    border-bottom: 2px solid {tab_active_border} !important;
+}}
+
+/* ── Metrics ── */
+[data-testid="stMetric"] {{
+    background-color: {metric_bg} !important;
+    border: 1px solid {border_col} !important;
+    border-radius: 6px !important;
+    padding: 12px 16px !important;
+}}
+[data-testid="stMetricLabel"] {{
+    color: {text_muted} !important;
+    font-size: 0.75rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.06em !important;
+}}
+[data-testid="stMetricValue"] {{
+    color: {text_primary} !important;
+    font-weight: 700 !important;
+}}
+[data-testid="stMetricDelta"] {{
+    color: {text_secondary} !important;
+}}
+
+/* ── Expanders ── */
+[data-testid="stExpander"] {{
+    background-color: {expander_bg} !important;
+    border: 1px solid {border_col} !important;
+    border-radius: 6px !important;
+}}
+[data-testid="stExpander"] summary {{
+    color: {text_primary} !important;
+}}
+
+/* ── Selectbox / inputs ── */
+[data-baseweb="select"] div, [data-baseweb="select"] span {{
+    background-color: {input_bg} !important;
+    color: {text_primary} !important;
+}}
+[data-baseweb="menu"] {{
+    background-color: {input_bg} !important;
+}}
+[data-baseweb="menu"] li {{
+    color: {text_primary} !important;
+}}
+[data-baseweb="menu"] li:hover {{
+    background-color: {bg_hover} !important;
+}}
+
+/* ── Slider ── */
+[data-testid="stSlider"] div[role="slider"] {{
+    background-color: {accent} !important;
+}}
+
+/* ── Dividers ── */
+hr {{
+    border-color: {divider} !important;
+    opacity: 0.6 !important;
+}}
+
+/* ── DataFrames ── */
+.stDataFrame {{
+    border: 1px solid {border_col} !important;
+    border-radius: 4px !important;
+}}
+
+/* ── Scrollbar (dark mode) ── */
+::-webkit-scrollbar {{
+    width: 6px;
+    height: 6px;
+}}
+::-webkit-scrollbar-track {{
+    background: {bg_main};
+}}
+::-webkit-scrollbar-thumb {{
+    background: {border_col};
+    border-radius: 3px;
+}}
 </style>
         """,
         unsafe_allow_html=True,
@@ -973,7 +1180,7 @@ def _rr_chart(results: list[PensionResult], country: str) -> go.Figure:
         yaxis_title="Replacement rate (%)",
         legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
         hovermode="x unified",
-        template="plotly_white",
+        template=_plotly_template(),
         height=380,
     )
     return fig
@@ -999,7 +1206,7 @@ def _pl_chart(results: list[PensionResult], country: str) -> go.Figure:
         xaxis_title="Individual earnings (× average wage)",
         yaxis_title="Pension level (% average wage)",
         legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
-        hovermode="x unified", template="plotly_white", height=380,
+        hovermode="x unified", template=_plotly_template(), height=380,
     )
     return fig
 
@@ -1033,7 +1240,7 @@ def _component_chart(
         xaxis_title="Individual earnings (× average wage)",
         yaxis_title="Gross pension level (% AW)",
         legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
-        hovermode="x unified", template="plotly_white", height=380,
+        hovermode="x unified", template=_plotly_template(), height=380,
     )
     return fig
 
@@ -1056,7 +1263,7 @@ def _pw_chart(results: list[PensionResult], country: str) -> go.Figure:
         xaxis_title="Individual earnings (× average wage)",
         yaxis_title="Pension wealth (× average wage)",
         legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
-        hovermode="x unified", template="plotly_white", height=380,
+        hovermode="x unified", template=_plotly_template(), height=380,
     )
     return fig
 
@@ -1087,7 +1294,7 @@ def _choropleth(summary_df: pd.DataFrame, metric_col: str, title: str,
         ),
         height=420,
         margin=dict(l=0, r=0, t=40, b=0),
-        template="plotly_white",
+        template=_plotly_template(),
     )
     return fig
 
@@ -1105,7 +1312,7 @@ def _compare_bar(summary_df: pd.DataFrame, metric_col: str, metric_label: str,
     fig.update_layout(
         title=metric_label,
         xaxis_title=f"{'%' if pct else '×'}",
-        template="plotly_white",
+        template=_plotly_template(),
         height=max(300, len(df) * 40 + 80),
         margin=dict(l=120, r=40, t=40, b=40),
     )
@@ -1140,7 +1347,7 @@ def _compare_lines(
         xaxis_title=t("xaxis_earnings"),
         yaxis_title=f"{metric_label} ({'%' if pct else '×'})",
         hovermode="x unified",
-        template="plotly_white",
+        template=_plotly_template(),
         height=420,
         legend=dict(orientation="h", yanchor="bottom", y=-0.3),
     )
@@ -1260,7 +1467,7 @@ def _pag_charts(
         xaxis_title=t("xaxis_earnings"),
         yaxis_title=t("yaxis_gross_pl"),
         legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
-        hovermode="x unified", template="plotly_white", height=_CHART_H,
+        hovermode="x unified", template=_plotly_template(), height=_CHART_H,
     )
 
     # ── b. Gross replacement rate (stacked by component) ─────────────────
@@ -1283,7 +1490,7 @@ def _pag_charts(
         xaxis_title=t("xaxis_earnings"),
         yaxis_title=t("yaxis_gross_rr"),
         legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
-        hovermode="x unified", template="plotly_white", height=_CHART_H,
+        hovermode="x unified", template=_plotly_template(), height=_CHART_H,
     )
 
     # ── c. Gross and net pension levels ───────────────────────────────────
@@ -1309,7 +1516,7 @@ def _pag_charts(
         xaxis_title=t("xaxis_earnings"),
         yaxis_title=t("yaxis_pl"),
         legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
-        hovermode="x unified", template="plotly_white", height=_CHART_H,
+        hovermode="x unified", template=_plotly_template(), height=_CHART_H,
     )
 
     # ── d. Gross and net replacement rates ────────────────────────────────
@@ -1336,7 +1543,7 @@ def _pag_charts(
         xaxis_title=t("xaxis_earnings"),
         yaxis_title=t("yaxis_rr"),
         legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
-        hovermode="x unified", template="plotly_white", height=_CHART_H,
+        hovermode="x unified", template=_plotly_template(), height=_CHART_H,
     )
 
     # ── e. Taxes paid by pensioners and workers ───────────────────────────
@@ -1372,7 +1579,7 @@ def _pag_charts(
         xaxis_title=t("xaxis_earnings_pension"),
         yaxis_title=t("yaxis_tax_burden"),
         legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
-        hovermode="x unified", template="plotly_white", height=_CHART_H,
+        hovermode="x unified", template=_plotly_template(), height=_CHART_H,
     )
 
     # ── f. Sources of net replacement rate ───────────────────────────────
@@ -1399,7 +1606,7 @@ def _pag_charts(
         xaxis_title=t("xaxis_earnings"),
         yaxis_title=t("yaxis_net_rr"),
         legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
-        hovermode="x unified", template="plotly_white", height=_CHART_H,
+        hovermode="x unified", template=_plotly_template(), height=_CHART_H,
     )
 
     return fig_a, fig_b, fig_c, fig_d, fig_e, fig_f
@@ -1704,6 +1911,15 @@ def _sidebar() -> tuple[int, str, float, tuple[float, ...]]:
             key="lang_radio",
         )
         st.session_state["lang"] = _lang_map[lang_choice]
+
+        st.divider()
+
+        dark_mode = st.toggle(
+            "🌙  Dark mode",
+            value=st.session_state.get("dark_mode", False),
+            key="dark_mode_toggle",
+        )
+        st.session_state["dark_mode"] = dark_mode
 
         st.divider()
 
@@ -3021,7 +3237,7 @@ def tab_pag_tables(data: dict) -> None:
                     color=gross_rr_pct_col,
                     color_continuous_scale="Blues",
                     height=max(400, len(hdf) * 22 + 80),
-                    template="plotly_white",
+                    template=_plotly_template(),
                 )
                 fig.update_layout(
                     showlegend=False,
@@ -3074,7 +3290,7 @@ def tab_pag_tables(data: dict) -> None:
                 ))
                 fig2.update_layout(
                     barmode="overlay",
-                    template="plotly_white",
+                    template=_plotly_template(),
                     height=max(400, len(cdf) * 22 + 100),
                     xaxis_title=t("chart_rr_xaxis"),
                     legend=dict(orientation="h", yanchor="bottom", y=1.02),
@@ -3409,6 +3625,7 @@ def main() -> None:
     ref_year, sex, overview_multiple, multiples = _sidebar()
     _apply_rtl_css()
     _apply_emoji_font_css()
+    _apply_theme_css()
     _apply_deep_profile_css()
 
     with st.spinner(t("loading_spinner")):
