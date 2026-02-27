@@ -3736,7 +3736,9 @@ def tab_country(data: dict) -> None:
         _wc3.metric(t("work_incentive_bar"), f"{_wi['bar_oecd']:+.1f}%", delta=_delta_str)
         st.caption(t("work_incentive_caption"))
     elif _wi and "error" in _wi:
-        st.caption(f"Work incentive unavailable: {_wi['error']}")
+        st.warning(f"Work incentive unavailable: {_wi['error']}")
+    else:
+        st.info("Work incentive data could not be computed for this country.")
 
     # ── Modeling results ──────────────────────────────────────────────────────
     st.divider()
