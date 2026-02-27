@@ -252,6 +252,19 @@ def _apply_theme_css() -> None:
         link_hover = "#2a3f90"
         chart_container_bg = "#ffffff"
 
+    # DataFrames render inside an iframe — CSS can't penetrate it.
+    # The invert+hue-rotate trick flips light↔dark while the 180° hue
+    # rotation cancels the hue shift so data colours survive approximately.
+    if dark:
+        df_dark_css = (
+            '[data-testid="stDataFrame"] iframe {\n'
+            '    filter: invert(1) hue-rotate(180deg);\n'
+            '    border-radius: 4px;\n'
+            '}\n'
+        )
+    else:
+        df_dark_css = ""
+
     st.markdown(
         f"""
 <style>
@@ -373,7 +386,9 @@ hr {{
 .stDataFrame {{
     border: 1px solid {border_col} !important;
     border-radius: 4px !important;
+    background-color: {bg_card} !important;
 }}
+{df_dark_css}
 
 /* ── Scrollbar (dark mode) ── */
 ::-webkit-scrollbar {{
@@ -1271,8 +1286,11 @@ def _fiscal_sustainability_fig(current_iso3: str, points_json: str, dark: bool =
             showlegend=True,
         ))
 
+    _bg = "#1a1a24" if dark else "#f8f7f4"
     fig.update_layout(
         template=_plotly_template(dark),
+        paper_bgcolor=_bg,
+        plot_bgcolor=_bg,
         height=380,
         xaxis_title="Population aged 65+ (%)",
         yaxis_title="Pension fund assets (% GDP)",
@@ -2074,9 +2092,18 @@ def _system_type_choropleth_fig(map_rows_json: str, dark: bool = False) -> "go.F
         hovertemplate="<b>%{location}</b><br>System: %{text}<extra></extra>",
         showscale=False,
     ))
+    _bg = "#1a1a24" if dark else "#f8f7f4"
     fig.update_layout(
         template=_plotly_template(dark),
-        geo=dict(showframe=False, showcoastlines=True, projection_type="natural earth"),
+        paper_bgcolor=_bg,
+        geo=dict(
+            showframe=False,
+            showcoastlines=True,
+            projection_type="natural earth",
+            bgcolor=_bg,
+            oceancolor=_bg,
+            lakecolor=_bg,
+        ),
         height=440,
         margin=dict(l=0, r=0, t=20, b=0),
     )
