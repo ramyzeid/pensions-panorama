@@ -33,7 +33,6 @@ dependencies = [
     "plotly>=5.18.0",
     "anthropic>=0.30",
     "fpdf2>=2.7",
-    "kaleido>=0.2",
 ]
 
 [project.optional-dependencies]
