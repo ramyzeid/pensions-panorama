@@ -1184,13 +1184,12 @@ def load_female_data_1aw(ref_year: int, multiples: tuple[float, ...]) -> dict[st
 @st.cache_data(show_spinner=False)
 def load_work_incentive(iso3: str, sex: str) -> dict | None:
     """Compute OECD 60→65 work incentive for one country (UN WPP mortality)."""
-    from pensions_panorama.sources.un_dataportal import UNDataPortalClient
-    from pensions_panorama.model.pension_wealth import compute_work_incentive_6065
-
     path = PARAMS_DIR / f"{iso3.lower()}.yaml"
     if not path.exists():
         return None
     try:
+        from pensions_panorama.sources.un_dataportal import UNDataPortalClient
+        from pensions_panorama.model.pension_wealth import compute_work_incentive_6065
         p = load_country_params(path)
         a = load_assumptions(params_dir=PARAMS_DIR)
         w = _resolve_wage(p, 0)
