@@ -133,8 +133,24 @@ def _is_dark() -> bool:
 
 
 def _plotly_template() -> str:
-    """Return the Plotly template matching the current theme."""
-    return "plotly_dark" if _is_dark() else "plotly_white"
+    """Return the Plotly template matching the current theme.
+
+    In dark mode we register a custom 'pp_dark' template that inherits
+    plotly_dark but explicitly sets paper_bgcolor/plot_bgcolor to match
+    our card background (#1a1a24), preventing the white-background bleed
+    that occurs when Streamlit's container CSS takes precedence.
+    """
+    if _is_dark():
+        import copy
+        import plotly.io as pio
+
+        if "pp_dark" not in pio.templates:
+            pp_dark = copy.deepcopy(pio.templates["plotly_dark"])
+            pp_dark.layout.paper_bgcolor = "#1a1a24"
+            pp_dark.layout.plot_bgcolor = "#1a1a24"
+            pio.templates["pp_dark"] = pp_dark
+        return "pp_dark"
+    return "plotly_white"
 
 
 def _apply_deep_profile_css() -> None:
@@ -207,6 +223,9 @@ def _apply_theme_css() -> None:
         divider = "#2e2e3e"
         metric_bg = "#1a1a24"
         expander_bg = "#1a1a24"
+        link_color = "#f28e2b"
+        link_hover = "#ffaa55"
+        chart_container_bg = "#1a1a24"
     else:
         bg_main = "#f8f7f4"
         bg_sidebar = "#ffffff"
@@ -224,6 +243,9 @@ def _apply_theme_css() -> None:
         divider = "#e8e5e0"
         metric_bg = "#ffffff"
         expander_bg = "#fafaf8"
+        link_color = "#3a4fa0"
+        link_hover = "#2a3f90"
+        chart_container_bg = "#ffffff"
 
     st.markdown(
         f"""
@@ -359,6 +381,28 @@ hr {{
 ::-webkit-scrollbar-thumb {{
     background: {border_col};
     border-radius: 3px;
+}}
+
+/* ── Links ── */
+a, a:link, a:visited {{
+    color: {link_color} !important;
+}}
+a:hover {{
+    color: {link_hover} !important;
+}}
+
+/* ── Plotly chart container backgrounds ── */
+/* Forces the wrapper div to match our card bg so there is no white bleed
+   behind the chart SVG even when paper_bgcolor doesn't fully cover edges. */
+.stPlotlyChart {{
+    background-color: {chart_container_bg} !important;
+    border-radius: 4px !important;
+}}
+.stPlotlyChart > div {{
+    background-color: {chart_container_bg} !important;
+}}
+.stPlotlyChart iframe {{
+    background: transparent !important;
 }}
 </style>
         """,
