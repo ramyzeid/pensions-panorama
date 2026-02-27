@@ -1011,6 +1011,7 @@ def load_all_data(
 
     Returns a dict: iso3 → {params, results, avg_wage, error}.
     sex can be "male", "female", or "all" (averages both).
+    ref_year=0 means "Most Recent (MRV)" — uses each country's manual_value directly.
     """
     assumptions = load_assumptions(params_dir=PARAMS_DIR)
     yamls = sorted(
@@ -2993,15 +2994,26 @@ def _sidebar() -> tuple[int, str, float, tuple[float, ...]]:
 
         st.divider()
 
-        ref_year = st.selectbox(t("reference_year"), list(range(2023, 2018, -1)), index=0)
+        _year_opts = [t("ref_year_mrv")] + list(range(2023, 2018, -1))
+        _year_sel = st.selectbox(
+            t("reference_year"),
+            _year_opts,
+            index=0,
+            help=t("ref_year_help"),
+        )
+        ref_year = 0 if _year_sel == t("ref_year_mrv") else int(_year_sel)
+
+        _sex_opts = [t("opt_male"), t("opt_female"), t("opt_all")]
         sex_display = st.radio(
             t("modeled_sex"),
-            [t("opt_male"), t("opt_female"), t("opt_all")],
+            _sex_opts,
+            index=2,  # default: all (M+F average)
             horizontal=True,
+            help=t("sex_help"),
         )
         # Map display option back to internal value
         _sex_map = {t("opt_male"): "male", t("opt_female"): "female", t("opt_all"): "all"}
-        sex = _sex_map.get(sex_display, "male")
+        sex = _sex_map.get(sex_display, "all")
         st.divider()
         st.caption(t("overview_multiple_caption"))
         overview_multiple = st.select_slider(
@@ -3009,6 +3021,7 @@ def _sidebar() -> tuple[int, str, float, tuple[float, ...]]:
             options=[0.5, 0.75, 1.0, 1.5, 2.0, 2.5],
             value=1.0,
             label_visibility="collapsed",
+            help=t("overview_multiple_help"),
         )
         st.divider()
         st.caption(t("footer"))

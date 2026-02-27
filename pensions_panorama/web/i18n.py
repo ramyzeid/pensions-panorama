@@ -28,11 +28,34 @@ TRANSLATIONS: dict[str, dict[str, str]] = {
         "app_title": "Pensions Database",
         "app_subtitle": "Comparative pension dataset",
         "reference_year": "Reference year",
+        "ref_year_mrv": "Most Recent (MRV)",
+        "ref_year_help": (
+            "The wage-data vintage used for all pension calculations. "
+            "'Most Recent (MRV)' uses each country's latest available wage figure — "
+            "the most accurate default. Selecting a specific year is useful for "
+            "comparing results at a fixed point in time. "
+            "Changing this re-runs calculations for all 189 countries."
+        ),
         "modeled_sex": "Modeled sex",
+        "sex_help": (
+            "Controls which sex-specific rules apply: normal retirement ages, "
+            "survivor factors (used for pension-wealth annuity calculations), and "
+            "any gender-differentiated benefit formulas. "
+            "'All (M+F average)' runs both and averages the outcomes — "
+            "the best choice for a gender-neutral system-level view."
+        ),
         "opt_male": "male",
         "opt_female": "female",
         "opt_all": "all (M+F average)",
         "overview_multiple_caption": "Overview earnings multiple",
+        "overview_multiple_help": (
+            "Selects which income level is highlighted in the Overview tab: "
+            "the three global KPI metrics (avg GRR, avg NRR, avg pension wealth) "
+            "and the country summary table columns are all shown at this multiple "
+            "of the average wage. "
+            "Does not affect the Country profile or Compare tabs, "
+            "which always display results across the full earnings range."
+        ),
         "earnings_multiple_label": "Earnings multiple (×AW)",
         "footer": "v0.1 · data: World Bank, UN WPP, ILOSTAT",
         "language_label": "🌐 Language",
@@ -974,11 +997,26 @@ The **required monthly income** to fund retirement is `PV ÷ (H × 12)`.
         "app_title": "قاعدة بيانات المعاشات التقاعدية",
         "app_subtitle": "بيانات مقارنة لأنظمة التقاعد",
         "reference_year": "السنة المرجعية",
+        "ref_year_mrv": "الأحدث (MRV)",
+        "ref_year_help": (
+            "البيانات المستخدمة لحساب متوسط الأجور. "
+            "'الأحدث (MRV)' يستخدم أحدث رقم متاح لكل دولة — الخيار الافتراضي الأدق. "
+            "اختيار سنة محددة مفيد للمقارنة عند نقطة زمنية ثابتة."
+        ),
         "modeled_sex": "الجنس المُحاكى",
+        "sex_help": (
+            "يتحكم في قواعد سن التقاعد وعوامل البقاء المستخدمة لحسابات ثروة المعاش. "
+            "'الكل (متوسط ذ+أ)' يشغّل كلا الجنسين ويحسب المتوسط — "
+            "الأفضل للنظرة الشاملة على مستوى النظام."
+        ),
         "opt_male": "ذكر",
         "opt_female": "أنثى",
         "opt_all": "كلاهما (متوسط ذ+أ)",
         "overview_multiple_caption": "مضاعف الدخل للنظرة العامة",
+        "overview_multiple_help": (
+            "يختار مستوى الدخل المعروض في مؤشرات النظرة العامة وجدول الدول. "
+            "لا يؤثر على تبويب الدولة أو المقارنة، اللذين يعرضان دائماً النطاق الكامل للدخل."
+        ),
         "earnings_multiple_label": "مضاعف الدخل (×متوسط الأجر)",
         "footer": "الإصدار 0.1 · البيانات: البنك الدولي، UN WPP، ILOSTAT",
         "language_label": "🌐 اللغة",
@@ -1862,11 +1900,30 @@ PV = Σ_{t=1}^{H}  [التكلفة_السنوية × (1 + g)^(t−1)] / (1 + r)^
         "app_title": "Base de données des retraites",
         "app_subtitle": "Ensemble de données comparatives sur les retraites",
         "reference_year": "Année de référence",
+        "ref_year_mrv": "Plus récent (VMR)",
+        "ref_year_help": (
+            "Millésime des données salariales utilisé pour tous les calculs. "
+            "'Plus récent (VMR)' utilise le chiffre le plus récent disponible par pays — "
+            "le défaut le plus précis. Choisir une année fixe permet des comparaisons "
+            "à un moment donné dans le temps."
+        ),
         "modeled_sex": "Sexe modélisé",
+        "sex_help": (
+            "Détermine les règles d'âge de retraite et les facteurs de survie "
+            "utilisés pour les calculs du patrimoine-retraite. "
+            "'Tous (moyenne H+F)' calcule les deux et fait la moyenne — "
+            "le meilleur choix pour une vue neutre au niveau du système."
+        ),
         "opt_male": "homme",
         "opt_female": "femme",
         "opt_all": "tous (moyenne H+F)",
         "overview_multiple_caption": "Multiple de salaire pour la vue d'ensemble",
+        "overview_multiple_help": (
+            "Sélectionne le niveau de revenu affiché dans les indicateurs clés "
+            "et le tableau pays de l'onglet Vue d'ensemble. "
+            "N'affecte pas les onglets Pays ou Comparer, "
+            "qui affichent toujours la gamme complète des revenus."
+        ),
         "earnings_multiple_label": "Multiple de salaire (×SM)",
         "footer": "v0.1 · données : Banque mondiale, UN WPP, ILOSTAT",
         "language_label": "🌐 Langue",
