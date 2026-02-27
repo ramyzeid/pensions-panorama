@@ -1,0 +1,101 @@
+country_name: New Zealand
+narrative:
+  text: >
+    New Zealand operates a two-tier retirement income system. The first tier is
+    New Zealand Superannuation (NZS) — a universal, tax-funded flat-rate pension
+    payable to all residents aged 65+ regardless of employment history or
+    contributions, set at approximately 40% of the average wage per person.
+    The second tier is KiwiSaver, an auto-enrolled defined-contribution scheme
+    open to all employees and the self-employed. Workers are automatically enrolled
+    on starting a new job and contribute a minimum 3% of gross earnings, matched
+    by a mandatory 3% employer contribution, plus a government member tax credit
+    of up to NZD 521/year. Members may opt out within 56 days of enrollment.
+    KiwiSaver funds are locked until age 65 (with limited exceptions for first
+    home purchase and financial hardship).
+  sources:
+    - source_name: "OECD Pensions at a Glance 2023 – New Zealand"
+      source_url: "https://www.oecd.org/en/publications/oecd-pensions-at-a-glance-2023_678055dd-en.html"
+    - source_name: "KiwiSaver Act 2006 – New Zealand Legislation"
+      source_url: "https://www.legislation.govt.nz/act/public/2006/0040/latest/DLM378372.html"
+    - source_name: "New Zealand Superannuation and Retirement Income Act 2001"
+      source_url: "https://www.legislation.govt.nz/act/public/2001/0084/latest/DLM113924.html"
+
+system_kpis:
+  - key: pension_fund_assets_gdp
+    value: 61.0
+    unit: "%"
+    year: 2022
+    source_name: "OECD Pensions at a Glance 2023 – New Zealand"
+    source_url: "https://www.oecd.org/en/publications/oecd-pensions-at-a-glance-2023_678055dd-en.html"
+  - key: pension_spending_gdp
+    value: 5.2
+    unit: "%"
+    year: 2022
+    source_name: "OECD Pensions at a Glance 2023 – New Zealand"
+    source_url: "https://www.oecd.org/en/publications/oecd-pensions-at-a-glance-2023_678055dd-en.html"
+
+schemes:
+  - scheme_id: NZL_NZS
+    scheme_name: "New Zealand Superannuation (NZS) – Universal Flat-Rate"
+    scheme_type_group: noncontrib
+    attributes:
+      implementing_agency:
+        value: "Work and Income New Zealand (WINZ) / Ministry of Social Development"
+      target_population:
+        value: "All New Zealand residents aged 65+; no contribution requirement"
+      benefit_plan_type:
+        value: "Universal flat-rate (non-contributory)"
+      financing_mechanism:
+        value: "General taxation (NZ Superannuation Fund partially pre-funded)"
+      ret_age_male:
+        value: 65
+        source_name: "OECD Pensions at a Glance 2023 – New Zealand"
+        source_url: "https://www.oecd.org/en/publications/oecd-pensions-at-a-glance-2023_678055dd-en.html"
+      ret_age_female:
+        value: 65
+        source_name: "OECD Pensions at a Glance 2023 – New Zealand"
+        source_url: "https://www.oecd.org/en/publications/oecd-pensions-at-a-glance-2023_678055dd-en.html"
+      benefit_payments_lcu:
+        value: 21944
+        unit: NZD per year (after tax, couple)
+        year: 2023
+        source_name: "OECD Pensions at a Glance 2023 – New Zealand"
+        source_url: "https://www.oecd.org/en/publications/oecd-pensions-at-a-glance-2023_678055dd-en.html"
+        notes: "NZD 422/week per person in a couple (after tax). Single living alone: NZD 549/week."
+
+  - scheme_id: NZL_KIWISAVER
+    scheme_name: "KiwiSaver – Voluntary Defined Contribution"
+    scheme_type_group: dc
+    attributes:
+      implementing_agency:
+        value: "Inland Revenue (IRD) + approved KiwiSaver scheme providers"
+      target_population:
+        value: "All employees (auto-enrolled); self-employed and non-employed may join voluntarily"
+      benefit_plan_type:
+        value: "Defined Contribution (DC)"
+      financing_mechanism:
+        value: "Fully funded – individual accounts"
+      contrib_employee:
+        value: 3.0
+        unit: "%"
+        source_name: "KiwiSaver Act 2006 – Inland Revenue New Zealand"
+        source_url: "https://www.ird.govt.nz/kiwisaver/kiwisaver-employers/contributions/employee-contributions"
+        notes: "Default rate 3%; members may choose 3%, 4%, 6%, 8%, or 10%."
+      contrib_employer:
+        value: 3.0
+        unit: "%"
+        source_name: "KiwiSaver Act 2006 – Inland Revenue New Zealand"
+        source_url: "https://www.ird.govt.nz/kiwisaver/kiwisaver-employers/contributions/employer-contributions"
+        notes: "Minimum mandatory employer contribution 3% of gross earnings."
+      contrib_total:
+        value: 6.0
+        unit: "%"
+        notes: "Derived: 3% + 3% minimum. Government adds member tax credit up to NZD 521/year."
+      ret_age_male:
+        value: 65
+        source_name: "KiwiSaver Act 2006 – funds locked until age 65"
+        source_url: "https://www.legislation.govt.nz/act/public/2006/0040/latest/DLM378372.html"
+      ret_age_female:
+        value: 65
+        source_name: "KiwiSaver Act 2006 – funds locked until age 65"
+        source_url: "https://www.legislation.govt.nz/act/public/2006/0040/latest/DLM378372.html"

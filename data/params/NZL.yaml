@@ -97,6 +97,75 @@ schemes:
       type: "annuity"
       notes: "Paid weekly as universal flat-rate pension; not means-tested."
 
+  # ---------------------------------------------------------------------------
+  # 2. KiwiSaver – Voluntary DC (auto-enrolled)
+  # ---------------------------------------------------------------------------
+  - scheme_id: "NZL_KIWISAVER"
+    name: "KiwiSaver – Voluntary Defined Contribution"
+    tier: "second"
+    type: "DC"
+    coverage: "All new employees auto-enrolled; opt-out permitted. Also open to self-employed and non-employed on voluntary basis."
+    active: true
+
+    eligibility:
+      normal_retirement_age_male:
+        value: 65
+        source_citation: "KiwiSaver Act 2006: members may access funds at age 65 (matching NZS eligibility age)."
+        year: 2023
+      normal_retirement_age_female:
+        value: 65
+        source_citation: "KiwiSaver Act 2006: eligibility age 65, equalised for all members."
+        year: 2023
+      vesting_years:
+        value: 0
+        source_citation: "KiwiSaver: individual account; funds owned by member from first contribution."
+        year: 2023
+      minimum_contribution_years:
+        value: 0
+        source_citation: "KiwiSaver Act 2006: no minimum membership period; accounts locked until age 65 (first home withdrawal exception)."
+        year: 2023
+
+    contributions:
+      employee_rate:
+        value: 0.03
+        source_citation: "KiwiSaver Act 2006 (as amended): default employee contribution rate 3% of gross earnings; members may choose 3%, 4%, 6%, 8%, or 10%."
+        year: 2023
+      employer_rate:
+        value: 0.03
+        source_citation: "KiwiSaver Act 2006: mandatory employer contribution minimum 3% of gross earnings for enrolled employees."
+        year: 2023
+      total_rate:
+        value: 0.06
+        source_citation: "Derived: 3% employee + 3% employer = 6% minimum total KiwiSaver contribution."
+        year: 2023
+      contribution_ceiling_aw_multiple:
+        value: null
+        source_citation: "OECD Pensions at a Glance 2023 New Zealand: no contribution ceiling on KiwiSaver."
+        year: 2023
+      contribution_base: "gross earnings"
+      notes: "Government contributes NZD 0.50 per NZD 1.00 of member contribution up to NZD 521.43/year (member tax credit)."
+
+    benefits:
+      accrual_rate_per_year:
+        value: null
+        source_citation: "DC scheme – benefit is accumulated individual account balance at retirement."
+        year: 2023
+      reference_wage: "career_average"
+      valorization: "market"
+      indexation: "market"
+      minimum_benefit_aw_multiple:
+        value: null
+        source_citation: "KiwiSaver DC: no minimum benefit guarantee; depends on investment returns and contribution history."
+        year: 2023
+      maximum_benefit_aw_multiple:
+        value: null
+        source_citation: "KiwiSaver DC: no maximum benefit cap."
+        year: 2023
+
+    payout:
+      type: "lump_sum"
+      notes: "Members may withdraw as lump sum, drawdown, or annuity at age 65. Lump-sum withdrawal is most common."
+
 taxes:
   worker_income_tax_treatment: "TTE"
   income_tax_on_pension: "NZS pension income is subject to income tax at standard progressive rates; KiwiSaver withdrawals tax-free at retirement."
@@ -120,23 +189,23 @@ worker_types:
   private_employee:
     label: "Private sector employee"
     coverage_status: mandatory
-    scheme_ids: ["NZL_NZS"]
-    source_citation: "NZ Superannuation Act 2001: universal coverage for all NZ residents; auto-enrolled in KiwiSaver DC."
+    scheme_ids: ["NZL_NZS", "NZL_KIWISAVER"]
+    source_citation: "NZ Superannuation Act 2001: universal NZS; KiwiSaver Act 2006: auto-enrolled on employment start."
     source_url: null
     notes: null
 
   civil_servant:
     label: "Civil servant"
     coverage_status: mandatory
-    scheme_ids: ["NZL_NZS"]
-    source_citation: "OECD Pensions at a Glance 2023 New Zealand: civil servants covered by universal NZS like all residents."
+    scheme_ids: ["NZL_NZS", "NZL_KIWISAVER"]
+    source_citation: "OECD Pensions at a Glance 2023 New Zealand: civil servants covered by NZS and eligible for KiwiSaver like all employees."
     notes: null
 
   self_employed:
     label: "Self-employed"
     coverage_status: mandatory
     scheme_ids: ["NZL_NZS"]
-    source_citation: "OECD Pensions at a Glance 2023 New Zealand: self-employed eligible for NZS on residency basis; voluntary KiwiSaver participation."
-    notes: null
+    source_citation: "OECD Pensions at a Glance 2023 New Zealand: self-employed eligible for NZS on residency basis; KiwiSaver voluntary (no employer contribution)."
+    notes: "KiwiSaver voluntary for self-employed; no employer contribution applies."
 
 notes: null
