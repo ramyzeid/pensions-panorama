@@ -132,15 +132,20 @@ def _is_dark() -> bool:
     return bool(st.session_state.get("dark_mode", False))
 
 
-def _plotly_template() -> str:
+def _plotly_template(dark: bool | None = None) -> str:
     """Return the Plotly template matching the current theme.
 
-    In dark mode we register a custom 'pp_dark' template that inherits
-    plotly_dark but explicitly sets paper_bgcolor/plot_bgcolor to match
-    our card background (#1a1a24), preventing the white-background bleed
-    that occurs when Streamlit's container CSS takes precedence.
+    Accepts an explicit ``dark`` flag so that ``@st.cache_data``-decorated
+    chart functions can include it in their cache key (session_state is not
+    part of the cache key, so calling _is_dark() inside a cached function
+    would always use the state from the first call).
+
+    When ``dark`` is None the current session state is read (safe to call
+    from non-cached render code).
     """
-    if _is_dark():
+    if dark is None:
+        dark = _is_dark()
+    if dark:
         import copy
         import plotly.io as pio
 
@@ -1205,7 +1210,7 @@ def _fiscal_rag_signal(profile: dict) -> tuple[str, str]:
 
 
 @st.cache_data(show_spinner=False)
-def _fiscal_sustainability_fig(current_iso3: str, points_json: str) -> "go.Figure":
+def _fiscal_sustainability_fig(current_iso3: str, points_json: str, dark: bool = False) -> "go.Figure":
     """Scatter: pop_65_pct (x) vs pension_fund_assets_gdp (y), current country highlighted."""
     rows = json.loads(points_json)
     df = pd.DataFrame(rows).dropna(subset=["pop_65_pct"])
@@ -1266,7 +1271,7 @@ def _fiscal_sustainability_fig(current_iso3: str, points_json: str) -> "go.Figur
         ))
 
     fig.update_layout(
-        template=_plotly_template(),
+        template=_plotly_template(dark),
         height=380,
         xaxis_title="Population aged 65+ (%)",
         yaxis_title="Pension fund assets (% GDP)",
@@ -1350,6 +1355,7 @@ def _rr_sensitivity_fig(
     avg_wage: float,
     sex: str,
     worker_type_id: str,
+    dark: bool = False,
 ) -> "go.Figure":
     """Line chart: GRR vs years of service (5–50), with min/max benefit cap hlines."""
     import json as _j
@@ -1402,7 +1408,7 @@ def _rr_sensitivity_fig(
                       annotation_text="Max benefit", annotation_position="right")
 
     fig.update_layout(
-        template=_plotly_template(),
+        template=_plotly_template(dark),
         height=300,
         xaxis_title=t("rr_sensitivity_x"),
         yaxis_title="Gross RR (%)",
@@ -1417,7 +1423,7 @@ def _rr_sensitivity_fig(
 # ---------------------------------------------------------------------------
 
 @st.cache_data(show_spinner=False)
-def _progressivity_chart(summary_json: str) -> "go.Figure":
+def _progressivity_chart(summary_json: str, dark: bool = False) -> "go.Figure":
     """Bar chart: progressivity index (GRR@0.5 / GRR@2.0) per country."""
     import json as _j
     rows = _j.loads(summary_json)
@@ -1451,7 +1457,7 @@ def _progressivity_chart(summary_json: str) -> "go.Figure":
     fig.add_hline(y=1.0, line_dash="dash", line_color="grey",
                   annotation_text="Parity", annotation_position="right")
     fig.update_layout(
-        template=_plotly_template(),
+        template=_plotly_template(dark),
         height=400,
         xaxis_title="Country",
         yaxis_title="Progressivity index",
@@ -1541,7 +1547,7 @@ def _adequacy_gap_fig(
 # ---------------------------------------------------------------------------
 
 @st.cache_data(show_spinner=False)
-def _nra_distribution_fig(nra_rows_json: str) -> "go.Figure":
+def _nra_distribution_fig(nra_rows_json: str, dark: bool = False) -> "go.Figure":
     """Histogram of male NRA across all countries, coloured by income group."""
     import json as _j
     rows = _j.loads(nra_rows_json)
@@ -1554,7 +1560,7 @@ def _nra_distribution_fig(nra_rows_json: str) -> "go.Figure":
         color="Income level",
         color_discrete_map=_INCOME_COLORS,
         nbins=15,
-        template=_plotly_template(),
+        template=_plotly_template(dark),
         height=320,
         labels={"nra_m": "Normal Retirement Age (male, years)"},
     )
@@ -1573,7 +1579,7 @@ def _nra_distribution_fig(nra_rows_json: str) -> "go.Figure":
 # ---------------------------------------------------------------------------
 
 @st.cache_data(show_spinner=False)
-def _parameter_heatmap_fig(matrix_json: str) -> "go.Figure":
+def _parameter_heatmap_fig(matrix_json: str, dark: bool = False) -> "go.Figure":
     """Heatmap: countries × selected parameter."""
     import json as _j
     m = _j.loads(matrix_json)
@@ -1593,7 +1599,7 @@ def _parameter_heatmap_fig(matrix_json: str) -> "go.Figure":
         showscale=True,
     ))
     fig.update_layout(
-        template=_plotly_template(),
+        template=_plotly_template(dark),
         height=380,
         margin=dict(l=120, r=40, t=20, b=80),
         xaxis=dict(tickangle=-45),
@@ -1946,6 +1952,7 @@ def _build_peer_benchmark_chart(
     iso3: str,
     income_level: str,
     peer_rows_json: str,
+    dark: bool = False,
 ) -> "go.Figure":
     """Horizontal bar: current country vs. nearest GRR peers in same income group."""
     rows = json.loads(peer_rows_json)
@@ -1973,7 +1980,7 @@ def _build_peer_benchmark_chart(
         textposition="outside",
     ))
     fig.update_layout(
-        template=_plotly_template(),
+        template=_plotly_template(dark),
         height=max(260, len(plot_df) * 36 + 60),
         xaxis_title=t("peer_chart_xaxis"),
         margin=dict(l=130, r=60, t=20, b=40),
@@ -1986,7 +1993,7 @@ def _build_peer_benchmark_chart(
 # Convergence scatter (NRA vs GRR)
 # ---------------------------------------------------------------------------
 @st.cache_data(show_spinner=False)
-def _convergence_scatter_fig(rows_json: str) -> "go.Figure":
+def _convergence_scatter_fig(rows_json: str, dark: bool = False) -> "go.Figure":
     """Scatter: NRA (x) vs gross RR at 1×AW (y), coloured by WB income level."""
     rows = json.loads(rows_json)
     df = pd.DataFrame(rows).dropna(subset=["NRA (M)", "Gross RR"])
@@ -2001,7 +2008,7 @@ def _convergence_scatter_fig(rows_json: str) -> "go.Figure":
         hover_data={"Country": True, "NRA (M)": True, "GRR_pct": ":.1f",
                     "iso3": False, "Income level": False},
         labels={"GRR_pct": t("convergence_yaxis"), "NRA (M)": t("convergence_xaxis")},
-        template=_plotly_template(),
+        template=_plotly_template(dark),
         height=480,
     )
     fig.update_traces(textposition="top center", marker=dict(size=8, opacity=0.8))
@@ -2046,7 +2053,7 @@ def _build_map_data(data: dict) -> list[dict]:
 
 
 @st.cache_data(show_spinner=False)
-def _system_type_choropleth_fig(map_rows_json: str) -> "go.Figure":
+def _system_type_choropleth_fig(map_rows_json: str, dark: bool = False) -> "go.Figure":
     """Choropleth coloured by dominant scheme type per country."""
     rows = json.loads(map_rows_json)
     df = pd.DataFrame(rows)
@@ -2067,7 +2074,7 @@ def _system_type_choropleth_fig(map_rows_json: str) -> "go.Figure":
         showscale=False,
     ))
     fig.update_layout(
-        template=_plotly_template(),
+        template=_plotly_template(dark),
         geo=dict(showframe=False, showcoastlines=True, projection_type="natural earth"),
         height=440,
         margin=dict(l=0, r=0, t=20, b=0),
@@ -3087,7 +3094,7 @@ def tab_overview(data: dict, summary_df: pd.DataFrame, target_multiple: float) -
     import json as _json_ov
     map_data = _build_map_data(data)
     if map_data:
-        st.plotly_chart(_system_type_choropleth_fig(_json_ov.dumps(map_data)), use_container_width=True)
+        st.plotly_chart(_system_type_choropleth_fig(_json_ov.dumps(map_data), dark=_is_dark()), use_container_width=True)
         st.caption(t("system_type_map_caption"))
 
     # ── F6: NRA global distribution ───────────────────────────────────────────
@@ -3109,7 +3116,7 @@ def tab_overview(data: dict, summary_df: pd.DataFrame, target_multiple: float) -
     if nra_rows_ov:
         st.divider()
         st.subheader(t("nra_dist_header"))
-        st.plotly_chart(_nra_distribution_fig(_jnra.dumps(nra_rows_ov)), use_container_width=True)
+        st.plotly_chart(_nra_distribution_fig(_jnra.dumps(nra_rows_ov), dark=_is_dark()), use_container_width=True)
         st.caption(t("nra_dist_caption"))
 
 
@@ -3534,7 +3541,7 @@ def tab_country(data: dict) -> None:
                 "pension_fund_assets_gdp": assets,
             })
     if fiscal_points:
-        fig_fiscal = _fiscal_sustainability_fig(iso3, _json_rag.dumps(fiscal_points))
+        fig_fiscal = _fiscal_sustainability_fig(iso3, _json_rag.dumps(fiscal_points), dark=_is_dark())
         st.plotly_chart(fig_fiscal, use_container_width=True)
         st.caption(t("fiscal_rag_scatter_caption"))
 
@@ -3557,7 +3564,7 @@ def tab_country(data: dict) -> None:
         if peer_rows:
             st.divider()
             st.subheader(t("peer_benchmark_header", income=m.wb_income_level))
-            fig_peer = _build_peer_benchmark_chart(iso3, m.wb_income_level, _json.dumps(peer_rows))
+            fig_peer = _build_peer_benchmark_chart(iso3, m.wb_income_level, _json.dumps(peer_rows), dark=_is_dark())
             st.plotly_chart(fig_peer, use_container_width=True)
             st.caption(t("peer_benchmark_caption", income=m.wb_income_level))
 
@@ -3602,7 +3609,7 @@ def tab_country(data: dict) -> None:
         _caps_json = _jrr.dumps({"nra": _nra_val, "min_benefit": _min_b, "max_benefit": _max_b})
         _sex_state = st.session_state.get("modeled_sex_val", "male")
         try:
-            _fig_sens = _rr_sensitivity_fig(iso3, _caps_json, avg_wage, _sex_state, "private_employee")
+            _fig_sens = _rr_sensitivity_fig(iso3, _caps_json, avg_wage, _sex_state, "private_employee", dark=_is_dark())
             st.plotly_chart(_fig_sens, use_container_width=True)
         except Exception as _e:
             st.info(f"Sensitivity chart unavailable: {_e}")
@@ -3920,7 +3927,7 @@ def tab_compare(data: dict, summary_df: pd.DataFrame) -> None:
                 "Income level": p.metadata.wb_income_level or "—",
             })
     if conv_rows:
-        st.plotly_chart(_convergence_scatter_fig(_json_cmp.dumps(conv_rows)), use_container_width=True)
+        st.plotly_chart(_convergence_scatter_fig(_json_cmp.dumps(conv_rows), dark=_is_dark()), use_container_width=True)
         st.caption(t("convergence_tracker_caption"))
 
     # ── F7: Progressivity chart ───────────────────────────────────────────────
@@ -3942,7 +3949,7 @@ def tab_compare(data: dict, summary_df: pd.DataFrame) -> None:
     if prog_rows:
         st.divider()
         st.subheader(t("progressivity_header"))
-        st.plotly_chart(_progressivity_chart(_jprog.dumps(prog_rows)), use_container_width=True)
+        st.plotly_chart(_progressivity_chart(_jprog.dumps(prog_rows), dark=_is_dark()), use_container_width=True)
         st.caption(t("progressivity_caption"))
 
     # ── F2: Parameter heatmap ─────────────────────────────────────────────────
@@ -3996,7 +4003,7 @@ def tab_compare(data: dict, summary_df: pd.DataFrame) -> None:
             "z_matrix": [[v for v in _heat_vals_s]],
             "z_text": [[str(v) for v in _heat_vals_s]],
         }
-        st.plotly_chart(_parameter_heatmap_fig(_jheat.dumps(_matrix)), use_container_width=True)
+        st.plotly_chart(_parameter_heatmap_fig(_jheat.dumps(_matrix), dark=_is_dark()), use_container_width=True)
         st.caption(t("param_heatmap_caption"))
 
 
