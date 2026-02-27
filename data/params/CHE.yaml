@@ -1,139 +1,194 @@
-# =============================================================================
-# Switzerland (CHE) – Pension System Parameters
-# =============================================================================
-# Primary scheme: AHV/AVS (Old Age and Survivors Insurance) – DB flat+earnings
-# Sources:
-#   [1] OECD Pensions at a Glance 2023 – Switzerland
-#   [2] Federal Social Insurance Office (FSIO/BSV) – AHV Statistics 2022
-# =============================================================================
-
 metadata:
-  country_name: "Switzerland"
-  iso3: "CHE"
-  iso2: "CH"
-  currency: "Swiss Franc"
-  currency_code: "CHF"
+  country_name: Switzerland
+  iso3: CHE
+  iso2: CH
+  currency: Swiss Franc
+  currency_code: CHF
   reference_year: 2023
-  wb_region: "ECS"
-  wb_income_level: "HIC"
+  wb_region: ECS
+  wb_income_level: HIC
   un_location_id: 756
   sources:
-    - "OECD Pensions at a Glance 2023 – Switzerland"
-    - "Federal Social Insurance Office (FSIO/BSV) AHV Statistics 2022"
-    - "Federal Act on Old-Age and Survivors' Insurance (AHVG/LAVS)"
-  last_reviewed: "2024-01-01"
-
+  - OECD Pensions at a Glance 2023 – Switzerland
+  - Federal Social Insurance Office (FSIO/BSV) AHV Statistics 2022
+  - Federal Act on Old-Age and Survivors' Insurance (AHVG/LAVS)
+  last_reviewed: '2024-01-01'
 schemes:
-  - scheme_id: "CHE_AHV"
-    name: "Old Age and Survivors Insurance (AHV/AVS) – DB Earnings-Related"
-    tier: "first"
-    type: "DB"
-    coverage: "All residents and employed persons; mandatory first pillar"
-    active: true
-
-    eligibility:
-      normal_retirement_age_male:
-        value: 65
-        source_citation: "OECD Pensions at a Glance 2023 Switzerland: NRA 65 for males."
-        year: 2023
-      normal_retirement_age_female:
-        value: 64
-        source_citation: "OECD Pensions at a Glance 2023 Switzerland: NRA 64 for females (rising to 65 by 2025 reform)."
-        year: 2023
-      vesting_years:
-        value: 1
-        source_citation: "OECD Pensions at a Glance 2023 Switzerland: minimum 1 qualifying year for partial AHV pension."
-        year: 2023
-      minimum_contribution_years:
-        value: 44
-        source_citation: "OECD Pensions at a Glance 2023 Switzerland: 44 years of contributions (male) / 43 years (female) for full AHV pension."
-        year: 2023
-      notes: null
-
-    contributions:
-      employee_rate:
-        value: 0.0550
-        source_citation: "OECD Pensions at a Glance 2023 Switzerland: employee AHV/IV/EO contribution 5.5% of gross wages (AHV component)."
-        year: 2023
-      employer_rate:
-        value: 0.0550
-        source_citation: "OECD Pensions at a Glance 2023 Switzerland: employer AHV contribution 5.5% of gross wages (matched with employee)."
-        year: 2023
-      total_rate:
-        value: null
-        source_citation: "Derived: 11% total AHV contribution; combined with BVG occupational pension contributions."
-        year: 2023
-      contribution_ceiling_aw_multiple:
-        value: null
-        source_citation: "OECD Pensions at a Glance 2023 Switzerland: AHV contributions on all earnings without ceiling; pension benefit capped."
-        year: 2023
-      contribution_base: "gross earnings"
-      notes: "Three-pillar system: AHV (1st), BVG occupational DB/DC (2nd, mandatory), voluntary 3rd pillar. BVG contributions add 7–18% depending on age."
-
-    benefits:
-      accrual_rate_per_year:
-        value: null
-        source_citation: "OECD Pensions at a Glance 2023 Switzerland: AHV benefit is earnings-related with minimum and maximum; full career pension ranges CHF 1,225–2,450/month (2023); no simple accrual rate."
-        year: 2023
-      reference_wage: "career_average"
-      valorization: "mixed"
-      flat_rate_aw_multiple: null
-      flat_rate_absolute: null
-      indexation: "mixed"
-      minimum_benefit_aw_multiple:
-        value: 0.17
-        source_citation: "OECD Pensions at a Glance 2023 Switzerland: minimum AHV pension CHF 1,225/month (2023) ≈ 17% of average wage."
-        year: 2023
-      maximum_benefit_aw_multiple:
-        value: 0.34
-        source_citation: "OECD Pensions at a Glance 2023 Switzerland: maximum AHV pension CHF 2,450/month (2023) ≈ 34% of average wage; maximum is 2× minimum."
-        year: 2023
-      notes: "BVG occupational pension (2nd pillar) mandatory for employees earning above CHF 22,050/year; adds significant supplementary pension."
-
-    payout:
-      type: "annuity"
-      notes: "AHV paid monthly as lifelong annuity; BVG can be annuity or lump-sum."
-
+- scheme_id: CHE_AHV
+  name: Old Age and Survivors Insurance (AHV/AVS) – DB Earnings-Related
+  tier: first
+  type: DB
+  coverage: All residents and employed persons; mandatory first pillar
+  active: true
+  eligibility:
+    normal_retirement_age_male:
+      value: 65
+      source_citation: 'OECD Pensions at a Glance 2023 Switzerland: NRA 65 for males.'
+      year: 2023
+    normal_retirement_age_female:
+      value: 64
+      source_citation: 'OECD Pensions at a Glance 2023 Switzerland: NRA 64 for females (rising to 65 by 2025 reform).'
+      year: 2023
+    vesting_years:
+      value: 1
+      source_citation: 'OECD Pensions at a Glance 2023 Switzerland: minimum 1 qualifying year for partial AHV pension.'
+      year: 2023
+    minimum_contribution_years:
+      value: 44
+      source_citation: 'OECD Pensions at a Glance 2023 Switzerland: 44 years of contributions (male) / 43 years (female) for
+        full AHV pension.'
+      year: 2023
+    notes: null
+  contributions:
+    employee_rate:
+      value: 0.055
+      source_citation: 'OECD Pensions at a Glance 2023 Switzerland: employee AHV/IV/EO contribution 5.5% of gross wages (AHV
+        component).'
+      year: 2023
+    employer_rate:
+      value: 0.055
+      source_citation: 'OECD Pensions at a Glance 2023 Switzerland: employer AHV contribution 5.5% of gross wages (matched
+        with employee).'
+      year: 2023
+    total_rate:
+      value: null
+      source_citation: 'Derived: 11% total AHV contribution; combined with BVG occupational pension contributions.'
+      year: 2023
+    contribution_ceiling_aw_multiple:
+      value: null
+      source_citation: 'OECD Pensions at a Glance 2023 Switzerland: AHV contributions on all earnings without ceiling; pension
+        benefit capped.'
+      year: 2023
+    contribution_base: gross earnings
+    notes: 'Three-pillar system: AHV (1st), BVG occupational DB/DC (2nd, mandatory), voluntary 3rd pillar. BVG contributions
+      add 7–18% depending on age.'
+  benefits:
+    accrual_rate_per_year:
+      value: null
+      source_citation: 'OECD Pensions at a Glance 2023 Switzerland: AHV benefit is earnings-related with minimum and maximum;
+        full career pension ranges CHF 1,225–2,450/month (2023); no simple accrual rate.'
+      year: 2023
+    reference_wage: career_average
+    valorization: mixed
+    flat_rate_aw_multiple: null
+    flat_rate_absolute: null
+    indexation: mixed
+    minimum_benefit_aw_multiple:
+      value: 0.17
+      source_citation: 'OECD Pensions at a Glance 2023 Switzerland: minimum AHV pension CHF 1,225/month (2023) ≈ 17% of average
+        wage.'
+      year: 2023
+    maximum_benefit_aw_multiple:
+      value: 0.34
+      source_citation: 'OECD Pensions at a Glance 2023 Switzerland: maximum AHV pension CHF 2,450/month (2023) ≈ 34% of average
+        wage; maximum is 2× minimum.'
+      year: 2023
+    notes: BVG occupational pension (2nd pillar) mandatory for employees earning above CHF 22,050/year; adds significant supplementary
+      pension.
+  payout:
+    type: annuity
+    notes: AHV paid monthly as lifelong annuity; BVG can be annuity or lump-sum.
+- scheme_id: CHE_BVG
+  name: Occupational Pension (BVG/LPP) – Mandatory
+  tier: second
+  type: DC
+  coverage: All employees earning more than CHF 22,050/year (entry threshold 2023); mandatory for private sector employees
+  active: true
+  eligibility:
+    normal_retirement_age_male:
+      value: 65
+      source_citation: 'OECD PAG 2023 Switzerland: BVG NRA 65 for men; women moving from 64 to 65 by 2028 (AVS 21 reform).'
+      year: 2023
+    normal_retirement_age_female:
+      value: 64
+      source_citation: 'OECD PAG 2023 Switzerland: BVG NRA 64 for women in 2023; rising to 65 by 2028.'
+      year: 2023
+    vesting_years:
+      value: 2
+      source_citation: 'Swiss BVG: vesting after 2 years of plan membership.'
+      year: 2023
+    minimum_contribution_years:
+      value: 0
+      source_citation: 'BVG: no minimum years; accounts vest after 2 years.'
+      year: 2023
+  contributions:
+    employee_rate:
+      value: 0.075
+      source_citation: 'OECD PAG 2023 Switzerland: BVG minimum contributions age-dependent (7% age 25-34, 10% age 35-44, 15%
+        age 45-54, 18% age 55-65); weighted average ~15% total, split equally ≈ 7.5% employee.'
+      year: 2023
+    employer_rate:
+      value: 0.075
+      source_citation: 'OECD PAG 2023 Switzerland: employer must contribute at least equal to employee; weighted average ≈
+        7.5%.'
+      year: 2023
+    total_rate:
+      value: 0.15
+      source_citation: 'Derived: weighted average total BVG contribution ~15%; actual rates are age-dependent (7–18% total
+        by age band).'
+      year: 2023
+    contribution_ceiling_aw_multiple:
+      value: null
+      source_citation: BVG contributions apply to coordinated salary (gross salary minus AHV coordination deduction CHF 25,725);
+        upper ceiling CHF 88,200.
+      year: 2023
+    contribution_base: coordinated salary (gross minus AHV coordination deduction)
+    notes: Contributions applied to 'coordinated salary' = gross – CHF 25,725 coordination deduction. Age-dependent minimum
+      contribution rates.
+  benefits:
+    accrual_rate_per_year: null
+    reference_wage: career_average
+    valorization: market
+    indexation: market
+    minimum_benefit_aw_multiple: null
+    maximum_benefit_aw_multiple: null
+  payout:
+    type: annuity
+    notes: Minimum conversion rate 6.8% p.a. on accumulated capital (mandatory portion); lump sum partial withdrawal allowed.
 taxes:
-  worker_income_tax_treatment: "EET"
-  income_tax_on_pension: "AHV pension income subject to federal, cantonal and municipal income taxes; 80% of AHV pension is taxable in most cantons."
+  worker_income_tax_treatment: EET
+  income_tax_on_pension: AHV pension income subject to federal, cantonal and municipal income taxes; 80% of AHV pension is
+    taxable in most cantons.
   simplified_net_rate:
     value: 0.15
-    source_citation: "OECD Pensions at a Glance 2023 Switzerland: estimated effective income tax rate on average AHV+BVG pension approximately 15% (varies by canton)."
+    source_citation: 'OECD Pensions at a Glance 2023 Switzerland: estimated effective income tax rate on average AHV+BVG pension
+      approximately 15% (varies by canton).'
     year: 2023
   notes: null
-
 average_earnings:
-  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
-  ilostat_ref_area: "CHE"
-  ilostat_transformation: "x * 12"
+  ilostat_series_id: EAR_4MTH_SEX_ECO_CUR_NB
+  ilostat_ref_area: CHE
+  ilostat_transformation: x * 12
   manual_value: 86000
-  currency: "Swiss Franc"
+  currency: Swiss Franc
   year: 2022
-  source_citation: "Federal Statistical Office Switzerland (FSO): average annual gross earnings 2022 approximately CHF 86,000."
+  source_citation: 'Federal Statistical Office Switzerland (FSO): average annual gross earnings 2022 approximately CHF 86,000.'
   source_url: null
-
 worker_types:
   private_employee:
-    label: "Private sector employee"
+    label: Private sector employee
     coverage_status: mandatory
-    scheme_ids: ["CHE_AHV"]
-    source_citation: "AHVG Switzerland: mandatory AHV for all employees; mandatory BVG occupational pension for earnings above CHF 22,050."
+    scheme_ids:
+    - CHE_AHV
+    - CHE_BVG
+    source_citation: 'AHVG Switzerland: mandatory AHV for all employees; mandatory BVG occupational pension for earnings above
+      CHF 22,050.'
     source_url: null
     notes: null
-
   civil_servant:
-    label: "Civil servant"
+    label: Civil servant
     coverage_status: mandatory
-    scheme_ids: ["CHE_AHV"]
-    source_citation: "OECD Pensions at a Glance 2023 Switzerland: civil servants covered by AHV plus Publica federal occupational pension fund."
+    scheme_ids:
+    - CHE_AHV
+    - CHE_BVG
+    source_citation: 'OECD Pensions at a Glance 2023 Switzerland: civil servants covered by AHV plus Publica federal occupational
+      pension fund.'
     notes: null
-
   self_employed:
-    label: "Self-employed"
+    label: Self-employed
     coverage_status: mandatory
-    scheme_ids: ["CHE_AHV"]
-    source_citation: "AHVG Switzerland: self-employed pay AHV contributions on net income; BVG occupational pension voluntary."
+    scheme_ids:
+    - CHE_AHV
+    source_citation: 'AHVG Switzerland: self-employed pay AHV contributions on net income; BVG occupational pension voluntary.'
     notes: null
-
 notes: null

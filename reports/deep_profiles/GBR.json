@@ -1,9 +1,9 @@
 {
   "iso3": "GBR",
   "country_name": "United Kingdom",
-  "last_updated": "2026-02-27T03:29:38.766626Z",
+  "last_updated": "2026-02-27T04:30:46.331529Z",
   "narrative": {
-    "text": "United Kingdom is a Europe and Central Asia country with a basic-type pension system centred on the New State Pension (nSP). The normal retirement age is 66 for both men and women. Contributions total 25.8% of insurable earnings (12.0% employee, 13.8% employer).",
+    "text": "United Kingdom is a Europe and Central Asia country with a basic-type pension system centred on the New State Pension (nSP). The system includes 3 schemes: New State Pension (nSP), Workplace Pension \u2013 Auto-Enrollment, Pension Credit \u2013 Means-Tested. The normal retirement age is 66 for both men and women. Contributions total 25.8% of insurable earnings (12.0% employee, 13.8% employer).",
     "sources": [
       {
         "source_name": "OECD Pensions at a Glance 2023",
@@ -26,9 +26,9 @@
       "key": "year",
       "label": "Year",
       "cell": {
-        "value": null,
+        "value": 2023,
         "unit": "year",
-        "year": null,
+        "year": 2023,
         "source": {
           "source_name": "World Development Indicators (World Bank)",
           "source_url": "https://data.worldbank.org",
@@ -43,14 +43,14 @@
       "key": "gdp_pc_lcu",
       "label": "GDP per capita (LCU)",
       "cell": {
-        "value": null,
+        "value": 40182.269462127,
         "unit": "LCU",
-        "year": null,
+        "year": 2023,
         "source": {
           "source_name": "World Development Indicators (World Bank)",
           "source_url": "https://data.worldbank.org/indicator/NY.GDP.PCAP.CN?locations=GBR",
           "indicator_id": "NY.GDP.PCAP.CN",
-          "year": null,
+          "year": 2023,
           "notes": null
         },
         "notes": null
@@ -60,14 +60,14 @@
       "key": "gdp_pc_usd",
       "label": "GDP per capita (USD)",
       "cell": {
-        "value": null,
+        "value": 49944.4702124201,
         "unit": "USD",
-        "year": null,
+        "year": 2023,
         "source": {
           "source_name": "World Development Indicators (World Bank)",
           "source_url": "https://data.worldbank.org/indicator/NY.GDP.PCAP.CD?locations=GBR",
           "indicator_id": "NY.GDP.PCAP.CD",
-          "year": null,
+          "year": 2023,
           "notes": null
         },
         "notes": null
@@ -77,14 +77,14 @@
       "key": "pop_65_total",
       "label": "Population age 65+ (total)",
       "cell": {
-        "value": null,
+        "value": 13176579.0,
         "unit": "persons",
-        "year": null,
+        "year": 2023,
         "source": {
           "source_name": "World Development Indicators (World Bank)",
           "source_url": "https://data.worldbank.org/indicator/SP.POP.65UP.TO?locations=GBR",
           "indicator_id": "SP.POP.65UP.TO",
-          "year": null,
+          "year": 2023,
           "notes": null
         },
         "notes": null
@@ -94,14 +94,14 @@
       "key": "pop_65_pct",
       "label": "Population age 65+ (% of total population)",
       "cell": {
-        "value": null,
+        "value": 19.238129106618,
         "unit": "%",
-        "year": null,
+        "year": 2023,
         "source": {
           "source_name": "World Development Indicators (World Bank)",
           "source_url": "https://data.worldbank.org/indicator/SP.POP.65UP.TO.ZS?locations=GBR",
           "indicator_id": "SP.POP.65UP.TO.ZS",
-          "year": null,
+          "year": 2023,
           "notes": null
         },
         "notes": null
@@ -145,14 +145,14 @@
       "key": "pension_fund_assets_gdp",
       "label": "Pension fund assets (% of GDP)",
       "cell": {
-        "value": null,
+        "value": 124.20155,
         "unit": "%",
-        "year": null,
+        "year": 2020,
         "source": {
           "source_name": "Global Financial Development Database \u2013 World Bank",
           "source_url": "https://data.worldbank.org/indicator/GFDD.DI.13",
           "indicator_id": "GFDD.DI.13",
-          "year": null,
+          "year": 2020,
           "notes": null
         },
         "notes": null
@@ -165,9 +165,15 @@
       "label": "Social insurance coverage (% of population)",
       "cell": {
         "value": null,
-        "unit": null,
+        "unit": "%",
         "year": null,
-        "source": null,
+        "source": {
+          "source_name": "ASPIRE \u2013 World Bank",
+          "source_url": "https://www.worldbank.org/en/data/datatopics/aspire",
+          "indicator_id": "per_si_allsi.cov_pop_tot",
+          "year": null,
+          "notes": null
+        },
         "notes": null
       }
     },
@@ -176,9 +182,15 @@
       "label": "Contributory pension coverage (% of population)",
       "cell": {
         "value": null,
-        "unit": null,
+        "unit": "%",
         "year": null,
-        "source": null,
+        "source": {
+          "source_name": "ASPIRE \u2013 World Bank",
+          "source_url": "https://www.worldbank.org/en/data/datatopics/aspire",
+          "indicator_id": "per_si_cp.cov_pop_tot",
+          "year": null,
+          "notes": null
+        },
         "notes": null
       }
     },
@@ -186,10 +198,16 @@
       "key": "pension_fund_assets_gdp",
       "label": "Pension fund assets (% of GDP)",
       "cell": {
-        "value": null,
-        "unit": null,
-        "year": null,
-        "source": null,
+        "value": 124.20155,
+        "unit": "%",
+        "year": 2020,
+        "source": {
+          "source_name": "Global Financial Development Database \u2013 World Bank",
+          "source_url": "https://data.worldbank.org/indicator/GFDD.DI.13",
+          "indicator_id": "GFDD.DI.13",
+          "year": 2020,
+          "notes": null
+        },
         "notes": null
       }
     },
@@ -302,6 +320,154 @@
           "year": null,
           "source": {
             "source_name": "OECD Pensions at a Glance 2023 \u2013 United Kingdom: State Pension age 66 for both sexes since October 2020; rising to 67 by 2028.",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        }
+      }
+    },
+    {
+      "scheme_id": "GBR_AUTOENROLL",
+      "scheme_name": "Workplace Pension \u2013 Auto-Enrollment",
+      "scheme_type_group": "dc",
+      "attributes": {
+        "implementing_agency": {
+          "value": "Workplace Pension \u2013 Auto-Enrollment",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "target_population": {
+          "value": "All employees aged 22-66 earning above \u00a310,000/year; auto-enrolled since 2012; opt-out permitted",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "benefit_plan_type": {
+          "value": "DC",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "financing_mechanism": {
+          "value": "Fully funded",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "contrib_employee": {
+          "value": 5.0,
+          "unit": "%",
+          "year": null,
+          "source": {
+            "source_name": "OECD PAG 2023 UK: minimum employee contribution 5% of qualifying earnings (including 1% tax relief).",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        },
+        "contrib_employer": {
+          "value": 3.0,
+          "unit": "%",
+          "year": null,
+          "source": {
+            "source_name": "OECD PAG 2023 UK: minimum employee contribution 5% of qualifying earnings (including 1% tax relief).",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        },
+        "contrib_total": {
+          "value": 8.0,
+          "unit": "%",
+          "year": null,
+          "source": null,
+          "notes": "Derived: employee + employer"
+        },
+        "ret_age_male": {
+          "value": 55,
+          "unit": null,
+          "year": null,
+          "source": {
+            "source_name": "UK Pensions Act 2004: minimum pension age 55 (rising to 57 in 2028); most take funds alongside State Pension at 66.",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        },
+        "ret_age_female": {
+          "value": 55,
+          "unit": null,
+          "year": null,
+          "source": {
+            "source_name": "UK Pensions Act 2004: minimum pension age 55 (rising to 57 in 2028); most take funds alongside State Pension at 66.",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        }
+      }
+    },
+    {
+      "scheme_id": "GBR_PENSIONCREDIT",
+      "scheme_name": "Pension Credit \u2013 Means-Tested",
+      "scheme_type_group": "db",
+      "attributes": {
+        "implementing_agency": {
+          "value": "Pension Credit \u2013 Means-Tested",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "target_population": {
+          "value": "UK residents aged 66+ with income below guarantee credit threshold; approximately 1.4 million households receive Pension Credit",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "benefit_plan_type": {
+          "value": "targeted",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "ret_age_male": {
+          "value": 66,
+          "unit": null,
+          "year": null,
+          "source": {
+            "source_name": "DWP UK: Pension Credit (Guarantee Credit) claimable from State Pension age 66.",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        },
+        "ret_age_female": {
+          "value": 66,
+          "unit": null,
+          "year": null,
+          "source": {
+            "source_name": "DWP UK: Pension Credit (Guarantee Credit) claimable from State Pension age 66.",
             "source_url": null,
             "indicator_id": null,
             "year": null,

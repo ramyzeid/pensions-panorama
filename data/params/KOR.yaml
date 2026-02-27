@@ -1,139 +1,160 @@
-# =============================================================================
-# Korea, Republic of (KOR) – Pension System Parameters
-# =============================================================================
-# Primary scheme: National Pension Service (NPS) – DB earnings-related
-# Sources:
-#   [1] OECD Pensions at a Glance 2023 – Korea
-#   [2] National Pension Service Korea – Annual Report 2022
-# =============================================================================
-
 metadata:
-  country_name: "Korea, Republic of"
-  iso3: "KOR"
-  iso2: "KR"
-  currency: "South Korean Won"
-  currency_code: "KRW"
+  country_name: Korea, Republic of
+  iso3: KOR
+  iso2: KR
+  currency: South Korean Won
+  currency_code: KRW
   reference_year: 2023
-  wb_region: "EAP"
-  wb_income_level: "HIC"
+  wb_region: EAP
+  wb_income_level: HIC
   un_location_id: 410
   sources:
-    - "OECD Pensions at a Glance 2023 – Korea"
-    - "National Pension Service Korea Annual Report 2022"
-    - "National Pension Act (Korea, 1986, as amended)"
-  last_reviewed: "2024-01-01"
-
+  - OECD Pensions at a Glance 2023 – Korea
+  - National Pension Service Korea Annual Report 2022
+  - National Pension Act (Korea, 1986, as amended)
+  last_reviewed: '2024-01-01'
 schemes:
-  - scheme_id: "KOR_NPS"
-    name: "National Pension Service (NPS) – Earnings-Related DB"
-    tier: "first"
-    type: "DB"
-    coverage: "All employed workers and self-employed; special schemes for civil servants, soldiers, teachers"
-    active: true
-
-    eligibility:
-      normal_retirement_age_male:
-        value: 63
-        source_citation: "OECD Pensions at a Glance 2023 Korea: NRA 63 in 2023, rising to 65 by 2033."
-        year: 2023
-      normal_retirement_age_female:
-        value: 63
-        source_citation: "OECD Pensions at a Glance 2023 Korea: NRA equalised at 63 for females."
-        year: 2023
-      vesting_years:
-        value: 10
-        source_citation: "OECD Pensions at a Glance 2023 Korea: minimum 10 years of contributions for any NPS pension."
-        year: 2023
-      minimum_contribution_years:
-        value: 10
-        source_citation: "National Pension Act Korea: minimum 10 qualifying years for old-age pension."
-        year: 2023
-      notes: null
-
-    contributions:
-      employee_rate:
-        value: 0.045
-        source_citation: "OECD Pensions at a Glance 2023 Korea: employee NPS contribution rate 4.5% of standard monthly income."
-        year: 2023
-      employer_rate:
-        value: 0.045
-        source_citation: "OECD Pensions at a Glance 2023 Korea: employer NPS contribution rate 4.5% (matched with employee; total 9%)."
-        year: 2023
-      total_rate:
-        value: null
-        source_citation: "Derived: 9% total NPS contribution rate."
-        year: 2023
-      contribution_ceiling_aw_multiple:
-        value: 1.28
-        source_citation: "OECD Pensions at a Glance 2023 Korea: NPS income ceiling KRW 5,900,000/month (2023), approximately 1.28× average monthly wage."
-        year: 2023
-      contribution_base: "gross earnings"
-      notes: "NPS formula: A × B component (redistributive) provides income-equalisation; higher replacement for lower earners."
-
-    benefits:
-      accrual_rate_per_year:
-        value: null
-        source_citation: "OECD Pensions at a Glance 2023 Korea: NPS formula = 1.2 × (A + B) × (1 + 0.05 × n)/12, where A=national average income, B=individual average income, n=years above 20; effective ~1.5% replacement per year at median wage for 40 years."
-        year: 2023
-      reference_wage: "career_average"
-      valorization: "wages"
-      flat_rate_aw_multiple: null
-      flat_rate_absolute: null
-      indexation: "CPI"
-      minimum_benefit_aw_multiple:
-        value: null
-        source_citation: "OECD Pensions at a Glance 2023 Korea: no statutory minimum NPS benefit; Basic Pension (means-tested, ~5% of AW) provides safety net for low-income elderly."
-        year: 2023
-      maximum_benefit_aw_multiple:
-        value: null
-        source_citation: "OECD Pensions at a Glance 2023 Korea: no explicit maximum NPS pension."
-        year: 2023
-      notes: "Basic Pension (기초연금) provides means-tested top-up for bottom 70% of elderly (~KRW 300,000/month, 2023)."
-
-    payout:
-      type: "annuity"
-      notes: null
-
+- scheme_id: KOR_NPS
+  name: National Pension Service (NPS) – Earnings-Related DB
+  tier: first
+  type: DB
+  coverage: All employed workers and self-employed; special schemes for civil servants, soldiers, teachers
+  active: true
+  eligibility:
+    normal_retirement_age_male:
+      value: 63
+      source_citation: 'OECD Pensions at a Glance 2023 Korea: NRA 63 in 2023, rising to 65 by 2033.'
+      year: 2023
+    normal_retirement_age_female:
+      value: 63
+      source_citation: 'OECD Pensions at a Glance 2023 Korea: NRA equalised at 63 for females.'
+      year: 2023
+    vesting_years:
+      value: 10
+      source_citation: 'OECD Pensions at a Glance 2023 Korea: minimum 10 years of contributions for any NPS pension.'
+      year: 2023
+    minimum_contribution_years:
+      value: 10
+      source_citation: 'National Pension Act Korea: minimum 10 qualifying years for old-age pension.'
+      year: 2023
+    notes: null
+  contributions:
+    employee_rate:
+      value: 0.045
+      source_citation: 'OECD Pensions at a Glance 2023 Korea: employee NPS contribution rate 4.5% of standard monthly income.'
+      year: 2023
+    employer_rate:
+      value: 0.045
+      source_citation: 'OECD Pensions at a Glance 2023 Korea: employer NPS contribution rate 4.5% (matched with employee;
+        total 9%).'
+      year: 2023
+    total_rate:
+      value: null
+      source_citation: 'Derived: 9% total NPS contribution rate.'
+      year: 2023
+    contribution_ceiling_aw_multiple:
+      value: 1.28
+      source_citation: 'OECD Pensions at a Glance 2023 Korea: NPS income ceiling KRW 5,900,000/month (2023), approximately
+        1.28× average monthly wage.'
+      year: 2023
+    contribution_base: gross earnings
+    notes: 'NPS formula: A × B component (redistributive) provides income-equalisation; higher replacement for lower earners.'
+  benefits:
+    accrual_rate_per_year:
+      value: null
+      source_citation: 'OECD Pensions at a Glance 2023 Korea: NPS formula = 1.2 × (A + B) × (1 + 0.05 × n)/12, where A=national
+        average income, B=individual average income, n=years above 20; effective ~1.5% replacement per year at median wage
+        for 40 years.'
+      year: 2023
+    reference_wage: career_average
+    valorization: wages
+    flat_rate_aw_multiple: null
+    flat_rate_absolute: null
+    indexation: CPI
+    minimum_benefit_aw_multiple:
+      value: null
+      source_citation: 'OECD Pensions at a Glance 2023 Korea: no statutory minimum NPS benefit; Basic Pension (means-tested,
+        ~5% of AW) provides safety net for low-income elderly.'
+      year: 2023
+    maximum_benefit_aw_multiple:
+      value: null
+      source_citation: 'OECD Pensions at a Glance 2023 Korea: no explicit maximum NPS pension.'
+      year: 2023
+    notes: Basic Pension (기초연금) provides means-tested top-up for bottom 70% of elderly (~KRW 300,000/month, 2023).
+  payout:
+    type: annuity
+    notes: null
+- scheme_id: KOR_BASICPENSION
+  name: Basic Pension (기초연금) – Means-Tested
+  tier: first
+  type: targeted
+  coverage: Bottom 70% of income distribution among Koreans aged 65+; approximately 6.6 million recipients (2023)
+  active: true
+  eligibility:
+    normal_retirement_age_male:
+      value: 65
+      source_citation: 'OECD PAG 2023 Korea: Basic Pension payable from age 65 to bottom 70% of seniors by income.'
+      year: 2023
+    normal_retirement_age_female:
+      value: 65
+      source_citation: 'OECD PAG 2023 Korea: Basic Pension NRA 65 for both sexes.'
+      year: 2023
+  benefits:
+    minimum_benefit_aw_multiple:
+      value: 0.091
+      source_citation: 'OECD PAG 2023 Korea: Basic Pension maximum KRW 323,180/month (2023) × 12 = KRW 3,878,160 ≈ 9.1% of
+        AW (KRW 42,700,000).'
+      year: 2023
+    maximum_benefit_aw_multiple:
+      value: 0.091
+      source_citation: 'OECD PAG 2023 Korea: full rate for zero-NPS income; reduced for NPS recipients.'
+      year: 2023
+    indexation: CPI
+  payout:
+    type: annuity
+    notes: Monthly payment; means-tested on income recognition amount; funded from general revenues.
 taxes:
-  worker_income_tax_treatment: "EET"
-  income_tax_on_pension: "NPS pension income taxed as pension income; pension income deduction reduces taxable amount significantly."
+  worker_income_tax_treatment: EET
+  income_tax_on_pension: NPS pension income taxed as pension income; pension income deduction reduces taxable amount significantly.
   simplified_net_rate:
     value: 0.03
-    source_citation: "OECD Pensions at a Glance 2023 Korea: estimated effective income tax rate on average NPS pension approximately 3% after pension income deduction."
+    source_citation: 'OECD Pensions at a Glance 2023 Korea: estimated effective income tax rate on average NPS pension approximately
+      3% after pension income deduction.'
     year: 2023
   notes: null
-
 average_earnings:
-  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
-  ilostat_ref_area: "KOR"
-  ilostat_transformation: "x * 12"
+  ilostat_series_id: EAR_4MTH_SEX_ECO_CUR_NB
+  ilostat_ref_area: KOR
+  ilostat_transformation: x * 12
   manual_value: 36000000
-  currency: "South Korean Won"
+  currency: South Korean Won
   year: 2022
-  source_citation: "OECD Average Annual Wages 2022 – Korea: approximately KRW 42,747,000 gross; using KRW 36,000,000 as NPS average income basis."
+  source_citation: 'OECD Average Annual Wages 2022 – Korea: approximately KRW 42,747,000 gross; using KRW 36,000,000 as NPS
+    average income basis.'
   source_url: null
-
 worker_types:
   private_employee:
-    label: "Private sector employee"
+    label: Private sector employee
     coverage_status: mandatory
-    scheme_ids: ["KOR_NPS"]
-    source_citation: "National Pension Act Korea: mandatory NPS for all private sector employees."
+    scheme_ids:
+    - KOR_NPS
+    source_citation: 'National Pension Act Korea: mandatory NPS for all private sector employees.'
     source_url: null
     notes: null
-
   civil_servant:
-    label: "Civil servant"
+    label: Civil servant
     coverage_status: excluded
     scheme_ids: []
-    source_citation: "OECD Pensions at a Glance 2023 Korea: civil servants, soldiers, and private school teachers covered by separate public occupational pension schemes (GEPS, MPF, PTPF), not NPS."
-    notes: "Civil servants are excluded from NPS and covered by the Government Employees Pension Service (GEPS) with a separate DB scheme."
-
+    source_citation: 'OECD Pensions at a Glance 2023 Korea: civil servants, soldiers, and private school teachers covered
+      by separate public occupational pension schemes (GEPS, MPF, PTPF), not NPS.'
+    notes: Civil servants are excluded from NPS and covered by the Government Employees Pension Service (GEPS) with a separate
+      DB scheme.
   self_employed:
-    label: "Self-employed"
+    label: Self-employed
     coverage_status: mandatory
-    scheme_ids: ["KOR_NPS"]
-    source_citation: "National Pension Act Korea: self-employed required to join NPS as regional subscribers, paying both employee and employer portions."
+    scheme_ids:
+    - KOR_NPS
+    source_citation: 'National Pension Act Korea: self-employed required to join NPS as regional subscribers, paying both
+      employee and employer portions.'
     notes: null
-
 notes: null

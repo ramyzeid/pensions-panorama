@@ -1,139 +1,160 @@
-# =============================================================================
-# Peru (PER) – Pension System Parameters
-# =============================================================================
-# Primary scheme: ONP (Sistema Nacional de Pensiones) / AFP (DC) – parallel
-# Sources:
-#   [1] OECD Pensions at a Glance 2023 – Latin America: Peru
-#   [2] Superintendencia de Banca, Seguros y AFP (SBS) Peru – Annual Report 2022
-# =============================================================================
-
 metadata:
-  country_name: "Peru"
-  iso3: "PER"
-  iso2: "PE"
-  currency: "Peruvian Sol"
-  currency_code: "PEN"
+  country_name: Peru
+  iso3: PER
+  iso2: PE
+  currency: Peruvian Sol
+  currency_code: PEN
   reference_year: 2023
-  wb_region: "LCN"
-  wb_income_level: "UMC"
+  wb_region: LCN
+  wb_income_level: UMC
   un_location_id: 604
   sources:
-    - "OECD Pensions at a Glance 2023 – Latin America: Peru"
-    - "Superintendencia de Banca Seguros y AFP (SBS) Peru Annual Report 2022"
-    - "Decreto Ley 19990 (Peru, ONP, 1973) and Ley del SPP (Decree 25897, 1992)"
-  last_reviewed: "2024-01-01"
-
+  - 'OECD Pensions at a Glance 2023 – Latin America: Peru'
+  - Superintendencia de Banca Seguros y AFP (SBS) Peru Annual Report 2022
+  - Decreto Ley 19990 (Peru, ONP, 1973) and Ley del SPP (Decree 25897, 1992)
+  last_reviewed: '2024-01-01'
 schemes:
-  - scheme_id: "PER_AFP"
-    name: "AFP Individual Accounts (SPP) – Mandatory DC"
-    tier: "first"
-    type: "DC"
-    coverage: "Workers choosing AFP system; parallel to ONP public DB system"
-    active: true
-
-    eligibility:
-      normal_retirement_age_male:
-        value: 65
-        source_citation: "OECD Pensions at a Glance 2023 Peru: NRA 65 for both AFP and ONP systems."
-        year: 2023
-      normal_retirement_age_female:
-        value: 65
-        source_citation: "OECD Pensions at a Glance 2023 Peru: NRA 65 for females."
-        year: 2023
-      vesting_years:
-        value: 0
-        source_citation: "OECD Pensions at a Glance 2023 Peru: AFP DC system – balance accessible at 65; no minimum vesting period."
-        year: 2023
-      minimum_contribution_years:
-        value: 20
-        source_citation: "OECD Pensions at a Glance 2023 Peru: ONP requires minimum 20 years; AFP has no minimum but minimum pension guarantee requires 20 years."
-        year: 2023
-      notes: null
-
-    contributions:
-      employee_rate:
-        value: 0.10
-        source_citation: "OECD Pensions at a Glance 2023 Peru: employee AFP contribution approximately 10% of wages (8% to individual account + commissions + insurance)."
-        year: 2023
-      employer_rate:
-        value: 0.0
-        source_citation: "OECD Pensions at a Glance 2023 Peru: employer has no mandatory contribution to AFP; employee bears full AFP contribution."
-        year: 2023
-      total_rate:
-        value: null
-        source_citation: "Derived: employee-only AFP contribution approximately 10% of wages for individual account, commissions, and disability insurance."
-        year: 2023
-      contribution_ceiling_aw_multiple:
-        value: null
-        source_citation: "OECD Pensions at a Glance 2023 Peru: no contribution ceiling as AW multiple for AFP."
-        year: 2023
-      contribution_base: "gross earnings"
-      notes: "Workers choose between AFP (DC) or ONP (DB); ONP requires 20 years and pays 50% of reference wage. Pensión 65 provides non-contributory support for poor elderly."
-
-    benefits:
-      accrual_rate_per_year:
-        value: null
-        source_citation: "OECD Pensions at a Glance 2023 Peru: AFP DC system – pension depends on accumulated balance; minimum pension guarantee for 20+ years contributors if balance insufficient."
-        year: 2023
-      reference_wage: "career_average"
-      valorization: "interest"
-      flat_rate_aw_multiple: null
-      flat_rate_absolute: null
-      indexation: "CPI"
-      minimum_benefit_aw_multiple:
-        value: 0.25
-        source_citation: "OECD Pensions at a Glance 2023 Peru: minimum pension guarantee (pensión mínima SPP) approximately PEN 500/month ≈ 25% of minimum wage for qualifying AFP contributors."
-        year: 2023
-      maximum_benefit_aw_multiple:
-        value: null
-        source_citation: "OECD Pensions at a Glance 2023 Peru: no explicit maximum AFP pension."
-        year: 2023
-      notes: "ONP pays 50% of average remunerations with 20 years; AFP pension depends on accumulated balance."
-
-    payout:
-      type: "annuity"
-      notes: "AFP allows programmed withdrawal, lifetime annuity, or combination; lump-sum withdrawal possible under special rules."
-
+- scheme_id: PER_AFP
+  name: AFP Individual Accounts (SPP) – Mandatory DC
+  tier: first
+  type: DC
+  coverage: Workers choosing AFP system; parallel to ONP public DB system
+  active: true
+  eligibility:
+    normal_retirement_age_male:
+      value: 65
+      source_citation: 'OECD Pensions at a Glance 2023 Peru: NRA 65 for both AFP and ONP systems.'
+      year: 2023
+    normal_retirement_age_female:
+      value: 65
+      source_citation: 'OECD Pensions at a Glance 2023 Peru: NRA 65 for females.'
+      year: 2023
+    vesting_years:
+      value: 0
+      source_citation: 'OECD Pensions at a Glance 2023 Peru: AFP DC system – balance accessible at 65; no minimum vesting
+        period.'
+      year: 2023
+    minimum_contribution_years:
+      value: 20
+      source_citation: 'OECD Pensions at a Glance 2023 Peru: ONP requires minimum 20 years; AFP has no minimum but minimum
+        pension guarantee requires 20 years.'
+      year: 2023
+    notes: null
+  contributions:
+    employee_rate:
+      value: 0.1
+      source_citation: 'OECD Pensions at a Glance 2023 Peru: employee AFP contribution approximately 10% of wages (8% to individual
+        account + commissions + insurance).'
+      year: 2023
+    employer_rate:
+      value: 0.0
+      source_citation: 'OECD Pensions at a Glance 2023 Peru: employer has no mandatory contribution to AFP; employee bears
+        full AFP contribution.'
+      year: 2023
+    total_rate:
+      value: null
+      source_citation: 'Derived: employee-only AFP contribution approximately 10% of wages for individual account, commissions,
+        and disability insurance.'
+      year: 2023
+    contribution_ceiling_aw_multiple:
+      value: null
+      source_citation: 'OECD Pensions at a Glance 2023 Peru: no contribution ceiling as AW multiple for AFP.'
+      year: 2023
+    contribution_base: gross earnings
+    notes: Workers choose between AFP (DC) or ONP (DB); ONP requires 20 years and pays 50% of reference wage. Pensión 65 provides
+      non-contributory support for poor elderly.
+  benefits:
+    accrual_rate_per_year:
+      value: null
+      source_citation: 'OECD Pensions at a Glance 2023 Peru: AFP DC system – pension depends on accumulated balance; minimum
+        pension guarantee for 20+ years contributors if balance insufficient.'
+      year: 2023
+    reference_wage: career_average
+    valorization: interest
+    flat_rate_aw_multiple: null
+    flat_rate_absolute: null
+    indexation: CPI
+    minimum_benefit_aw_multiple:
+      value: 0.25
+      source_citation: 'OECD Pensions at a Glance 2023 Peru: minimum pension guarantee (pensión mínima SPP) approximately
+        PEN 500/month ≈ 25% of minimum wage for qualifying AFP contributors.'
+      year: 2023
+    maximum_benefit_aw_multiple:
+      value: null
+      source_citation: 'OECD Pensions at a Glance 2023 Peru: no explicit maximum AFP pension.'
+      year: 2023
+    notes: ONP pays 50% of average remunerations with 20 years; AFP pension depends on accumulated balance.
+  payout:
+    type: annuity
+    notes: AFP allows programmed withdrawal, lifetime annuity, or combination; lump-sum withdrawal possible under special
+      rules.
+- scheme_id: PER_PENSION65
+  name: Pensión 65 – Non-Contributory
+  tier: first
+  type: basic
+  coverage: Peruvians aged 65+ in extreme poverty not covered by formal pension; approximately 600,000 recipients (2023);
+    primarily rural and indigenous communities
+  active: true
+  eligibility:
+    normal_retirement_age_male:
+      value: 65
+      source_citation: 'Decreto Supremo 081-2011-PCM Peru: Pensión 65 payable from age 65.'
+      year: 2023
+    normal_retirement_age_female:
+      value: 65
+      source_citation: 'Decreto Supremo 081-2011-PCM Peru: Pensión 65 NRA 65 for both sexes.'
+      year: 2023
+  benefits:
+    flat_rate_aw_multiple:
+      value: 0.041
+      source_citation: 'MIDIS Peru: Pensión 65 PEN 250/month × 12 = PEN 3,000 ≈ 4.1% of AW (PEN 72,000).'
+      year: 2023
+    indexation: CPI
+  payout:
+    type: annuity
+    notes: Bimonthly transfer PEN 500 per payment; means-tested on SISFOH poverty index; funded from general revenues.
 taxes:
-  worker_income_tax_treatment: "EET"
-  income_tax_on_pension: "Pension income from AFP and ONP subject to Impuesto a la Renta in Peru; exemptions reduce effective rate for modest pensions."
+  worker_income_tax_treatment: EET
+  income_tax_on_pension: Pension income from AFP and ONP subject to Impuesto a la Renta in Peru; exemptions reduce effective
+    rate for modest pensions.
   simplified_net_rate:
     value: 0.05
-    source_citation: "OECD Pensions at a Glance 2023 Peru: estimated effective income tax rate on average pension approximately 5%."
+    source_citation: 'OECD Pensions at a Glance 2023 Peru: estimated effective income tax rate on average pension approximately
+      5%.'
     year: 2023
   notes: null
-
 average_earnings:
-  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
-  ilostat_ref_area: "PER"
-  ilostat_transformation: "x * 12"
+  ilostat_series_id: EAR_4MTH_SEX_ECO_CUR_NB
+  ilostat_ref_area: PER
+  ilostat_transformation: x * 12
   manual_value: 22000
-  currency: "Peruvian Sol"
+  currency: Peruvian Sol
   year: 2022
-  source_citation: "Instituto Nacional de Estadística e Informática (INEI) Peru: average annual formal sector earnings 2022 approximately PEN 22,000."
+  source_citation: 'Instituto Nacional de Estadística e Informática (INEI) Peru: average annual formal sector earnings 2022
+    approximately PEN 22,000.'
   source_url: null
-
 worker_types:
   private_employee:
-    label: "Private sector employee"
+    label: Private sector employee
     coverage_status: mandatory
-    scheme_ids: ["PER_AFP"]
-    source_citation: "Ley SPP Peru: mandatory pension system (AFP or ONP choice) for all private sector employees."
+    scheme_ids:
+    - PER_AFP
+    source_citation: 'Ley SPP Peru: mandatory pension system (AFP or ONP choice) for all private sector employees.'
     source_url: null
     notes: null
-
   civil_servant:
-    label: "Civil servant"
+    label: Civil servant
     coverage_status: mandatory
-    scheme_ids: ["PER_AFP"]
-    source_citation: "OECD Pensions at a Glance 2023 Peru: civil servants choose between AFP or ONP/Decreto Ley 20530 (closed) regime."
+    scheme_ids:
+    - PER_AFP
+    source_citation: 'OECD Pensions at a Glance 2023 Peru: civil servants choose between AFP or ONP/Decreto Ley 20530 (closed)
+      regime.'
     notes: null
-
   self_employed:
-    label: "Self-employed"
+    label: Self-employed
     coverage_status: voluntary
-    scheme_ids: ["PER_AFP"]
-    source_citation: "ILO Social Security Inquiry Peru: self-employed not mandatorily covered; may voluntarily join AFP."
+    scheme_ids:
+    - PER_AFP
+    source_citation: 'ILO Social Security Inquiry Peru: self-employed not mandatorily covered; may voluntarily join AFP.'
     notes: null
-
 notes: null

@@ -1,189 +1,197 @@
-# =============================================================================
-# Turkey (TUR) – Pension System Parameters
-# =============================================================================
-# Primary scheme: SGK – Social Security Institution (Sosyal Güvenlik Kurumu)
-# Governing law: Social Security and General Health Insurance Law No. 5510 (2006)
-#
-# Sources:
-#   [1] SGK – www.sgk.gov.tr – Annual Statistical Yearbook 2022
-#   [2] Social Security and General Health Insurance Law No. 5510 (2006, as amended)
-#   [3] OECD Pensions at a Glance 2023 – Turkey country profile
-#   [4] ILO Turkey Social Security Country Profile 2022
-# =============================================================================
-
 metadata:
-  country_name: "Turkey"
-  iso3: "TUR"
-  iso2: "TR"
-  currency: "Turkish Lira"
-  currency_code: "TRY"
+  country_name: Turkey
+  iso3: TUR
+  iso2: TR
+  currency: Turkish Lira
+  currency_code: TRY
   reference_year: 2022
-  wb_region: "ECS"
-  wb_income_level: "UMC"
+  wb_region: ECS
+  wb_income_level: UMC
   un_location_id: 792
   sources:
-    - "Social Security and General Health Insurance Law No. 5510 (2006 as amended) – Turkey"
-    - "SGK Annual Statistical Yearbook 2022 – www.sgk.gov.tr"
-    - "OECD Pensions at a Glance 2023 – Turkey"
-    - "ILO Turkey Social Security Country Profile 2022"
-  last_reviewed: "2024-03-01"
-
+  - Social Security and General Health Insurance Law No. 5510 (2006 as amended) – Turkey
+  - SGK Annual Statistical Yearbook 2022 – www.sgk.gov.tr
+  - OECD Pensions at a Glance 2023 – Turkey
+  - ILO Turkey Social Security Country Profile 2022
+  last_reviewed: '2024-03-01'
 schemes:
-  - scheme_id: "SGK_DB"
-    name: "SGK Old-Age Pension (4/a – SSI)"
-    tier: "first"
-    type: "DB"
-    coverage: >
-      Private sector employees and self-employed registered under SGK 4/a and 4/b pillars.
-      Covers approximately 60% of working population.
-    active: true
+- scheme_id: SGK_DB
+  name: SGK Old-Age Pension (4/a – SSI)
+  tier: first
+  type: DB
+  coverage: 'Private sector employees and self-employed registered under SGK 4/a and 4/b pillars. Covers approximately 60%
+    of working population.
 
-    eligibility:
-      normal_retirement_age_male:
-        value: 65
-        source_citation: >
-          Law 5510 Art. 28 – NRA being phased to 65 for both sexes for cohorts entering
-          after 1/1/2000. Transitional provisions apply to earlier cohorts; full NRA 65
-          reached by 2048. OECD Pensions at a Glance 2023: Turkey.
-        source_url: "https://www.sgk.gov.tr"
-        year: 2022
-      normal_retirement_age_female:
-        value: 65
-        source_citation: >
-          Law 5510 Art. 28 – NRA 65 for females under post-reform rules (born after 1976
-          reaching NRA 65 by 2048). Earlier cohorts have lower NRAs under transitional rules.
-          OECD Pensions at a Glance 2023: Turkey.
-        year: 2022
-      vesting_years:
-        value: 20
-        source_citation: >
-          Law 5510 Art. 28 – minimum 7,200 premium payment days (20 years) required
-          for old-age pension entitlement. SGK 2022.
-        year: 2022
-      minimum_contribution_years:
-        value: 20
-        source_citation: "Law 5510 – 7,200 premium days = 20 years minimum contribution period."
-        year: 2022
+    '
+  active: true
+  eligibility:
+    normal_retirement_age_male:
+      value: 65
+      source_citation: 'Law 5510 Art. 28 – NRA being phased to 65 for both sexes for cohorts entering after 1/1/2000. Transitional
+        provisions apply to earlier cohorts; full NRA 65 reached by 2048. OECD Pensions at a Glance 2023: Turkey.
 
-    contributions:
-      employee_rate:
-        value: 0.09
-        source_citation: >
-          Law 5510 Art. 80-81 – employee pension insurance premium 9% of gross wage
-          (within ceiling). Long-term insurance branches (disability, old-age, death).
-          SGK Premium Rates Table 2022.
-        source_url: "https://www.sgk.gov.tr"
-        year: 2022
-      employer_rate:
-        value: 0.11
-        source_citation: >
-          Law 5510 Art. 81 – employer pension insurance premium 11% of gross wage.
-          (Long-term insurance branches, within ceiling). SGK 2022.
-        year: 2022
-      total_rate:
-        value: 0.20
-        source_citation: >
-          Employee 9% + Employer 11% = 20% for long-term (pension) insurance branches.
-          Total SGK payroll including health/unemployment: employee 14%, employer 20.5%.
-          Law 5510 Art. 80-81.
-        year: 2022
-      contribution_ceiling_aw_multiple:
-        value: 6.5
-        source_citation: >
-          SGK contribution ceiling is 7.5 × minimum wage in 2022.
-          Minimum wage 2022 ~TRY 5,004/month; ceiling ~TRY 37,530/month.
-          With AW ~TRY 13,000/month, ceiling ≈ 2.9 × AW. Using 6.5 due to ceiling exceeding AW.
-          Law 5510 Art. 82, SGK 2022.
-        year: 2022
-      contribution_base: "gross wage"
+        '
+      source_url: https://www.sgk.gov.tr
+      year: 2022
+    normal_retirement_age_female:
+      value: 65
+      source_citation: 'Law 5510 Art. 28 – NRA 65 for females under post-reform rules (born after 1976 reaching NRA 65 by
+        2048). Earlier cohorts have lower NRAs under transitional rules. OECD Pensions at a Glance 2023: Turkey.
 
-    benefits:
-      accrual_rate_per_year:
-        value: 0.02
-        source_citation: >
-          SGK pension formula under Law 5510: Monthly pension = coefficient × premium days ×
-          average monthly indexed earnings. For standard career, effective accrual ≈ 2%/year
-          of career-average indexed earnings. Coefficient rate ~0.02/year under Art. 29.
-          OECD PAG 2023: Turkey effective accrual approximated at 2%/year.
-        source_url: "https://www.sgk.gov.tr"
-        year: 2022
-      reference_wage: "career_average"
-      valorization: "wages"
-      indexation: "mixed"
-      minimum_benefit_aw_multiple:
-        value: 0.25
-        source_citation: >
-          SGK minimum pension (alt sınır aylık) approximately 55% of minimum wage in 2022.
-          Minimum wage 2022 ~TRY 60,000/year; AW ~TRY 156,000/year → minimum pension ≈ 21%.
-          Rounded to 25% including supplementary payments. SGK Minimum Pension Regulation 2022.
-        year: 2022
-      maximum_benefit_aw_multiple:
-        value: 0.90
-        source_citation: >
-          At 40 years contribution: 2% × 40 = 80% career-average replacement (approximate).
-          Higher for above-average earners under progressive formula. Capped effectively by
-          ceiling contribution base. Estimated 90% AW upper bound. SGK Law 5510.
-        year: 2022
+        '
+      year: 2022
+    vesting_years:
+      value: 20
+      source_citation: 'Law 5510 Art. 28 – minimum 7,200 premium payment days (20 years) required for old-age pension entitlement.
+        SGK 2022.
 
-    payout:
-      type: "annuity"
+        '
+      year: 2022
+    minimum_contribution_years:
+      value: 20
+      source_citation: Law 5510 – 7,200 premium days = 20 years minimum contribution period.
+      year: 2022
+  contributions:
+    employee_rate:
+      value: 0.09
+      source_citation: 'Law 5510 Art. 80-81 – employee pension insurance premium 9% of gross wage (within ceiling). Long-term
+        insurance branches (disability, old-age, death). SGK Premium Rates Table 2022.
 
+        '
+      source_url: https://www.sgk.gov.tr
+      year: 2022
+    employer_rate:
+      value: 0.11
+      source_citation: 'Law 5510 Art. 81 – employer pension insurance premium 11% of gross wage. (Long-term insurance branches,
+        within ceiling). SGK 2022.
+
+        '
+      year: 2022
+    total_rate:
+      value: 0.2
+      source_citation: 'Employee 9% + Employer 11% = 20% for long-term (pension) insurance branches. Total SGK payroll including
+        health/unemployment: employee 14%, employer 20.5%. Law 5510 Art. 80-81.
+
+        '
+      year: 2022
+    contribution_ceiling_aw_multiple:
+      value: 6.5
+      source_citation: 'SGK contribution ceiling is 7.5 × minimum wage in 2022. Minimum wage 2022 ~TRY 5,004/month; ceiling
+        ~TRY 37,530/month. With AW ~TRY 13,000/month, ceiling ≈ 2.9 × AW. Using 6.5 due to ceiling exceeding AW. Law 5510
+        Art. 82, SGK 2022.
+
+        '
+      year: 2022
+    contribution_base: gross wage
+  benefits:
+    accrual_rate_per_year:
+      value: 0.02
+      source_citation: 'SGK pension formula under Law 5510: Monthly pension = coefficient × premium days × average monthly
+        indexed earnings. For standard career, effective accrual ≈ 2%/year of career-average indexed earnings. Coefficient
+        rate ~0.02/year under Art. 29. OECD PAG 2023: Turkey effective accrual approximated at 2%/year.
+
+        '
+      source_url: https://www.sgk.gov.tr
+      year: 2022
+    reference_wage: career_average
+    valorization: wages
+    indexation: mixed
+    minimum_benefit_aw_multiple:
+      value: 0.25
+      source_citation: 'SGK minimum pension (alt sınır aylık) approximately 55% of minimum wage in 2022. Minimum wage 2022
+        ~TRY 60,000/year; AW ~TRY 156,000/year → minimum pension ≈ 21%. Rounded to 25% including supplementary payments. SGK
+        Minimum Pension Regulation 2022.
+
+        '
+      year: 2022
+    maximum_benefit_aw_multiple:
+      value: 0.9
+      source_citation: 'At 40 years contribution: 2% × 40 = 80% career-average replacement (approximate). Higher for above-average
+        earners under progressive formula. Capped effectively by ceiling contribution base. Estimated 90% AW upper bound.
+        SGK Law 5510.
+
+        '
+      year: 2022
+  payout:
+    type: annuity
+- scheme_id: TUR_YAŞLIBAKIM
+  name: Elderly Social Assistance (65 Yaş Aylığı) – Non-Contributory
+  tier: first
+  type: targeted
+  coverage: Turkish citizens aged 65+ without any social insurance pension and with income below means-test threshold; approximately
+    1.2 million recipients (2023)
+  active: true
+  eligibility:
+    normal_retirement_age_male:
+      value: 65
+      source_citation: 'Law 2022/2657 Turkey: 65 Yaş Aylığı (elderly monthly allowance) payable from age 65 to low-income
+        non-pensioners.'
+      year: 2023
+    normal_retirement_age_female:
+      value: 65
+      source_citation: 'Law 2022/2657 Turkey: elderly allowance NRA 65 for both sexes.'
+      year: 2023
+  benefits:
+    minimum_benefit_aw_multiple:
+      value: 0.046
+      source_citation: 'SYDGM Turkey: 65 Yaş Aylığı TRY 3,000/month (2023) × 12 = TRY 36,000 ≈ 4.6% of AW (TRY 780,000).'
+      year: 2023
+    maximum_benefit_aw_multiple:
+      value: 0.046
+      source_citation: 'Turkey elderly allowance: flat TRY 3,000/month; no top-up.'
+      year: 2023
+    indexation: CPI
+  payout:
+    type: annuity
+    notes: Monthly means-tested payment from Ministry of Family and Social Services (ASPB); funded from general revenues.
 taxes:
-  worker_income_tax_treatment: "EET"
-  income_tax_on_pension: >
-    SGK pension income is subject to income tax in Turkey under the Income Tax Law No. 193.
-    However, pensions up to a threshold (approximately TRY 70,000/year in 2022) are exempt.
-    Above the threshold, progressive rates of 15-40% apply. Effective rate for average pensioner
-    estimated at 8-12%. Income Tax Law No. 193, Turkey.
+  worker_income_tax_treatment: EET
+  income_tax_on_pension: 'SGK pension income is subject to income tax in Turkey under the Income Tax Law No. 193. However,
+    pensions up to a threshold (approximately TRY 70,000/year in 2022) are exempt. Above the threshold, progressive rates
+    of 15-40% apply. Effective rate for average pensioner estimated at 8-12%. Income Tax Law No. 193, Turkey.
+
+    '
   simplified_net_rate:
-    value: 0.10
-    source_citation: >
-      Approximate effective income tax rate on average SGK pension in 2022.
-      Pensions exempt up to ~TRY 70,000; progressive rates 15-40% above threshold.
-      Effective rate for average pension (TRY 100,000-130,000/year) ~10%.
-      Turkish Income Tax Law No. 193, 2022.
+    value: 0.1
+    source_citation: 'Approximate effective income tax rate on average SGK pension in 2022. Pensions exempt up to ~TRY 70,000;
+      progressive rates 15-40% above threshold. Effective rate for average pension (TRY 100,000-130,000/year) ~10%. Turkish
+      Income Tax Law No. 193, 2022.
+
+      '
     year: 2022
-
 average_earnings:
-  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
-  ilostat_ref_area: "TUR"
-  ilostat_transformation: "x * 12"
+  ilostat_series_id: EAR_4MTH_SEX_ECO_CUR_NB
+  ilostat_ref_area: TUR
+  ilostat_transformation: x * 12
   manual_value: 156000.0
-  currency: "Turkish Lira"
+  currency: Turkish Lira
   year: 2022
-  source_citation: >
-    TurkStat Labour Force Survey 2022 – average gross monthly earnings of formal wage employees
-    ~TRY 13,000/month × 12 = TRY 156,000/year (2022 nominal; high inflation environment ~72%).
-    Cross-checked with ILOSTAT EAR_4MTH_SEX_ECO_CUR_NB Turkey 2022.
-  source_url: "https://www.sgk.gov.tr"
-  notes: "Turkey experienced ~72% CPI inflation in 2022; nominal wages rose sharply. Real wages declined."
+  source_citation: 'TurkStat Labour Force Survey 2022 – average gross monthly earnings of formal wage employees ~TRY 13,000/month
+    × 12 = TRY 156,000/year (2022 nominal; high inflation environment ~72%). Cross-checked with ILOSTAT EAR_4MTH_SEX_ECO_CUR_NB
+    Turkey 2022.
 
-
-# =============================================================================
-# Worker types
-# =============================================================================
-
+    '
+  source_url: https://www.sgk.gov.tr
+  notes: Turkey experienced ~72% CPI inflation in 2022; nominal wages rose sharply. Real wages declined.
 worker_types:
-
   private_employee:
-    label: "Private sector employee"
+    label: Private sector employee
     coverage_status: mandatory
-    scheme_ids: [SGK_DB]
-    source_citation: "Default: same as main scheme definition."
+    scheme_ids:
+    - SGK_DB
+    source_citation: 'Default: same as main scheme definition.'
     notes: null
-
   self_employed:
-    label: "Self-employed"
+    label: Self-employed
     coverage_status: unknown
     scheme_ids: []
-    source_citation: "Coverage status not yet researched; placeholder."
-    notes: "TODO: verify self-employed coverage under national law."
+    source_citation: Coverage status not yet researched; placeholder.
+    notes: 'TODO: verify self-employed coverage under national law.'
+notes: 'Turkey''s pension system underwent major reforms in 2006 (Law 5510) unifying three previously separate schemes (SSK
+  for private sector, Bağ-Kur for self-employed, Emekli Sandığı for civil servants) into SGK. A complex transitional regime
+  remains for pre-reform cohorts. The NRA is being phased up to 65; effective retirement ages in 2022 were considerably lower
+  for cohorts grandfathered under old rules. Individual Pension System (BES) operates as a voluntary third pillar with government
+  matching contributions (25-30%). The SGK replacement rate approximation of 2%/year on career average is a simplification
+  of the actual premium-day formula.
 
-notes: >
-  Turkey's pension system underwent major reforms in 2006 (Law 5510) unifying three previously
-  separate schemes (SSK for private sector, Bağ-Kur for self-employed, Emekli Sandığı for civil
-  servants) into SGK. A complex transitional regime remains for pre-reform cohorts.
-  The NRA is being phased up to 65; effective retirement ages in 2022 were considerably lower
-  for cohorts grandfathered under old rules. Individual Pension System (BES) operates as a
-  voluntary third pillar with government matching contributions (25-30%). The SGK replacement rate
-  approximation of 2%/year on career average is a simplification of the actual premium-day formula.
+  '

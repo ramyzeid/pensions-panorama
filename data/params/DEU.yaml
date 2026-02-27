@@ -1,139 +1,164 @@
-# =============================================================================
-# Germany (DEU) – Pension System Parameters
-# =============================================================================
-# Primary scheme: Gesetzliche Rentenversicherung (GRV) – Social Code Book VI
-# Sources:
-#   [1] OECD Pensions at a Glance 2023 – Germany country note
-#   [2] Deutsche Rentenversicherung Bund (DRV)
-# =============================================================================
-
 metadata:
-  country_name: "Germany"
-  iso3: "DEU"
-  iso2: "DE"
-  currency: "Euro"
-  currency_code: "EUR"
+  country_name: Germany
+  iso3: DEU
+  iso2: DE
+  currency: Euro
+  currency_code: EUR
   reference_year: 2023
-  wb_region: "ECS"
-  wb_income_level: "HIC"
+  wb_region: ECS
+  wb_income_level: HIC
   un_location_id: 276
   sources:
-    - "OECD Pensions at a Glance 2023"
-    - "Deutsche Rentenversicherung Bund – Rentenversicherung in Zeitreihen 2023"
-    - "Sozialgesetzbuch (SGB) VI"
-  last_reviewed: "2024-01-01"
-
+  - OECD Pensions at a Glance 2023
+  - Deutsche Rentenversicherung Bund – Rentenversicherung in Zeitreihen 2023
+  - Sozialgesetzbuch (SGB) VI
+  last_reviewed: '2024-01-01'
 schemes:
-  - scheme_id: "DEU_GRV"
-    name: "Gesetzliche Rentenversicherung (Statutory Pension Insurance)"
-    tier: "first"
-    type: "points"
-    coverage: "Private sector employees, public sector workers not covered by Beamtenversorgung, and self-employed on a voluntary/compulsory basis"
-    active: true
-
-    eligibility:
-      normal_retirement_age_male:
-        value: 67
-        source_citation: "OECD Pensions at a Glance 2023 – Germany: NRA 67 for males (fully phased in by 2031)."
-        year: 2023
-      normal_retirement_age_female:
-        value: 67
-        source_citation: "OECD Pensions at a Glance 2023 – Germany: NRA 67 for females (fully phased in by 2031)."
-        year: 2023
-      vesting_years:
-        value: 5
-        source_citation: "OECD Pensions at a Glance 2023 – Germany country note: 5 qualifying years for standard pension."
-        year: 2023
-      minimum_contribution_years:
-        value: 45
-        source_citation: "OECD Pensions at a Glance 2023 – Germany: 45 years for early retirement at 63 (Altersrente für besonders langjährig Versicherte)."
-        year: 2023
-      notes: null
-
-    contributions:
-      employee_rate:
-        value: 0.093
-        source_citation: "OECD Pensions at a Glance 2023 – Germany: employee contribution rate 9.3% of gross earnings."
-        year: 2023
-      employer_rate:
-        value: 0.093
-        source_citation: "OECD Pensions at a Glance 2023 – Germany: employer contribution rate 9.3% of gross earnings."
-        year: 2023
-      total_rate:
-        value: null
-        source_citation: "Derived from employee + employer rates (18.6% total)."
-        year: 2023
-      contribution_ceiling_aw_multiple:
-        value: 1.74
-        source_citation: "OECD Pensions at a Glance 2023 – Germany: contribution ceiling (Beitragsbemessungsgrenze) approximately 1.74× average wage in West Germany (EUR 87,600 in 2023)."
-        year: 2023
-      contribution_base: "gross earnings"
-      notes: "Ceiling differs between West and East Germany; West ceiling used here."
-
-    benefits:
-      accrual_rate_per_year:
-        value: null
-        source_citation: "OECD Pensions at a Glance 2023 – Germany: points system; annual pension points (Entgeltpunkte) determined by ratio of individual earnings to average earnings, not a fixed accrual rate."
-        year: 2023
-      reference_wage: "career_average"
-      valorization: "wages"
-      flat_rate_aw_multiple: null
-      flat_rate_absolute: null
-      indexation: "wages"
-      minimum_benefit_aw_multiple:
-        value: null
-        source_citation: "OECD Pensions at a Glance 2023 – Germany: no statutory minimum pension; Grundsicherung im Alter provides means-tested safety net."
-        year: 2023
-      maximum_benefit_aw_multiple:
-        value: null
-        source_citation: "OECD Pensions at a Glance 2023 – Germany: no explicit maximum benefit; constrained by contribution ceiling."
-        year: 2023
-      notes: "Pension = total Entgeltpunkte × Zugangsfaktor × Rentenartfaktor × current pension value (Rentenwert). Each year at average earnings = 1 point."
-
-    payout:
-      type: "annuity"
-      notes: null
-
+- scheme_id: DEU_GRV
+  name: Gesetzliche Rentenversicherung (Statutory Pension Insurance)
+  tier: first
+  type: points
+  coverage: Private sector employees, public sector workers not covered by Beamtenversorgung, and self-employed on a voluntary/compulsory
+    basis
+  active: true
+  eligibility:
+    normal_retirement_age_male:
+      value: 67
+      source_citation: 'OECD Pensions at a Glance 2023 – Germany: NRA 67 for males (fully phased in by 2031).'
+      year: 2023
+    normal_retirement_age_female:
+      value: 67
+      source_citation: 'OECD Pensions at a Glance 2023 – Germany: NRA 67 for females (fully phased in by 2031).'
+      year: 2023
+    vesting_years:
+      value: 5
+      source_citation: 'OECD Pensions at a Glance 2023 – Germany country note: 5 qualifying years for standard pension.'
+      year: 2023
+    minimum_contribution_years:
+      value: 45
+      source_citation: 'OECD Pensions at a Glance 2023 – Germany: 45 years for early retirement at 63 (Altersrente für besonders
+        langjährig Versicherte).'
+      year: 2023
+    notes: null
+  contributions:
+    employee_rate:
+      value: 0.093
+      source_citation: 'OECD Pensions at a Glance 2023 – Germany: employee contribution rate 9.3% of gross earnings.'
+      year: 2023
+    employer_rate:
+      value: 0.093
+      source_citation: 'OECD Pensions at a Glance 2023 – Germany: employer contribution rate 9.3% of gross earnings.'
+      year: 2023
+    total_rate:
+      value: null
+      source_citation: Derived from employee + employer rates (18.6% total).
+      year: 2023
+    contribution_ceiling_aw_multiple:
+      value: 1.74
+      source_citation: 'OECD Pensions at a Glance 2023 – Germany: contribution ceiling (Beitragsbemessungsgrenze) approximately
+        1.74× average wage in West Germany (EUR 87,600 in 2023).'
+      year: 2023
+    contribution_base: gross earnings
+    notes: Ceiling differs between West and East Germany; West ceiling used here.
+  benefits:
+    accrual_rate_per_year:
+      value: null
+      source_citation: 'OECD Pensions at a Glance 2023 – Germany: points system; annual pension points (Entgeltpunkte) determined
+        by ratio of individual earnings to average earnings, not a fixed accrual rate.'
+      year: 2023
+    reference_wage: career_average
+    valorization: wages
+    flat_rate_aw_multiple: null
+    flat_rate_absolute: null
+    indexation: wages
+    minimum_benefit_aw_multiple:
+      value: null
+      source_citation: 'OECD Pensions at a Glance 2023 – Germany: no statutory minimum pension; Grundsicherung im Alter provides
+        means-tested safety net.'
+      year: 2023
+    maximum_benefit_aw_multiple:
+      value: null
+      source_citation: 'OECD Pensions at a Glance 2023 – Germany: no explicit maximum benefit; constrained by contribution
+        ceiling.'
+      year: 2023
+    notes: Pension = total Entgeltpunkte × Zugangsfaktor × Rentenartfaktor × current pension value (Rentenwert). Each year
+      at average earnings = 1 point.
+  payout:
+    type: annuity
+    notes: null
+- scheme_id: DEU_GRUNDSICHERUNG
+  name: Grundsicherung im Alter (Basic Income Security) – Means-Tested
+  tier: first
+  type: targeted
+  coverage: German residents aged 65+ whose total income falls below the socio-cultural minimum; approximately 650,000 elderly
+    recipients (2023)
+  active: true
+  eligibility:
+    normal_retirement_age_male:
+      value: 65
+      source_citation: 'SGB XII Germany: Grundsicherung im Alter payable from age 65+ (gradually from 65 to 67).'
+      year: 2023
+    normal_retirement_age_female:
+      value: 65
+      source_citation: 'SGB XII Germany: Grundsicherung im Alter NRA 65 for both sexes.'
+      year: 2023
+  benefits:
+    minimum_benefit_aw_multiple:
+      value: 0.193
+      source_citation: 'BMAS Germany: Grundsicherung standard need €563/month (2023) + housing/heating ≈ €930/month total
+        ≈ 19.3% of AW (€58,000).'
+      year: 2023
+    maximum_benefit_aw_multiple:
+      value: 0.193
+      source_citation: 'BMAS Germany: benefit tops up total income to subsistence minimum; reduces euro-for-euro with other
+        income.'
+      year: 2023
+    indexation: CPI
+  payout:
+    type: annuity
+    notes: Monthly payment from local authority social offices (Sozialamt); asset-tested and income-tested. Does not require
+      asset claw-back from adult children since 2020.
 taxes:
-  worker_income_tax_treatment: "EET"
-  income_tax_on_pension: "Pensions increasingly subject to income tax under transitional rules (Alterseinkünftegesetz 2005). For those retiring in 2023, 82.5% of pension income is taxable; rising to 100% by 2040."
+  worker_income_tax_treatment: EET
+  income_tax_on_pension: Pensions increasingly subject to income tax under transitional rules (Alterseinkünftegesetz 2005).
+    For those retiring in 2023, 82.5% of pension income is taxable; rising to 100% by 2040.
   simplified_net_rate:
     value: 0.15
-    source_citation: "Estimated effective pension tax rate for average retiree based on OECD Taxing Wages 2023 and German income tax schedule."
+    source_citation: Estimated effective pension tax rate for average retiree based on OECD Taxing Wages 2023 and German income
+      tax schedule.
     year: 2023
   notes: null
-
 average_earnings:
-  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
-  ilostat_ref_area: "DEU"
-  ilostat_transformation: "x * 12"
+  ilostat_series_id: EAR_4MTH_SEX_ECO_CUR_NB
+  ilostat_ref_area: DEU
+  ilostat_transformation: x * 12
   manual_value: 45358
-  currency: "Euro"
+  currency: Euro
   year: 2022
-  source_citation: "OECD Average Annual Wages database 2022 – Germany: EUR 45,358 (average gross annual wage)."
+  source_citation: 'OECD Average Annual Wages database 2022 – Germany: EUR 45,358 (average gross annual wage).'
   source_url: null
-
 worker_types:
   private_employee:
-    label: "Private sector employee"
+    label: Private sector employee
     coverage_status: mandatory
-    scheme_ids: ["DEU_GRV"]
-    source_citation: "Mandatory pension coverage for private sector employees under SGB VI – Deutsche Rentenversicherung."
+    scheme_ids:
+    - DEU_GRV
+    source_citation: Mandatory pension coverage for private sector employees under SGB VI – Deutsche Rentenversicherung.
     source_url: null
     notes: null
-
   civil_servant:
-    label: "Civil servant (Beamter)"
+    label: Civil servant (Beamter)
     coverage_status: excluded
     scheme_ids: []
-    source_citation: "Civil servants (Beamte) are covered under the separate Beamtenversorgung scheme, not GRV – OECD Pensions at a Glance 2023 Germany."
-    notes: "Beamte receive direct government pension (Beamtenversorgung) funded from general budget; not covered by GRV."
-
+    source_citation: Civil servants (Beamte) are covered under the separate Beamtenversorgung scheme, not GRV – OECD Pensions
+      at a Glance 2023 Germany.
+    notes: Beamte receive direct government pension (Beamtenversorgung) funded from general budget; not covered by GRV.
   self_employed:
-    label: "Self-employed"
+    label: Self-employed
     coverage_status: voluntary
-    scheme_ids: ["DEU_GRV"]
-    source_citation: "Self-employed may join GRV voluntarily; certain professions (artists, craftsmen) are compulsorily insured – SGB VI § 2."
-    notes: "Coverage varies; some professions compulsorily covered, others voluntary."
-
+    scheme_ids:
+    - DEU_GRV
+    source_citation: Self-employed may join GRV voluntarily; certain professions (artists, craftsmen) are compulsorily insured
+      – SGB VI § 2.
+    notes: Coverage varies; some professions compulsorily covered, others voluntary.
 notes: null

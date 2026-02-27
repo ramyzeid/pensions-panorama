@@ -862,6 +862,53 @@ def _scheme_type_label(stype: SchemeType) -> str:
     return d.get(stype, stype.value)
 
 
+# World Bank pillar labels (derived from scheme type)
+_WB_PILLAR_EN = {
+    "basic":    "Pillar 0 – Non-contributory",
+    "targeted": "Pillar 0 – Non-contributory",
+    "minimum":  "Pillar 0 – Minimum Guarantee",
+    "DB":       "Pillar 1 – Mandatory public",
+    "NDC":      "Pillar 1 – Mandatory public",
+    "points":   "Pillar 1 – Mandatory public",
+    "DC":       "Pillar 2 – Mandatory funded",
+}
+_WB_PILLAR_AR = {
+    "basic":    "الركيزة 0 – غير تشاركية",
+    "targeted": "الركيزة 0 – غير تشاركية",
+    "minimum":  "الركيزة 0 – ضمان الحد الأدنى",
+    "DB":       "الركيزة 1 – عامة إلزامية",
+    "NDC":      "الركيزة 1 – عامة إلزامية",
+    "points":   "الركيزة 1 – عامة إلزامية",
+    "DC":       "الركيزة 2 – ممولة إلزامية",
+}
+_WB_PILLAR_FR = {
+    "basic":    "Pilier 0 – Non contributif",
+    "targeted": "Pilier 0 – Non contributif",
+    "minimum":  "Pilier 0 – Garantie minimum",
+    "DB":       "Pilier 1 – Public obligatoire",
+    "NDC":      "Pilier 1 – Public obligatoire",
+    "points":   "Pilier 1 – Public obligatoire",
+    "DC":       "Pilier 2 – Capitalisé obligatoire",
+}
+
+
+def _wb_pillar_label(s: "SchemeComponent") -> str:
+    lang = st.session_state.get("lang", "en")
+    d = _WB_PILLAR_AR if lang == "ar" else (_WB_PILLAR_FR if lang == "fr" else _WB_PILLAR_EN)
+    # check if DC but coverage or tier hints at voluntary → Pillar 3
+    coverage_lower = (s.coverage or "").lower()
+    is_voluntary = (
+        s.type == SchemeType.DC
+        and ("voluntary" in coverage_lower or "opt" in coverage_lower)
+        and s.tier and s.tier.value == "second"
+    )
+    if is_voluntary:
+        if lang == "ar":    return "الركيزة 3 – طوعية"
+        elif lang == "fr":  return "Pilier 3 – Volontaire"
+        else:               return "Pillar 3 – Voluntary"
+    return d.get(s.type.value, "")
+
+
 def _tier_label(tier) -> str:
     d = _TIER_LABELS_AR if st.session_state.get("lang") == "ar" else _TIER_LABELS_EN
     return d.get(tier.value if tier else "", "—") if tier else "—"
@@ -1746,9 +1793,10 @@ def _render_scheme_card(s: SchemeComponent, currency_code: str) -> None:
 
     active_label = t("label_active") if s.active else t("label_inactive")
     display_name = _expand_scheme_name(s.name)
+    pillar_label = _wb_pillar_label(s)
     st.markdown(
         f"#### {display_name}  \n"
-        f"`{_tier_label(s.tier)}` &nbsp; `{_scheme_type_label(s.type)}` &nbsp; {active_label}"
+        f"`{pillar_label}` &nbsp; `{_scheme_type_label(s.type)}` &nbsp; `{_tier_label(s.tier)}` &nbsp; {active_label}"
     )
 
     if s.coverage:
@@ -2353,7 +2401,7 @@ def tab_country(data: dict) -> None:
     st.subheader(schemes_header)
     for i, s in enumerate(params.schemes):
         with st.expander(
-            f"**{_expand_scheme_name(s.name)}** — {_scheme_type_label(s.type)} ({_tier_label(s.tier)})",
+            f"**{_expand_scheme_name(s.name)}** — {_wb_pillar_label(s)} · {_scheme_type_label(s.type)}",
             expanded=(i == 0),
         ):
             _render_scheme_card(s, m.currency_code)

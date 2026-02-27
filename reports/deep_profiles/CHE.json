@@ -1,9 +1,9 @@
 {
   "iso3": "CHE",
   "country_name": "Switzerland",
-  "last_updated": "2026-02-27T03:29:39.048792Z",
+  "last_updated": "2026-02-27T04:30:44.063507Z",
   "narrative": {
-    "text": "Switzerland is a Europe and Central Asia country with a DB-type pension system centred on the Old Age and Survivors Insurance (AHV/AVS) \u2013 DB Earnings-Related. The normal retirement age is 65 for men and 64 for women. Contributions total 11.0% of insurable earnings (5.5% employee, 5.5% employer).",
+    "text": "Switzerland is a Europe and Central Asia country with a DB-type pension system centred on the Old Age and Survivors Insurance (AHV/AVS) \u2013 DB Earnings-Related. The system includes 2 schemes: Old Age and Survivors Insurance (AHV/AVS) \u2013 DB Earnings-Related, Occupational Pension (BVG/LPP) \u2013 Mandatory. The normal retirement age is 65 for men and 64 for women. Contributions total 11.0% of insurable earnings (5.5% employee, 5.5% employer).",
     "sources": [
       {
         "source_name": "OECD Pensions at a Glance 2023 \u2013 Switzerland",
@@ -26,9 +26,9 @@
       "key": "year",
       "label": "Year",
       "cell": {
-        "value": null,
+        "value": 2023,
         "unit": "year",
-        "year": null,
+        "year": 2023,
         "source": {
           "source_name": "World Development Indicators (World Bank)",
           "source_url": "https://data.worldbank.org",
@@ -43,14 +43,14 @@
       "key": "gdp_pc_lcu",
       "label": "GDP per capita (LCU)",
       "cell": {
-        "value": null,
+        "value": 90409.2531046296,
         "unit": "LCU",
-        "year": null,
+        "year": 2023,
         "source": {
           "source_name": "World Development Indicators (World Bank)",
           "source_url": "https://data.worldbank.org/indicator/NY.GDP.PCAP.CN?locations=CHE",
           "indicator_id": "NY.GDP.PCAP.CN",
-          "year": null,
+          "year": 2023,
           "notes": null
         },
         "notes": null
@@ -60,14 +60,14 @@
       "key": "gdp_pc_usd",
       "label": "GDP per capita (USD)",
       "cell": {
-        "value": null,
+        "value": 100623.549627296,
         "unit": "USD",
-        "year": null,
+        "year": 2023,
         "source": {
           "source_name": "World Development Indicators (World Bank)",
           "source_url": "https://data.worldbank.org/indicator/NY.GDP.PCAP.CD?locations=CHE",
           "indicator_id": "NY.GDP.PCAP.CD",
-          "year": null,
+          "year": 2023,
           "notes": null
         },
         "notes": null
@@ -77,14 +77,14 @@
       "key": "pop_65_total",
       "label": "Population age 65+ (total)",
       "cell": {
-        "value": null,
+        "value": 1743221.0,
         "unit": "persons",
-        "year": null,
+        "year": 2023,
         "source": {
           "source_name": "World Development Indicators (World Bank)",
           "source_url": "https://data.worldbank.org/indicator/SP.POP.65UP.TO?locations=CHE",
           "indicator_id": "SP.POP.65UP.TO",
-          "year": null,
+          "year": 2023,
           "notes": null
         },
         "notes": null
@@ -94,14 +94,14 @@
       "key": "pop_65_pct",
       "label": "Population age 65+ (% of total population)",
       "cell": {
-        "value": null,
+        "value": 19.6113808360035,
         "unit": "%",
-        "year": null,
+        "year": 2023,
         "source": {
           "source_name": "World Development Indicators (World Bank)",
           "source_url": "https://data.worldbank.org/indicator/SP.POP.65UP.TO.ZS?locations=CHE",
           "indicator_id": "SP.POP.65UP.TO.ZS",
-          "year": null,
+          "year": 2023,
           "notes": null
         },
         "notes": null
@@ -145,14 +145,14 @@
       "key": "pension_fund_assets_gdp",
       "label": "Pension fund assets (% of GDP)",
       "cell": {
-        "value": null,
+        "value": 166.00632,
         "unit": "%",
-        "year": null,
+        "year": 2020,
         "source": {
           "source_name": "Global Financial Development Database \u2013 World Bank",
           "source_url": "https://data.worldbank.org/indicator/GFDD.DI.13",
           "indicator_id": "GFDD.DI.13",
-          "year": null,
+          "year": 2020,
           "notes": null
         },
         "notes": null
@@ -165,9 +165,15 @@
       "label": "Social insurance coverage (% of population)",
       "cell": {
         "value": null,
-        "unit": null,
+        "unit": "%",
         "year": null,
-        "source": null,
+        "source": {
+          "source_name": "ASPIRE \u2013 World Bank",
+          "source_url": "https://www.worldbank.org/en/data/datatopics/aspire",
+          "indicator_id": "per_si_allsi.cov_pop_tot",
+          "year": null,
+          "notes": null
+        },
         "notes": null
       }
     },
@@ -176,9 +182,15 @@
       "label": "Contributory pension coverage (% of population)",
       "cell": {
         "value": null,
-        "unit": null,
+        "unit": "%",
         "year": null,
-        "source": null,
+        "source": {
+          "source_name": "ASPIRE \u2013 World Bank",
+          "source_url": "https://www.worldbank.org/en/data/datatopics/aspire",
+          "indicator_id": "per_si_cp.cov_pop_tot",
+          "year": null,
+          "notes": null
+        },
         "notes": null
       }
     },
@@ -186,10 +198,16 @@
       "key": "pension_fund_assets_gdp",
       "label": "Pension fund assets (% of GDP)",
       "cell": {
-        "value": null,
-        "unit": null,
-        "year": null,
-        "source": null,
+        "value": 166.00632,
+        "unit": "%",
+        "year": 2020,
+        "source": {
+          "source_name": "Global Financial Development Database \u2013 World Bank",
+          "source_url": "https://data.worldbank.org/indicator/GFDD.DI.13",
+          "indicator_id": "GFDD.DI.13",
+          "year": 2020,
+          "notes": null
+        },
         "notes": null
       }
     },
@@ -217,6 +235,100 @@
     }
   ],
   "schemes": [
+    {
+      "scheme_id": "CHE_BVG",
+      "scheme_name": "Occupational Pension (BVG/LPP) \u2013 Mandatory",
+      "scheme_type_group": "dc",
+      "attributes": {
+        "implementing_agency": {
+          "value": "Occupational Pension (BVG/LPP) \u2013 Mandatory",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "target_population": {
+          "value": "All employees earning more than CHF 22,050/year (entry threshold 2023); mandatory for private sector employees",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "benefit_plan_type": {
+          "value": "DC",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "financing_mechanism": {
+          "value": "Fully funded",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "contrib_employee": {
+          "value": 7.5,
+          "unit": "%",
+          "year": null,
+          "source": {
+            "source_name": "OECD PAG 2023 Switzerland: BVG minimum contributions age-dependent (7% age 25-34, 10% age 35-44, 15% age 45-54, 18% age 55-65); weighted average ~15% total, split equally \u2248 7.5% employee.",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        },
+        "contrib_employer": {
+          "value": 7.5,
+          "unit": "%",
+          "year": null,
+          "source": {
+            "source_name": "OECD PAG 2023 Switzerland: BVG minimum contributions age-dependent (7% age 25-34, 10% age 35-44, 15% age 45-54, 18% age 55-65); weighted average ~15% total, split equally \u2248 7.5% employee.",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        },
+        "contrib_total": {
+          "value": 15.0,
+          "unit": "%",
+          "year": null,
+          "source": null,
+          "notes": "Derived: employee + employer"
+        },
+        "ret_age_male": {
+          "value": 65,
+          "unit": null,
+          "year": null,
+          "source": {
+            "source_name": "OECD PAG 2023 Switzerland: BVG NRA 65 for men; women moving from 64 to 65 by 2028 (AVS 21 reform).",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        },
+        "ret_age_female": {
+          "value": 64,
+          "unit": null,
+          "year": null,
+          "source": {
+            "source_name": "OECD PAG 2023 Switzerland: BVG NRA 65 for men; women moving from 64 to 65 by 2028 (AVS 21 reform).",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        }
+      }
+    },
     {
       "scheme_id": "CHE_AHV",
       "scheme_name": "Old Age and Survivors Insurance (AHV/AVS) \u2013 DB Earnings-Related",

@@ -1,9 +1,9 @@
 {
   "iso3": "USA",
   "country_name": "United States",
-  "last_updated": "2026-02-27T03:29:39.412302Z",
+  "last_updated": "2026-02-27T04:30:47.289726Z",
   "narrative": {
-    "text": "United States is a North America country with a DB-type pension system centred on the Old-Age, Survivors, and Disability Insurance (Social Security OASDI). The normal retirement age is 67 for both men and women. Contributions total 12.4% of insurable earnings (6.2% employee, 6.2% employer).",
+    "text": "United States is a North America country with a DB-type pension system centred on the Old-Age, Survivors, and Disability Insurance (Social Security OASDI). The system includes 2 schemes: Old-Age, Survivors, and Disability Insurance (Social Security OASDI), Supplemental Security Income (SSI) \u2013 Means-Tested. The normal retirement age is 67 for both men and women. Contributions total 12.4% of insurable earnings (6.2% employee, 6.2% employer).",
     "sources": [
       {
         "source_name": "OECD Pensions at a Glance 2023",
@@ -26,9 +26,9 @@
       "key": "year",
       "label": "Year",
       "cell": {
-        "value": null,
+        "value": 2023,
         "unit": "year",
-        "year": null,
+        "year": 2023,
         "source": {
           "source_name": "World Development Indicators (World Bank)",
           "source_url": "https://data.worldbank.org",
@@ -43,14 +43,14 @@
       "key": "gdp_pc_lcu",
       "label": "GDP per capita (LCU)",
       "cell": {
-        "value": null,
+        "value": 81032.262117545,
         "unit": "LCU",
-        "year": null,
+        "year": 2023,
         "source": {
           "source_name": "World Development Indicators (World Bank)",
           "source_url": "https://data.worldbank.org/indicator/NY.GDP.PCAP.CN?locations=USA",
           "indicator_id": "NY.GDP.PCAP.CN",
-          "year": null,
+          "year": 2023,
           "notes": null
         },
         "notes": null
@@ -60,14 +60,14 @@
       "key": "gdp_pc_usd",
       "label": "GDP per capita (USD)",
       "cell": {
-        "value": null,
+        "value": 81032.262117545,
         "unit": "USD",
-        "year": null,
+        "year": 2023,
         "source": {
           "source_name": "World Development Indicators (World Bank)",
           "source_url": "https://data.worldbank.org/indicator/NY.GDP.PCAP.CD?locations=USA",
           "indicator_id": "NY.GDP.PCAP.CD",
-          "year": null,
+          "year": 2023,
           "notes": null
         },
         "notes": null
@@ -77,14 +77,14 @@
       "key": "pop_65_total",
       "label": "Population age 65+ (total)",
       "cell": {
-        "value": null,
+        "value": 58711454.0,
         "unit": "persons",
-        "year": null,
+        "year": 2023,
         "source": {
           "source_name": "World Development Indicators (World Bank)",
           "source_url": "https://data.worldbank.org/indicator/SP.POP.65UP.TO?locations=USA",
           "indicator_id": "SP.POP.65UP.TO",
-          "year": null,
+          "year": 2023,
           "notes": null
         },
         "notes": null
@@ -94,14 +94,14 @@
       "key": "pop_65_pct",
       "label": "Population age 65+ (% of total population)",
       "cell": {
-        "value": null,
+        "value": 17.4318194823539,
         "unit": "%",
-        "year": null,
+        "year": 2023,
         "source": {
           "source_name": "World Development Indicators (World Bank)",
           "source_url": "https://data.worldbank.org/indicator/SP.POP.65UP.TO.ZS?locations=USA",
           "indicator_id": "SP.POP.65UP.TO.ZS",
-          "year": null,
+          "year": 2023,
           "notes": null
         },
         "notes": null
@@ -145,14 +145,14 @@
       "key": "pension_fund_assets_gdp",
       "label": "Pension fund assets (% of GDP)",
       "cell": {
-        "value": null,
+        "value": 169.51784,
         "unit": "%",
-        "year": null,
+        "year": 2020,
         "source": {
           "source_name": "Global Financial Development Database \u2013 World Bank",
           "source_url": "https://data.worldbank.org/indicator/GFDD.DI.13",
           "indicator_id": "GFDD.DI.13",
-          "year": null,
+          "year": 2020,
           "notes": null
         },
         "notes": null
@@ -165,9 +165,15 @@
       "label": "Social insurance coverage (% of population)",
       "cell": {
         "value": null,
-        "unit": null,
+        "unit": "%",
         "year": null,
-        "source": null,
+        "source": {
+          "source_name": "ASPIRE \u2013 World Bank",
+          "source_url": "https://www.worldbank.org/en/data/datatopics/aspire",
+          "indicator_id": "per_si_allsi.cov_pop_tot",
+          "year": null,
+          "notes": null
+        },
         "notes": null
       }
     },
@@ -176,9 +182,15 @@
       "label": "Contributory pension coverage (% of population)",
       "cell": {
         "value": null,
-        "unit": null,
+        "unit": "%",
         "year": null,
-        "source": null,
+        "source": {
+          "source_name": "ASPIRE \u2013 World Bank",
+          "source_url": "https://www.worldbank.org/en/data/datatopics/aspire",
+          "indicator_id": "per_si_cp.cov_pop_tot",
+          "year": null,
+          "notes": null
+        },
         "notes": null
       }
     },
@@ -186,10 +198,16 @@
       "key": "pension_fund_assets_gdp",
       "label": "Pension fund assets (% of GDP)",
       "cell": {
-        "value": null,
-        "unit": null,
-        "year": null,
-        "source": null,
+        "value": 169.51784,
+        "unit": "%",
+        "year": 2020,
+        "source": {
+          "source_name": "Global Financial Development Database \u2013 World Bank",
+          "source_url": "https://data.worldbank.org/indicator/GFDD.DI.13",
+          "indicator_id": "GFDD.DI.13",
+          "year": 2020,
+          "notes": null
+        },
         "notes": null
       }
     },
@@ -302,6 +320,60 @@
           "year": null,
           "source": {
             "source_name": "OECD Pensions at a Glance 2023 \u2013 United States: Full Retirement Age 67 for those born 1960 or later (phased in from 65).",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        }
+      }
+    },
+    {
+      "scheme_id": "USA_SSI",
+      "scheme_name": "Supplemental Security Income (SSI) \u2013 Means-Tested",
+      "scheme_type_group": "db",
+      "attributes": {
+        "implementing_agency": {
+          "value": "Supplemental Security Income (SSI) \u2013 Means-Tested",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "target_population": {
+          "value": "US residents aged 65+ (or disabled) with very low income and assets; approximately 1.2 million elderly SSI recipients (2023); federal supplement plus state top-ups",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "benefit_plan_type": {
+          "value": "targeted",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "ret_age_male": {
+          "value": 65,
+          "unit": null,
+          "year": null,
+          "source": {
+            "source_name": "SSA USA: SSI payable from age 65 (or any age if disabled); means-tested on income and countable resources.",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        },
+        "ret_age_female": {
+          "value": 65,
+          "unit": null,
+          "year": null,
+          "source": {
+            "source_name": "SSA USA: SSI payable from age 65 (or any age if disabled); means-tested on income and countable resources.",
             "source_url": null,
             "indicator_id": null,
             "year": null,

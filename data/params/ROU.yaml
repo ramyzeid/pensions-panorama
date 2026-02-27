@@ -1,129 +1,151 @@
-# =============================================================================
-# Romania (ROU) – Pension System Parameters
-# =============================================================================
-# Primary scheme: Public PAYG pension (Pillar I) – points-based DB system
-#   administered by the National House of Public Pensions (CNPP).
-# Sources:
-#   [1] SSA Social Security Programs Throughout the World – Europe 2022
-#   [2] OECD Pensions at a Glance 2023 – Romania country note
-#   [3] Law No. 263/2010 on the Unitary Public Pension System (as amended)
-# =============================================================================
-
 metadata:
-  country_name: "Romania"
-  iso3: "ROU"
-  iso2: "RO"
-  currency: "Romanian Leu"
-  currency_code: "RON"
+  country_name: Romania
+  iso3: ROU
+  iso2: RO
+  currency: Romanian Leu
+  currency_code: RON
   reference_year: 2023
-  wb_region: "ECS"
-  wb_income_level: "UMC"
+  wb_region: ECS
+  wb_income_level: UMC
   un_location_id: 642
   sources:
-    - "SSA Social Security Programs Throughout the World – Europe 2022"
-    - "OECD Pensions at a Glance 2023"
-    - "Law No. 263/2010 on the Unitary Public Pension System (as amended)"
-  last_reviewed: "2024-01-01"
-
+  - SSA Social Security Programs Throughout the World – Europe 2022
+  - OECD Pensions at a Glance 2023
+  - Law No. 263/2010 on the Unitary Public Pension System (as amended)
+  last_reviewed: '2024-01-01'
 schemes:
-  - scheme_id: "ROU_CNPP"
-    name: "Public PAYG Pension – Pillar I (Casa Națională de Pensii Publice)"
-    tier: "first"
-    type: "points"
-    coverage: "employees and self-employed"
-    active: true
-
-    eligibility:
-      normal_retirement_age_male:
-        value: 65
-        source_citation: "OECD Pensions at a Glance 2023 – Romania: NRA 65 for men."
-        year: 2023
-      normal_retirement_age_female:
-        value: 63
-        source_citation: "OECD Pensions at a Glance 2023 – Romania: NRA 63 for women (rising gradually to 65 by 2035)."
-        year: 2023
-      vesting_years:
-        value: 15
-        source_citation: "SSA SSPW Europe 2022 – Romania: minimum 15 years of contribution required for old-age pension."
-        year: 2023
-      minimum_contribution_years:
-        value: 35
-        source_citation: "SSA SSPW Europe 2022 – Romania: 35 years of contribution for full pension; reduced pension possible with 15 years."
-        year: 2023
-
-    contributions:
-      employee_rate:
-        value: 0.25
-        source_citation: "SSA SSPW Europe 2022 – Romania: employee pension contribution 25% of gross earnings (contribution shifted almost entirely to employee side under 2018 reform – Law No. 227/2015 Tax Code amendments)."
-        year: 2023
-      employer_rate:
-        value: 0.0
-        source_citation: "SSA SSPW Europe 2022 – Romania: employer pension contribution 0% following 2018 reform that transferred burden to employees; employers pay only 2.25% work accident and disease contribution."
-        year: 2023
-      total_rate:
-        value: null
-        source_citation: "Derived from employee + employer rates (25% + 0% = 25% total pension contribution)."
-        year: 2023
-      contribution_ceiling_aw_multiple:
-        value: null
-        source_citation: "SSA SSPW Europe 2022 – Romania: no explicit contribution ceiling for the public pension pillar."
-        year: 2023
-      contribution_base: "gross earnings"
-
-    benefits:
-      accrual_rate_per_year:
-        value: null
-        source_citation: "Points system – accrual rate not applicable; annual pension points credited based on individual earnings relative to average; pension = total points × point value (valoarea punctului de pensie)."
-        year: 2023
-      reference_wage: "career_average"
-      valorization: "wages"
-      flat_rate_aw_multiple: null
-      flat_rate_absolute: null
-      indexation: "mixed"
-      minimum_benefit_aw_multiple:
-        value: null
-        source_citation: "SSA SSPW Europe 2022 – Romania: minimum social pension (indemnizație socială pentru pensionari) set in absolute RON terms for those with insufficient points."
-        year: 2023
-      maximum_benefit_aw_multiple:
-        value: null
-        source_citation: "SSA SSPW Europe 2022 – Romania: no explicit maximum benefit multiple; pension capped indirectly by contribution base."
-        year: 2023
-
-    payout:
-      type: "annuity"
-
+- scheme_id: ROU_CNPP
+  name: Public PAYG Pension – Pillar I (Casa Națională de Pensii Publice)
+  tier: first
+  type: points
+  coverage: employees and self-employed
+  active: true
+  eligibility:
+    normal_retirement_age_male:
+      value: 65
+      source_citation: 'OECD Pensions at a Glance 2023 – Romania: NRA 65 for men.'
+      year: 2023
+    normal_retirement_age_female:
+      value: 63
+      source_citation: 'OECD Pensions at a Glance 2023 – Romania: NRA 63 for women (rising gradually to 65 by 2035).'
+      year: 2023
+    vesting_years:
+      value: 15
+      source_citation: 'SSA SSPW Europe 2022 – Romania: minimum 15 years of contribution required for old-age pension.'
+      year: 2023
+    minimum_contribution_years:
+      value: 35
+      source_citation: 'SSA SSPW Europe 2022 – Romania: 35 years of contribution for full pension; reduced pension possible
+        with 15 years.'
+      year: 2023
+  contributions:
+    employee_rate:
+      value: 0.25
+      source_citation: 'SSA SSPW Europe 2022 – Romania: employee pension contribution 25% of gross earnings (contribution
+        shifted almost entirely to employee side under 2018 reform – Law No. 227/2015 Tax Code amendments).'
+      year: 2023
+    employer_rate:
+      value: 0.0
+      source_citation: 'SSA SSPW Europe 2022 – Romania: employer pension contribution 0% following 2018 reform that transferred
+        burden to employees; employers pay only 2.25% work accident and disease contribution.'
+      year: 2023
+    total_rate:
+      value: null
+      source_citation: Derived from employee + employer rates (25% + 0% = 25% total pension contribution).
+      year: 2023
+    contribution_ceiling_aw_multiple:
+      value: null
+      source_citation: 'SSA SSPW Europe 2022 – Romania: no explicit contribution ceiling for the public pension pillar.'
+      year: 2023
+    contribution_base: gross earnings
+  benefits:
+    accrual_rate_per_year:
+      value: null
+      source_citation: Points system – accrual rate not applicable; annual pension points credited based on individual earnings
+        relative to average; pension = total points × point value (valoarea punctului de pensie).
+      year: 2023
+    reference_wage: career_average
+    valorization: wages
+    flat_rate_aw_multiple: null
+    flat_rate_absolute: null
+    indexation: mixed
+    minimum_benefit_aw_multiple:
+      value: null
+      source_citation: 'SSA SSPW Europe 2022 – Romania: minimum social pension (indemnizație socială pentru pensionari) set
+        in absolute RON terms for those with insufficient points.'
+      year: 2023
+    maximum_benefit_aw_multiple:
+      value: null
+      source_citation: 'SSA SSPW Europe 2022 – Romania: no explicit maximum benefit multiple; pension capped indirectly by
+        contribution base.'
+      year: 2023
+  payout:
+    type: annuity
+- scheme_id: ROU_SOCIALPENSION
+  name: Social Indemnity (Indemnizația Socială) – Non-Contributory
+  tier: first
+  type: targeted
+  coverage: Romanian pensioners whose earned pension is below the social indemnity threshold; also non-contributors aged 65+;
+    approximately 1.1 million recipients
+  active: true
+  eligibility:
+    normal_retirement_age_male:
+      value: 65
+      source_citation: 'HG 1.174 Romania: Social Indemnity payable from age 65 (or pension age) to those below threshold.'
+      year: 2023
+    normal_retirement_age_female:
+      value: 63
+      source_citation: 'HG 1.174 Romania: women''s pension age 63 in 2023 (rising to 65 by 2035).'
+      year: 2023
+  benefits:
+    minimum_benefit_aw_multiple:
+      value: 0.138
+      source_citation: 'CNPP Romania: Social Indemnity RON 1,125/month (2023) × 12 = RON 13,500 ≈ 13.8% of AW (RON 97,800).'
+      year: 2023
+    maximum_benefit_aw_multiple:
+      value: 0.138
+      source_citation: 'Romania social indemnity: flat floor; earned pension tops up if below threshold.'
+      year: 2023
+    indexation: CPI
+  payout:
+    type: annuity
+    notes: Monthly payment from CNPP; tops up contributory pension to social minimum; includes housing allowance.
 taxes:
-  worker_income_tax_treatment: "EET"
-  income_tax_on_pension: "Pension income up to RON 2,000/month is exempt from income tax; amounts above threshold subject to 10% personal income tax."
+  worker_income_tax_treatment: EET
+  income_tax_on_pension: Pension income up to RON 2,000/month is exempt from income tax; amounts above threshold subject to
+    10% personal income tax.
   simplified_net_rate:
     value: 0.05
-    source_citation: "Estimated effective pension tax rate – Romanian Fiscal Code; exemption threshold of RON 2,000/month means most average pensions are lightly taxed. SSA SSPW Europe 2022."
+    source_citation: Estimated effective pension tax rate – Romanian Fiscal Code; exemption threshold of RON 2,000/month means
+      most average pensions are lightly taxed. SSA SSPW Europe 2022.
     year: 2023
-
 average_earnings:
-  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
-  ilostat_ref_area: "ROU"
-  ilostat_transformation: "x * 12"
+  ilostat_series_id: EAR_4MTH_SEX_ECO_CUR_NB
+  ilostat_ref_area: ROU
+  ilostat_transformation: x * 12
   manual_value: 65000
-  currency: "Romanian Leu"
+  currency: Romanian Leu
   year: 2022
-  source_citation: "National Institute of Statistics Romania (INS) 2022 – average net monthly wage approximately 3,700 RON (gross ~5,400 RON); annualised gross ~65,000 RON. OECD Pensions at a Glance 2023 AW estimate."
-
+  source_citation: National Institute of Statistics Romania (INS) 2022 – average net monthly wage approximately 3,700 RON
+    (gross ~5,400 RON); annualised gross ~65,000 RON. OECD Pensions at a Glance 2023 AW estimate.
 worker_types:
   private_employee:
-    label: "Private sector employee"
+    label: Private sector employee
     coverage_status: mandatory
-    scheme_ids: ["ROU_CNPP"]
-    source_citation: "Mandatory public pension insurance for all employees – Law No. 263/2010 on the Unitary Public Pension System."
+    scheme_ids:
+    - ROU_CNPP
+    source_citation: Mandatory public pension insurance for all employees – Law No. 263/2010 on the Unitary Public Pension
+      System.
   civil_servant:
-    label: "Civil servant"
+    label: Civil servant
     coverage_status: mandatory
-    scheme_ids: ["ROU_CNPP"]
-    source_citation: "Civil servants covered under the unified public pension system since 2010 – SSA SSPW Europe 2022."
+    scheme_ids:
+    - ROU_CNPP
+    source_citation: Civil servants covered under the unified public pension system since 2010 – SSA SSPW Europe 2022.
   self_employed:
-    label: "Self-employed"
+    label: Self-employed
     coverage_status: mandatory
-    scheme_ids: ["ROU_CNPP"]
-    source_citation: "Self-employed obligated to contribute 25% to public pension – SSA SSPW Europe 2022."
-
+    scheme_ids:
+    - ROU_CNPP
+    source_citation: Self-employed obligated to contribute 25% to public pension – SSA SSPW Europe 2022.
 notes: null

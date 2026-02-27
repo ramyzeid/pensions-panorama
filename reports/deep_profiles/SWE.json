@@ -1,9 +1,9 @@
 {
   "iso3": "SWE",
   "country_name": "Sweden",
-  "last_updated": "2026-02-27T03:29:38.867703Z",
+  "last_updated": "2026-02-27T04:30:44.443824Z",
   "narrative": {
-    "text": "Sweden is a Europe and Central Asia country with a NDC-type pension system centred on the Income Pension (Inkomstpension) \u2013 NDC + Premium Pension DC. The normal retirement age is 63 for both men and women. Contributions total 17.5% of insurable earnings (7.0% employee, 10.5% employer).",
+    "text": "Sweden is a Europe and Central Asia country with a NDC-type pension system centred on the Income Pension (Inkomstpension) \u2013 NDC + Premium Pension DC. The system includes 3 schemes: Income Pension (Inkomstpension) \u2013 NDC + Premium Pension DC, Premium Pension (Premiepension) \u2013 Mandatory DC, Guarantee Pension (Garantipension) \u2013 Non-Contributory. The normal retirement age is 63 for both men and women. Contributions total 17.5% of insurable earnings (7.0% employee, 10.5% employer).",
     "sources": [
       {
         "source_name": "OECD Pensions at a Glance 2023 \u2013 Sweden",
@@ -26,9 +26,9 @@
       "key": "year",
       "label": "Year",
       "cell": {
-        "value": null,
+        "value": 2023,
         "unit": "year",
-        "year": null,
+        "year": 2023,
         "source": {
           "source_name": "World Development Indicators (World Bank)",
           "source_url": "https://data.worldbank.org",
@@ -43,14 +43,14 @@
       "key": "gdp_pc_lcu",
       "label": "GDP per capita (LCU)",
       "cell": {
-        "value": null,
+        "value": 583031.370935229,
         "unit": "LCU",
-        "year": null,
+        "year": 2023,
         "source": {
           "source_name": "World Development Indicators (World Bank)",
           "source_url": "https://data.worldbank.org/indicator/NY.GDP.PCAP.CN?locations=SWE",
           "indicator_id": "NY.GDP.PCAP.CN",
-          "year": null,
+          "year": 2023,
           "notes": null
         },
         "notes": null
@@ -60,14 +60,14 @@
       "key": "gdp_pc_usd",
       "label": "GDP per capita (USD)",
       "cell": {
-        "value": null,
+        "value": 54950.2834725622,
         "unit": "USD",
-        "year": null,
+        "year": 2023,
         "source": {
           "source_name": "World Development Indicators (World Bank)",
           "source_url": "https://data.worldbank.org/indicator/NY.GDP.PCAP.CD?locations=SWE",
           "indicator_id": "NY.GDP.PCAP.CD",
-          "year": null,
+          "year": 2023,
           "notes": null
         },
         "notes": null
@@ -77,14 +77,14 @@
       "key": "pop_65_total",
       "label": "Population age 65+ (total)",
       "cell": {
-        "value": null,
+        "value": 2163847.0,
         "unit": "persons",
-        "year": null,
+        "year": 2023,
         "source": {
           "source_name": "World Development Indicators (World Bank)",
           "source_url": "https://data.worldbank.org/indicator/SP.POP.65UP.TO?locations=SWE",
           "indicator_id": "SP.POP.65UP.TO",
-          "year": null,
+          "year": 2023,
           "notes": null
         },
         "notes": null
@@ -94,14 +94,14 @@
       "key": "pop_65_pct",
       "label": "Population age 65+ (% of total population)",
       "cell": {
-        "value": null,
+        "value": 20.5364235623884,
         "unit": "%",
-        "year": null,
+        "year": 2023,
         "source": {
           "source_name": "World Development Indicators (World Bank)",
           "source_url": "https://data.worldbank.org/indicator/SP.POP.65UP.TO.ZS?locations=SWE",
           "indicator_id": "SP.POP.65UP.TO.ZS",
-          "year": null,
+          "year": 2023,
           "notes": null
         },
         "notes": null
@@ -145,14 +145,14 @@
       "key": "pension_fund_assets_gdp",
       "label": "Pension fund assets (% of GDP)",
       "cell": {
-        "value": null,
+        "value": 108.87138,
         "unit": "%",
-        "year": null,
+        "year": 2020,
         "source": {
           "source_name": "Global Financial Development Database \u2013 World Bank",
           "source_url": "https://data.worldbank.org/indicator/GFDD.DI.13",
           "indicator_id": "GFDD.DI.13",
-          "year": null,
+          "year": 2020,
           "notes": null
         },
         "notes": null
@@ -165,9 +165,15 @@
       "label": "Social insurance coverage (% of population)",
       "cell": {
         "value": null,
-        "unit": null,
+        "unit": "%",
         "year": null,
-        "source": null,
+        "source": {
+          "source_name": "ASPIRE \u2013 World Bank",
+          "source_url": "https://www.worldbank.org/en/data/datatopics/aspire",
+          "indicator_id": "per_si_allsi.cov_pop_tot",
+          "year": null,
+          "notes": null
+        },
         "notes": null
       }
     },
@@ -176,9 +182,15 @@
       "label": "Contributory pension coverage (% of population)",
       "cell": {
         "value": null,
-        "unit": null,
+        "unit": "%",
         "year": null,
-        "source": null,
+        "source": {
+          "source_name": "ASPIRE \u2013 World Bank",
+          "source_url": "https://www.worldbank.org/en/data/datatopics/aspire",
+          "indicator_id": "per_si_cp.cov_pop_tot",
+          "year": null,
+          "notes": null
+        },
         "notes": null
       }
     },
@@ -186,10 +198,16 @@
       "key": "pension_fund_assets_gdp",
       "label": "Pension fund assets (% of GDP)",
       "cell": {
-        "value": null,
-        "unit": null,
-        "year": null,
-        "source": null,
+        "value": 108.87138,
+        "unit": "%",
+        "year": 2020,
+        "source": {
+          "source_name": "Global Financial Development Database \u2013 World Bank",
+          "source_url": "https://data.worldbank.org/indicator/GFDD.DI.13",
+          "indicator_id": "GFDD.DI.13",
+          "year": 2020,
+          "notes": null
+        },
         "notes": null
       }
     },
@@ -217,6 +235,154 @@
     }
   ],
   "schemes": [
+    {
+      "scheme_id": "SWE_PP",
+      "scheme_name": "Premium Pension (Premiepension) \u2013 Mandatory DC",
+      "scheme_type_group": "dc",
+      "attributes": {
+        "implementing_agency": {
+          "value": "Premium Pension (Premiepension) \u2013 Mandatory DC",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "target_population": {
+          "value": "All workers in Sweden paying social insurance contributions; mandatory funded DC component alongside NDC income pension",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "benefit_plan_type": {
+          "value": "DC",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "financing_mechanism": {
+          "value": "Fully funded",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "contrib_employee": {
+          "value": 0.0,
+          "unit": "%",
+          "year": null,
+          "source": {
+            "source_name": "OECD PAG 2023 Sweden: 2.5% premium pension contribution paid entirely by employer (as part of total 18.5% social insurance fee).",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        },
+        "contrib_employer": {
+          "value": 2.5,
+          "unit": "%",
+          "year": null,
+          "source": {
+            "source_name": "OECD PAG 2023 Sweden: 2.5% premium pension contribution paid entirely by employer (as part of total 18.5% social insurance fee).",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        },
+        "contrib_total": {
+          "value": 2.5,
+          "unit": "%",
+          "year": null,
+          "source": null,
+          "notes": "Derived: employee + employer"
+        },
+        "ret_age_male": {
+          "value": 63,
+          "unit": null,
+          "year": null,
+          "source": {
+            "source_name": "OECD PAG 2023 Sweden: Premium Pension can be drawn from age 63 (rising to 64 in 2026); flexible deferral to 70.",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        },
+        "ret_age_female": {
+          "value": 63,
+          "unit": null,
+          "year": null,
+          "source": {
+            "source_name": "OECD PAG 2023 Sweden: Premium Pension can be drawn from age 63 (rising to 64 in 2026); flexible deferral to 70.",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        }
+      }
+    },
+    {
+      "scheme_id": "SWE_GP",
+      "scheme_name": "Guarantee Pension (Garantipension) \u2013 Non-Contributory",
+      "scheme_type_group": "db",
+      "attributes": {
+        "implementing_agency": {
+          "value": "Guarantee Pension (Garantipension) \u2013 Non-Contributory",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "target_population": {
+          "value": "Swedish residents aged 65+ with low or zero income pension; full guarantee for zero contributory earnings; reduced for those with income pension up to ~SEK 12,000/month",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "benefit_plan_type": {
+          "value": "targeted",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "ret_age_male": {
+          "value": 65,
+          "unit": null,
+          "year": null,
+          "source": {
+            "source_name": "OECD PAG 2023 Sweden: Guarantee Pension payable from age 65 (rising to 66 in 2026); requires 40 years of Swedish residence for full benefit.",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        },
+        "ret_age_female": {
+          "value": 65,
+          "unit": null,
+          "year": null,
+          "source": {
+            "source_name": "OECD PAG 2023 Sweden: Guarantee Pension payable from age 65 (rising to 66 in 2026); requires 40 years of Swedish residence for full benefit.",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        }
+      }
+    },
     {
       "scheme_id": "SWE_IP",
       "scheme_name": "Income Pension (Inkomstpension) \u2013 NDC + Premium Pension DC",

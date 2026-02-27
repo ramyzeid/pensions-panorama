@@ -1,9 +1,9 @@
 {
   "iso3": "IDN",
   "country_name": "Indonesia",
-  "last_updated": "2026-02-27T03:29:39.338681Z",
+  "last_updated": "2026-02-27T04:30:47.808257Z",
   "narrative": {
-    "text": "Indonesia is a East Asia and Pacific country with a DB-type pension system centred on the Jaminan Pensiun (JP) \u2013 BPJS Ketenagakerjaan Old-Age Pension (DB). The system includes 2 schemes: Jaminan Pensiun (JP) \u2013 BPJS Ketenagakerjaan Old-Age Pension (DB), Jaminan Hari Tua (JHT) \u2013 BPJS Ketenagakerjaan Provident Fund (DC). The normal retirement age is 65 for both men and women. Contributions total 5.0% of insurable earnings (3.0% employee, 2.0% employer).",
+    "text": "Indonesia is a East Asia and Pacific country with a DB-type pension system centred on the Jaminan Pensiun (JP) \u2013 BPJS Ketenagakerjaan Old-Age Pension (DB). The system includes 3 schemes: Jaminan Pensiun (JP) \u2013 BPJS Ketenagakerjaan Old-Age Pension (DB), Jaminan Hari Tua (JHT) \u2013 BPJS Ketenagakerjaan Provident Fund (DC), Social Assistance for Elderly (Asistensi Lanjut Usia) \u2013 Non-Contributory. The normal retirement age is 65 for both men and women. Contributions total 5.0% of insurable earnings (3.0% employee, 2.0% employer).",
     "sources": [
       {
         "source_name": "SSA Social Security Programs Throughout the World \u2013 Asia and the Pacific 2022",
@@ -26,9 +26,9 @@
       "key": "year",
       "label": "Year",
       "cell": {
-        "value": null,
+        "value": 2023,
         "unit": "year",
-        "year": null,
+        "year": 2023,
         "source": {
           "source_name": "World Development Indicators (World Bank)",
           "source_url": "https://data.worldbank.org",
@@ -43,14 +43,14 @@
       "key": "gdp_pc_lcu",
       "label": "GDP per capita (LCU)",
       "cell": {
-        "value": null,
+        "value": 74299738.6888492,
         "unit": "LCU",
-        "year": null,
+        "year": 2023,
         "source": {
           "source_name": "World Development Indicators (World Bank)",
           "source_url": "https://data.worldbank.org/indicator/NY.GDP.PCAP.CN?locations=IDN",
           "indicator_id": "NY.GDP.PCAP.CN",
-          "year": null,
+          "year": 2023,
           "notes": null
         },
         "notes": null
@@ -60,14 +60,14 @@
       "key": "gdp_pc_usd",
       "label": "GDP per capita (USD)",
       "cell": {
-        "value": null,
+        "value": 4876.30774512252,
         "unit": "USD",
-        "year": null,
+        "year": 2023,
         "source": {
           "source_name": "World Development Indicators (World Bank)",
           "source_url": "https://data.worldbank.org/indicator/NY.GDP.PCAP.CD?locations=IDN",
           "indicator_id": "NY.GDP.PCAP.CD",
-          "year": null,
+          "year": 2023,
           "notes": null
         },
         "notes": null
@@ -77,14 +77,14 @@
       "key": "pop_65_total",
       "label": "Population age 65+ (total)",
       "cell": {
-        "value": null,
+        "value": 19819797.0,
         "unit": "persons",
-        "year": null,
+        "year": 2023,
         "source": {
           "source_name": "World Development Indicators (World Bank)",
           "source_url": "https://data.worldbank.org/indicator/SP.POP.65UP.TO?locations=IDN",
           "indicator_id": "SP.POP.65UP.TO",
-          "year": null,
+          "year": 2023,
           "notes": null
         },
         "notes": null
@@ -94,14 +94,14 @@
       "key": "pop_65_pct",
       "label": "Population age 65+ (% of total population)",
       "cell": {
-        "value": null,
+        "value": 7.04854077766648,
         "unit": "%",
-        "year": null,
+        "year": 2023,
         "source": {
           "source_name": "World Development Indicators (World Bank)",
           "source_url": "https://data.worldbank.org/indicator/SP.POP.65UP.TO.ZS?locations=IDN",
           "indicator_id": "SP.POP.65UP.TO.ZS",
-          "year": null,
+          "year": 2023,
           "notes": null
         },
         "notes": null
@@ -111,14 +111,14 @@
       "key": "pension_coverage_pct",
       "label": "Contributory pension coverage (% of population)",
       "cell": {
-        "value": null,
+        "value": 7.74366763738646,
         "unit": "%",
-        "year": null,
+        "year": 2022,
         "source": {
           "source_name": "ASPIRE \u2013 World Bank",
           "source_url": "https://www.worldbank.org/en/data/datatopics/aspire",
           "indicator_id": "per_si_cp.cov_pop_tot",
-          "year": null,
+          "year": 2022,
           "notes": null
         },
         "notes": null
@@ -128,14 +128,14 @@
       "key": "social_insurance_coverage_pct",
       "label": "Social insurance coverage (% of population)",
       "cell": {
-        "value": null,
+        "value": 9.3300171441659,
         "unit": "%",
-        "year": null,
+        "year": 2022,
         "source": {
           "source_name": "ASPIRE \u2013 World Bank",
           "source_url": "https://www.worldbank.org/en/data/datatopics/aspire",
           "indicator_id": "per_si_allsi.cov_pop_tot",
-          "year": null,
+          "year": 2022,
           "notes": null
         },
         "notes": null
@@ -145,14 +145,14 @@
       "key": "pension_fund_assets_gdp",
       "label": "Pension fund assets (% of GDP)",
       "cell": {
-        "value": null,
+        "value": 1.983255,
         "unit": "%",
-        "year": null,
+        "year": 2020,
         "source": {
           "source_name": "Global Financial Development Database \u2013 World Bank",
           "source_url": "https://data.worldbank.org/indicator/GFDD.DI.13",
           "indicator_id": "GFDD.DI.13",
-          "year": null,
+          "year": 2020,
           "notes": null
         },
         "notes": null
@@ -164,10 +164,16 @@
       "key": "coverage_total",
       "label": "Social insurance coverage (% of population)",
       "cell": {
-        "value": null,
-        "unit": null,
-        "year": null,
-        "source": null,
+        "value": 9.3300171441659,
+        "unit": "%",
+        "year": 2022,
+        "source": {
+          "source_name": "ASPIRE \u2013 World Bank",
+          "source_url": "https://www.worldbank.org/en/data/datatopics/aspire",
+          "indicator_id": "per_si_allsi.cov_pop_tot",
+          "year": 2022,
+          "notes": null
+        },
         "notes": null
       }
     },
@@ -175,10 +181,16 @@
       "key": "pension_coverage",
       "label": "Contributory pension coverage (% of population)",
       "cell": {
-        "value": null,
-        "unit": null,
-        "year": null,
-        "source": null,
+        "value": 7.74366763738646,
+        "unit": "%",
+        "year": 2022,
+        "source": {
+          "source_name": "ASPIRE \u2013 World Bank",
+          "source_url": "https://www.worldbank.org/en/data/datatopics/aspire",
+          "indicator_id": "per_si_cp.cov_pop_tot",
+          "year": 2022,
+          "notes": null
+        },
         "notes": null
       }
     },
@@ -186,10 +198,16 @@
       "key": "pension_fund_assets_gdp",
       "label": "Pension fund assets (% of GDP)",
       "cell": {
-        "value": null,
-        "unit": null,
-        "year": null,
-        "source": null,
+        "value": 1.983255,
+        "unit": "%",
+        "year": 2020,
+        "source": {
+          "source_name": "Global Financial Development Database \u2013 World Bank",
+          "source_url": "https://data.worldbank.org/indicator/GFDD.DI.13",
+          "indicator_id": "GFDD.DI.13",
+          "year": 2020,
+          "notes": null
+        },
         "notes": null
       }
     },
@@ -396,6 +414,60 @@
           "year": null,
           "source": {
             "source_name": "SSA SSPW Asia-Pacific 2022 \u2013 Indonesia JP: NRA 65 for all workers (phased from 56 in 2015, rising by 1 year every 3 years to reach 65 by 2043). Government Regulation PP No. 45/2015, Article 15. Current effective age ~63 as of 2023; using target NRA 65 per PP 45/2015 schedule.",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        }
+      }
+    },
+    {
+      "scheme_id": "IDN_ASLUT",
+      "scheme_name": "Social Assistance for Elderly (Asistensi Lanjut Usia) \u2013 Non-Contributory",
+      "scheme_type_group": "db",
+      "attributes": {
+        "implementing_agency": {
+          "value": "Social Assistance for Elderly (Asistensi Lanjut Usia) \u2013 Non-Contributory",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "target_population": {
+          "value": "Indonesian poor elderly aged 60+ not covered by BPJS; approximately 2.8 million recipients (2023); Program Asistensi Sosial Lanjut Usia Telantar",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "benefit_plan_type": {
+          "value": "targeted",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "ret_age_male": {
+          "value": 60,
+          "unit": null,
+          "year": null,
+          "source": {
+            "source_name": "Kemensos Indonesia: Asistensi Lanjut Usia (ASLUT) for poor elderly 60+ without formal pension coverage.",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        },
+        "ret_age_female": {
+          "value": 60,
+          "unit": null,
+          "year": null,
+          "source": {
+            "source_name": "Kemensos Indonesia: Asistensi Lanjut Usia (ASLUT) for poor elderly 60+ without formal pension coverage.",
             "source_url": null,
             "indicator_id": null,
             "year": null,

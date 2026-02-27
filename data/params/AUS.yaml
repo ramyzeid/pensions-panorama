@@ -1,139 +1,174 @@
-# =============================================================================
-# Australia (AUS) – Pension System Parameters
-# =============================================================================
-# Primary scheme: Superannuation (mandatory DC) + Age Pension (means-tested)
-# Sources:
-#   [1] OECD Pensions at a Glance 2023 – Australia
-#   [2] Australian Bureau of Statistics – Average Weekly Earnings 2022
-# =============================================================================
-
 metadata:
-  country_name: "Australia"
-  iso3: "AUS"
-  iso2: "AU"
-  currency: "Australian Dollar"
-  currency_code: "AUD"
+  country_name: Australia
+  iso3: AUS
+  iso2: AU
+  currency: Australian Dollar
+  currency_code: AUD
   reference_year: 2023
-  wb_region: "EAP"
-  wb_income_level: "HIC"
+  wb_region: EAP
+  wb_income_level: HIC
   un_location_id: 36
   sources:
-    - "OECD Pensions at a Glance 2023 – Australia"
-    - "Australian Bureau of Statistics Average Weekly Earnings November 2022"
-    - "Superannuation Guarantee (Administration) Act 1992 (as amended)"
-  last_reviewed: "2024-01-01"
-
+  - OECD Pensions at a Glance 2023 – Australia
+  - Australian Bureau of Statistics Average Weekly Earnings November 2022
+  - Superannuation Guarantee (Administration) Act 1992 (as amended)
+  last_reviewed: '2024-01-01'
 schemes:
-  - scheme_id: "AUS_SUPER"
-    name: "Superannuation Guarantee (Mandatory DC)"
-    tier: "first"
-    type: "DC"
-    coverage: "All employees and eligible self-employed; Age Pension (means-tested) provides safety net"
-    active: true
-
-    eligibility:
-      normal_retirement_age_male:
-        value: 67
-        source_citation: "OECD Pensions at a Glance 2023 Australia: Age Pension access age 67 for both sexes (fully phased in by 2023); Superannuation preservation age 60."
-        year: 2023
-      normal_retirement_age_female:
-        value: 67
-        source_citation: "OECD Pensions at a Glance 2023 Australia: Age Pension access age equalised at 67 for females."
-        year: 2023
-      vesting_years:
-        value: 0
-        source_citation: "Superannuation Guarantee Act Australia: no minimum vesting period for Superannuation; individual DC accounts accumulate from first contribution."
-        year: 2023
-      minimum_contribution_years:
-        value: 0
-        source_citation: "OECD Pensions at a Glance 2023 Australia: DC system – no minimum contribution years; account balance available at preservation age (60)."
-        year: 2023
-      notes: null
-
-    contributions:
-      employee_rate:
-        value: 0.0
-        source_citation: "OECD Pensions at a Glance 2023 Australia: employees not required to contribute to Superannuation (employer contribution only mandatory)."
-        year: 2023
-      employer_rate:
-        value: 0.11
-        source_citation: "OECD Pensions at a Glance 2023 Australia: Superannuation Guarantee rate 11% of ordinary time earnings from July 2023 (rising to 12% by 2025)."
-        year: 2023
-      total_rate:
-        value: null
-        source_citation: "Derived: 11% employer contribution; voluntary employee contributions also allowed."
-        year: 2023
-      contribution_ceiling_aw_multiple:
-        value: null
-        source_citation: "OECD Pensions at a Glance 2023 Australia: concessional contributions cap AUD 27,500/year (2023); not directly tied to average wage multiple."
-        year: 2023
-      contribution_base: "gross earnings"
-      notes: "Employer pays 11% SG to individual super fund. Age Pension (means-tested) provides safety net; concessional tax rate of 15% on contributions."
-
-    benefits:
-      accrual_rate_per_year:
-        value: null
-        source_citation: "OECD Pensions at a Glance 2023 Australia: DC system – no fixed accrual rate; benefit depends on accumulated superannuation balance and investment returns."
-        year: 2023
-      reference_wage: "career_average"
-      valorization: "wages"
-      flat_rate_aw_multiple: null
-      flat_rate_absolute: null
-      indexation: "CPI"
-      minimum_benefit_aw_multiple:
-        value: 0.28
-        source_citation: "OECD Pensions at a Glance 2023 Australia: Age Pension for singles approximately AUD 27,700/year (2023), ~28% of average wage; means-tested."
-        year: 2023
-      maximum_benefit_aw_multiple:
-        value: null
-        source_citation: "OECD Pensions at a Glance 2023 Australia: no explicit maximum super benefit; Age Pension phases out above assets/income thresholds."
-        year: 2023
-      notes: "Age Pension provides means-tested safety net (~28% of average wage for singles). Super balance converted to income stream or lump sum at preservation age."
-
-    payout:
-      type: "programmed_withdrawal"
-      notes: "Superannuation may be taken as lump sum, account-based pension, or annuity. Age Pension is an ongoing payment."
-
+- scheme_id: AUS_SUPER
+  name: Superannuation Guarantee (Mandatory DC)
+  tier: first
+  type: DC
+  coverage: All employees and eligible self-employed; Age Pension (means-tested) provides safety net
+  active: true
+  eligibility:
+    normal_retirement_age_male:
+      value: 67
+      source_citation: 'OECD Pensions at a Glance 2023 Australia: Age Pension access age 67 for both sexes (fully phased in
+        by 2023); Superannuation preservation age 60.'
+      year: 2023
+    normal_retirement_age_female:
+      value: 67
+      source_citation: 'OECD Pensions at a Glance 2023 Australia: Age Pension access age equalised at 67 for females.'
+      year: 2023
+    vesting_years:
+      value: 0
+      source_citation: 'Superannuation Guarantee Act Australia: no minimum vesting period for Superannuation; individual DC
+        accounts accumulate from first contribution.'
+      year: 2023
+    minimum_contribution_years:
+      value: 0
+      source_citation: 'OECD Pensions at a Glance 2023 Australia: DC system – no minimum contribution years; account balance
+        available at preservation age (60).'
+      year: 2023
+    notes: null
+  contributions:
+    employee_rate:
+      value: 0.0
+      source_citation: 'OECD Pensions at a Glance 2023 Australia: employees not required to contribute to Superannuation (employer
+        contribution only mandatory).'
+      year: 2023
+    employer_rate:
+      value: 0.11
+      source_citation: 'OECD Pensions at a Glance 2023 Australia: Superannuation Guarantee rate 11% of ordinary time earnings
+        from July 2023 (rising to 12% by 2025).'
+      year: 2023
+    total_rate:
+      value: null
+      source_citation: 'Derived: 11% employer contribution; voluntary employee contributions also allowed.'
+      year: 2023
+    contribution_ceiling_aw_multiple:
+      value: null
+      source_citation: 'OECD Pensions at a Glance 2023 Australia: concessional contributions cap AUD 27,500/year (2023); not
+        directly tied to average wage multiple.'
+      year: 2023
+    contribution_base: gross earnings
+    notes: Employer pays 11% SG to individual super fund. Age Pension (means-tested) provides safety net; concessional tax
+      rate of 15% on contributions.
+  benefits:
+    accrual_rate_per_year:
+      value: null
+      source_citation: 'OECD Pensions at a Glance 2023 Australia: DC system – no fixed accrual rate; benefit depends on accumulated
+        superannuation balance and investment returns.'
+      year: 2023
+    reference_wage: career_average
+    valorization: wages
+    flat_rate_aw_multiple: null
+    flat_rate_absolute: null
+    indexation: CPI
+    minimum_benefit_aw_multiple:
+      value: 0.28
+      source_citation: 'OECD Pensions at a Glance 2023 Australia: Age Pension for singles approximately AUD 27,700/year (2023),
+        ~28% of average wage; means-tested.'
+      year: 2023
+    maximum_benefit_aw_multiple:
+      value: null
+      source_citation: 'OECD Pensions at a Glance 2023 Australia: no explicit maximum super benefit; Age Pension phases out
+        above assets/income thresholds.'
+      year: 2023
+    notes: Age Pension provides means-tested safety net (~28% of average wage for singles). Super balance converted to income
+      stream or lump sum at preservation age.
+  payout:
+    type: programmed_withdrawal
+    notes: Superannuation may be taken as lump sum, account-based pension, or annuity. Age Pension is an ongoing payment.
+- scheme_id: AUS_AGE
+  name: Age Pension – Means-Tested
+  tier: first
+  type: targeted
+  coverage: Australian residents aged 67+ who pass means and assets tests; approximately 60% of age-eligible population receive
+    some Age Pension
+  active: true
+  eligibility:
+    normal_retirement_age_male:
+      value: 67
+      source_citation: 'OECD Pensions at a Glance 2023 Australia: Age Pension eligibility age 67 for both sexes since July
+        2023.'
+      year: 2023
+    normal_retirement_age_female:
+      value: 67
+      source_citation: 'OECD Pensions at a Glance 2023 Australia: Age Pension eligibility age 67 for both sexes since July
+        2023.'
+      year: 2023
+  benefits:
+    flat_rate_aw_multiple: null
+    flat_rate_absolute: null
+    minimum_benefit_aw_multiple:
+      value: 0.278
+      source_citation: 'OECD Pensions at a Glance 2023 Australia: full Age Pension single rate AUD 26,689/year (Sep 2023)
+        ≈ 27.8% of AW (AUD 95,581).'
+      year: 2023
+    maximum_benefit_aw_multiple:
+      value: 0.278
+      source_citation: 'OECD PAG 2023: full rate for single person; couple rate is lower per person.'
+      year: 2023
+    indexation: mixed
+  payout:
+    type: annuity
+    notes: Fortnightly payment funded from general taxation; means-tested on income and assets.
 taxes:
-  worker_income_tax_treatment: "TTE"
-  income_tax_on_pension: "Superannuation contributions taxed at 15% (concessional rate); super pension income tax-free for those 60 and over from a taxed fund."
+  worker_income_tax_treatment: TTE
+  income_tax_on_pension: Superannuation contributions taxed at 15% (concessional rate); super pension income tax-free for
+    those 60 and over from a taxed fund.
   simplified_net_rate:
     value: 0.0
-    source_citation: "OECD Pensions at a Glance 2023 Australia: pension income from taxed super funds is tax-free for individuals aged 60+; effective rate 0% for most retirees."
+    source_citation: 'OECD Pensions at a Glance 2023 Australia: pension income from taxed super funds is tax-free for individuals
+      aged 60+; effective rate 0% for most retirees.'
     year: 2023
   notes: null
-
 average_earnings:
-  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
-  ilostat_ref_area: "AUS"
-  ilostat_transformation: "x * 12"
+  ilostat_series_id: EAR_4MTH_SEX_ECO_CUR_NB
+  ilostat_ref_area: AUS
+  ilostat_transformation: x * 12
   manual_value: 95000
-  currency: "Australian Dollar"
+  currency: Australian Dollar
   year: 2022
-  source_citation: "ABS Average Weekly Earnings November 2022: average full-time adult total earnings AUD 1,769.80/week, approximately AUD 92,000 annually."
+  source_citation: 'ABS Average Weekly Earnings November 2022: average full-time adult total earnings AUD 1,769.80/week, approximately
+    AUD 92,000 annually.'
   source_url: null
-
 worker_types:
   private_employee:
-    label: "Private sector employee"
+    label: Private sector employee
     coverage_status: mandatory
-    scheme_ids: ["AUS_SUPER"]
-    source_citation: "Superannuation Guarantee Act Australia: mandatory employer superannuation contributions for all employees earning above AUD 450/month threshold."
+    scheme_ids:
+    - AUS_SUPER
+    source_citation: 'Superannuation Guarantee Act Australia: mandatory employer superannuation contributions for all employees
+      earning above AUD 450/month threshold.'
     source_url: null
     notes: null
-
   civil_servant:
-    label: "Civil servant"
+    label: Civil servant
     coverage_status: mandatory
-    scheme_ids: ["AUS_SUPER"]
-    source_citation: "OECD Pensions at a Glance 2023 Australia: public servants covered by superannuation; older defined benefit schemes closed to new members."
-    notes: "Most public servants now covered by accumulation (DC) superannuation; older cohorts may retain defined benefit entitlements."
-
+    scheme_ids:
+    - AUS_SUPER
+    source_citation: 'OECD Pensions at a Glance 2023 Australia: public servants covered by superannuation; older defined benefit
+      schemes closed to new members.'
+    notes: Most public servants now covered by accumulation (DC) superannuation; older cohorts may retain defined benefit
+      entitlements.
   self_employed:
-    label: "Self-employed"
+    label: Self-employed
     coverage_status: voluntary
-    scheme_ids: ["AUS_SUPER"]
-    source_citation: "OECD Pensions at a Glance 2023 Australia: self-employed not subject to SG but may contribute voluntarily to superannuation fund."
+    scheme_ids:
+    - AUS_SUPER
+    source_citation: 'OECD Pensions at a Glance 2023 Australia: self-employed not subject to SG but may contribute voluntarily
+      to superannuation fund.'
     notes: null
-
 notes: null

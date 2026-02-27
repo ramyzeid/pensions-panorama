@@ -1,9 +1,9 @@
 {
   "iso3": "ROU",
   "country_name": "Romania",
-  "last_updated": "2026-02-27T03:29:38.928280Z",
+  "last_updated": "2026-02-27T04:30:47.791972Z",
   "narrative": {
-    "text": "Romania is a Europe and Central Asia country with a points-type pension system centred on the Public PAYG Pension \u2013 Pillar I (Casa Na\u021bional\u0103 de Pensii Publice). The normal retirement age is 65 for men and 63 for women. Contributions total 25.0% of insurable earnings (25.0% employee, 0.0% employer).",
+    "text": "Romania is a Europe and Central Asia country with a points-type pension system centred on the Public PAYG Pension \u2013 Pillar I (Casa Na\u021bional\u0103 de Pensii Publice). The system includes 2 schemes: Public PAYG Pension \u2013 Pillar I (Casa Na\u021bional\u0103 de Pensii Publice), Social Indemnity (Indemniza\u021bia Social\u0103) \u2013 Non-Contributory. The normal retirement age is 65 for men and 63 for women. Contributions total 25.0% of insurable earnings (25.0% employee, 0.0% employer).",
     "sources": [
       {
         "source_name": "SSA Social Security Programs Throughout the World \u2013 Europe 2022",
@@ -26,9 +26,9 @@
       "key": "year",
       "label": "Year",
       "cell": {
-        "value": null,
+        "value": 2023,
         "unit": "year",
-        "year": null,
+        "year": 2023,
         "source": {
           "source_name": "World Development Indicators (World Bank)",
           "source_url": "https://data.worldbank.org",
@@ -43,14 +43,14 @@
       "key": "gdp_pc_lcu",
       "label": "GDP per capita (LCU)",
       "cell": {
-        "value": null,
+        "value": 83455.4444028355,
         "unit": "LCU",
-        "year": null,
+        "year": 2023,
         "source": {
           "source_name": "World Development Indicators (World Bank)",
           "source_url": "https://data.worldbank.org/indicator/NY.GDP.PCAP.CN?locations=ROU",
           "indicator_id": "NY.GDP.PCAP.CN",
-          "year": null,
+          "year": 2023,
           "notes": null
         },
         "notes": null
@@ -60,14 +60,14 @@
       "key": "gdp_pc_usd",
       "label": "GDP per capita (USD)",
       "cell": {
-        "value": null,
+        "value": 18244.4186876321,
         "unit": "USD",
-        "year": null,
+        "year": 2023,
         "source": {
           "source_name": "World Development Indicators (World Bank)",
           "source_url": "https://data.worldbank.org/indicator/NY.GDP.PCAP.CD?locations=ROU",
           "indicator_id": "NY.GDP.PCAP.CD",
-          "year": null,
+          "year": 2023,
           "notes": null
         },
         "notes": null
@@ -77,14 +77,14 @@
       "key": "pop_65_total",
       "label": "Population age 65+ (total)",
       "cell": {
-        "value": null,
+        "value": 3765158.0,
         "unit": "persons",
-        "year": null,
+        "year": 2023,
         "source": {
           "source_name": "World Development Indicators (World Bank)",
           "source_url": "https://data.worldbank.org/indicator/SP.POP.65UP.TO?locations=ROU",
           "indicator_id": "SP.POP.65UP.TO",
-          "year": null,
+          "year": 2023,
           "notes": null
         },
         "notes": null
@@ -94,14 +94,14 @@
       "key": "pop_65_pct",
       "label": "Population age 65+ (% of total population)",
       "cell": {
-        "value": null,
+        "value": 19.7531409207066,
         "unit": "%",
-        "year": null,
+        "year": 2023,
         "source": {
           "source_name": "World Development Indicators (World Bank)",
           "source_url": "https://data.worldbank.org/indicator/SP.POP.65UP.TO.ZS?locations=ROU",
           "indicator_id": "SP.POP.65UP.TO.ZS",
-          "year": null,
+          "year": 2023,
           "notes": null
         },
         "notes": null
@@ -111,14 +111,14 @@
       "key": "pension_coverage_pct",
       "label": "Contributory pension coverage (% of population)",
       "cell": {
-        "value": null,
+        "value": 38.8682819677353,
         "unit": "%",
-        "year": null,
+        "year": 2021,
         "source": {
           "source_name": "ASPIRE \u2013 World Bank",
           "source_url": "https://www.worldbank.org/en/data/datatopics/aspire",
           "indicator_id": "per_si_cp.cov_pop_tot",
-          "year": null,
+          "year": 2021,
           "notes": null
         },
         "notes": null
@@ -128,14 +128,14 @@
       "key": "social_insurance_coverage_pct",
       "label": "Social insurance coverage (% of population)",
       "cell": {
-        "value": null,
+        "value": 39.2321648990704,
         "unit": "%",
-        "year": null,
+        "year": 2021,
         "source": {
           "source_name": "ASPIRE \u2013 World Bank",
           "source_url": "https://www.worldbank.org/en/data/datatopics/aspire",
           "indicator_id": "per_si_allsi.cov_pop_tot",
-          "year": null,
+          "year": 2021,
           "notes": null
         },
         "notes": null
@@ -145,14 +145,14 @@
       "key": "pension_fund_assets_gdp",
       "label": "Pension fund assets (% of GDP)",
       "cell": {
-        "value": null,
+        "value": 7.3960301,
         "unit": "%",
-        "year": null,
+        "year": 2020,
         "source": {
           "source_name": "Global Financial Development Database \u2013 World Bank",
           "source_url": "https://data.worldbank.org/indicator/GFDD.DI.13",
           "indicator_id": "GFDD.DI.13",
-          "year": null,
+          "year": 2020,
           "notes": null
         },
         "notes": null
@@ -164,10 +164,16 @@
       "key": "coverage_total",
       "label": "Social insurance coverage (% of population)",
       "cell": {
-        "value": null,
-        "unit": null,
-        "year": null,
-        "source": null,
+        "value": 39.2321648990704,
+        "unit": "%",
+        "year": 2021,
+        "source": {
+          "source_name": "ASPIRE \u2013 World Bank",
+          "source_url": "https://www.worldbank.org/en/data/datatopics/aspire",
+          "indicator_id": "per_si_allsi.cov_pop_tot",
+          "year": 2021,
+          "notes": null
+        },
         "notes": null
       }
     },
@@ -175,10 +181,16 @@
       "key": "pension_coverage",
       "label": "Contributory pension coverage (% of population)",
       "cell": {
-        "value": null,
-        "unit": null,
-        "year": null,
-        "source": null,
+        "value": 38.8682819677353,
+        "unit": "%",
+        "year": 2021,
+        "source": {
+          "source_name": "ASPIRE \u2013 World Bank",
+          "source_url": "https://www.worldbank.org/en/data/datatopics/aspire",
+          "indicator_id": "per_si_cp.cov_pop_tot",
+          "year": 2021,
+          "notes": null
+        },
         "notes": null
       }
     },
@@ -186,10 +198,16 @@
       "key": "pension_fund_assets_gdp",
       "label": "Pension fund assets (% of GDP)",
       "cell": {
-        "value": null,
-        "unit": null,
-        "year": null,
-        "source": null,
+        "value": 7.3960301,
+        "unit": "%",
+        "year": 2020,
+        "source": {
+          "source_name": "Global Financial Development Database \u2013 World Bank",
+          "source_url": "https://data.worldbank.org/indicator/GFDD.DI.13",
+          "indicator_id": "GFDD.DI.13",
+          "year": 2020,
+          "notes": null
+        },
         "notes": null
       }
     },
@@ -302,6 +320,60 @@
           "year": null,
           "source": {
             "source_name": "OECD Pensions at a Glance 2023 \u2013 Romania: NRA 65 for men.",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        }
+      }
+    },
+    {
+      "scheme_id": "ROU_SOCIALPENSION",
+      "scheme_name": "Social Indemnity (Indemniza\u021bia Social\u0103) \u2013 Non-Contributory",
+      "scheme_type_group": "db",
+      "attributes": {
+        "implementing_agency": {
+          "value": "Social Indemnity (Indemniza\u021bia Social\u0103) \u2013 Non-Contributory",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "target_population": {
+          "value": "Romanian pensioners whose earned pension is below the social indemnity threshold; also non-contributors aged 65+; approximately 1.1 million recipients",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "benefit_plan_type": {
+          "value": "targeted",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "ret_age_male": {
+          "value": 65,
+          "unit": null,
+          "year": null,
+          "source": {
+            "source_name": "HG 1.174 Romania: Social Indemnity payable from age 65 (or pension age) to those below threshold.",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        },
+        "ret_age_female": {
+          "value": 63,
+          "unit": null,
+          "year": null,
+          "source": {
+            "source_name": "HG 1.174 Romania: Social Indemnity payable from age 65 (or pension age) to those below threshold.",
             "source_url": null,
             "indicator_id": null,
             "year": null,

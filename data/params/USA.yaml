@@ -1,141 +1,171 @@
-# =============================================================================
-# United States (USA) – Pension System Parameters
-# =============================================================================
-# Primary scheme: Old-Age, Survivors, and Disability Insurance (OASDI / Social Security)
-# Sources:
-#   [1] OECD Pensions at a Glance 2023 – United States country note
-#   [2] SSA Social Security Programs Throughout the World 2022 – Americas
-#   [3] Social Security Administration (SSA)
-# =============================================================================
-
 metadata:
-  country_name: "United States"
-  iso3: "USA"
-  iso2: "US"
-  currency: "US Dollar"
-  currency_code: "USD"
+  country_name: United States
+  iso3: USA
+  iso2: US
+  currency: US Dollar
+  currency_code: USD
   reference_year: 2023
-  wb_region: "NAC"
-  wb_income_level: "HIC"
+  wb_region: NAC
+  wb_income_level: HIC
   un_location_id: 840
   sources:
-    - "OECD Pensions at a Glance 2023"
-    - "SSA Social Security Programs Throughout the World 2022 – Americas"
-    - "Social Security Administration – Annual Statistical Supplement 2023"
-    - "Social Security Act Title II"
-  last_reviewed: "2024-01-01"
-
+  - OECD Pensions at a Glance 2023
+  - SSA Social Security Programs Throughout the World 2022 – Americas
+  - Social Security Administration – Annual Statistical Supplement 2023
+  - Social Security Act Title II
+  last_reviewed: '2024-01-01'
 schemes:
-  - scheme_id: "USA_OASDI"
-    name: "Old-Age, Survivors, and Disability Insurance (Social Security OASDI)"
-    tier: "first"
-    type: "DB"
-    coverage: "Virtually all employees and self-employed individuals"
-    active: true
-
-    eligibility:
-      normal_retirement_age_male:
-        value: 67
-        source_citation: "OECD Pensions at a Glance 2023 – United States: Full Retirement Age 67 for those born 1960 or later (phased in from 65)."
-        year: 2023
-      normal_retirement_age_female:
-        value: 67
-        source_citation: "OECD Pensions at a Glance 2023 – United States: Full Retirement Age 67 for those born 1960 or later; same for both sexes."
-        year: 2023
-      vesting_years:
-        value: 10
-        source_citation: "SSA Social Security Programs Throughout the World 2022 – Americas: 40 quarters (10 years) of covered employment required for retirement benefit."
-        year: 2022
-      minimum_contribution_years:
-        value: 10
-        source_citation: "SSA Social Security Programs Throughout the World 2022 – Americas: 40 quarters (10 years) of coverage for full insured status."
-        year: 2022
-      notes: "Early retirement possible from age 62 with reduced benefit (up to 30% reduction). Delayed retirement credits available to age 70."
-
-    contributions:
-      employee_rate:
-        value: 0.062
-        source_citation: "OECD Pensions at a Glance 2023 – United States: OASDI employee contribution rate 6.2% on earnings up to taxable maximum."
-        year: 2023
-      employer_rate:
-        value: 0.062
-        source_citation: "OECD Pensions at a Glance 2023 – United States: OASDI employer contribution rate 6.2% on earnings up to taxable maximum."
-        year: 2023
-      total_rate:
-        value: null
-        source_citation: "Derived from employee + employer OASDI rates (12.4% total; excludes Medicare HI 2.9%)."
-        year: 2023
-      contribution_ceiling_aw_multiple:
-        value: 2.47
-        source_citation: "OECD Pensions at a Glance 2023 – United States: OASDI taxable maximum USD 160,200 in 2023, approximately 2.47× average wage."
-        year: 2023
-      contribution_base: "gross earnings"
-      notes: "Self-employed pay 12.4% OASDI self-employment tax (but deduct half). Additional Medicare tax of 1.45% each side not included here."
-
-    benefits:
-      accrual_rate_per_year:
-        value: null
-        source_citation: "OECD Pensions at a Glance 2023 – United States: OASDI uses progressive bend-point formula on Average Indexed Monthly Earnings (AIME); not a simple accrual rate per year."
-        year: 2023
-      reference_wage: "career_average"
-      valorization: "wages"
-      flat_rate_aw_multiple: null
-      flat_rate_absolute: null
-      indexation: "CPI"
-      minimum_benefit_aw_multiple:
-        value: null
-        source_citation: "OECD Pensions at a Glance 2023 – United States: Special Minimum Benefit exists but applies to very low earners with long careers; Supplemental Security Income (SSI) provides means-tested safety net."
-        year: 2023
-      maximum_benefit_aw_multiple:
-        value: null
-        source_citation: "OECD Pensions at a Glance 2023 – United States: no explicit maximum benefit cap; constrained by taxable maximum and bend-point formula."
-        year: 2023
-      notes: "PIA = 90% of AIME up to first bend point + 32% between bend points + 15% above second bend point (2023 bend points: USD 1,115 and USD 6,721). Strongly progressive formula."
-
-    payout:
-      type: "annuity"
-      notes: null
-
+- scheme_id: USA_OASDI
+  name: Old-Age, Survivors, and Disability Insurance (Social Security OASDI)
+  tier: first
+  type: DB
+  coverage: Virtually all employees and self-employed individuals
+  active: true
+  eligibility:
+    normal_retirement_age_male:
+      value: 67
+      source_citation: 'OECD Pensions at a Glance 2023 – United States: Full Retirement Age 67 for those born 1960 or later
+        (phased in from 65).'
+      year: 2023
+    normal_retirement_age_female:
+      value: 67
+      source_citation: 'OECD Pensions at a Glance 2023 – United States: Full Retirement Age 67 for those born 1960 or later;
+        same for both sexes.'
+      year: 2023
+    vesting_years:
+      value: 10
+      source_citation: 'SSA Social Security Programs Throughout the World 2022 – Americas: 40 quarters (10 years) of covered
+        employment required for retirement benefit.'
+      year: 2022
+    minimum_contribution_years:
+      value: 10
+      source_citation: 'SSA Social Security Programs Throughout the World 2022 – Americas: 40 quarters (10 years) of coverage
+        for full insured status.'
+      year: 2022
+    notes: Early retirement possible from age 62 with reduced benefit (up to 30% reduction). Delayed retirement credits available
+      to age 70.
+  contributions:
+    employee_rate:
+      value: 0.062
+      source_citation: 'OECD Pensions at a Glance 2023 – United States: OASDI employee contribution rate 6.2% on earnings
+        up to taxable maximum.'
+      year: 2023
+    employer_rate:
+      value: 0.062
+      source_citation: 'OECD Pensions at a Glance 2023 – United States: OASDI employer contribution rate 6.2% on earnings
+        up to taxable maximum.'
+      year: 2023
+    total_rate:
+      value: null
+      source_citation: Derived from employee + employer OASDI rates (12.4% total; excludes Medicare HI 2.9%).
+      year: 2023
+    contribution_ceiling_aw_multiple:
+      value: 2.47
+      source_citation: 'OECD Pensions at a Glance 2023 – United States: OASDI taxable maximum USD 160,200 in 2023, approximately
+        2.47× average wage.'
+      year: 2023
+    contribution_base: gross earnings
+    notes: Self-employed pay 12.4% OASDI self-employment tax (but deduct half). Additional Medicare tax of 1.45% each side
+      not included here.
+  benefits:
+    accrual_rate_per_year:
+      value: null
+      source_citation: 'OECD Pensions at a Glance 2023 – United States: OASDI uses progressive bend-point formula on Average
+        Indexed Monthly Earnings (AIME); not a simple accrual rate per year.'
+      year: 2023
+    reference_wage: career_average
+    valorization: wages
+    flat_rate_aw_multiple: null
+    flat_rate_absolute: null
+    indexation: CPI
+    minimum_benefit_aw_multiple:
+      value: null
+      source_citation: 'OECD Pensions at a Glance 2023 – United States: Special Minimum Benefit exists but applies to very
+        low earners with long careers; Supplemental Security Income (SSI) provides means-tested safety net.'
+      year: 2023
+    maximum_benefit_aw_multiple:
+      value: null
+      source_citation: 'OECD Pensions at a Glance 2023 – United States: no explicit maximum benefit cap; constrained by taxable
+        maximum and bend-point formula.'
+      year: 2023
+    notes: 'PIA = 90% of AIME up to first bend point + 32% between bend points + 15% above second bend point (2023 bend points:
+      USD 1,115 and USD 6,721). Strongly progressive formula.'
+  payout:
+    type: annuity
+    notes: null
+- scheme_id: USA_SSI
+  name: Supplemental Security Income (SSI) – Means-Tested
+  tier: first
+  type: targeted
+  coverage: US residents aged 65+ (or disabled) with very low income and assets; approximately 1.2 million elderly SSI recipients
+    (2023); federal supplement plus state top-ups
+  active: true
+  eligibility:
+    normal_retirement_age_male:
+      value: 65
+      source_citation: 'SSA USA: SSI payable from age 65 (or any age if disabled); means-tested on income and countable resources.'
+      year: 2023
+    normal_retirement_age_female:
+      value: 65
+      source_citation: 'SSA USA: SSI NRA 65 for both sexes.'
+      year: 2023
+  benefits:
+    minimum_benefit_aw_multiple:
+      value: 0.082
+      source_citation: 'SSA USA: federal SSI maximum $914/month single (2023) × 12 = $10,968 ≈ 8.2% of AW ($133,700).'
+      year: 2023
+    maximum_benefit_aw_multiple:
+      value: 0.082
+      source_citation: 'SSA USA: federal maximum SSI single $914/month. Many states add state supplements.'
+      year: 2023
+    indexation: CPI
+  payout:
+    type: annuity
+    notes: Monthly federal payment; asset limit $2,000 single; income-tested. States may add supplemental payments. Counted
+      separately from Social Security benefits.
 taxes:
-  worker_income_tax_treatment: "EET"
-  income_tax_on_pension: "Up to 85% of Social Security benefits subject to federal income tax if combined income exceeds USD 34,000 (single) or USD 44,000 (married). State taxes vary."
+  worker_income_tax_treatment: EET
+  income_tax_on_pension: Up to 85% of Social Security benefits subject to federal income tax if combined income exceeds USD
+    34,000 (single) or USD 44,000 (married). State taxes vary.
   simplified_net_rate:
     value: 0.12
-    source_citation: "Estimated effective federal income tax rate on Social Security benefits for median US retiree, based on OECD Taxing Wages 2023 and IRS data."
+    source_citation: Estimated effective federal income tax rate on Social Security benefits for median US retiree, based
+      on OECD Taxing Wages 2023 and IRS data.
     year: 2023
   notes: null
-
 average_earnings:
-  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
-  ilostat_ref_area: "USA"
-  ilostat_transformation: "x * 12"
+  ilostat_series_id: EAR_4MTH_SEX_ECO_CUR_NB
+  ilostat_ref_area: USA
+  ilostat_transformation: x * 12
   manual_value: 65836
-  currency: "US Dollar"
+  currency: US Dollar
   year: 2022
-  source_citation: "OECD Average Annual Wages database 2022 – United States: USD 65,836 average gross annual wage."
+  source_citation: 'OECD Average Annual Wages database 2022 – United States: USD 65,836 average gross annual wage.'
   source_url: null
-
 worker_types:
   private_employee:
-    label: "Private sector employee"
+    label: Private sector employee
     coverage_status: mandatory
-    scheme_ids: ["USA_OASDI"]
-    source_citation: "Mandatory OASDI coverage for private sector employees under Social Security Act Title II – SSA 2022."
+    scheme_ids:
+    - USA_OASDI
+    source_citation: Mandatory OASDI coverage for private sector employees under Social Security Act Title II – SSA 2022.
     source_url: null
     notes: null
-
   civil_servant:
-    label: "Civil servant (Federal)"
+    label: Civil servant (Federal)
     coverage_status: mandatory
-    scheme_ids: ["USA_OASDI"]
-    source_citation: "Federal employees hired after 1983 covered under OASDI; also covered by FERS (Federal Employees Retirement System) – SSA Social Security Programs Throughout the World 2022."
-    notes: "Pre-1984 federal employees may be under CSRS (not covered by OASDI). FERS includes Social Security + Basic Benefit DB + Thrift Savings Plan DC."
-
+    scheme_ids:
+    - USA_OASDI
+    source_citation: Federal employees hired after 1983 covered under OASDI; also covered by FERS (Federal Employees Retirement
+      System) – SSA Social Security Programs Throughout the World 2022.
+    notes: Pre-1984 federal employees may be under CSRS (not covered by OASDI). FERS includes Social Security + Basic Benefit
+      DB + Thrift Savings Plan DC.
   self_employed:
-    label: "Self-employed"
+    label: Self-employed
     coverage_status: mandatory
-    scheme_ids: ["USA_OASDI"]
-    source_citation: "Self-employed pay OASDI self-employment tax (12.4%) and accrue Social Security benefits – Social Security Act, IRC § 1401."
+    scheme_ids:
+    - USA_OASDI
+    source_citation: Self-employed pay OASDI self-employment tax (12.4%) and accrue Social Security benefits – Social Security
+      Act, IRC § 1401.
     notes: null
-
 notes: null

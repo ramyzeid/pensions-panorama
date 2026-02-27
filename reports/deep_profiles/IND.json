@@ -1,9 +1,9 @@
 {
   "iso3": "IND",
   "country_name": "India",
-  "last_updated": "2026-02-27T03:29:38.828433Z",
+  "last_updated": "2026-02-27T04:30:47.325167Z",
   "narrative": {
-    "text": "India is a South Asia country with a DB-type pension system centred on the Employees' Pension Scheme 1995 (EPS-95). The system includes 2 schemes: Employees' Pension Scheme 1995 (EPS-95), National Pension System (NPS) \u2013 Tier I. The normal retirement age is 58 for both men and women. Contributions total 8.3% of insurable earnings (0.0% employee, 8.3% employer).",
+    "text": "India is a South Asia country with a DB-type pension system centred on the Employees' Pension Scheme 1995 (EPS-95). The system includes 3 schemes: Employees' Pension Scheme 1995 (EPS-95), National Pension System (NPS) \u2013 Tier I, Indira Gandhi National Old Age Pension Scheme (IGNOAPS) \u2013 Non-Contributory. The normal retirement age is 58 for both men and women. Contributions total 8.3% of insurable earnings (0.0% employee, 8.3% employer).",
     "sources": [
       {
         "source_name": "Employees' Pension Scheme 1995 (EPS-95) \u2013 EPFO India",
@@ -26,9 +26,9 @@
       "key": "year",
       "label": "Year",
       "cell": {
-        "value": null,
+        "value": 2023,
         "unit": "year",
-        "year": null,
+        "year": 2023,
         "source": {
           "source_name": "World Development Indicators (World Bank)",
           "source_url": "https://data.worldbank.org",
@@ -43,14 +43,14 @@
       "key": "gdp_pc_lcu",
       "label": "GDP per capita (LCU)",
       "cell": {
-        "value": null,
+        "value": 209467.997803703,
         "unit": "LCU",
-        "year": null,
+        "year": 2023,
         "source": {
           "source_name": "World Development Indicators (World Bank)",
           "source_url": "https://data.worldbank.org/indicator/NY.GDP.PCAP.CN?locations=IND",
           "indicator_id": "NY.GDP.PCAP.CN",
-          "year": null,
+          "year": 2023,
           "notes": null
         },
         "notes": null
@@ -60,14 +60,14 @@
       "key": "gdp_pc_usd",
       "label": "GDP per capita (USD)",
       "cell": {
-        "value": null,
+        "value": 2530.12031278204,
         "unit": "USD",
-        "year": null,
+        "year": 2023,
         "source": {
           "source_name": "World Development Indicators (World Bank)",
           "source_url": "https://data.worldbank.org/indicator/NY.GDP.PCAP.CD?locations=IND",
           "indicator_id": "NY.GDP.PCAP.CD",
-          "year": null,
+          "year": 2023,
           "notes": null
         },
         "notes": null
@@ -77,14 +77,14 @@
       "key": "pop_65_total",
       "label": "Population age 65+ (total)",
       "cell": {
-        "value": null,
+        "value": 99540924.0,
         "unit": "persons",
-        "year": null,
+        "year": 2023,
         "source": {
           "source_name": "World Development Indicators (World Bank)",
           "source_url": "https://data.worldbank.org/indicator/SP.POP.65UP.TO?locations=IND",
           "indicator_id": "SP.POP.65UP.TO",
-          "year": null,
+          "year": 2023,
           "notes": null
         },
         "notes": null
@@ -94,14 +94,14 @@
       "key": "pop_65_pct",
       "label": "Population age 65+ (% of total population)",
       "cell": {
-        "value": null,
+        "value": 6.92184330138637,
         "unit": "%",
-        "year": null,
+        "year": 2023,
         "source": {
           "source_name": "World Development Indicators (World Bank)",
           "source_url": "https://data.worldbank.org/indicator/SP.POP.65UP.TO.ZS?locations=IND",
           "indicator_id": "SP.POP.65UP.TO.ZS",
-          "year": null,
+          "year": 2023,
           "notes": null
         },
         "notes": null
@@ -111,14 +111,14 @@
       "key": "pension_coverage_pct",
       "label": "Contributory pension coverage (% of population)",
       "cell": {
-        "value": null,
+        "value": 14.2906651019292,
         "unit": "%",
-        "year": null,
+        "year": 2011,
         "source": {
           "source_name": "ASPIRE \u2013 World Bank",
           "source_url": "https://www.worldbank.org/en/data/datatopics/aspire",
           "indicator_id": "per_si_cp.cov_pop_tot",
-          "year": null,
+          "year": 2011,
           "notes": null
         },
         "notes": null
@@ -128,14 +128,14 @@
       "key": "social_insurance_coverage_pct",
       "label": "Social insurance coverage (% of population)",
       "cell": {
-        "value": null,
+        "value": 17.6733566699985,
         "unit": "%",
-        "year": null,
+        "year": 2011,
         "source": {
           "source_name": "ASPIRE \u2013 World Bank",
           "source_url": "https://www.worldbank.org/en/data/datatopics/aspire",
           "indicator_id": "per_si_allsi.cov_pop_tot",
-          "year": null,
+          "year": 2011,
           "notes": null
         },
         "notes": null
@@ -145,14 +145,14 @@
       "key": "pension_fund_assets_gdp",
       "label": "Pension fund assets (% of GDP)",
       "cell": {
-        "value": null,
+        "value": 9.2892201,
         "unit": "%",
-        "year": null,
+        "year": 2020,
         "source": {
           "source_name": "Global Financial Development Database \u2013 World Bank",
           "source_url": "https://data.worldbank.org/indicator/GFDD.DI.13",
           "indicator_id": "GFDD.DI.13",
-          "year": null,
+          "year": 2020,
           "notes": null
         },
         "notes": null
@@ -164,10 +164,16 @@
       "key": "coverage_total",
       "label": "Social insurance coverage (% of population)",
       "cell": {
-        "value": null,
-        "unit": null,
-        "year": null,
-        "source": null,
+        "value": 17.6733566699985,
+        "unit": "%",
+        "year": 2011,
+        "source": {
+          "source_name": "ASPIRE \u2013 World Bank",
+          "source_url": "https://www.worldbank.org/en/data/datatopics/aspire",
+          "indicator_id": "per_si_allsi.cov_pop_tot",
+          "year": 2011,
+          "notes": null
+        },
         "notes": null
       }
     },
@@ -175,10 +181,16 @@
       "key": "pension_coverage",
       "label": "Contributory pension coverage (% of population)",
       "cell": {
-        "value": null,
-        "unit": null,
-        "year": null,
-        "source": null,
+        "value": 14.2906651019292,
+        "unit": "%",
+        "year": 2011,
+        "source": {
+          "source_name": "ASPIRE \u2013 World Bank",
+          "source_url": "https://www.worldbank.org/en/data/datatopics/aspire",
+          "indicator_id": "per_si_cp.cov_pop_tot",
+          "year": 2011,
+          "notes": null
+        },
         "notes": null
       }
     },
@@ -186,10 +198,16 @@
       "key": "pension_fund_assets_gdp",
       "label": "Pension fund assets (% of GDP)",
       "cell": {
-        "value": null,
-        "unit": null,
-        "year": null,
-        "source": null,
+        "value": 9.2892201,
+        "unit": "%",
+        "year": 2020,
+        "source": {
+          "source_name": "Global Financial Development Database \u2013 World Bank",
+          "source_url": "https://data.worldbank.org/indicator/GFDD.DI.13",
+          "indicator_id": "GFDD.DI.13",
+          "year": 2020,
+          "notes": null
+        },
         "notes": null
       }
     },
@@ -396,6 +414,60 @@
           "year": null,
           "source": {
             "source_name": "EPS-95 Para 10 \u2013 Normal retirement age is 58. Early pension possible at 50 with reduced benefit. EPFO EPS-95 (as amended to 2022).",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        }
+      }
+    },
+    {
+      "scheme_id": "IND_IGNOAPS",
+      "scheme_name": "Indira Gandhi National Old Age Pension Scheme (IGNOAPS) \u2013 Non-Contributory",
+      "scheme_type_group": "db",
+      "attributes": {
+        "implementing_agency": {
+          "value": "Indira Gandhi National Old Age Pension Scheme (IGNOAPS) \u2013 Non-Contributory",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "target_population": {
+          "value": "Indian citizens aged 60+ below the poverty line; approximately 22 million beneficiaries (2023); funded under National Social Assistance Programme",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "benefit_plan_type": {
+          "value": "targeted",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "ret_age_male": {
+          "value": 60,
+          "unit": null,
+          "year": null,
+          "source": {
+            "source_name": "Ministry of Rural Development India: IGNOAPS payable from age 60; enhanced benefit from age 80.",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        },
+        "ret_age_female": {
+          "value": 60,
+          "unit": null,
+          "year": null,
+          "source": {
+            "source_name": "Ministry of Rural Development India: IGNOAPS payable from age 60; enhanced benefit from age 80.",
             "source_url": null,
             "indicator_id": null,
             "year": null,

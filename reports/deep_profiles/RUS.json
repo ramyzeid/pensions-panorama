@@ -1,9 +1,9 @@
 {
   "iso3": "RUS",
   "country_name": "Russia",
-  "last_updated": "2026-02-27T03:29:38.939494Z",
+  "last_updated": "2026-02-27T04:30:47.312438Z",
   "narrative": {
-    "text": "Russia is a Europe and Central Asia country with a points-type pension system centred on the Mandatory Insurance Pension (Individual Pension Coefficient / points system). The normal retirement age is 65 for men and 60 for women. Contributions total 22.0% of insurable earnings (0.0% employee, 22.0% employer).",
+    "text": "Russia is a Europe and Central Asia country with a points-type pension system centred on the Mandatory Insurance Pension (Individual Pension Coefficient / points system). The system includes 2 schemes: Mandatory Insurance Pension (Individual Pension Coefficient / points system), Social Pension (\u0421\u043e\u0446\u0438\u0430\u043b\u044c\u043d\u0430\u044f \u043f\u0435\u043d\u0441\u0438\u044f) \u2013 Non-Contributory. The normal retirement age is 65 for men and 60 for women. Contributions total 22.0% of insurable earnings (0.0% employee, 22.0% employer).",
     "sources": [
       {
         "source_name": "SSA Social Security Programs Throughout the World \u2013 Europe 2022",
@@ -26,9 +26,9 @@
       "key": "year",
       "label": "Year",
       "cell": {
-        "value": null,
+        "value": 2023,
         "unit": "year",
-        "year": null,
+        "year": 2023,
         "source": {
           "source_name": "World Development Indicators (World Bank)",
           "source_url": "https://data.worldbank.org",
@@ -43,14 +43,14 @@
       "key": "gdp_pc_lcu",
       "label": "GDP per capita (LCU)",
       "cell": {
-        "value": null,
+        "value": 1205841.875,
         "unit": "LCU",
-        "year": null,
+        "year": 2023,
         "source": {
           "source_name": "World Development Indicators (World Bank)",
           "source_url": "https://data.worldbank.org/indicator/NY.GDP.PCAP.CN?locations=RUS",
           "indicator_id": "NY.GDP.PCAP.CN",
-          "year": null,
+          "year": 2023,
           "notes": null
         },
         "notes": null
@@ -60,14 +60,14 @@
       "key": "gdp_pc_usd",
       "label": "GDP per capita (USD)",
       "cell": {
-        "value": null,
+        "value": 14159.3876953125,
         "unit": "USD",
-        "year": null,
+        "year": 2023,
         "source": {
           "source_name": "World Development Indicators (World Bank)",
           "source_url": "https://data.worldbank.org/indicator/NY.GDP.PCAP.CD?locations=RUS",
           "indicator_id": "NY.GDP.PCAP.CD",
-          "year": null,
+          "year": 2023,
           "notes": null
         },
         "notes": null
@@ -77,14 +77,14 @@
       "key": "pop_65_total",
       "label": "Population age 65+ (total)",
       "cell": {
-        "value": null,
+        "value": 23881815.0,
         "unit": "persons",
-        "year": null,
+        "year": 2023,
         "source": {
           "source_name": "World Development Indicators (World Bank)",
           "source_url": "https://data.worldbank.org/indicator/SP.POP.65UP.TO?locations=RUS",
           "indicator_id": "SP.POP.65UP.TO",
-          "year": null,
+          "year": 2023,
           "notes": null
         },
         "notes": null
@@ -94,14 +94,14 @@
       "key": "pop_65_pct",
       "label": "Population age 65+ (% of total population)",
       "cell": {
-        "value": null,
+        "value": 16.6046427349856,
         "unit": "%",
-        "year": null,
+        "year": 2023,
         "source": {
           "source_name": "World Development Indicators (World Bank)",
           "source_url": "https://data.worldbank.org/indicator/SP.POP.65UP.TO.ZS?locations=RUS",
           "indicator_id": "SP.POP.65UP.TO.ZS",
-          "year": null,
+          "year": 2023,
           "notes": null
         },
         "notes": null
@@ -111,14 +111,14 @@
       "key": "pension_coverage_pct",
       "label": "Contributory pension coverage (% of population)",
       "cell": {
-        "value": null,
+        "value": 50.0519767765806,
         "unit": "%",
-        "year": null,
+        "year": 2017,
         "source": {
           "source_name": "ASPIRE \u2013 World Bank",
           "source_url": "https://www.worldbank.org/en/data/datatopics/aspire",
           "indicator_id": "per_si_cp.cov_pop_tot",
-          "year": null,
+          "year": 2017,
           "notes": null
         },
         "notes": null
@@ -128,14 +128,14 @@
       "key": "social_insurance_coverage_pct",
       "label": "Social insurance coverage (% of population)",
       "cell": {
-        "value": null,
+        "value": 56.3815740787852,
         "unit": "%",
-        "year": null,
+        "year": 2017,
         "source": {
           "source_name": "ASPIRE \u2013 World Bank",
           "source_url": "https://www.worldbank.org/en/data/datatopics/aspire",
           "indicator_id": "per_si_allsi.cov_pop_tot",
-          "year": null,
+          "year": 2017,
           "notes": null
         },
         "notes": null
@@ -145,14 +145,14 @@
       "key": "pension_fund_assets_gdp",
       "label": "Pension fund assets (% of GDP)",
       "cell": {
-        "value": null,
+        "value": 4.3285828,
         "unit": "%",
-        "year": null,
+        "year": 2020,
         "source": {
           "source_name": "Global Financial Development Database \u2013 World Bank",
           "source_url": "https://data.worldbank.org/indicator/GFDD.DI.13",
           "indicator_id": "GFDD.DI.13",
-          "year": null,
+          "year": 2020,
           "notes": null
         },
         "notes": null
@@ -164,10 +164,16 @@
       "key": "coverage_total",
       "label": "Social insurance coverage (% of population)",
       "cell": {
-        "value": null,
-        "unit": null,
-        "year": null,
-        "source": null,
+        "value": 56.3815740787852,
+        "unit": "%",
+        "year": 2017,
+        "source": {
+          "source_name": "ASPIRE \u2013 World Bank",
+          "source_url": "https://www.worldbank.org/en/data/datatopics/aspire",
+          "indicator_id": "per_si_allsi.cov_pop_tot",
+          "year": 2017,
+          "notes": null
+        },
         "notes": null
       }
     },
@@ -175,10 +181,16 @@
       "key": "pension_coverage",
       "label": "Contributory pension coverage (% of population)",
       "cell": {
-        "value": null,
-        "unit": null,
-        "year": null,
-        "source": null,
+        "value": 50.0519767765806,
+        "unit": "%",
+        "year": 2017,
+        "source": {
+          "source_name": "ASPIRE \u2013 World Bank",
+          "source_url": "https://www.worldbank.org/en/data/datatopics/aspire",
+          "indicator_id": "per_si_cp.cov_pop_tot",
+          "year": 2017,
+          "notes": null
+        },
         "notes": null
       }
     },
@@ -186,10 +198,16 @@
       "key": "pension_fund_assets_gdp",
       "label": "Pension fund assets (% of GDP)",
       "cell": {
-        "value": null,
-        "unit": null,
-        "year": null,
-        "source": null,
+        "value": 4.3285828,
+        "unit": "%",
+        "year": 2020,
+        "source": {
+          "source_name": "Global Financial Development Database \u2013 World Bank",
+          "source_url": "https://data.worldbank.org/indicator/GFDD.DI.13",
+          "indicator_id": "GFDD.DI.13",
+          "year": 2020,
+          "notes": null
+        },
         "notes": null
       }
     },
@@ -217,6 +235,67 @@
     }
   ],
   "schemes": [
+    {
+      "scheme_id": "RUS_SOCIALPENSION",
+      "scheme_name": "Social Pension (\u0421\u043e\u0446\u0438\u0430\u043b\u044c\u043d\u0430\u044f \u043f\u0435\u043d\u0441\u0438\u044f) \u2013 Non-Contributory",
+      "scheme_type_group": "noncontrib",
+      "attributes": {
+        "implementing_agency": {
+          "value": "Social Pension (\u0421\u043e\u0446\u0438\u0430\u043b\u044c\u043d\u0430\u044f \u043f\u0435\u043d\u0441\u0438\u044f) \u2013 Non-Contributory",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "target_population": {
+          "value": "Russian citizens aged 65+ (men) / 60+ (women) without insurance pension entitlement; also disabled persons",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "benefit_plan_type": {
+          "value": "basic",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "financing_mechanism": {
+          "value": "General revenue / Social assistance",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "ret_age_male": {
+          "value": 70,
+          "unit": null,
+          "year": null,
+          "source": {
+            "source_name": "Federal Law No. 166-FZ Russia: Social Pension payable 5 years after standard NRA \u2014 age 70 men (NRA 65) and 65 women (NRA 60).",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        },
+        "ret_age_female": {
+          "value": 65,
+          "unit": null,
+          "year": null,
+          "source": {
+            "source_name": "Federal Law No. 166-FZ Russia: Social Pension payable 5 years after standard NRA \u2014 age 70 men (NRA 65) and 65 women (NRA 60).",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        }
+      }
+    },
     {
       "scheme_id": "RUS_IPC",
       "scheme_name": "Mandatory Insurance Pension (Individual Pension Coefficient / points system)",

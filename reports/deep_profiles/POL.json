@@ -1,9 +1,9 @@
 {
   "iso3": "POL",
   "country_name": "Poland",
-  "last_updated": "2026-02-27T03:29:39.017787Z",
+  "last_updated": "2026-02-27T04:30:47.778310Z",
   "narrative": {
-    "text": "Poland is a Europe and Central Asia country with a NDC-type pension system centred on the Fundusz Ubezpiecze\u0144 Spo\u0142ecznych \u2013 NDC Old-Age Pension (ZUS). The normal retirement age is 65 for men and 60 for women. Contributions total 19.5% of insurable earnings (9.8% employee, 9.8% employer).",
+    "text": "Poland is a Europe and Central Asia country with a NDC-type pension system centred on the Fundusz Ubezpiecze\u0144 Spo\u0142ecznych \u2013 NDC Old-Age Pension (ZUS). The system includes 2 schemes: Fundusz Ubezpiecze\u0144 Spo\u0142ecznych \u2013 NDC Old-Age Pension (ZUS), Minimum Pension Guarantee (Emerytura Minimalna). The normal retirement age is 65 for men and 60 for women. Contributions total 19.5% of insurable earnings (9.8% employee, 9.8% employer).",
     "sources": [
       {
         "source_name": "SSA Social Security Programs Throughout the World \u2013 Europe 2022",
@@ -26,9 +26,9 @@
       "key": "year",
       "label": "Year",
       "cell": {
-        "value": null,
+        "value": 2023,
         "unit": "year",
-        "year": null,
+        "year": 2023,
         "source": {
           "source_name": "World Development Indicators (World Bank)",
           "source_url": "https://data.worldbank.org",
@@ -43,14 +43,14 @@
       "key": "gdp_pc_lcu",
       "label": "GDP per capita (LCU)",
       "cell": {
-        "value": null,
+        "value": 93091.3167815623,
         "unit": "LCU",
-        "year": null,
+        "year": 2023,
         "source": {
           "source_name": "World Development Indicators (World Bank)",
           "source_url": "https://data.worldbank.org/indicator/NY.GDP.PCAP.CN?locations=POL",
           "indicator_id": "NY.GDP.PCAP.CN",
-          "year": null,
+          "year": 2023,
           "notes": null
         },
         "notes": null
@@ -60,14 +60,14 @@
       "key": "gdp_pc_usd",
       "label": "GDP per capita (USD)",
       "cell": {
-        "value": null,
+        "value": 22145.2660647429,
         "unit": "USD",
-        "year": null,
+        "year": 2023,
         "source": {
           "source_name": "World Development Indicators (World Bank)",
           "source_url": "https://data.worldbank.org/indicator/NY.GDP.PCAP.CD?locations=POL",
           "indicator_id": "NY.GDP.PCAP.CD",
-          "year": null,
+          "year": 2023,
           "notes": null
         },
         "notes": null
@@ -77,14 +77,14 @@
       "key": "pop_65_total",
       "label": "Population age 65+ (total)",
       "cell": {
-        "value": null,
+        "value": 7176381.0,
         "unit": "persons",
-        "year": null,
+        "year": 2023,
         "source": {
           "source_name": "World Development Indicators (World Bank)",
           "source_url": "https://data.worldbank.org/indicator/SP.POP.65UP.TO?locations=POL",
           "indicator_id": "SP.POP.65UP.TO",
-          "year": null,
+          "year": 2023,
           "notes": null
         },
         "notes": null
@@ -94,14 +94,14 @@
       "key": "pop_65_pct",
       "label": "Population age 65+ (% of total population)",
       "cell": {
-        "value": null,
+        "value": 19.5609114692528,
         "unit": "%",
-        "year": null,
+        "year": 2023,
         "source": {
           "source_name": "World Development Indicators (World Bank)",
           "source_url": "https://data.worldbank.org/indicator/SP.POP.65UP.TO.ZS?locations=POL",
           "indicator_id": "SP.POP.65UP.TO.ZS",
-          "year": null,
+          "year": 2023,
           "notes": null
         },
         "notes": null
@@ -111,14 +111,14 @@
       "key": "pension_coverage_pct",
       "label": "Contributory pension coverage (% of population)",
       "cell": {
-        "value": null,
+        "value": 43.1727872786111,
         "unit": "%",
-        "year": null,
+        "year": 2019,
         "source": {
           "source_name": "ASPIRE \u2013 World Bank",
           "source_url": "https://www.worldbank.org/en/data/datatopics/aspire",
           "indicator_id": "per_si_cp.cov_pop_tot",
-          "year": null,
+          "year": 2019,
           "notes": null
         },
         "notes": null
@@ -128,14 +128,14 @@
       "key": "social_insurance_coverage_pct",
       "label": "Social insurance coverage (% of population)",
       "cell": {
-        "value": null,
+        "value": 44.9698236021464,
         "unit": "%",
-        "year": null,
+        "year": 2019,
         "source": {
           "source_name": "ASPIRE \u2013 World Bank",
           "source_url": "https://www.worldbank.org/en/data/datatopics/aspire",
           "indicator_id": "per_si_allsi.cov_pop_tot",
-          "year": null,
+          "year": 2019,
           "notes": null
         },
         "notes": null
@@ -145,14 +145,14 @@
       "key": "pension_fund_assets_gdp",
       "label": "Pension fund assets (% of GDP)",
       "cell": {
-        "value": null,
+        "value": 6.4268959,
         "unit": "%",
-        "year": null,
+        "year": 2020,
         "source": {
           "source_name": "Global Financial Development Database \u2013 World Bank",
           "source_url": "https://data.worldbank.org/indicator/GFDD.DI.13",
           "indicator_id": "GFDD.DI.13",
-          "year": null,
+          "year": 2020,
           "notes": null
         },
         "notes": null
@@ -164,10 +164,16 @@
       "key": "coverage_total",
       "label": "Social insurance coverage (% of population)",
       "cell": {
-        "value": null,
-        "unit": null,
-        "year": null,
-        "source": null,
+        "value": 44.9698236021464,
+        "unit": "%",
+        "year": 2019,
+        "source": {
+          "source_name": "ASPIRE \u2013 World Bank",
+          "source_url": "https://www.worldbank.org/en/data/datatopics/aspire",
+          "indicator_id": "per_si_allsi.cov_pop_tot",
+          "year": 2019,
+          "notes": null
+        },
         "notes": null
       }
     },
@@ -175,10 +181,16 @@
       "key": "pension_coverage",
       "label": "Contributory pension coverage (% of population)",
       "cell": {
-        "value": null,
-        "unit": null,
-        "year": null,
-        "source": null,
+        "value": 43.1727872786111,
+        "unit": "%",
+        "year": 2019,
+        "source": {
+          "source_name": "ASPIRE \u2013 World Bank",
+          "source_url": "https://www.worldbank.org/en/data/datatopics/aspire",
+          "indicator_id": "per_si_cp.cov_pop_tot",
+          "year": 2019,
+          "notes": null
+        },
         "notes": null
       }
     },
@@ -186,10 +198,16 @@
       "key": "pension_fund_assets_gdp",
       "label": "Pension fund assets (% of GDP)",
       "cell": {
-        "value": null,
-        "unit": null,
-        "year": null,
-        "source": null,
+        "value": 6.4268959,
+        "unit": "%",
+        "year": 2020,
+        "source": {
+          "source_name": "Global Financial Development Database \u2013 World Bank",
+          "source_url": "https://data.worldbank.org/indicator/GFDD.DI.13",
+          "indicator_id": "GFDD.DI.13",
+          "year": 2020,
+          "notes": null
+        },
         "notes": null
       }
     },
@@ -302,6 +320,60 @@
           "year": null,
           "source": {
             "source_name": "OECD Pensions at a Glance 2023 \u2013 Poland: NRA 65 for men (restored from 67 by government in 2017).",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        }
+      }
+    },
+    {
+      "scheme_id": "POL_MINIMALNA",
+      "scheme_name": "Minimum Pension Guarantee (Emerytura Minimalna)",
+      "scheme_type_group": "db",
+      "attributes": {
+        "implementing_agency": {
+          "value": "Minimum Pension Guarantee (Emerytura Minimalna)",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "target_population": {
+          "value": "Polish workers whose ZUS NDC pension falls below the guaranteed minimum and who have met minimum contribution years (20 women / 25 men)",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "benefit_plan_type": {
+          "value": "minimum",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "ret_age_male": {
+          "value": 65,
+          "unit": null,
+          "year": null,
+          "source": {
+            "source_name": "OECD PAG 2023 Poland: Minimum Pension Guarantee applies from NRA 65 for men (20 years contributions).",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        },
+        "ret_age_female": {
+          "value": 60,
+          "unit": null,
+          "year": null,
+          "source": {
+            "source_name": "OECD PAG 2023 Poland: Minimum Pension Guarantee applies from NRA 65 for men (20 years contributions).",
             "source_url": null,
             "indicator_id": null,
             "year": null,

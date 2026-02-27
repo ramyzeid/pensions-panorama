@@ -1,130 +1,153 @@
 metadata:
-  country_name: "Argentina"
-  iso3: "ARG"
-  iso2: "AR"
-  currency: "Argentine Peso"
-  currency_code: "ARS"
+  country_name: Argentina
+  iso3: ARG
+  iso2: AR
+  currency: Argentine Peso
+  currency_code: ARS
   reference_year: 2023
-  wb_region: "LCN"
-  wb_income_level: "UMC"
+  wb_region: LCN
+  wb_income_level: UMC
   un_location_id: null
   sources:
-    - "SSA Social Security Programs Throughout the World – The Americas 2023"
-    - "ANSES – Administracion Nacional de la Seguridad Social (Argentina)"
-    - "Ley 24.241 Sistema Integrado Previsional Argentino (SIPA)"
-  last_reviewed: "2024-01-01"
-
+  - SSA Social Security Programs Throughout the World – The Americas 2023
+  - ANSES – Administracion Nacional de la Seguridad Social (Argentina)
+  - Ley 24.241 Sistema Integrado Previsional Argentino (SIPA)
+  last_reviewed: '2024-01-01'
 schemes:
-  - scheme_id: "ARG_SIPA"
-    name: "Sistema Integrado Previsional Argentino (SIPA/ANSES)"
-    tier: "first"
-    type: "DB"
-    coverage: "formal sector employees (public and private)"
-    active: true
-
-    eligibility:
-      normal_retirement_age_male:
-        value: 65
-        source_citation: "SSA SSPW Americas 2023 – Argentina: NRA 65 for males under SIPA."
-        year: 2023
-      normal_retirement_age_female:
-        value: 60
-        source_citation: "SSA SSPW Americas 2023 – Argentina: NRA 60 for females under SIPA."
-        year: 2023
-      vesting_years:
-        value: 30
-        source_citation: "SSA SSPW Americas 2023 – Argentina: 30 years of contributions required for ordinary retirement benefit."
-        year: 2023
-      minimum_contribution_years:
-        value: 30
-        source_citation: "SSA SSPW Americas 2023 – Argentina: 30 contribution years required for full pension under SIPA."
-        year: 2023
-      notes: null
-
-    contributions:
-      employee_rate:
-        value: 0.11
-        source_citation: "SSA SSPW Americas 2023 – Argentina: employee contribution 11% of gross earnings to SIPA."
-        year: 2023
-      employer_rate:
-        value: 0.165
-        source_citation: "SSA SSPW Americas 2023 – Argentina: employer contribution 16.5% of payroll (general rate)."
-        year: 2023
-      total_rate:
-        value: null
-        source_citation: "Derived from employee + employer rates."
-        year: 2023
-      contribution_ceiling_aw_multiple:
-        value: null
-        source_citation: "SSA SSPW Americas 2023 – Argentina: contribution ceiling set at 75 times the average insured wage (MOPRE reference)."
-        year: 2023
-      contribution_base: "gross earnings"
-      notes: null
-
-    benefits:
-      accrual_rate_per_year:
-        value: 0.015
-        source_citation: "SSA SSPW Americas 2023 – Argentina: benefit = 1.5% per year of service on best 10-year average earnings plus Basic Universal Benefit (PBU)."
-        year: 2023
-      reference_wage: "best_N_years"
-      valorization: "wages"
-      flat_rate_aw_multiple: null
-      flat_rate_absolute: null
-      indexation: "mixed"
-      minimum_benefit_aw_multiple:
-        value: null
-        source_citation: "SSA SSPW Americas 2023 – Argentina: minimum pension (haber minimo) guaranteed by ANSES, adjusted periodically."
-        year: 2023
-      maximum_benefit_aw_multiple:
-        value: null
-        source_citation: "SSA SSPW Americas 2023 – Argentina: maximum pension benefit cap set by ANSES resolution."
-        year: 2023
-      notes: "Benefit includes PBU (flat basic) + PC (proportional component 1.5%/yr) + PAP (additional). Indexation formula introduced by law 27.426."
-
-    payout:
-      type: "annuity"
-      notes: null
-
+- scheme_id: ARG_SIPA
+  name: Sistema Integrado Previsional Argentino (SIPA/ANSES)
+  tier: first
+  type: DB
+  coverage: formal sector employees (public and private)
+  active: true
+  eligibility:
+    normal_retirement_age_male:
+      value: 65
+      source_citation: 'SSA SSPW Americas 2023 – Argentina: NRA 65 for males under SIPA.'
+      year: 2023
+    normal_retirement_age_female:
+      value: 60
+      source_citation: 'SSA SSPW Americas 2023 – Argentina: NRA 60 for females under SIPA.'
+      year: 2023
+    vesting_years:
+      value: 30
+      source_citation: 'SSA SSPW Americas 2023 – Argentina: 30 years of contributions required for ordinary retirement benefit.'
+      year: 2023
+    minimum_contribution_years:
+      value: 30
+      source_citation: 'SSA SSPW Americas 2023 – Argentina: 30 contribution years required for full pension under SIPA.'
+      year: 2023
+    notes: null
+  contributions:
+    employee_rate:
+      value: 0.11
+      source_citation: 'SSA SSPW Americas 2023 – Argentina: employee contribution 11% of gross earnings to SIPA.'
+      year: 2023
+    employer_rate:
+      value: 0.165
+      source_citation: 'SSA SSPW Americas 2023 – Argentina: employer contribution 16.5% of payroll (general rate).'
+      year: 2023
+    total_rate:
+      value: null
+      source_citation: Derived from employee + employer rates.
+      year: 2023
+    contribution_ceiling_aw_multiple:
+      value: null
+      source_citation: 'SSA SSPW Americas 2023 – Argentina: contribution ceiling set at 75 times the average insured wage
+        (MOPRE reference).'
+      year: 2023
+    contribution_base: gross earnings
+    notes: null
+  benefits:
+    accrual_rate_per_year:
+      value: 0.015
+      source_citation: 'SSA SSPW Americas 2023 – Argentina: benefit = 1.5% per year of service on best 10-year average earnings
+        plus Basic Universal Benefit (PBU).'
+      year: 2023
+    reference_wage: best_N_years
+    valorization: wages
+    flat_rate_aw_multiple: null
+    flat_rate_absolute: null
+    indexation: mixed
+    minimum_benefit_aw_multiple:
+      value: null
+      source_citation: 'SSA SSPW Americas 2023 – Argentina: minimum pension (haber minimo) guaranteed by ANSES, adjusted periodically.'
+      year: 2023
+    maximum_benefit_aw_multiple:
+      value: null
+      source_citation: 'SSA SSPW Americas 2023 – Argentina: maximum pension benefit cap set by ANSES resolution.'
+      year: 2023
+    notes: Benefit includes PBU (flat basic) + PC (proportional component 1.5%/yr) + PAP (additional). Indexation formula
+      introduced by law 27.426.
+  payout:
+    type: annuity
+    notes: null
+- scheme_id: ARG_PUAM
+  name: Prestación Universal para el Adulto Mayor (PUAM) – Non-Contributory
+  tier: first
+  type: basic
+  coverage: Argentine residents aged 65+ without sufficient contributory pension entitlement; approximately 700,000 recipients
+    (2023)
+  active: true
+  eligibility:
+    normal_retirement_age_male:
+      value: 65
+      source_citation: 'Ley 27.260 Argentina (2016): PUAM payable from age 65 for both sexes.'
+      year: 2023
+    normal_retirement_age_female:
+      value: 65
+      source_citation: 'Ley 27.260 Argentina: PUAM NRA 65 for both sexes.'
+      year: 2023
+  benefits:
+    flat_rate_aw_multiple:
+      value: 0.225
+      source_citation: 'ANSES Argentina: PUAM = 80% of minimum contributory pension (haber mínimo); minimum pension ≈ 28%
+        AW → PUAM ≈ 22.5% AW.'
+      year: 2023
+    indexation: wages
+  payout:
+    type: annuity
+    notes: 80% of minimum contributory pension (haber mínimo jubilatorio); incompatible with other pensions.
 taxes:
-  worker_income_tax_treatment: "EET"
-  income_tax_on_pension: "Pension income subject to income tax (Impuesto a las Ganancias) above the exempt floor; exemptions for minimum pension beneficiaries."
+  worker_income_tax_treatment: EET
+  income_tax_on_pension: Pension income subject to income tax (Impuesto a las Ganancias) above the exempt floor; exemptions
+    for minimum pension beneficiaries.
   simplified_net_rate:
     value: 0.05
-    source_citation: "Estimated effective rate – SSA SSPW Americas 2023 and Argentine AFIP income tax rules."
+    source_citation: Estimated effective rate – SSA SSPW Americas 2023 and Argentine AFIP income tax rules.
     year: 2023
   notes: null
-
 average_earnings:
-  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
-  ilostat_ref_area: "ARG"
-  ilostat_transformation: "x * 12"
+  ilostat_series_id: EAR_4MTH_SEX_ECO_CUR_NB
+  ilostat_ref_area: ARG
+  ilostat_transformation: x * 12
   manual_value: 3000000
-  currency: "ARS"
+  currency: ARS
   year: 2022
-  source_citation: "ILO ILOSTAT / INDEC EPH estimate 2022: average monthly formal earnings ~ARS 250,000, annualised ~ARS 3,000,000."
+  source_citation: 'ILO ILOSTAT / INDEC EPH estimate 2022: average monthly formal earnings ~ARS 250,000, annualised ~ARS 3,000,000.'
   source_url: null
-
 worker_types:
   private_employee:
-    label: "Private sector employee"
+    label: Private sector employee
     coverage_status: mandatory
-    scheme_ids: ["ARG_SIPA"]
-    source_citation: "SSA SSPW Americas 2023 – mandatory coverage for all formal private sector employees under SIPA/ANSES."
+    scheme_ids:
+    - ARG_SIPA
+    source_citation: SSA SSPW Americas 2023 – mandatory coverage for all formal private sector employees under SIPA/ANSES.
     source_url: null
     notes: null
-
   civil_servant:
-    label: "Civil servant"
+    label: Civil servant
     coverage_status: mandatory
-    scheme_ids: ["ARG_SIPA"]
-    source_citation: "SSA SSPW Americas 2023 – civil servants integrated into SIPA since 2008 nationalisation of AFJPs."
+    scheme_ids:
+    - ARG_SIPA
+    source_citation: SSA SSPW Americas 2023 – civil servants integrated into SIPA since 2008 nationalisation of AFJPs.
     notes: null
-
   self_employed:
-    label: "Self-employed"
+    label: Self-employed
     coverage_status: voluntary
-    scheme_ids: ["ARG_SIPA"]
-    source_citation: "SSA SSPW Americas 2023 – self-employed (monotributistas and autónomos) may contribute to SIPA on a voluntary or flat-rate basis."
+    scheme_ids:
+    - ARG_SIPA
+    source_citation: SSA SSPW Americas 2023 – self-employed (monotributistas and autónomos) may contribute to SIPA on a voluntary
+      or flat-rate basis.
     notes: null
-
 notes: null

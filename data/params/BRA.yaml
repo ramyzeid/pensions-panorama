@@ -1,130 +1,156 @@
 metadata:
-  country_name: "Brazil"
-  iso3: "BRA"
-  iso2: "BR"
-  currency: "Brazilian Real"
-  currency_code: "BRL"
+  country_name: Brazil
+  iso3: BRA
+  iso2: BR
+  currency: Brazilian Real
+  currency_code: BRL
   reference_year: 2023
-  wb_region: "LCN"
-  wb_income_level: "UMC"
+  wb_region: LCN
+  wb_income_level: UMC
   un_location_id: null
   sources:
-    - "SSA Social Security Programs Throughout the World – The Americas 2023"
-    - "INSS – Instituto Nacional do Seguro Social (Brazil)"
-    - "Emenda Constitucional 103/2019 (Brazilian Pension Reform)"
-  last_reviewed: "2024-01-01"
-
+  - SSA Social Security Programs Throughout the World – The Americas 2023
+  - INSS – Instituto Nacional do Seguro Social (Brazil)
+  - Emenda Constitucional 103/2019 (Brazilian Pension Reform)
+  last_reviewed: '2024-01-01'
 schemes:
-  - scheme_id: "BRA_RGPS"
-    name: "Regime Geral de Previdencia Social (RGPS/INSS)"
-    tier: "first"
-    type: "DB"
-    coverage: "private sector employees and most workers"
-    active: true
-
-    eligibility:
-      normal_retirement_age_male:
-        value: 65
-        source_citation: "SSA SSPW Americas 2023 – Brazil: NRA 65 for males (EC 103/2019 reform)."
-        year: 2023
-      normal_retirement_age_female:
-        value: 62
-        source_citation: "SSA SSPW Americas 2023 – Brazil: NRA 62 for females (EC 103/2019 reform)."
-        year: 2023
-      vesting_years:
-        value: 15
-        source_citation: "SSA SSPW Americas 2023 – Brazil: minimum 15 years contributions for retirement eligibility."
-        year: 2023
-      minimum_contribution_years:
-        value: 20
-        source_citation: "SSA SSPW Americas 2023 – Brazil: 20 years contributions required for full benefit under EC 103/2019."
-        year: 2023
-      notes: null
-
-    contributions:
-      employee_rate:
-        value: 0.09
-        source_citation: "SSA SSPW Americas 2023 – Brazil: employee contribution rate 7.5%–14% progressive scale; midpoint approximately 9% used as representative rate."
-        year: 2023
-      employer_rate:
-        value: 0.20
-        source_citation: "SSA SSPW Americas 2023 – Brazil: employer contribution rate 20% of payroll."
-        year: 2023
-      total_rate:
-        value: null
-        source_citation: "Derived from employee + employer rates."
-        year: 2023
-      contribution_ceiling_aw_multiple:
-        value: null
-        source_citation: "SSA SSPW Americas 2023 – Brazil: contributions capped at the RGPS salary ceiling (teto)."
-        year: 2023
-      contribution_base: "gross earnings"
-      notes: "Employee rate is progressive: 7.5% up to 1 MW, scaling to 14% at the ceiling."
-
-    benefits:
-      accrual_rate_per_year:
-        value: 0.01
-        source_citation: "SSA SSPW Americas 2023 – Brazil: benefit = 60% of benefit basis + 2 pp per year over 20 years (M) / 15 years (F); effective accrual approximated at ~1% per year for initial period."
-        year: 2023
-      reference_wage: "career_average"
-      valorization: "wages"
-      flat_rate_aw_multiple: null
-      flat_rate_absolute: null
-      indexation: "CPI"
-      minimum_benefit_aw_multiple:
-        value: null
-        source_citation: "SSA SSPW Americas 2023 – Brazil: minimum pension equal to one minimum wage."
-        year: 2023
-      maximum_benefit_aw_multiple:
-        value: null
-        source_citation: "SSA SSPW Americas 2023 – Brazil: maximum benefit capped at RGPS teto."
-        year: 2023
-      notes: "Benefit base = average of all indexed earnings. Minimum 60% at 20 yrs (M)/15 yrs (F), +2 pp per additional year."
-
-    payout:
-      type: "annuity"
-      notes: null
-
+- scheme_id: BRA_RGPS
+  name: Regime Geral de Previdencia Social (RGPS/INSS)
+  tier: first
+  type: DB
+  coverage: private sector employees and most workers
+  active: true
+  eligibility:
+    normal_retirement_age_male:
+      value: 65
+      source_citation: 'SSA SSPW Americas 2023 – Brazil: NRA 65 for males (EC 103/2019 reform).'
+      year: 2023
+    normal_retirement_age_female:
+      value: 62
+      source_citation: 'SSA SSPW Americas 2023 – Brazil: NRA 62 for females (EC 103/2019 reform).'
+      year: 2023
+    vesting_years:
+      value: 15
+      source_citation: 'SSA SSPW Americas 2023 – Brazil: minimum 15 years contributions for retirement eligibility.'
+      year: 2023
+    minimum_contribution_years:
+      value: 20
+      source_citation: 'SSA SSPW Americas 2023 – Brazil: 20 years contributions required for full benefit under EC 103/2019.'
+      year: 2023
+    notes: null
+  contributions:
+    employee_rate:
+      value: 0.09
+      source_citation: 'SSA SSPW Americas 2023 – Brazil: employee contribution rate 7.5%–14% progressive scale; midpoint approximately
+        9% used as representative rate.'
+      year: 2023
+    employer_rate:
+      value: 0.2
+      source_citation: 'SSA SSPW Americas 2023 – Brazil: employer contribution rate 20% of payroll.'
+      year: 2023
+    total_rate:
+      value: null
+      source_citation: Derived from employee + employer rates.
+      year: 2023
+    contribution_ceiling_aw_multiple:
+      value: null
+      source_citation: 'SSA SSPW Americas 2023 – Brazil: contributions capped at the RGPS salary ceiling (teto).'
+      year: 2023
+    contribution_base: gross earnings
+    notes: 'Employee rate is progressive: 7.5% up to 1 MW, scaling to 14% at the ceiling.'
+  benefits:
+    accrual_rate_per_year:
+      value: 0.01
+      source_citation: 'SSA SSPW Americas 2023 – Brazil: benefit = 60% of benefit basis + 2 pp per year over 20 years (M)
+        / 15 years (F); effective accrual approximated at ~1% per year for initial period.'
+      year: 2023
+    reference_wage: career_average
+    valorization: wages
+    flat_rate_aw_multiple: null
+    flat_rate_absolute: null
+    indexation: CPI
+    minimum_benefit_aw_multiple:
+      value: null
+      source_citation: 'SSA SSPW Americas 2023 – Brazil: minimum pension equal to one minimum wage.'
+      year: 2023
+    maximum_benefit_aw_multiple:
+      value: null
+      source_citation: 'SSA SSPW Americas 2023 – Brazil: maximum benefit capped at RGPS teto.'
+      year: 2023
+    notes: Benefit base = average of all indexed earnings. Minimum 60% at 20 yrs (M)/15 yrs (F), +2 pp per additional year.
+  payout:
+    type: annuity
+    notes: null
+- scheme_id: BRA_BPC
+  name: Benefício de Prestação Continuada (BPC) – Means-Tested
+  tier: first
+  type: targeted
+  coverage: Brazilian residents aged 65+ with household per capita income below ¼ of minimum wage; approximately 2.5 million
+    elderly recipients (2023)
+  active: true
+  eligibility:
+    normal_retirement_age_male:
+      value: 65
+      source_citation: 'Lei Orgânica da Assistência Social (LOAS): BPC payable from age 65 to low-income elderly.'
+      year: 2023
+    normal_retirement_age_female:
+      value: 65
+      source_citation: 'LOAS Brazil: BPC NRA 65 for both sexes.'
+      year: 2023
+  benefits:
+    minimum_benefit_aw_multiple:
+      value: 0.175
+      source_citation: BPC benefit = 1 minimum wage (BRL 1,320/month in 2023) × 12 = BRL 15,840 ≈ 17.5% of AW (BRL 90,700).
+      year: 2023
+    maximum_benefit_aw_multiple:
+      value: 0.175
+      source_citation: BPC is flat at 1 minimum wage; no top-up.
+      year: 2023
+    indexation: minimum_wage
+  payout:
+    type: annuity
+    notes: Monthly payment from INSS/MDS; means-tested on household per capita income < ¼ minimum wage; reviewed every 2 years.
 taxes:
-  worker_income_tax_treatment: "EET"
-  income_tax_on_pension: "Pension income above the exempt threshold is subject to progressive income tax; amounts up to BRL 2,824/month (2023) are exempt for persons aged 65+."
+  worker_income_tax_treatment: EET
+  income_tax_on_pension: Pension income above the exempt threshold is subject to progressive income tax; amounts up to BRL
+    2,824/month (2023) are exempt for persons aged 65+.
   simplified_net_rate:
     value: 0.05
-    source_citation: "Estimated effective rate for average retiree – SSA SSPW Americas 2023 and Brazilian IRS (Receita Federal) rules."
+    source_citation: Estimated effective rate for average retiree – SSA SSPW Americas 2023 and Brazilian IRS (Receita Federal)
+      rules.
     year: 2023
   notes: null
-
 average_earnings:
-  ilostat_series_id: "EAR_4MTH_SEX_ECO_CUR_NB"
-  ilostat_ref_area: "BRA"
-  ilostat_transformation: "x * 12"
+  ilostat_series_id: EAR_4MTH_SEX_ECO_CUR_NB
+  ilostat_ref_area: BRA
+  ilostat_transformation: x * 12
   manual_value: 40000
-  currency: "BRL"
+  currency: BRL
   year: 2022
-  source_citation: "ILO ILOSTAT / IBGE PNAD Contínua estimate 2022: average monthly earnings ~BRL 3,300, annualised ~BRL 40,000."
+  source_citation: 'ILO ILOSTAT / IBGE PNAD Contínua estimate 2022: average monthly earnings ~BRL 3,300, annualised ~BRL 40,000.'
   source_url: null
-
 worker_types:
   private_employee:
-    label: "Private sector employee"
+    label: Private sector employee
     coverage_status: mandatory
-    scheme_ids: ["BRA_RGPS"]
-    source_citation: "SSA SSPW Americas 2023 – mandatory coverage for all formal private sector employees under RGPS."
+    scheme_ids:
+    - BRA_RGPS
+    source_citation: SSA SSPW Americas 2023 – mandatory coverage for all formal private sector employees under RGPS.
     source_url: null
     notes: null
-
   civil_servant:
-    label: "Civil servant"
+    label: Civil servant
     coverage_status: mandatory
-    scheme_ids: ["BRA_RGPS"]
-    source_citation: "SSA SSPW Americas 2023 – federal civil servants post-2013 brought into RGPS; subnational servants may have RPPS funds."
-    notes: "Pre-2013 federal civil servants covered by RPPS (Regime Próprio). New entrants enrolled in RGPS + FUNPRESP DC supplement."
-
+    scheme_ids:
+    - BRA_RGPS
+    source_citation: SSA SSPW Americas 2023 – federal civil servants post-2013 brought into RGPS; subnational servants may
+      have RPPS funds.
+    notes: Pre-2013 federal civil servants covered by RPPS (Regime Próprio). New entrants enrolled in RGPS + FUNPRESP DC supplement.
   self_employed:
-    label: "Self-employed"
+    label: Self-employed
     coverage_status: voluntary
-    scheme_ids: ["BRA_RGPS"]
-    source_citation: "SSA SSPW Americas 2023 – self-employed may contribute voluntarily to RGPS at 20% of declared income."
+    scheme_ids:
+    - BRA_RGPS
+    source_citation: SSA SSPW Americas 2023 – self-employed may contribute voluntarily to RGPS at 20% of declared income.
     notes: null
-
 notes: null

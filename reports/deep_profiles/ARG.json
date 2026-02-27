@@ -1,9 +1,9 @@
 {
   "iso3": "ARG",
   "country_name": "Argentina",
-  "last_updated": "2026-02-27T03:29:39.400417Z",
+  "last_updated": "2026-02-27T04:30:46.377712Z",
   "narrative": {
-    "text": "Argentina is a Latin America and the Caribbean country with a DB-type pension system centred on the Sistema Integrado Previsional Argentino (SIPA/ANSES). The normal retirement age is 65 for men and 60 for women. Contributions total 27.5% of insurable earnings (11.0% employee, 16.5% employer).",
+    "text": "Argentina is a Latin America and the Caribbean country with a DB-type pension system centred on the Sistema Integrado Previsional Argentino (SIPA/ANSES). The system includes 2 schemes: Sistema Integrado Previsional Argentino (SIPA/ANSES), Prestaci\u00f3n Universal para el Adulto Mayor (PUAM) \u2013 Non-Contributory. The normal retirement age is 65 for men and 60 for women. Contributions total 27.5% of insurable earnings (11.0% employee, 16.5% employer).",
     "sources": [
       {
         "source_name": "SSA Social Security Programs Throughout the World \u2013 The Americas 2023",
@@ -26,9 +26,9 @@
       "key": "year",
       "label": "Year",
       "cell": {
-        "value": null,
+        "value": 2023,
         "unit": "year",
-        "year": null,
+        "year": 2023,
         "source": {
           "source_name": "World Development Indicators (World Bank)",
           "source_url": "https://data.worldbank.org",
@@ -43,14 +43,14 @@
       "key": "gdp_pc_lcu",
       "label": "GDP per capita (LCU)",
       "cell": {
-        "value": null,
+        "value": 4225186.73918305,
         "unit": "LCU",
-        "year": null,
+        "year": 2023,
         "source": {
           "source_name": "World Development Indicators (World Bank)",
           "source_url": "https://data.worldbank.org/indicator/NY.GDP.PCAP.CN?locations=ARG",
           "indicator_id": "NY.GDP.PCAP.CN",
-          "year": null,
+          "year": 2023,
           "notes": null
         },
         "notes": null
@@ -60,14 +60,14 @@
       "key": "gdp_pc_usd",
       "label": "GDP per capita (USD)",
       "cell": {
-        "value": null,
+        "value": 14261.8465667948,
         "unit": "USD",
-        "year": null,
+        "year": 2023,
         "source": {
           "source_name": "World Development Indicators (World Bank)",
           "source_url": "https://data.worldbank.org/indicator/NY.GDP.PCAP.CD?locations=ARG",
           "indicator_id": "NY.GDP.PCAP.CD",
-          "year": null,
+          "year": 2023,
           "notes": null
         },
         "notes": null
@@ -77,14 +77,14 @@
       "key": "pop_65_total",
       "label": "Population age 65+ (total)",
       "cell": {
-        "value": null,
+        "value": 5557061.0,
         "unit": "persons",
-        "year": null,
+        "year": 2023,
         "source": {
           "source_name": "World Development Indicators (World Bank)",
           "source_url": "https://data.worldbank.org/indicator/SP.POP.65UP.TO?locations=ARG",
           "indicator_id": "SP.POP.65UP.TO",
-          "year": null,
+          "year": 2023,
           "notes": null
         },
         "notes": null
@@ -94,14 +94,14 @@
       "key": "pop_65_pct",
       "label": "Population age 65+ (% of total population)",
       "cell": {
-        "value": null,
+        "value": 12.2030217969226,
         "unit": "%",
-        "year": null,
+        "year": 2023,
         "source": {
           "source_name": "World Development Indicators (World Bank)",
           "source_url": "https://data.worldbank.org/indicator/SP.POP.65UP.TO.ZS?locations=ARG",
           "indicator_id": "SP.POP.65UP.TO.ZS",
-          "year": null,
+          "year": 2023,
           "notes": null
         },
         "notes": null
@@ -111,14 +111,14 @@
       "key": "pension_coverage_pct",
       "label": "Contributory pension coverage (% of population)",
       "cell": {
-        "value": null,
+        "value": 31.5987423157459,
         "unit": "%",
-        "year": null,
+        "year": 2022,
         "source": {
           "source_name": "ASPIRE \u2013 World Bank",
           "source_url": "https://www.worldbank.org/en/data/datatopics/aspire",
           "indicator_id": "per_si_cp.cov_pop_tot",
-          "year": null,
+          "year": 2022,
           "notes": null
         },
         "notes": null
@@ -128,14 +128,14 @@
       "key": "social_insurance_coverage_pct",
       "label": "Social insurance coverage (% of population)",
       "cell": {
-        "value": null,
+        "value": 31.5987423157459,
         "unit": "%",
-        "year": null,
+        "year": 2022,
         "source": {
           "source_name": "ASPIRE \u2013 World Bank",
           "source_url": "https://www.worldbank.org/en/data/datatopics/aspire",
           "indicator_id": "per_si_allsi.cov_pop_tot",
-          "year": null,
+          "year": 2022,
           "notes": null
         },
         "notes": null
@@ -164,10 +164,16 @@
       "key": "coverage_total",
       "label": "Social insurance coverage (% of population)",
       "cell": {
-        "value": null,
-        "unit": null,
-        "year": null,
-        "source": null,
+        "value": 31.5987423157459,
+        "unit": "%",
+        "year": 2022,
+        "source": {
+          "source_name": "ASPIRE \u2013 World Bank",
+          "source_url": "https://www.worldbank.org/en/data/datatopics/aspire",
+          "indicator_id": "per_si_allsi.cov_pop_tot",
+          "year": 2022,
+          "notes": null
+        },
         "notes": null
       }
     },
@@ -175,10 +181,16 @@
       "key": "pension_coverage",
       "label": "Contributory pension coverage (% of population)",
       "cell": {
-        "value": null,
-        "unit": null,
-        "year": null,
-        "source": null,
+        "value": 31.5987423157459,
+        "unit": "%",
+        "year": 2022,
+        "source": {
+          "source_name": "ASPIRE \u2013 World Bank",
+          "source_url": "https://www.worldbank.org/en/data/datatopics/aspire",
+          "indicator_id": "per_si_cp.cov_pop_tot",
+          "year": 2022,
+          "notes": null
+        },
         "notes": null
       }
     },
@@ -187,9 +199,15 @@
       "label": "Pension fund assets (% of GDP)",
       "cell": {
         "value": null,
-        "unit": null,
+        "unit": "%",
         "year": null,
-        "source": null,
+        "source": {
+          "source_name": "Global Financial Development Database \u2013 World Bank",
+          "source_url": "https://data.worldbank.org/indicator/GFDD.DI.13",
+          "indicator_id": "GFDD.DI.13",
+          "year": null,
+          "notes": null
+        },
         "notes": null
       }
     },
@@ -217,6 +235,67 @@
     }
   ],
   "schemes": [
+    {
+      "scheme_id": "ARG_PUAM",
+      "scheme_name": "Prestaci\u00f3n Universal para el Adulto Mayor (PUAM) \u2013 Non-Contributory",
+      "scheme_type_group": "noncontrib",
+      "attributes": {
+        "implementing_agency": {
+          "value": "Prestaci\u00f3n Universal para el Adulto Mayor (PUAM) \u2013 Non-Contributory",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "target_population": {
+          "value": "Argentine residents aged 65+ without sufficient contributory pension entitlement; approximately 700,000 recipients (2023)",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "benefit_plan_type": {
+          "value": "basic",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "financing_mechanism": {
+          "value": "General revenue / Social assistance",
+          "unit": null,
+          "year": null,
+          "source": null,
+          "notes": null
+        },
+        "ret_age_male": {
+          "value": 65,
+          "unit": null,
+          "year": null,
+          "source": {
+            "source_name": "Ley 27.260 Argentina (2016): PUAM payable from age 65 for both sexes.",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        },
+        "ret_age_female": {
+          "value": 65,
+          "unit": null,
+          "year": null,
+          "source": {
+            "source_name": "Ley 27.260 Argentina (2016): PUAM payable from age 65 for both sexes.",
+            "source_url": null,
+            "indicator_id": null,
+            "year": null,
+            "notes": null
+          },
+          "notes": null
+        }
+      }
+    },
     {
       "scheme_id": "ARG_SIPA",
       "scheme_name": "Sistema Integrado Previsional Argentino (SIPA/ANSES)",
