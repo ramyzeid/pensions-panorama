@@ -1794,9 +1794,10 @@ def _generate_country_pdf(
                 emp_r = f"{ee.value:.1f}"
             if er and er.value is not None:
                 emplr_r = f"{er.value:.1f}"
-        if s.benefit_formula:
-            acc = getattr(s.benefit_formula, "accrual_rate", None)
-            flat = getattr(s.benefit_formula, "flat_amount", None)
+        _bf_pdf = getattr(s, "benefits", None)
+        if _bf_pdf:
+            acc = getattr(_bf_pdf, "accrual_rate_per_year", None)
+            flat = getattr(_bf_pdf, "flat_rate_aw_multiple", None)
             if acc and acc.value is not None:
                 accrual = f"{acc.value * 100:.2f}% acc."
             elif flat and flat.value is not None:
@@ -3523,10 +3524,10 @@ def tab_country(data: dict) -> None:
             _sv_m = getattr(_first_scheme.eligibility, "normal_retirement_age_male", None)
             if _sv_m and _sv_m.value:
                 _nra_val = int(_sv_m.value)
-            _bf = _first_scheme.benefit_formula
+            _bf = getattr(_first_scheme, "benefits", None)
             if _bf:
-                _mb = getattr(_bf, "min_benefit", None)
-                _mxb = getattr(_bf, "max_benefit", None)
+                _mb = getattr(_bf, "minimum_benefit_aw_multiple", None)
+                _mxb = getattr(_bf, "maximum_benefit_aw_multiple", None)
                 if _mb and getattr(_mb, "value", None) is not None:
                     _min_b = _mb.value
                 if _mxb and getattr(_mxb, "value", None) is not None:
