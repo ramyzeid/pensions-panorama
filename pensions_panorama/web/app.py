@@ -3702,7 +3702,7 @@ def tab_country(data: dict) -> None:
     st.subheader(t("work_incentive_header"))
     st.caption(t("work_incentive_subheader"))
     with st.spinner(t("work_incentive_loading")):
-        _wi = load_work_incentive(iso3, sex_state)
+        _wi = load_work_incentive(iso3, st.session_state.get("modeled_sex_val", "male"))
 
     if _wi and "error" not in _wi:
         _wi_rows = [{"label": t("work_incentive_oecd_window"), "value": _wi["bar_oecd"]}]
