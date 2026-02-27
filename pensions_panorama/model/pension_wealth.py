@@ -252,3 +252,103 @@ class PensionWealthCalculator:
             else:
                 r.gross_pension_wealth = 0.0
                 r.net_pension_wealth = 0.0
+
+
+# ---------------------------------------------------------------------------
+# OECD-style work incentive indicator (60 → 65)
+# ---------------------------------------------------------------------------
+
+def compute_work_incentive_6065(
+    iso3: str,
+    params: "CountryParams",
+    assumptions: "ModelingAssumptions",
+    avg_wage: float,
+    sex: str = "male",
+    un_client: object | None = None,
+) -> dict | None:
+    """OECD-style annualised gross pension wealth change from ages 60 to 65.
+
+    Bar = (PW60(65) - PW60(60)) / 5 × 100  [% of avg wage, annualised].
+    Negative → implicit penalty for delaying past 60.
+    Positive → incentive to delay claiming.
+
+    Also computes an "own NRA" variant using (NRA-5 → NRA) window.
+
+    Returns None on fatal error; dict with error key on non-fatal errors.
+    """
+    from pensions_panorama.model.calculator import PersonProfile
+    from pensions_panorama.model.pension_engine import PensionEngine
+
+    r = assumptions.discount_rate  # 0.02
+
+    # Determine NRA for own-NRA variant
+    nra = 65
+    first_scheme = params.schemes[0] if params.schemes else None
+    if first_scheme and first_scheme.eligibility:
+        attr = "normal_retirement_age_male" if sex == "male" else "normal_retirement_age_female"
+        sv = getattr(first_scheme.eligibility, attr, None)
+        if sv and getattr(sv, "value", None) is not None:
+            nra = int(sv.value)
+
+    nra_minus5 = max(nra - 5, 50)
+    ages_to_eval = sorted({60, 65, nra_minus5, nra})
+
+    engine = PensionEngine(params, assumptions, avg_wage)
+    pw_calc = PensionWealthCalculator(assumptions, iso3, un_client=un_client)
+
+    pw60: dict[int, float] = {}
+    for R in ages_to_eval:
+        service_yrs = max(0.0, float(R - 20))
+        person = PersonProfile(
+            sex=sex,
+            age=float(R),
+            service_years=service_yrs,
+            wage=1.0,
+            wage_unit="aw_multiple",
+            worker_type_id="private_employee",
+        )
+        try:
+            B_R = engine.compute_benefit(person).gross_benefit
+        except Exception:
+            B_R = 0.0
+
+        # AF(R) via UN WPP life table (or fallback inside pw_calc)
+        AF_R = pw_calc.annuity_factor(sex=sex, retirement_age=R)
+
+        # Survival from age 60 to R: p(60→R) = lx(R) / lx(60)
+        if R <= 60:
+            p_60_R = 1.0
+        elif un_client is not None:
+            try:
+                surv = un_client.get_survival_probabilities(
+                    iso3=iso3,
+                    retirement_age=60,
+                    max_age=R,
+                    year=assumptions.wpp_year,
+                    sex=sex,
+                )
+                row = surv[surv["t"] == (R - 60)]
+                p_60_R = float(row["survival_prob"].iloc[0]) if not row.empty else 1.0
+            except Exception:
+                p_60_R = 1.0
+        else:
+            p_60_R = 1.0  # fallback: ignore pre-retirement mortality
+
+        pw60[R] = (B_R * AF_R / ((1 + r) ** (R - 60)) * p_60_R / avg_wage) if avg_wage > 0 else 0.0
+
+    bar_oecd = (pw60.get(65, 0.0) - pw60.get(60, 0.0)) / 5 * 100
+    bar_own  = (pw60.get(nra, 0.0) - pw60.get(nra_minus5, 0.0)) / 5 * 100
+
+    return {
+        "PW60_60":        pw60.get(60, 0.0),
+        "PW60_65":        pw60.get(65, 0.0),
+        "bar_oecd":       bar_oecd,
+        "nra":            nra,
+        "nra_minus5":     nra_minus5,
+        "PW60_nra":       pw60.get(nra, 0.0),
+        "PW60_nra_m5":    pw60.get(nra_minus5, 0.0),
+        "bar_own_nra":    bar_own,
+        "mortality_source": "UN WPP" if un_client is not None else "fallback",
+        "r":   r,
+        "sex": sex,
+    }

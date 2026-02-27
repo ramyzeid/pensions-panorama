@@ -952,6 +952,19 @@ The **required monthly income** to fund retirement is `PV ÷ (H × 12)`.
         "adequacy_gap_zero": "Zero contributions",
         "adequacy_gap_caption": "Gap between full-career and non-contributing worker at 1×AW. Measures safety-net floor.",
 
+        # ── Work incentives ──────────────────────────────────────────────────
+        "work_incentive_header": "Work Incentives (OECD-style)",
+        "work_incentive_subheader": "Annualised change in gross pension wealth (% of earnings)",
+        "work_incentive_oecd_window": "OECD window (60\u219265)",
+        "work_incentive_own_window": "Own NRA window ({a}\u2192{b})",
+        "work_incentive_pw_at_60": "Pension wealth at 60",
+        "work_incentive_pw_at_65": "Pension wealth at 65",
+        "work_incentive_bar": "Annualised bar (OECD)",
+        "work_incentive_caption": "Negative = implicit penalty for working past 60; positive = incentive to delay. Male average earner, 40-yr career, OECD PAG 2011 method (r=2%, price-indexed). Pension wealth in multiples of average wage.",
+        "work_incentive_compare_header": "Work Incentives \u2014 Cross-Country",
+        "work_incentive_compute_btn": "Compute work incentives for selected countries",
+        "work_incentive_loading": "Fetching UN life tables and computing\u2026",
+
         # ── Parameter heatmap ────────────────────────────────────────────────
         "param_heatmap_header": "System Parameters — Cross-Country Heatmap",
         "param_heatmap_metric": "Parameter",
@@ -1857,6 +1870,19 @@ PV = Σ_{t=1}^{H}  [التكلفة_السنوية × (1 + g)^(t−1)] / (1 + r)^
         "adequacy_gap_zero": "بدون اشتراكات",
         "adequacy_gap_caption": "الفجوة بين عامل بمسيرة كاملة وعامل بدون اشتراكات عند 1×م.أ. يقيس الحماية الاجتماعية الدنيا.",
 
+        # ── Work incentives ──────────────────────────────────────────────────
+        "work_incentive_header": "حوافز العمل (على غرار منظمة التعاون الاقتصادي)",
+        "work_incentive_subheader": "التغير السنوي في ثروة التقاعد الإجمالية (% من الأرباح)",
+        "work_incentive_oecd_window": "نافذة OECD (60\u219265)",
+        "work_incentive_own_window": "نافذة سن التقاعد المعتادة ({a}\u2192{b})",
+        "work_incentive_pw_at_60": "ثروة التقاعد عند 60",
+        "work_incentive_pw_at_65": "ثروة التقاعد عند 65",
+        "work_incentive_bar": "المعدل السنوي (OECD)",
+        "work_incentive_caption": "سالب = عقوبة ضمنية للعمل بعد 60؛ موجب = حافز لتأجيل المطالبة. عامل متوسط ذكر، مسيرة 40 عامًا، منهجية OECD PAG 2011 (r=2%، مؤشر الأسعار). ثروة التقاعد بمضاعفات متوسط الأجر.",
+        "work_incentive_compare_header": "حوافز العمل \u2014 مقارنة دولية",
+        "work_incentive_compute_btn": "احسب حوافز العمل للدول المختارة",
+        "work_incentive_loading": "جلب جداول الحياة من الأمم المتحدة والحساب\u2026",
+
         # ── Parameter heatmap ────────────────────────────────────────────────
         "param_heatmap_header": "معاملات النظام — خريطة حرارية متعددة الدول",
         "param_heatmap_metric": "المعامل",
@@ -2435,6 +2461,19 @@ PV = Σ_{t=1}^{H}  [التكلفة_السنوية × (1 + g)^(t−1)] / (1 + r)^
         "adequacy_gap_full": "Carrière complète (40 ans)",
         "adequacy_gap_zero": "Sans cotisations",
         "adequacy_gap_caption": "Écart entre un travailleur à pleine carrière et sans cotisations à 1×SM. Mesure le filet de sécurité minimal.",
+
+        # ── Work incentives ──────────────────────────────────────────────────
+        "work_incentive_header": "Incitations au travail (style OCDE)",
+        "work_incentive_subheader": "Variation annualisée de la richesse de retraite brute (% des revenus)",
+        "work_incentive_oecd_window": "Fenêtre OCDE (60\u219265)",
+        "work_incentive_own_window": "Fenêtre âge légal ({a}\u2192{b})",
+        "work_incentive_pw_at_60": "Richesse de retraite à 60 ans",
+        "work_incentive_pw_at_65": "Richesse de retraite à 65 ans",
+        "work_incentive_bar": "Barre annualisée (OCDE)",
+        "work_incentive_caption": "Négatif = pénalité implicite pour travailler après 60 ans ; positif = incitation à retarder. Travailleur masculin au salaire moyen, carrière de 40 ans, méthode OCDE PAG 2011 (r=2%, indexé sur les prix). Richesse de retraite en multiples du salaire moyen.",
+        "work_incentive_compare_header": "Incitations au travail \u2014 Comparaison internationale",
+        "work_incentive_compute_btn": "Calculer les incitations au travail pour les pays sélectionnés",
+        "work_incentive_loading": "Récupération des tables de mortalité ONU et calcul\u2026",
 
         # ── Parameter heatmap ────────────────────────────────────────────────
         "param_heatmap_header": "Paramètres du système — Carte thermique multi-pays",

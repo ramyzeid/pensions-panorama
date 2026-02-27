@@ -1166,6 +1166,27 @@ def load_female_data_1aw(ref_year: int, multiples: tuple[float, ...]) -> dict[st
 
 
 # ---------------------------------------------------------------------------
+# Work incentive loader
+# ---------------------------------------------------------------------------
+@st.cache_data(show_spinner=False)
+def load_work_incentive(iso3: str, sex: str) -> dict | None:
+    """Compute OECD 60→65 work incentive for one country (UN WPP mortality)."""
+    from pensions_panorama.sources.un_dataportal import UNDataPortalClient
+    from pensions_panorama.model.pension_wealth import compute_work_incentive_6065
+
+    path = PARAMS_DIR / f"{iso3.lower()}.yaml"
+    if not path.exists():
+        return None
+    try:
+        p = load_country_params(path)
+        a = load_assumptions(params_dir=PARAMS_DIR)
+        w = _resolve_wage(p, 0)
+        return compute_work_incentive_6065(iso3, p, a, w, sex=sex, un_client=UNDataPortalClient())
+    except Exception as exc:
+        return {"error": str(exc)}
+
+
+# ---------------------------------------------------------------------------
 # Reform status badge
 # ---------------------------------------------------------------------------
 def _reform_status_badge(s: "SchemeComponent") -> str:
@@ -3663,6 +3684,48 @@ def tab_country(data: dict) -> None:
         st.plotly_chart(_fig_gap, use_container_width=True)
         st.caption(t("adequacy_gap_caption"))
 
+    # ── Work Incentives (OECD-style) ──────────────────────────────────────────
+    st.divider()
+    st.subheader(t("work_incentive_header"))
+    st.caption(t("work_incentive_subheader"))
+    with st.spinner(t("work_incentive_loading")):
+        _wi = load_work_incentive(iso3, sex_state)
+
+    if _wi and "error" not in _wi:
+        _wi_rows = [{"label": t("work_incentive_oecd_window"), "value": _wi["bar_oecd"]}]
+        if _wi["nra"] != 65:
+            _wi_rows.append({
+                "label": t("work_incentive_own_window", a=_wi["nra_minus5"], b=_wi["nra"]),
+                "value": _wi["bar_own_nra"],
+            })
+        _wi_fig = go.Figure(go.Bar(
+            x=[row["value"] for row in _wi_rows],
+            y=[row["label"] for row in _wi_rows],
+            orientation="h",
+            marker_color=["#e15759" if row["value"] < 0 else "#59a14f" for row in _wi_rows],
+            text=[f"{row['value']:+.1f}%" for row in _wi_rows],
+            textposition="outside",
+        ))
+        _wi_bg = "#1a1a24" if _is_dark() else "#f8f7f4"
+        _wi_fig.update_layout(
+            template=_plotly_template(_is_dark()),
+            paper_bgcolor=_wi_bg, plot_bgcolor=_wi_bg,
+            height=160, margin=dict(l=160, r=80, t=10, b=10),
+            xaxis_title="% of annual gross earnings",
+            xaxis=dict(zeroline=True, zerolinewidth=1.5),
+            showlegend=False,
+        )
+        st.plotly_chart(_wi_fig, use_container_width=True)
+
+        _wc1, _wc2, _wc3 = st.columns(3)
+        _wc1.metric(t("work_incentive_pw_at_60"), f"{_wi['PW60_60']:.2f}\u00d7AW")
+        _wc2.metric(t("work_incentive_pw_at_65"), f"{_wi['PW60_65']:.2f}\u00d7AW")
+        _delta_str = (f"Own NRA: {_wi['bar_own_nra']:+.1f}%" if _wi["nra"] != 65 else None)
+        _wc3.metric(t("work_incentive_bar"), f"{_wi['bar_oecd']:+.1f}%", delta=_delta_str)
+        st.caption(t("work_incentive_caption"))
+    elif _wi and "error" in _wi:
+        st.caption(f"Work incentive unavailable: {_wi['error']}")
+
     # ── Modeling results ──────────────────────────────────────────────────────
     st.divider()
     st.subheader(t("results_header"))
@@ -3991,6 +4054,48 @@ def tab_compare(data: dict, summary_df: pd.DataFrame) -> None:
         st.subheader(t("progressivity_header"))
         st.plotly_chart(_progressivity_chart(_jprog.dumps(prog_rows), dark=_is_dark()), use_container_width=True)
         st.caption(t("progressivity_caption"))
+
+    # ── Work Incentives cross-country ─────────────────────────────────────────
+    st.divider()
+    st.subheader(t("work_incentive_compare_header"))
+    if st.button(t("work_incentive_compute_btn"), key="wi_cmp_btn"):
+        _wi_cmp_rows = []
+        with st.spinner(t("work_incentive_loading")):
+            for _k, _v in ok.items():
+                _wi_c = load_work_incentive(_k, "male")
+                if _wi_c and "error" not in _wi_c:
+                    _wi_cmp_rows.append({
+                        "iso3": _k,
+                        "Country": _v["params"].metadata.country_name,
+                        "OECD bar (%)": round(_wi_c["bar_oecd"], 1),
+                        "Own NRA bar (%)": round(_wi_c["bar_own_nra"], 1),
+                        "NRA": _wi_c["nra"],
+                    })
+        if _wi_cmp_rows:
+            _wi_cmp_df = pd.DataFrame(_wi_cmp_rows).sort_values("OECD bar (%)")
+            _wi_cmp_bg = "#1a1a24" if _is_dark() else "#f8f7f4"
+            _wi_cmp_fig = go.Figure(go.Bar(
+                x=_wi_cmp_df["OECD bar (%)"], y=_wi_cmp_df["iso3"], orientation="h",
+                marker_color=["#e15759" if v < 0 else "#59a14f" for v in _wi_cmp_df["OECD bar (%)"]],
+                text=_wi_cmp_df["OECD bar (%)"].apply(lambda v: f"{v:+.1f}%"),
+                textposition="outside", hovertext=_wi_cmp_df["Country"],
+            ))
+            _wi_cmp_fig.update_layout(
+                template=_plotly_template(_is_dark()),
+                paper_bgcolor=_wi_cmp_bg, plot_bgcolor=_wi_cmp_bg,
+                height=max(300, len(_wi_cmp_df) * 26 + 60),
+                margin=dict(l=60, r=80, t=10, b=40),
+                xaxis_title="% of annual gross earnings (annualised)",
+                xaxis=dict(zeroline=True, zerolinewidth=1.5),
+                showlegend=False,
+            )
+            st.plotly_chart(_wi_cmp_fig, use_container_width=True)
+            st.caption(t("work_incentive_caption"))
+            st.download_button(
+                t("download_csv"),
+                _wi_cmp_df.to_csv(index=False).encode(),
+                "work_incentive_60_65.csv", "text/csv",
+            )
 
     # ── F2: Parameter heatmap ─────────────────────────────────────────────────
     import json as _jheat
