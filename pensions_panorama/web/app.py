@@ -1184,7 +1184,7 @@ def load_female_data_1aw(ref_year: int, multiples: tuple[float, ...]) -> dict[st
 @st.cache_data(show_spinner=False)
 def load_work_incentive(iso3: str, sex: str) -> dict | None:
     """Compute OECD 60→65 work incentive for one country (UN WPP mortality)."""
-    path = PARAMS_DIR / f"{iso3.lower()}.yaml"
+    path = PARAMS_DIR / f"{iso3.upper()}.yaml"
     if not path.exists():
         return None
     try:
