@@ -1,7 +1,7 @@
 {
   "iso3": "BEL",
   "country_name": "Belgium",
-  "last_updated": "2026-02-27T03:14:42.934049Z",
+  "last_updated": "2026-02-27T03:29:39.524258Z",
   "narrative": {
     "text": "Belgium is a Europe and Central Asia country with a DB-type pension system centred on the Belgian Legal Pension (Pension l\u00e9gale / Wettelijk pensioen). The normal retirement age is 65 for both men and women. Contributions total 16.2% of insurable earnings (7.5% employee, 8.8% employer).",
     "sources": [
@@ -312,5 +312,18 @@
       }
     }
   ],
-  "ssa_updates": []
+  "ssa_updates": [
+    {
+      "title": "International Update, January 2025",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2025-01/index.html",
+      "date": "2025-01",
+      "topic": "Belgium: Implements pension bonus for longer careers, new minimum pension rules, benefit adjustment caps"
+    },
+    {
+      "title": "International Update, August 2023",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2023-08/index.html",
+      "date": "2023-08",
+      "topic": "Belgium: Coalition announces pension reform agreement \u2014 pension bonus, minimum pension changes, solidarity contribution doubled"
+    }
+  ]
 }

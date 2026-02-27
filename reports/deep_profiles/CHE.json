@@ -1,7 +1,7 @@
 {
   "iso3": "CHE",
   "country_name": "Switzerland",
-  "last_updated": "2026-02-27T03:14:42.480698Z",
+  "last_updated": "2026-02-27T03:29:39.048792Z",
   "narrative": {
     "text": "Switzerland is a Europe and Central Asia country with a DB-type pension system centred on the Old Age and Survivors Insurance (AHV/AVS) \u2013 DB Earnings-Related. The normal retirement age is 65 for men and 64 for women. Contributions total 11.0% of insurable earnings (5.5% employee, 5.5% employer).",
     "sources": [
@@ -312,5 +312,12 @@
       }
     }
   ],
-  "ssa_updates": []
+  "ssa_updates": [
+    {
+      "title": "International Update, March 2024",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2024-03/index.html",
+      "date": "2024-03",
+      "topic": "Switzerland: Voters approve 13th annual OASI payment; effective December 2026"
+    }
+  ]
 }

@@ -1,7 +1,7 @@
 {
   "iso3": "KGZ",
   "country_name": "Kyrgyzstan",
-  "last_updated": "2026-02-27T03:14:43.026126Z",
+  "last_updated": "2026-02-27T03:29:39.629484Z",
   "narrative": {
     "text": "Kyrgyzstan is a Europe and Central Asia country with a DB-type pension system centred on the Social Fund of the Kyrgyz Republic (SFSS) \u2013 DB Pension. The normal retirement age is 65 for men and 58 for women. Contributions total 23.0% of insurable earnings (8.0% employee, 15.0% employer).",
     "sources": [
@@ -312,5 +312,12 @@
       }
     }
   ],
-  "ssa_updates": []
+  "ssa_updates": [
+    {
+      "title": "International Update, October 2024",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2024-10/index.html",
+      "date": "2024-10",
+      "topic": "Kyrgyzstan: Eliminates early retirement and partial pension options; increases pensions from October 1"
+    }
+  ]
 }

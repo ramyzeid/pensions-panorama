@@ -1,7 +1,7 @@
 {
   "iso3": "ARE",
   "country_name": "United Arab Emirates",
-  "last_updated": "2026-02-27T03:14:42.088563Z",
+  "last_updated": "2026-02-27T03:29:38.665251Z",
   "narrative": {
     "text": "United Arab Emirates is a Middle East and North Africa country with a DB-type pension system centred on the GPSSA Old-Age Pension (UAE Nationals). The normal retirement age is 60 for men and 55 for women. Contributions total 20.0% of insurable earnings (5.0% employee, 15.0% employer).",
     "sources": [
@@ -312,5 +312,12 @@
       }
     }
   ],
-  "ssa_updates": []
+  "ssa_updates": [
+    {
+      "title": "International Update, November 2023",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2023-11/index.html",
+      "date": "2023-11",
+      "topic": "UAE: GPSSA enacts new federal social insurance pension law"
+    }
+  ]
 }

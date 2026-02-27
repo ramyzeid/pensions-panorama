@@ -1,7 +1,7 @@
 {
   "iso3": "SGP",
   "country_name": "Singapore",
-  "last_updated": "2026-02-27T03:14:42.781084Z",
+  "last_updated": "2026-02-27T03:29:39.351101Z",
   "narrative": {
     "text": "Singapore is a East Asia and Pacific country with a DC-type pension system centred on the Central Provident Fund (CPF) \u2013 Mandatory DC. The normal retirement age is 63 for both men and women. Contributions total 37.0% of insurable earnings (20.0% employee, 17.0% employer).",
     "sources": [
@@ -312,5 +312,12 @@
       }
     }
   ],
-  "ssa_updates": []
+  "ssa_updates": [
+    {
+      "title": "International Update, December 2021",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2021-12/index.html",
+      "date": "2021-12",
+      "topic": "Singapore: CPF changes for 2022 \u2014 higher contribution rates for workers 55\u201370, increased retirement and reemployment ages"
+    }
+  ]
 }

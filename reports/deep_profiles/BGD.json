@@ -1,7 +1,7 @@
 {
   "iso3": "BGD",
   "country_name": "Bangladesh",
-  "last_updated": "2026-02-27T03:14:42.544681Z",
+  "last_updated": "2026-02-27T03:29:39.109138Z",
   "narrative": {
     "text": "Bangladesh is a South Asia country with a DC-type pension system centred on the General Provident Fund (GPF) \u2013 Civil Servants. The system includes 2 schemes: General Provident Fund (GPF) \u2013 Civil Servants, Civil Service Pension Scheme (Non-Contributory DB). The normal retirement age is 59 for both men and women. Contributions total 35.0% of insurable earnings (10.0% employee, 25.0% employer).",
     "sources": [
@@ -406,5 +406,12 @@
       }
     }
   ],
-  "ssa_updates": []
+  "ssa_updates": [
+    {
+      "title": "International Update, January 2023",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2023-01/index.html",
+      "date": "2023-01",
+      "topic": "Bangladesh: Parliament approves new contributory old-age pension program for most citizens"
+    }
+  ]
 }

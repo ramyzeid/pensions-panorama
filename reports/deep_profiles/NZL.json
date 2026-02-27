@@ -1,7 +1,7 @@
 {
   "iso3": "NZL",
   "country_name": "New Zealand",
-  "last_updated": "2026-02-27T03:14:42.862644Z",
+  "last_updated": "2026-02-27T03:29:39.443580Z",
   "narrative": {
     "text": "New Zealand is a East Asia and Pacific country with a basic-type pension system centred on the New Zealand Superannuation (NZS) \u2013 Universal Flat-Rate. The normal retirement age is 65 for both men and women. Contributions total 0.0% of insurable earnings (0.0% employee, 0.0% employer).",
     "sources": [
@@ -312,5 +312,12 @@
       }
     }
   ],
-  "ssa_updates": []
+  "ssa_updates": [
+    {
+      "title": "International Update, December 2021",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2021-12/index.html",
+      "date": "2021-12",
+      "topic": "New Zealand: Residency requirement for NZ Superannuation to rise gradually from 10 to 20 years by 2042"
+    }
+  ]
 }

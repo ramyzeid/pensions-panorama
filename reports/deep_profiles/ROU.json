@@ -1,7 +1,7 @@
 {
   "iso3": "ROU",
   "country_name": "Romania",
-  "last_updated": "2026-02-27T03:14:42.364610Z",
+  "last_updated": "2026-02-27T03:29:38.928280Z",
   "narrative": {
     "text": "Romania is a Europe and Central Asia country with a points-type pension system centred on the Public PAYG Pension \u2013 Pillar I (Casa Na\u021bional\u0103 de Pensii Publice). The normal retirement age is 65 for men and 63 for women. Contributions total 25.0% of insurable earnings (25.0% employee, 0.0% employer).",
     "sources": [
@@ -312,5 +312,12 @@
       }
     }
   ],
-  "ssa_updates": []
+  "ssa_updates": [
+    {
+      "title": "International Update, December 2023",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2023-12/index.html",
+      "date": "2023-12",
+      "topic": "Romania: Social insurance reform law enacted \u2014 raises women's retirement age, modifies benefit formula"
+    }
+  ]
 }

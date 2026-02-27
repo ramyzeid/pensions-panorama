@@ -1,7 +1,7 @@
 {
   "iso3": "AUS",
   "country_name": "Australia",
-  "last_updated": "2026-02-27T03:14:42.613219Z",
+  "last_updated": "2026-02-27T03:29:39.172155Z",
   "narrative": {
     "text": "Australia is a East Asia and Pacific country with a DC-type pension system centred on the Superannuation Guarantee (Mandatory DC). The normal retirement age is 67 for both men and women. Contributions total 11.0% of insurable earnings (0.0% employee, 11.0% employer).",
     "sources": [
@@ -312,5 +312,12 @@
       }
     }
   ],
-  "ssa_updates": []
+  "ssa_updates": [
+    {
+      "title": "International Update, February 2024",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2024-02/index.html",
+      "date": "2024-02",
+      "topic": "Australia: Work Bonus policy expanded, allowing pensioners to earn more before benefit reduction"
+    }
+  ]
 }

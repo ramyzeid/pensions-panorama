@@ -1,7 +1,7 @@
 {
   "iso3": "QAT",
   "country_name": "Qatar",
-  "last_updated": "2026-02-27T03:14:42.317693Z",
+  "last_updated": "2026-02-27T03:29:38.882020Z",
   "narrative": {
     "text": "Qatar is a Middle East and North Africa country with a DB-type pension system centred on the GRSIA Old-Age Pension (Qatari Nationals). The normal retirement age is 60 for men and 55 for women. Contributions total 15.0% of insurable earnings (5.0% employee, 10.0% employer).",
     "sources": [
@@ -312,5 +312,12 @@
       }
     }
   ],
-  "ssa_updates": []
+  "ssa_updates": [
+    {
+      "title": "International Update, May 2022",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2022-05/index.html",
+      "date": "2022-05",
+      "topic": "Qatar: Emir ratifies social insurance reform \u2014 expanded private-sector coverage, higher rates, tighter qualifying conditions"
+    }
+  ]
 }

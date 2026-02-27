@@ -1,7 +1,7 @@
 {
   "iso3": "CHN",
   "country_name": "China",
-  "last_updated": "2026-02-27T03:14:42.156203Z",
+  "last_updated": "2026-02-27T03:29:38.735036Z",
   "narrative": {
     "text": "China is a East Asia and Pacific country with a DB-type pension system centred on the Urban Employee Basic Pension \u2013 Social Pool (DB Component). The system includes 2 schemes: Urban Employee Basic Pension \u2013 Social Pool (DB Component), Urban Employee Basic Pension \u2013 Individual Account (DC Component). The normal retirement age is 60 for men and 55 for women. Contributions total 24.0% of insurable earnings (8.0% employee, 16.0% employer).",
     "sources": [
@@ -406,5 +406,12 @@
       }
     }
   ],
-  "ssa_updates": []
+  "ssa_updates": [
+    {
+      "title": "International Update, October 2024",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2024-10/index.html",
+      "date": "2024-10",
+      "topic": "China: Reforms Basic Pension Insurance \u2014 raises retirement age, increases contribution requirement, adds early/deferred retirement options"
+    }
+  ]
 }

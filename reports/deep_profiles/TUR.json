@@ -1,7 +1,7 @@
 {
   "iso3": "TUR",
   "country_name": "Turkey",
-  "last_updated": "2026-02-27T03:14:42.231472Z",
+  "last_updated": "2026-02-27T03:29:38.802534Z",
   "narrative": {
     "text": "Turkey is a Europe and Central Asia country with a DB-type pension system centred on the SGK Old-Age Pension (4/a \u2013 SSI). The normal retirement age is 65 for both men and women. Contributions total 20.0% of insurable earnings (9.0% employee, 11.0% employer).",
     "sources": [
@@ -312,5 +312,24 @@
       }
     }
   ],
-  "ssa_updates": []
+  "ssa_updates": [
+    {
+      "title": "International Update, July 2024",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2024-07/index.html",
+      "date": "2024-07",
+      "topic": "Turkey: New early withdrawal rules for voluntary BES individual pension accounts (marriage, home, disaster, education)"
+    },
+    {
+      "title": "International Update, March 2023",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2023-03/index.html",
+      "date": "2023-03",
+      "topic": "Turkey: Early retirement reform \u2014 ~5 million workers enrolled before Sep 1999 can retire at any age with 25/20 yrs coverage"
+    },
+    {
+      "title": "International Update, March 2022",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2022-03/index.html",
+      "date": "2022-03",
+      "topic": "Turkey: Private Pension System (BES) reforms \u2014 higher government matching, pre-retirement withdrawal, older worker enrollment"
+    }
+  ]
 }

@@ -1,7 +1,7 @@
 {
   "iso3": "KOR",
   "country_name": "Korea, Republic of",
-  "last_updated": "2026-02-27T03:14:42.749509Z",
+  "last_updated": "2026-02-27T03:29:39.314537Z",
   "narrative": {
     "text": "Korea, Republic of is a East Asia and Pacific country with a DB-type pension system centred on the National Pension Service (NPS) \u2013 Earnings-Related DB. The normal retirement age is 63 for both men and women. Contributions total 9.0% of insurable earnings (4.5% employee, 4.5% employer).",
     "sources": [
@@ -312,5 +312,18 @@
       }
     }
   ],
-  "ssa_updates": []
+  "ssa_updates": [
+    {
+      "title": "International Update, April 2024",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2024-04/index.html",
+      "date": "2024-04",
+      "topic": "South Korea: Parliament reforms National Pension Service \u2014 higher contribution rate, higher replacement rate, expanded credits"
+    },
+    {
+      "title": "International Update, August 2022",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2022-08/index.html",
+      "date": "2022-08",
+      "topic": "South Korea: Employer-sponsored DC plans required to comply with new investment option rules"
+    }
+  ]
 }

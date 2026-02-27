@@ -3,20 +3,212 @@
   "_source": "U.S. Social Security Administration – International Update series",
   "_base_url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/",
   "_search_page": "https://www.ssa.gov/policy/research.html?sort=date&type=International%20Update",
-  "_note": "Entries are verified via web search. Add new entries manually or rebuild with: pp update-ssa-index",
+  "_note": "Entries verified via web search. Dates are the SSA publication month. Add new entries manually or via: pp update-ssa-index",
+
+  "ARE": [
+    {
+      "title": "International Update, November 2023",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2023-11/index.html",
+      "date": "2023-11",
+      "topic": "UAE: GPSSA enacts new federal social insurance pension law"
+    }
+  ],
+
+  "ARG": [
+    {
+      "title": "International Update, April 2024",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2024-04/index.html",
+      "date": "2024-04",
+      "topic": "Argentina: 12.5% pension increase; new formula linking adjustments to inflation"
+    },
+    {
+      "title": "International Update, March 2024",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2024-03/index.html",
+      "date": "2024-03",
+      "topic": "Argentina: President decrees inflation-linked benefit adjustments for contributory pensions"
+    },
+    {
+      "title": "International Update, October 2022",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2022-10/index.html",
+      "date": "2022-10",
+      "topic": "Argentina: Permanent 15.53% pension increase and monthly bonus for lower-income pensioners"
+    }
+  ],
+
+  "AUS": [
+    {
+      "title": "International Update, February 2024",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2024-02/index.html",
+      "date": "2024-02",
+      "topic": "Australia: Work Bonus policy expanded, allowing pensioners to earn more before benefit reduction"
+    }
+  ],
+
+  "BEL": [
+    {
+      "title": "International Update, January 2025",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2025-01/index.html",
+      "date": "2025-01",
+      "topic": "Belgium: Implements pension bonus for longer careers, new minimum pension rules, benefit adjustment caps"
+    },
+    {
+      "title": "International Update, August 2023",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2023-08/index.html",
+      "date": "2023-08",
+      "topic": "Belgium: Coalition announces pension reform agreement — pension bonus, minimum pension changes, solidarity contribution doubled"
+    }
+  ],
+
+  "BGD": [
+    {
+      "title": "International Update, January 2023",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2023-01/index.html",
+      "date": "2023-01",
+      "topic": "Bangladesh: Parliament approves new contributory old-age pension program for most citizens"
+    }
+  ],
+
+  "BHR": [
+    {
+      "title": "International Update, April 2024",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2024-04/index.html",
+      "date": "2024-04",
+      "topic": "Bahrain: New tiered employer contribution requirements for covered employees"
+    },
+    {
+      "title": "International Update, March 2024",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2024-03/index.html",
+      "date": "2024-03",
+      "topic": "Bahrain: New end-of-service gratuity system implemented for private-sector employees"
+    }
+  ],
+
+  "BRN": [
+    {
+      "title": "International Update, June 2022",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2022-06/index.html",
+      "date": "2022-06",
+      "topic": "Brunei: Announces new National Pension Scheme to replace existing provident fund programs"
+    }
+  ],
+
+  "CAN": [
+    {
+      "title": "International Update, August 2022",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2022-08/index.html",
+      "date": "2022-08",
+      "topic": "Canada: Permanent 10% increase to Old Age Security pension for recipients aged 75 and older"
+    }
+  ],
+
+  "CHE": [
+    {
+      "title": "International Update, March 2024",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2024-03/index.html",
+      "date": "2024-03",
+      "topic": "Switzerland: Voters approve 13th annual OASI payment; effective December 2026"
+    }
+  ],
+
+  "CHN": [
+    {
+      "title": "International Update, October 2024",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2024-10/index.html",
+      "date": "2024-10",
+      "topic": "China: Reforms Basic Pension Insurance — raises retirement age, increases contribution requirement, adds early/deferred retirement options"
+    }
+  ],
+
+  "COL": [
+    {
+      "title": "International Update, September 2024",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2024-09/index.html",
+      "date": "2024-09",
+      "topic": "Colombia: Establishes new solidarity old-age pension for low-income residents aged 65+"
+    }
+  ],
+
+  "CUB": [
+    {
+      "title": "International Update, February 2024",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2024-02/index.html",
+      "date": "2024-02",
+      "topic": "Cuba: Decree changes how old-age and disability pensions are calculated for higher earners"
+    }
+  ],
+
+  "DNK": [
+    {
+      "title": "International Update, January 2022",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2022-01/index.html",
+      "date": "2022-01",
+      "topic": "Denmark: Parliament approves new means-tested early pension for workers with 42+ years of employment"
+    }
+  ],
 
   "EGY": [
     {
       "title": "International Update, July 2023",
       "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2023-07/index.html",
       "date": "2023-07",
-      "topic": "Egypt launches new voluntary pension program (Tomorrow's Pension) for citizens abroad"
+      "topic": "Egypt: Launches Tomorrow's Pension — new voluntary USD-denominated program for citizens abroad"
     },
     {
       "title": "International Update, February 2020",
       "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2020-02/index.html",
       "date": "2020-02",
-      "topic": "Egypt implements comprehensive pension reform (Law No. 148 of 2019)"
+      "topic": "Egypt: Implements comprehensive pension reform (Law No. 148 of 2019) — coverage, financing, benefit formula overhaul"
+    }
+  ],
+
+  "ESP": [
+    {
+      "title": "International Update, April 2023",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2023-04/index.html",
+      "date": "2023-04",
+      "topic": "Spain: Pension reform law raises max covered earnings, introduces solidarity contribution for high earners"
+    }
+  ],
+
+  "FRA": [
+    {
+      "title": "International Update, June 2023",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2023-06/index.html",
+      "date": "2023-06",
+      "topic": "France: Pension reform raises legal retirement age; major public debate and protests"
+    }
+  ],
+
+  "GBR": [
+    {
+      "title": "International Update, March 2022",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2022-03/index.html",
+      "date": "2022-03",
+      "topic": "United Kingdom: Pensions Regulator publishes draft code for collective defined contribution (CDC) pension plans"
+    }
+  ],
+
+  "IND": [
+    {
+      "title": "International Update, September 2024",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2024-09/index.html",
+      "date": "2024-09",
+      "topic": "India: Government approves Unified Pension Scheme (UPS) for federal and participating state employees"
+    }
+  ],
+
+  "IRL": [
+    {
+      "title": "International Update, January 2024",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2024-01/index.html",
+      "date": "2024-01",
+      "topic": "Ireland: New contributory State Pension provisions take effect — deferred retirement incentives, caregiver credits, higher rates"
+    },
+    {
+      "title": "International Update, September 2022",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2022-09/index.html",
+      "date": "2022-09",
+      "topic": "Ireland: Cabinet approves State Pension reform — deferred retirement, contribution rate increases, total contribution approach"
     }
   ],
 
@@ -25,19 +217,52 @@
       "title": "International Update, April 2020",
       "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2020-04/index.html",
       "date": "2020-04",
-      "topic": "Jordan allows COVID-19 suspension and deferral of pension contributions"
+      "topic": "Jordan: COVID-19 measures — employers may suspend or defer pension contributions for 3 months"
     },
     {
       "title": "International Update, April 2015",
       "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2015-04/index.html",
       "date": "2015-04",
-      "topic": "Jordan begins gradual increase in old-age pension contribution rates"
+      "topic": "Jordan: Gradual increase in old-age pension contribution rates begins"
     },
     {
       "title": "International Update, November 2013",
       "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2013-11/index.html",
       "date": "2013-11",
-      "topic": "Jordan pension system overview"
+      "topic": "Jordan: Pension system overview"
+    }
+  ],
+
+  "JPN": [
+    {
+      "title": "International Update, May 2022",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2022-05/index.html",
+      "date": "2022-05",
+      "topic": "Japan: 2020 Pension Reform Law provisions take effect — higher max deferral age, reduced early retirement penalties"
+    }
+  ],
+
+  "KGZ": [
+    {
+      "title": "International Update, October 2024",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2024-10/index.html",
+      "date": "2024-10",
+      "topic": "Kyrgyzstan: Eliminates early retirement and partial pension options; increases pensions from October 1"
+    }
+  ],
+
+  "KOR": [
+    {
+      "title": "International Update, April 2024",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2024-04/index.html",
+      "date": "2024-04",
+      "topic": "South Korea: Parliament reforms National Pension Service — higher contribution rate, higher replacement rate, expanded credits"
+    },
+    {
+      "title": "International Update, August 2022",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2022-08/index.html",
+      "date": "2022-08",
+      "topic": "South Korea: Employer-sponsored DC plans required to comply with new investment option rules"
     }
   ],
 
@@ -46,7 +271,7 @@
       "title": "International Update, November 2013",
       "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2013-11/index.html",
       "date": "2013-11",
-      "topic": "Lebanon lacks social security programs for long-term old-age, disability, and survivor benefits"
+      "topic": "Lebanon: One of only two Arab jurisdictions without long-term social insurance — reform pressure noted"
     }
   ],
 
@@ -55,19 +280,172 @@
       "title": "International Update, April 2020",
       "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2020-04/index.html",
       "date": "2020-04",
-      "topic": "Morocco exempts employers from social security contributions during COVID-19 (until June 30, 2020)"
+      "topic": "Morocco: COVID-19 — employers who maintain 80% payroll exempt from social security contributions"
     },
     {
       "title": "International Update, October 2019",
       "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2019-10/index.html",
       "date": "2019-10",
-      "topic": "Morocco introduces new death grant and family support allowance programs"
+      "topic": "Morocco: New death grant and family support allowance programs introduced"
     },
     {
       "title": "International Update, October 2017",
       "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2017-10/index.html",
       "date": "2017-10",
-      "topic": "Morocco implements work injury benefit reforms"
+      "topic": "Morocco: Work injury benefit reforms implemented"
+    }
+  ],
+
+  "MEX": [
+    {
+      "title": "International Update, November 2024",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2024-11/index.html",
+      "date": "2024-11",
+      "topic": "Mexico: Constitutional amendment lowers universal old-age pension eligibility age from 68 to 65"
+    },
+    {
+      "title": "International Update, November 2022",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2022-11/index.html",
+      "date": "2022-11",
+      "topic": "Mexico: Social security law extended to cover 2.3 million domestic workers (88% women)"
+    }
+  ],
+
+  "NLD": [
+    {
+      "title": "International Update, June 2023",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2023-06/index.html",
+      "date": "2023-06",
+      "topic": "Netherlands: Senate approves Future of Pensions Act — major overhaul of quasi-mandatory occupational pension system"
+    }
+  ],
+
+  "NPL": [
+    {
+      "title": "International Update, August 2022",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2022-08/index.html",
+      "date": "2022-08",
+      "topic": "Nepal: Old-age allowance minimum eligibility age lowered from 70 to 68"
+    }
+  ],
+
+  "NZL": [
+    {
+      "title": "International Update, December 2021",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2021-12/index.html",
+      "date": "2021-12",
+      "topic": "New Zealand: Residency requirement for NZ Superannuation to rise gradually from 10 to 20 years by 2042"
+    }
+  ],
+
+  "PER": [
+    {
+      "title": "International Update, October 2024",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2024-10/index.html",
+      "date": "2024-10",
+      "topic": "Peru: New pension law restructures old-age system into four pillars"
+    }
+  ],
+
+  "QAT": [
+    {
+      "title": "International Update, May 2022",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2022-05/index.html",
+      "date": "2022-05",
+      "topic": "Qatar: Emir ratifies social insurance reform — expanded private-sector coverage, higher rates, tighter qualifying conditions"
+    }
+  ],
+
+  "ROU": [
+    {
+      "title": "International Update, December 2023",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2023-12/index.html",
+      "date": "2023-12",
+      "topic": "Romania: Social insurance reform law enacted — raises women's retirement age, modifies benefit formula"
+    }
+  ],
+
+  "RWA": [
+    {
+      "title": "International Update, January 2025",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2025-01/index.html",
+      "date": "2025-01",
+      "topic": "Rwanda: Presidential order increases contribution rate to compulsory pension scheme"
+    }
+  ],
+
+  "SGP": [
+    {
+      "title": "International Update, December 2021",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2021-12/index.html",
+      "date": "2021-12",
+      "topic": "Singapore: CPF changes for 2022 — higher contribution rates for workers 55–70, increased retirement and reemployment ages"
+    }
+  ],
+
+  "THA": [
+    {
+      "title": "International Update, November 2022",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2022-11/index.html",
+      "date": "2022-11",
+      "topic": "Thailand: Employee and employer Social Security Fund contribution rates temporarily reduced Oct–Dec 2022"
+    }
+  ],
+
+  "TUR": [
+    {
+      "title": "International Update, July 2024",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2024-07/index.html",
+      "date": "2024-07",
+      "topic": "Turkey: New early withdrawal rules for voluntary BES individual pension accounts (marriage, home, disaster, education)"
+    },
+    {
+      "title": "International Update, March 2023",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2023-03/index.html",
+      "date": "2023-03",
+      "topic": "Turkey: Early retirement reform — ~5 million workers enrolled before Sep 1999 can retire at any age with 25/20 yrs coverage"
+    },
+    {
+      "title": "International Update, March 2022",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2022-03/index.html",
+      "date": "2022-03",
+      "topic": "Turkey: Private Pension System (BES) reforms — higher government matching, pre-retirement withdrawal, older worker enrollment"
+    }
+  ],
+
+  "UGA": [
+    {
+      "title": "International Update, January 2022",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2022-01/index.html",
+      "date": "2022-01",
+      "topic": "Uganda: President signs law allowing workers early access to pension savings"
+    }
+  ],
+
+  "VCT": [
+    {
+      "title": "International Update, March 2024",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2024-03/index.html",
+      "date": "2024-03",
+      "topic": "Saint Vincent and the Grenadines: NIS pension reform package — higher revenues, discouraged early retirement"
+    }
+  ],
+
+  "VNM": [
+    {
+      "title": "International Update, November 2024",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2024-11/index.html",
+      "date": "2024-11",
+      "topic": "Vietnam: Amended social insurance law — extended coverage, raised retirement age, lower contribution requirement, restricted lump-sum grants"
+    }
+  ],
+
+  "XKX": [
+    {
+      "title": "International Update, January 2021",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2021-01/index.html",
+      "date": "2021-01",
+      "topic": "Kosovo: Law allows pension participants to withdraw up to 10% of account balances as COVID-19 relief"
     }
   ]
 }

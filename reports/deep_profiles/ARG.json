@@ -1,7 +1,7 @@
 {
   "iso3": "ARG",
   "country_name": "Argentina",
-  "last_updated": "2026-02-27T03:14:42.824386Z",
+  "last_updated": "2026-02-27T03:29:39.400417Z",
   "narrative": {
     "text": "Argentina is a Latin America and the Caribbean country with a DB-type pension system centred on the Sistema Integrado Previsional Argentino (SIPA/ANSES). The normal retirement age is 65 for men and 60 for women. Contributions total 27.5% of insurable earnings (11.0% employee, 16.5% employer).",
     "sources": [
@@ -312,5 +312,24 @@
       }
     }
   ],
-  "ssa_updates": []
+  "ssa_updates": [
+    {
+      "title": "International Update, April 2024",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2024-04/index.html",
+      "date": "2024-04",
+      "topic": "Argentina: 12.5% pension increase; new formula linking adjustments to inflation"
+    },
+    {
+      "title": "International Update, March 2024",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2024-03/index.html",
+      "date": "2024-03",
+      "topic": "Argentina: President decrees inflation-linked benefit adjustments for contributory pensions"
+    },
+    {
+      "title": "International Update, October 2022",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2022-10/index.html",
+      "date": "2022-10",
+      "topic": "Argentina: Permanent 15.53% pension increase and monthly bonus for lower-income pensioners"
+    }
+  ]
 }

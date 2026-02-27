@@ -1,7 +1,7 @@
 {
   "iso3": "NLD",
   "country_name": "Netherlands",
-  "last_updated": "2026-02-27T03:14:42.981736Z",
+  "last_updated": "2026-02-27T03:29:39.577705Z",
   "narrative": {
     "text": "Netherlands is a Europe and Central Asia country with a basic-type pension system centred on the Algemene Ouderdomswet (AOW) \u2013 General Old Age Pensions Act. The system includes 2 schemes: Algemene Ouderdomswet (AOW) \u2013 General Old Age Pensions Act, Occupational Pension (Tweede Pijler \u2013 Collective DC / DB). The normal retirement age is 67 for both men and women. Contributions total 17.6% of insurable earnings (17.6% employee, 0.0% employer).",
     "sources": [
@@ -406,5 +406,12 @@
       }
     }
   ],
-  "ssa_updates": []
+  "ssa_updates": [
+    {
+      "title": "International Update, June 2023",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2023-06/index.html",
+      "date": "2023-06",
+      "topic": "Netherlands: Senate approves Future of Pensions Act \u2014 major overhaul of quasi-mandatory occupational pension system"
+    }
+  ]
 }

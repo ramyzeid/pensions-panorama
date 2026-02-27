@@ -1,7 +1,7 @@
 {
   "iso3": "NPL",
   "country_name": "Nepal",
-  "last_updated": "2026-02-27T03:14:42.114490Z",
+  "last_updated": "2026-02-27T03:29:38.691817Z",
   "narrative": {
     "text": "Nepal is a South Asia country with a DC-type pension system centred on the SSF Retirement Fund (Contributory Social Security). The system includes 2 schemes: SSF Retirement Fund (Contributory Social Security), Social Security Allowance (Old Age Grant). The normal retirement age is 60 for both men and women. Contributions total 31.0% of insurable earnings (11.0% employee, 20.0% employer).",
     "sources": [
@@ -373,5 +373,12 @@
       }
     }
   ],
-  "ssa_updates": []
+  "ssa_updates": [
+    {
+      "title": "International Update, August 2022",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2022-08/index.html",
+      "date": "2022-08",
+      "topic": "Nepal: Old-age allowance minimum eligibility age lowered from 70 to 68"
+    }
+  ]
 }

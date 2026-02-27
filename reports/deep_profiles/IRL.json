@@ -1,7 +1,7 @@
 {
   "iso3": "IRL",
   "country_name": "Ireland",
-  "last_updated": "2026-02-27T03:14:42.857746Z",
+  "last_updated": "2026-02-27T03:29:39.437918Z",
   "narrative": {
     "text": "Ireland is a Europe and Central Asia country with a basic-type pension system centred on the State Pension (Contributory) \u2013 Flat-Rate PRSI-Based Pension. The normal retirement age is 66 for both men and women. Contributions total 15.0% of insurable earnings (4.0% employee, 11.0% employer).",
     "sources": [
@@ -312,5 +312,18 @@
       }
     }
   ],
-  "ssa_updates": []
+  "ssa_updates": [
+    {
+      "title": "International Update, January 2024",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2024-01/index.html",
+      "date": "2024-01",
+      "topic": "Ireland: New contributory State Pension provisions take effect \u2014 deferred retirement incentives, caregiver credits, higher rates"
+    },
+    {
+      "title": "International Update, September 2022",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2022-09/index.html",
+      "date": "2022-09",
+      "topic": "Ireland: Cabinet approves State Pension reform \u2014 deferred retirement, contribution rate increases, total contribution approach"
+    }
+  ]
 }

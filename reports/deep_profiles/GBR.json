@@ -1,7 +1,7 @@
 {
   "iso3": "GBR",
   "country_name": "United Kingdom",
-  "last_updated": "2026-02-27T03:14:42.191832Z",
+  "last_updated": "2026-02-27T03:29:38.766626Z",
   "narrative": {
     "text": "United Kingdom is a Europe and Central Asia country with a basic-type pension system centred on the New State Pension (nSP). The normal retirement age is 66 for both men and women. Contributions total 25.8% of insurable earnings (12.0% employee, 13.8% employer).",
     "sources": [
@@ -312,5 +312,12 @@
       }
     }
   ],
-  "ssa_updates": []
+  "ssa_updates": [
+    {
+      "title": "International Update, March 2022",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2022-03/index.html",
+      "date": "2022-03",
+      "topic": "United Kingdom: Pensions Regulator publishes draft code for collective defined contribution (CDC) pension plans"
+    }
+  ]
 }

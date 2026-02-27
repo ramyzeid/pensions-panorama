@@ -1,7 +1,7 @@
 {
   "iso3": "VNM",
   "country_name": "Vietnam",
-  "last_updated": "2026-02-27T03:14:42.398142Z",
+  "last_updated": "2026-02-27T03:29:38.962336Z",
   "narrative": {
     "text": "Vietnam is a East Asia and Pacific country with a DB-type pension system centred on the VSS (Vietnam Social Security) \u2013 DB Earnings-Related. The normal retirement age is 62 for men and 60 for women. Contributions total 22.0% of insurable earnings (8.0% employee, 14.0% employer).",
     "sources": [
@@ -312,5 +312,12 @@
       }
     }
   ],
-  "ssa_updates": []
+  "ssa_updates": [
+    {
+      "title": "International Update, November 2024",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2024-11/index.html",
+      "date": "2024-11",
+      "topic": "Vietnam: Amended social insurance law \u2014 extended coverage, raised retirement age, lower contribution requirement, restricted lump-sum grants"
+    }
+  ]
 }

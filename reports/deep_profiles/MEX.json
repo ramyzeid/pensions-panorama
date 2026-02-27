@@ -1,7 +1,7 @@
 {
   "iso3": "MEX",
   "country_name": "Mexico",
-  "last_updated": "2026-02-27T03:14:42.511062Z",
+  "last_updated": "2026-02-27T03:29:39.077633Z",
   "narrative": {
     "text": "Mexico is a Latin America and the Caribbean country with a DC-type pension system centred on the Sistema de Ahorro para el Retiro \u2013 AFORE (Individual Accounts). The normal retirement age is 65 for both men and women. Contributions total 6.3% of insurable earnings (1.1% employee, 5.1% employer).",
     "sources": [
@@ -312,5 +312,18 @@
       }
     }
   ],
-  "ssa_updates": []
+  "ssa_updates": [
+    {
+      "title": "International Update, November 2024",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2024-11/index.html",
+      "date": "2024-11",
+      "topic": "Mexico: Constitutional amendment lowers universal old-age pension eligibility age from 68 to 65"
+    },
+    {
+      "title": "International Update, November 2022",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2022-11/index.html",
+      "date": "2022-11",
+      "topic": "Mexico: Social security law extended to cover 2.3 million domestic workers (88% women)"
+    }
+  ]
 }

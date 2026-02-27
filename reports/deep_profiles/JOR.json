@@ -1,7 +1,7 @@
 {
   "iso3": "JOR",
   "country_name": "Jordan",
-  "last_updated": "2026-02-27T03:14:42.225573Z",
+  "last_updated": "2026-02-27T03:29:38.797351Z",
   "narrative": {
     "text": "Jordan's pension system is centered on the Social Security Corporation (SSC) old-age, invalidity and survivors scheme, a defined-benefit social insurance program covering private-sector employees and most self-employed workers.\n",
     "sources": [
@@ -564,19 +564,19 @@
       "title": "International Update, April 2020",
       "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2020-04/index.html",
       "date": "2020-04",
-      "topic": "Jordan allows COVID-19 suspension and deferral of pension contributions"
+      "topic": "Jordan: COVID-19 measures \u2014 employers may suspend or defer pension contributions for 3 months"
     },
     {
       "title": "International Update, April 2015",
       "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2015-04/index.html",
       "date": "2015-04",
-      "topic": "Jordan begins gradual increase in old-age pension contribution rates"
+      "topic": "Jordan: Gradual increase in old-age pension contribution rates begins"
     },
     {
       "title": "International Update, November 2013",
       "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2013-11/index.html",
       "date": "2013-11",
-      "topic": "Jordan pension system overview"
+      "topic": "Jordan: Pension system overview"
     }
   ]
 }

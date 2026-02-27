@@ -1,7 +1,7 @@
 {
   "iso3": "IND",
   "country_name": "India",
-  "last_updated": "2026-02-27T03:14:42.260214Z",
+  "last_updated": "2026-02-27T03:29:38.828433Z",
   "narrative": {
     "text": "India is a South Asia country with a DB-type pension system centred on the Employees' Pension Scheme 1995 (EPS-95). The system includes 2 schemes: Employees' Pension Scheme 1995 (EPS-95), National Pension System (NPS) \u2013 Tier I. The normal retirement age is 58 for both men and women. Contributions total 8.3% of insurable earnings (0.0% employee, 8.3% employer).",
     "sources": [
@@ -406,5 +406,12 @@
       }
     }
   ],
-  "ssa_updates": []
+  "ssa_updates": [
+    {
+      "title": "International Update, September 2024",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2024-09/index.html",
+      "date": "2024-09",
+      "topic": "India: Government approves Unified Pension Scheme (UPS) for federal and participating state employees"
+    }
+  ]
 }

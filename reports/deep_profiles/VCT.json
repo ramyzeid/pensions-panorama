@@ -1,7 +1,7 @@
 {
   "iso3": "VCT",
   "country_name": "Saint Vincent and the Grenadines",
-  "last_updated": "2026-02-27T03:14:42.918703Z",
+  "last_updated": "2026-02-27T03:29:39.507727Z",
   "narrative": {
     "text": "Saint Vincent and the Grenadines is a Latin America and the Caribbean country with a DB-type pension system centred on the National Insurance Services (NIS) \u2013 DB Earnings-Related. The normal retirement age is 65 for both men and women. Contributions total 11.0% of insurable earnings (4.0% employee, 7.0% employer).",
     "sources": [
@@ -312,5 +312,12 @@
       }
     }
   ],
-  "ssa_updates": []
+  "ssa_updates": [
+    {
+      "title": "International Update, March 2024",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2024-03/index.html",
+      "date": "2024-03",
+      "topic": "Saint Vincent and the Grenadines: NIS pension reform package \u2014 higher revenues, discouraged early retirement"
+    }
+  ]
 }

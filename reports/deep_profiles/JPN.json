@@ -1,7 +1,7 @@
 {
   "iso3": "JPN",
   "country_name": "Japan",
-  "last_updated": "2026-02-27T03:14:42.744580Z",
+  "last_updated": "2026-02-27T03:29:39.308189Z",
   "narrative": {
     "text": "Japan is a East Asia and Pacific country with a DB-type pension system centred on the Employees' Pension Insurance (Kosei Nenkin) \u2013 DB. The normal retirement age is 65 for both men and women. Contributions total 18.3% of insurable earnings (9.2% employee, 9.2% employer).",
     "sources": [
@@ -312,5 +312,12 @@
       }
     }
   ],
-  "ssa_updates": []
+  "ssa_updates": [
+    {
+      "title": "International Update, May 2022",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2022-05/index.html",
+      "date": "2022-05",
+      "topic": "Japan: 2020 Pension Reform Law provisions take effect \u2014 higher max deferral age, reduced early retirement penalties"
+    }
+  ]
 }

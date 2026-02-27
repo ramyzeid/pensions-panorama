@@ -1,7 +1,7 @@
 {
   "iso3": "FRA",
   "country_name": "France",
-  "last_updated": "2026-02-27T03:14:42.422663Z",
+  "last_updated": "2026-02-27T03:29:38.991160Z",
   "narrative": {
     "text": "France is a Europe and Central Asia country with a DB-type pension system centred on the Assurance Vieillesse \u2013 R\u00e9gime G\u00e9n\u00e9ral (CNAV). The system includes 2 schemes: Assurance Vieillesse \u2013 R\u00e9gime G\u00e9n\u00e9ral (CNAV), AGIRC-ARRCO Complementary Points Pension. The normal retirement age is 64 for both men and women. Contributions total 15.5% of insurable earnings (6.9% employee, 8.6% employer).",
     "sources": [
@@ -406,5 +406,12 @@
       }
     }
   ],
-  "ssa_updates": []
+  "ssa_updates": [
+    {
+      "title": "International Update, June 2023",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2023-06/index.html",
+      "date": "2023-06",
+      "topic": "France: Pension reform raises legal retirement age; major public debate and protests"
+    }
+  ]
 }

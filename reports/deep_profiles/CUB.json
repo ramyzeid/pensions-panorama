@@ -1,7 +1,7 @@
 {
   "iso3": "CUB",
   "country_name": "Cuba",
-  "last_updated": "2026-02-27T03:14:42.202746Z",
+  "last_updated": "2026-02-27T03:29:38.776891Z",
   "narrative": {
     "text": "Cuba is a Latin America and the Caribbean country with a DB-type pension system centred on the Sistema de Seguridad Social (MTSS) \u2013 DB Earnings-Related. The normal retirement age is 65 for men and 60 for women. Contributions total 19.0% of insurable earnings (5.0% employee, 14.0% employer).",
     "sources": [
@@ -312,5 +312,12 @@
       }
     }
   ],
-  "ssa_updates": []
+  "ssa_updates": [
+    {
+      "title": "International Update, February 2024",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2024-02/index.html",
+      "date": "2024-02",
+      "topic": "Cuba: Decree changes how old-age and disability pensions are calculated for higher earners"
+    }
+  ]
 }

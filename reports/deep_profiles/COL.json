@@ -1,7 +1,7 @@
 {
   "iso3": "COL",
   "country_name": "Colombia",
-  "last_updated": "2026-02-27T03:14:42.734595Z",
+  "last_updated": "2026-02-27T03:29:39.297206Z",
   "narrative": {
     "text": "Colombia is a Latin America and the Caribbean country with a DB-type pension system centred on the Regimen de Prima Media con Prestacion Definida (Colpensiones/RPM). The normal retirement age is 62 for men and 57 for women. Contributions total 16.0% of insurable earnings (4.0% employee, 12.0% employer).",
     "sources": [
@@ -312,5 +312,12 @@
       }
     }
   ],
-  "ssa_updates": []
+  "ssa_updates": [
+    {
+      "title": "International Update, September 2024",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2024-09/index.html",
+      "date": "2024-09",
+      "topic": "Colombia: Establishes new solidarity old-age pension for low-income residents aged 65+"
+    }
+  ]
 }

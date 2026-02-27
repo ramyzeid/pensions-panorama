@@ -1,7 +1,7 @@
 {
   "iso3": "DNK",
   "country_name": "Denmark",
-  "last_updated": "2026-02-27T03:14:42.404119Z",
+  "last_updated": "2026-02-27T03:29:38.967731Z",
   "narrative": {
     "text": "Denmark is a Europe and Central Asia country with a basic-type pension system centred on the Folkepension (Universal State Pension). The normal retirement age is 67 for both men and women. Contributions total 0.0% of insurable earnings (0.0% employee, 0.0% employer).",
     "sources": [
@@ -312,5 +312,12 @@
       }
     }
   ],
-  "ssa_updates": []
+  "ssa_updates": [
+    {
+      "title": "International Update, January 2022",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2022-01/index.html",
+      "date": "2022-01",
+      "topic": "Denmark: Parliament approves new means-tested early pension for workers with 42+ years of employment"
+    }
+  ]
 }

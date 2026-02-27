@@ -1,7 +1,7 @@
 {
   "iso3": "EGY",
   "country_name": "Egypt",
-  "last_updated": "2026-02-27T03:14:42.338409Z",
+  "last_updated": "2026-02-27T03:29:38.901337Z",
   "narrative": {
     "text": "Egypt is a Middle East and North Africa country with a DB-type pension system centred on the NSIF Old-Age Pension (Defined Benefit). The system includes 2 schemes: NSIF Old-Age Pension (Defined Benefit), NSIF Minimum Pension Guarantee. The normal retirement age is 60 for both men and women. Contributions total 26.0% of insurable earnings (11.0% employee, 15.0% employer).",
     "sources": [
@@ -371,13 +371,13 @@
       "title": "International Update, July 2023",
       "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2023-07/index.html",
       "date": "2023-07",
-      "topic": "Egypt launches new voluntary pension program (Tomorrow's Pension) for citizens abroad"
+      "topic": "Egypt: Launches Tomorrow's Pension \u2014 new voluntary USD-denominated program for citizens abroad"
     },
     {
       "title": "International Update, February 2020",
       "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2020-02/index.html",
       "date": "2020-02",
-      "topic": "Egypt implements comprehensive pension reform (Law No. 148 of 2019)"
+      "topic": "Egypt: Implements comprehensive pension reform (Law No. 148 of 2019) \u2014 coverage, financing, benefit formula overhaul"
     }
   ]
 }

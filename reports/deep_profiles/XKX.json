@@ -1,7 +1,7 @@
 {
   "iso3": "XKX",
   "country_name": "Kosovo",
-  "last_updated": "2026-02-27T03:14:42.058711Z",
+  "last_updated": "2026-02-27T03:29:38.633492Z",
   "narrative": {
     "text": "Kosovo is a Europe and Central Asia country with a DC-type pension system centred on the KPST (Kosovo Pension Savings Trust) \u2013 DC Mandatory. The normal retirement age is 65 for both men and women. Contributions total 10.0% of insurable earnings (5.0% employee, 5.0% employer).",
     "sources": [
@@ -312,5 +312,12 @@
       }
     }
   ],
-  "ssa_updates": []
+  "ssa_updates": [
+    {
+      "title": "International Update, January 2021",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2021-01/index.html",
+      "date": "2021-01",
+      "topic": "Kosovo: Law allows pension participants to withdraw up to 10% of account balances as COVID-19 relief"
+    }
+  ]
 }

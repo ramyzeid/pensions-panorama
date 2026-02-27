@@ -1,7 +1,7 @@
 {
   "iso3": "CAN",
   "country_name": "Canada",
-  "last_updated": "2026-02-27T03:14:42.618628Z",
+  "last_updated": "2026-02-27T03:29:39.177133Z",
   "narrative": {
     "text": "Canada is a North America country with a DB-type pension system centred on the Canada Pension Plan (CPP). The normal retirement age is 65 for both men and women. Contributions total 11.9% of insurable earnings (5.9% employee, 5.9% employer).",
     "sources": [
@@ -312,5 +312,12 @@
       }
     }
   ],
-  "ssa_updates": []
+  "ssa_updates": [
+    {
+      "title": "International Update, August 2022",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2022-08/index.html",
+      "date": "2022-08",
+      "topic": "Canada: Permanent 10% increase to Old Age Security pension for recipients aged 75 and older"
+    }
+  ]
 }

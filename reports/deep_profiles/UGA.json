@@ -1,7 +1,7 @@
 {
   "iso3": "UGA",
   "country_name": "Uganda",
-  "last_updated": "2026-02-27T03:14:42.560681Z",
+  "last_updated": "2026-02-27T03:29:39.123387Z",
   "narrative": {
     "text": "Uganda is a Sub-Saharan Africa country with a DC-type pension system centred on the NSSF (National Social Security Fund) \u2013 DC Provident Fund. The normal retirement age is 55 for both men and women. Contributions total 15.0% of insurable earnings (5.0% employee, 10.0% employer).",
     "sources": [
@@ -312,5 +312,12 @@
       }
     }
   ],
-  "ssa_updates": []
+  "ssa_updates": [
+    {
+      "title": "International Update, January 2022",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2022-01/index.html",
+      "date": "2022-01",
+      "topic": "Uganda: President signs law allowing workers early access to pension savings"
+    }
+  ]
 }

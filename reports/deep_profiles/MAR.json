@@ -1,7 +1,7 @@
 {
   "iso3": "MAR",
   "country_name": "Morocco",
-  "last_updated": "2026-02-27T03:14:42.074294Z",
+  "last_updated": "2026-02-27T03:29:38.650049Z",
   "narrative": {
     "text": "Morocco's pension landscape is fragmented, with the CNSS scheme covering private-sector employees and separate schemes for civil servants and other groups. The CNSS old-age insurance is the main mandatory defined-benefit program for the private sector.\n",
     "sources": [
@@ -396,19 +396,19 @@
       "title": "International Update, April 2020",
       "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2020-04/index.html",
       "date": "2020-04",
-      "topic": "Morocco exempts employers from social security contributions during COVID-19 (until June 30, 2020)"
+      "topic": "Morocco: COVID-19 \u2014 employers who maintain 80% payroll exempt from social security contributions"
     },
     {
       "title": "International Update, October 2019",
       "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2019-10/index.html",
       "date": "2019-10",
-      "topic": "Morocco introduces new death grant and family support allowance programs"
+      "topic": "Morocco: New death grant and family support allowance programs introduced"
     },
     {
       "title": "International Update, October 2017",
       "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2017-10/index.html",
       "date": "2017-10",
-      "topic": "Morocco implements work injury benefit reforms"
+      "topic": "Morocco: Work injury benefit reforms implemented"
     }
   ]
 }
