@@ -252,12 +252,13 @@ def _apply_theme_css() -> None:
         link_hover = "#2a3f90"
         chart_container_bg = "#ffffff"
 
-    # DataFrames render inside an iframe — CSS can't penetrate it.
-    # The invert+hue-rotate trick flips light↔dark while the 180° hue
-    # rotation cancels the hue shift so data colours survive approximately.
+    # Streamlit 1.22+ renders st.dataframe() on a canvas (no iframe).
+    # Applying invert+hue-rotate to the whole container flips the canvas
+    # content dark while the 180° hue-rotate approximately preserves data colours.
     if dark:
         df_dark_css = (
-            '[data-testid="stDataFrame"] iframe {\n'
+            ':root, html { color-scheme: dark; }\n'
+            '[data-testid="stDataFrame"] {\n'
             '    filter: invert(1) hue-rotate(180deg);\n'
             '    border-radius: 4px;\n'
             '}\n'
@@ -327,7 +328,7 @@ h4, .stSubheader {{
 
 /* ── Metrics ── */
 [data-testid="stMetric"] {{
-    background-color: {metric_bg} !important;
+    background-color: transparent !important;
     border: 1px solid {border_col} !important;
     border-radius: 6px !important;
     padding: 12px 16px !important;
@@ -348,7 +349,7 @@ h4, .stSubheader {{
 
 /* ── Expanders ── */
 [data-testid="stExpander"] {{
-    background-color: {expander_bg} !important;
+    background-color: transparent !important;
     border: 1px solid {border_col} !important;
     border-radius: 6px !important;
 }}
@@ -356,18 +357,34 @@ h4, .stSubheader {{
     color: {text_primary} !important;
 }}
 
-/* ── Selectbox / inputs ── */
-[data-baseweb="select"] div, [data-baseweb="select"] span {{
+/* ── Selectbox / multiselect ── */
+[data-baseweb="select"] > div {{
+    background-color: {input_bg} !important;
+    color: {text_primary} !important;
+    border-color: {border_col} !important;
+}}
+[data-baseweb="select"] span,
+[data-baseweb="tag"] {{
     background-color: {input_bg} !important;
     color: {text_primary} !important;
 }}
-[data-baseweb="menu"] {{
+/* Dropdown popup portal (baseweb v10+) */
+[data-baseweb="popover"],
+[data-baseweb="popover"] > div {{
     background-color: {input_bg} !important;
 }}
-[data-baseweb="menu"] li {{
+[data-baseweb="menu"],
+[data-baseweb="menu"] > ul {{
+    background-color: {input_bg} !important;
+}}
+[data-baseweb="menu"] li,
+[role="option"] {{
+    background-color: {input_bg} !important;
     color: {text_primary} !important;
 }}
-[data-baseweb="menu"] li:hover {{
+[data-baseweb="menu"] li:hover,
+[role="option"]:hover,
+[aria-selected="true"][role="option"] {{
     background-color: {bg_hover} !important;
 }}
 
@@ -382,21 +399,21 @@ hr {{
     opacity: 0.6 !important;
 }}
 
-/* ── DataFrames ── */
-.stDataFrame {{
+/* ── DataFrames: transparent container + canvas invert in dark ── */
+[data-testid="stDataFrame"] {{
     border: 1px solid {border_col} !important;
     border-radius: 4px !important;
-    background-color: {bg_card} !important;
+    background-color: transparent !important;
 }}
 {df_dark_css}
 
-/* ── Scrollbar (dark mode) ── */
+/* ── Scrollbar ── */
 ::-webkit-scrollbar {{
     width: 6px;
     height: 6px;
 }}
 ::-webkit-scrollbar-track {{
-    background: {bg_main};
+    background: transparent;
 }}
 ::-webkit-scrollbar-thumb {{
     background: {border_col};
@@ -411,15 +428,11 @@ a:hover {{
     color: {link_hover} !important;
 }}
 
-/* ── Plotly chart container backgrounds ── */
-/* Forces the wrapper div to match our card bg so there is no white bleed
-   behind the chart SVG even when paper_bgcolor doesn't fully cover edges. */
-.stPlotlyChart {{
-    background-color: {chart_container_bg} !important;
-    border-radius: 4px !important;
-}}
+/* ── Plotly chart container: transparent so paper_bgcolor shows cleanly ── */
+.stPlotlyChart,
 .stPlotlyChart > div {{
-    background-color: {chart_container_bg} !important;
+    background-color: transparent !important;
+    border-radius: 4px !important;
 }}
 .stPlotlyChart iframe {{
     background: transparent !important;
