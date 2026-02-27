@@ -22,6 +22,12 @@ pp validate-params --countries JOR MAR
 pp all --countries JOR MAR --ref-year 2022 --config run_config.yaml
 
 # 4. Outputs land in reports/country/<ISO3>/ and reports/panorama_summary/
+
+# 5. Bulk-enrich YAML files with World Bank coverage data (run once)
+python scripts/bulk_enrich_yaml.py
+
+# 6. Launch the dashboard
+pp serve
 ```
 
 ---
@@ -50,12 +56,14 @@ pensions_panorama/          Python package
 └── templates/
     └── country_report.md.j2
 
+scripts/
+└── bulk_enrich_yaml.py     One-shot: adds WB coverage_rate + reform_status to YAMLs
+
 data/
 ├── params/
 │   ├── assumptions.yaml    Global modeling assumptions
 │   ├── _template.yaml      Blank country template (start here)
-│   ├── JOR.yaml            Jordan (sample)
-│   └── MAR.yaml            Morocco (sample)
+│   └── <ISO3>.yaml         One file per country (189 total)
 ├── deep_profiles/          Per-country mapping YAMLs (narrative, scheme overrides)
 ├── raw/cache/              Disk-cached API responses (timestamped)
 └── processed/              Cleaned datasets in Parquet
@@ -65,7 +73,7 @@ reports/
 ├── deep_profiles/<ISO3>.json  Pre-built country deep profile data (committed)
 └── panorama_summary/       Cross-country Excel + summary report
 
-tests/                      pytest test suite
+tests/                      pytest test suite (80 tests)
 ```
 
 ---
@@ -130,12 +138,12 @@ streamlit run pensions_panorama/web/app.py
 
 | Tab | Contents |
 |---|---|
-| 🏠 Database | Cross-country overview table with sortable indicators |
-| 🌍 Country Profile | Full single-country page (see layout below) |
-| 📊 Compare | Side-by-side multi-country comparison charts |
+| 🏠 Database | Cross-country overview table with sortable indicators + NRA global distribution histogram |
+| 🌍 Country Profile | Full single-country page with analytics, charts, PDF export, and AI Q&A |
+| 📊 Compare | Side-by-side comparison + progressivity chart + cross-country parameter heatmap |
 | 📖 Methodology | OECD pension model methodology notes |
 | 📋 PAG Tables | Pensions-at-a-Glance style comparative tables |
-| 🧮 Pension Calculator | Interactive pension calculator |
+| 🧮 Pension Calculator | Interactive pension calculator + personal pension projector |
 | 💰 Retirement Cost | Retirement cost estimator with HALE-based health split |
 | 📖 Glossary | Definitions for all indicators and terms (EN / FR / AR) |
 | 🔗 WB Primer Notes | World Bank Pension Reform Primer reference notes |
@@ -144,21 +152,70 @@ streamlit run pensions_panorama/web/app.py
 
 The Country Profile tab is a single scrollable page:
 
-1. **Country selector** — flag + name + key metrics (NRA, Gross RR, Avg Wage)
+1. **Country selector** — flag + name + key metrics (NRA M/F, Gross RR, Avg Wage)
 2. **Narrative overview** — auto-generated or hand-curated country text
 3. **Country Level Information** — macro + social protection indicators (WDI/ASPIRE/GFDD)
-4. **System KPIs** — pension coverage, fund assets, expenditure (auto-filled from ASPIRE/GFDD)
-5. **Pension Scheme Details** — expandable parameter cards from country YAML
-6. **Modeling Results** — OECD-style replacement rate / pension level / wealth table
-7. **Detailed Results** — full earnings-multiple breakdown (expandable)
-8. **Charts** — 6 Plotly charts (replacement rates, pension levels, wealth, etc.)
-9. **Calculators** — inline pension calculator + retirement cost estimator
-10. **Main Pension Schemes** — scheme overview table from deep profile JSON
+4. **System KPIs** — pension coverage, fund assets, expenditure
+5. **Coverage & Adequacy KPIs** — coverage rate, informality, elderly poverty
+6. **Gender pension gap** — male vs female GRR at 1×AW
+7. **Fiscal sustainability** — RAG signal + scatter vs all peers
+8. **Peer benchmarking** — GRR vs nearest income-group peers
+9. **Scheme parameter detail** — expandable cards from country YAML
+10. **Replacement Rate Sensitivity** — GRR vs service years 5–50, with benefit cap lines
+11. **Contributory vs Zero-Contribution Adequacy** — safety-net floor chart
+12. **Modeling Results** — OECD-style replacement rate / pension level / wealth table
+13. **Charts** — 6 Plotly charts (replacement rates, pension levels, wealth, etc.)
+14. **PDF Export** — downloadable country report (schemes, KPIs, indicators, reforms)
+15. **Inline Calculators** — pension calculator + retirement cost estimator
+16. **Main Pension Schemes** — scheme overview table from deep profile
+17. **SSA International Updates** — news feed of recent system changes
+18. **Reform Timeline** — visual chronological reform history
+19. **AI Q&A** — ask questions about the pension system (powered by Claude Haiku)
+
+### Compare Tab Analytics
+
+Beyond the standard comparison charts, the Compare tab includes:
+
+- **Progressivity chart** — `GRR(0.5×AW) ÷ GRR(2.0×AW)` per country, coloured by income group. Values above 1 indicate the system favours lower earners.
+- **Cross-country parameter heatmap** — selectable metric (NRA M/F, employee/employer contribution rate, GRR at 1×AW) across all countries.
+
+### Personal Pension Projector
+
+In the Calculator tab, the projector takes a birth year, starting wage, real wage growth, and contribution density, then estimates:
+- Projected wage at NRA
+- Gross and net replacement rate
+- DC fund accumulation trajectory (if country has a DC pillar)
+
+### Live Data Sync
+
+The sidebar includes a **Refresh live data** button that clears all disk-cached API responses (World Bank, ILO, UN WPP) and Streamlit's data cache, then shows a timestamp. Restart the app to reload fresh values.
 
 ### Languages
 
 The dashboard supports **English**, **Français**, and **العربية** (RTL).
-All tabs, country names, and glossary content are fully translated.
+All tabs, country names, charts, and glossary content are fully translated.
+
+### AI Q&A
+
+Set the `ANTHROPIC_API_KEY` environment variable to enable the AI Q&A panel at the bottom of every Country Profile. It uses **Claude Haiku** (fast, low-cost) with a country-specific system prompt built from the YAML parameters. Responses are cached for 1 hour per question/country pair.
+
+---
+
+## Bulk YAML Enrichment
+
+The script `scripts/bulk_enrich_yaml.py` enriches all country YAML files in a single run:
+
+```bash
+python scripts/bulk_enrich_yaml.py
+```
+
+**What it does:**
+1. Loops all `data/params/*.yaml` (skips `assumptions.yaml` and `_template.yaml`)
+2. Skips files that already have `coverage_rate` (protects hand-curated data for JOR, NOR, POL, GBR, USA, etc.)
+3. Fetches `per_si_cp.cov_pop_tot` from the World Bank ASPIRE API and writes a `coverage_rate` block with value, year, and citation
+4. Adds `reform_status: stable` to any active scheme that is missing that field
+5. Validates each enriched file via Pydantic; restores the original from backup on any validation failure
+6. Prints a summary: `Updated N | Skipped N | Errors N`
 
 ---
 
@@ -185,14 +242,10 @@ pp build-deep-profiles --offline
 - **Country Level Information** — 7 indicators fetched live:
   - GDP per capita (LCU and USD) — World Bank WDI
   - Population age 65+ (count and %) — World Bank WDI
-  - Contributory pension coverage (% of population) — **ASPIRE**
-  - Social insurance coverage (% of population) — **ASPIRE**
-  - Pension fund assets (% of GDP) — **GFDD**
-- **System KPIs** — 5 KPIs auto-filled from ASPIRE/GFDD where available:
-  - Social insurance coverage — `per_si_allsi.cov_pop_tot`
-  - Contributory pension coverage — `per_si_cp.cov_pop_tot`
-  - Pension fund assets/GDP — `GFDD.DI.13`
-  - Population 65+ coverage and pension expenditure/GDP (manual mapping)
+  - Contributory pension coverage (% of population) — ASPIRE
+  - Social insurance coverage (% of population) — ASPIRE
+  - Pension fund assets (% of GDP) — GFDD
+- **System KPIs** — auto-filled from ASPIRE/GFDD where available
 - **Schemes** — auto-generated from YAML params or hand-curated in mapping file
 
 > **Data availability note**: ASPIRE indicators are derived from household surveys
@@ -210,16 +263,13 @@ Per-country overrides live in `data/deep_profiles/<ISO3>.yaml`. Each file can de
 Start from `data/deep_profiles/_template.yaml`. Missing values display as
 **Not available** but the rows remain visible.
 
-Hand-curated mappings exist for: `CRI`, `JOR`, `MAR`.
-
 ---
 
-## Current Status (Feb 26, 2026)
+## Current Status (Feb 27, 2026)
 
 - **Live at https://pensions.ramyzeid.com** — deployed on Streamlit Community Cloud,
   domain on Cloudflare, auto-deploys on every `git push` to `main`.
-- **9-tab dashboard** — Country Deep Profile merged into Country Profile as a unified
-  scrollable page; tab count reduced from 10 to 9.
+- **9-tab dashboard** with 10 new analytics features (v2.0).
 - **3 languages** — English, French, Arabic (RTL) across all tabs including Glossary.
 - **189 countries** — YAML pension parameter files and deep profile JSONs for all
   World Bank member countries.
@@ -229,6 +279,21 @@ Hand-curated mappings exist for: `CRI`, `JOR`, `MAR`.
   changing a widget does not reset the active tab.
 - **Offline mode** — `--offline` skips all network calls; useful for CI builds.
 - **Tests** — 80 tests passing.
+
+### New in v2.0 (Feb 27, 2026)
+
+| Feature | Where |
+|---|---|
+| **Replacement Rate Sensitivity** | Country Profile — GRR vs service years, with min/max benefit cap lines |
+| **Adequacy Gap chart** | Country Profile — full-career vs zero-contribution comparison |
+| **PDF Country Report** | Country Profile — downloadable PDF (schemes, KPIs, indicators, reforms) |
+| **AI Q&A** | Country Profile — Claude Haiku answers questions with country context |
+| **Progressivity chart** | Compare tab — GRR(0.5×AW) ÷ GRR(2.0×AW) per country |
+| **Parameter Heatmap** | Compare tab — selectable metric across all countries |
+| **NRA Distribution** | Overview tab — histogram of male NRA by income group |
+| **Personal Projector** | Calculator tab — birth year → projected pension + DC trajectory |
+| **Live Data Sync** | Sidebar — clears all API caches and timestamps the refresh |
+| **Bulk YAML Enrichment** | `scripts/bulk_enrich_yaml.py` — WB coverage_rate + reform_status |
 
 ---
 
@@ -263,7 +328,8 @@ where available; falls back to a simplified annuity formula otherwise.
 
 All sources share the same `WorldBankClient` (WDI v2 REST API). Responses are
 cached on disk under `data/raw/cache/` with configurable TTL (default 7 days;
-UN data 30 days). Delete the cache directory to force a fresh pull.
+UN data 30 days). Use the **Refresh live data** button in the sidebar, or delete
+the cache directory, to force a fresh pull.
 
 ---
 
@@ -372,19 +438,6 @@ The engine dispatches automatically.
 
 ---
 
-## Next Steps
-
-1. **Expand hand-curated mappings** — Add richer scheme-level statistics (members,
-   contributors, beneficiaries, revenues as % of GDP) for more countries by creating
-   or extending `data/deep_profiles/<ISO3>.yaml` from the template.
-2. **Narrative quality** — Replace auto-generated fallback narratives with
-   hand-written text for high-priority countries (add `narrative.text` in the
-   mapping YAML).
-3. **Additional ASPIRE indicators** — Benefit adequacy (`per_si_allsi.adq_pop_tot`),
-   quintile coverage, and poverty reduction impact are available in the same API.
-
----
-
 ## Dependencies
 
 Pinned in `pyproject.toml`. Key libraries:
@@ -399,3 +452,6 @@ Pinned in `pyproject.toml`. Key libraries:
 - `matplotlib` — static charts
 - `jinja2` — report templates
 - `openpyxl` — Excel export
+- `anthropic>=0.30` — AI Q&A via Claude Haiku (requires `ANTHROPIC_API_KEY`)
+- `fpdf2>=2.7` — PDF country report generation
+- `kaleido>=0.2` — Plotly static image export for PDF charts

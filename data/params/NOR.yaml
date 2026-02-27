@@ -87,10 +87,12 @@ schemes:
   payout:
     type: annuity
     notes: Pension can be drawn down from age 62 over flexible period; fully flexible draw-down.
+  reform_status: stable
+  source_url: "https://lovdata.no/dokument/NL/lov/1997-02-28-19"
 - scheme_id: NOR_MINPENSION
   name: Minimum Pension Guarantee (Garantipensjon)
   tier: first
-  type: minimum
+  type: targeted
   coverage: All Norwegian residents aged 67+ with low contributory pension entitlement; full guarantee for those with zero
     earnings history
   active: true
@@ -116,6 +118,8 @@ schemes:
   payout:
     type: annuity
     notes: Monthly benefit from National Insurance (NAV); reduced as earnings-related pension (inntektspensjon) rises.
+  reform_status: stable
+  source_url: "https://www.nav.no/garantipensjon"
 taxes:
   worker_income_tax_treatment: EET
   income_tax_on_pension: Pension income subject to Norwegian progressive income tax; special pension deduction and lower national
@@ -161,3 +165,28 @@ worker_types:
     source_citation: 'National Insurance Act Norway: self-employed contribute to Folketrygden on declared income.'
     notes: null
 notes: null
+
+coverage_rate:
+  value: 0.72
+  source_citation: "OECD Pensions at a Glance 2023 – Norway: ~72% of working-age population are active Folketrygden
+    contributors. Effectively near-universal for the formal labour force."
+  year: 2022
+
+reforms:
+  - year: 2011
+    title: "NDC Reform — Flexible Retirement Introduced"
+    description: >
+      Replaced the earnings-related supplementary pension (tilleggspensjon) with a notional defined
+      contribution (NDC) system. Introduced flexible retirement between ages 62 and 75, adopted wage
+      indexation for accumulation, and removed the upper pensionable income ceiling.
+    type: formula
+    source_citation: "OECD Pensions at a Glance 2023 – Norway; Lov om endringer i lov om folketrygd 5 June 2009."
+    source_url: "https://lovdata.no/dokument/LTI/lov/2009-06-05-32"
+  - year: 2020
+    title: "Accrual Extended to Age 13; Updated Life Expectancy Divisors"
+    description: >
+      Extended pension accrual rights to income earners from age 13 (previously 17). Life expectancy
+      divisors updated for cohorts born 1963 and later to reflect improved longevity projections.
+    type: coverage
+    source_citation: "Proposisjon 63 L (2019-2020) – Endringer i folketrygdloven; SSB Norway Pension Statistics 2022."
+    source_url: "https://www.ssb.no/pensjon"

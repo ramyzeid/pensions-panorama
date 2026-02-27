@@ -51,6 +51,33 @@ class CoverageStatus(str, Enum):
     UNKNOWN = "unknown"
 
 
+class ReformType(str, Enum):
+    NRA = "nra"
+    CONTRIBUTION_RATE = "contribution_rate"
+    FORMULA = "formula"
+    COVERAGE = "coverage"
+    MERGER = "merger"
+    INDEXATION = "indexation"
+    OTHER = "other"
+
+
+class ReformStatus(str, Enum):
+    STABLE = "stable"
+    UNDER_REVIEW = "under_review"
+    ENACTED_RECENT = "enacted_recent"
+    TRANSITION = "transition"
+
+
+class ReformEvent(BaseModel):
+    """One documented reform event in the system's history."""
+    year: int = Field(..., description="Year the reform was enacted or became effective.")
+    title: str = Field(..., description="Short human-readable title.")
+    description: str = Field(..., description="Narrative description of the reform.")
+    type: ReformType = Field(ReformType.OTHER, description="Primary category of change.")
+    source_citation: str = ""
+    source_url: str | None = None
+
+
 # ---------------------------------------------------------------------------
 # Primitive: every parameter value must carry a source citation
 # ---------------------------------------------------------------------------
@@ -286,6 +313,8 @@ class SchemeComponent(BaseModel):
     payout: PayoutRules | None = None
     active: bool = True
     notes: str | None = None
+    reform_status: ReformStatus | None = None
+    source_url: str | None = None
 
     @field_validator("scheme_id")
     @classmethod
@@ -378,6 +407,10 @@ class CountryParams(BaseModel):
     average_earnings: AverageEarnings
     worker_types: dict[str, WorkerTypeRules] = Field(default_factory=dict)
     notes: str | None = None
+    reforms: list[ReformEvent] | None = None
+    coverage_rate: SourcedValue | None = None
+    informality_rate: SourcedValue | None = None
+    elderly_poverty_rate: SourcedValue | None = None
 
     @field_validator("schemes")
     @classmethod

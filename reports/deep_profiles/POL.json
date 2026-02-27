@@ -1,9 +1,9 @@
 {
   "iso3": "POL",
   "country_name": "Poland",
-  "last_updated": "2026-02-27T04:30:47.778310Z",
+  "last_updated": "2026-02-27T08:44:45.535842Z",
   "narrative": {
-    "text": "Poland is a Europe and Central Asia country with a NDC-type pension system centred on the Fundusz Ubezpiecze\u0144 Spo\u0142ecznych \u2013 NDC Old-Age Pension (ZUS). The system includes 2 schemes: Fundusz Ubezpiecze\u0144 Spo\u0142ecznych \u2013 NDC Old-Age Pension (ZUS), Minimum Pension Guarantee (Emerytura Minimalna). The normal retirement age is 65 for men and 60 for women. Contributions total 19.5% of insurable earnings (9.8% employee, 9.8% employer).",
+    "text": "Poland is a Europe and Central Asia country with a NDC-type pension system centred on the Fundusz Ubezpiecze\u0144 Spo\u0142ecznych \u2013 NDC Old-Age Pension (ZUS). The normal retirement age is 65 for men and 60 for women. Contributions total 19.5% of insurable earnings (9.8% employee, 9.8% employer).",
     "sources": [
       {
         "source_name": "SSA Social Security Programs Throughout the World \u2013 Europe 2022",
@@ -320,60 +320,6 @@
           "year": null,
           "source": {
             "source_name": "OECD Pensions at a Glance 2023 \u2013 Poland: NRA 65 for men (restored from 67 by government in 2017).",
-            "source_url": null,
-            "indicator_id": null,
-            "year": null,
-            "notes": null
-          },
-          "notes": null
-        }
-      }
-    },
-    {
-      "scheme_id": "POL_MINIMALNA",
-      "scheme_name": "Minimum Pension Guarantee (Emerytura Minimalna)",
-      "scheme_type_group": "db",
-      "attributes": {
-        "implementing_agency": {
-          "value": "Minimum Pension Guarantee (Emerytura Minimalna)",
-          "unit": null,
-          "year": null,
-          "source": null,
-          "notes": null
-        },
-        "target_population": {
-          "value": "Polish workers whose ZUS NDC pension falls below the guaranteed minimum and who have met minimum contribution years (20 women / 25 men)",
-          "unit": null,
-          "year": null,
-          "source": null,
-          "notes": null
-        },
-        "benefit_plan_type": {
-          "value": "minimum",
-          "unit": null,
-          "year": null,
-          "source": null,
-          "notes": null
-        },
-        "ret_age_male": {
-          "value": 65,
-          "unit": null,
-          "year": null,
-          "source": {
-            "source_name": "OECD PAG 2023 Poland: Minimum Pension Guarantee applies from NRA 65 for men (20 years contributions).",
-            "source_url": null,
-            "indicator_id": null,
-            "year": null,
-            "notes": null
-          },
-          "notes": null
-        },
-        "ret_age_female": {
-          "value": 60,
-          "unit": null,
-          "year": null,
-          "source": {
-            "source_name": "OECD PAG 2023 Poland: Minimum Pension Guarantee applies from NRA 65 for men (20 years contributions).",
             "source_url": null,
             "indicator_id": null,
             "year": null,

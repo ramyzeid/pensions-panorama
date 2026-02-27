@@ -1,7 +1,7 @@
 {
   "iso3": "NOR",
   "country_name": "Norway",
-  "last_updated": "2026-02-27T04:30:45.414655Z",
+  "last_updated": "2026-02-27T08:44:45.521833Z",
   "narrative": {
     "text": "Norway is a Europe and Central Asia country with a NDC-type pension system centred on the Folketrygden (National Insurance Scheme) \u2013 NDC Pension. The system includes 2 schemes: Folketrygden (National Insurance Scheme) \u2013 NDC Pension, Minimum Pension Guarantee (Garantipensjon). The normal retirement age is 67 for both men and women. Contributions total 22.3% of insurable earnings (8.2% employee, 14.1% employer).",
     "sources": [
@@ -349,7 +349,7 @@
           "notes": null
         },
         "benefit_plan_type": {
-          "value": "minimum",
+          "value": "targeted",
           "unit": null,
           "year": null,
           "source": null,

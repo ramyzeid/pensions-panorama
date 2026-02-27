@@ -12,7 +12,9 @@ from __future__ import annotations
 import html
 import json
 import logging
+import shutil
 import sys
+from datetime import datetime
 from pathlib import Path
 
 import pandas as pd
@@ -25,7 +27,10 @@ _ROOT = Path(__file__).parent.parent.parent
 if str(_ROOT) not in sys.path:
     sys.path.insert(0, str(_ROOT))
 
-from pensions_panorama.config import DEEP_PROFILE_DIR, PARAMS_DIR, load_run_config, setup_logging
+from pensions_panorama.config import (
+    DEEP_PROFILE_DIR, ILO_CACHE_DIR, PARAMS_DIR, UN_CACHE_DIR, WB_CACHE_DIR,
+    load_run_config, setup_logging,
+)
 from pensions_panorama.model.assumptions import load_assumptions
 from pensions_panorama.model.pension_engine import PensionEngine, PensionResult
 from pensions_panorama.model.pension_wealth import PensionWealthCalculator
@@ -1066,6 +1071,945 @@ def load_deep_profiles() -> dict[str, dict]:
     return profiles
 
 
+# ---------------------------------------------------------------------------
+# Female-only data cache for gender gap computation
+# ---------------------------------------------------------------------------
+@st.cache_data(show_spinner=False)
+def load_female_data_1aw(ref_year: int, multiples: tuple[float, ...]) -> dict[str, float]:
+    """Run the engine for all countries at female sex, 1×AW only.
+    Returns iso3 → gross_replacement_rate. Used for gender pension gap display.
+    """
+    assumptions = load_assumptions(params_dir=PARAMS_DIR)
+    yamls = sorted(
+        p for p in PARAMS_DIR.glob("*.yaml")
+        if not p.stem.startswith("_") and p.stem.lower() != "assumptions"
+    )
+    out: dict[str, float] = {}
+    for path in yamls:
+        iso3_key = path.stem.upper()
+        try:
+            params = load_country_params(path)
+            avg_wage = _resolve_wage(params, ref_year)
+            pw_calc = PensionWealthCalculator(assumptions, iso3_key, un_client=None)
+            sf_f = pw_calc.annuity_factor(sex="female")
+            engine_f = PensionEngine(params, assumptions, avg_wage, survival_factor=sf_f)
+            result_f = engine_f.compute(1.0, sex="female")
+            out[iso3_key] = result_f.gross_replacement_rate
+        except Exception:
+            pass
+    return out
+
+
+# ---------------------------------------------------------------------------
+# Reform status badge
+# ---------------------------------------------------------------------------
+def _reform_status_badge(s: "SchemeComponent") -> str:
+    """Return a short coloured-emoji badge for the scheme's reform_status, or ''."""
+    status = getattr(s, "reform_status", None)
+    if status is None:
+        return ""
+    _BADGE = {
+        "stable":         "🟢 Stable",
+        "under_review":   "🟡 Under Review",
+        "enacted_recent": "🔵 Recently Reformed",
+        "transition":     "🟠 In Transition",
+    }
+    val = status.value if hasattr(status, "value") else str(status)
+    return _BADGE.get(val, "")
+
+
+# ---------------------------------------------------------------------------
+# Fiscal sustainability RAG signal
+# ---------------------------------------------------------------------------
+def _fiscal_rag_signal(profile: dict) -> tuple[str, str]:
+    """Return (icon, label) based on pop_65_pct (aging pressure) and pension_fund_assets_gdp."""
+    indicators: dict = {}
+    for item in (profile.get("country_indicators") or []):
+        key = item.get("key") or item.get("label") or ""
+        cell = item.get("cell") or {}
+        indicators[key] = cell.get("value")
+
+    def _to_float(v: object) -> float | None:
+        try:
+            return float(v) if v is not None else None
+        except (TypeError, ValueError):
+            return None
+
+    # pop_65_pct: % of population aged 65+ — proxy for aging / fiscal pressure
+    pop65 = _to_float(indicators.get("pop_65_pct"))
+    # pension_fund_assets_gdp: funded assets as % GDP — high = more buffer
+    assets = _to_float(indicators.get("pension_fund_assets_gdp"))
+
+    if pop65 is None and assets is None:
+        return "⚪", t("rag_no_data")
+
+    score = 0
+    if pop65 is not None:
+        # >20% elderly share = high aging pressure; >12% = moderate
+        score += 2 if pop65 > 20 else (1 if pop65 > 12 else 0)
+    if assets is not None:
+        # Low funded assets (< 20% GDP) with high aging = extra pressure
+        if pop65 is not None and pop65 > 12 and assets < 20:
+            score += 1
+
+    if score >= 3:
+        return "🔴", t("rag_high_risk")
+    elif score >= 1:
+        return "🟡", t("rag_moderate")
+    else:
+        return "🟢", t("rag_low_risk")
+
+
+@st.cache_data(show_spinner=False)
+def _fiscal_sustainability_fig(current_iso3: str, points_json: str) -> "go.Figure":
+    """Scatter: pop_65_pct (x) vs pension_fund_assets_gdp (y), current country highlighted."""
+    rows = json.loads(points_json)
+    df = pd.DataFrame(rows).dropna(subset=["pop_65_pct"])
+    df["pension_fund_assets_gdp"] = pd.to_numeric(df["pension_fund_assets_gdp"], errors="coerce")
+
+    is_current = df["iso3"] == current_iso3
+
+    fig = go.Figure()
+
+    # Background quadrant shading — high-pressure zone (old + low assets)
+    fig.add_shape(type="rect", x0=12, x1=df["pop_65_pct"].max() * 1.05,
+                  y0=0, y1=20, fillcolor="rgba(255,80,80,0.07)", line_width=0)
+
+    # Reference lines
+    for x_thresh in [12, 20]:
+        fig.add_vline(x=x_thresh, line_dash="dot", line_color="rgba(150,150,150,0.5)", line_width=1)
+    fig.add_hline(y=20, line_dash="dot", line_color="rgba(150,150,150,0.5)", line_width=1)
+
+    # All other countries by income group
+    for level, colour in _INCOME_COLORS.items():
+        mask = (~is_current) & (df["Income level"] == level)
+        sub = df[mask]
+        if sub.empty:
+            continue
+        fig.add_trace(go.Scatter(
+            x=sub["pop_65_pct"],
+            y=sub["pension_fund_assets_gdp"],
+            mode="markers",
+            name=level,
+            marker=dict(color=colour, size=6, opacity=0.55),
+            text=sub["Country"],
+            customdata=sub[["iso3", "Income level"]],
+            hovertemplate=(
+                "<b>%{text}</b> (%{customdata[0]})<br>"
+                "Pop 65+: %{x:.1f}%<br>"
+                "Fund assets: %{y:.1f}% GDP<extra></extra>"
+            ),
+        ))
+
+    # Current country — highlighted on top
+    cur = df[is_current]
+    if not cur.empty:
+        fig.add_trace(go.Scatter(
+            x=cur["pop_65_pct"],
+            y=cur["pension_fund_assets_gdp"],
+            mode="markers+text",
+            name=cur["Country"].iloc[0],
+            marker=dict(color="#e15759", size=14, symbol="star",
+                        line=dict(color="white", width=1.5)),
+            text=cur["iso3"],
+            textposition="top center",
+            hovertemplate=(
+                "<b>%{text}</b><br>"
+                "Pop 65+: %{x:.1f}%<br>"
+                "Fund assets: %{y:.1f}% GDP<extra></extra>"
+            ),
+            showlegend=True,
+        ))
+
+    fig.update_layout(
+        template=_plotly_template(),
+        height=380,
+        xaxis_title="Population aged 65+ (%)",
+        yaxis_title="Pension fund assets (% GDP)",
+        legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
+        margin=dict(l=60, r=40, t=50, b=60),
+    )
+    return fig
+
+
+# ---------------------------------------------------------------------------
+# Reform timeline renderer
+# ---------------------------------------------------------------------------
+_REFORM_TYPE_COLORS = {
+    "nra":               "#e15759",
+    "contribution_rate": "#4e79a7",
+    "formula":           "#f28e2b",
+    "coverage":          "#59a14f",
+    "merger":            "#b07aa1",
+    "indexation":        "#76b7b2",
+    "other":             "#bab0ac",
+}
+
+
+def _render_reform_timeline(reforms: list) -> None:
+    """Render a visual chronological reform timeline using Plotly scatter."""
+    if not reforms:
+        return
+    reforms_sorted = sorted(reforms, key=lambda r: r.year)
+    years = [r.year for r in reforms_sorted]
+
+    fig = go.Figure()
+    fig.add_shape(
+        type="line",
+        x0=min(years) - 1, x1=max(years) + 1,
+        y0=0, y1=0,
+        line=dict(color="grey", width=1.5),
+    )
+    for r in reforms_sorted:
+        rtype = r.type.value if hasattr(r.type, "value") else str(r.type)
+        color = _REFORM_TYPE_COLORS.get(rtype, "#bab0ac")
+        desc_short = r.description[:120] + "…" if len(r.description) > 120 else r.description
+        fig.add_trace(go.Scatter(
+            x=[r.year], y=[0],
+            mode="markers+text",
+            marker=dict(size=20, color=color, symbol="circle",
+                        line=dict(color="white", width=2)),
+            text=[str(r.year)],
+            textposition="top center",
+            name=r.title,
+            hovertemplate=(
+                f"<b>{r.year} — {r.title}</b><br>{desc_short}<br>"
+                f"<i>Type: {rtype}</i><extra></extra>"
+            ),
+            showlegend=False,
+        ))
+
+    fig.update_layout(
+        template=_plotly_template(),
+        height=180,
+        xaxis=dict(title=t("reform_timeline_year_axis"), showgrid=False, zeroline=False),
+        yaxis=dict(visible=False, range=[-0.5, 1.2]),
+        margin=dict(l=20, r=20, t=10, b=40),
+    )
+    st.plotly_chart(fig, use_container_width=True)
+    for r in reforms_sorted:
+        rtype = r.type.value if hasattr(r.type, "value") else str(r.type)
+        url_part = f" [[source]]({r.source_url})" if r.source_url else ""
+        st.caption(
+            f"**{r.year} — {r.title}** _{rtype}_: {r.description.strip()}{url_part}"
+        )
+
+
+# ---------------------------------------------------------------------------
+# F4 – Replacement Rate Sensitivity chart
+# ---------------------------------------------------------------------------
+
+@st.cache_data(show_spinner=False)
+def _rr_sensitivity_fig(
+    iso3: str,
+    params_json: str,
+    avg_wage: float,
+    sex: str,
+    worker_type_id: str,
+) -> "go.Figure":
+    """Line chart: GRR vs years of service (5–50), with min/max benefit cap hlines."""
+    import json as _j
+    from pensions_panorama.model.calculator import PersonProfile as _PP
+    from pensions_panorama.model.pension_engine import PensionEngine as _PE
+    from pensions_panorama.model.assumptions import load_assumptions as _LA
+    from pensions_panorama.config import load_run_config as _LRC
+
+    caps = _j.loads(params_json)  # {"nra": int, "min_benefit": float|null, "max_benefit": float|null}
+    nra = caps.get("nra", 65)
+
+    try:
+        cfg = _LRC(None)
+        asmp = _LA(cfg.assumptions_file, cfg.resolved_params_dir)
+        from pensions_panorama.schema.params_schema import load_country_params as _LCP
+        full_params = _LCP(cfg.resolved_params_dir / f"{iso3}.yaml")
+        eng = _PE(country_params=full_params, assumptions=asmp, average_wage=avg_wage)
+    except Exception:
+        return go.Figure()
+
+    years_range = list(range(5, 51))
+    grr_vals = []
+    for y in years_range:
+        try:
+            p = _PP(sex=sex, age=float(nra), service_years=float(y),
+                    wage=1.0, wage_unit="aw_multiple",
+                    worker_type_id=worker_type_id)
+            res = eng.compute_benefit(p)
+            grr_vals.append(res.gross_replacement_rate * 100)
+        except Exception:
+            grr_vals.append(None)
+
+    fig = go.Figure()
+    fig.add_trace(go.Scatter(
+        x=years_range, y=grr_vals,
+        mode="lines+markers",
+        line=dict(color=_GROSS_COLOR, width=2),
+        marker=dict(size=4),
+        name="Gross RR",
+        hovertemplate="Service: %{x} yrs<br>GRR: %{y:.1f}%<extra></extra>",
+    ))
+
+    min_b = caps.get("min_benefit")
+    max_b = caps.get("max_benefit")
+    if min_b is not None:
+        fig.add_hline(y=min_b * 100, line_dash="dash", line_color="#59a14f",
+                      annotation_text="Min benefit", annotation_position="right")
+    if max_b is not None:
+        fig.add_hline(y=max_b * 100, line_dash="dash", line_color="#e15759",
+                      annotation_text="Max benefit", annotation_position="right")
+
+    fig.update_layout(
+        template=_plotly_template(),
+        height=300,
+        xaxis_title=t("rr_sensitivity_x"),
+        yaxis_title="Gross RR (%)",
+        margin=dict(l=60, r=80, t=20, b=50),
+        showlegend=False,
+    )
+    return fig
+
+
+# ---------------------------------------------------------------------------
+# F7 – Progressivity chart
+# ---------------------------------------------------------------------------
+
+@st.cache_data(show_spinner=False)
+def _progressivity_chart(summary_json: str) -> "go.Figure":
+    """Bar chart: progressivity index (GRR@0.5 / GRR@2.0) per country."""
+    import json as _j
+    rows = _j.loads(summary_json)
+    computed = []
+    for r in rows:
+        g05 = r.get("grr_05")
+        g20 = r.get("grr_20")
+        if g05 is None or g20 is None or g20 == 0:
+            continue
+        computed.append({
+            "iso3": r["iso3"],
+            "country": r["country"],
+            "income_level": r.get("income_level", "—"),
+            "prog_index": round(g05 / g20, 3),
+        })
+    if not computed:
+        return go.Figure()
+
+    computed.sort(key=lambda x: x["prog_index"], reverse=True)
+    xs = [r["iso3"] for r in computed]
+    ys = [r["prog_index"] for r in computed]
+    colors = [_INCOME_COLORS.get(r["income_level"], "#adb5bd") for r in computed]
+    hover = [f"<b>{r['country']} ({r['iso3']})</b><br>Index: {r['prog_index']:.3f}" for r in computed]
+
+    fig = go.Figure(go.Bar(
+        x=xs, y=ys,
+        marker_color=colors,
+        hovertemplate="%{customdata}<extra></extra>",
+        customdata=hover,
+    ))
+    fig.add_hline(y=1.0, line_dash="dash", line_color="grey",
+                  annotation_text="Parity", annotation_position="right")
+    fig.update_layout(
+        template=_plotly_template(),
+        height=400,
+        xaxis_title="Country",
+        yaxis_title="Progressivity index",
+        margin=dict(l=60, r=60, t=20, b=60),
+        showlegend=False,
+    )
+    return fig
+
+
+# ---------------------------------------------------------------------------
+# F9 – Adequacy gap chart
+# ---------------------------------------------------------------------------
+
+def _adequacy_gap_fig(
+    iso3: str,
+    params: "CountryParams",
+    avg_wage: float,
+) -> "go.Figure | None":
+    """Grouped bar: full-career vs. zero-contribution gross and net pension."""
+    from pensions_panorama.model.calculator import PersonProfile as _PP
+    from pensions_panorama.model.pension_engine import PensionEngine as _PE
+    from pensions_panorama.model.assumptions import load_assumptions as _LA
+    from pensions_panorama.config import load_run_config as _LRC
+
+    try:
+        cfg = _LRC(None)
+        asmp = _LA(cfg.assumptions_file, cfg.resolved_params_dir)
+        eng = _PE(country_params=params, assumptions=asmp, average_wage=avg_wage)
+    except Exception:
+        return None
+
+    nra = 65
+    first = next((s for s in params.schemes if s.active and s.eligibility), None)
+    if first:
+        sv = getattr(first.eligibility, "normal_retirement_age_male", None)
+        if sv and sv.value:
+            nra = int(sv.value)
+
+    results = {}
+    for label, svc in [("full", 40.0), ("zero", 0.0)]:
+        try:
+            p = _PP(sex="male", age=float(nra), service_years=svc,
+                    wage=1.0, wage_unit="aw_multiple")
+            r = eng.compute_benefit(p)
+            results[label] = r
+        except Exception:
+            return None
+
+    full_r = results.get("full")
+    zero_r = results.get("zero")
+    if not full_r or not zero_r:
+        return None
+    if abs(full_r.gross_replacement_rate - zero_r.gross_replacement_rate) < 0.005:
+        return None  # no meaningful difference
+
+    full_label = t("adequacy_gap_full")
+    zero_label = t("adequacy_gap_zero")
+
+    fig = go.Figure()
+    fig.add_trace(go.Bar(
+        name="Gross RR",
+        x=[full_label, zero_label],
+        y=[full_r.gross_replacement_rate * 100, zero_r.gross_replacement_rate * 100],
+        marker_color=_GROSS_COLOR,
+        opacity=0.85,
+    ))
+    fig.add_trace(go.Bar(
+        name="Net RR",
+        x=[full_label, zero_label],
+        y=[full_r.net_replacement_rate * 100, zero_r.net_replacement_rate * 100],
+        marker_color=_NET_COLOR,
+        opacity=0.85,
+    ))
+    fig.update_layout(
+        template=_plotly_template(),
+        height=280,
+        barmode="group",
+        yaxis_title="Replacement rate (%)",
+        margin=dict(l=60, r=40, t=20, b=50),
+        legend=dict(orientation="h", yanchor="bottom", y=1.02),
+    )
+    return fig
+
+
+# ---------------------------------------------------------------------------
+# F6 – NRA global distribution histogram
+# ---------------------------------------------------------------------------
+
+@st.cache_data(show_spinner=False)
+def _nra_distribution_fig(nra_rows_json: str) -> "go.Figure":
+    """Histogram of male NRA across all countries, coloured by income group."""
+    import json as _j
+    rows = _j.loads(nra_rows_json)
+    df = pd.DataFrame(rows).dropna(subset=["nra_m"])
+    df["nra_m"] = df["nra_m"].astype(float)
+    df = df.rename(columns={"income_level": "Income level"})
+
+    fig = px.histogram(
+        df, x="nra_m",
+        color="Income level",
+        color_discrete_map=_INCOME_COLORS,
+        nbins=15,
+        template=_plotly_template(),
+        height=320,
+        labels={"nra_m": "Normal Retirement Age (male, years)"},
+    )
+    mean_nra = df["nra_m"].mean()
+    fig.add_vline(x=mean_nra, line_dash="dash", line_color="grey",
+                  annotation_text=f"Mean {mean_nra:.1f}", annotation_position="top right")
+    fig.update_layout(
+        legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
+        margin=dict(l=60, r=40, t=40, b=60),
+    )
+    return fig
+
+
+# ---------------------------------------------------------------------------
+# F2 – Cross-country parameter heatmap
+# ---------------------------------------------------------------------------
+
+@st.cache_data(show_spinner=False)
+def _parameter_heatmap_fig(matrix_json: str) -> "go.Figure":
+    """Heatmap: countries × selected parameter."""
+    import json as _j
+    m = _j.loads(matrix_json)
+    countries = m["countries"]
+    metrics = m["metrics"]
+    z = m["z_matrix"]
+    z_text = m["z_text"]
+
+    fig = go.Figure(go.Heatmap(
+        z=z,
+        x=countries,
+        y=metrics,
+        colorscale="RdYlGn",
+        text=z_text,
+        texttemplate="%{text}",
+        hovertemplate="Country: %{x}<br>Metric: %{y}<br>Value: %{text}<extra></extra>",
+        showscale=True,
+    ))
+    fig.update_layout(
+        template=_plotly_template(),
+        height=380,
+        margin=dict(l=120, r=40, t=20, b=80),
+        xaxis=dict(tickangle=-45),
+    )
+    return fig
+
+
+# ---------------------------------------------------------------------------
+# F3 – Personal pension projector
+# ---------------------------------------------------------------------------
+
+@st.cache_data(show_spinner=False)
+def _project_pension(
+    iso3: str,
+    avg_wage: float,
+    birth_year: int,
+    start_wage: float,
+    wage_growth_pct: float,
+    density: float,
+) -> dict:
+    """Project a pension for a person born in birth_year."""
+    from pensions_panorama.model.calculator import PersonProfile as _PP
+    from pensions_panorama.model.pension_engine import PensionEngine as _PE
+    from pensions_panorama.model.assumptions import load_assumptions as _LA
+    from pensions_panorama.config import load_run_config as _LRC
+
+    try:
+        cfg = _LRC(None)
+        asmp = _LA(cfg.assumptions_file, cfg.resolved_params_dir)
+        from pensions_panorama.schema.params_schema import load_country_params as _LCP
+        full_params = _LCP(cfg.resolved_params_dir / f"{iso3}.yaml")
+        eng = _PE(country_params=full_params, assumptions=asmp, average_wage=avg_wage)
+    except Exception as exc:
+        return {"error": str(exc)}
+
+    current_age = 2025 - birth_year
+    nra = 65
+    first = next((s for s in full_params.schemes if s.active and s.eligibility), None)
+    if first:
+        sv = getattr(first.eligibility, "normal_retirement_age_male", None)
+        if sv and sv.value:
+            nra = int(sv.value)
+
+    years_to_nra = max(1, nra - current_age)
+    projected_wage = start_wage * (1 + wage_growth_pct / 100) ** years_to_nra
+    effective_service = years_to_nra * density
+
+    # DC trajectory (running fund total, real terms)
+    total_contrib_rate = 0.1  # fallback
+    dc_scheme = next((s for s in full_params.schemes
+                      if (s.type.value if hasattr(s.type, "value") else str(s.type)) == "DC"
+                      and s.active), None)
+    if dc_scheme and dc_scheme.contribution_rate:
+        ee = dc_scheme.contribution_rate.employee_rate
+        er = dc_scheme.contribution_rate.employer_rate
+        ee_v = ee.value if ee and ee.value else 0
+        er_v = er.value if er and er.value else 0
+        total_contrib_rate = (ee_v + er_v) / 100.0
+
+    real_return = 0.03
+    avg_wage_proj = start_wage  # use starting wage as proxy for simplicity
+    dc_trajectory = []
+    years_list = list(range(current_age, nra + 1))
+    running_fund = 0.0
+    for yr_idx, _age in enumerate(range(current_age, nra)):
+        annual_contrib = avg_wage_proj * total_contrib_rate * density
+        running_fund = running_fund * (1 + real_return) + annual_contrib
+        dc_trajectory.append(running_fund)
+
+    try:
+        p = _PP(sex="male", age=float(nra), service_years=effective_service,
+                wage=projected_wage, wage_unit="currency")
+        res = eng.compute_benefit(p)
+        return {
+            "grr": res.gross_replacement_rate,
+            "gross_pension": res.gross_benefit,
+            "net_pension": res.net_benefit,
+            "dc_trajectory": dc_trajectory,
+            "years_list": years_list[:-1],
+            "nra": nra,
+            "projected_wage": projected_wage,
+            "effective_service": effective_service,
+        }
+    except Exception as exc:
+        return {"error": str(exc)}
+
+
+# ---------------------------------------------------------------------------
+# F8 – LLM Q&A helper
+# ---------------------------------------------------------------------------
+
+@st.cache_data(show_spinner=False, ttl=3600)
+def _country_qa_response(question: str, system_prompt: str) -> str:
+    """Ask Claude a question about a pension system."""
+    import os
+    try:
+        import anthropic as _ant
+    except ImportError:
+        return "Error: anthropic package not installed."
+
+    api_key = os.environ.get("ANTHROPIC_API_KEY", "")
+    if not api_key:
+        return t("qa_no_key")
+
+    try:
+        client = _ant.Anthropic(api_key=api_key)
+        msg = client.messages.create(
+            model="claude-haiku-4-5-20251001",
+            max_tokens=600,
+            system=system_prompt,
+            messages=[{"role": "user", "content": question}],
+        )
+        return msg.content[0].text
+    except Exception as exc:
+        return f"Error: {exc}"
+
+
+def _build_qa_system_prompt(
+    params: "CountryParams",
+    meta,
+    ref_result,
+    avg_wage: float,
+) -> str:
+    """Build a concise system prompt with country pension facts."""
+    schemes_text = []
+    for s in params.schemes:
+        if not s.active:
+            continue
+        stype = s.type.value if hasattr(s.type, "value") else str(s.type)
+        nra_m = nra_f = "?"
+        if s.eligibility:
+            sv_m = getattr(s.eligibility, "normal_retirement_age_male", None)
+            sv_f = getattr(s.eligibility, "normal_retirement_age_female", None)
+            if sv_m and sv_m.value:
+                nra_m = sv_m.value
+            if sv_f and sv_f.value:
+                nra_f = sv_f.value
+        schemes_text.append(
+            f"  - {s.name} ({stype}): NRA M={nra_m}, F={nra_f}"
+        )
+    grr = ref_result.gross_replacement_rate * 100 if ref_result else "?"
+    nrr = ref_result.net_replacement_rate * 100 if ref_result else "?"
+    country = meta.country_name if meta else "this country"
+    prompt = (
+        f"You are a pension expert assistant. Answer questions about the pension system of "
+        f"{country} (ISO3: {meta.iso3 if meta else '?'}). "
+        f"Key facts:\n"
+        f"- Average wage: {meta.currency_code if meta else ''} {avg_wage:,.0f}/yr\n"
+        f"- Active schemes:\n" + "\n".join(schemes_text) + "\n"
+        f"- Gross replacement rate at 1×AW, 40yrs: {grr:.1f}%\n"
+        f"- Net replacement rate at 1×AW, 40yrs: {nrr:.1f}%\n"
+        f"Keep answers concise (≤300 words). Note uncertainty where relevant."
+    )
+    return prompt
+
+
+# ---------------------------------------------------------------------------
+# F5 – PDF country report generator
+# ---------------------------------------------------------------------------
+
+def _generate_country_pdf(
+    iso3: str,
+    params: "CountryParams",
+    results: list,
+    profile: dict,
+    avg_wage: float,
+) -> bytes:
+    """Generate a country PDF report using fpdf2."""
+    try:
+        from fpdf import FPDF
+    except ImportError:
+        raise RuntimeError("fpdf2 not installed. Run: pip install fpdf2")
+
+    m = params.metadata
+    country_name = m.country_name
+    ccode = m.currency_code
+    ref_year = m.reference_year or 2023
+
+    # Reference result at 1×AW
+    ref_r = next((r for r in results if abs(r.earnings_multiple - 1.0) < 0.01), None)
+
+    # NRA
+    nra_m = nra_f = "?"
+    if params.schemes and params.schemes[0].eligibility:
+        sv_m = getattr(params.schemes[0].eligibility, "normal_retirement_age_male", None)
+        sv_f = getattr(params.schemes[0].eligibility, "normal_retirement_age_female", None)
+        if sv_m and sv_m.value:
+            nra_m = sv_m.value
+        if sv_f and sv_f.value:
+            nra_f = sv_f.value
+
+    pdf = FPDF()
+    pdf.set_auto_page_break(auto=True, margin=15)
+    pdf.add_page()
+
+    # Title
+    pdf.set_font("Helvetica", "B", 18)
+    pdf.cell(0, 10, f"{country_name} ({iso3}) — Pension System Profile", new_x="LMARGIN", new_y="NEXT")
+    pdf.set_font("Helvetica", "", 10)
+    pdf.cell(0, 6, f"Reference year: {ref_year} | Generated by Pensions Panorama", new_x="LMARGIN", new_y="NEXT")
+    pdf.ln(4)
+
+    # KPI row
+    pdf.set_font("Helvetica", "B", 12)
+    pdf.cell(0, 8, "Key Indicators", new_x="LMARGIN", new_y="NEXT")
+    pdf.set_font("Helvetica", "", 10)
+    kpi_w = pdf.epw / 3
+    pdf.cell(kpi_w, 7, f"NRA M/F: {nra_m} / {nra_f}")
+    grr_str = f"{ref_r.gross_replacement_rate * 100:.1f}%" if ref_r else "—"
+    pdf.cell(kpi_w, 7, f"GRR @ 1×AW: {grr_str}")
+    pdf.cell(kpi_w, 7, f"Avg wage: {ccode} {avg_wage:,.0f}", new_x="LMARGIN", new_y="NEXT")
+    pdf.ln(3)
+
+    # Scheme table
+    pdf.set_font("Helvetica", "B", 12)
+    pdf.cell(0, 8, "Pension Schemes", new_x="LMARGIN", new_y="NEXT")
+    pdf.set_font("Helvetica", "B", 9)
+    col_w = [45, 18, 14, 14, 22, 22, 30]
+    headers = ["Scheme", "Type", "NRA M", "NRA F", "Emp. %", "Emplr %", "Accrual/Flat"]
+    for w, h in zip(col_w, headers):
+        pdf.cell(w, 7, h, border=1)
+    pdf.ln()
+    pdf.set_font("Helvetica", "", 8)
+    for s in params.schemes:
+        if not s.active:
+            continue
+        stype = s.type.value if hasattr(s.type, "value") else str(s.type)
+        _nra_m_s = _nra_f_s = "?"
+        emp_r = emplr_r = "?"
+        accrual = "?"
+        if s.eligibility:
+            sv_m = getattr(s.eligibility, "normal_retirement_age_male", None)
+            sv_f = getattr(s.eligibility, "normal_retirement_age_female", None)
+            if sv_m and sv_m.value:
+                _nra_m_s = str(sv_m.value)
+            if sv_f and sv_f.value:
+                _nra_f_s = str(sv_f.value)
+        if s.contribution_rate:
+            ee = s.contribution_rate.employee_rate
+            er = s.contribution_rate.employer_rate
+            if ee and ee.value is not None:
+                emp_r = f"{ee.value:.1f}"
+            if er and er.value is not None:
+                emplr_r = f"{er.value:.1f}"
+        if s.benefit_formula:
+            acc = getattr(s.benefit_formula, "accrual_rate", None)
+            flat = getattr(s.benefit_formula, "flat_amount", None)
+            if acc and acc.value is not None:
+                accrual = f"{acc.value * 100:.2f}% acc."
+            elif flat and flat.value is not None:
+                accrual = f"flat {flat.value:.0f}"
+        row_vals = [s.name[:30], stype, _nra_m_s, _nra_f_s, emp_r, emplr_r, accrual]
+        for w, v in zip(col_w, row_vals):
+            pdf.cell(w, 6, str(v)[:25], border=1)
+        pdf.ln()
+
+    pdf.ln(4)
+
+    # Country indicators from deep profile
+    indicators = profile.get("country_indicators") or []
+    if indicators:
+        pdf.set_font("Helvetica", "B", 12)
+        pdf.cell(0, 8, "Country Indicators", new_x="LMARGIN", new_y="NEXT")
+        pdf.set_font("Helvetica", "", 9)
+        for ind in indicators[:12]:
+            label = ind.get("label") or ind.get("key") or ""
+            cell = ind.get("cell") or {}
+            val = cell.get("value")
+            yr = cell.get("year")
+            val_str = str(val) if val is not None else "—"
+            yr_str = f" ({yr})" if yr else ""
+            pdf.cell(0, 6, f"  {label}: {val_str}{yr_str}", new_x="LMARGIN", new_y="NEXT")
+        pdf.ln(3)
+
+    # Reform history
+    reforms = getattr(params, "reforms", None) or []
+    if reforms:
+        pdf.add_page()
+        pdf.set_font("Helvetica", "B", 12)
+        pdf.cell(0, 8, "Reform History", new_x="LMARGIN", new_y="NEXT")
+        pdf.set_font("Helvetica", "", 9)
+        for r in sorted(reforms, key=lambda x: x.year):
+            rtype = r.type.value if hasattr(r.type, "value") else str(r.type)
+            pdf.set_font("Helvetica", "B", 9)
+            pdf.cell(0, 6, f"{r.year} — {r.title} [{rtype}]", new_x="LMARGIN", new_y="NEXT")
+            pdf.set_font("Helvetica", "", 8)
+            desc = r.description[:300]
+            pdf.multi_cell(0, 5, desc)
+            pdf.ln(2)
+
+    return bytes(pdf.output())
+
+
+# ---------------------------------------------------------------------------
+# Coverage & adequacy KPI cards
+# ---------------------------------------------------------------------------
+def _render_coverage_adequacy_kpis(params: "CountryParams") -> None:
+    """Render coverage_rate, informality_rate, elderly_poverty_rate metric cards."""
+    fields = [
+        ("coverage_rate",        t("kpi_coverage_rate")),
+        ("informality_rate",     t("kpi_informality_rate")),
+        ("elderly_poverty_rate", t("kpi_elderly_poverty_rate")),
+    ]
+    available = [
+        (label, sv)
+        for attr, label in fields
+        for sv in [getattr(params, attr, None)]
+        if sv is not None and sv.value is not None
+    ]
+    if not available:
+        return
+    st.subheader(t("coverage_adequacy_header"))
+    cols = st.columns(len(available))
+    for idx, (label, sv) in enumerate(available):
+        cols[idx].metric(label, f"{sv.value * 100:.1f}%")
+        cite = sv.source_citation
+        cols[idx].caption(f"{cite[:70]}…" if len(cite) > 70 else cite)
+    st.divider()
+
+
+# ---------------------------------------------------------------------------
+# Peer benchmarking bar chart
+# ---------------------------------------------------------------------------
+@st.cache_data(show_spinner=False)
+def _build_peer_benchmark_chart(
+    iso3: str,
+    income_level: str,
+    peer_rows_json: str,
+) -> "go.Figure":
+    """Horizontal bar: current country vs. nearest GRR peers in same income group."""
+    rows = json.loads(peer_rows_json)
+    df = pd.DataFrame(rows)
+    peers = df[df["Income level"] == income_level].copy()
+    current = peers[peers["iso3"] == iso3]
+    others = peers[peers["iso3"] != iso3].copy()
+    if not current.empty and not others.empty:
+        current_grr = float(current.iloc[0]["Gross RR"])
+        others["_dist"] = (others["Gross RR"].astype(float) - current_grr).abs()
+        top = others.nsmallest(7, "_dist")
+        plot_df = pd.concat([current, top]).copy()
+    else:
+        plot_df = peers.head(8).copy()
+    plot_df = plot_df.sort_values("Gross RR", ascending=True)
+    plot_df["GRR_pct"] = (plot_df["Gross RR"].astype(float) * 100).round(1)
+    colors = [_GROSS_COLOR if r == iso3 else "#adb5bd" for r in plot_df["iso3"]]
+
+    fig = go.Figure(go.Bar(
+        x=plot_df["GRR_pct"],
+        y=plot_df["Country"],
+        orientation="h",
+        marker_color=colors,
+        text=plot_df["GRR_pct"].astype(str) + "%",
+        textposition="outside",
+    ))
+    fig.update_layout(
+        template=_plotly_template(),
+        height=max(260, len(plot_df) * 36 + 60),
+        xaxis_title=t("peer_chart_xaxis"),
+        margin=dict(l=130, r=60, t=20, b=40),
+        showlegend=False,
+    )
+    return fig
+
+
+# ---------------------------------------------------------------------------
+# Convergence scatter (NRA vs GRR)
+# ---------------------------------------------------------------------------
+@st.cache_data(show_spinner=False)
+def _convergence_scatter_fig(rows_json: str) -> "go.Figure":
+    """Scatter: NRA (x) vs gross RR at 1×AW (y), coloured by WB income level."""
+    rows = json.loads(rows_json)
+    df = pd.DataFrame(rows).dropna(subset=["NRA (M)", "Gross RR"])
+    df["GRR_pct"] = (df["Gross RR"].astype(float) * 100).round(1)
+    fig = px.scatter(
+        df,
+        x="NRA (M)",
+        y="GRR_pct",
+        color="Income level",
+        color_discrete_map=_INCOME_COLORS,
+        text="iso3",
+        hover_data={"Country": True, "NRA (M)": True, "GRR_pct": ":.1f",
+                    "iso3": False, "Income level": False},
+        labels={"GRR_pct": t("convergence_yaxis"), "NRA (M)": t("convergence_xaxis")},
+        template=_plotly_template(),
+        height=480,
+    )
+    fig.update_traces(textposition="top center", marker=dict(size=8, opacity=0.8))
+    fig.update_layout(
+        legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
+        margin=dict(l=60, r=40, t=60, b=60),
+    )
+    return fig
+
+
+# ---------------------------------------------------------------------------
+# System type choropleth
+# ---------------------------------------------------------------------------
+_SYSTEM_TYPE_COLORS = {
+    "DB":       "#4e79a7",
+    "NDC":      "#f28e2b",
+    "DC":       "#e15759",
+    "points":   "#76b7b2",
+    "basic":    "#59a14f",
+    "targeted": "#edc948",
+    "minimum":  "#b07aa1",
+    "other":    "#bab0ac",
+}
+_SYSTEM_TYPE_ORDER = ["NDC", "DB", "DC", "points", "basic", "targeted", "minimum", "other"]
+
+
+def _build_map_data(data: dict) -> list[dict]:
+    """Return [{iso3, dominant_type}] for each country in data."""
+    rows = []
+    for iso3_key, d in data.items():
+        if d.get("error") or not d.get("params"):
+            continue
+        schemes = [s for s in d["params"].schemes if s.active]
+        dominant = "other"
+        for ptype in _SYSTEM_TYPE_ORDER:
+            if any((s.type.value if hasattr(s.type, "value") else str(s.type)) == ptype
+                   for s in schemes):
+                dominant = ptype
+                break
+        rows.append({"iso3": iso3_key, "dominant_type": dominant})
+    return rows
+
+
+@st.cache_data(show_spinner=False)
+def _system_type_choropleth_fig(map_rows_json: str) -> "go.Figure":
+    """Choropleth coloured by dominant scheme type per country."""
+    rows = json.loads(map_rows_json)
+    df = pd.DataFrame(rows)
+    type_to_num = {tp: i for i, tp in enumerate(_SYSTEM_TYPE_ORDER)}
+    df["type_num"] = df["dominant_type"].map(type_to_num).fillna(len(_SYSTEM_TYPE_ORDER) - 1)
+    colorscale = [
+        [i / (len(_SYSTEM_TYPE_ORDER) - 1), _SYSTEM_TYPE_COLORS[tp]]
+        for i, tp in enumerate(_SYSTEM_TYPE_ORDER)
+    ]
+    fig = go.Figure(go.Choropleth(
+        locations=df["iso3"],
+        z=df["type_num"],
+        text=df["dominant_type"],
+        colorscale=colorscale,
+        marker_line_color="white",
+        marker_line_width=0.5,
+        hovertemplate="<b>%{location}</b><br>System: %{text}<extra></extra>",
+        showscale=False,
+    ))
+    fig.update_layout(
+        template=_plotly_template(),
+        geo=dict(showframe=False, showcoastlines=True, projection_type="natural earth"),
+        height=440,
+        margin=dict(l=0, r=0, t=20, b=0),
+    )
+    return fig
+
+
+# ---------------------------------------------------------------------------
+
+
 def _empty_deep_profile(iso3: str, country_name: str) -> dict:
     return {
         "iso3": iso3,
@@ -1802,6 +2746,9 @@ def _render_scheme_card(s: SchemeComponent, currency_code: str) -> None:
     if s.coverage:
         st.caption(t("coverage_prefix", text=s.coverage))
 
+    if getattr(s, "source_url", None):
+        st.markdown(f"**{t('legal_basis_label')}:** [{s.source_url}]({s.source_url})")
+
     # ── Row 1: Eligibility (gender side-by-side) ───────────────────────────
     st.markdown(t("section_eligibility"))
     c1, c2, c3, c4 = st.columns(4)
@@ -1991,6 +2938,19 @@ def _sidebar() -> tuple[int, str, float, tuple[float, ...]]:
         st.divider()
         st.caption(t("footer"))
 
+        # ── F10: Live data sync ───────────────────────────────────────────────
+        st.divider()
+        st.markdown(f"**{t('sync_header')}**")
+        _last_sync = st.session_state.get("last_sync", "Never")
+        st.caption(t("sync_last_refreshed", date=_last_sync))
+        if st.button(t("sync_btn"), key="sync_btn"):
+            with st.spinner(t("sync_running")):
+                for _cache_d in [WB_CACHE_DIR, ILO_CACHE_DIR, UN_CACHE_DIR]:
+                    shutil.rmtree(_cache_d, ignore_errors=True)
+                st.cache_data.clear()
+                st.session_state["last_sync"] = datetime.now().strftime("%Y-%m-%d %H:%M")
+            st.success(t("sync_done"))
+
     multiples = (0.5, 0.75, 1.0, 1.5, 2.0, 2.5)
     return ref_year, sex, overview_multiple, multiples
 
@@ -2052,6 +3012,37 @@ def tab_overview(data: dict, summary_df: pd.DataFrame, target_multiple: float) -
             "Gross PW": t("col_gross_pw_at", n=target_multiple),
         })
         st.dataframe(disp, use_container_width=True, hide_index=True, height=420)
+
+    # ── System Type Map ───────────────────────────────────────────────────────
+    st.divider()
+    st.subheader(t("system_type_map_header"))
+    import json as _json_ov
+    map_data = _build_map_data(data)
+    if map_data:
+        st.plotly_chart(_system_type_choropleth_fig(_json_ov.dumps(map_data)), use_container_width=True)
+        st.caption(t("system_type_map_caption"))
+
+    # ── F6: NRA global distribution ───────────────────────────────────────────
+    import json as _jnra
+    nra_rows_ov = []
+    for k, v in data.items():
+        if v["error"] or not v["params"]:
+            continue
+        _p = v["params"]
+        _fs = _p.schemes[0] if _p.schemes else None
+        if _fs and _fs.eligibility:
+            _sv_m = getattr(_fs.eligibility, "normal_retirement_age_male", None)
+            if _sv_m and _sv_m.value is not None:
+                nra_rows_ov.append({
+                    "iso3": k,
+                    "nra_m": float(_sv_m.value),
+                    "income_level": _p.metadata.wb_income_level or "—",
+                })
+    if nra_rows_ov:
+        st.divider()
+        st.subheader(t("nra_dist_header"))
+        st.plotly_chart(_nra_distribution_fig(_jnra.dumps(nra_rows_ov)), use_container_width=True)
+        st.caption(t("nra_dist_caption"))
 
 
 # ---------------------------------------------------------------------------
@@ -2203,8 +3194,42 @@ def _inline_pension_calc(iso3: str, params: "CountryParams", avg_wage: float, d:
                 st.markdown(wt.notes)
 
     sex = st.selectbox("Sex", ["male", "female"], key=f"calc_sex{ks}")
-    age = st.number_input("Current age", min_value=18, max_value=100, value=60, key=f"calc_age{ks}")
     service_years = st.number_input("Service years", min_value=0, max_value=50, value=25, key=f"calc_service{ks}")
+
+    contribution_density = st.slider(
+        t("calc_contribution_density"),
+        min_value=0.40, max_value=1.00, value=1.00, step=0.05,
+        help=t("calc_density_help"),
+        key=f"calc_density{ks}",
+    )
+    career_break = st.number_input(
+        t("calc_career_break"),
+        min_value=0, max_value=20, value=0, step=1,
+        help=t("calc_break_help"),
+        key=f"calc_break{ks}",
+    )
+    effective_service = max(0.0, float(service_years) * contribution_density - float(career_break))
+
+    # Derive NRA/ERA from first active scheme for retirement age slider
+    _nra_val, _era_val = 65, None
+    for _s in params.schemes:
+        if _s.active and _s.eligibility:
+            _sex_key = "male" if sex == "male" else "female"
+            _nra_sv = getattr(_s.eligibility, f"normal_retirement_age_{_sex_key}", None)
+            _era_sv = getattr(_s.eligibility, f"early_retirement_age_{_sex_key}", None)
+            if _nra_sv and _nra_sv.value:
+                _nra_val = int(_nra_sv.value)
+                _era_val = int(_era_sv.value) if (_era_sv and _era_sv.value) else None
+                break
+
+    ret_age = st.slider(
+        t("calc_retirement_age"),
+        min_value=_era_val if _era_val else max(50, _nra_val - 10),
+        max_value=_nra_val + 5,
+        value=_nra_val,
+        key=f"calc_ret_age{ks}",
+    )
+
     wage = st.number_input(
         f"Annual wage ({ccode})", min_value=0.0, value=float(avg_wage), step=1000.0,
         key=f"calc_wage{ks}",
@@ -2213,7 +3238,7 @@ def _inline_pension_calc(iso3: str, params: "CountryParams", avg_wage: float, d:
     if st.button("Calculate Pension", type="primary", use_container_width=True, key=f"calc_button{ks}"):
         from pensions_panorama.model.calculator import PersonProfile
         person = PersonProfile(
-            sex=sex, age=float(age), service_years=float(service_years),
+            sex=sex, age=float(ret_age), service_years=effective_service,
             wage=float(wage), wage_unit="currency",
             worker_type_id=worker_type_id, dc_account_balance=None,
         )
@@ -2390,6 +3415,84 @@ def tab_country(data: dict) -> None:
                     label = source.get("source_name") or "source"
                     cols[idx].caption(f"[{label}]({source['source_url']})")
 
+    # ── Coverage & adequacy KPIs ──────────────────────────────────────────────
+    _render_coverage_adequacy_kpis(params)
+
+    # ── Gender pension gap ────────────────────────────────────────────────────
+    multiples_tuple = tuple(sorted({0.5, 0.75, 1.0, 1.5, 2.0}))
+    ref_year_val = m.reference_year or 2023
+    female_grr_map = load_female_data_1aw(ref_year_val, multiples_tuple)
+    female_grr = female_grr_map.get(iso3)
+    male_grr = next(
+        (r.gross_replacement_rate for r in results if abs(r.earnings_multiple - 1.0) < 0.01),
+        None,
+    )
+    if male_grr is not None and female_grr is not None:
+        st.divider()
+        st.subheader(t("gender_gap_header"))
+        g1, g2, g3 = st.columns(3)
+        g1.metric(t("gender_gap_male_rr"), f"{male_grr * 100:.1f}%")
+        g2.metric(t("gender_gap_female_rr"), f"{female_grr * 100:.1f}%")
+        g3.metric(t("gender_gap_delta"), f"{abs((male_grr - female_grr) * 100):.1f}pp")
+        st.caption(t("gender_gap_caption"))
+
+    # ── Fiscal RAG ────────────────────────────────────────────────────────────
+    rag_icon, rag_label = _fiscal_rag_signal(profile)
+    st.divider()
+    st.subheader(t("fiscal_rag_header"))
+    st.markdown(f"{rag_icon} **{rag_label}**")
+    st.caption(t("fiscal_rag_caption"))
+
+    # Build scatter data from all deep profiles
+    import json as _json_rag
+    all_profiles = load_deep_profiles()
+    fiscal_points = []
+    for k, v in data.items():
+        if v["error"] or not v["params"]:
+            continue
+        p_profile = all_profiles.get(k) or {}
+        _ind = {
+            (item.get("key") or item.get("label") or ""): (item.get("cell") or {}).get("value")
+            for item in (p_profile.get("country_indicators") or [])
+        }
+        pop65 = _ind.get("pop_65_pct")
+        assets = _ind.get("pension_fund_assets_gdp")
+        if pop65 is not None:
+            fiscal_points.append({
+                "iso3": k,
+                "Country": v["params"].metadata.country_name,
+                "Income level": v["params"].metadata.wb_income_level or "—",
+                "pop_65_pct": pop65,
+                "pension_fund_assets_gdp": assets,
+            })
+    if fiscal_points:
+        fig_fiscal = _fiscal_sustainability_fig(iso3, _json_rag.dumps(fiscal_points))
+        st.plotly_chart(fig_fiscal, use_container_width=True)
+        st.caption(t("fiscal_rag_scatter_caption"))
+
+    # ── Peer benchmarking ─────────────────────────────────────────────────────
+    if m.wb_income_level:
+        import json as _json
+        peer_rows = [
+            {
+                "iso3": k,
+                "Country": v["params"].metadata.country_name,
+                "Income level": v["params"].metadata.wb_income_level or "—",
+                "Gross RR": next(
+                    (r.gross_replacement_rate for r in v["results"] if abs(r.earnings_multiple - 1.0) < 0.01),
+                    0.0,
+                ),
+            }
+            for k, v in data.items()
+            if not v["error"] and v["params"] and v["results"]
+        ]
+        if peer_rows:
+            st.divider()
+            st.subheader(t("peer_benchmark_header", income=m.wb_income_level))
+            fig_peer = _build_peer_benchmark_chart(iso3, m.wb_income_level, _json.dumps(peer_rows))
+            st.plotly_chart(fig_peer, use_container_width=True)
+            st.caption(t("peer_benchmark_caption", income=m.wb_income_level))
+
     # ── Scheme parameter detail ───────────────────────────────────────────────
     st.divider()
     n_schemes = len(params.schemes)
@@ -2400,11 +3503,50 @@ def tab_country(data: dict) -> None:
     )
     st.subheader(schemes_header)
     for i, s in enumerate(params.schemes):
-        with st.expander(
-            f"**{_expand_scheme_name(s.name)}** — {_wb_pillar_label(s)} · {_scheme_type_label(s.type)}",
-            expanded=(i == 0),
-        ):
+        badge = _reform_status_badge(s)
+        expander_label = (
+            f"**{_expand_scheme_name(s.name)}**{f' {badge}' if badge else ''}"
+            f" — {_wb_pillar_label(s)} · {_scheme_type_label(s.type)}"
+        )
+        with st.expander(expander_label, expanded=(i == 0)):
             _render_scheme_card(s, m.currency_code)
+
+    # ── F4: RR Sensitivity ────────────────────────────────────────────────────
+    st.divider()
+    with st.expander(t("rr_sensitivity_header"), expanded=False):
+        import json as _jrr
+        _first_scheme = next((s for s in params.schemes if s.active and s.eligibility), None)
+        _nra_val = 65
+        _min_b = None
+        _max_b = None
+        if _first_scheme:
+            _sv_m = getattr(_first_scheme.eligibility, "normal_retirement_age_male", None)
+            if _sv_m and _sv_m.value:
+                _nra_val = int(_sv_m.value)
+            _bf = _first_scheme.benefit_formula
+            if _bf:
+                _mb = getattr(_bf, "min_benefit", None)
+                _mxb = getattr(_bf, "max_benefit", None)
+                if _mb and getattr(_mb, "value", None) is not None:
+                    _min_b = _mb.value
+                if _mxb and getattr(_mxb, "value", None) is not None:
+                    _max_b = _mxb.value
+        _caps_json = _jrr.dumps({"nra": _nra_val, "min_benefit": _min_b, "max_benefit": _max_b})
+        _sex_state = st.session_state.get("modeled_sex_val", "male")
+        try:
+            _fig_sens = _rr_sensitivity_fig(iso3, _caps_json, avg_wage, _sex_state, "private_employee")
+            st.plotly_chart(_fig_sens, use_container_width=True)
+        except Exception as _e:
+            st.info(f"Sensitivity chart unavailable: {_e}")
+        st.caption(t("rr_sensitivity_caption"))
+
+    # ── F9: Adequacy gap ──────────────────────────────────────────────────────
+    _fig_gap = _adequacy_gap_fig(iso3, params, avg_wage)
+    if _fig_gap is not None:
+        st.divider()
+        st.subheader(t("adequacy_gap_header"))
+        st.plotly_chart(_fig_gap, use_container_width=True)
+        st.caption(t("adequacy_gap_caption"))
 
     # ── Modeling results ──────────────────────────────────────────────────────
     st.divider()
@@ -2471,6 +3613,23 @@ def tab_country(data: dict) -> None:
         st.plotly_chart(fig_f, use_container_width=True)
         st.caption(t("chart_f_caption"))
 
+    # ── F5: PDF export ────────────────────────────────────────────────────────
+    st.divider()
+    st.caption(t("pdf_export_caption"))
+    if st.button(t("pdf_export_btn"), key="pdf_btn"):
+        with st.spinner("Generating PDF…"):
+            try:
+                _pdf_bytes = _generate_country_pdf(iso3, params, results, profile, avg_wage)
+                st.download_button(
+                    f"📄 {iso3}_pension_profile.pdf",
+                    _pdf_bytes,
+                    file_name=f"{iso3}_pension_profile.pdf",
+                    mime="application/pdf",
+                    key="pdf_dl",
+                )
+            except Exception as _pdf_e:
+                st.error(f"PDF generation failed: {_pdf_e}")
+
     # ── Calculators ───────────────────────────────────────────────────────────
     st.divider()
     st.subheader("🧮 Calculators")
@@ -2530,6 +3689,34 @@ def tab_country(data: dict) -> None:
         st.markdown(
             t("ssa_updates_none", country=params.metadata.country_name)
         )
+
+    # ── Reform Timeline ───────────────────────────────────────────────────────
+    if getattr(params, "reforms", None):
+        st.divider()
+        st.subheader(t("reform_timeline_header"))
+        _render_reform_timeline(params.reforms)
+
+    # ── F8: LLM Q&A ───────────────────────────────────────────────────────────
+    import os as _os
+    st.divider()
+    st.subheader(t("qa_header"))
+    _api_key = _os.environ.get("ANTHROPIC_API_KEY", "")
+    if not _api_key:
+        st.info(t("qa_no_key"))
+    else:
+        _chat_key = f"chat_{iso3}"
+        if _chat_key not in st.session_state:
+            st.session_state[_chat_key] = []
+        for _msg in st.session_state[_chat_key]:
+            with st.chat_message(_msg["role"]):
+                st.markdown(_msg["content"])
+        if _question := st.chat_input(t("qa_placeholder"), key=f"qi_{iso3}"):
+            st.session_state[_chat_key].append({"role": "user", "content": _question})
+            _sys_prompt = _build_qa_system_prompt(params, m, ref_result, avg_wage)
+            _ans = _country_qa_response(_question, _sys_prompt)
+            st.session_state[_chat_key].append({"role": "assistant", "content": _ans})
+            st.rerun()
+        st.caption(t("qa_disclaimer"))
 
 
 # ---------------------------------------------------------------------------
@@ -2634,6 +3821,115 @@ def tab_compare(data: dict, summary_df: pd.DataFrame) -> None:
         rows.append(row)
     if rows:
         st.dataframe(pd.DataFrame(rows), use_container_width=True, hide_index=True)
+
+    # ── Convergence scatter ───────────────────────────────────────────────────
+    st.divider()
+    st.subheader(t("convergence_tracker_header"))
+    import json as _json_cmp
+    conv_rows = []
+    for k, v in ok.items():
+        if v["error"] or not v["params"] or not v["results"]:
+            continue
+        p = v["params"]
+        first_scheme = p.schemes[0] if p.schemes else None
+        nra_m_val = None
+        if (
+            first_scheme
+            and first_scheme.eligibility
+            and first_scheme.eligibility.normal_retirement_age_male
+        ):
+            nra_m_val = first_scheme.eligibility.normal_retirement_age_male.value
+        grr_val = next(
+            (r.gross_replacement_rate for r in v["results"] if abs(r.earnings_multiple - 1.0) < 0.01),
+            None,
+        )
+        if nra_m_val is not None and grr_val is not None:
+            conv_rows.append({
+                "iso3": k,
+                "Country": p.metadata.country_name,
+                "NRA (M)": float(nra_m_val),
+                "Gross RR": float(grr_val),
+                "Income level": p.metadata.wb_income_level or "—",
+            })
+    if conv_rows:
+        st.plotly_chart(_convergence_scatter_fig(_json_cmp.dumps(conv_rows)), use_container_width=True)
+        st.caption(t("convergence_tracker_caption"))
+
+    # ── F7: Progressivity chart ───────────────────────────────────────────────
+    import json as _jprog
+    prog_rows = []
+    for k, v in ok.items():
+        if v["error"] or not v["params"] or not v["results"]:
+            continue
+        _grr_05 = next((r.gross_replacement_rate for r in v["results"] if abs(r.earnings_multiple - 0.5) < 0.01), None)
+        _grr_20 = next((r.gross_replacement_rate for r in v["results"] if abs(r.earnings_multiple - 2.0) < 0.01), None)
+        if _grr_05 is not None and _grr_20 is not None and _grr_20 > 0:
+            prog_rows.append({
+                "iso3": k,
+                "country": v["params"].metadata.country_name,
+                "income_level": v["params"].metadata.wb_income_level or "—",
+                "grr_05": float(_grr_05),
+                "grr_20": float(_grr_20),
+            })
+    if prog_rows:
+        st.divider()
+        st.subheader(t("progressivity_header"))
+        st.plotly_chart(_progressivity_chart(_jprog.dumps(prog_rows)), use_container_width=True)
+        st.caption(t("progressivity_caption"))
+
+    # ── F2: Parameter heatmap ─────────────────────────────────────────────────
+    import json as _jheat
+    st.divider()
+    st.subheader(t("param_heatmap_header"))
+    _heatmap_options = [
+        "NRA (M)", "NRA (F)", "Employee rate %", "Employer rate %", "GRR 1×AW %",
+    ]
+    _heatmap_metric = st.selectbox(
+        t("param_heatmap_metric"), _heatmap_options, key="heatmap_metric"
+    )
+    _heat_countries = []
+    _heat_vals = []
+    for k, v in ok.items():
+        if v["error"] or not v["params"]:
+            continue
+        _p = v["params"]
+        _fs = _p.schemes[0] if _p.schemes else None
+        val = None
+        if _heatmap_metric == "NRA (M)" and _fs and _fs.eligibility:
+            _sv = getattr(_fs.eligibility, "normal_retirement_age_male", None)
+            if _sv and _sv.value is not None:
+                val = float(_sv.value)
+        elif _heatmap_metric == "NRA (F)" and _fs and _fs.eligibility:
+            _sv = getattr(_fs.eligibility, "normal_retirement_age_female", None)
+            if _sv and _sv.value is not None:
+                val = float(_sv.value)
+        elif _heatmap_metric == "Employee rate %" and _fs and _fs.contribution_rate:
+            _ee = _fs.contribution_rate.employee_rate
+            if _ee and _ee.value is not None:
+                val = float(_ee.value)
+        elif _heatmap_metric == "Employer rate %" and _fs and _fs.contribution_rate:
+            _er = _fs.contribution_rate.employer_rate
+            if _er and _er.value is not None:
+                val = float(_er.value)
+        elif _heatmap_metric == "GRR 1×AW %":
+            _rr = next((r.gross_replacement_rate for r in v["results"] if abs(r.earnings_multiple - 1.0) < 0.01), None)
+            if _rr is not None:
+                val = round(float(_rr) * 100, 1)
+        if val is not None:
+            _heat_countries.append(k)
+            _heat_vals.append(val)
+    if _heat_countries:
+        # Sort by value descending for readability
+        _sorted = sorted(zip(_heat_countries, _heat_vals), key=lambda x: x[1], reverse=True)
+        _heat_countries_s, _heat_vals_s = zip(*_sorted)
+        _matrix = {
+            "countries": list(_heat_countries_s),
+            "metrics": [_heatmap_metric],
+            "z_matrix": [[v for v in _heat_vals_s]],
+            "z_text": [[str(v) for v in _heat_vals_s]],
+        }
+        st.plotly_chart(_parameter_heatmap_fig(_jheat.dumps(_matrix)), use_container_width=True)
+        st.caption(t("param_heatmap_caption"))
 
 
 # ---------------------------------------------------------------------------
@@ -3667,6 +4963,136 @@ def tab_calculator(data: dict) -> None:
             file_name=f"pension_calc_{iso3}_{worker_type_id}.json",
             mime="application/json",
         )
+
+    # ── Multi-country side-by-side comparison ──────────────────────────────────
+    st.markdown("---")
+    st.subheader(t("calc_compare_header"))
+    st.markdown(
+        "Compare the same worker profile across two countries."
+    )
+    cmp_col_a, cmp_col_b = st.columns(2)
+    with cmp_col_a:
+        iso3_a = st.selectbox(
+            t("calc_country_a"),
+            options=sorted(labels.keys()),
+            format_func=lambda k: labels[k],
+            key="calc_cmp_a",
+        )
+    with cmp_col_b:
+        default_b_idx = 1 if len(labels) > 1 else 0
+        iso3_b = st.selectbox(
+            t("calc_country_b"),
+            options=sorted(labels.keys()),
+            format_func=lambda k: labels[k],
+            index=default_b_idx,
+            key="calc_cmp_b",
+        )
+
+    cmp_c1, cmp_c2, cmp_c3, cmp_c4 = st.columns(4)
+    cmp_sex = cmp_c1.selectbox(t("calc_compare_sex"), ["male", "female"], key="cmp_sex")
+    cmp_service = cmp_c2.number_input(t("calc_compare_service"), 0, 50, 25, key="cmp_service")
+    cmp_wage_mult = cmp_c3.slider(t("calc_compare_wage_mult"), 0.5, 3.0, 1.0, 0.25, key="cmp_wage")
+    cmp_density = cmp_c4.slider(t("calc_contribution_density"), 0.4, 1.0, 1.0, 0.05, key="cmp_density")
+    cmp_effective_service = max(0.0, float(cmp_service) * cmp_density)
+
+    if st.button(t("calc_compare_btn"), type="primary", key="cmp_btn"):
+        from pensions_panorama.model.calculator import PersonProfile as _PP
+        from pensions_panorama.model.pension_engine import PensionEngine as _PE
+        from pensions_panorama.model.assumptions import load_assumptions as _LA
+        res_col_a, res_col_b = st.columns(2)
+        for _col, _iso in [(res_col_a, iso3_a), (res_col_b, iso3_b)]:
+            with _col:
+                _d = ok_countries[_iso]
+                _params = _d["params"]
+                _avg_w = _d["avg_wage"]
+                _cc = _params.metadata.currency_code
+                # NRA from first active scheme
+                _nra = 65
+                for _sc in _params.schemes:
+                    if _sc.active and _sc.eligibility:
+                        _nra_sv = getattr(_sc.eligibility, f"normal_retirement_age_{cmp_sex}", None)
+                        if _nra_sv and _nra_sv.value:
+                            _nra = int(_nra_sv.value)
+                            break
+                _person = _PP(
+                    sex=cmp_sex, age=float(_nra),
+                    service_years=cmp_effective_service,
+                    wage=cmp_wage_mult, wage_unit="aw_multiple",
+                    worker_type_id="private_employee",
+                )
+                try:
+                    _cfg = load_run_config(None)
+                    _asmp = _LA(_cfg.assumptions_file, _cfg.resolved_params_dir)
+                    _eng = _PE(country_params=_params, assumptions=_asmp, average_wage=_avg_w)
+                    _res = _eng.compute_benefit(_person)
+                    st.markdown(f"**{_params.metadata.country_name} ({_iso})**")
+                    st.metric(t("calc_compare_nra"), f"{_nra}")
+                    st.metric(t("calc_compare_gross_rr"), f"{_res.gross_replacement_rate * 100:.1f}%")
+                    st.metric(t("calc_compare_net_rr"), f"{_res.net_replacement_rate * 100:.1f}%")
+                    st.metric(t("calc_compare_benefit"), f"{_cc} {_res.gross_benefit:,.0f}")
+                except Exception as _exc:
+                    st.error(f"{_iso}: {_exc}")
+
+    # ── F3: Personal Pension Projector ────────────────────────────────────────
+    st.divider()
+    st.subheader(t("projector_header"))
+    _proj_labels = {
+        _k: f"{_country_display_name(ok_countries[_k]['params'].metadata.country_name, _k)} ({_k})"
+        for _k in sorted(ok_countries.keys())
+    }
+    _proj_iso = st.selectbox(
+        t("select_country"),
+        options=sorted(ok_countries.keys()),
+        format_func=lambda k: _proj_labels[k],
+        key="proj_iso",
+    )
+    _proj_avg_w = ok_countries[_proj_iso]["avg_wage"]
+    _proj_ccode = ok_countries[_proj_iso]["params"].metadata.currency_code
+    _proj_c1, _proj_c2 = st.columns(2)
+    with _proj_c1:
+        _proj_birth = st.number_input(t("projector_birth_year"), min_value=1940, max_value=2005, value=1985, step=1, key="proj_birth")
+        _proj_wage = st.number_input(
+            t("projector_start_wage"),
+            min_value=0.0, value=float(_proj_avg_w), step=1000.0, key="proj_wage",
+        )
+    with _proj_c2:
+        _proj_growth = st.slider(t("projector_wage_growth"), min_value=0.0, max_value=5.0, value=1.5, step=0.1, key="proj_growth")
+        _proj_density = st.slider(t("projector_density"), min_value=0.3, max_value=1.0, value=0.9, step=0.05, key="proj_density")
+    if st.button(t("projector_btn"), type="primary", key="proj_btn"):
+        with st.spinner("Projecting…"):
+            _proj_res = _project_pension(
+                _proj_iso, _proj_avg_w,
+                int(_proj_birth), float(_proj_wage),
+                float(_proj_growth), float(_proj_density),
+            )
+        if "error" in _proj_res:
+            st.error(f"Projection failed: {_proj_res['error']}")
+        else:
+            _p_c1, _p_c2, _p_c3 = st.columns(3)
+            _p_c1.metric("Gross RR", f"{_proj_res['grr'] * 100:.1f}%")
+            _p_c2.metric("Gross pension/yr", f"{_proj_ccode} {_proj_res['gross_pension']:,.0f}")
+            _p_c3.metric("Net pension/yr", f"{_proj_ccode} {_proj_res['net_pension']:,.0f}")
+            _p_c1.metric("NRA", f"{_proj_res['nra']}")
+            _p_c2.metric("Projected wage", f"{_proj_ccode} {_proj_res['projected_wage']:,.0f}")
+            _p_c3.metric("Effective service yrs", f"{_proj_res['effective_service']:.1f}")
+            if _proj_res.get("dc_trajectory"):
+                _fig_dc = go.Figure(go.Scatter(
+                    x=_proj_res["years_list"],
+                    y=_proj_res["dc_trajectory"],
+                    mode="lines",
+                    fill="tozeroy",
+                    line=dict(color=_GROSS_COLOR),
+                    name="DC fund balance",
+                ))
+                _fig_dc.update_layout(
+                    template=_plotly_template(),
+                    height=250,
+                    xaxis_title="Age",
+                    yaxis_title=f"DC fund ({_proj_ccode})",
+                    margin=dict(l=60, r=40, t=20, b=50),
+                )
+                st.plotly_chart(_fig_dc, use_container_width=True)
+        st.caption(t("projector_caption"))
 
 
 def main() -> None:

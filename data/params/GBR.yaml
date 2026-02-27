@@ -92,6 +92,8 @@ schemes:
   payout:
     type: annuity
     notes: null
+  reform_status: stable
+  source_url: "https://www.gov.uk/new-state-pension"
 - scheme_id: GBR_AUTOENROLL
   name: Workplace Pension – Auto-Enrollment
   tier: second
@@ -142,6 +144,8 @@ schemes:
   payout:
     type: lump_sum
     notes: Flexible access from age 55 (57 from 2028); annuity, drawdown, or lump sum; 25% tax-free lump sum allowed.
+  reform_status: enacted_recent
+  source_url: "https://www.thepensionsregulator.gov.uk/en/employers/automatic-enrolment"
 - scheme_id: GBR_PENSIONCREDIT
   name: Pension Credit – Means-Tested
   tier: first
@@ -221,3 +225,44 @@ worker_types:
       a Glance 2023 United Kingdom.
     notes: null
 notes: null
+
+coverage_rate:
+  value: 0.85
+  source_citation: "DWP – Workplace Pension Participation and Saving Trends 2023: 85% of eligible employees participating
+    in auto-enrollment workplace pension schemes."
+  year: 2023
+
+elderly_poverty_rate:
+  value: 0.16
+  source_citation: "DWP – Pensioners' Income Series 2022/23: ~16% of pensioners with incomes below 60% of median before
+    housing costs."
+  year: 2023
+
+reforms:
+  - year: 2012
+    title: "Auto-Enrollment — Workplace Pension Reform"
+    description: >
+      The Pensions Act 2008 mandated automatic enrollment of eligible workers into workplace pension
+      schemes with minimum employer and employee contributions. Phased rollout from October 2012 to
+      2018; by 2023 over 10 million workers enrolled.
+    type: coverage
+    source_citation: "Pensions Act 2008 c.30; The Pensions Regulator – Automatic Enrolment Statistics 2023."
+    source_url: "https://www.thepensionsregulator.gov.uk"
+  - year: 2016
+    title: "New State Pension — Flat-Rate Simplification"
+    description: >
+      The Pensions Act 2014 introduced the New State Pension (nSP) for those reaching State Pension
+      age from April 2016. Replaced the two-component legacy system (Basic + Additional/SERPS) with
+      a single flat-rate pension requiring 35 qualifying NI years (minimum 10 years for any pension).
+    type: formula
+    source_citation: "Pensions Act 2014 c.19; DWP – Your New State Pension 2023; OECD PAG 2023 UK."
+    source_url: "https://www.gov.uk/new-state-pension"
+  - year: 2028
+    title: "State Pension Age Rise to 67 (Planned)"
+    description: >
+      Under the Pensions Act 2007, State Pension age will rise from 66 to 67 for both sexes between
+      2026 and 2028. A further rise to 68 remains under government review following the 2023 Pensions
+      Review.
+    type: nra
+    source_citation: "Pensions Act 2007 c.22; DWP State Pension age timetable 2023; OECD PAG 2023 UK."
+    source_url: "https://www.gov.uk/government/publications/state-pension-age-timetable"

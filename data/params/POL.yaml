@@ -70,9 +70,10 @@ schemes:
     flat_rate_absolute: null
     indexation: mixed
     minimum_benefit_aw_multiple:
-      value: null
-      source_citation: 'SSA SSPW Europe 2022 – Poland: minimum guaranteed pension (emerytura minimalna) set in absolute PLN
-        terms; approximately 20% of AW in 2023.'
+      value: 0.149
+      source_citation: 'OECD PAG 2023 Poland: minimum pension (emerytura minimalna) PLN 1,588/month (March 2023) × 12 = PLN
+        19,056 ≈ 14.9% of AW (PLN 128,000). Applies to workers meeting minimum contribution years (25 M / 20 F) whose NDC
+        pension falls below this floor; topped up from state budget.'
       year: 2023
     maximum_benefit_aw_multiple:
       value: null
@@ -80,36 +81,8 @@ schemes:
       year: 2023
   payout:
     type: annuity
-- scheme_id: POL_MINIMALNA
-  name: Minimum Pension Guarantee (Emerytura Minimalna)
-  tier: first
-  type: minimum
-  coverage: Polish workers whose ZUS NDC pension falls below the guaranteed minimum and who have met minimum contribution
-    years (20 women / 25 men)
-  active: true
-  eligibility:
-    normal_retirement_age_male:
-      value: 65
-      source_citation: 'OECD PAG 2023 Poland: Minimum Pension Guarantee applies from NRA 65 for men (20 years contributions).'
-      year: 2023
-    normal_retirement_age_female:
-      value: 60
-      source_citation: 'OECD PAG 2023 Poland: Minimum Pension Guarantee from NRA 60 for women (25 years contributions).'
-      year: 2023
-  benefits:
-    minimum_benefit_aw_multiple:
-      value: 0.149
-      source_citation: 'OECD PAG 2023 Poland: minimum pension PLN 1,588/month (March 2023) × 12 = PLN 19,056 ≈ 14.9% of AW
-        (PLN 128,000).'
-      year: 2023
-    maximum_benefit_aw_multiple:
-      value: 0.149
-      source_citation: 'Poland minimum pension: flat guarantee; applies only if earned pension is below this floor.'
-      year: 2023
-    indexation: mixed
-  payout:
-    type: annuity
-    notes: Tops up earned NDC pension to floor; funded from state budget top-up.
+  reform_status: enacted_recent
+  source_url: "https://www.zus.pl/en-US"
 taxes:
   worker_income_tax_treatment: EET
   income_tax_on_pension: Pension income taxable at standard personal income tax rates (12% / 32% brackets); pensioners below
@@ -151,3 +124,51 @@ worker_types:
     source_citation: Self-employed obligatorily insured under FUS; base contribution on 60% of projected average wage – SSA
       SSPW Europe 2022.
 notes: null
+
+coverage_rate:
+  value: 0.79
+  source_citation: "GUS (CSO Poland) Labour Force Survey 2022; OECD Pensions at a Glance 2023 – Poland: ~79% of workforce
+    actively contributing to FUS/ZUS."
+  year: 2022
+
+informality_rate:
+  value: 0.11
+  source_citation: "ILO ILOSTAT – Share of informal employment in total employment, Poland 2022."
+  year: 2022
+
+reforms:
+  - year: 1999
+    title: "Systemic Reform — DB to NDC + Mandatory DC (OFE)"
+    description: >
+      Replaced the old defined-benefit PAYG system with a two-pillar structure: a notional defined
+      contribution (NDC) first pillar (ZUS) and a mandatory funded DC second pillar (OFE). Created
+      individual accounts and changed the benefit formula fundamentally.
+    type: formula
+    source_citation: "Act of 17 December 1998 on old-age and disability pensions from FUS (Dz.U. 1998 nr 162 poz. 1118);
+      OECD Pensions at a Glance 2023 – Poland."
+    source_url: "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19981621118"
+  - year: 2011
+    title: "OFE Contribution Cut — DC Pillar Reduced"
+    description: >
+      Reduced the mandatory contribution to the funded DC pillar (OFE) from 7.3% to 2.3% of gross
+      wages, redirecting the remainder to ZUS NDC accounts. Partially re-nationalised the funded
+      pillar in response to fiscal pressure.
+    type: contribution_rate
+    source_citation: "Act of 25 March 2011 amending the Social Insurance Act; OECD PAG 2023."
+    source_url: "https://isap.sejm.gov.pl"
+  - year: 2014
+    title: "OFE Bond Transfer — Partial Nationalisation"
+    description: >
+      Transferred ~51.5% of OFE assets (government bonds, ~PLN 153 billion) to ZUS notional
+      accounts, effectively shrinking the funded pillar. Members retained equity holdings in OFE.
+    type: merger
+    source_citation: "Act of 6 December 2013 on pensions from OFE (Dz.U. 2013 poz. 1717); World Bank Poland Pension Note 2014."
+    source_url: "https://isap.sejm.gov.pl"
+  - year: 2017
+    title: "NRA Reversal — Returned to 65 (M) / 60 (F)"
+    description: >
+      Reversed the 2012 reform that raised the NRA to 67 for both sexes, restoring 65 for men and
+      60 for women from October 2017. Significantly increased the fiscal burden on the pension system.
+    type: nra
+    source_citation: "Act of 16 November 2016 reducing retirement age (Dz.U. 2017 poz. 5); OECD Pensions at a Glance 2023."
+    source_url: "https://isap.sejm.gov.pl"

@@ -15,13 +15,6 @@ system_kpis:
   - key: "pension_spending_gdp"
 
 schemes:
-  - scheme_id: "SSC_MIN"
-    scheme_name: "SSC Minimum Pension Guarantee"
-    scheme_type_group: "noncontrib"
-    attributes:
-      benefit_plan_type:
-        value: "Minimum guarantee"
-
   - scheme_id: "SSC_OAI"
     scheme_name: "SSC Old-Age Insurance (Defined Benefit)"
     scheme_type_group: "db"

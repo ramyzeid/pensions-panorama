@@ -132,11 +132,11 @@ schemes:
       flat_rate_absolute: null
       indexation: "CPI"
       minimum_benefit_aw_multiple:
-        value: 0.25
+        value: 0.122
         source_citation: >
-          CNSS minimum pension approx. MAD 1,000/month (2023 estimate; indexation varies).
-          AW ~MAD 8,229/month → ~12.2%; however regulatory minimum stated in daily wage terms.
-          Conservative estimate at 25% AW to account for typical outcomes. CNSS Annual Report 2022.
+          CNSS minimum pension approx. MAD 1,000/month (2023 government announcement);
+          AW ~MAD 8,229/month → ~12.2% AW. CNSS Circular 2023.
+        source_url: "https://www.cnss.ma"
         year: 2023
       maximum_benefit_aw_multiple:
         value: 0.70
@@ -155,41 +155,6 @@ schemes:
       type: "annuity"
       notes: "Life annuity; spouse entitled to 50% survivor pension."
 
-  # ---------------------------------------------------------------------------
-  # 2. CNSS Minimum Pension Guarantee
-  # ---------------------------------------------------------------------------
-  - scheme_id: "CNSS_MIN"
-    name: "CNSS Minimum Pension Guarantee"
-    tier: "first"
-    type: "minimum"
-    coverage: "CNSS pensioners whose earned pension is below the minimum"
-    active: true
-
-    eligibility:
-      normal_retirement_age_male:
-        value: 60
-        source_citation: "Same as CNSS_OAI."
-        year: 2023
-      normal_retirement_age_female:
-        value: 60
-        source_citation: "Same as CNSS_OAI."
-        year: 2023
-      notes: "Automatic top-up for qualified pensioners."
-
-    benefits:
-      minimum_benefit_aw_multiple:
-        value: 0.12
-        source_citation: >
-          CNSS minimum pension approx. MAD 1,000/month (2023 government announcement);
-          AW ~MAD 8,229/month → ~12.1% AW. CNSS Circular 2023.
-        source_url: "https://www.cnss.ma"
-        year: 2023
-      indexation: "CPI"
-      notes: "Minimum pension adjusted periodically by government decree."
-
-    payout:
-      type: "annuity"
-      notes: null
 
 # =============================================================================
 # Tax and social-contribution treatment
@@ -258,7 +223,7 @@ worker_types:
   private_employee:
     label: "Private sector employee"
     coverage_status: mandatory
-    scheme_ids: [CNSS_OAI, CNSS_MIN]
+    scheme_ids: [CNSS_OAI]
     source_citation: >
       Dahir No. 1-72-184 portant statut de la CNSS – mandatory coverage for all
       employees of private enterprises and certain public bodies not covered by CMR.
@@ -295,7 +260,7 @@ worker_types:
   self_employed:
     label: "Self-employed worker"
     coverage_status: voluntary
-    scheme_ids: [CNSS_OAI, CNSS_MIN]
+    scheme_ids: [CNSS_OAI]
     eligibility_override:
       notes: >
         Self-employed may voluntarily enrol in CNSS or opt for CMR voluntary scheme.

@@ -101,32 +101,6 @@ schemes:
     payout:
       type: "annuity"
 
-  - scheme_id: "EOBI_MIN"
-    name: "EOBI Minimum Old-Age Pension"
-    tier: "first"
-    type: "minimum"
-    coverage: "all EOBI pensioners"
-    active: true
-
-    eligibility:
-      normal_retirement_age_male:
-        value: 60
-        source_citation: "Same as EOBI_DB."
-        year: 2022
-      normal_retirement_age_female:
-        value: 55
-        source_citation: "Same as EOBI_DB."
-        year: 2022
-
-    benefits:
-      minimum_benefit_aw_multiple:
-        value: 0.28
-        source_citation: "EOBI minimum pension PKR 8,500/month (2022); AW ~PKR 30,000/month → 28%. EOBI Notification 2022."
-        year: 2022
-      indexation: "CPI"
-
-    payout:
-      type: "annuity"
 
 taxes:
   worker_income_tax_treatment: "EET"

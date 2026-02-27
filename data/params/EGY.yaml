@@ -92,32 +92,6 @@ schemes:
     payout:
       type: "annuity"
 
-  - scheme_id: "NSIF_MIN"
-    name: "NSIF Minimum Pension Guarantee"
-    tier: "first"
-    type: "minimum"
-    coverage: "all NSIF pensioners"
-    active: true
-
-    eligibility:
-      normal_retirement_age_male:
-        value: 60
-        source_citation: "Same as NSIF_DB."
-        year: 2022
-      normal_retirement_age_female:
-        value: 60
-        source_citation: "Same as NSIF_DB."
-        year: 2022
-
-    benefits:
-      minimum_benefit_aw_multiple:
-        value: 0.15
-        source_citation: "NSIF minimum EGP 900/month (2022 level); AW ~EGP 6,000/month → 15% AW. Indexed annually."
-        year: 2022
-      indexation: "CPI"
-
-    payout:
-      type: "annuity"
 
 taxes:
   worker_income_tax_treatment: "EET"

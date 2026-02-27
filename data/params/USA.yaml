@@ -93,6 +93,8 @@ schemes:
   payout:
     type: annuity
     notes: null
+  reform_status: stable
+  source_url: "https://www.ssa.gov/benefits/retirement/"
 - scheme_id: USA_SSI
   name: Supplemental Security Income (SSI) – Means-Tested
   tier: first
@@ -169,3 +171,28 @@ worker_types:
       Act, IRC § 1401.
     notes: null
 notes: null
+
+coverage_rate:
+  value: 0.93
+  source_citation: "SSA Annual Statistical Supplement 2023: ~93% of US workers in OASDI-covered employment; excludes some
+    state/local government employees and railroad workers."
+  year: 2022
+
+reforms:
+  - year: 1983
+    title: "Greenspan Commission Reforms — Solvency Fix"
+    description: >
+      The bipartisan 1983 reforms (Public Law 98-21) extended Social Security solvency by gradually
+      raising the full retirement age from 65 to 67, making up to 50% of benefits taxable for higher
+      earners, and bringing federal employees into the system.
+    type: nra
+    source_citation: "Social Security Amendments of 1983 (P.L. 98-21); SSA Historical Background 2023."
+    source_url: "https://www.ssa.gov/history/1983amend.html"
+  - year: 2000
+    title: "Senior Citizens Freedom to Work Act — Earnings Test Removed"
+    description: >
+      Eliminated the retirement earnings test for beneficiaries at or above full retirement age,
+      allowing workers to continue earning without reduction in Social Security benefits.
+    type: formula
+    source_citation: "Senior Citizens' Freedom to Work Act of 2000 (P.L. 106-182); SSA 2023."
+    source_url: "https://www.ssa.gov"

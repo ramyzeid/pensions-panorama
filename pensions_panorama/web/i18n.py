@@ -850,6 +850,119 @@ The **required monthly income** to fund retirement is `PV ÷ (H × 12)`.
 - Tier 2 (World Bank PIP poverty lines) is not used: PIP returns empty data for most countries in scope.
 - Results are **estimates** intended for comparative illustration, not financial planning advice.
 """,
+
+        # ── Reform timeline ───────────────────────────────────────────────────
+        "reform_timeline_header": "Reform Timeline",
+        "reform_timeline_year_axis": "Year",
+
+        # ── Coverage & adequacy KPIs ──────────────────────────────────────────
+        "coverage_adequacy_header": "Coverage & Adequacy",
+        "kpi_coverage_rate": "Coverage Rate",
+        "kpi_informality_rate": "Informality Rate",
+        "kpi_elderly_poverty_rate": "Elderly Poverty Rate",
+
+        # ── Gender pension gap ────────────────────────────────────────────────
+        "gender_gap_header": "Gender Pension Gap",
+        "gender_gap_male_rr": "Gross RR — Male (1×AW)",
+        "gender_gap_female_rr": "Gross RR — Female (1×AW)",
+        "gender_gap_delta": "Gap (M − F)",
+        "gender_gap_caption": "Computed at 1×AW, NRA, 40-year career. Male NRA used for both sexes.",
+
+        # ── Fiscal sustainability RAG ─────────────────────────────────────────
+        "fiscal_rag_header": "Fiscal Sustainability",
+        "fiscal_rag_caption": "Based on population aged 65+ (aging pressure) and pension fund assets (% GDP) from World Bank data.",
+        "fiscal_rag_scatter_caption": "Each dot is a country. Red star = selected country. Dashed lines at 12% / 20% elderly share and 20% GDP assets. Shaded zone = high-pressure quadrant.",
+        "rag_no_data": "No data available",
+        "rag_high_risk": "High fiscal pressure",
+        "rag_moderate": "Moderate pressure",
+        "rag_low_risk": "Low pressure",
+
+        # ── Scheme card additions ─────────────────────────────────────────────
+        "legal_basis_label": "Legal Basis",
+
+        # ── Peer benchmarking ─────────────────────────────────────────────────
+        "peer_benchmark_header": "Peer Benchmarking — {income} Countries",
+        "peer_benchmark_caption": "Gross replacement rate at 1×AW vs. nearest peers in the same WB income group ({income}).",
+        "peer_chart_xaxis": "Gross Replacement Rate (%)",
+
+        # ── Convergence tracker ───────────────────────────────────────────────
+        "convergence_tracker_header": "NRA vs. Replacement Rate — Global View",
+        "convergence_tracker_caption": "Each dot is a country. X = Normal Retirement Age (male); Y = Gross replacement rate at 1×AW.",
+        "convergence_xaxis": "Normal Retirement Age (male, years)",
+        "convergence_yaxis": "Gross Replacement Rate at 1×AW (%)",
+
+        # ── System type map ───────────────────────────────────────────────────
+        "system_type_map_header": "Pension System Type — Global Map",
+        "system_type_map_caption": "Dominant mandatory first-pillar scheme type per country (DB, NDC, DC, Points, Basic/Targeted).",
+
+        # ── Calculator additions ──────────────────────────────────────────────
+        "calc_contribution_density": "Contribution density",
+        "calc_density_help": "1.0 = contributed every working year. 0.7 = contributed 70% of years (career gaps, part-time).",
+        "calc_career_break": "Career break (years not contributing)",
+        "calc_break_help": "Total years out of the labour market. Reduces effective service years.",
+        "calc_retirement_age": "Chosen retirement age",
+        "calc_compare_header": "Compare Two Countries — Same Worker Profile",
+        "calc_country_a": "Country A",
+        "calc_country_b": "Country B",
+        "calc_compare_btn": "Compare",
+        "calc_compare_sex": "Sex",
+        "calc_compare_age": "Retirement age",
+        "calc_compare_service": "Service years",
+        "calc_compare_wage_mult": "Wage (× average wage)",
+        "calc_compare_gross_rr": "Gross Replacement Rate",
+        "calc_compare_net_rr": "Net Replacement Rate",
+        "calc_compare_nra": "Normal Retirement Age",
+        "calc_compare_benefit": "Annual Gross Pension",
+
+        # ── RR Sensitivity ───────────────────────────────────────────────────
+        "rr_sensitivity_header": "Replacement Rate Sensitivity",
+        "rr_sensitivity_x": "Years of service",
+        "rr_sensitivity_caption": "How gross replacement rate changes with career length. Dashed lines = min/max benefit caps.",
+
+        # ── Progressivity ────────────────────────────────────────────────────
+        "progressivity_header": "Replacement Rate Inequality",
+        "progressivity_caption": "Progressivity index = GRR(0.5×AW) ÷ GRR(2.0×AW). Above 1 = system favours lower earners.",
+
+        # ── Adequacy gap ─────────────────────────────────────────────────────
+        "adequacy_gap_header": "Contributory vs Zero-Contribution Adequacy",
+        "adequacy_gap_full": "Full career (40 yrs)",
+        "adequacy_gap_zero": "Zero contributions",
+        "adequacy_gap_caption": "Gap between full-career and non-contributing worker at 1×AW. Measures safety-net floor.",
+
+        # ── Parameter heatmap ────────────────────────────────────────────────
+        "param_heatmap_header": "System Parameters — Cross-Country Heatmap",
+        "param_heatmap_metric": "Parameter",
+        "param_heatmap_caption": "NRA in years; contribution rates as %; GRR as % of individual wage.",
+
+        # ── NRA distribution ─────────────────────────────────────────────────
+        "nra_dist_header": "Normal Retirement Age — Global Distribution",
+        "nra_dist_caption": "Distribution of male NRA across all modelled countries, coloured by WB income group.",
+
+        # ── Personal projector ───────────────────────────────────────────────
+        "projector_header": "Personal Pension Projector",
+        "projector_birth_year": "Birth year",
+        "projector_start_wage": "Starting annual wage (local currency)",
+        "projector_wage_growth": "Real annual wage growth (%)",
+        "projector_density": "Contribution density",
+        "projector_btn": "Project my pension",
+        "projector_caption": "Projection in real terms (today's money). DC fund grows at 3% real net return.",
+
+        # ── LLM Q&A ──────────────────────────────────────────────────────────
+        "qa_header": "Ask about this pension system",
+        "qa_placeholder": "e.g. What happens if I retire 3 years early?",
+        "qa_disclaimer": "AI responses are informational only. Always verify with official sources.",
+        "qa_no_key": "ANTHROPIC_API_KEY not configured. Set it in your environment.",
+
+        # ── PDF export ───────────────────────────────────────────────────────
+        "pdf_export_btn": "Download country PDF report",
+        "pdf_export_caption": "PDF includes scheme summary, KPIs, replacement rate charts, and reform history.",
+
+        # ── Live sync ────────────────────────────────────────────────────────
+        "sync_header": "Live Data",
+        "sync_last_refreshed": "Last refreshed: {date}",
+        "sync_btn": "Refresh live data",
+        "sync_running": "Refreshing data from ILO & World Bank…",
+        "sync_done": "Data refreshed. Restart the app to load new values.",
     },
 
     # =========================================================================
@@ -1627,6 +1740,119 @@ PV = Σ_{t=1}^{H}  [التكلفة_السنوية × (1 + g)^(t−1)] / (1 + r)^
 - بيانات الإنفاق الصحي من WDI تمثل **متوسط السكان** لا المتقاعدين تحديداً.
 - النتائج **تقديرية** للمقارنة التوضيحية فقط، وليست نصيحة تخطيط مالي.
 """,
+
+        # ── Reform timeline ───────────────────────────────────────────────────
+        "reform_timeline_header": "الجدول الزمني للإصلاحات",
+        "reform_timeline_year_axis": "السنة",
+
+        # ── Coverage & adequacy KPIs ──────────────────────────────────────────
+        "coverage_adequacy_header": "التغطية والكفاية",
+        "kpi_coverage_rate": "معدل التغطية",
+        "kpi_informality_rate": "معدل العمل غير الرسمي",
+        "kpi_elderly_poverty_rate": "معدل فقر كبار السن",
+
+        # ── Gender pension gap ────────────────────────────────────────────────
+        "gender_gap_header": "الفجوة بين الجنسين في المعاشات",
+        "gender_gap_male_rr": "معدل الاستبدال الإجمالي — ذكور (1×متوسط الأجر)",
+        "gender_gap_female_rr": "معدل الاستبدال الإجمالي — إناث (1×متوسط الأجر)",
+        "gender_gap_delta": "الفجوة (ذكور − إناث)",
+        "gender_gap_caption": "محسوب عند 1×متوسط الأجر، سن التقاعد الطبيعي، مسيرة مهنية 40 سنة.",
+
+        # ── Fiscal sustainability RAG ─────────────────────────────────────────
+        "fiscal_rag_header": "الاستدامة المالية",
+        "fiscal_rag_caption": "بناءً على نسبة السكان فوق 65 عاماً وأصول صندوق التقاعد (% من الناتج المحلي) من بيانات البنك الدولي.",
+        "fiscal_rag_scatter_caption": "كل نقطة تمثل دولة. النجمة الحمراء = الدولة المختارة. الخطوط المنقوطة عند 12%/20% كبار السن و20% من الناتج المحلي.",
+        "rag_no_data": "لا تتوفر بيانات",
+        "rag_high_risk": "ضغط مالي مرتفع",
+        "rag_moderate": "ضغط معتدل",
+        "rag_low_risk": "ضغط منخفض",
+
+        # ── Scheme card additions ─────────────────────────────────────────────
+        "legal_basis_label": "الأساس القانوني",
+
+        # ── Peer benchmarking ─────────────────────────────────────────────────
+        "peer_benchmark_header": "المقارنة مع الدول المماثلة — {income}",
+        "peer_benchmark_caption": "معدل الاستبدال الإجمالي عند 1×متوسط الأجر مقارنةً بالدول الأقرب في نفس مجموعة دخل البنك الدولي ({income}).",
+        "peer_chart_xaxis": "معدل الاستبدال الإجمالي (%)",
+
+        # ── Convergence tracker ───────────────────────────────────────────────
+        "convergence_tracker_header": "سن التقاعد مقابل معدل الاستبدال — رؤية عالمية",
+        "convergence_tracker_caption": "كل نقطة دولة. المحور السيني = سن التقاعد الطبيعي (ذكور)؛ المحور الصادي = معدل الاستبدال عند 1×متوسط الأجر.",
+        "convergence_xaxis": "سن التقاعد الطبيعي (ذكور، سنوات)",
+        "convergence_yaxis": "معدل الاستبدال الإجمالي عند 1×متوسط الأجر (%)",
+
+        # ── System type map ───────────────────────────────────────────────────
+        "system_type_map_header": "نوع نظام التقاعد — خريطة عالمية",
+        "system_type_map_caption": "نوع مخطط التقاعد الإلزامي السائد في كل دولة.",
+
+        # ── Calculator additions ──────────────────────────────────────────────
+        "calc_contribution_density": "كثافة المساهمة",
+        "calc_density_help": "1.0 = مساهمة طوال سنوات العمل. 0.7 = مساهمة 70% من السنوات (انقطاعات، عمل جزئي).",
+        "calc_career_break": "انقطاع مهني (سنوات بدون مساهمة)",
+        "calc_break_help": "مجموع سنوات خارج سوق العمل. تُطرح من سنوات الخدمة الفعلية.",
+        "calc_retirement_age": "سن التقاعد المختار",
+        "calc_compare_header": "مقارنة دولتين — نفس الملف الشخصي للعامل",
+        "calc_country_a": "الدولة أ",
+        "calc_country_b": "الدولة ب",
+        "calc_compare_btn": "مقارنة",
+        "calc_compare_sex": "الجنس",
+        "calc_compare_age": "سن التقاعد",
+        "calc_compare_service": "سنوات الخدمة",
+        "calc_compare_wage_mult": "الأجر (× متوسط الأجر)",
+        "calc_compare_gross_rr": "معدل الاستبدال الإجمالي",
+        "calc_compare_net_rr": "معدل الاستبدال الصافي",
+        "calc_compare_nra": "سن التقاعد الطبيعي",
+        "calc_compare_benefit": "المعاش السنوي الإجمالي",
+
+        # ── RR Sensitivity ───────────────────────────────────────────────────
+        "rr_sensitivity_header": "حساسية معدل الاستبدال",
+        "rr_sensitivity_x": "سنوات الخدمة",
+        "rr_sensitivity_caption": "كيف يتغير معدل الاستبدال الإجمالي مع طول المسيرة المهنية. الخطوط المتقطعة = الحدود الدنيا/القصوى للمعاشات.",
+
+        # ── Progressivity ────────────────────────────────────────────────────
+        "progressivity_header": "عدم المساواة في معدل الاستبدال",
+        "progressivity_caption": "مؤشر التصاعدية = م.ا.إ(0.5×م.أ) ÷ م.ا.إ(2.0×م.أ). فوق 1 = النظام يفضّل الدخل المنخفض.",
+
+        # ── Adequacy gap ─────────────────────────────────────────────────────
+        "adequacy_gap_header": "كفاية الاشتراكية مقابل بدون اشتراكات",
+        "adequacy_gap_full": "مسيرة كاملة (40 سنة)",
+        "adequacy_gap_zero": "بدون اشتراكات",
+        "adequacy_gap_caption": "الفجوة بين عامل بمسيرة كاملة وعامل بدون اشتراكات عند 1×م.أ. يقيس الحماية الاجتماعية الدنيا.",
+
+        # ── Parameter heatmap ────────────────────────────────────────────────
+        "param_heatmap_header": "معاملات النظام — خريطة حرارية متعددة الدول",
+        "param_heatmap_metric": "المعامل",
+        "param_heatmap_caption": "سن التقاعد بالسنوات؛ معدلات الاشتراك كنسبة مئوية؛ م.ا.إ كنسبة من الأجر الفردي.",
+
+        # ── NRA distribution ─────────────────────────────────────────────────
+        "nra_dist_header": "سن التقاعد الطبيعي — التوزيع العالمي",
+        "nra_dist_caption": "توزيع سن التقاعد الطبيعي للذكور عبر جميع الدول المنمذجة، مصنفاً حسب مجموعة دخل البنك الدولي.",
+
+        # ── Personal projector ───────────────────────────────────────────────
+        "projector_header": "حاسبة المعاش الشخصية",
+        "projector_birth_year": "سنة الميلاد",
+        "projector_start_wage": "الأجر السنوي الابتدائي (العملة المحلية)",
+        "projector_wage_growth": "النمو الحقيقي السنوي للأجر (%)",
+        "projector_density": "كثافة الاشتراك",
+        "projector_btn": "احسب معاشي",
+        "projector_caption": "التوقع بالقيم الحقيقية (أموال اليوم). صندوق DC ينمو بعائد حقيقي صافٍ 3%.",
+
+        # ── LLM Q&A ──────────────────────────────────────────────────────────
+        "qa_header": "اسأل عن نظام التقاعد هذا",
+        "qa_placeholder": "مثال: ماذا يحدث لو تقاعدت قبل 3 سنوات؟",
+        "qa_disclaimer": "إجابات الذكاء الاصطناعي لأغراض إعلامية فقط. تحقق دائماً من المصادر الرسمية.",
+        "qa_no_key": "لم يتم تكوين ANTHROPIC_API_KEY. قم بتعيينه في بيئتك.",
+
+        # ── PDF export ───────────────────────────────────────────────────────
+        "pdf_export_btn": "تحميل تقرير PDF للدولة",
+        "pdf_export_caption": "يتضمن PDF ملخص الخطط والمؤشرات الرئيسية ومخططات معدل الاستبدال وتاريخ الإصلاحات.",
+
+        # ── Live sync ────────────────────────────────────────────────────────
+        "sync_header": "البيانات الحية",
+        "sync_last_refreshed": "آخر تحديث: {date}",
+        "sync_btn": "تحديث البيانات الحية",
+        "sync_running": "جارٍ تحديث البيانات من ILO والبنك الدولي…",
+        "sync_done": "تم تحديث البيانات. أعد تشغيل التطبيق لتحميل القيم الجديدة.",
     },
 
     # =========================================================================
@@ -2074,5 +2300,118 @@ PV = Σ_{t=1}^{H}  [التكلفة_السنوية × (1 + g)^(t−1)] / (1 + r)^
         "methodology_body": "### Approche de modélisation\n\nLa base de données des retraites suit la méthodologie du **Panorama des pensions de l'OECD**.",
         "methodology_pension_calc_body": "### Objectif\n\nLe **Calculateur de retraite** estime la prestation de retraite pour un individu spécifique.",
         "methodology_rc_body": "### Objectif\n\nLe **Calculateur du coût de la retraite** estime le montant qu'une personne doit épargner avant la retraite.",
+
+        # ── Reform timeline ───────────────────────────────────────────────────
+        "reform_timeline_header": "Chronologie des réformes",
+        "reform_timeline_year_axis": "Année",
+
+        # ── Coverage & adequacy KPIs ──────────────────────────────────────────
+        "coverage_adequacy_header": "Couverture et adéquation",
+        "kpi_coverage_rate": "Taux de couverture",
+        "kpi_informality_rate": "Taux d'informalité",
+        "kpi_elderly_poverty_rate": "Taux de pauvreté des personnes âgées",
+
+        # ── Gender pension gap ────────────────────────────────────────────────
+        "gender_gap_header": "Écart de pension entre les sexes",
+        "gender_gap_male_rr": "TR brut — Hommes (1×SM)",
+        "gender_gap_female_rr": "TR brut — Femmes (1×SM)",
+        "gender_gap_delta": "Écart (H − F)",
+        "gender_gap_caption": "Calculé à 1×SM, âge de retraite normal, carrière de 40 ans.",
+
+        # ── Fiscal sustainability RAG ─────────────────────────────────────────
+        "fiscal_rag_header": "Viabilité budgétaire",
+        "fiscal_rag_caption": "Basé sur la part de la population âgée de 65+ ans et les actifs des fonds de pension (% du PIB) selon la Banque mondiale.",
+        "fiscal_rag_scatter_caption": "Chaque point est un pays. Étoile rouge = pays sélectionné. Lignes pointillées à 12%/20% de personnes âgées et 20% du PIB en actifs.",
+        "rag_no_data": "Données indisponibles",
+        "rag_high_risk": "Pression budgétaire élevée",
+        "rag_moderate": "Pression modérée",
+        "rag_low_risk": "Pression faible",
+
+        # ── Scheme card additions ─────────────────────────────────────────────
+        "legal_basis_label": "Base légale",
+
+        # ── Peer benchmarking ─────────────────────────────────────────────────
+        "peer_benchmark_header": "Comparaison entre pairs — pays {income}",
+        "peer_benchmark_caption": "Taux de remplacement brut à 1×SM vs. pairs les plus proches du même groupe de revenu BM ({income}).",
+        "peer_chart_xaxis": "Taux de remplacement brut (%)",
+
+        # ── Convergence tracker ───────────────────────────────────────────────
+        "convergence_tracker_header": "Âge de retraite vs. Taux de remplacement — Vue mondiale",
+        "convergence_tracker_caption": "Chaque point est un pays. X = âge de retraite normal (hommes) ; Y = TR brut à 1×SM.",
+        "convergence_xaxis": "Âge de retraite normal (hommes, années)",
+        "convergence_yaxis": "Taux de remplacement brut à 1×SM (%)",
+
+        # ── System type map ───────────────────────────────────────────────────
+        "system_type_map_header": "Type de système de retraite — Carte mondiale",
+        "system_type_map_caption": "Type de régime obligatoire dominant par pays (DB, CDN, CD, Points, De base/Ciblé).",
+
+        # ── Calculator additions ──────────────────────────────────────────────
+        "calc_contribution_density": "Densité de cotisation",
+        "calc_density_help": "1.0 = cotisé chaque année de travail. 0.7 = cotisé 70% des années (interruptions, temps partiel).",
+        "calc_career_break": "Interruption de carrière (années sans cotiser)",
+        "calc_break_help": "Total des années hors du marché du travail. Soustrait des années de service.",
+        "calc_retirement_age": "Âge de départ à la retraite choisi",
+        "calc_compare_header": "Comparer deux pays — même profil de travailleur",
+        "calc_country_a": "Pays A",
+        "calc_country_b": "Pays B",
+        "calc_compare_btn": "Comparer",
+        "calc_compare_sex": "Sexe",
+        "calc_compare_age": "Âge de retraite",
+        "calc_compare_service": "Années de service",
+        "calc_compare_wage_mult": "Salaire (× salaire moyen)",
+        "calc_compare_gross_rr": "Taux de remplacement brut",
+        "calc_compare_net_rr": "Taux de remplacement net",
+        "calc_compare_nra": "Âge légal de retraite",
+        "calc_compare_benefit": "Pension annuelle brute",
+
+        # ── RR Sensitivity ───────────────────────────────────────────────────
+        "rr_sensitivity_header": "Sensibilité du taux de remplacement",
+        "rr_sensitivity_x": "Années de service",
+        "rr_sensitivity_caption": "Variation du taux de remplacement brut selon la durée de carrière. Lignes en pointillés = plafonds min/max.",
+
+        # ── Progressivity ────────────────────────────────────────────────────
+        "progressivity_header": "Inégalité du taux de remplacement",
+        "progressivity_caption": "Indice de progressivité = TR(0,5×SM) ÷ TR(2,0×SM). Supérieur à 1 = le système favorise les bas salaires.",
+
+        # ── Adequacy gap ─────────────────────────────────────────────────────
+        "adequacy_gap_header": "Adéquation — carrière complète vs. sans cotisations",
+        "adequacy_gap_full": "Carrière complète (40 ans)",
+        "adequacy_gap_zero": "Sans cotisations",
+        "adequacy_gap_caption": "Écart entre un travailleur à pleine carrière et sans cotisations à 1×SM. Mesure le filet de sécurité minimal.",
+
+        # ── Parameter heatmap ────────────────────────────────────────────────
+        "param_heatmap_header": "Paramètres du système — Carte thermique multi-pays",
+        "param_heatmap_metric": "Paramètre",
+        "param_heatmap_caption": "Âge de retraite en années ; taux de cotisation en % ; TR brut en % du salaire individuel.",
+
+        # ── NRA distribution ─────────────────────────────────────────────────
+        "nra_dist_header": "Âge normal de retraite — Distribution mondiale",
+        "nra_dist_caption": "Distribution de l'âge de retraite masculin pour tous les pays modélisés, coloré par groupe de revenu BM.",
+
+        # ── Personal projector ───────────────────────────────────────────────
+        "projector_header": "Projecteur de retraite personnel",
+        "projector_birth_year": "Année de naissance",
+        "projector_start_wage": "Salaire annuel de départ (monnaie locale)",
+        "projector_wage_growth": "Croissance réelle annuelle du salaire (%)",
+        "projector_density": "Densité de cotisation",
+        "projector_btn": "Projeter ma retraite",
+        "projector_caption": "Projection en termes réels (argent d'aujourd'hui). Le fonds CD croît à 3% de rendement réel net.",
+
+        # ── LLM Q&A ──────────────────────────────────────────────────────────
+        "qa_header": "Posez une question sur ce système de retraite",
+        "qa_placeholder": "ex. Que se passe-t-il si je prends ma retraite 3 ans plus tôt ?",
+        "qa_disclaimer": "Les réponses de l'IA sont uniquement informatives. Vérifiez toujours auprès des sources officielles.",
+        "qa_no_key": "ANTHROPIC_API_KEY non configuré. Définissez-le dans votre environnement.",
+
+        # ── PDF export ───────────────────────────────────────────────────────
+        "pdf_export_btn": "Télécharger le rapport PDF du pays",
+        "pdf_export_caption": "Le PDF comprend le résumé des régimes, les KPI, les graphiques de taux de remplacement et l'historique des réformes.",
+
+        # ── Live sync ────────────────────────────────────────────────────────
+        "sync_header": "Données en direct",
+        "sync_last_refreshed": "Dernière mise à jour : {date}",
+        "sync_btn": "Actualiser les données",
+        "sync_running": "Actualisation des données depuis l'OIT et la Banque mondiale…",
+        "sync_done": "Données actualisées. Redémarrez l'application pour charger les nouvelles valeurs.",
     },
 }

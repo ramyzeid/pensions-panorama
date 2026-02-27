@@ -134,40 +134,10 @@ schemes:
     payout:
       type: "annuity"
       notes: "Life annuity; spousal survivor benefit = 75% of insured's pension."
+    reform_status: stable
+    source_url: "https://www.ssc.gov.jo"
 
   # ---------------------------------------------------------------------------
-  # 2. SSC Minimum Pension Guarantee (top-up)
-  # ---------------------------------------------------------------------------
-  - scheme_id: "SSC_MIN"
-    name: "SSC Minimum Pension Guarantee"
-    tier: "first"
-    type: "minimum"
-    coverage: "all SSC pensioners whose earned pension falls below the minimum"
-    active: true
-
-    eligibility:
-      normal_retirement_age_male:
-        value: 60
-        source_citation: "Same eligibility as SSC_OAI."
-        year: 2023
-      normal_retirement_age_female:
-        value: 55
-        source_citation: "Same eligibility as SSC_OAI."
-        year: 2023
-      notes: "Applies automatically as a top-up to the DB formula."
-
-    benefits:
-      minimum_benefit_aw_multiple:
-        value: 0.35
-        source_citation: "SSC minimum monthly pension JOD 260 (2023); AW JOD 740/month → 35.1%. SSC Circular 2023."
-        source_url: "https://www.ssc.gov.jo"
-        year: 2023
-      indexation: "CPI"
-      notes: "Minimum pension indexed annually by government decision; historically near CPI."
-
-    payout:
-      type: "annuity"
-      notes: null
 
 # =============================================================================
 # Tax and social-contribution treatment
@@ -223,7 +193,7 @@ worker_types:
   private_employee:
     label: "Private sector employee"
     coverage_status: mandatory
-    scheme_ids: [SSC_OAI, SSC_MIN]
+    scheme_ids: [SSC_OAI]
     source_citation: "SSC Law No. 1/2014 – all private-sector employees are mandatorily enrolled."
     source_url: "https://www.ssc.gov.jo"
     notes: >
@@ -258,7 +228,7 @@ worker_types:
   self_employed:
     label: "Self-employed worker"
     coverage_status: voluntary
-    scheme_ids: [SSC_OAI, SSC_MIN]
+    scheme_ids: [SSC_OAI]
     eligibility_override:
       notes: "Self-employed may voluntarily enrol in SSC_OAI since the 2014 reform."
     contributions_override:
@@ -330,3 +300,33 @@ notes: >
   government worker schemes and introduced parametric changes including a higher
   NRA trajectory.  Civil servants hired before 2014 may be covered by the legacy
   Civil Service Retirement (CSR) scheme, which is not modeled here.
+
+coverage_rate:
+  value: 0.47
+  source_citation: "ILO/SSC Jordan Labour Market Assessment 2022: approximately 47% of the labour force
+    covered by mandatory SSC contributions. Excludes informal, agricultural, and domestic workers."
+  year: 2022
+
+informality_rate:
+  value: 0.44
+  source_citation: "World Bank Jordan Economic Monitor 2023: ~44% of employment is informal (outside SSC coverage)."
+  year: 2022
+
+reforms:
+  - year: 2014
+    title: "SSC Law No. 1/2014 — Unified Public/Private Scheme"
+    description: >
+      Replaced the fragmented dual system (private SSC + civil servant CSR) with a unified Social
+      Security Corporation scheme. Introduced a higher NRA trajectory for females (gradual increase
+      to 60 by 2040), voluntary coverage for self-employed, and updated benefit formula parameters.
+    type: coverage
+    source_citation: "Social Security Law No. 1 of 2014, SSC Jordan; OECD/World Bank Pension Assessment Jordan 2018."
+    source_url: "https://www.ssc.gov.jo"
+  - year: 2022
+    title: "Employer Contribution Rate Increase"
+    description: >
+      Employer contribution rate increased from 13.25% to 14.25% of gross wage under the 2022 amendment
+      to Law No. 1/2014, strengthening the fund's actuarial balance.
+    type: contribution_rate
+    source_citation: "SSC Law No. 1/2014 (amended 2022) Art. 30; SSC Annual Report 2022."
+    source_url: "https://www.ssc.gov.jo"
