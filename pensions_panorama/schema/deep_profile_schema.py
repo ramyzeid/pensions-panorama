@@ -49,6 +49,13 @@ class SchemeItem(BaseModel):
     attributes: dict[str, CellValue]
 
 
+class SsaUpdateItem(BaseModel):
+    title: str
+    url: str
+    date: str  # "YYYY-MM"
+    topic: str | None = None  # brief description of what the update covers
+
+
 class DeepProfile(BaseModel):
     iso3: str
     country_name: str
@@ -57,6 +64,7 @@ class DeepProfile(BaseModel):
     country_indicators: list[IndicatorItem]
     system_kpis: list[IndicatorItem]
     schemes: list[SchemeItem]
+    ssa_updates: list[SsaUpdateItem] = Field(default_factory=list)
 
     def model_dump_jsonable(self) -> dict[str, Any]:
         return self.model_dump(mode="json")

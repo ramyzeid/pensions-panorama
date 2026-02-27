@@ -1,7 +1,7 @@
 {
   "iso3": "TUR",
   "country_name": "Turkey",
-  "last_updated": "2026-02-26T17:06:47.719013Z",
+  "last_updated": "2026-02-27T03:14:42.231472Z",
   "narrative": {
     "text": "Turkey is a Europe and Central Asia country with a DB-type pension system centred on the SGK Old-Age Pension (4/a \u2013 SSI). The normal retirement age is 65 for both men and women. Contributions total 20.0% of insurable earnings (9.0% employee, 11.0% employer).",
     "sources": [
@@ -26,9 +26,9 @@
       "key": "year",
       "label": "Year",
       "cell": {
-        "value": 2023,
+        "value": null,
         "unit": "year",
-        "year": 2023,
+        "year": null,
         "source": {
           "source_name": "World Development Indicators (World Bank)",
           "source_url": "https://data.worldbank.org",
@@ -43,14 +43,14 @@
       "key": "gdp_pc_lcu",
       "label": "GDP per capita (LCU)",
       "cell": {
-        "value": 317505.568963679,
+        "value": null,
         "unit": "LCU",
-        "year": 2023,
+        "year": null,
         "source": {
           "source_name": "World Development Indicators (World Bank)",
           "source_url": "https://data.worldbank.org/indicator/NY.GDP.PCAP.CN?locations=TUR",
           "indicator_id": "NY.GDP.PCAP.CN",
-          "year": 2023,
+          "year": null,
           "notes": null
         },
         "notes": null
@@ -60,14 +60,14 @@
       "key": "gdp_pc_usd",
       "label": "GDP per capita (USD)",
       "cell": {
-        "value": 13375.0947282864,
+        "value": null,
         "unit": "USD",
-        "year": 2023,
+        "year": null,
         "source": {
           "source_name": "World Development Indicators (World Bank)",
           "source_url": "https://data.worldbank.org/indicator/NY.GDP.PCAP.CD?locations=TUR",
           "indicator_id": "NY.GDP.PCAP.CD",
-          "year": 2023,
+          "year": null,
           "notes": null
         },
         "notes": null
@@ -77,14 +77,14 @@
       "key": "pop_65_total",
       "label": "Population age 65+ (total)",
       "cell": {
-        "value": 8533473.0,
+        "value": null,
         "unit": "persons",
-        "year": 2023,
+        "year": null,
         "source": {
           "source_name": "World Development Indicators (World Bank)",
           "source_url": "https://data.worldbank.org/indicator/SP.POP.65UP.TO?locations=TUR",
           "indicator_id": "SP.POP.65UP.TO",
-          "year": 2023,
+          "year": null,
           "notes": null
         },
         "notes": null
@@ -94,14 +94,14 @@
       "key": "pop_65_pct",
       "label": "Population age 65+ (% of total population)",
       "cell": {
-        "value": 10.0010276668343,
+        "value": null,
         "unit": "%",
-        "year": 2023,
+        "year": null,
         "source": {
           "source_name": "World Development Indicators (World Bank)",
           "source_url": "https://data.worldbank.org/indicator/SP.POP.65UP.TO.ZS?locations=TUR",
           "indicator_id": "SP.POP.65UP.TO.ZS",
-          "year": 2023,
+          "year": null,
           "notes": null
         },
         "notes": null
@@ -111,14 +111,14 @@
       "key": "pension_coverage_pct",
       "label": "Contributory pension coverage (% of population)",
       "cell": {
-        "value": 36.3350889956672,
+        "value": null,
         "unit": "%",
-        "year": 2019,
+        "year": null,
         "source": {
           "source_name": "ASPIRE \u2013 World Bank",
           "source_url": "https://www.worldbank.org/en/data/datatopics/aspire",
           "indicator_id": "per_si_cp.cov_pop_tot",
-          "year": 2019,
+          "year": null,
           "notes": null
         },
         "notes": null
@@ -128,14 +128,14 @@
       "key": "social_insurance_coverage_pct",
       "label": "Social insurance coverage (% of population)",
       "cell": {
-        "value": 37.1726479744503,
+        "value": null,
         "unit": "%",
-        "year": 2019,
+        "year": null,
         "source": {
           "source_name": "ASPIRE \u2013 World Bank",
           "source_url": "https://www.worldbank.org/en/data/datatopics/aspire",
           "indicator_id": "per_si_allsi.cov_pop_tot",
-          "year": 2019,
+          "year": null,
           "notes": null
         },
         "notes": null
@@ -145,14 +145,14 @@
       "key": "pension_fund_assets_gdp",
       "label": "Pension fund assets (% of GDP)",
       "cell": {
-        "value": 3.3582723,
+        "value": null,
         "unit": "%",
-        "year": 2020,
+        "year": null,
         "source": {
           "source_name": "Global Financial Development Database \u2013 World Bank",
           "source_url": "https://data.worldbank.org/indicator/GFDD.DI.13",
           "indicator_id": "GFDD.DI.13",
-          "year": 2020,
+          "year": null,
           "notes": null
         },
         "notes": null
@@ -164,16 +164,10 @@
       "key": "coverage_total",
       "label": "Social insurance coverage (% of population)",
       "cell": {
-        "value": 37.1726479744503,
-        "unit": "%",
-        "year": 2019,
-        "source": {
-          "source_name": "ASPIRE \u2013 World Bank",
-          "source_url": "https://www.worldbank.org/en/data/datatopics/aspire",
-          "indicator_id": "per_si_allsi.cov_pop_tot",
-          "year": 2019,
-          "notes": null
-        },
+        "value": null,
+        "unit": null,
+        "year": null,
+        "source": null,
         "notes": null
       }
     },
@@ -181,16 +175,10 @@
       "key": "pension_coverage",
       "label": "Contributory pension coverage (% of population)",
       "cell": {
-        "value": 36.3350889956672,
-        "unit": "%",
-        "year": 2019,
-        "source": {
-          "source_name": "ASPIRE \u2013 World Bank",
-          "source_url": "https://www.worldbank.org/en/data/datatopics/aspire",
-          "indicator_id": "per_si_cp.cov_pop_tot",
-          "year": 2019,
-          "notes": null
-        },
+        "value": null,
+        "unit": null,
+        "year": null,
+        "source": null,
         "notes": null
       }
     },
@@ -198,16 +186,10 @@
       "key": "pension_fund_assets_gdp",
       "label": "Pension fund assets (% of GDP)",
       "cell": {
-        "value": 3.3582723,
-        "unit": "%",
-        "year": 2020,
-        "source": {
-          "source_name": "Global Financial Development Database \u2013 World Bank",
-          "source_url": "https://data.worldbank.org/indicator/GFDD.DI.13",
-          "indicator_id": "GFDD.DI.13",
-          "year": 2020,
-          "notes": null
-        },
+        "value": null,
+        "unit": null,
+        "year": null,
+        "source": null,
         "notes": null
       }
     },
@@ -329,5 +311,6 @@
         }
       }
     }
-  ]
+  ],
+  "ssa_updates": []
 }

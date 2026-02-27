@@ -1,7 +1,7 @@
 {
   "iso3": "MNG",
   "country_name": "Mongolia",
-  "last_updated": "2026-02-26T17:23:55.003658Z",
+  "last_updated": "2026-02-27T03:14:42.754293Z",
   "narrative": {
     "text": "Mongolia is a Europe and Central Asia country with a DB-type pension system centred on the National Development and Innovation Center / Social Insurance \u2013 DB Pension. The normal retirement age is 60 for men and 55 for women. Contributions total 15.0% of insurable earnings (8.0% employee, 7.0% employer).",
     "sources": [
@@ -26,9 +26,9 @@
       "key": "year",
       "label": "Year",
       "cell": {
-        "value": 2023,
+        "value": null,
         "unit": "year",
-        "year": 2023,
+        "year": null,
         "source": {
           "source_name": "World Development Indicators (World Bank)",
           "source_url": "https://data.worldbank.org",
@@ -43,14 +43,14 @@
       "key": "gdp_pc_lcu",
       "label": "GDP per capita (LCU)",
       "cell": {
-        "value": 20235157.057089,
+        "value": null,
         "unit": "LCU",
-        "year": 2023,
+        "year": null,
         "source": {
           "source_name": "World Development Indicators (World Bank)",
           "source_url": "https://data.worldbank.org/indicator/NY.GDP.PCAP.CN?locations=MNG",
           "indicator_id": "NY.GDP.PCAP.CN",
-          "year": 2023,
+          "year": null,
           "notes": null
         },
         "notes": null
@@ -60,14 +60,14 @@
       "key": "gdp_pc_usd",
       "label": "GDP per capita (USD)",
       "cell": {
-        "value": 5838.63108083902,
+        "value": null,
         "unit": "USD",
-        "year": 2023,
+        "year": null,
         "source": {
           "source_name": "World Development Indicators (World Bank)",
           "source_url": "https://data.worldbank.org/indicator/NY.GDP.PCAP.CD?locations=MNG",
           "indicator_id": "NY.GDP.PCAP.CD",
-          "year": 2023,
+          "year": null,
           "notes": null
         },
         "notes": null
@@ -77,14 +77,14 @@
       "key": "pop_65_total",
       "label": "Population age 65+ (total)",
       "cell": {
-        "value": 169309.0,
+        "value": null,
         "unit": "persons",
-        "year": 2023,
+        "year": null,
         "source": {
           "source_name": "World Development Indicators (World Bank)",
           "source_url": "https://data.worldbank.org/indicator/SP.POP.65UP.TO?locations=MNG",
           "indicator_id": "SP.POP.65UP.TO",
-          "year": 2023,
+          "year": null,
           "notes": null
         },
         "notes": null
@@ -94,14 +94,14 @@
       "key": "pop_65_pct",
       "label": "Population age 65+ (% of total population)",
       "cell": {
-        "value": 4.8636009012415,
+        "value": null,
         "unit": "%",
-        "year": 2023,
+        "year": null,
         "source": {
           "source_name": "World Development Indicators (World Bank)",
           "source_url": "https://data.worldbank.org/indicator/SP.POP.65UP.TO.ZS?locations=MNG",
           "indicator_id": "SP.POP.65UP.TO.ZS",
-          "year": 2023,
+          "year": null,
           "notes": null
         },
         "notes": null
@@ -111,14 +111,14 @@
       "key": "pension_coverage_pct",
       "label": "Contributory pension coverage (% of population)",
       "cell": {
-        "value": 32.3791507361208,
+        "value": null,
         "unit": "%",
-        "year": 2020,
+        "year": null,
         "source": {
           "source_name": "ASPIRE \u2013 World Bank",
           "source_url": "https://www.worldbank.org/en/data/datatopics/aspire",
           "indicator_id": "per_si_cp.cov_pop_tot",
-          "year": 2020,
+          "year": null,
           "notes": null
         },
         "notes": null
@@ -128,14 +128,14 @@
       "key": "social_insurance_coverage_pct",
       "label": "Social insurance coverage (% of population)",
       "cell": {
-        "value": 37.0064704120554,
+        "value": null,
         "unit": "%",
-        "year": 2020,
+        "year": null,
         "source": {
           "source_name": "ASPIRE \u2013 World Bank",
           "source_url": "https://www.worldbank.org/en/data/datatopics/aspire",
           "indicator_id": "per_si_allsi.cov_pop_tot",
-          "year": 2020,
+          "year": null,
           "notes": null
         },
         "notes": null
@@ -164,16 +164,10 @@
       "key": "coverage_total",
       "label": "Social insurance coverage (% of population)",
       "cell": {
-        "value": 37.0064704120554,
-        "unit": "%",
-        "year": 2020,
-        "source": {
-          "source_name": "ASPIRE \u2013 World Bank",
-          "source_url": "https://www.worldbank.org/en/data/datatopics/aspire",
-          "indicator_id": "per_si_allsi.cov_pop_tot",
-          "year": 2020,
-          "notes": null
-        },
+        "value": null,
+        "unit": null,
+        "year": null,
+        "source": null,
         "notes": null
       }
     },
@@ -181,16 +175,10 @@
       "key": "pension_coverage",
       "label": "Contributory pension coverage (% of population)",
       "cell": {
-        "value": 32.3791507361208,
-        "unit": "%",
-        "year": 2020,
-        "source": {
-          "source_name": "ASPIRE \u2013 World Bank",
-          "source_url": "https://www.worldbank.org/en/data/datatopics/aspire",
-          "indicator_id": "per_si_cp.cov_pop_tot",
-          "year": 2020,
-          "notes": null
-        },
+        "value": null,
+        "unit": null,
+        "year": null,
+        "source": null,
         "notes": null
       }
     },
@@ -199,15 +187,9 @@
       "label": "Pension fund assets (% of GDP)",
       "cell": {
         "value": null,
-        "unit": "%",
+        "unit": null,
         "year": null,
-        "source": {
-          "source_name": "Global Financial Development Database \u2013 World Bank",
-          "source_url": "https://data.worldbank.org/indicator/GFDD.DI.13",
-          "indicator_id": "GFDD.DI.13",
-          "year": null,
-          "notes": null
-        },
+        "source": null,
         "notes": null
       }
     },
@@ -329,5 +311,6 @@
         }
       }
     }
-  ]
+  ],
+  "ssa_updates": []
 }

@@ -1,0 +1,73 @@
+{
+  "_comment": "Pre-built index of SSA International Update articles by country (ISO3 code).",
+  "_source": "U.S. Social Security Administration – International Update series",
+  "_base_url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/",
+  "_search_page": "https://www.ssa.gov/policy/research.html?sort=date&type=International%20Update",
+  "_note": "Entries are verified via web search. Add new entries manually or rebuild with: pp update-ssa-index",
+
+  "EGY": [
+    {
+      "title": "International Update, July 2023",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2023-07/index.html",
+      "date": "2023-07",
+      "topic": "Egypt launches new voluntary pension program (Tomorrow's Pension) for citizens abroad"
+    },
+    {
+      "title": "International Update, February 2020",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2020-02/index.html",
+      "date": "2020-02",
+      "topic": "Egypt implements comprehensive pension reform (Law No. 148 of 2019)"
+    }
+  ],
+
+  "JOR": [
+    {
+      "title": "International Update, April 2020",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2020-04/index.html",
+      "date": "2020-04",
+      "topic": "Jordan allows COVID-19 suspension and deferral of pension contributions"
+    },
+    {
+      "title": "International Update, April 2015",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2015-04/index.html",
+      "date": "2015-04",
+      "topic": "Jordan begins gradual increase in old-age pension contribution rates"
+    },
+    {
+      "title": "International Update, November 2013",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2013-11/index.html",
+      "date": "2013-11",
+      "topic": "Jordan pension system overview"
+    }
+  ],
+
+  "LBN": [
+    {
+      "title": "International Update, November 2013",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2013-11/index.html",
+      "date": "2013-11",
+      "topic": "Lebanon lacks social security programs for long-term old-age, disability, and survivor benefits"
+    }
+  ],
+
+  "MAR": [
+    {
+      "title": "International Update, April 2020",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2020-04/index.html",
+      "date": "2020-04",
+      "topic": "Morocco exempts employers from social security contributions during COVID-19 (until June 30, 2020)"
+    },
+    {
+      "title": "International Update, October 2019",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2019-10/index.html",
+      "date": "2019-10",
+      "topic": "Morocco introduces new death grant and family support allowance programs"
+    },
+    {
+      "title": "International Update, October 2017",
+      "url": "https://www.ssa.gov/policy/docs/progdesc/intl_update/2017-10/index.html",
+      "date": "2017-10",
+      "topic": "Morocco implements work injury benefit reforms"
+    }
+  ]
+}

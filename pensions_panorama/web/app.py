@@ -2227,6 +2227,46 @@ def tab_country(data: dict) -> None:
     else:
         st.info(t("not_available"))
 
+    # ── SSA International Updates ─────────────────────────────────────────────
+    st.divider()
+    st.subheader(t("ssa_updates_header"))
+    ssa_updates = profile.get("ssa_updates") or []
+    if ssa_updates:
+        dates = [u.get("date", "") for u in ssa_updates if u.get("date")]
+        start_yr = min(dates)[:4] if dates else "—"
+        end_yr = max(dates)[:4] if dates else "—"
+        count = len(ssa_updates)
+        plural = "s" if count != 1 else ""
+        st.markdown(
+            t(
+                "ssa_updates_summary",
+                count=count,
+                plural=plural,
+                country=params.metadata.country_name,
+                start=start_yr,
+                end=end_yr,
+            )
+        )
+        st.markdown(
+            t("ssa_updates_intro", country=params.metadata.country_name)
+        )
+        for upd in ssa_updates:
+            title = upd.get("title") or upd.get("date") or "SSA Update"
+            url = upd.get("url", "")
+            topic = upd.get("topic", "")
+            link = f"[{title}]({url})" if url else title
+            detail = f" — {topic}" if topic else ""
+            st.markdown(f"- {link}{detail}")
+        st.caption(
+            "Source: Social Security Administration, "
+            "[International Updates](https://www.ssa.gov/policy/research.html"
+            "?sort=date&type=International%20Update)"
+        )
+    else:
+        st.markdown(
+            t("ssa_updates_none", country=params.metadata.country_name)
+        )
+
 
 # ---------------------------------------------------------------------------
 # Tab – Country Deep Profile (helper kept for _format_last_updated)

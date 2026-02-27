@@ -44,7 +44,7 @@ def test_costa_rica_structure():
     keys = [item.key for item in profile.country_indicators]
     assert "year" in keys
     assert len(profile.country_indicators) >= 5
-    assert len(profile.system_kpis) == 3
+    assert len(profile.system_kpis) == 5
     assert profile.narrative.text
     assert len(profile.schemes) >= 1
 

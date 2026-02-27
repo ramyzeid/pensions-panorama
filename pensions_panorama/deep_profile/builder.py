@@ -2,12 +2,13 @@
 
 from __future__ import annotations
 
+import json
+import logging
+import yaml
+
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
-
-import json
-import yaml
 
 from pensions_panorama.config import DEEP_PROFILE_DIR, RunConfig
 from pensions_panorama.schema.deep_profile_schema import (
@@ -18,10 +19,12 @@ from pensions_panorama.schema.deep_profile_schema import (
     SchemeItem,
     SchemeTypeGroup,
     SourceRef,
+    SsaUpdateItem,
 )
 from pensions_panorama.sources.worldbank import WorldBankClient
 from pensions_panorama.schema.params_schema import CountryParams, SchemeComponent
 
+logger = logging.getLogger(__name__)
 
 DEEP_PROFILE_MAPPING_DIR = Path(__file__).parent.parent.parent / "data" / "deep_profiles"
 
@@ -488,6 +491,48 @@ def _build_narrative(mapping: dict[str, Any], params: CountryParams | None) -> N
     return NarrativeBlock(text=text, sources=sources)
 
 
+_SSA_INDEX_PATH = Path(__file__).parent.parent.parent / "data" / "ssa_updates_index.json"
+_ssa_index_cache: dict[str, list[SsaUpdateItem]] | None = None
+
+
+def _load_ssa_index() -> dict[str, list[SsaUpdateItem]]:
+    """Load (and cache) the pre-built SSA International Updates index."""
+    global _ssa_index_cache
+    if _ssa_index_cache is not None:
+        return _ssa_index_cache
+    if not _SSA_INDEX_PATH.exists():
+        _ssa_index_cache = {}
+        return _ssa_index_cache
+    try:
+        raw: dict = json.loads(_SSA_INDEX_PATH.read_text())
+        index: dict[str, list[SsaUpdateItem]] = {}
+        for iso3, entries in raw.items():
+            if iso3.startswith("_"):
+                continue  # skip metadata keys
+            items = []
+            for e in entries:
+                try:
+                    items.append(SsaUpdateItem(
+                        title=e.get("title", ""),
+                        url=e.get("url", ""),
+                        date=e.get("date", ""),
+                        topic=e.get("topic"),
+                    ))
+                except Exception:
+                    pass
+            index[iso3.upper()] = sorted(items, key=lambda x: x.date, reverse=True)
+        _ssa_index_cache = index
+    except Exception as exc:
+        logger.warning("Failed to load SSA updates index: %s", exc)
+        _ssa_index_cache = {}
+    return _ssa_index_cache
+
+
+def _get_ssa_updates(iso3: str) -> list[SsaUpdateItem]:
+    """Return pre-built SSA International Update entries for a country."""
+    return _load_ssa_index().get(iso3.upper(), [])
+
+
 def build_deep_profile(
     iso3: str,
     params: CountryParams | None,
@@ -502,6 +547,7 @@ def build_deep_profile(
     country_indicators = _build_country_indicators(iso3, wb_client, cfg, mapping, offline)
     system_kpis = _build_system_kpis(mapping, iso3, wb_client, cfg, offline)
     schemes = _build_schemes(mapping, params)
+    ssa_updates = _get_ssa_updates(iso3)
 
     return DeepProfile(
         iso3=iso3,
@@ -511,6 +557,7 @@ def build_deep_profile(
         country_indicators=country_indicators,
         system_kpis=system_kpis,
         schemes=schemes,
+        ssa_updates=ssa_updates,
     )
 
 

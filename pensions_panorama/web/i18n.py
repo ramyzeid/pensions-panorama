@@ -149,6 +149,22 @@ TRANSLATIONS: dict[str, dict[str, str]] = {
         "deep_profile_country_info_header": "Country Level Information",
         "deep_profile_kpi_header": "{country}'s Pension System",
         "deep_profile_schemes_header": "Main Pension Schemes in the country",
+        "ssa_updates_header": "📰 SSA International Updates",
+        "ssa_updates_intro": (
+            "The following publications from the **Social Security Administration (US) "
+            "International Update** series cover pension and social security reforms in "
+            "{country}. Each link opens the original SSA monthly bulletin."
+        ),
+        "ssa_updates_summary": (
+            "**{count}** SSA International Update bulletin{plural} found for **{country}**"
+            " ({start}–{end})."
+        ),
+        "ssa_updates_none": (
+            "No SSA International Update bulletins were found for {country}. "
+            "You can search manually at "
+            "[ssa.gov/policy/research.html](https://www.ssa.gov/policy/research.html"
+            "?sort=date&type=International%20Update)."
+        ),
         "deep_profile_indicator_label": "Indicator",
         "deep_profile_indicator_value": "Value",
         "deep_profile_indicator_year": "Year",
@@ -962,6 +978,22 @@ The **required monthly income** to fund retirement is `PV ÷ (H × 12)`.
         "deep_profile_country_info_header": "معلومات على مستوى الدولة",
         "deep_profile_kpi_header": "نظام التقاعد في {country}",
         "deep_profile_schemes_header": "أهم برامج التقاعد في الدولة",
+        "ssa_updates_header": "📰 التحديثات الدولية لإدارة الضمان الاجتماعي الأمريكية",
+        "ssa_updates_intro": (
+            "تتناول المنشورات التالية من **سلسلة التحديثات الدولية لإدارة الضمان الاجتماعي "
+            "الأمريكية (SSA)** إصلاحات أنظمة التقاعد والضمان الاجتماعي في {country}. "
+            "كلّ رابط يفتح النشرة الشهرية الأصلية لإدارة الضمان الاجتماعي."
+        ),
+        "ssa_updates_summary": (
+            "تم العثور على **{count}** نشرة{plural} من إدارة الضمان الاجتماعي الأمريكية "
+            "تتعلق بـ**{country}** ({start}–{end})."
+        ),
+        "ssa_updates_none": (
+            "لم يتم العثور على نشرات إدارة الضمان الاجتماعي الدولية لـ{country}. "
+            "يمكنك البحث يدوياً عبر "
+            "[ssa.gov/policy/research.html](https://www.ssa.gov/policy/research.html"
+            "?sort=date&type=International%20Update)."
+        ),
         "deep_profile_indicator_label": "المؤشر",
         "deep_profile_indicator_value": "القيمة",
         "deep_profile_indicator_year": "السنة",
@@ -1719,6 +1751,23 @@ PV = Σ_{t=1}^{H}  [التكلفة_السنوية × (1 + g)^(t−1)] / (1 + r)^
         "deep_profile_country_info_header": "Informations au niveau du pays",
         "deep_profile_kpi_header": "Système de retraite de {country}",
         "deep_profile_schemes_header": "Principaux régimes de retraite dans le pays",
+        "ssa_updates_header": "📰 Mises à jour internationales de la SSA",
+        "ssa_updates_intro": (
+            "Les publications suivantes de la **série International Update de la Social "
+            "Security Administration (SSA) américaine** couvrent les réformes des retraites "
+            "et de la sécurité sociale de {country}. Chaque lien ouvre le bulletin mensuel "
+            "original de la SSA."
+        ),
+        "ssa_updates_summary": (
+            "**{count}** bulletin{plural} SSA International Update trouvé{plural} pour "
+            "**{country}** ({start}–{end})."
+        ),
+        "ssa_updates_none": (
+            "Aucun bulletin SSA International Update trouvé pour {country}. "
+            "Vous pouvez effectuer une recherche manuelle sur "
+            "[ssa.gov/policy/research.html](https://www.ssa.gov/policy/research.html"
+            "?sort=date&type=International%20Update)."
+        ),
         "deep_profile_indicator_label": "Indicateur",
         "deep_profile_indicator_value": "Valeur",
         "deep_profile_indicator_year": "Année",
