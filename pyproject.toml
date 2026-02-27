@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pensions-panorama"
-version = "0.1.0"
+version = "0.2.0"
 description = "Comparative pension dataset and country briefs generator (Pensions-at-a-Glance style)"
 readme = "README.md"
 requires-python = ">=3.11"
